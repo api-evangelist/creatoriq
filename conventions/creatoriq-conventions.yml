@@ -1,0 +1,113 @@
+generated: '2026-08-11'
+method: searched
+source: https://apidocs.creatoriq.com/docs/ciq-api-documentation/o5yqwvpp1lbnb-overview
+derived_from:
+- openapi/ (17 documents, 159 operations)
+docs:
+- https://apidocs.creatoriq.com/docs/ciq-api-documentation/05lf89tv60rvy-introduction-to-api-keys
+- https://apidocs.creatoriq.com/docs/ciq-api-documentation/184215127ab85-best-practices
+- https://apidocs.creatoriq.com/docs/ciq-api-documentation/hgzeuq1b1qhkd-common-errors
+transport:
+  protocol: HTTPS only
+  media_type: application/json
+  guidance: >-
+    Docs instruct that API calls be made server-side, not from front-end apps, because the API key is
+    a bearer-equivalent secret with no scoping.
+authentication:
+  style: api-key-header
+  header: x-api-key
+  case_note: >-
+    Sixteen of seventeen specs declare the header as lowercase `x-api-key`; the Payments API declares
+    `X-API-KEY`. HTTP header names are case-insensitive, so this is a spec inconsistency rather than a
+    runtime one, but a code generator will emit two different constants.
+  alternate: >-
+    The SafeIQ Brand Safety spec additionally declares an http/bearer scheme documented as
+    "Authorization: Bearer {api_key}" — the same credential in a second envelope.
+  scoping:
+    levels: [partner, division]
+    note: >-
+      Keys are issued at partner level or division level. A division key sees only that division's
+      subscriptions and events; a partner key can view division subscriptions but cannot subscribe or
+      unsubscribe on their behalf.
+  issuance: Manual, via a CreatorIQ account manager or sales@creatoriq.com. No self-serve key creation.
+  rotation: Docs recommend periodic re-creation and deletion of unused keys; there is no key-rotation API.
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    CreatorIQ documents no idempotency contract and no idempotency key. A grep of all eighteen
+    harvested specs returns zero occurrences of "idempoten" in any parameter, header, description or
+    extension. Write operations exist across campaigns, publishers, lists, one-sheets, promo codes and
+    tracking links, and a retried POST is not defined to be safe. No Idempotency pointer is emitted in
+    apis.yml, because there is nothing to point at.
+pagination:
+  styles:
+  - style: page-number
+    params: [page, size]
+    used_by: CRM v1 collections (publishers, campaigns, lists, onesheets, ...)
+    caps:
+    - 'GET /crm/v1/api/publishers — size must not exceed 1000 (changelog 2026-06-24)'
+    - 'GET /crm/v1/api/account/youtube/{id}/timeline — size must not exceed 50; a larger value is silently lowered to 50 (changelog 2026-06-17)'
+  - style: page-number-capitalised
+    params: [Page, PageSize]
+    used_by: Reporting view endpoints (/crm/v1/api/view?view=...)
+    note: The reporting surface uses a different casing and different parameter names than the CRM surface.
+  - style: cursor
+    params: [cursor]
+    used_by: [Payments API, SafeIQ Brand Safety API]
+    note: The two newest surfaces are cursor-paginated; the older CRM surface is not.
+  consistency: >-
+    Three pagination dialects coexist in one API. There is no single documented pagination convention
+    a client can implement once.
+sorting_and_filtering:
+  style: bracketed query object
+  example: 'requestData[sort][0][field], requestData[params][PartnerId]'
+  note: >-
+    The CRM and reporting surfaces encode structured sort/filter objects into bracketed query-string
+    keys — the single most common parameter shape in the spec set (38 operations carry
+    requestData[sort][0][field]).
+field_selection:
+  supported: partial
+  param: fields
+  used_by: 6 operations
+  note: A `fields` query parameter narrows the response on some CRM endpoints; there is no general expansion or sparse-fieldset convention.
+versioning:
+  style: uri-path
+  see: lifecycle/creatoriq-lifecycle.yml
+error_envelope:
+  format: bespoke-json
+  rfc9457: false
+  note: >-
+    No operation in any spec returns application/problem+json. Documented error bodies use a
+    `{status, data, message}` envelope on the pub/sub surface and a JSON error message plus error code
+    elsewhere. See errors/creatoriq-problem-types.yml.
+  status_codes: [400, 401, 403, 404, 408, 429, 500, 504]
+rate_limiting:
+  see: rate-limits/creatoriq-rate-limits.yml
+  runtime_headers: none documented
+request_tracing:
+  request_id_header: null
+  note: >-
+    No request-id or correlation-id header is documented for API responses. A `requestId` field does
+    appear inside webhook event payloads (format "{partnerId}:{n}:{token}:{seq}"), but that identifies
+    the event, not the API call.
+webhook_conventions:
+  signature_headers: [X-Signature (MD5), X-Signature-SHA256 (SHA-256, ACL-enabled partners only)]
+  timestamp_header: x-timestamp
+  signing_string: normalizedJson + timestamp + apiKey
+  construction: plain hash, not HMAC
+  note: >-
+    The docs state this plainly and self-critically — "Although this process is described as HMAC, the
+    current implementation uses a simple hash (not an HMAC construction)" — and explain that moving to
+    a true HMAC would require versioning and break backward compatibility. The signing secret is the
+    API key itself, so verifying a webhook requires the same credential that calls the API.
+  retries: 2 additional attempts at 1-minute intervals; undelivered events retained 4 days, replayable only via support.
+  tls: Callback endpoints must serve valid HTTPS; CreatorIQ validates the connection before sending.
+schema_evolution:
+  policy: tolerant-reader
+  docs: https://apidocs.creatoriq.com/docs/ciq-api-documentation/184215127ab85-best-practices
+  note: >-
+    CreatorIQ publishes an explicit "Best Practices" page instructing integrators not to hardcode a
+    fixed field structure, to disable strict deserialization, and to allow additionalProperties in
+    schema validation — because responses gain fields without a version bump. This is a real published
+    convention and worth crediting; it is also an admission that additive change lands unannounced.

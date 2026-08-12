@@ -1,18 +1,277 @@
 aid: creatoriq
 name: CreatorIQ
-description: 'CreatorIQ is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  CreatorIQ is an enterprise creator- and influencer-marketing platform used by brands and agencies to
+  discover creators, build and manage a private creator network, run and measure campaigns, handle
+  creator payouts, and report on performance across Instagram, TikTok, YouTube and other social
+  networks. Its public REST API — documented on a Stoplight portal at apidocs.creatoriq.com and served
+  from https://apis.creatoriq.com — exposes the customer's own CRM: publishers (creators), campaigns,
+  lists, one-sheets, notes, divisions, social accounts and post/account metrics, an asynchronous
+  reporting surface of forty report views, ecommerce promo codes and transactions, affiliate link
+  tracking, conversion metrics, SafeIQ brand-safety scoring, and a Payments API for payouts and
+  payables. A pub/sub webhook API lets integrators subscribe to campaign, creator, one-sheet and
+  list events with MD5 and SHA-256 signed callbacks. Authentication is a single `x-api-key` header
+  issued per partner or per division by a CreatorIQ account manager; there is no self-serve signup.
 url: https://raw.githubusercontent.com/api-evangelist/creatoriq/refs/heads/main/apis.yml
+image: https://www.creatoriq.com/hubfs/2025%20Rebrading%20Assets%20%3E%20DO%20NOT%20DELETE/Logos/creatorIQ-logo-new.svg
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
-specificationVersion: '0.20'
+specificationVersion: '0.21'
 created: '2026-08-11'
 modified: '2026-08-11'
 tags:
-- Company
-apis: []
+- influencer-marketing
+- creator-economy
+- social-media
+- marketing
+- campaign-management
+- creator-crm
+- social-analytics
+- brand-safety
+- affiliate-marketing
+- creator-payments
+- ecommerce
+- reporting
+- webhooks
+apis:
+- name: CreatorIQ CRM Publishers API
+  description: >-
+    Read, create, update and delete creator (publisher) records in the customer's CreatorIQ CRM, plus
+    their linked social accounts, scheduled posts, contacts and campaign relationships.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - creator-crm
+  - influencer-marketing
+  - publishers
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-publishers-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+- name: CreatorIQ CRM Publishers API V2
+  description: >-
+    Version 2 of the publishers surface, currently exposing bulk retrieval of linked social accounts
+    for a set of publisher identifiers.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - creator-crm
+  - publishers
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-v2-publishers-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+- name: CreatorIQ Campaign APIs
+  description: >-
+    Create and manage campaigns, campaign publishers and their status, campaign activity, expenses,
+    brands and advertiser information.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - campaign-management
+  - influencer-marketing
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-campaigns-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+- name: CreatorIQ CRM Campaigns API V2
+  description: >-
+    Version 2 brands surface — list, retrieve and search the brands attached to campaigns.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - campaign-management
+  - brands
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-v2-campaigns-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+- name: CreatorIQ Reporting APIs
+  description: >-
+    Asynchronous reporting surface exposing forty report views over campaigns, campaign posts, top
+    influencers, videos, per-network breakdowns, audience data and creator-linked account metrics.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - reporting
+  - social-analytics
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-reports-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+- name: CreatorIQ Social Account APIs
+  description: >-
+    Look up social accounts and posts by link or handle across Instagram, TikTok and YouTube, retrieve
+    account history and Instagram stories history.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - social-media
+  - social-analytics
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-socials-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+- name: CreatorIQ CRM Lists API
+  description: >-
+    Create, update and delete lists of creators and add or remove publishers from a list.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - creator-crm
+  - lists
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-lists-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+- name: CreatorIQ CRM Onesheets API
+  description: >-
+    Create, publish and manage One-Sheets — shareable creator pitch sheets — including adding
+    publishers, comments, approvals and rejections.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - creator-crm
+  - onesheets
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-onesheets-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+- name: CreatorIQ CRM Notes API
+  description: >-
+    Attach and retrieve notes against CRM entities and their dimensions.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - creator-crm
+  - notes
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-notes-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+- name: CreatorIQ Divisions APIs
+  description: >-
+    List and retrieve the divisions of a partner account — the tenancy boundary that division-level
+    API keys and webhook subscriptions are scoped to.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - divisions
+  - creator-crm
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-v1-divisions-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+- name: CreatorIQ Ecommerce APIs
+  description: >-
+    Manage promo codes, promo-code integrations, connected ecommerce accounts and read ecommerce
+    transactions attributed to creators.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - ecommerce
+  - affiliate-marketing
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-ecommerce-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+- name: CreatorIQ CRM LinkTracking API
+  description: >-
+    Create, list and manage trackable affiliate links used to attribute traffic and conversions to
+    creators.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - affiliate-marketing
+  - link-tracking
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-link-tracking-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+- name: CreatorIQ Conversion Metrics API
+  description: >-
+    Define and read global and per-campaign conversion metrics, including metrics bound to individual
+    tracking links.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - affiliate-marketing
+  - reporting
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-conversion-metrics-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+- name: CreatorIQ SafeIQ Brand Safety API
+  description: >-
+    Submit posts for brand-safety analysis and retrieve the resulting scoring for a post.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - brand-safety
+  - social-media
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-brand-safety-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+- name: CreatorIQ Brand Safety (draft)
+  description: >-
+    Draft brand-safety check endpoint published alongside SafeIQ, with separate prod, stage and dev
+    server entries.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  baseURL: https://apis.creatoriq.com/BrandSafetyProd
+  tags:
+  - brand-safety
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-brand-safety-draft-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+- name: CreatorIQ Payments API
+  description: >-
+    Read creator payouts and payables, and check the payment-information collection status of
+    creators.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - creator-payments
+  - payouts
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-payments-openapi.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+- name: CreatorIQ Webhooks (pub/sub) API
+  description: >-
+    Subscribe to, unsubscribe from and list CreatorIQ event subscriptions. Events cover campaign
+    create/delete/latest-post/payout-paid, creator account link/unlink/update/delete/campaign-added,
+    One-Sheet publish and List 2.0 publish. Callbacks are signed with X-Signature (MD5) and,
+    for ACL-enabled partners, X-Signature-SHA256.
+  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/6p0j6gzpc6f66-creator-iq-public-ap-is
+  baseURL: https://apis.creatoriq.com/pubsub
+  tags:
+  - webhooks
+  - events
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-webhooks-openapi.yml
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +279,92 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://www.creatoriq.com/
+- type: DeveloperPortal
+  url: https://apidocs.creatoriq.com/
+- type: Documentation
+  url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/o5yqwvpp1lbnb-overview
+- type: APIReference
+  url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+- type: GettingStarted
+  url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/05lf89tv60rvy-introduction-to-api-keys
+- type: Authentication
+  url: authentication/creatoriq-authentication.yml
+- type: Support
+  url: https://www.creatoriq.com/contact
+- type: Blog
+  url: https://www.creatoriq.com/blog
+- type: Pricing
+  url: https://www.creatoriq.com/pricing
+- type: Plans
+  url: plans/creatoriq-plans-pricing.yml
+- type: SignUp
+  url: https://app.creatoriq.com/
+- type: TermsOfService
+  url: https://www.creatoriq.com/legal/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.creatoriq.com/legal/privacy-policy
+- type: Security
+  url: https://www.creatoriq.com/legal/security
+- type: VulnerabilityDisclosure
+  url: security/creatoriq-vulnerability-disclosure.yml
+- type: TrustCenter
+  url: security/creatoriq-trust-center.yml
+- type: Compliance
+  url: https://www.creatoriq.com/trust
+- type: DomainSecurity
+  url: security/creatoriq-domain-security.yml
+- type: StatusPage
+  url: https://status.creatoriq.com/
+- type: Deprecation
+  url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/o5yqwvpp1lbnb-overview
+- type: Lifecycle
+  url: lifecycle/creatoriq-lifecycle.yml
+- type: ChangeLog
+  url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/6b7999d265a29-changelog
+- type: ChangeLog
+  url: changelog/creatoriq-changelog.yml
+- type: RateLimits
+  url: rate-limits/creatoriq-rate-limits.yml
+- type: Conventions
+  url: conventions/creatoriq-conventions.yml
+- type: ErrorCatalog
+  url: errors/creatoriq-problem-types.yml
+- type: Conformance
+  url: conformance/creatoriq-conformance.yml
+- type: DataModel
+  url: data-model/creatoriq-data-model.yml
+- type: Sandbox
+  url: sandbox/creatoriq-sandbox.yml
+- type: Webhooks
+  url: asyncapi/creatoriq-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/creatoriq-llms.txt
+- type: Overlay
+  url: overlays/_index.yml
+x-unwired-artifacts:
+- file: mcp/creatoriq-mcp.yml
+  reason: >-
+    A DERIVED candidate tool surface. CreatorIQ publishes no MCP server, so no MCPServer pointer is
+    emitted — the pointer would assert a server that does not exist.
+- file: packages/creatoriq-packages.yml
+  reason: >-
+    Records an honest zero. CreatorIQ ships no first-party SDK in any registry, so neither a Packages
+    nor an SDKs pointer is emitted.
+- file: well-known/creatoriq-well-known.yml
+  reason: >-
+    Records an absence — every /.well-known path returns 404 or 403 on every CreatorIQ host. No
+    WellKnown and no SecurityTxt pointer is emitted; a file documenting an absence must not be scored
+    as a presence.
+- file: a2a/
+  reason: >-
+    Not created. /.well-known/agent-card.json and /.well-known/agent.json were probed on all four
+    CreatorIQ hosts and returned 404 or 403. An agent card is search-only and is never authored on a
+    provider's behalf.
+x-enrichment:
+  date: '2026-08-11'
+  status: enriched
+  artifacts_added: 22
+  pass: local-v1

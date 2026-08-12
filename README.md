@@ -42,5 +42,37 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-CreatorIQ is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.nasdaqprivatemarket.com/
+CreatorIQ is an enterprise creator- and influencer-marketing platform. Brands and agencies use it to
+discover creators, run a private creator network, manage and measure campaigns, pay creators, and
+report across Instagram, TikTok, YouTube and other networks.
+
+- Website: https://www.creatoriq.com/
+- Developer portal: https://apidocs.creatoriq.com/
+- API host: https://apis.creatoriq.com
+- Status: https://status.creatoriq.com/
+
+## What is in this profile
+
+Seventeen OpenAPI documents (8 x 3.0.1, 9 x 3.1.0) covering **159 operations**, harvested verbatim
+from the Stoplight project behind `apidocs.creatoriq.com`. Every operation carries an `operationId`.
+Alongside them: the authentication model, conventions, error catalogue, rate limits, lifecycle and
+deprecation policy, changelog, webhook event catalogue, data model, sandbox and mock servers,
+conformance, security and trust posture, five agent skills, and a generated `llms.txt`.
+
+## Notable findings
+
+- The developer portal is a client-rendered Stoplight site that looks spec-less. The specs are public
+  and exportable through the Stoplight project API; `openapi/_original/` holds them verbatim.
+- Rate limits are published — 100,000 requests/day and 5 requests/second per key — but **no
+  rate-limit response headers and no `Retry-After` are documented**, so a client cannot see its
+  remaining budget at runtime.
+- **No idempotency contract anywhere.** Zero occurrences of "idempoten" across all eighteen specs,
+  against a write surface that creates campaigns, publishers, lists, one-sheets and promo codes.
+- A published one-year deprecation policy with `Deprecation` and `Sunset` headers (RFC 8594) — strong
+  for this cohort — that appears in prose only and is declared in no spec.
+- Webhook signatures are a plain MD5 or SHA-256 hash, not an HMAC, and CreatorIQ says so in its own
+  docs. The signing secret is the API key itself.
+- ISO/IEC 27001:2022 certified, GDPR and CCPA compliant. No SOC 2, and no PCI DSS claim on the
+  Payments API.
+- No SDKs, no public repositories, no CLI, no MCP server, no A2A agent card, no AsyncAPI, and no
+  `/.well-known` document of any kind — including `security.txt`.

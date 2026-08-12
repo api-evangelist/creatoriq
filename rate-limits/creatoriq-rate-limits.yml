@@ -1,0 +1,44 @@
+generated: '2026-08-11'
+method: searched
+source: https://apidocs.creatoriq.com/docs/ciq-api-documentation/o5yqwvpp1lbnb-overview
+docs:
+- https://apidocs.creatoriq.com/docs/ciq-api-documentation/o5yqwvpp1lbnb-overview
+- https://apidocs.creatoriq.com/docs/ciq-api-documentation/bdsnkqszbhdx9-general-fa-qs
+- https://apidocs.creatoriq.com/docs/ciq-api-documentation/hgzeuq1b1qhkd-common-errors
+limit_count: 2
+scope_note: >-
+  Limits are enforced per API key ("per token"). CreatorIQ issues keys at both partner and division
+  level, so a partner with divisions has more than one bucket.
+rate_limits:
+- scope: per-api-key
+  window: 1 day
+  limit: 100000
+  unit: requests
+  burst: null
+  source: docs
+  quote: 'Our current rate limits for all customers are 100K requests per day and 5 requests per second.'
+- scope: per-api-key
+  window: 1 second
+  limit: 5
+  unit: requests
+  burst: null
+  source: docs
+exhaustion:
+  status_code: 429
+  status_text: Too Many Requests
+  quote: >-
+    CreatorIQ API enforces certain rate limits per API key. You'll receive a 429 HTTP status code in
+    the response; you have likely exceeded the rate limit.
+response_headers:
+  documented: []
+  observed: []
+  note: >-
+    CreatorIQ documents NO rate-limit response headers — no X-RateLimit-Limit / X-RateLimit-Remaining
+    / X-RateLimit-Reset, no RFC 9331 RateLimit-* fields, and no Retry-After on 429. None of the
+    eighteen OpenAPI documents declare a rate-limit header on any response, and only one of 159
+    operations declares a 429 response at all. A client therefore cannot discover its remaining budget
+    at runtime; it can only back off after being refused. This is the single largest agent-readiness
+    gap in the CreatorIQ contract.
+variability: >-
+  The overview page adds that limits "may vary depending on your Subscription Plan", but no
+  plan-specific numbers are published and no plans are published either (see plans/).

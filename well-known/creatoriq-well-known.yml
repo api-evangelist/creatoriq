@@ -1,0 +1,61 @@
+generated: '2026-08-11'
+method: probed
+source: live GET of /.well-known/* on every CreatorIQ host in apis.yml and every OpenAPI servers[] host
+result: none
+summary: >-
+  Zero /.well-known documents are served on any CreatorIQ host. The API host apis.creatoriq.com is an
+  AWS API Gateway that answers {"message":"Forbidden"} with HTTP 403 to every unauthenticated path,
+  including /.well-known/*; the marketing site (HubSpot) and the docs portal (Stoplight) both return
+  their branded HTML 404 shell. No security.txt, no OIDC/OAuth discovery, no api-catalog, no
+  ai-plugin.json, no agent card. Recorded as an absence — no WellKnown or SecurityTxt pointer is
+  emitted in apis.yml.
+hosts:
+- host: https://apis.creatoriq.com
+  note: AWS API Gateway; every anonymous request returns 403 {"message":"Forbidden"}
+  documents:
+  - {path: /.well-known/security.txt, status: 403, file: null}
+  - {path: /.well-known/openid-configuration, status: 403, file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 403, file: null}
+  - {path: /.well-known/oauth-protected-resource, status: 403, file: null}
+  - {path: /.well-known/api-catalog, status: 403, file: null}
+  - {path: /.well-known/ai-plugin.json, status: 403, file: null}
+  - {path: /.well-known/agent-card.json, status: 403, file: null}
+  - {path: /.well-known/agent.json, status: 403, file: null}
+- host: https://www.creatoriq.com
+  note: HubSpot CMS; 404 responses are the branded HTML error page, not a document
+  documents:
+  - {path: /.well-known/security.txt, status: 404, file: null}
+  - {path: /.well-known/openid-configuration, status: 404, file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 404, file: null}
+  - {path: /.well-known/oauth-protected-resource, status: 404, file: null}
+  - {path: /.well-known/api-catalog, status: 404, file: null}
+  - {path: /.well-known/ai-plugin.json, status: 404, file: null}
+  - {path: /.well-known/agent-card.json, status: 404, file: null}
+  - {path: /.well-known/agent.json, status: 404, file: null}
+- host: https://apidocs.creatoriq.com
+  note: Stoplight-hosted docs portal; 404 returns the React app shell (~448KB of HTML), never a document
+  documents:
+  - {path: /.well-known/security.txt, status: 404, file: null}
+  - {path: /.well-known/openid-configuration, status: 404, file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 404, file: null}
+  - {path: /.well-known/oauth-protected-resource, status: 404, file: null}
+  - {path: /.well-known/api-catalog, status: 404, file: null}
+  - {path: /.well-known/ai-plugin.json, status: 404, file: null}
+  - {path: /.well-known/agent-card.json, status: 404, file: null}
+  - {path: /.well-known/agent.json, status: 404, file: null}
+- host: https://app.creatoriq.com
+  note: application host; plain nginx-style 404
+  documents:
+  - {path: /.well-known/security.txt, status: 404, file: null}
+  - {path: /.well-known/openid-configuration, status: 404, file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 404, file: null}
+  - {path: /.well-known/oauth-protected-resource, status: 404, file: null}
+  - {path: /.well-known/api-catalog, status: 404, file: null}
+  - {path: /.well-known/ai-plugin.json, status: 404, file: null}
+  - {path: /.well-known/agent-card.json, status: 404, file: null}
+  - {path: /.well-known/agent.json, status: 404, file: null}
+also_probed:
+- {url: https://apis.creatoriq.com/llms.txt, status: 403}
+- {url: https://www.creatoriq.com/llms.txt, status: 404}
+- {url: https://apidocs.creatoriq.com/llms.txt, status: 404}
+- {url: https://app.creatoriq.com/llms.txt, status: 404}

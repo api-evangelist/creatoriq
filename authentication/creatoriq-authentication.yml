@@ -1,0 +1,73 @@
+generated: '2026-08-11'
+method: searched
+source: https://apidocs.creatoriq.com/docs/ciq-api-documentation/05lf89tv60rvy-introduction-to-api-keys
+  + openapi/ (17 documents)
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: 'Format: Authorization: Bearer {api_key}'
+  sources:
+  - openapi/creatoriq-brand-safety-openapi.yml
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  sources:
+  - openapi/creatoriq-brand-safety-openapi.yml
+  - openapi/creatoriq-campaigns-openapi.yml
+  - openapi/creatoriq-conversion-metrics-openapi.yml
+  - openapi/creatoriq-ecommerce-openapi.yml
+  - openapi/creatoriq-lists-openapi.yml
+  - openapi/creatoriq-notes-openapi.yml
+  - openapi/creatoriq-onesheets-openapi.yml
+  - openapi/creatoriq-publishers-openapi.yml
+  - openapi/creatoriq-reports-openapi.yml
+  - openapi/creatoriq-socials-openapi.yml
+  - openapi/creatoriq-v1-divisions-openapi.yml
+  - openapi/creatoriq-v2-campaigns-openapi.yml
+  - openapi/creatoriq-v2-publishers-openapi.yml
+  - openapi/creatoriq-webhooks-openapi.yml
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: X-API-KEY
+  sources:
+  - openapi/creatoriq-payments-openapi.yml
+docs: https://apidocs.creatoriq.com/docs/ciq-api-documentation/05lf89tv60rvy-introduction-to-api-keys
+model:
+  style: static api key in a request header
+  header: x-api-key (the Payments spec declares it as X-API-KEY; HTTP header names are case-insensitive)
+  oauth2: false
+  oidc: false
+  scopes: false
+  expiry: none documented
+  refresh: none
+  issuance: 'Manual. Docs: "reach out to your CreatorIQ contact or send an email to support@creatoriq.com".
+    Sales issues sandbox keys; account managers issue production keys.'
+  self_serve: false
+  levels:
+  - level: partner
+    scope: The whole partner account — all divisions, all events and subscriptions.
+  - level: division
+    scope: One division. Can subscribe and unsubscribe for that division only. A partner key can view
+      division subscriptions but cannot change them.
+  rotation: No key-rotation API. Docs recommend periodically creating new keys, deleting old ones and
+    updating applications.
+  restrictions: Docs advise adding "API key restrictions" but no restriction mechanism is documented or
+    exposed over the API.
+  transport: Docs instruct that calls be made server-side, not from front-end apps.
+secondary_use: The API key doubles as the webhook signing secret — X-Signature (MD5) and X-Signature-SHA256
+  are computed over normalizedJson + timestamp + apiKey. Anything that verifies a CreatorIQ webhook therefore
+  holds a credential that can call the entire API.
+gaps:
+- No OAuth 2.0 and no scopes — a key is all-or-nothing within its partner or division.
+- No documented key expiry, no programmatic rotation, no key-management endpoints.
+- No /.well-known/openid-configuration or oauth-authorization-server on any host (all 404/403).
+- A missing x-api-key header returns 403, not 401, which is a non-standard signal for "unauthenticated".

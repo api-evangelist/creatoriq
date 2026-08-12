@@ -1,0 +1,1247 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: CreatorIQ Ecommerce APIs
+  description: CreatorIQ CRM APIs for Ecommerce resource
+  termsOfService: 'https://www.creatoriq.com/legal/terms-of-use'
+  contact:
+    name: CreatorIQ
+    url: 'https://www.creatoriq.com'
+    email: support@creatoriq.com
+  license:
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+    name: Apache 2.0
+servers:
+  - url: 'https://apis.creatoriq.com'
+    description: Live
+paths:
+  '/crm/v1/api/ecommerce/promo-codes/{id}':
+    patch:
+      tags:
+        - Ecommerce
+      summary: Update publisher promo code
+      description: Update existing publisher promo code by ID. Unique identifier is PromoCodePublisherId which is unique ID of relation between PromoCodeId and PublisherId.
+      operationId: patchEcommercePromo-codesId
+      parameters:
+        - name: id
+          in: path
+          description: Value of the PromoCodePublisherId
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 456
+          examples:
+            default:
+              value: 456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchPromoCodeBody'
+      responses:
+        '200':
+          description: Response 200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromoCodeModel'
+        '400':
+          description: Response 400 (Bad Request)
+        '404':
+          description: Response 404 (Not found)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromoCodeNotFoundResponse'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  /crm/v1/api/ecommerce/promo-codes/integrations:
+    get:
+      tags:
+        - Ecommerce
+      summary: Get integrations to add promo-code(s)
+      description: 'Get active integrations list with at least 1 connected account. Note: in case of no connected accounts linked the list will be empty.'
+      operationId: getEcommercePromo-codesIntegrations
+      responses:
+        '200':
+          description: Response 200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationsResponse'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  /crm/v1/api/ecommerce/integrations/accounts:
+    get:
+      tags:
+        - Ecommerce
+      summary: Get connected accounts list
+      description: Get the list of all the connected accounts for AWIN and CJ integrations.
+      operationId: getEcommerceIntegrationsAccounts
+      responses:
+        '200':
+          description: Response 200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectedPromoCodeAccountsResponse'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/ecommerce/promo-codes/{promoCodePublisherId}/publisher/{publisherId}':
+    delete:
+      tags:
+        - Ecommerce
+      summary: Delete publisher promo-code
+      description: Delete promo code by PromoCodePublisherId and PublisherId. After adding promo-code with the same name the promo-codes entity ID i.e. PromoCodeId will not be changed. In case of successful deleting the promo-code empty body with 204 status code will be returned. Promo-code which already has commissions can not be deleted.
+      operationId: deleteEcommercePromo-codesPromoCodePublisherIdPublisherPublisherId
+      parameters:
+        - name: promoCodePublisherId
+          in: path
+          description: Value of the PromoCodePublisherId
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 456
+          examples:
+            default:
+              value: 456
+        - name: publisherId
+          in: path
+          description: Value of the CreatorIQ PublisherId
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 123456
+          examples:
+            default:
+              value: 123456
+      responses:
+        '204':
+          description: Promo-code deleted successful response.
+        '400':
+          description: Error with deleting promo-code. For example it happens when the promo-code already has commissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletePromoCodesResponse400'
+        '404':
+          description: PromoCodePublisherId or PublisherId not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromoCodeNotFoundResponse'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  /crm/v1/api/ecommerce/promo-codes:
+    post:
+      tags:
+        - Ecommerce
+      summary: Create new promo-codes
+      description: 'Create promo-codes, 10 items max allowed in 1 request. Different integrations and(or) publishers can be used in 1 request. Also if the integration is CJ and CreatorIQ publisher does not have CJ Promotional Property generated yet than the CJPID(CJ Promotional Property) will be generated using CJ API.'
+      operationId: postEcommercePromo-codes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostPromoCodesBody'
+      responses:
+        '200':
+          description: Response 200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePromoCodesResponse200'
+        '400':
+          description: Response 400
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePromoCodesResponse400'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+    get:
+      tags:
+        - Ecommerce
+      summary: Get promo-codes list
+      description: Get list of all the promo-codes for all publishers in the network with pagination.
+      operationId: getEcommercePromo-codes
+      parameters:
+        - name: Page
+          in: query
+          description: 1 by default if no parameter provided.
+          required: false
+          schema:
+            type: integer
+            examples:
+              - 2
+          examples:
+            default:
+              value: 2
+        - name: PageSize
+          in: query
+          description: 20 by default if no parameter provided.
+          required: false
+          schema:
+            type: integer
+            examples:
+              - 100
+          examples:
+            default:
+              value: 100
+      responses:
+        '200':
+          description: Response 200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPromoCodesResponse'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  /crm/v1/api/ecommerce/transactions:
+    get:
+      tags:
+        - Ecommerce
+      summary: Get transactions
+      description: Get network transactions of the all publishers. Every transaction ID is unique with latest status.
+      operationId: getEcommerceTransactions
+      parameters:
+        - name: Page
+          in: query
+          description: 1 by default if no parameter provided.
+          required: false
+          schema:
+            type: integer
+            examples:
+              - 2
+          examples:
+            default:
+              value: 2
+        - name: PageSize
+          in: query
+          description: 20 by default if no parameter provided.
+          required: false
+          schema:
+            type: integer
+            examples:
+              - 100
+          examples:
+            default:
+              value: 100
+        - name: DateType
+          in: query
+          description: '"TransactionDate" by default if no parameter provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - TransactionDate
+              - LastUpdate
+            examples:
+              - LastUpdate
+          examples:
+            default:
+              value: LastUpdate
+        - name: DateFrom
+          in: query
+          description: 'Two different formats accepted: "2024-02-16" or "2024-02-16 21:30:25".'
+          required: false
+          schema:
+            type: string
+            examples:
+              - '2024-02-16'
+          examples:
+            default:
+              value: '2024-02-16'
+        - name: DateTo
+          in: query
+          description: 'Two different formats accepted: "2024-02-16" or "2024-02-16 21:30:25".'
+          required: false
+          schema:
+            type: string
+            examples:
+              - '2024-02-16'
+          examples:
+            default:
+              value: '2024-02-16'
+        - name: Status
+          in: query
+          description: Transaction status.
+          required: false
+          schema:
+            type: string
+            examples:
+              - approved
+          examples:
+            default:
+              value: approved
+        - name: TransactionId
+          in: query
+          description: Transaction ID.
+          required: false
+          schema:
+            type: string
+            examples:
+              - asd8E05QYA31XmxF
+          examples:
+            default:
+              value: asd8E05QYA31XmxF
+        - name: CampaignId
+          in: query
+          description: Campaign ID in the CreatorIQ platform.
+          required: false
+          schema:
+            type: integer
+            examples:
+              - 12345
+          examples:
+            default:
+              value: 12345
+        - name: PublisherId
+          in: query
+          description: Publisher ID in the CreatorIQ platform.
+          required: false
+          schema:
+            type: integer
+            examples:
+              - 12345
+          examples:
+            default:
+              value: 12345
+        - name: OrderId
+          in: query
+          description: Id of the order.
+          required: false
+          schema:
+            type: string
+            examples:
+              - '1234265934'
+          examples:
+            default:
+              value: '1234265934'
+      responses:
+        '200':
+          description: Response 200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTransactionsResponse200'
+        '400':
+          description: Response 400 (Bad Request)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoreExceptionResponse400'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  /crm/v1/api/ecommerce/transactions/history:
+    get:
+      tags:
+        - Ecommerce
+      summary: Get transactions history
+      description: 'Get network transactions list of the all publishers. Returns all the transactions history, Transaction ID is not unique.'
+      operationId: getEcommerceTransactionsHistory
+      parameters:
+        - name: Page
+          in: query
+          description: 1 by default if no parameter provided.
+          required: false
+          schema:
+            type: integer
+            examples:
+              - 2
+          examples:
+            default:
+              value: 2
+        - name: PageSize
+          in: query
+          description: 20 by default if no parameter provided.
+          required: false
+          schema:
+            type: integer
+            examples:
+              - 100
+          examples:
+            default:
+              value: 100
+        - name: DateType
+          in: query
+          description: '"TransactionDate" by default if no parameter provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - TransactionDate
+              - LastUpdate
+            examples:
+              - LastUpdate
+          examples:
+            default:
+              value: LastUpdate
+        - name: DateFrom
+          in: query
+          description: 'Two different formats accepted: "2024-02-16" or "2024-02-16 21:30:25".'
+          required: false
+          schema:
+            type: string
+            examples:
+              - '2024-02-16'
+          examples:
+            default:
+              value: '2024-02-16'
+        - name: DateTo
+          in: query
+          description: 'Two different formats accepted: "2024-02-16" or "2024-02-16 21:30:25".'
+          required: false
+          schema:
+            type: string
+            examples:
+              - '2024-02-16'
+          examples:
+            default:
+              value: '2024-02-16'
+        - name: Status
+          in: query
+          description: Status of the transaction.
+          required: false
+          schema:
+            type: string
+            examples:
+              - approved
+          examples:
+            default:
+              value: approved
+        - name: TransactionId
+          in: query
+          description: ID of the transaction.
+          required: false
+          schema:
+            type: string
+            examples:
+              - asd8E05QYA31XmxF
+          examples:
+            default:
+              value: asd8E05QYA31XmxF
+        - name: CampaignId
+          in: query
+          description: Campaign ID in the CreatorIQ platform.
+          required: false
+          schema:
+            type: integer
+            examples:
+              - 12345
+          examples:
+            default:
+              value: 12345
+        - name: PublisherId
+          in: query
+          description: Publisher ID in the CreatorIQ platform.
+          required: false
+          schema:
+            type: integer
+            examples:
+              - 12345
+          examples:
+            default:
+              value: 12345
+        - name: OrderId
+          in: query
+          description: Id of the order.
+          required: false
+          schema:
+            type: string
+            examples:
+              - '1234265934'
+          examples:
+            default:
+              value: '1234265934'
+      responses:
+        '200':
+          description: Response 200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTransactionsResponse200'
+        '400':
+          description: Response 400 (Bad Request)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoreExceptionResponse400'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+tags:
+  - name: Ecommerce
+    description: Ecommerce public API
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header
+  schemas:
+    PatchPromoCodeBody:
+      type: object
+      properties:
+        Instruction:
+          type: string
+          description: Description to the CreatorIQ publisher how to use the promo-code.
+          examples:
+            - promo-code instruction
+        Percentage:
+          type: number
+          description: Percent of the discount. If we want to have discount 5.5% the value should be as is 5.5.
+          examples:
+            - 10.25
+        StartDate:
+          type: string
+          description: Date from when the promo-code is active and the code can be applied.
+          examples:
+            - '2023-10-10 00:00:00'
+        EndDate:
+          type: string
+          description: Date when the promo-code expires and it will not be applicable any more.
+          examples:
+            - '2023-10-10 23:59:59'
+    PromoCodeModel:
+      type: object
+      properties:
+        PromoCodeId:
+          type: integer
+          description: ID of the promo-code entity.
+          examples:
+            - 123
+        PromoCodePublisherId:
+          type: integer
+          description: ID of the promo-code related to a specific publisher.
+          examples:
+            - 456
+        PromoCodeName:
+          type: string
+          description: Name of the promo-code to apply in the external services.
+          examples:
+            - PROMO_CODE
+        StartDate:
+          type: string
+          description: Date from when the promo-code is active and the code can be applied.
+          examples:
+            - '2023-10-10 23:59:59'
+        EndDate:
+          type:
+            - string
+            - 'null'
+          description: Date when the promo-code expires and it will not be applicable any more.
+          examples:
+            - '2023-10-20 23:59:59'
+        Percentage:
+          type:
+            - number
+            - 'null'
+          description: Percent of the discount. If we want to have discount 5.5% the value should be as is 5.5.
+          format: float
+          examples:
+            - 10.25
+        IntegrationName:
+          type: string
+          description: Name of the integration to which promo-code relates to.
+          examples:
+            - CJ
+        PromotionalPropertyId:
+          type:
+            - integer
+            - 'null'
+          description: ID of the Promotional Property entity in the external integration.
+          examples:
+            - 101001234
+        Instruction:
+          type:
+            - string
+            - 'null'
+          description: Description to the CreatorIQ publisher how to use the promo-code.
+          examples:
+            - Instruction example for the publisher.
+      required:
+        - PromoCodeId
+        - PromoCodePublisherId
+        - PromoCodeName
+        - StartDate
+        - EndDate
+        - Percentage
+        - IntegrationName
+        - PromotionalPropertyId
+        - Instruction
+    PromoCodeNotFoundResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+            - CoreException
+        CoreException:
+          type: object
+          properties:
+            code:
+              type: integer
+              examples:
+                - 404
+            message:
+              type: string
+              examples:
+                - Promo code not found
+          required:
+            - code
+            - message
+      required:
+        - type
+        - CoreException
+    IntegrationsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          Id:
+            type: integer
+            description: ID of the integration.
+            examples:
+              - 13
+          Name:
+            type: string
+            description: 'Integration slug, should be used in the API requests.'
+            examples:
+              - impactSubAffiliate
+          DisplayName:
+            type: string
+            description: This is how this integration will be named on the UI in the CreatorIQ application.
+            examples:
+              - Impact Sub-affiliate
+        required:
+          - Id
+          - Name
+          - DisplayName
+    ConnectedPromoCodeAccountsResponse:
+      type: object
+      properties:
+        Code:
+          type: integer
+          description: 'Status code. Available statuses: 200, 400.'
+          examples:
+            - 200
+        Message:
+          type: string
+          description: User friendly message about status of the request.
+          examples:
+            - Connected Accounts list
+        Status:
+          type: string
+          description: 'Status slug. Available statuses: OK.'
+          examples:
+            - OK
+        Items:
+          type: object
+          properties:
+            IntegrationName:
+              type: string
+              description: Name of the integration.
+              examples:
+                - CJ
+            AccountConfigurationId:
+              type: integer
+              description: ID of the account configuration in the CreatorIQ platform.
+              examples:
+                - 13
+            AccountDisplayName:
+              type: string
+              description: Name of the account.
+              examples:
+                - Test Account
+          required:
+            - IntegrationName
+            - AccountConfigurationId
+            - AccountDisplayName
+      required:
+        - Code
+        - Message
+        - Status
+        - Items
+    DeletePromoCodesResponse400:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+            - CoreException
+        CoreException:
+          type: object
+          properties:
+            code:
+              type: integer
+              examples:
+                - 400
+            message:
+              type: string
+              examples:
+                - Promo code already has transactions and it can't be deleted.
+          required:
+            - code
+            - message
+      required:
+        - type
+        - CoreException
+    PostPromoCodesBody:
+      type: object
+      properties:
+        Codes:
+          type: array
+          minItems: 1
+          maxItems: 10
+          items:
+            type: object
+            properties:
+              Integration:
+                type: string
+                description: Slug of the active integration.
+                examples:
+                  - cj
+              AccountConfigurationId:
+                type: integer
+                description: ID of the account configuration in the CreatorIQ platform.
+                examples:
+                  - 123456
+              Code:
+                type: string
+                description: Name of the promo-code to apply in the external services.
+                examples:
+                  - PROMO_CODE
+              Percentage:
+                type: number
+                description: Percent of the discount. If we want to have discount 5.5% the value should be as is 5.5.
+                examples:
+                  - 10.25
+              StartDate:
+                type: string
+                description: Date from when the promo-code is active and the code can be applied.
+                examples:
+                  - '2023-10-10 00:00:00'
+              EndDate:
+                type: string
+                description: Date when the promo-code expires and it will not be applicable any more.
+                examples:
+                  - '2023-11-10 23:59:59'
+              Instruction:
+                type:
+                  - string
+                  - 'null'
+                description: Description to the CreatorIQ publisher how to use the promo-code.
+                examples:
+                  - promo-code instruction for the specific publisher.
+              PublisherId:
+                type: integer
+                description: PublisherId in the CreatorIQ platform.
+                examples:
+                  - 123456
+            required:
+              - Integration
+              - AccountConfigurationId
+              - Code
+              - Percentage
+              - StartDate
+              - PublisherId
+      required:
+        - Codes
+    CreatePromoCodesResponse200:
+      type: object
+      properties:
+        Code:
+          type: integer
+          description: 'Status code of creating all the promo-codes. Available statuses: 200, 400.'
+          examples:
+            - 200
+        Message:
+          type: string
+          description: User friendly message about status of the request.
+          examples:
+            - Promo codes created
+        Status:
+          type: string
+          description: 'Status slug regarding creating the promo-code. Available statuses: CREATED or INVALID_ARGUMENT.'
+          examples:
+            - CREATED
+        Codes:
+          type: object
+          properties:
+            Items:
+              type: array
+              minItems: 1
+              items:
+                $ref: '#/components/schemas/PromoCodeModel'
+      required:
+        - Code
+        - Message
+        - Status
+        - Codes
+    CreatePromoCodesResponse400:
+      type: object
+      properties:
+        Code:
+          type: integer
+          examples:
+            - 400
+        Message:
+          type: string
+          examples:
+            - Some of items are invalid
+        Status:
+          type: string
+          examples:
+            - INVALID_ARGUMENT
+        Codes:
+          type: object
+          properties:
+            Errors:
+              type: array
+              minItems: 1
+              items:
+                type: object
+                properties:
+                  Item:
+                    type: object
+                    properties:
+                      Integration:
+                        type: string
+                        examples:
+                          - cj
+                      Code:
+                        type: string
+                        examples:
+                          - PROMO_CODE
+                      Percentage:
+                        type:
+                          - number
+                          - 'null'
+                        format: float
+                        examples:
+                          - 10.25
+                      StartDate:
+                        type: string
+                        examples:
+                          - '2023-10-10 23:59:59'
+                      EndDate:
+                        type:
+                          - string
+                          - 'null'
+                        examples:
+                          - '2023-10-20 23:59:59'
+                      Instruction:
+                        type:
+                          - string
+                          - 'null'
+                        examples:
+                          - Text instructions for publisher.
+                      PublisherId:
+                        type: integer
+                        examples:
+                          - 9876543
+                    required:
+                      - Integration
+                      - Code
+                      - Percentage
+                      - StartDate
+                      - EndDate
+                      - Instruction
+                      - PublisherId
+                  Errors:
+                    type: array
+                    minItems: 1
+                    items:
+                      $ref: '#/components/schemas/PromoCodeErrorModel'
+          required:
+            - Errors
+      required:
+        - Code
+        - Message
+        - Status
+        - Codes
+    PromoCodeErrorModel:
+      type: object
+      properties:
+        Type:
+          type: string
+          description: 'Slug name of the error. Available values: ValidationError, DataError, CJAPIError. CJAPIError happens when the CJ API returns unexpected response, for example 500 or 502 status code.'
+          examples:
+            - ValidationError
+        Code:
+          type: integer
+          description: 'Error code, for now always 0.'
+          examples:
+            - 0
+        Field:
+          type: string
+          description: Field name where error happened. For example in case of invalid format of the StartDate provided the value will be StartDate.
+          examples:
+            - Code
+        Path:
+          type: string
+          description: Path to the item where error happened. For example for the 3th item with error in StartDate the value will be Codes.2.StartDate
+          examples:
+            - Codes.0.Code
+        Reason:
+          type: string
+          description: Human readable error why and where error happened
+          examples:
+            - CJ Promo-code PROMO_CODE already exists for this configuration.
+      required:
+        - Type
+        - Code
+        - Field
+        - Path
+        - Reason
+    GetPromoCodesResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Count of all the items.
+          examples:
+            - 527
+        page:
+          type: integer
+          description: Page number.
+          examples:
+            - 1
+        size:
+          type: integer
+          description: Page size.
+          examples:
+            - 20
+        Code:
+          type: integer
+          description: 'Status code of creating all the promo-codes. Available statuses: 200, 400.'
+          examples:
+            - 200
+        Message:
+          type: string
+          description: User friendly message about status of the request.
+          examples:
+            - Promo codes list
+        Status:
+          type: string
+          description: 'Status slug regarding creating the promo-code. Available statuses: CREATED or INVALID_ARGUMENT.'
+          examples:
+            - OK
+        Items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromoCodeListItem'
+      required:
+        - count
+        - page
+        - size
+        - Code
+        - Message
+        - Status
+        - Items
+    PromoCodeListItem:
+      type: object
+      properties:
+        PromoCodePublisherId:
+          type: integer
+          description: ID of the promo-code in the CreatorIQ platform.
+          examples:
+            - 456
+        PublisherId:
+          type: integer
+          description: ID of the publisher in the CreatorIQ platform.
+          examples:
+            - 123
+        PromoCodeName:
+          type: string
+          description: Name of the promo-code.
+          examples:
+            - PROMO_CODE
+        IntegrationName:
+          type: string
+          description: Name of the integration to which promo-code relates to.
+          examples:
+            - CJ
+        PublisherName:
+          type: string
+          description: Name of the publisher in the CreatorIQ platform.
+          examples:
+            - Test
+      required:
+        - PromoCodePublisherId
+        - PublisherId
+        - PromoCodeName
+        - IntegrationName
+        - PublisherName
+    GetTransactionsResponse200:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Count of all the items.
+          examples:
+            - 527
+        page:
+          type: integer
+          description: Page number.
+          examples:
+            - 1
+        size:
+          type: integer
+          description: Page size.
+          examples:
+            - 20
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionModel'
+      required:
+        - count
+        - page
+        - size
+        - data
+    TransactionModel:
+      type: object
+      properties:
+        CiqTransactionId:
+          type: string
+          description: ID of the transaction.
+          examples:
+            - c36ce8feXYqlk81
+        NetworkTransactionId:
+          type: string
+          description: ID of the network transaction.
+          examples:
+            - '1234544145'
+        NetworkName:
+          type: string
+          description: Name of the network.
+          examples:
+            - Rakuten Advertising
+        NetworkAdvertiserId:
+          type: string
+          description: Network advertiser ID.
+          examples:
+            - Asdob36a
+        AdvertiserName:
+          type: string
+          description: Advertiser name.
+          examples:
+            - Test advertiser
+        OrderId:
+          type: string
+          description: Id of the order.
+          examples:
+            - '1234499551'
+        OrderCountry:
+          type: string
+          description: Country of the customer who made the order.
+          examples:
+            - TH
+        TransactionDate:
+          type: string
+          description: Date of the transaction.
+          examples:
+            - '2024-02-05 11:24:13'
+        DeviceType:
+          type:
+            - string
+            - 'null'
+          description: Type of the device.
+          examples:
+            - Smartphone
+        OsType:
+          type:
+            - string
+            - 'null'
+          description: Operating system name.
+          examples:
+            - iOS
+        NetworkChannelId:
+          type:
+            - string
+            - 'null'
+          description: Network channel ID.
+          examples:
+            - Q5f1nY51
+        ChannelName:
+          type:
+            - string
+            - 'null'
+          description: Name of the channel.
+          examples:
+            - Test channel name
+        DeclineReason:
+          type:
+            - string
+            - 'null'
+          description: Reason why order was declined.
+          examples:
+            - Test decline reason
+        TransactionCurrency:
+          type: string
+          description: Currency of the transaction.
+          examples:
+            - USD
+        SaleAmount:
+          type:
+            - number
+            - 'null'
+          description: Amount of the same.
+          examples:
+            - 25.15
+        CommissionAmount:
+          type:
+            - number
+            - 'null'
+          description: Amount of the commission.
+          examples:
+            - 0.25
+        Status:
+          type: string
+          description: Transaction status.
+          examples:
+            - Confirmed
+        StatusUpdatedAt:
+          type:
+            - string
+            - 'null'
+          description: Last date when transaction status was updated.
+          examples:
+            - '2024-02-05 11:24:13'
+        CouponCode:
+          type:
+            - string
+            - 'null'
+          description: Name of the promo-code applied.
+          examples:
+            - COUPON_CODE
+        LastUpdate:
+          type:
+            - string
+            - 'null'
+          description: Date of the last data update of the transaction in the CreatorIQ platform.
+          examples:
+            - '2024-02-05 09:51:22.0000000'
+        PublisherId:
+          type: integer
+          description: Publisher ID in the CreatorIQ platform.
+          examples:
+            - 123456
+        CampaignId:
+          type: integer
+          description: Campaign ID in the CreatorIQ platform.
+          examples:
+            - 54321
+        TrackingItemsPromotionId:
+          type:
+            - integer
+            - 'null'
+          description: TrackingItemsPromotionId ID in the CreatorIQ platform.
+          examples:
+            - 56457842
+          x-deprecated: true
+        TrackingItemId:
+          type:
+            - integer
+            - 'null'
+          description: TrackingItemId ID in the CreatorIQ platform.
+          examples:
+            - 56457842
+        CiqPartnerId:
+          type: integer
+          description: ID of the partner in the CreatorIQ platform.
+          examples:
+            - 123
+        CreatedAt:
+          type: string
+          description: Date when the data was collected first time to the CreatorIQ platform.
+          examples:
+            - '2024-02-05 09:51:22.0000000'
+        ValidationDate:
+          type:
+            - string
+            - 'null'
+          description: After this Date the transaction becomes inaccessible for any further modifications or changes.
+          examples:
+            - '2024-02-05 09:51:22.0000000'
+      required:
+        - CiqTransactionId
+        - NetworkTransactionId
+        - NetworkName
+        - NetworkAdvertiserId
+        - AdvertiserName
+        - OrderId
+        - OrderCountry
+        - TransactionDate
+        - DeviceType
+        - OsType
+        - NetworkChannelId
+        - ChannelName
+        - DeclineReason
+        - TransactionCurrency
+        - SaleAmount
+        - CommissionAmount
+        - Status
+        - StatusUpdatedAt
+        - CouponCode
+        - LastUpdate
+        - PublisherId
+        - CampaignId
+        - TrackingItemId
+        - CiqPartnerId
+        - CreatedAt
+        - ValidationDate
+    CoreExceptionResponse400:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+            - CoreException
+        CoreException:
+          type: object
+          properties:
+            code:
+              type: integer
+              examples:
+                - 400
+            message:
+              type: string
+              examples:
+                - Human readable text message.
+          required:
+            - code
+            - message
+      required:
+        - type
+        - CoreException
+security:
+  - apiKey: []

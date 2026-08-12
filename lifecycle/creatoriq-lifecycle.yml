@@ -1,0 +1,71 @@
+generated: '2026-08-11'
+method: searched
+source: https://apidocs.creatoriq.com/docs/ciq-api-documentation/o5yqwvpp1lbnb-overview
+versioning:
+  scheme: uri-path
+  pattern: https://apis.creatoriq.com/crm/{v1|v2}/api/...
+  current:
+  - v1 (crm, the bulk of the surface)
+  - v2 (crm publishers accounts, crm brands)
+  service_prefixes:
+  - /crm/v1, /crm/v2  — CRM (publishers, campaigns, lists, notes, onesheets, divisions, reports, socials, ecommerce, conversion metrics)
+  - /ecommerce/v1     — link tracking
+  - /payments/v1      — payouts and payables
+  - /brand-safety/v1  — SafeIQ
+  - /pubsub           — webhook subscriptions (unversioned, info.version 0.1.0, documented as beta)
+  docs: https://apidocs.creatoriq.com/docs/ciq-api-documentation/6b7999d265a29-changelog
+  note: >-
+    The changelog entry dated 2025-04-16 records "Divided Public API to Version 1 and Version 2" — the
+    v1/v2 split is a deliberate versioning event, not drift.
+deprecation:
+  policy_url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/o5yqwvpp1lbnb-overview
+  sunset_header: true
+  deprecation_header: true
+  window: 1 year between deprecation announcement and shutdown
+  quote: >-
+    The CreatorIQ API endpoints could be deprecated in case of improvement and providing new version of
+    endpoints. The time between deprecation and shut down the endpoint - one year. In this case there
+    will be added special headers: Deprecation - the date when endpoint decided to be deprecated.
+    Sunset - the date when endpoint will be shut down.
+  standards:
+  - RFC 8594 (Sunset header)
+  - draft-ietf-httpapi-deprecation-header (Deprecation header)
+  note: >-
+    The policy is published in prose and is unusually specific for this cohort — a named one-year
+    window plus both runtime headers. It is NOT, however, reflected in the specs: the harvested
+    OpenAPI documents declare `deprecated: true` on exactly one of 159 operations, and no operation
+    declares a Deprecation or Sunset response header. The runtime signal is documented but not
+    contracted.
+deprecated_operations:
+- operation: openapi/creatoriq-publishers-openapi.yml#getMultiplePublishersAccounts
+  path: GET /crm/v1/api/publishers/{publisherIds}/accounts
+  superseded_by: openapi/creatoriq-v2-publishers-openapi.yml#getMultiplePublishersAccounts (GET /crm/v2/api/publishers/{publisherIds}/accounts)
+  note: >-
+    The only operation in the whole 159-operation surface carrying a `deprecated` flag of true.
+deprecated_fields:
+- field: dateFrom
+  operation: GET /crm/v1/api/account/youtube/{id}/timeline
+  announced: '2026-06-17'
+  source: changelog
+- field: dateTo
+  operation: GET /crm/v1/api/account/youtube/{id}/timeline
+  announced: '2026-06-17'
+  source: changelog
+status_page: https://status.creatoriq.com/
+status_page_title: CreatorIQ Operational Status
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA or uptime target is published; the status page shows current component state only.
+beta_surfaces:
+- surface: Webhooks (pub/sub) API
+  note: 'Docs state verbatim: "our Webhook APIs are still in beta".'
+- surface: Brand Safety (draft)
+  note: Published in the portal with the title "CreatorIQ Brand Safety (draft)" and prod/stage/dev servers.
+empty_surfaces:
+- surface: CreatorIQ CRM partner Users API
+  spec: openapi/_original/creatoriq-users-openapi-original.yaml
+  note: >-
+    Published as a service in the developer portal and described in the data-model article, but the
+    exported OpenAPI declares zero paths. Kept in _original as the harvest record; excluded from
+    openapi/ and from apis.yml because it contracts nothing.

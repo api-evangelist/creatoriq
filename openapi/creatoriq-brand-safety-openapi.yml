@@ -1,0 +1,424 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: CreatorIQ SafeIQ Brand Safety API
+  description: 'SafeIQ brand safety timeline API for retrieving a historical, paginated collection of posts where brand safety issues were detected. Works together with the SafeIQ brand safety webhook: the webhook delivers notifications, and this REST API provides full details and reconciliation.'
+  termsOfService: 'https://www.creatoriq.com/legal/terms-of-use'
+  contact:
+    name: CreatorIQ
+    url: 'https://www.creatoriq.com/'
+    email: support@creatoriq.com
+  license:
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+    name: Apache 2.0
+servers:
+  - url: 'https://apis.creatoriq.com'
+    description: Live
+paths:
+  /brand-safety/v1/posts:
+    get:
+      tags:
+        - Brand Safety
+      summary: List brand safety posts
+      description: 'Returns a paginated collection of posts where brand safety issues were detected. Supports filtering by creator, detection date, publish date, platform, and severity. Access is implicitly scoped to the authenticated partner and division.'
+      operationId: listBrandSafetyPosts
+      parameters:
+        - name: creator_id
+          in: query
+          description: Filters posts by creator.
+          required: false
+          schema:
+            type: string
+            examples:
+              - '20985049'
+          examples:
+            default:
+              value: '20985049'
+        - name: detected_after
+          in: query
+          description: Returns posts where brand safety issues were detected after this timestamp. Recommended for incremental syncs.
+          required: false
+          schema:
+            type: string
+            format: date-time
+            examples:
+              - '2026-05-01T00:00:00Z'
+          examples:
+            default:
+              value: '2026-05-01T00:00:00Z'
+        - name: detected_before
+          in: query
+          description: Returns posts where brand safety issues were detected before this timestamp.
+          required: false
+          schema:
+            type: string
+            format: date-time
+            examples:
+              - '2026-06-01T00:00:00Z'
+          examples:
+            default:
+              value: '2026-06-01T00:00:00Z'
+        - name: published_after
+          in: query
+          description: Returns posts published on the social network after this timestamp.
+          required: false
+          schema:
+            type: string
+            format: date-time
+            examples:
+              - '2026-05-01T00:00:00Z'
+          examples:
+            default:
+              value: '2026-05-01T00:00:00Z'
+        - name: published_before
+          in: query
+          description: Returns posts published on the social network before this timestamp.
+          required: false
+          schema:
+            type: string
+            format: date-time
+            examples:
+              - '2026-06-01T00:00:00Z'
+          examples:
+            default:
+              value: '2026-06-01T00:00:00Z'
+        - name: platform
+          in: query
+          description: 'Filters by social platform, for example youtube, tiktok, instagram.'
+          required: false
+          schema:
+            type: string
+            examples:
+              - tiktok
+          examples:
+            default:
+              value: tiktok
+        - name: severity
+          in: query
+          description: 'Filters by severity. Accepts a comma-separated subset of high, medium, low.'
+          required: false
+          schema:
+            type: string
+            examples:
+              - 'high,medium'
+          examples:
+            default:
+              value: 'high,medium'
+        - name: limit
+          in: query
+          description: Number of posts to return.
+          required: false
+          schema:
+            type: integer
+            default: 100
+            examples:
+              - 100
+          examples:
+            default:
+              value: 100
+        - name: cursor
+          in: query
+          description: Pagination cursor returned from the previous response.
+          required: false
+          schema:
+            type: string
+            examples:
+              - eyJuYW1lIjoiSm9yZGFuIExlZSIsImlkIjoiMTAwNSJ9
+          examples:
+            default:
+              value: eyJuYW1lIjoiSm9yZGFuIExlZSIsImlkIjoiMTAwNSJ9
+      responses:
+        '200':
+          $ref: '#/components/responses/BrandSafetyPostsCollection'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/Creator404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/brand-safety/v1/posts/{post_id}':
+    get:
+      tags:
+        - Brand Safety
+      summary: Get brand safety post details
+      description: 'Returns full details for a single post, including the complete array of brand safety issues. Webhook consumers use the api_details_link from the webhook payload to call this endpoint.'
+      operationId: getBrandSafetyPost
+      parameters:
+        - name: post_id
+          in: path
+          description: Public post identifier.
+          required: true
+          schema:
+            type: string
+            examples:
+              - post_12345
+          examples:
+            default:
+              value: post_12345
+      responses:
+        '200':
+          $ref: '#/components/responses/BrandSafetyPostDetail'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+tags:
+  - name: Brand Safety
+    description: SafeIQ brand safety timeline API
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: 'Format: Authorization: Bearer {api_key}'
+      scheme: bearer
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header
+  responses:
+    '400':
+      description: Bad Request
+    '401':
+      description: The request could not be completed due to invalid API credentials.
+    '403':
+      description: Access was denied due to insufficient access permissions.
+    '404':
+      description: The requested post was not found.
+    '500':
+      description: Internal server error
+    Creator404:
+      description: No creator was found matching the supplied creator_id.
+    BrandSafetyPostsCollection:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BrandSafetyPostsCollection'
+    BrandSafetyPostDetail:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BrandSafetyPostDetail'
+  schemas:
+    BrandSafetyPostsCollection:
+      type: object
+      properties:
+        object:
+          const: collection
+          description: Object type.
+          examples:
+            - collection
+        url:
+          type: string
+          description: Relative URL of the request that produced the collection.
+          examples:
+            - /brand-safety/v1/posts?creator_id=20985049
+        data:
+          type: array
+          description: 'Posts in this page of the collection. Always present, never null.'
+          items:
+            $ref: '#/components/schemas/BrandSafetyPost'
+        has_more:
+          type: boolean
+          description: Whether more posts are available beyond this page.
+          examples:
+            - true
+        next_cursor:
+          type:
+            - string
+            - 'null'
+          description: Cursor to pass as the cursor query parameter to fetch the next page.
+          examples:
+            - eyJuYW1lIjoiSm9yZGFuIExlZSIsImlkIjoiMTAwNSJ9
+      required:
+        - object
+        - data
+        - has_more
+    BrandSafetyPost:
+      type: object
+      properties:
+        object:
+          const: post
+          description: Object type.
+          examples:
+            - post
+        id:
+          type: string
+          description: Public post identifier.
+          examples:
+            - post_12345
+        creator_id:
+          type: string
+          description: Creator identifier.
+          examples:
+            - '20985049'
+        social_account_id:
+          type: string
+          description: Social account identifier.
+          examples:
+            - abc123
+        platform:
+          type: string
+          description: Social platform.
+          examples:
+            - youtube
+        caption:
+          type: string
+          description: 'Post caption or text, if available.'
+          examples:
+            - Check out my latest vlog...
+        ai_summary:
+          type: string
+          description: AI-generated summary of the post content.
+          examples:
+            - A post set at a crowded outdoor festival with live music.
+        links:
+          $ref: '#/components/schemas/BrandSafetyLinks'
+        published_at:
+          type: string
+          description: When the post was published on the social network.
+          format: date-time
+          readOnly: true
+          examples:
+            - '2026-05-19T07:00:00Z'
+        issues:
+          type: array
+          description: Array of brand safety issue objects.
+          items:
+            $ref: '#/components/schemas/BrandSafetyIssue'
+      required:
+        - object
+        - id
+        - creator_id
+        - platform
+        - issues
+    BrandSafetyLinks:
+      type: object
+      description: URLs associated with the post.
+      properties:
+        post_url:
+          type: string
+          description: Public post URL.
+          examples:
+            - 'https://youtube.com/watch?v=abc123'
+        thumbnail_url:
+          type: string
+          description: 'Thumbnail URL, if available.'
+          examples:
+            - 'https://static-resources.creatoriq.com/instagram-stories/thumbs/3920090489626404416.jpg'
+        api_details_link:
+          type: string
+          description: API URL for retrieving full post details.
+          examples:
+            - 'https://apis.creatoriq.com/brand-safety/v1/posts/post_12345'
+    BrandSafetyIssue:
+      type: object
+      properties:
+        object:
+          const: brand_safety_issue
+          description: Object type.
+          examples:
+            - brand_safety_issue
+        id:
+          type: string
+          description: Public issue identifier.
+          examples:
+            - issue_67890
+        category:
+          type: string
+          description: 'Issue category, for example profanity, violence, adult_content.'
+          examples:
+            - profanity
+        severity:
+          type: string
+          enum:
+            - high
+            - medium
+            - low
+          description: Issue severity.
+          examples:
+            - high
+        description:
+          type: string
+          description: Human-readable issue description.
+          examples:
+            - Strong language detected in the video audio.
+        locations:
+          type: array
+          description: 'Locations where the issue was detected, such as timestamps or caption.'
+          examples:
+            - - '01:23'
+              - '02:45'
+              - caption
+          items:
+            type: string
+        detected_at:
+          type: string
+          description: When the issue was detected.
+          format: date-time
+          readOnly: true
+          examples:
+            - '2026-05-19T07:12:35Z'
+      required:
+        - object
+        - id
+        - category
+        - severity
+    BrandSafetyPostDetail:
+      description: Full details for a single brand safety post.
+      allOf:
+        - $ref: '#/components/schemas/BrandSafetyPost'
+        - type: object
+          properties:
+            last_issue_detected_at:
+              type: string
+              description: Timestamp of the most recently detected brand safety issue for the post.
+              format: date-time
+              readOnly: true
+              examples:
+                - '2026-05-19T07:12:35Z'
+            highest_severity:
+              type: string
+              enum:
+                - high
+                - medium
+                - low
+              description: Highest issue severity detected for the post.
+              examples:
+                - high
+            highest_severity_category:
+              type: string
+              description: Category associated with the highest-severity issue.
+              examples:
+                - profanity
+            issue_count:
+              type: integer
+              description: Total number of issues detected for the post.
+              examples:
+                - 2
+          required:
+            - highest_severity
+            - issue_count
+security:
+  - apiKey: []

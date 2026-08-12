@@ -1,0 +1,961 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: CreatorIQ Payments API
+  description: |
+    The Payments API exposes read-only access to a partner's creator payouts,
+    payables and creator payment-info collection status. It is the public
+    counterpart of the CreatorIQ Payments product and lets integrators reconcile
+    payout data, monitor payable statuses and track which creators still need to
+    submit their payment information.
+
+    ## Key Use Cases:
+    - **Reconcile payouts**: Retrieve a paginated list of payouts (creator view) with amounts, statuses and payout dates to reconcile against your own ledger.
+    - **Track payables**: List individual payables with their campaign, currency, due/completion dates and current status.
+    - **Monitor payment-info collection**: Identify creators whose payment info, tax info or approval is still pending so payouts are not blocked.
+
+    ## Authentication
+    All requests are authenticated with your API key sent in the `X-API-KEY`
+    header. The platform gateway validates the key and implicitly scopes every
+    response to the authenticated partner (and division, when the key is
+    division-scoped).
+
+    ## Pagination
+    All endpoints use keyset (cursor) pagination. Send `PageSize`, `Direction`,
+    `SortField` and `SortOrder` on the first request, then pass the `EndCursor`
+    (forward) or `StartCursor` (backward) returned in `Metadata.Pagination` as the
+    `Cursor` value to fetch the next page.
+  termsOfService: 'https://www.creatoriq.com/legal/terms-of-use'
+  contact:
+    name: CreatorIQ
+    url: 'https://www.creatoriq.com'
+    email: support@creatoriq.com
+  license:
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+    name: Apache 2.0
+servers:
+  - url: 'https://apis.creatoriq.com'
+    description: Live
+paths:
+  /payments/v1/payouts:
+    get:
+      tags:
+        - Payouts
+      summary: List payouts
+      description: |
+        Returns a paginated list of the authenticated partner's payouts in the
+        creator view. Payouts are referenced exclusively by their customer-facing
+        `PayoutID`; the internal payout identifier is never exposed.
+      operationId: listPayouts
+      parameters:
+        - $ref: '#/components/parameters/Cursor'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/Direction'
+        - $ref: '#/components/parameters/SortOrder'
+        - name: SortField
+          in: query
+          description: 'Field to sort by. One of: PayoutDate, PublisherID, CreatedAt.'
+          required: true
+          schema:
+            type: string
+            enum:
+              - PayoutDate
+              - PublisherID
+              - CreatedAt
+            examples:
+              - PayoutDate
+          examples:
+            default:
+              value: PayoutDate
+        - name: PublisherID
+          in: query
+          description: Filters payouts by creator (publisher) id.
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            examples:
+              - 20985049
+          examples:
+            default:
+              value: 20985049
+        - name: DivisionID
+          in: query
+          description: Comma-separated list of division ids to filter by. Each entry must be a positive integer or the literal `null` (payouts with no division).
+          required: false
+          schema:
+            type: string
+            examples:
+              - '12,34'
+          examples:
+            default:
+              value: '12,34'
+        - name: DateStart
+          in: query
+          description: Returns payouts with a payout date on or after this ISO 8601 UTC timestamp.
+          required: false
+          schema:
+            type: string
+            format: date-time
+            examples:
+              - '2026-05-01T00:00:00Z'
+          examples:
+            default:
+              value: '2026-05-01T00:00:00Z'
+        - name: DateEnd
+          in: query
+          description: Returns payouts with a payout date on or before this ISO 8601 UTC timestamp.
+          required: false
+          schema:
+            type: string
+            format: date-time
+            examples:
+              - '2026-06-01T00:00:00Z'
+          examples:
+            default:
+              value: '2026-06-01T00:00:00Z'
+        - name: IncludePayoutStatus
+          in: query
+          description: 'Comma-separated list of payout statuses to include. Mutually exclusive with `ExcludePayoutStatus`. `NO ACCOUNT` is not accepted as a filter value. Valid values: READY, UNPAYABLE, BELOW MINIMUM, SUBMITTED, PROCESSING, SENT, SUBMISSION FAILED, PAID, CANCELLED, FAILED.'
+          required: false
+          schema:
+            type: string
+            examples:
+              - 'READY,PAID'
+          examples:
+            default:
+              value: 'READY,PAID'
+        - name: ExcludePayoutStatus
+          in: query
+          description: Comma-separated list of payout statuses to exclude. Mutually exclusive with `IncludePayoutStatus`. `NO ACCOUNT` is not accepted as a filter value.
+          required: false
+          schema:
+            type: string
+            examples:
+              - 'CANCELLED,FAILED'
+          examples:
+            default:
+              value: 'CANCELLED,FAILED'
+        - name: Currency
+          in: query
+          description: Comma-separated list of ISO 4217 currency codes to filter by.
+          required: false
+          schema:
+            type: string
+            examples:
+              - 'USD,EUR'
+          examples:
+            default:
+              value: 'USD,EUR'
+        - name: PublisherIsPayable
+          in: query
+          description: Filters by whether the creator is currently payable.
+          required: false
+          schema:
+            type: string
+            enum:
+              - 'true'
+              - 'false'
+            examples:
+              - 'true'
+          examples:
+            default:
+              value: 'true'
+        - name: ExcludeCancelledPayouts
+          in: query
+          description: 'When `true`, cancelled payouts are omitted from the response.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - 'true'
+              - 'false'
+            examples:
+              - 'true'
+          examples:
+            default:
+              value: 'true'
+      responses:
+        '200':
+          description: A paginated list of payouts.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutsCollectionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  /payments/v1/payables:
+    get:
+      tags:
+        - Payables
+      summary: List payables
+      description: |
+        Returns a paginated list of the authenticated partner's payables.
+        Payables are referenced by their customer-facing `PayableID`;
+        the internal payable identifier is never exposed. Filters are additive
+        (combined with AND).
+      operationId: listPayables
+      parameters:
+        - $ref: '#/components/parameters/Cursor'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/Direction'
+        - $ref: '#/components/parameters/SortOrder'
+        - name: SortField
+          in: query
+          description: 'Field to sort by. One of: CampaignID, CreatedAt.'
+          required: true
+          schema:
+            type: string
+            enum:
+              - CampaignID
+              - CreatedAt
+            examples:
+              - CreatedAt
+          examples:
+            default:
+              value: CreatedAt
+        - name: PublisherID
+          in: query
+          description: Filters payables by creator (publisher) id.
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            examples:
+              - 20985049
+          examples:
+            default:
+              value: 20985049
+        - name: CampaignID
+          in: query
+          description: Filters payables by campaign id.
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            examples:
+              - 1205052
+          examples:
+            default:
+              value: 1205052
+        - name: PayoutID
+          in: query
+          description: Id of the payout the payable is currently assigned to.
+          required: false
+          schema:
+            type: string
+            examples:
+              - PO-2026-000123
+          examples:
+            default:
+              value: PO-2026-000123
+        - name: PayableStatus
+          in: query
+          description: 'Comma-separated list of payable statuses to filter by. `NO ACCOUNT` is not accepted as a filter value. Valid values: IN_REVIEW, REJECTED, READY, UNPAYABLE, BELOW MINIMUM, SUBMITTED, PROCESSING, SENT, SUBMISSION FAILED, PAID, CANCELLED, FAILED.'
+          required: false
+          schema:
+            type: string
+            examples:
+              - 'READY,IN_REVIEW'
+          examples:
+            default:
+              value: 'READY,IN_REVIEW'
+        - name: Currency
+          in: query
+          description: Comma-separated list of ISO 4217 currency codes to filter by.
+          required: false
+          schema:
+            type: string
+            examples:
+              - 'USD,EUR'
+          examples:
+            default:
+              value: 'USD,EUR'
+        - name: CompletedAtStart
+          in: query
+          description: Returns payables completed on or after this ISO 8601 UTC timestamp.
+          required: false
+          schema:
+            type: string
+            format: date-time
+            examples:
+              - '2026-05-01T00:00:00Z'
+          examples:
+            default:
+              value: '2026-05-01T00:00:00Z'
+        - name: CompletedAtEnd
+          in: query
+          description: Returns payables completed on or before this ISO 8601 UTC timestamp.
+          required: false
+          schema:
+            type: string
+            format: date-time
+            examples:
+              - '2026-06-01T00:00:00Z'
+          examples:
+            default:
+              value: '2026-06-01T00:00:00Z'
+      responses:
+        '200':
+          description: A paginated list of payables.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayablesCollectionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  /payments/v1/publishers/payment-info-collection-status:
+    get:
+      tags:
+        - Creator Payment Info
+      summary: Get creators' payment info collection status
+      description: |
+        Returns a paginated list describing, per creator, whether payment info,
+        tax info and approval have been collected. Replaces the legacy Creator
+        Payment Info Status report and lets you identify creators whose payouts
+        are blocked pending information.
+      operationId: getPaymentInfoCollectionStatus
+      parameters:
+        - $ref: '#/components/parameters/Cursor'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/Direction'
+        - $ref: '#/components/parameters/SortOrder'
+        - name: SortField
+          in: query
+          description: Field to sort by. Currently only PublisherId is supported.
+          required: true
+          schema:
+            const: PublisherId
+            examples:
+              - PublisherId
+          examples:
+            default:
+              value: PublisherId
+        - name: PayableStatus
+          in: query
+          description: Filters by whether the creator is payable (eligible to be paid).
+          required: false
+          schema:
+            type: string
+            enum:
+              - 'true'
+              - 'false'
+            examples:
+              - 'true'
+          examples:
+            default:
+              value: 'true'
+        - name: PaymentInfoStatus
+          in: query
+          description: 'Comma-separated list of payment-info statuses to filter by. Valid values: Not Submitted, Received, Invalid.'
+          required: false
+          schema:
+            type: string
+            examples:
+              - 'Received,Invalid'
+          examples:
+            default:
+              value: 'Received,Invalid'
+        - name: ApprovalStatus
+          in: query
+          description: 'Filters by approval state. `true` (approved), `false` (not approved) or `null` (no approval required).'
+          required: false
+          schema:
+            type: string
+            enum:
+              - 'true'
+              - 'false'
+              - 'null'
+            examples:
+              - 'true'
+          examples:
+            default:
+              value: 'true'
+      responses:
+        '200':
+          description: A paginated list of creator payment-info collection statuses.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatorPaymentInfoStatusCollectionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+tags:
+  - name: Creator Payment Info
+    description: Creator payment-info collection status
+  - name: Payables
+    description: Creator payables
+  - name: Payouts
+    description: Creator payouts
+components:
+  parameters:
+    Cursor:
+      name: Cursor
+      in: query
+      description: Base64 keyset pagination cursor. Pass the `EndCursor` (forward) or `StartCursor` (backward) from the previous response's `Metadata.Pagination`. Omit on the first request.
+      required: false
+      schema:
+        type: string
+        examples:
+          - cGF5b3V0X2RhdGU7OzEyMzQ1
+      examples:
+        default:
+          value: cGF5b3V0X2RhdGU7OzEyMzQ1
+    PageSize:
+      name: PageSize
+      in: query
+      description: 'Number of items to return per page. Must be a positive integer, capped at 200.'
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        examples:
+          - 50
+      examples:
+        default:
+          value: 50
+    Direction:
+      name: Direction
+      in: query
+      description: Pagination direction relative to the supplied cursor.
+      required: true
+      schema:
+        type: string
+        enum:
+          - forward
+          - backward
+        examples:
+          - forward
+      examples:
+        default:
+          value: forward
+    SortOrder:
+      name: SortOrder
+      in: query
+      description: Sort order for the selected `SortField`.
+      required: true
+      schema:
+        type: string
+        enum:
+          - asc
+          - desc
+        examples:
+          - desc
+      examples:
+        default:
+          value: desc
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: X-API-KEY
+      in: header
+  responses:
+    BadRequestError:
+      description: Bad Request - invalid or missing query parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ForbiddenError:
+      description: 'Forbidden - the API key is missing, invalid or lacks access.'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerError:
+      description: Internal Server Error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    PayoutsCollectionResponse:
+      type: object
+      description: A page of payouts with pagination metadata.
+      properties:
+        Data:
+          type: array
+          description: Payouts in this page.
+          items:
+            $ref: '#/components/schemas/Payout'
+        Metadata:
+          $ref: '#/components/schemas/CollectionMetadata'
+      required:
+        - Data
+        - Metadata
+    Payout:
+      type: object
+      description: A payout in the creator view.
+      properties:
+        PayoutID:
+          type:
+            - string
+            - 'null'
+          description: Customer-facing payout identifier.
+          examples:
+            - PO-2026-000123
+        HasRetries:
+          type: boolean
+          description: Whether the payout has been retried.
+          examples:
+            - false
+        PayoutDate:
+          type:
+            - string
+            - 'null'
+          description: When the payout was (or is scheduled to be) paid.
+          format: date-time
+          examples:
+            - '2026-05-19T07:00:00Z'
+        PublisherID:
+          type: integer
+          description: Creator (publisher) id.
+          examples:
+            - 20985049
+        DivisionID:
+          type:
+            - integer
+            - 'null'
+          description: Division the payout belongs to.
+          examples:
+            - 12
+        DivisionName:
+          type:
+            - string
+            - 'null'
+          description: Division name.
+          examples:
+            - North America
+        PublisherName:
+          type: string
+          description: Creator name.
+          examples:
+            - Jordan Lee
+        ProfilePictureURL:
+          type:
+            - string
+            - 'null'
+          description: Creator profile picture URL.
+          examples:
+            - 'https://static-resources.creatoriq.com/avatars/20985049.jpg'
+        PrimaryNetwork:
+          type:
+            - string
+            - 'null'
+          description: Creator's primary social network.
+          examples:
+            - instagram
+        PrimarySocialUsername:
+          type:
+            - string
+            - 'null'
+          description: Creator's primary social username.
+          examples:
+            - jordanlee
+        PublisherIsPayable:
+          type: boolean
+          description: Whether the creator is currently payable.
+          default: false
+          examples:
+            - true
+        PayoutMethod:
+          type:
+            - string
+            - 'null'
+          description: Method used for the payout.
+          examples:
+            - bank_transfer
+        PayoutStatus:
+          type: string
+          enum:
+            - READY
+            - UNPAYABLE
+            - BELOW MINIMUM
+            - NO ACCOUNT
+            - SUBMITTED
+            - PROCESSING
+            - SENT
+            - SUBMISSION FAILED
+            - PAID
+            - CANCELLED
+            - FAILED
+          description: Current payout status.
+          examples:
+            - PAID
+        ErrorMessage:
+          type:
+            - string
+            - 'null'
+          description: Error message when the payout failed.
+          examples:
+            - null
+        CancellationReason:
+          type:
+            - string
+            - 'null'
+          description: 'Reason the payout was cancelled, if applicable.'
+          examples:
+            - null
+        PayoutAmount:
+          $ref: '#/components/schemas/Amount'
+        CreatedAt:
+          type:
+            - string
+            - 'null'
+          description: When the payout was created.
+          format: date-time
+          examples:
+            - '2026-05-01T09:15:00Z'
+        UpdatedAt:
+          type:
+            - string
+            - 'null'
+          description: When the payout was last updated.
+          format: date-time
+          examples:
+            - '2026-05-19T07:00:00Z'
+      required:
+        - PayoutID
+        - HasRetries
+        - PublisherID
+        - PublisherName
+        - PublisherIsPayable
+        - PayoutStatus
+        - PayoutAmount
+    Amount:
+      type: object
+      description: A monetary amount with its currency.
+      properties:
+        Value:
+          type: string
+          description: 'Decimal amount, serialized as a string to preserve precision.'
+          examples:
+            - '1250.00'
+        Currency:
+          type: string
+          description: ISO 4217 currency code.
+          examples:
+            - USD
+      required:
+        - Value
+        - Currency
+    CollectionMetadata:
+      type: object
+      description: Metadata wrapper carrying pagination details.
+      properties:
+        Pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      required:
+        - Pagination
+    PaginationResponse:
+      type: object
+      description: Keyset pagination metadata.
+      properties:
+        StartCursor:
+          type:
+            - string
+            - 'null'
+          description: Cursor pointing at the first row of the current page. Pass it with `Direction=backward` to page back.
+          examples:
+            - cGF5b3V0X2RhdGU7OzEyMzQ1
+        EndCursor:
+          type:
+            - string
+            - 'null'
+          description: Cursor pointing at the last row of the current page. Pass it with `Direction=forward` to page ahead.
+          examples:
+            - cGF5b3V0X2RhdGU7OzEyMzk5
+        HasNextPage:
+          type: boolean
+          description: Whether more items are available after the current page.
+          examples:
+            - true
+        HasPreviousPage:
+          type: boolean
+          description: Whether items are available before the current page.
+          examples:
+            - false
+        PageSize:
+          type: integer
+          description: Number of items returned in the current page.
+          examples:
+            - 50
+      required:
+        - StartCursor
+        - EndCursor
+        - HasNextPage
+        - HasPreviousPage
+        - PageSize
+    PayablesCollectionResponse:
+      type: object
+      description: A page of payables with pagination metadata.
+      properties:
+        Data:
+          type: array
+          description: Payables in this page.
+          items:
+            $ref: '#/components/schemas/Payable'
+        Metadata:
+          $ref: '#/components/schemas/CollectionMetadata'
+      required:
+        - Data
+        - Metadata
+    Payable:
+      type: object
+      description: A single payable.
+      properties:
+        PayableID:
+          type:
+            - string
+            - 'null'
+          description: Customer-facing payable identifier.
+          examples:
+            - PA-2026-000987
+        PublisherID:
+          type: integer
+          description: Creator (publisher) id.
+          examples:
+            - 20985049
+        PayoutID:
+          type:
+            - string
+            - 'null'
+          description: 'Id of the payout the payable is assigned to, if any.'
+          examples:
+            - PO-2026-000123
+        CampaignID:
+          type:
+            - integer
+            - 'null'
+          description: Campaign the payable belongs to.
+          examples:
+            - 1205052
+        CampaignExternalName:
+          type:
+            - string
+            - 'null'
+          description: External campaign name.
+          examples:
+            - Summer 2026 Launch
+        CampaignInternalName:
+          type:
+            - string
+            - 'null'
+          description: Internal campaign name.
+          examples:
+            - SUM26-US
+        CompletedAt:
+          type:
+            - string
+            - 'null'
+          description: When the payable was completed.
+          format: date-time
+          examples:
+            - '2026-05-18T12:00:00Z'
+        DueDate:
+          type:
+            - string
+            - 'null'
+          description: When the payable is due.
+          format: date-time
+          examples:
+            - '2026-06-01T00:00:00Z'
+        PayableStatus:
+          type: string
+          enum:
+            - IN_REVIEW
+            - REJECTED
+            - READY
+            - UNPAYABLE
+            - BELOW MINIMUM
+            - NO ACCOUNT
+            - SUBMITTED
+            - PROCESSING
+            - SENT
+            - SUBMISSION FAILED
+            - PAID
+            - CANCELLED
+            - FAILED
+          description: Current payable status.
+          examples:
+            - READY
+        RequirementID:
+          type:
+            - string
+            - 'null'
+          description: Campaign requirement the payable originates from.
+          examples:
+            - req_88231
+        TransactionID:
+          type:
+            - string
+            - 'null'
+          description: Associated transaction id.
+          examples:
+            - txn_55120
+        PayableAmount:
+          $ref: '#/components/schemas/Amount'
+        NetworkCampaignID:
+          type:
+            - string
+            - 'null'
+          description: Network campaign id.
+          examples:
+            - nc_4471
+        PONumber:
+          type: string
+          description: Purchase order number.
+          examples:
+            - PO-4471
+        CreatedAt:
+          type: string
+          description: When the payable was created.
+          format: date-time
+          examples:
+            - '2026-05-01T09:15:00Z'
+        UpdatedAt:
+          type: string
+          description: When the payable was last updated.
+          format: date-time
+          examples:
+            - '2026-05-18T12:00:00Z'
+      required:
+        - PayableID
+        - PublisherID
+        - PayableStatus
+        - PayableAmount
+        - PONumber
+        - CreatedAt
+        - UpdatedAt
+    CreatorPaymentInfoStatusCollectionResponse:
+      type: object
+      description: A page of creator payment-info statuses with pagination metadata.
+      properties:
+        Data:
+          type: array
+          description: Creator payment-info statuses in this page.
+          items:
+            $ref: '#/components/schemas/CreatorPaymentInfoStatus'
+        Metadata:
+          $ref: '#/components/schemas/CollectionMetadata'
+      required:
+        - Data
+        - Metadata
+    CreatorPaymentInfoStatus:
+      type: object
+      description: Payment-info collection status for a single creator.
+      properties:
+        PublisherId:
+          type: integer
+          description: Creator (publisher) id.
+          examples:
+            - 20985049
+        PayableStatus:
+          type: boolean
+          description: Whether the creator is payable (eligible to be paid).
+          examples:
+            - true
+        PaymentInfoStatus:
+          type:
+            - string
+            - 'null'
+          description: 'Payment-info collection status: Not Submitted, Received or Invalid.'
+          examples:
+            - Received
+        TaxInfoStatus:
+          type:
+            - string
+            - 'null'
+          description: Tax-info collection status.
+          examples:
+            - Received
+        ApprovalStatus:
+          type:
+            - boolean
+            - 'null'
+          description: 'Approval state, or null when no approval is required.'
+          examples:
+            - true
+        PayoutCurrency:
+          type:
+            - string
+            - 'null'
+          description: The creator's payout currency (ISO 4217).
+          examples:
+            - USD
+      required:
+        - PublisherId
+        - PayableStatus
+    ErrorResponse:
+      type: object
+      description: Standard error response body.
+      properties:
+        ErrorMessage:
+          type: string
+          description: Human-readable error message.
+          examples:
+            - 'Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt'
+        Type:
+          type: string
+          description: Error type identifier.
+          examples:
+            - InvalidPayoutFiltersError
+        Details:
+          type: array
+          description: Additional error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+        Context:
+          type: object
+          description: Additional error context.
+      required:
+        - ErrorMessage
+    ErrorDetail:
+      type: object
+      description: A single error detail entry.
+      properties:
+        Type:
+          type: string
+          description: Detail type.
+          examples:
+            - validation
+        Message:
+          type: string
+          description: Detail message.
+          examples:
+            - PageSize must not exceed 200
+        Context:
+          type: object
+          description: Detail context.
+      required:
+        - Type
+security:
+  - apiKey: []

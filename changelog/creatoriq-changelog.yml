@@ -1,0 +1,125 @@
+generated: '2026-08-11'
+method: searched
+source: https://apidocs.creatoriq.com/docs/ciq-api-documentation/6b7999d265a29-changelog
+scheme: date-based
+current_versions: [v1, v2]
+cadence: >-
+  Roughly monthly, dated entries under Added / Changed / Deprecated / Fixed headings. The main
+  changelog carries 40+ dated entries back to 2025-02. Five additional per-service changelog articles
+  exist in the portal for individual APIs.
+breaking_change_policy: >-
+  Additive-only by convention — the Best Practices page tells integrators to expect new fields without
+  warning and to code as tolerant readers. Removals are announced under Deprecated with a documented
+  one-year window and Deprecation/Sunset headers (see lifecycle/).
+entries:
+- date: '2026-07-13'
+  kind: added
+  breaking: false
+  highlights:
+  - 'New Payments API endpoints: GET /payments/v1/payouts, GET /payments/v1/payables'
+- date: '2026-07-08'
+  kind: added
+  breaking: false
+  highlights:
+  - 'New endpoint GET /payments/v1/publishers/payment-info-collection-status'
+- date: '2026-06-24'
+  kind: changed
+  breaking: true
+  highlights:
+  - '`size` on GET /crm/v1/api/publishers must not exceed 1000'
+- date: '2026-06-17'
+  kind: changed
+  breaking: true
+  highlights:
+  - '`size` on GET /crm/v1/api/account/youtube/{id}/timeline capped at 50; larger values silently lowered'
+  - 'Deprecated fields `dateFrom` and `dateTo` on the same endpoint'
+- date: '2026-06-12'
+  kind: fixed
+  breaking: false
+- date: '2026-05-27'
+  kind: added
+  breaking: false
+- date: '2026-04-01'
+  kind: changed
+  breaking: false
+  highlights:
+  - 'YouTube Shorts: engaged views only for authenticated accounts from 2026-01-01 (statistics.engagedViews_next)'
+  - 'View counts and estimated reach only for posts made on or after 2026-01-01'
+- date: '2026-03-16'
+  kind: added
+  breaking: false
+  highlights:
+  - 'New endpoint POST /ecommerce/v1/link-management/link to create a single link'
+- date: '2026-02-25'
+  kind: added
+  breaking: false
+  highlights:
+  - 'Optional X-Signature-SHA256 webhook header for ACL-enabled partners, alongside the legacy MD5 X-Signature'
+- date: '2026-01-22'
+  kind: added
+  breaking: false
+  highlights:
+  - 'YouTube Brand Connect integration (NextGen campaigns): YouTubeBrandConnect and YouTubeChannel fields across the campaign endpoints'
+  - 'YouTubeCampaignCode on scheduled post items'
+- date: '2025-11-20'
+  kind: added
+  breaking: false
+  highlights: ['`OriginalUrl` on PATCH /ecommerce/v1/link-management/links']
+- date: '2025-10-14'
+  kind: added
+  breaking: false
+  highlights:
+  - '`views_next` / `engagedViews_next` metric family added across social post info, stories history and campaign activity — the parallel "_next" metric set'
+  - '`ContentTags` on GET /crm/v1/api/campaign/{campaignId}/activity'
+- date: '2025-09-24'
+  kind: added
+  breaking: false
+  highlights: ['`DatePublisherAdded` on campaign publishers endpoints']
+- date: '2025-09-22'
+  kind: deprecated
+  breaking: false
+  highlights: ['`Status` field on POST /crm/v1/api/campaign/{campaignId}/conversionMetrics']
+- date: '2025-09-03'
+  kind: added
+  breaking: false
+  highlights: ['New v2 brands endpoints: GET /crm/v2/api/brands, /brands/{brandId}, /brands/search']
+- date: '2025-08-06'
+  kind: added
+  breaking: false
+  highlights:
+  - 'Divisions endpoints GET /crm/v1/api/divisions and /division/{divisionId}'
+  - 'List_2 publish webhook event documented'
+- date: '2025-07-29'
+  kind: added
+  breaking: false
+  highlights:
+  - '`TrackingItemId` added and `TrackingItemsPromotionId` deprecated on ecommerce transactions'
+- date: '2025-07-17'
+  kind: added
+  breaking: false
+  highlights:
+  - 'NextGen campaign fields: NextGen, BrandAndTerms, DefiniteTerms, NegativeTerm, BrandId, InternalDescription, BrandCollectContent'
+- date: '2025-07-01'
+  kind: added
+  breaking: false
+  highlights: ['`TikTokOneCampaign` across the campaign endpoints']
+- date: '2025-05-27'
+  kind: added
+  breaking: false
+  highlights: ['Conversion Metrics API introduced — ten endpoints across partner, campaign, tracking-link, post and publisher scopes']
+- date: '2025-04-16'
+  kind: changed
+  breaking: true
+  highlights:
+  - 'Divided the Public API into Version 1 and Version 2'
+per_service_changelogs:
+- https://apidocs.creatoriq.com/docs/ciq-api-documentation/6dbed6329df9c-changelog
+- https://apidocs.creatoriq.com/docs/ciq-api-documentation/b6acb60b5f44f-changelog
+- https://apidocs.creatoriq.com/docs/ciq-api-documentation/8568e8d7f31f8-changelog
+- https://apidocs.creatoriq.com/docs/ciq-api-documentation/8d4c18ad808f9-changelog
+- https://apidocs.creatoriq.com/docs/ciq-api-documentation/33cafee2b621b-changelog
+- https://apidocs.creatoriq.com/docs/ciq-api-documentation/4729684b3a684-changelog
+note: >-
+  Recent window only; the live changelog article is the source of truth. Two entries in the published
+  changelog are out of chronological order (2026-05-27 and 2026-06-12 appear after the 2025 entries),
+  which is a rendering artefact of the source document, not a harvest error.

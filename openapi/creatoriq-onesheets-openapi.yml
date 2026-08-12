@@ -1,0 +1,2741 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: CreatorIQ CRM Onesheets API
+  description: CreatorIQ CRM APIs for Onesheets resource
+  termsOfService: 'https://www.creatoriq.com/legal/terms-of-use'
+  contact:
+    name: CreatorIQ
+    url: 'https://www.creatoriq.com'
+    email: support@creatoriq.com
+  license:
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+    name: Apache 2.0
+servers:
+  - url: 'https://apis.creatoriq.com'
+    description: Live
+paths:
+  /crm/v1/api/onesheets:
+    get:
+      tags:
+        - Onesheet
+      summary: Get Onesheets collection
+      description: Return a paginated collection of Onesheets
+      operationId: getOnesheetsCollection
+      parameters:
+        - name: page
+          in: query
+          description: Collection's page to show
+          required: false
+          schema:
+            type: integer
+            default: 1
+            example: 3
+          examples:
+            default:
+              value: 3
+        - name: size
+          in: query
+          description: Amount of items on the page. Default is 20
+          required: false
+          schema:
+            type: integer
+            default: 20
+            example: 50
+          examples:
+            default:
+              value: 50
+        - name: order
+          in: query
+          description: 'Sort order. Default is ''Id,desc'''
+          required: false
+          schema:
+            type: string
+            default: 'Id,desc'
+            example: 'UpdatedAt,desc'
+          examples:
+            default:
+              value: 'UpdatedAt,desc'
+      responses:
+        '200':
+          $ref: '#/components/responses/OneSheetsCollection'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+    post:
+      tags:
+        - Onesheet
+      summary: Create a new OneSheet
+      description: Creates a new OneSheet
+      operationId: createOnesheet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOneSheetBody'
+      responses:
+        '201':
+          $ref: '#/components/responses/OneSheetCreated'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/onesheet/{oneSheetId}':
+    get:
+      tags:
+        - Onesheet
+      summary: Get Single Onesheet
+      description: Return a Onesheet
+      operationId: getOnesheet
+      parameters:
+        - name: oneSheetId
+          in: path
+          description: OneSheet Id
+          required: true
+          schema:
+            type: integer
+            example: 333333
+          examples:
+            default:
+              value: 333333
+      responses:
+        '200':
+          $ref: '#/components/responses/OneSheetSingle'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+    patch:
+      tags:
+        - Onesheet
+      summary: Update Onesheet
+      description: Updates Onesheet
+      operationId: updateOnesheet
+      parameters:
+        - name: oneSheetId
+          in: path
+          description: OneSheet Id
+          required: true
+          schema:
+            type: integer
+            example: 333333
+          examples:
+            default:
+              value: 333333
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOneSheetBody'
+      responses:
+        '206':
+          $ref: '#/components/responses/OneSheetUpdated'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+    delete:
+      tags:
+        - Onesheet
+      summary: Delete Onesheet
+      description: Deletes Onesheet
+      operationId: deleteOnesheet
+      parameters:
+        - name: oneSheetId
+          in: path
+          description: OneSheet Id
+          required: true
+          schema:
+            type: integer
+            example: 333333
+          examples:
+            default:
+              value: 333333
+      responses:
+        '204':
+          description: Successfully deleted
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/onesheet/{oneSheetId}/publishers':
+    get:
+      tags:
+        - Onesheet
+      summary: Gets Onesheet's Creators
+      description: Gets Onesheet's Creators
+      operationId: getCreatorsOfOnesheet
+      parameters:
+        - name: oneSheetId
+          in: path
+          description: OneSheet Id
+          required: true
+          schema:
+            type: integer
+            example: 333333
+          examples:
+            default:
+              value: 333333
+      responses:
+        '200':
+          $ref: '#/components/responses/OneSheetCreators'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+    post:
+      tags:
+        - Onesheet
+      summary: Add Creator to Onesheet
+      description: Adds Creator to Onesheet
+      operationId: addCreatorToOnesheet
+      parameters:
+        - name: oneSheetId
+          in: path
+          description: OneSheet Id
+          required: true
+          schema:
+            type: integer
+            example: 333333
+          examples:
+            default:
+              value: 333333
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddPublisherToOneSheetBody'
+      responses:
+        '201':
+          description: Creator successfully added
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/onesheet/{oneSheetId}/publisher/{publisherId}':
+    get:
+      tags:
+        - Onesheet
+      summary: Get a certain Onesheet's Creator
+      description: Gets a certain Onesheet's Creators
+      operationId: getOnesheetSingleCreator
+      parameters:
+        - name: fields
+          in: query
+          description: '\ Data fields to get info for. Default set (when parameter is not set or empty) is "summary,comments,isPostMigrationProcess,demographics,locations,audienceTotal,infoForAdvertisers"'
+          schema:
+            type: string
+            example: 'infoForAdvertisers,isPostMigrationProcess'
+          examples:
+            default:
+              value: 'infoForAdvertisers,isPostMigrationProcess'
+        - name: oneSheetId
+          in: path
+          description: OneSheet Id
+          required: true
+          schema:
+            type: integer
+            example: 333333
+          examples:
+            default:
+              value: 333333
+        - name: publisherId
+          in: path
+          description: Creator Id
+          required: true
+          schema:
+            type: integer
+            example: 642626
+          examples:
+            default:
+              value: 642626
+      responses:
+        '200':
+          $ref: '#/components/responses/OneSheetCreator'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+    delete:
+      tags:
+        - Onesheet
+      summary: Remove creator from one-sheet
+      description: Remove creator from one-sheet
+      operationId: RemoveCreator
+      parameters:
+        - name: oneSheetId
+          in: path
+          description: OneSheet Id
+          required: true
+          schema:
+            type: integer
+            example: 333333
+          examples:
+            default:
+              value: 333333
+        - name: publisherId
+          in: path
+          description: Creator Id
+          required: true
+          schema:
+            type: integer
+            example: 642626
+          examples:
+            default:
+              value: 642626
+      responses:
+        '204':
+          description: Deleted Successful
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+    patch:
+      tags:
+        - Onesheet
+      summary: Update one-sheet creator
+      description: Update one-sheet creator
+      operationId: UpdateOneSheetCreator
+      parameters:
+        - name: oneSheetId
+          in: path
+          description: OneSheet Id
+          required: true
+          schema:
+            type: integer
+            example: 333333
+          examples:
+            default:
+              value: 333333
+        - name: publisherId
+          in: path
+          description: Creator Id
+          required: true
+          schema:
+            type: integer
+            example: 642626
+          examples:
+            default:
+              value: 642626
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOneSheetCreatorBody'
+      responses:
+        '204':
+          description: Successful
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/onesheet/{oneSheetId}/publisher/{publisherId}/approve':
+    patch:
+      tags:
+        - Onesheet
+      summary: Approve Creator to Onesheet
+      description: Approves Creator to Onesheet
+      operationId: approveCreatorToOnesheet
+      parameters:
+        - name: oneSheetId
+          in: path
+          description: OneSheet Id
+          required: true
+          schema:
+            type: integer
+            example: 333333
+          examples:
+            default:
+              value: 333333
+        - name: publisherId
+          in: path
+          description: Creator Id
+          required: true
+          schema:
+            type: integer
+            example: 642626
+          examples:
+            default:
+              value: 642626
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApprovePublisherToOneSheetBody'
+      responses:
+        '204':
+          description: Creator successfully approved
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/onesheet/{oneSheetId}/publisher/{publisherId}/comments':
+    post:
+      tags:
+        - Onesheet
+      summary: Add publisher comment to one-sheet
+      description: Add publisher comment to one-sheet
+      operationId: AddPublisherComment
+      parameters:
+        - name: oneSheetId
+          in: path
+          description: OneSheet Id
+          required: true
+          schema:
+            type: integer
+            example: 333333
+          examples:
+            default:
+              value: 333333
+        - name: publisherId
+          in: path
+          description: Creator Id
+          required: true
+          schema:
+            type: integer
+            example: 642626
+          examples:
+            default:
+              value: 642626
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddPublisherCommentToOneSheetBody'
+      responses:
+        '201':
+          description: Success
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/onesheet/{oneSheetId}/publish':
+    post:
+      tags:
+        - Onesheet
+      summary: Publish one-sheet
+      description: Publish one-sheet
+      operationId: PublishOneSheet
+      parameters:
+        - name: oneSheetId
+          in: path
+          description: OneSheet Id
+          required: true
+          schema:
+            type: integer
+            example: 333333
+          examples:
+            default:
+              value: 333333
+      responses:
+        '204':
+          $ref: '#/components/responses/PublishOneSheet'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+tags:
+  - name: Onesheet
+    description: Onesheets public API
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header
+  responses:
+    '400':
+      description: 'Bad request, invalid OneSheetId format or something goes wrong'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    '401':
+      description: Incorrect x-api-key
+    '403':
+      description: Access was denied due to the API has insufficient access permissions
+    '404':
+      description: OneSheet with supplied ID not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    PublishOneSheet:
+      description: Publish one-sheet response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublishOneSheetResponse'
+    OneSheetsCollection:
+      description: One-sheets collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneSheetsCollectionModel'
+    OneSheetSingle:
+      description: OneSheet
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneSheetModel'
+    OneSheetCreated:
+      description: OneSheet
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneSheetCreatedModel'
+    OneSheetUpdated:
+      description: OneSheet updated
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneSheetUpdatedModel'
+    OneSheetCreators:
+      description: Array of Creators of Onesheet
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneSheetCreatorsModel'
+    OneSheetCreator:
+      description: Creator of Onesheet
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneSheetCreatorModel'
+  schemas:
+    CreateOneSheetBody:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: Name of OneSheet
+          example: Test OneSheet
+        TotalReachCalculation:
+          type: string
+          enum:
+            - Selected
+            - Full
+        templateId:
+          type: integer
+          nullable: true
+          example: 2351
+      required:
+        - Name
+    UpdateOneSheetBody:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: Name of OneSheet
+          example: Test OneSheet
+        TotalReachCalculation:
+          type: string
+          enum:
+            - Selected
+            - Full
+        templateId:
+          type: integer
+          example: 2351
+        Expired:
+          type: boolean
+          example: true
+        Template:
+          type: string
+          enum:
+            - OneSheet
+          example: OneSheet
+        VanityURL:
+          type: string
+          example: Test_OneSheet_63dcba77c85
+        NotifyEmails:
+          type: string
+          nullable: true
+          example: 'test1@test.com,test2@example.com'
+        ACLSections:
+          type: object
+          properties:
+            AudienceEthnicity:
+              type: integer
+              enum:
+                - 0
+                - 1
+              example: 0
+            PersonalDataEthnicBackground:
+              type: integer
+              enum:
+                - 0
+                - 1
+              example: 0
+            AudienceIncomeRange:
+              type: integer
+              enum:
+                - 0
+                - 1
+              example: 0
+          required:
+            - AudienceEthnicity
+            - PersonalDataEthnicBackground
+            - AudienceIncomeRange
+        isEnableThemeImageGlobal:
+          type: boolean
+          example: true
+        isCreatorHighlights:
+          type: string
+          nullable: true
+          example: '1'
+        IsSupportFeaturedCreators:
+          type: boolean
+          example: true
+        BrandLogoImageURL:
+          type: string
+          nullable: true
+          format: URI
+          example: 'https://social-pictures-storage.s3.amazonaws.com/6df9256e14d5cba4fa663acb252cb33f_7800601.jpeg'
+        SalesSheetImageURL:
+          type: string
+          nullable: true
+          format: URI
+          example: 'https://social-pictures-storage.s3.amazonaws.com/6df9256e14d5cba4fa663acb252cb33f_7800601.jpeg'
+        BrandingOptions:
+          type: object
+          properties:
+            colorScheme:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: name
+                headerBgColor:
+                  type: array
+                  items:
+                    type: string
+                    example: '#223a99'
+                  example:
+                    - '#ffaa00'
+                    - '#223a99'
+                headerTextColor:
+                  type: string
+                  example: '#223a99'
+                introBgColor:
+                  type: array
+                  items:
+                    type: string
+                    example: '#223a99'
+                  example:
+                    - '#ffaa00'
+                    - '#223a99'
+                introTextColor:
+                  type: string
+                  example: '#223a99'
+                pageBgColor:
+                  type: string
+                  example: '#223a99'
+                featuredBgColor:
+                  type: array
+                  items:
+                    type: string
+                    example: '#223a99'
+                  example:
+                    - '#ffaa00'
+                    - '#223a99'
+                featuredTextColor:
+                  type: string
+                  example: '#223a99'
+              required:
+                - name
+                - headerBgColor
+                - headerTextColor
+                - introBgColor
+                - introTextColor
+                - pageBgColor
+                - featuredBgColor
+                - featuredTextColor
+            leftAlignment:
+              type: integer
+              enum:
+                - 0
+                - 1
+              example: 1
+            squareFrame:
+              type: integer
+              nullable: true
+              enum:
+                - 0
+                - 1
+                - null
+              example: 0
+            imageSize:
+              type: string
+              enum:
+                - small
+                - medium
+                - large
+              example: small
+          minProperties: 1
+        Sections:
+          type: object
+          properties:
+            Audience:
+              type: integer
+              example: 0
+            AudienceAge:
+              type: integer
+              example: 0
+            AudienceBrands:
+              type: integer
+              example: 0
+            AudienceCity:
+              type: integer
+              example: 0
+            AudienceCountry:
+              type: integer
+              example: 0
+            AudienceEthnicity:
+              type: integer
+              example: 0
+            AudienceGender:
+              type: integer
+              example: 0
+            AudienceInfluencers:
+              type: integer
+              example: 0
+            AudienceInterests:
+              type: integer
+              example: 0
+            AudienceState:
+              type: integer
+              example: 0
+          minProperties: 1
+      minProperties: 1
+    AddPublisherToOneSheetBody:
+      type: object
+      properties:
+        PublisherIds:
+          type: array
+          items:
+            type: integer
+            example: 13201168
+      required:
+        - PublisherIds
+    UpdateOneSheetCreatorBody:
+      type: object
+      description: Update one-sheet creator request body
+      properties:
+        Description:
+          type: string
+          nullable: true
+          description: Description
+          example: Long description text
+        SalesSheetImageURL:
+          type: string
+          nullable: true
+          description: Sales one-sheet image URL
+          format: URI
+          maxLength: 1024
+          example: 'https://socialedge-sales-sheet-publishers.s3.amazonaws.com/485110.jpg'
+        SalesSheetLogoURL:
+          type: string
+          nullable: true
+          description: Sales one-sheet logo URL
+          format: URI
+          maxLength: 1024
+          example: 'https://social-pictures-storage.s3.amazonaws.com/talent_mayawashington_headshot1.jpg_1506633937.jpg'
+        ShortDescription:
+          type: string
+          nullable: true
+          description: Short description
+          example: Short Description Text Example
+        InternalNotes:
+          type: string
+          nullable: true
+          description: Internal notes
+          example: Internal notes text example
+        Sections:
+          type: string
+          nullable: true
+          description: Sections
+          format: json
+          maxLength: 2048
+          example: '{"Musical.ly":1,"SalesSheetImageURL":1,"StatusInCampaign":1,"SocialMetrics":0,"SampleVideosPostBlog":1}'
+        SortOrder:
+          type: number
+          nullable: true
+          description: Sort order
+          format: float
+          example: 1.1
+        UpdatedBy:
+          type: string
+          nullable: true
+          description: Updated by
+          maxLength: 128
+          example: Name Surname
+        CreatedBy:
+          type: string
+          nullable: true
+          description: Created by
+          maxLength: 128
+          example: Name Surname
+        Approved:
+          type: boolean
+          nullable: true
+          description: Approved
+          example: true
+        Category:
+          type: string
+          nullable: true
+          description: Category
+          maxLength: 1024
+          example: '"Entertainment","Fitness","Lifestyle"'
+        Tags:
+          type: string
+          nullable: true
+          description: Tags
+          example: '"vlogger","beauty","goddard","F|challenge","F|parody","F|rachel","F|Fullscreen Affiliate"'
+        AudienceSocialNetwork:
+          type: string
+          nullable: true
+          description: Audience social network
+          maxLength: 50
+          example: instagram
+        AudienceSocialNetworkId:
+          type: string
+          nullable: true
+          description: Audience social network id
+          maxLength: 128
+          example: '2279929'
+        AudienceType:
+          type: string
+          nullable: true
+          description: Audience type
+          maxLength: 7
+          example: Blended
+        TopMetrics:
+          type: string
+          nullable: true
+          description: Top metrics
+          maxLength: 1024
+          example: '[{"network":"Youtube","field":"Followers","label":"subscribers"},{"network":"Facebook","field":"Followers","label":"likes"},{"network":"Twitter","field":"Followers","label":"followers"},{"network":"Instagram","field":"Followers","label":"followers"},{"network":"Google","field":"Followers","label":"followers"},{"network":"Tumblr","field":"Followers","label":"followers"},{"network":"Pinterest","field":"Followers","label":"followers"},{"network":"Snapchat","field":"AvgViewsPerPost","label":"views per snap"},{"network":"Web","field":"Followers","label":"uniques"}]'
+        IsFeatured:
+          type: boolean
+          nullable: true
+          description: Is featured flag
+          default: false
+          example: true
+        DescriptionVisibleSymbolsNumber:
+          type: integer
+          nullable: true
+          description: Description visible symbols number
+          example: 123
+        isPostMigrationProcess:
+          type: boolean
+          nullable: true
+          description: Is post migration process flag
+          default: false
+          example: true
+      required:
+        - Sections
+      minProperties: 1
+    ApprovePublisherToOneSheetBody:
+      type: object
+      properties:
+        Approved:
+          type: boolean
+          example: true
+        ApprovedBy:
+          type: object
+          properties:
+            Email:
+              type: string
+              example: test1@example.com
+            Name:
+              type: string
+              example: First Last
+          required:
+            - Email
+            - Name
+      required:
+        - Approved
+        - ApprovedBy
+    AddPublisherCommentToOneSheetBody:
+      type: object
+      properties:
+        Email:
+          type: string
+          description: Publisher comment email
+          format: email
+          example: test@gmail.com
+        CreatedBy:
+          type: string
+          description: Publisher comment creator
+          example: Test Name
+        Comment:
+          type: string
+          nullable: true
+          description: Publisher comment
+          example: Test comment
+        SocialEdgeId:
+          type: string
+          nullable: true
+          description: Publisher comment SocialEdgeId
+          example: Test Comment SocialEdgeId
+      required:
+        - Email
+        - CreatedBy
+    ErrorResponse:
+      type: object
+      description: Exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          example: CoreException
+        CoreException:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              format: int32
+              example: 404
+            message:
+              type: string
+              description: Exception message
+              example: Supplied ID was not found
+      required:
+        - type
+    PublishOneSheetResponse:
+      type: object
+      description: Publish one-sheet response
+      properties:
+        url:
+          type: string
+          description: Publish one-sheet response URL
+          format: URI
+          example: 'http://onesheets.creatoriq.com/One_Sheet_15_02_63ecf14d1d3a7'
+      required:
+        - url
+    OneSheetsCollectionModel:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - OneSheetsCollection
+          description: Type of Search
+          example: OneSheetsCollection
+        href:
+          type: string
+          description: CreatorIQ API URL to get a collection of onesheets
+          format: URI
+          example: 'https://apis.creatoriq.com/crm/v1/api/onesheets'
+        count:
+          type: integer
+          description: Number of records in current response
+          example: 20
+        total:
+          type: integer
+          description: Total number of found rows
+          example: 1704
+        page:
+          type: integer
+          description: Current page
+          example: 2
+        OneSheetsCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/OneSheetInCollection'
+      required:
+        - type
+        - href
+        - count
+        - total
+        - page
+        - OneSheetsCollection
+    OneSheetInCollection:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - OneSheet
+          description: Type of Search
+          example: OneSheet
+        href:
+          type: string
+          description: CreatorIQ API URL to get onesheet-related information
+          format: URI
+          example: 'https://apis.creatoriq.com/crm/v1/api/onesheet/99999'
+        OneSheet:
+          type: object
+          properties:
+            Id:
+              type: integer
+              example: 395809
+            PartnerId:
+              type: integer
+              example: 21
+            Name:
+              type: string
+              example: LS - Test One-Sheet for 2305 - Stage
+            VanityURL:
+              type: string
+              nullable: true
+              example: LS___Test_One_Sheet_for_2305___Stage_63d93cac18e7a
+            Data:
+              type: string
+              nullable: true
+              description: JSON string containing OneSheet's data
+              example: '{"Sections":{"PersonalData":1}}'
+            CreatedBy:
+              type: string
+              example: New Manager User
+            CreatedAt:
+              type: string
+              example: '2023-01-31 16:07:08'
+            UpdatedBy:
+              type: string
+              nullable: true
+              example: New Manager User
+            UpdatedAt:
+              type: string
+              example: '2023-01-31 16:46:50'
+            Expired:
+              type: boolean
+              example: false
+            ExpireAt:
+              type: string
+              nullable: true
+              example: '2023-02-28 23:59:00'
+            DeleteAt:
+              type: string
+              nullable: true
+              example: null
+            ExternalUser:
+              type: string
+              nullable: true
+              example: null
+            IsPublished:
+              type: integer
+              example: 1
+            SendNotifications:
+              type: integer
+              example: 0
+            AllowComments:
+              type: integer
+              enum:
+                - 0
+                - 1
+              example: 1
+            NotifyEmails:
+              type: string
+              nullable: true
+              example: 'test1@test.com,test2@example.com'
+            SalesSheetImageURL:
+              type: string
+              format: URI
+              example: 'https://s3.us-west-1.amazonaws.com/resources.creatoriq.com/whitelabelling/fyhte56ste/dark_logo_8dq7maua0m.png'
+            TopMetrics:
+              type: array
+              items:
+                type: object
+                properties:
+                  network:
+                    type: string
+                    example: instagram
+                  field:
+                    type: string
+                    example: Followers
+                  label:
+                    type: string
+                    example: Followers
+            CustomOrder:
+              type: string
+              nullable: true
+              example: null
+            VanityHost:
+              type: string
+              nullable: true
+              example: 'http://onesheets.creatoriq.com'
+            DivisionId:
+              type: integer
+              nullable: true
+              example: null
+            CreatedById:
+              type: integer
+              example: 1000120
+            PublishersCount:
+              type: integer
+              example: 20
+            Advertiser:
+              type: object
+              nullable: true
+              properties:
+                AdvertiserId:
+                  type: integer
+                  example: 9999
+                AdvertiserName:
+                  type: string
+                  example: Adv. Name
+                Description:
+                  type: string
+                  nullable: true
+                  example: Some description
+              required:
+                - AdvertiserId
+            Campaign:
+              type: object
+              nullable: true
+              properties:
+                CampaignId:
+                  type: integer
+                  example: 426161
+                CampaignName:
+                  type: string
+                  example: Some Campaign name
+            templateId:
+              type: integer
+              example: 7661
+            TotalReachCalculation:
+              type: string
+              enum:
+                - Selected
+                - Full
+              example: Full
+            Sections:
+              type: object
+              properties:
+                PersonalData:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                PersonalDataAge:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                PersonalDataCountry:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                PersonalDataGender:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                PersonalDataLanguage:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                Audience:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceAge:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceGender:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceCountry:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceState:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceCity:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceEthnicity:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 0
+                AudienceIncomeRange:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceInterests:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceBrands:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceHashTags:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceInfluencers:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                ContentRating:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                SocialMetricsAll:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                FeaturedSponsoredPosts:
+                  type: integer
+                  example: 1
+                FeaturedVideos:
+                  type: integer
+                  example: 4
+                SponsoredVideos:
+                  type: integer
+                  example: 4
+                AllDescription:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                Description:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                ShortDescription:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                Categories:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                Tags:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                SalesSheetImageURL:
+                  type: integer
+                  example: 1
+                SalesSheetLogoURL:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                StatusInCampaign:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+            Template:
+              type: string
+              nullable: true
+              enum:
+                - OneSheet
+                - null
+              example: OneSheet
+            BrandingOptions:
+              type: object
+              properties:
+                colorScheme:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: Default Theme
+                    headerBgColor:
+                      type: array
+                      items:
+                        type: string
+                        example: '#262626'
+                      example:
+                        - '#262626'
+                        - '#26001a'
+                    headerTextColor:
+                      type: string
+                      example: '#f5f7fa'
+                    introBgColor:
+                      type: array
+                      items:
+                        type: string
+                        example: '#4f4a9d'
+                      example:
+                        - '#4f4a9d'
+                        - '#26001a'
+                    introTextColor:
+                      type: string
+                      example: '#ffffff'
+                    pageBgColor:
+                      type: string
+                      example: '#f5f5f5'
+                    featuredBgColor:
+                      type: array
+                      items:
+                        type: string
+                        example: '#4f4a9d'
+                      example:
+                        - '#4f4a9d'
+                        - '#f5f5f5'
+                    featuredTextColor:
+                      type: string
+                      example: '#ffffff'
+                leftAlignment:
+                  type: boolean
+                  nullable: true
+                  example: false
+                squareFrame:
+                  type: integer
+                  nullable: true
+                  enum:
+                    - 0
+                    - 1
+                    - null
+                  example: 0
+                imageSize:
+                  type: string
+                  enum:
+                    - small
+                    - medium
+                    - large
+                  example: small
+            AdvertiserName:
+              type: string
+              nullable: true
+              example: Ada Emetz
+            CampaignName:
+              type: string
+              nullable: true
+              example: Test Campaign
+            ACLSections:
+              type: object
+              properties:
+                AudienceEthnicity:
+                  type: integer
+                  example: 1
+                PersonalDataEthnicBackground:
+                  type: integer
+                  example: 1
+                AudienceIncomeRange:
+                  type: integer
+                  example: 1
+            isEnableThemeImageGlobal:
+              type: boolean
+              example: false
+            isCreatorHighlights:
+              type: boolean
+              nullable: true
+              example: null
+            IsSupportFeaturedCreators:
+              type: boolean
+              example: true
+            CommentsCount:
+              type: integer
+              example: 0
+          required:
+            - Id
+            - PartnerId
+      required:
+        - type
+        - href
+        - OneSheet
+    OneSheetModel:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - OneSheet
+          description: Type of Search
+          example: OneSheet
+        href:
+          type: string
+          description: CreatorIQ API URL to get onesheet
+          format: URI
+          example: 'https://apis.creatoriq.com/crm/v1/api/onesheet/99999'
+        OneSheet:
+          type: object
+          properties:
+            Id:
+              type: integer
+              example: 414422
+            PartnerId:
+              type: integer
+              example: 21
+            Name:
+              type: string
+              example: GB Campaing
+            VanityURL:
+              type: string
+              example: New_one_5c5da7f9c6b03
+            Data:
+              type: string
+              nullable: true
+              description: JSON string containing OneSheet's data
+              example: '{"Sections":{"PersonalData":1}}'
+            CreatedBy:
+              type: string
+              example: New Manager User
+            CreatedAt:
+              type: string
+              example: '2023-01-31 16:07:08'
+            UpdatedBy:
+              type: string
+              nullable: true
+              example: New Manager User
+            UpdatedAt:
+              type: string
+              example: '2023-01-31 16:46:50'
+            Expired:
+              type: boolean
+              example: false
+            ExpireAt:
+              type: string
+              nullable: true
+              example: '2023-02-28 23:59:00'
+            DeleteAt:
+              type: string
+              nullable: true
+              example: null
+            ExternalUser:
+              type: string
+              nullable: true
+              example: null
+            IsPublished:
+              type: integer
+              enum:
+                - 0
+                - 1
+              example: 1
+            SendNotifications:
+              type: integer
+              enum:
+                - 0
+                - 1
+              example: 0
+            AllowComments:
+              type: integer
+              enum:
+                - 0
+                - 1
+              example: 1
+            NotifyEmails:
+              type: string
+              nullable: true
+              example: 'test1@test.com,test2@example.com'
+            SalesSheetImageURL:
+              type: string
+              format: URI
+              example: 'https://social-pictures-storage.s3.amazonaws.com/11e27a5b09bad47e89608ab1343bc6ea.jpeg'
+            TopMetrics:
+              type: array
+              items:
+                type: object
+                properties:
+                  network:
+                    type: string
+                    example: web
+                  field:
+                    type: string
+                    example: MonthlyUniqueVisitors
+                  label:
+                    type: string
+                    example: Last 30 Days Uniques
+            CustomOrder:
+              type: string
+              nullable: true
+              example: null
+            VanityHost:
+              type: string
+              nullable: true
+              example: 'http://onesheets.creatoriq.com'
+            DivisionId:
+              type: integer
+              nullable: true
+              example: null
+            CreatedById:
+              type: integer
+              example: 1000120
+            PublishersCount:
+              type: integer
+              example: 28
+            CreatedByEmail:
+              type: string
+              nullable: true
+              description: Email of the person who has created a OneSheet. Empty when created via API.
+              format: email
+              example: someemail@google.com
+            LastPublishedByEmail:
+              type: string
+              nullable: true
+              description: Email of the person who last published OneSheet. Empty if not yet published (check the IsPublished flag) or published via API.
+              format: email
+              example: someemail@google.com
+            Advertiser:
+              type: object
+              nullable: true
+              properties:
+                AdvertiserId:
+                  type: integer
+                  example: 9999
+                AdvertiserName:
+                  type: string
+                  example: Adv. Name
+                Description:
+                  type: string
+                  nullable: true
+                  example: Some description
+              required:
+                - AdvertiserId
+            Campaign:
+              type: object
+              nullable: true
+              properties:
+                CampaignId:
+                  type: integer
+                  example: 804838
+                CampaignName:
+                  type: string
+                  example: Some Campaign name
+            CreatedFromCampaign:
+              type: boolean
+              example: true
+            Sections:
+              type: object
+              properties:
+                PersonalData:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                PersonalDataAge:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                PersonalDataCountry:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                PersonalDataGender:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                PersonalDataLanguage:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                Audience:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceAge:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceGender:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceCountry:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceState:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceCity:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceEthnicity:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 0
+                AudienceIncomeRange:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceInterests:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceBrands:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceHashTags:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceInfluencers:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                ContentRating:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                SocialMetricsAll:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                FeaturedSponsoredPosts:
+                  type: integer
+                  example: 1
+                FeaturedVideos:
+                  type: integer
+                  example: 4
+                SponsoredVideos:
+                  type: integer
+                  example: 4
+                AllDescription:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                Description:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                ShortDescription:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                Categories:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                Tags:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                SalesSheetImageURL:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                SalesSheetLogoURL:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                StatusInCampaign:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+            Template:
+              type: string
+              nullable: true
+              enum:
+                - OneSheet
+                - null
+              example: OneSheet
+            TotalReachCalculation:
+              type: string
+              enum:
+                - Selected
+                - Full
+              example: Selected
+            DisplayFeaturedCreators:
+              type: boolean
+              example: false
+            isPdfNumberingFromConfig:
+              type: boolean
+              example: true
+            SettingsFeatured:
+              type: object
+              description: SettingsFeatured
+              properties:
+                IsSupportFeaturedCreators:
+                  type: boolean
+                  example: true
+                FeaturedTitle:
+                  type: string
+                  example: Title
+                FeaturedDescription:
+                  type: string
+                  example: Description
+                FeaturedNumbersToShow:
+                  type: integer
+                  example: 1
+            isCreatorHiglights:
+              type: boolean
+              nullable: true
+              example: false
+            AdvertiserName:
+              type: string
+              nullable: true
+              example: Qa_aQ
+            CampaignName:
+              type: string
+              nullable: true
+              example: Some campaign
+            BrandingOptions:
+              type: object
+              properties:
+                colorScheme:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: name
+                    headerBgColor:
+                      type: array
+                      items:
+                        type: string
+                        example: '#223a99'
+                      example:
+                        - '#ffaa00'
+                        - '#223a99'
+                    headerTextColor:
+                      type: string
+                      example: '#223a99'
+                    introBgColor:
+                      type: array
+                      items:
+                        type: string
+                        example: '#223a99'
+                      example:
+                        - '#ffaa00'
+                        - '#223a99'
+                    introTextColor:
+                      type: string
+                      example: '#223a99'
+                    pageBgColor:
+                      type: string
+                      example: '#223a99'
+                    featuredBgColor:
+                      type: array
+                      items:
+                        type: string
+                        example: '#223a99'
+                      example:
+                        - '#ffaa00'
+                        - '#223a99'
+                    featuredTextColor:
+                      type: string
+                      example: '#223a99'
+                leftAlignment:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                squareFrame:
+                  type: integer
+                  nullable: true
+                  enum:
+                    - 0
+                    - 1
+                    - null
+                  example: 0
+                imageSize:
+                  type: string
+                  enum:
+                    - small
+                    - medium
+                    - large
+                  example: small
+            ACLSections:
+              type: object
+              properties:
+                AudienceEthnicity:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                PersonalDataEthnicBackground:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+                AudienceIncomeRange:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 1
+            isEnableThemeImageGlobal:
+              type: boolean
+              example: false
+            CommentsCount:
+              type: integer
+              example: 0
+      required:
+        - type
+        - href
+        - OneSheet
+    OneSheetCreatedModel:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - OneSheet
+          description: Type of Search
+          example: OneSheet
+        href:
+          type: string
+          description: CreatorIQ API URL to get onesheet
+          format: URI
+          example: 'https://apis.creatoriq.com/crm/v1/api/onesheet/99999'
+        OneSheet:
+          type: object
+          properties:
+            Id:
+              type: integer
+              example: 4326
+            Name:
+              type: string
+              example: Test OneSheet
+            VanityURL:
+              type: string
+              example: Test_OneSheet_63dcba77c85
+            CreatedById:
+              type: integer
+              example: 10004117
+            PartnerId:
+              type: integer
+              example: 21
+            UpdatedAt:
+              type: string
+              example: '2023-02-03 07:44:01'
+            CreatedBy:
+              type: string
+              example: Test app
+            SalesSheetImageURL:
+              type: string
+              nullable: true
+              format: URI
+              example: 'https://s3.us-west-1.amazonaws.com/resources.creatoriq.com/whitelabelling/21_b744bd6c3cd/dark_logo_8dq7maua0m.png'
+            VanityHost:
+              type: string
+              format: URI
+              example: 'https://onesheets.creatoriq.com'
+            Expired:
+              type: boolean
+              example: false
+            TotalReachCalculation:
+              type: string
+              enum:
+                - Selected
+                - Full
+              example: Full
+            TopMetrics:
+              type: array
+              items:
+                type: object
+                properties:
+                  network:
+                    type: string
+                    example: web
+                  field:
+                    type: string
+                    example: MonthlyUniqueVisitors
+                  label:
+                    type: string
+                    example: Last 30 Days Uniques
+            PublishersCount:
+              type: integer
+              example: 0
+            CommentsCount:
+              type: integer
+              example: 6
+      required:
+        - type
+        - href
+        - OneSheet
+    OneSheetUpdatedModel:
+      type: object
+      properties:
+        Id:
+          type: integer
+          example: 64826
+        templateId:
+          type: integer
+          nullable: true
+          example: 2351
+      required:
+        - Id
+        - templateId
+    OneSheetCreatorsModel:
+      type: array
+      items:
+        type: object
+        properties:
+          PublisherId:
+            type: integer
+            example: 52362
+          PublisherName:
+            type: string
+            example: Creator Name
+          InvitedToPortal:
+            type: integer
+            enum:
+              - 0
+              - 1
+            example: 0
+          LastUpdated:
+            type: string
+            example: '2023-01-27 12:53:55'
+          Language:
+            type: string
+            nullable: true
+            example: Czech
+          LogoURL:
+            type: string
+            format: URI
+            example: 'https://social-pictures-storage.s3.amazonaws.com/43389c13bcf54f4d3b02809c2cbc40b2_5466075.jpeg'
+          Tags:
+            type: string
+            nullable: true
+            example: 'Tag1,Tag2,TagN'
+          Approved:
+            type: integer
+            nullable: true
+            enum:
+              - 0
+              - 1
+              - null
+            example: 0
+          Position:
+            type: integer
+            description: 'The position field indicates the numeric position of a creator within a specific OneSheet. It represents the order in which creators are arranged, with smaller values typically indicating earlier positions in a OneSheet.'
+            example: 2
+        required:
+          - PublisherId
+          - PublisherName
+          - InvitedToPortal
+          - LastUpdated
+          - Language
+          - LogoURL
+          - Tags
+    OneSheetCreatorModel:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - OneSheetPublisher
+          description: Type of Search
+          example: OneSheetPublisher
+        href:
+          type: string
+          description: CreatorIQ API URL to get onesheet's creator
+          format: URI
+          example: 'https://apis.creatoriq.com/crm/v1/api/onesheet/396725/publisher/13201168?fields=infoForAdvertisers,isPostMigrationProcess'
+        OneSheetPublisher:
+          type: object
+          properties:
+            Id:
+              type: integer
+              example: 7252
+            Linked:
+              type: integer
+              enum:
+                - 0
+                - 1
+              example: 0
+            LinkBroken:
+              type: integer
+              enum:
+                - 0
+                - 1
+              example: 0
+            Unlinked:
+              type: integer
+              enum:
+                - 0
+                - 1
+              example: 1
+            Verified:
+              type: integer
+              enum:
+                - 0
+                - 1
+              example: 0
+            SortOrder:
+              type: integer
+              description: 'The SortOrder field indicates the numeric position of a creator within a specific OneSheet. It represents the order in which creators are arranged, with smaller values typically indicating earlier positions in a OneSheet'
+              example: 1
+            Approved:
+              type: integer
+              nullable: true
+              example: 53826
+            Sections:
+              type: object
+              properties:
+                AudienceEthnicity:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 0
+                AudienceInterests:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 0
+                PersonalDataLanguage:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 0
+              required:
+                - AudienceEthnicity
+                - AudienceInterests
+                - PersonalDataLanguage
+            TopMetrics:
+              type: array
+              items:
+                type: object
+                properties:
+                  network:
+                    type: string
+                    example: snapchat
+                  field:
+                    type: string
+                    example: MonthlyVisitors
+                  label:
+                    type: string
+                    example: Views per Snap
+                required:
+                  - network
+                  - field
+                  - label
+            Data:
+              type: object
+              properties:
+                summary:
+                  type: object
+                  properties:
+                    PublisherId:
+                      type: integer
+                      example: 54376
+                    PublisherName:
+                      type: string
+                      example: Publisher Name
+                    LogoURL:
+                      type: string
+                      format: URI
+                      example: 'https://static-resources.creatoriq.com/social-pictures/facebook/thumbnail/104195071315211.jpg'
+                    LogoHighResURL:
+                      type: string
+                      format: URI
+                      example: 'https://static-resources.creatoriq.com/social-pictures/facebook/thumbnail/104195071315211.jpg'
+                    EthnicBackground:
+                      type: string
+                      nullable: true
+                      example: Caucasian
+                    PublisherVerified:
+                      type: integer
+                      enum:
+                        - 0
+                        - 1
+                      example: 0
+                    Description:
+                      type: string
+                      example: some description
+                    ShortDescription:
+                      type: string
+                      nullable: true
+                      example: some short description
+                    SalesSheetLogoURL:
+                      type: string
+                      nullable: true
+                      format: URI
+                      example: 'https://social-pictures-storage.s3.amazonaws.com/11e27a5b09bad47e89608ab1343bc6efb.jpeg'
+                    SalesSheetImageURL:
+                      type: string
+                      nullable: true
+                      format: URI
+                      example: 'https://social-pictures-storage.s3.amazonaws.com/11e27a5b09bad47e89608ab1343bc6def.jpeg'
+                    Tags:
+                      type: string
+                      nullable: true
+                      example: '"F|som1","Test|436"'
+                    Category:
+                      type: string
+                      nullable: true
+                      example: some
+                    InternalNotes:
+                      type: string
+                      nullable: true
+                      example: some
+                    IsFeatured:
+                      type: boolean
+                      example: true
+                    AudienceSocialNetwork:
+                      type: string
+                      nullable: true
+                      example: facebook
+                    AudienceSocialNetworkId:
+                      type: string
+                      nullable: true
+                      example: jtsu46u
+                    AudienceType:
+                      type: string
+                      example: Blended
+                    Age:
+                      type: integer
+                      example: 33
+                    DateOfBirth:
+                      type: string
+                      example: '1993-08-14'
+                    Language:
+                      type: string
+                      example: Czech
+                    Gender:
+                      type: string
+                      example: Male
+                    Channel:
+                      type: string
+                      nullable: true
+                      example: '104195071315247'
+                    ChannelName:
+                      type: string
+                      example: jtsu46u
+                    FlagshipProperty:
+                      type: string
+                      example: jtsu46u
+                    FlagshipSocialNetwork:
+                      type: string
+                      example: facebook
+                    FlagshipPropertyTitle:
+                      type: string
+                      example: Jitsu-46
+                    Country:
+                      type: string
+                      nullable: true
+                      example: USA
+                    ContentRating:
+                      type: string
+                      nullable: true
+                      enum:
+                        - G
+                        - PG
+                        - PG-13
+                        - R
+                        - NC-17
+                        - null
+                      example: PG-13
+                    FB_Likes:
+                      type: integer
+                      nullable: true
+                      example: 5416
+                    YT_Subscribers:
+                      type: integer
+                      nullable: true
+                      example: 15624
+                    YT_TotalViews:
+                      type: integer
+                      nullable: true
+                      example: 773424
+                    YT_AverageMonthlyViews:
+                      type: integer
+                      nullable: true
+                      example: 626
+                    YT_AvgLastViewsPerVideo:
+                      type: integer
+                      nullable: true
+                      example: 752
+                    TW_Followers:
+                      type: integer
+                      nullable: true
+                      example: 82
+                    VN_Followers:
+                      type: integer
+                      nullable: true
+                      example: 25
+                    IN_Followers:
+                      type: integer
+                      nullable: true
+                      example: 7264
+                    GP_Followers:
+                      type: integer
+                      nullable: true
+                      example: 6436
+                    TB_Followers:
+                      type: integer
+                      nullable: true
+                      example: 26262
+                    PN_Followers:
+                      type: integer
+                      nullable: true
+                      example: 773
+                    SC_Followers:
+                      type: integer
+                      nullable: true
+                      example: 257
+                    WB_Followers:
+                      type: integer
+                      nullable: true
+                      example: 126
+                    SocialAccountsList:
+                      type: object
+                      properties:
+                        facebook:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              Network:
+                                type: string
+                                example: facebook
+                              SocialNetworkId:
+                                type: string
+                                example: '314675243467123'
+                              NetworkUser:
+                                type: string
+                                example: someuser
+                              AccountWeight:
+                                type: integer
+                                example: 10
+                              WebReach:
+                                type: integer
+                                example: 0
+                              Title:
+                                type: string
+                                example: Some User
+                              Followers:
+                                type: integer
+                                example: 14183
+                              LinkedBy:
+                                type: string
+                                nullable: true
+                                example: Oleks
+                              LinkedAt:
+                                type: string
+                                nullable: true
+                                example: '2021-03-20 14:55:43'
+                              isVerifiedBySocialNetwork:
+                                type: integer
+                                enum:
+                                  - 0
+                                  - 1
+                                example: 1
+                              Linked:
+                                type: integer
+                                enum:
+                                  - 0
+                                  - 1
+                                example: 1
+                              Unlinked:
+                                type: integer
+                                enum:
+                                  - 0
+                                  - 1
+                                example: 1
+                              LinkBroken:
+                                type: integer
+                                enum:
+                                  - 0
+                                  - 1
+                                example: 1
+                              Business:
+                                type: integer
+                                enum:
+                                  - 0
+                                  - 1
+                                example: 1
+                              TokenInvalidDate:
+                                type: string
+                                nullable: true
+                                example: '2022-10-20 03:11:57'
+                              DateSocialStatsUpdated:
+                                type: string
+                                nullable: true
+                                example: '2023-02-06T22:31:00'
+                              WhitelistingExpirationDate:
+                                type: string
+                                nullable: true
+                                example: '2023-08-31T07:00:19+00:00'
+                            required:
+                              - Network
+                              - SocialNetworkId
+                              - NetworkUser
+                              - AccountWeight
+                              - WebReach
+                              - Title
+                              - Followers
+                              - LinkedBy
+                              - LinkedAt
+                              - isVerifiedBySocialNetwork
+                              - Linked
+                              - Unlinked
+                              - LinkBroken
+                              - Business
+                              - TokenInvalidDate
+                              - DateSocialStatsUpdated
+                              - WhitelistingExpirationDate
+                    StatusInCampaign:
+                      type: string
+                      nullable: true
+                      enum:
+                        - Accepted
+                        - Invited
+                        - Selected
+                        - Declined
+                        - Candidate
+                        - Interested
+                        - null
+                      example: Accepted
+                    Metrics:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          Network:
+                            type: string
+                            example: facebook
+                          Followers:
+                            type: integer
+                            example: 7133
+                          EngagementRate:
+                            type: number
+                            example: 0.0001
+                          TotalPosts:
+                            type: integer
+                            nullable: true
+                            example: 525
+                          TotalViews:
+                            type: integer
+                            nullable: true
+                            example: 525
+                          TotalLikes:
+                            type: integer
+                            nullable: true
+                            example: 2158
+                          TotalComments:
+                            type: integer
+                            nullable: true
+                            example: 11
+                          TotalShares:
+                            type: integer
+                            nullable: true
+                            example: 642
+                          AverageMonthlyViews:
+                            type: number
+                            nullable: true
+                            example: 3.7338
+                          AvgStreamConcurrentViews:
+                            type: number
+                            nullable: true
+                            example: 62.4372
+                          PeakStreamConcurrentViews:
+                            type: number
+                            nullable: true
+                            example: 373.2483
+                          AvgLikesPerPost:
+                            type: integer
+                            nullable: true
+                            example: 100
+                          AvgCommentsPerPost:
+                            type: integer
+                            nullable: true
+                            example: 27
+                          AvgSharesPerPost:
+                            type: number
+                            nullable: true
+                            example: 0.1667
+                          AvgViewsPerPost:
+                            type: number
+                            nullable: true
+                            example: 2.832
+                          TotalVideos:
+                            type: integer
+                            nullable: true
+                            example: 272
+                          EngagementPercentage:
+                            type: number
+                            nullable: true
+                            example: 0.0001
+                          Last30DaysViews:
+                            type: integer
+                            nullable: true
+                            example: 27
+                          MonthlyUniqueVisitors:
+                            type: integer
+                            nullable: true
+                            example: 27485
+                          MonthlyVisitors:
+                            type: integer
+                            nullable: true
+                            example: 2178
+                          ThreeMonthAverageSessionDuration:
+                            type: integer
+                            nullable: true
+                            example: 27
+                          ThreeMonthAverageViewsPerSession:
+                            type: integer
+                            nullable: true
+                            example: 289
+                          ThreeMonthAverageVisitors:
+                            type: integer
+                            nullable: true
+                            example: 852
+                          NumberOfPosts:
+                            type: integer
+                            nullable: true
+                            example: 511
+                          Stories:
+                            type: integer
+                            nullable: true
+                            example: 27
+                          StoriesViewCount:
+                            type: integer
+                            nullable: true
+                            example: 78
+                          VideoDuration:
+                            type: number
+                            nullable: true
+                            example: 20.7302
+                          EstimatedUniqueStreamViews:
+                            type: integer
+                            nullable: true
+                            example: 22
+                          Subscribers:
+                            type: integer
+                            nullable: true
+                            example: 94
+                          ViewsVideoCount:
+                            type: integer
+                            nullable: true
+                            example: 20
+                          NumberFollowing:
+                            type: integer
+                            nullable: true
+                            example: 27
+                          AvgLastCommentsPerVideo:
+                            type: number
+                            nullable: true
+                            example: 8.3405
+                          AvgLastLikesPerVideo:
+                            type: number
+                            nullable: true
+                            example: 100.8243
+                          AvgLastViewsPerVideo:
+                            type: number
+                            nullable: true
+                            example: 50.7859
+                          MedianViews:
+                            type: integer
+                            nullable: true
+                            example: 30
+                        required:
+                          - Network
+                    AgeRange:
+                      type: string
+                      nullable: true
+                      example: 0-18
+                    LinkToAccount:
+                      type: string
+                      format: URI
+                      example: 'https://facebook.com/82586935257281'
+                    LinkToChannel:
+                      type: string
+                      format: URI
+                      example: 'https://www.youtube.com/channel/UCEgdi0XIyXZ-qJOFPf4rSKw'
+                    metrics:
+                      type: object
+                      nullable: true
+                      properties:
+                        facebook:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              field:
+                                type: string
+                                example: Followers
+                              label:
+                                type: string
+                                example: Followers
+                              isEditable:
+                                type: boolean
+                                example: true
+                              keyMetric:
+                                type: boolean
+                                example: true
+                              oneSheetTopMetric:
+                                type: boolean
+                                example: false
+                              uiOrder:
+                                type: integer
+                                example: 7
+                              uiHelp:
+                                type: string
+                                example: Requires linked social accounts
+                              postType:
+                                type: string
+                                example: video
+                              value:
+                                type: number
+                                nullable: true
+                                example: 1125.7347
+                            required:
+                              - field
+                              - label
+                              - isEditable
+                              - keyMetric
+                              - uiOrder
+                              - value
+                  required:
+                    - PublisherId
+                isPostMigrationProcess:
+                  type: integer
+                  enum:
+                    - 0
+                    - 1
+                  example: 0
+                infoForAdvertisers:
+                  type: object
+                  nullable: true
+                  properties:
+                    FeaturedVideo1:
+                      type: string
+                      format: URI
+                      example: 'https://facebook.com/someuser/posts/92586543699104'
+                    SponsoredVideo1:
+                      type: string
+                      format: URI
+                      example: 'https://facebook.com/someuser/posts/21578246625726'
+                ChannelIds:
+                  type: string
+                  description: Youtube Channels comma-separated list
+                  example: UCEgdi0XIyXZ-qJOFPf4rSKw
+              required:
+                - summary
+          required:
+            - Id
+            - Linked
+            - LinkBroken
+            - Unlinked
+            - Verified
+            - SortOrder
+            - Approved
+            - Sections
+            - Data
+      required:
+        - type
+        - href
+security:
+  - apiKey: []

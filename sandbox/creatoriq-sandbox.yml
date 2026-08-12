@@ -1,0 +1,76 @@
+generated: '2026-08-11'
+method: probed
+source: https://apidocs.creatoriq.com/docs/ciq-api-documentation/bdsnkqszbhdx9-general-fa-qs
+summary: >-
+  CreatorIQ has two distinct sandboxes and they behave very differently. The one it advertises is a
+  provisioned sandbox instance that only a salesperson can give you. The one that actually works
+  without asking anybody is the Prism mock server behind every spec in its Stoplight portal — publicly
+  reachable, returning schema-accurate example payloads, and never mentioned in the docs.
+sandboxes:
+- name: CreatorIQ sandbox instance
+  type: provisioned-tenant
+  self_serve: false
+  url: null
+  access: >-
+    Requested from a CreatorIQ sales representative or account manager, who provisions a sandbox
+    environment and issues an API key for it. Documented in the General FAQ under "Do you have a
+    sandbox environment I can use to explore CIQ APIs?".
+  limitations_quote: >-
+    It is possible to only see some of the comprehensive metrics and data points in the sandbox. Still,
+    our API documentation reference should provide the expected attributes in the response.
+  test_credentials: none published
+  note: >-
+    There is no test-vs-live key prefix, no mode flag, and no documented way to tell from a key whether
+    it points at sandbox or production. The separation is a separate tenant, not a separate credential
+    class.
+- name: Stoplight Prism mock servers
+  type: hosted-mock
+  self_serve: true
+  probed: true
+  auth: >-
+    Prism enforces the declared securityScheme's presence only — any non-empty x-api-key value returns
+    200. An anonymous request returns 401.
+  verified:
+  - url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/122881470/crm/v1/api/publishers
+    http_status: 200
+    content_type: application/json
+    note: Returned a 5.2KB PublisherCollection example with pagination fields (type, page, total, count).
+  - url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/122881470/crm/v1/api/publishers
+    http_status: 401
+    note: Same URL with no x-api-key header.
+  servers:
+  - {api: publishers, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/122881470}
+  - {api: campaigns, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/122561263}
+  - {api: socials, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/124248453}
+  - {api: reports, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/128182572}
+  - {api: lists, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/136084422}
+  - {api: notes, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/133479196}
+  - {api: onesheets, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/133599219}
+  - {api: ecommerce, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/277631821}
+  - {api: link-tracking, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/590576781}
+  - {api: conversion-metrics, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/826062286}
+  - {api: divisions-v1, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/1077470182}
+  - {api: publishers-v2, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/634021009}
+  - {api: campaigns-v2, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/1222906410}
+  - {api: brand-safety, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/1867247637}
+  - {api: brand-safety-draft, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/400287464}
+  - {api: payments, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/1899455629}
+  - {api: webhooks-pubsub, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/124688491}
+  - {api: users, url: https://stoplight.io/mocks/creatoriq/ciq-api-documentation/148267899}
+  caveat: >-
+    These are Stoplight-operated mocks derived from CreatorIQ's own specs, not a CreatorIQ-operated
+    environment. They are correct against the contract and useless for real data. They are recorded
+    because a partner-gated API that can be exercised against schema-accurate responses before a sales
+    conversation is materially more evaluable than one that cannot.
+test_values:
+  cards: null
+  accounts: null
+  magic_identifiers: null
+  note: >-
+    CreatorIQ publishes no magic test identifiers, no test creator handles and no fixture values. The
+    Payments API — which moves creator payouts — has no documented test mode at all.
+time_simulation:
+  supported: false
+webhook_testing:
+  method: Register a webhook.site URL, then cause the real event via API or UI. No trigger/simulate endpoint.
+  docs: https://apidocs.creatoriq.com/docs/ciq-api-documentation/5cbf5f595e39e-testing-webhooks

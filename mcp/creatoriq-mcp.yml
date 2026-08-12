@@ -1,0 +1,817 @@
+generated: '2026-08-11'
+method: derived
+status: candidate
+source: openapi/ (17 documents, 159 operations)
+searched:
+  result: none
+  checked:
+  - CreatorIQ developer portal (apidocs.creatoriq.com, 24 articles + 18 service specs)
+  - creatoriq.com marketing site
+  - npm registry (creatoriq, scope:creatoriq)
+  - github.com/CreatorIQ and github.com/creatoriq-api-documentation (0 public repos)
+  - general web search for a CreatorIQ MCP server
+  note: CreatorIQ publishes no hosted or remote MCP server and no MCP documentation of any kind. No MCPServer
+    pointer is emitted in apis.yml, because no server exists to point at. The tools below are a DERIVED
+    candidate surface, one per real OpenAPI operationId, offered as a starting point — not a claim that
+    CreatorIQ ships them.
+server:
+  name: creatoriq
+  transport: null
+  url: null
+tool_count: 159
+tools:
+- name: BrandSafety
+  method: POST
+  path: /check
+  description: BrandSafety
+  source_operation: openapi/creatoriq-brand-safety-draft-openapi.yml#BrandSafety
+- name: listBrandSafetyPosts
+  method: GET
+  path: /brand-safety/v1/posts
+  description: List brand safety posts
+  source_operation: openapi/creatoriq-brand-safety-openapi.yml#listBrandSafetyPosts
+- name: getBrandSafetyPost
+  method: GET
+  path: /brand-safety/v1/posts/{post_id}
+  description: Get brand safety post details
+  source_operation: openapi/creatoriq-brand-safety-openapi.yml#getBrandSafetyPost
+- name: getCampaignActivity
+  method: GET
+  path: /crm/v1/api/campaign/{campaignId}/activity
+  description: Get Campaign Activity
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#getCampaignActivity
+- name: postCampaignActivity
+  method: POST
+  path: /crm/v1/api/campaign/{campaignId}/activity
+  description: Post Campaign Activity
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#postCampaignActivity
+- name: changePublishersStatus
+  method: PUT
+  path: /crm/v1/api/campaign/{campaignId}/publishers/status
+  description: Change Publishers status
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#changePublishersStatus
+- name: getCampaignExpenses
+  method: GET
+  path: /crm/v1/api/campaign/{campaignId}/expenses
+  description: Get Campaign Expenses
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#getCampaignExpenses
+- name: getCampaignExpensesById
+  method: GET
+  path: /crm/v1/api/campaign/{campaignId}/expense/{expenseId}
+  description: Get Campaign Expense by Expense Id
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#getCampaignExpensesById
+- name: getCampaigns
+  method: GET
+  path: /crm/v1/api/campaigns
+  description: Get Campaigns
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#getCampaigns
+- name: postCampaigns
+  method: POST
+  path: /crm/v1/api/campaigns
+  description: Create Campaign
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#postCampaigns
+- name: getListBrands
+  method: GET
+  path: /crm/v1/api/brands
+  description: List custom brands (advertisers)
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#getListBrands
+- name: createAdvertiserBrand
+  method: POST
+  path: /crm/v1/api/brands
+  description: Create an Advertiser(Custom brand)
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#createAdvertiserBrand
+- name: deleteAdvertiserBrand
+  method: DELETE
+  path: /crm/v1/api/brands/{brandId}
+  description: Delete Advertiser(Custom brand)
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#deleteAdvertiserBrand
+- name: getAdvertiserBrand
+  method: GET
+  path: /crm/v1/api/brands/{brandId}
+  description: Get an Advertiser(Custom brand)
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#getAdvertiserBrand
+- name: updateAdvertiserBrand
+  method: PATCH
+  path: /crm/v1/api/brands/{brandId}
+  description: Update Advertiser(Custom brand)
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#updateAdvertiserBrand
+- name: getCampaignInformation
+  method: GET
+  path: /crm/v1/api/campaign/{campaignId}
+  description: Get Campaign information
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#getCampaignInformation
+- name: patchCampaigns
+  method: PATCH
+  path: /crm/v1/api/campaign/{campaignId}
+  description: Update Campaign
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#patchCampaigns
+- name: deleteCampaign
+  method: DELETE
+  path: /crm/v1/api/campaign/{campaignId}
+  description: Delete Campaign
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#deleteCampaign
+- name: getCampaignPublishers
+  method: GET
+  path: /crm/v1/api/campaign/{campaignId}/publishers
+  description: Get Campaign Publishers
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#getCampaignPublishers
+- name: assignPublisherToCampaign
+  method: POST
+  path: /crm/v1/api/campaign/{campaignId}/publishers
+  description: Assign Publisher to Campaign
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#assignPublisherToCampaign
+- name: deletePublisherFromCampaign
+  method: DELETE
+  path: /crm/v1/api/campaign/{campaignId}/publishers
+  description: Delete Publishers from Campaign
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#deletePublisherFromCampaign
+- name: updateCampaignPublisherDetails
+  method: PATCH
+  path: /crm/v1/api/campaign/{campaignId}/publishers
+  description: Update Campaign Publisher details
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#updateCampaignPublisherDetails
+- name: getCampaignScheduledPosts
+  method: GET
+  path: /crm/v1/api/campaign/{campaignId}/scheduledPosts
+  description: Get Campaign Scheduled Posts
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#getCampaignScheduledPosts
+- name: getCampaignPublishersList
+  method: GET
+  path: /crm/v1/api/campaign/{campaignId}/publishersList
+  description: Get Campaign Publishers List
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#getCampaignPublishersList
+- name: updateActivityAsync
+  method: PATCH
+  path: /crm/v1/api/campaign/{campaignId}/updateActivity
+  description: Update Activity Async
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#updateActivityAsync
+- name: getCampaignDailyStats
+  method: GET
+  path: /crm/v1/api/campaign/{campaignId}/dailyStats
+  description: Get Campaign Daily Stats
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#getCampaignDailyStats
+- name: getCampaignAdditionalRequirements
+  method: GET
+  path: /crm/v1/api/campaign/{campaignId}/publisher/{publisherId}/additionalRequirements
+  description: Get Campaign Additional Requirements
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#getCampaignAdditionalRequirements
+- name: updateCampaignPublisherPaymentSettings
+  method: PATCH
+  path: /crm/v1/api/campaign/{campaignId}/publisher/{publisherId}/payment/settings
+  description: Update campaign publisher payment settings
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#updateCampaignPublisherPaymentSettings
+- name: updateCampaignRequirementPaymentSettings
+  method: PATCH
+  path: /crm/v1/api/campaign/{campaignId}/requirement/{postId}/payment/settings
+  description: Update campaign publisher payment value for the requirement
+  source_operation: openapi/creatoriq-campaigns-openapi.yml#updateCampaignRequirementPaymentSettings
+- name: getConversionMetrics
+  method: GET
+  path: /crm/v1/api/conversions
+  description: Retrieve Conversion Metrics Configuration
+  source_operation: openapi/creatoriq-conversion-metrics-openapi.yml#getConversionMetrics
+- name: getConversionMetricById
+  method: GET
+  path: /crm/v1/api/conversion/{conversionMetricId}
+  description: Retrieve Conversion Metric Configuration by ID
+  source_operation: openapi/creatoriq-conversion-metrics-openapi.yml#getConversionMetricById
+- name: updateConversionMetric
+  method: PATCH
+  path: /crm/v1/api/conversion/{conversionMetricId}
+  description: Update Existing Conversion Metric
+  source_operation: openapi/creatoriq-conversion-metrics-openapi.yml#updateConversionMetric
+- name: getCampaignConversionsWithData
+  method: GET
+  path: /crm/v1/api/campaign/{campaignId}/conversionsWithData
+  description: Get Conversion Names with Data
+  source_operation: openapi/creatoriq-conversion-metrics-openapi.yml#getCampaignConversionsWithData
+- name: upsertCampaignConversionMetrics
+  method: POST
+  path: /crm/v1/api/campaign/{campaignId}/conversionMetrics
+  description: Upsert Conversion Metrics for a Campaign
+  source_operation: openapi/creatoriq-conversion-metrics-openapi.yml#upsertCampaignConversionMetrics
+- name: getCampaignConversionMetricByName
+  method: GET
+  path: /crm/v1/api/campaign/{campaignId}/tracking-link/{trackingLinkId}/conversionMetric/{conversionMetricName}
+  description: Get Conversion Metric by Name
+  source_operation: openapi/creatoriq-conversion-metrics-openapi.yml#getCampaignConversionMetricByName
+- name: getAllCampaignConversionMetricsByTrackingLink
+  method: GET
+  path: /crm/v1/api/campaign/{campaignId}/tracking-link/{trackingLinkId}/conversionMetrics
+  description: Get All Conversion Metrics by Tracking Link ID
+  source_operation: openapi/creatoriq-conversion-metrics-openapi.yml#getAllCampaignConversionMetricsByTrackingLink
+- name: getCampaignPostConversionMetrics
+  method: GET
+  path: /crm/v1/api/campaign/{campaignId}/post/{postId}/conversionMetrics
+  description: Get Conversion Metrics for a Specific Post
+  source_operation: openapi/creatoriq-conversion-metrics-openapi.yml#getCampaignPostConversionMetrics
+- name: getCampaignPublisherConversionMetrics
+  method: GET
+  path: /crm/v1/api/campaign/{campaignId}/publisher/{publisherId}/conversionMetrics
+  description: Get Conversion Metrics by Publisher
+  source_operation: openapi/creatoriq-conversion-metrics-openapi.yml#getCampaignPublisherConversionMetrics
+- name: getCampaignPublisherPostConversionMetrics
+  method: GET
+  path: /crm/v1/api/campaign/{campaignId}/publisher/{publisherId}/conversionPostMetrics
+  description: Get Conversion Metrics by Publisher (Post-Level)
+  source_operation: openapi/creatoriq-conversion-metrics-openapi.yml#getCampaignPublisherPostConversionMetrics
+- name: patchEcommercePromo-codesId
+  method: PATCH
+  path: /crm/v1/api/ecommerce/promo-codes/{id}
+  description: Update publisher promo code
+  source_operation: openapi/creatoriq-ecommerce-openapi.yml#patchEcommercePromo-codesId
+- name: getEcommercePromo-codesIntegrations
+  method: GET
+  path: /crm/v1/api/ecommerce/promo-codes/integrations
+  description: Get integrations to add promo-code(s)
+  source_operation: openapi/creatoriq-ecommerce-openapi.yml#getEcommercePromo-codesIntegrations
+- name: getEcommerceIntegrationsAccounts
+  method: GET
+  path: /crm/v1/api/ecommerce/integrations/accounts
+  description: Get connected accounts list
+  source_operation: openapi/creatoriq-ecommerce-openapi.yml#getEcommerceIntegrationsAccounts
+- name: deleteEcommercePromo-codesPromoCodePublisherIdPublisherPublisherId
+  method: DELETE
+  path: /crm/v1/api/ecommerce/promo-codes/{promoCodePublisherId}/publisher/{publisherId}
+  description: Delete publisher promo-code
+  source_operation: openapi/creatoriq-ecommerce-openapi.yml#deleteEcommercePromo-codesPromoCodePublisherIdPublisherPublisherId
+- name: postEcommercePromo-codes
+  method: POST
+  path: /crm/v1/api/ecommerce/promo-codes
+  description: Create new promo-codes
+  source_operation: openapi/creatoriq-ecommerce-openapi.yml#postEcommercePromo-codes
+- name: getEcommercePromo-codes
+  method: GET
+  path: /crm/v1/api/ecommerce/promo-codes
+  description: Get promo-codes list
+  source_operation: openapi/creatoriq-ecommerce-openapi.yml#getEcommercePromo-codes
+- name: getEcommerceTransactions
+  method: GET
+  path: /crm/v1/api/ecommerce/transactions
+  description: Get transactions
+  source_operation: openapi/creatoriq-ecommerce-openapi.yml#getEcommerceTransactions
+- name: getEcommerceTransactionsHistory
+  method: GET
+  path: /crm/v1/api/ecommerce/transactions/history
+  description: Get transactions history
+  source_operation: openapi/creatoriq-ecommerce-openapi.yml#getEcommerceTransactionsHistory
+- name: postLink
+  method: POST
+  path: /ecommerce/v1/link-management/link
+  description: Create new link
+  source_operation: openapi/creatoriq-link-tracking-openapi.yml#postLink
+- name: getLinks
+  method: GET
+  path: /ecommerce/v1/link-management/links
+  description: Get links list
+  source_operation: openapi/creatoriq-link-tracking-openapi.yml#getLinks
+- name: postLinks
+  method: POST
+  path: /ecommerce/v1/link-management/links
+  description: Create new links
+  source_operation: openapi/creatoriq-link-tracking-openapi.yml#postLinks
+- name: patchtLink
+  method: PATCH
+  path: /ecommerce/v1/link-management/link/{id}
+  description: Update a link
+  source_operation: openapi/creatoriq-link-tracking-openapi.yml#patchtLink
+- name: getListsCollection
+  method: GET
+  path: /crm/v1/api/lists
+  description: Get Lists collection
+  source_operation: openapi/creatoriq-lists-openapi.yml#getListsCollection
+- name: createList
+  method: POST
+  path: /crm/v1/api/lists
+  description: Create Publishers List
+  source_operation: openapi/creatoriq-lists-openapi.yml#createList
+- name: postPublisherToList
+  method: POST
+  path: /crm/v1/api/list/{listId}/publishers
+  description: Add a Publisher to a List
+  source_operation: openapi/creatoriq-lists-openapi.yml#postPublisherToList
+- name: deletePublisherFromList
+  method: DELETE
+  path: /crm/v1/api/list/{listId}/publishers
+  description: Delete a Publisher from a List
+  source_operation: openapi/creatoriq-lists-openapi.yml#deletePublisherFromList
+- name: getSingleList
+  method: GET
+  path: /crm/v1/api/list/{listId}
+  description: Get a single List
+  source_operation: openapi/creatoriq-lists-openapi.yml#getSingleList
+- name: deletePublisherList
+  method: DELETE
+  path: /crm/v1/api/list/{listId}
+  description: Delete a Publisher List
+  source_operation: openapi/creatoriq-lists-openapi.yml#deletePublisherList
+- name: updateList
+  method: PATCH
+  path: /crm/v1/api/list/{listId}
+  description: Update List
+  source_operation: openapi/creatoriq-lists-openapi.yml#updateList
+- name: getSingleDimensionFromNotes
+  method: GET
+  path: /crm/v1/api/notes/{entity}/{entityId}/{dimension}
+  description: Get Single Dimension from Notes
+  source_operation: openapi/creatoriq-notes-openapi.yml#getSingleDimensionFromNotes
+- name: getNotes
+  method: GET
+  path: /crm/v1/api/notes/{entity}/{entityId}
+  description: Get Notes
+  source_operation: openapi/creatoriq-notes-openapi.yml#getNotes
+- name: addNotes
+  method: POST
+  path: /crm/v1/api/notes/{entity}/{entityId}
+  description: Add Notes
+  source_operation: openapi/creatoriq-notes-openapi.yml#addNotes
+- name: getOnesheetsCollection
+  method: GET
+  path: /crm/v1/api/onesheets
+  description: Get Onesheets collection
+  source_operation: openapi/creatoriq-onesheets-openapi.yml#getOnesheetsCollection
+- name: createOnesheet
+  method: POST
+  path: /crm/v1/api/onesheets
+  description: Create a new OneSheet
+  source_operation: openapi/creatoriq-onesheets-openapi.yml#createOnesheet
+- name: getOnesheet
+  method: GET
+  path: /crm/v1/api/onesheet/{oneSheetId}
+  description: Get Single Onesheet
+  source_operation: openapi/creatoriq-onesheets-openapi.yml#getOnesheet
+- name: updateOnesheet
+  method: PATCH
+  path: /crm/v1/api/onesheet/{oneSheetId}
+  description: Update Onesheet
+  source_operation: openapi/creatoriq-onesheets-openapi.yml#updateOnesheet
+- name: deleteOnesheet
+  method: DELETE
+  path: /crm/v1/api/onesheet/{oneSheetId}
+  description: Delete Onesheet
+  source_operation: openapi/creatoriq-onesheets-openapi.yml#deleteOnesheet
+- name: getCreatorsOfOnesheet
+  method: GET
+  path: /crm/v1/api/onesheet/{oneSheetId}/publishers
+  description: Gets Onesheet's Creators
+  source_operation: openapi/creatoriq-onesheets-openapi.yml#getCreatorsOfOnesheet
+- name: addCreatorToOnesheet
+  method: POST
+  path: /crm/v1/api/onesheet/{oneSheetId}/publishers
+  description: Add Creator to Onesheet
+  source_operation: openapi/creatoriq-onesheets-openapi.yml#addCreatorToOnesheet
+- name: getOnesheetSingleCreator
+  method: GET
+  path: /crm/v1/api/onesheet/{oneSheetId}/publisher/{publisherId}
+  description: Get a certain Onesheet's Creator
+  source_operation: openapi/creatoriq-onesheets-openapi.yml#getOnesheetSingleCreator
+- name: RemoveCreator
+  method: DELETE
+  path: /crm/v1/api/onesheet/{oneSheetId}/publisher/{publisherId}
+  description: Remove creator from one-sheet
+  source_operation: openapi/creatoriq-onesheets-openapi.yml#RemoveCreator
+- name: UpdateOneSheetCreator
+  method: PATCH
+  path: /crm/v1/api/onesheet/{oneSheetId}/publisher/{publisherId}
+  description: Update one-sheet creator
+  source_operation: openapi/creatoriq-onesheets-openapi.yml#UpdateOneSheetCreator
+- name: approveCreatorToOnesheet
+  method: PATCH
+  path: /crm/v1/api/onesheet/{oneSheetId}/publisher/{publisherId}/approve
+  description: Approve Creator to Onesheet
+  source_operation: openapi/creatoriq-onesheets-openapi.yml#approveCreatorToOnesheet
+- name: AddPublisherComment
+  method: POST
+  path: /crm/v1/api/onesheet/{oneSheetId}/publisher/{publisherId}/comments
+  description: Add publisher comment to one-sheet
+  source_operation: openapi/creatoriq-onesheets-openapi.yml#AddPublisherComment
+- name: PublishOneSheet
+  method: POST
+  path: /crm/v1/api/onesheet/{oneSheetId}/publish
+  description: Publish one-sheet
+  source_operation: openapi/creatoriq-onesheets-openapi.yml#PublishOneSheet
+- name: listPayouts
+  method: GET
+  path: /payments/v1/payouts
+  description: List payouts
+  source_operation: openapi/creatoriq-payments-openapi.yml#listPayouts
+- name: listPayables
+  method: GET
+  path: /payments/v1/payables
+  description: List payables
+  source_operation: openapi/creatoriq-payments-openapi.yml#listPayables
+- name: getPaymentInfoCollectionStatus
+  method: GET
+  path: /payments/v1/publishers/payment-info-collection-status
+  description: Get creators' payment info collection status
+  source_operation: openapi/creatoriq-payments-openapi.yml#getPaymentInfoCollectionStatus
+- name: getPublisherPublisherId
+  method: GET
+  path: /crm/v1/api/publisher/{publisherId}
+  description: Find Publisher by ID
+  source_operation: openapi/creatoriq-publishers-openapi.yml#getPublisherPublisherId
+- name: patchPublisherPublisherIdAccounts
+  method: PATCH
+  path: /crm/v1/api/publisher/{publisherId}
+  description: Update Publisher Information
+  source_operation: openapi/creatoriq-publishers-openapi.yml#patchPublisherPublisherIdAccounts
+- name: deletePublisher
+  method: DELETE
+  path: /crm/v1/api/publisher/{publisherId}
+  description: Delete Publisher from Network
+  source_operation: openapi/creatoriq-publishers-openapi.yml#deletePublisher
+- name: getPublisherIdScheduledPosts
+  method: GET
+  path: /crm/v1/api/publisher/{publisherId}/scheduledPosts
+  description: Get Publisher ScheduledPosts info
+  source_operation: openapi/creatoriq-publishers-openapi.yml#getPublisherIdScheduledPosts
+- name: getMultiplePublishersAccounts
+  method: GET
+  path: /crm/v1/api/publishers/{publisherIds}/accounts
+  description: GET social accounts for multiple publishers.
+  source_operation: openapi/creatoriq-publishers-openapi.yml#getMultiplePublishersAccounts
+- name: getPublisherAccounts
+  method: GET
+  path: /crm/v1/api/publisher/{publisherId}/accounts
+  description: GET publisher's social accounts
+  source_operation: openapi/creatoriq-publishers-openapi.yml#getPublisherAccounts
+- name: addPublisherSocialAccount
+  method: POST
+  path: /crm/v1/api/publisher/{publisherId}/accounts
+  description: Add Publisher Social accounts information
+  source_operation: openapi/creatoriq-publishers-openapi.yml#addPublisherSocialAccount
+- name: updatePublisherSocialAccounts
+  method: PATCH
+  path: /crm/v1/api/publisher/{publisherId}/accounts
+  description: Update Publisher Social accounts information
+  source_operation: openapi/creatoriq-publishers-openapi.yml#updatePublisherSocialAccounts
+- name: deletePublisherPublisherIdAccounts
+  method: DELETE
+  path: /crm/v1/api/publisher/{publisherId}/accounts
+  description: Delete Publisher Social accounts
+  source_operation: openapi/creatoriq-publishers-openapi.yml#deletePublisherPublisherIdAccounts
+- name: getContactData
+  method: GET
+  path: /crm/v1/api/data/contact/{contactId}
+  description: Get Contact Data
+  source_operation: openapi/creatoriq-publishers-openapi.yml#getContactData
+- name: PATCHContactData
+  method: PATCH
+  path: /crm/v1/api/data/contact/{contactId}
+  description: Edit publisher contact data
+  source_operation: openapi/creatoriq-publishers-openapi.yml#PATCHContactData
+- name: deletePublisherContact
+  method: DELETE
+  path: /crm/v1/api/data/contact/{contactId}
+  description: Delete a Publisher Contact
+  source_operation: openapi/creatoriq-publishers-openapi.yml#deletePublisherContact
+- name: POSTContactData
+  method: POST
+  path: /crm/v1/api/data/contact
+  description: Create publisher contact data
+  source_operation: openapi/creatoriq-publishers-openapi.yml#POSTContactData
+- name: getPublisherLogs
+  method: GET
+  path: /crm/v1/api/publisher/{publisherId}/log
+  description: Get Publisher Log
+  source_operation: openapi/creatoriq-publishers-openapi.yml#getPublisherLogs
+- name: getPublisherAudience
+  method: GET
+  path: /crm/v1/api/publisher/{publisherId}/audience
+  description: Get Publisher Audience
+  source_operation: openapi/creatoriq-publishers-openapi.yml#getPublisherAudience
+- name: getAllAvailablePublishersStatuses
+  method: GET
+  path: /crm/v1/api/statuses
+  description: Get all available Publishers statuses
+  source_operation: openapi/creatoriq-publishers-openapi.yml#getAllAvailablePublishersStatuses
+- name: getAllPublishers
+  method: GET
+  path: /crm/v1/api/publishers
+  description: Get all Publishers
+  source_operation: openapi/creatoriq-publishers-openapi.yml#getAllPublishers
+- name: createPublisher
+  method: POST
+  path: /crm/v1/api/publishers
+  description: Create publisher
+  source_operation: openapi/creatoriq-publishers-openapi.yml#createPublisher
+- name: getAllPublishersAccountsChanges
+  method: GET
+  path: /crm/v1/api/reports/PublishersDataChanges
+  description: Get all Publishers accounts changes
+  source_operation: openapi/creatoriq-publishers-openapi.yml#getAllPublishersAccountsChanges
+- name: sendMessageToPublisher
+  method: POST
+  path: /crm/v1/api/communication/send
+  description: Send a message to publisher
+  source_operation: openapi/creatoriq-publishers-openapi.yml#sendMessageToPublisher
+- name: getCampaignsAssignedToPublisher
+  method: GET
+  path: /crm/v1/api/publisher/{publisherId}/campaigns
+  description: Get Campaigns assigned to Publisher
+  source_operation: openapi/creatoriq-publishers-openapi.yml#getCampaignsAssignedToPublisher
+- name: sendMessageToPublisherRegardingToParticularCampaign)
+  method: POST
+  path: /crm/v1/api/communication/CampaignMessaging
+  description: Send a message to publisher (regarding to particular campaign)
+  source_operation: openapi/creatoriq-publishers-openapi.yml#sendMessageToPublisherRegardingToParticularCampaign)
+- name: sendMessageToPublishersBulk
+  method: POST
+  path: /crm/v1/api/communication/sendBulk
+  description: Send emails to publishers in bulk.
+  source_operation: openapi/creatoriq-publishers-openapi.yml#sendMessageToPublishersBulk
+- name: getPublisherPublisherIdProperty
+  method: GET
+  path: /crm/v1/api/publisher/{publisherId}/{property}
+  description: Get Publisher property details
+  source_operation: openapi/creatoriq-publishers-openapi.yml#getPublisherPublisherIdProperty
+- name: addPublishersTags
+  method: POST
+  path: /crm/v1/api/publishers/tags
+  description: Add tags to publishers
+  source_operation: openapi/creatoriq-publishers-openapi.yml#addPublishersTags
+- name: deletePublishersTags
+  method: DELETE
+  path: /crm/v1/api/publishers/tags
+  description: Remove tags from publishers
+  source_operation: openapi/creatoriq-publishers-openapi.yml#deletePublishersTags
+- name: updatePublisherSocialAccount
+  method: PATCH
+  path: /crm/v1/api/publisher/{publisherId}/updateAccounts
+  description: Trigger an update for a particular Publisher's social account
+  source_operation: openapi/creatoriq-publishers-openapi.yml#updatePublisherSocialAccount
+- name: manualAudienceAddEdit
+  method: PATCH
+  path: /crm/v1/api/data/publisher/{publisherId}/audience
+  description: Add/Update the audience data for a publisher.
+  source_operation: openapi/creatoriq-publishers-openapi.yml#manualAudienceAddEdit
+- name: getCampaignPosts
+  method: GET
+  path: /crm/v1/api/view?view=Reports/Campaigns/CampaignPosts
+  description: Get campaign post statistics
+  source_operation: openapi/creatoriq-reports-openapi.yml#getCampaignPosts
+- name: getSummaryReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/Campaigns/CampaignsSummary
+  description: Get campaign summary report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getSummaryReport
+- name: getCampaignsTopInfluencers
+  method: GET
+  path: /crm/v1/api/view?view=Reports/Campaigns/CampaignsTopInfluencers
+  description: Get campaigns top creators
+  source_operation: openapi/creatoriq-reports-openapi.yml#getCampaignsTopInfluencers
+- name: getCampaignPublishersReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/Campaigns/CampaignPublishers
+  description: Get Campaign publishers report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getCampaignPublishersReport
+- name: getCampaignVideos
+  method: GET
+  path: /crm/v1/api/view?view=Reports/Campaigns/CampaignVideos
+  description: Get videos views for all campaign videos
+  source_operation: openapi/creatoriq-reports-openapi.yml#getCampaignVideos
+- name: getInstagramPostsStatistics
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CampaignsByNetwork/InstagramCampaignPosts
+  description: Get Instagram campaign posts statistics
+  source_operation: openapi/creatoriq-reports-openapi.yml#getInstagramPostsStatistics
+- name: getInstagramWeeklyVideos
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CampaignsByNetwork/InstagramWeeklyCampaignUpdates
+  description: Get Instagram weekly updates
+  source_operation: openapi/creatoriq-reports-openapi.yml#getInstagramWeeklyVideos
+- name: getYoutubeCampaignPosts
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CampaignsByNetwork/YoutubeCampaignPosts
+  description: Get info for youtube campaign posts
+  source_operation: openapi/creatoriq-reports-openapi.yml#getYoutubeCampaignPosts
+- name: getYoutubeWeeklyCampaignUpdates
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CampaignsByNetwork/YoutubeWeeklyCampaignUpdates
+  description: Get youtube weekly campaign updates
+  source_operation: openapi/creatoriq-reports-openapi.yml#getYoutubeWeeklyCampaignUpdates
+- name: getFraudSummary
+  method: GET
+  path: /crm/v1/api/view?view=Reports/FollowerFraudAudit/Summary
+  description: Get fraud statistics for publishers
+  source_operation: openapi/creatoriq-reports-openapi.yml#getFraudSummary
+- name: getCreatorsPaymentCollectionStatusDetails
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CreatorsPaymentCollectionStatusDetails
+  description: Get creator's payment info collection status
+  source_operation: openapi/creatoriq-reports-openapi.yml#getCreatorsPaymentCollectionStatusDetails
+- name: getGrowsRateSummary
+  method: GET
+  path: /crm/v1/api/view?view=Reports/FollowerFraudAudit/GrowthRate
+  description: Get GrowthRate for creators
+  source_operation: openapi/creatoriq-reports-openapi.yml#getGrowsRateSummary
+- name: getEngagementRate
+  method: GET
+  path: /crm/v1/api/view?view=Reports/FollowerFraudAudit/EngagementRate
+  description: Get EngagementRate for publishers
+  source_operation: openapi/creatoriq-reports-openapi.yml#getEngagementRate
+- name: getBrokenLinks
+  method: GET
+  path: /crm/v1/api/view?view=Reports/LinkedAccountsByNetwork/BrokenLinks
+  description: Get broken links with linked account
+  source_operation: openapi/creatoriq-reports-openapi.yml#getBrokenLinks
+- name: getLinkedAccounts
+  method: GET
+  path: /crm/v1/api/view?view=Reports/LinkedAccounts/LinkedAccountsReport
+  description: Get linked accounts
+  source_operation: openapi/creatoriq-reports-openapi.yml#getLinkedAccounts
+- name: getAllLinkedAccounts
+  method: GET
+  path: /crm/v1/api/view?view=Reports/LinkedAccountsByNetwork/LinkedAccounts
+  description: Get all linked account
+  source_operation: openapi/creatoriq-reports-openapi.yml#getAllLinkedAccounts
+- name: getNonLinkedAccounts
+  method: GET
+  path: /crm/v1/api/view?view=Reports/LinkedAccountsByNetwork/NonLinkedAccounts
+  description: Get non-linked accounts
+  source_operation: openapi/creatoriq-reports-openapi.yml#getNonLinkedAccounts
+- name: getCreatorPayments
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CreatorPaymentsReport
+  description: Get Creator Payments
+  source_operation: openapi/creatoriq-reports-openapi.yml#getCreatorPayments
+- name: getCampaignsPosts
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CampaignsByNetwork/CampaignsPosts
+  description: Get Campaigns Posts Statistics
+  source_operation: openapi/creatoriq-reports-openapi.yml#getCampaignsPosts
+- name: getCampaignMessaging
+  method: GET
+  path: /crm/v1/api/view?view=Reports/Campaigns/CampaignMessaging
+  description: Get Campaign Messaging
+  source_operation: openapi/creatoriq-reports-openapi.yml#getCampaignMessaging
+- name: getReachReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/ReachReport
+  description: Get Reach Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getReachReport
+- name: getCampaignsReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CampaignsByNetwork/Campaigns
+  description: Get Campaigns Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getCampaignsReport
+- name: getCampaignWeeklyUpdatesReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CampaignsByNetwork/CampaignWeeklyUpdates
+  description: Get Campaign Weekly Updates Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getCampaignWeeklyUpdatesReport
+- name: getFacebookWeeklyCampaignUpdatesReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CampaignsByNetwork/FacebookWeeklyCampaignUpdates
+  description: Get Facebook Weekly Campaign Updates Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getFacebookWeeklyCampaignUpdatesReport
+- name: getTwitterCampaignPostsReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CampaignsByNetwork/TwitterCampaignPosts
+  description: Get Twitter Campaign Posts Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getTwitterCampaignPostsReport
+- name: getTwitterWeeklyCampaignUpdatesReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CampaignsByNetwork/TwitterWeeklyCampaignUpdates
+  description: Get Twitter Weekly Campaign Updates Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getTwitterWeeklyCampaignUpdatesReport
+- name: getPinterestCampaignPostsReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CampaignsByNetwork/PinterestCampaignPosts
+  description: Get Pinterest Campaign Posts Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getPinterestCampaignPostsReport
+- name: getPinterestWeeklyCampaignUpdatesReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CampaignsByNetwork/PinterestWeeklyCampaignUpdates
+  description: Get Pinterest Weekly Campaign Updates Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getPinterestWeeklyCampaignUpdatesReport
+- name: getTwitchCampaignPostsReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CampaignsByNetwork/TwitchCampaignPosts
+  description: Get Twitch Campaign Posts Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getTwitchCampaignPostsReport
+- name: getTwitchWeeklyCampaignUpdatesReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CampaignsByNetwork/TwitchWeeklyCampaignUpdates
+  description: Get Twitch Weekly Campaign Updates Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getTwitchWeeklyCampaignUpdatesReport
+- name: getYoutubeChannelReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/Channels
+  description: YouTube Channel Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getYoutubeChannelReport
+- name: getCreatorContactInfoReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CreatorContactInfo
+  description: Get Creator Contact Info Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getCreatorContactInfoReport
+- name: getImportTemplateReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/ImportTemplateReport
+  description: Get Import Template Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getImportTemplateReport
+- name: getDailyCampaignPosts
+  method: GET
+  path: /crm/v1/api/view?view=Reports/DailyCampaignPosts
+  description: Get Daily Campaign Posts Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getDailyCampaignPosts
+- name: getCreatorPromote
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CreatorPromoteReport
+  description: Get Creator Promote Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getCreatorPromote
+- name: getCreatorsReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CreatorsReport
+  description: Get Creators Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getCreatorsReport
+- name: getCreatorConnect
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CreatorConnectCreators
+  description: Get Creator Connect Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getCreatorConnect
+- name: getPublishersList
+  method: GET
+  path: /crm/v1/api/view?view=Reports/Publishers
+  description: Get Publishers Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getPublishersList
+- name: getOneSheetBuilder
+  method: GET
+  path: /crm/v1/api/view?view=OneSheetBuilder/OneSheetBuilder
+  description: Get OneSheet Builder
+  source_operation: openapi/creatoriq-reports-openapi.yml#getOneSheetBuilder
+- name: getCJAccountsReport
+  method: GET
+  path: /crm/v1/api/view?view=Reports/CJAccountsReport
+  description: CJ Accounts Report
+  source_operation: openapi/creatoriq-reports-openapi.yml#getCJAccountsReport
+- name: getInstagramStoriesHistory
+  method: GET
+  path: /crm/v1/api/account/instagram/{id}/storiesHistory
+  description: Get stories history
+  source_operation: openapi/creatoriq-socials-openapi.yml#getInstagramStoriesHistory
+- name: getSocialAccountData
+  method: GET
+  path: /crm/v1/api/social/accountInfo
+  description: Get social account data
+  source_operation: openapi/creatoriq-socials-openapi.yml#getSocialAccountData
+- name: getSocialPostInfo
+  method: GET
+  path: /crm/v1/api/social/postInfo
+  description: Get Social PostInfo
+  source_operation: openapi/creatoriq-socials-openapi.yml#getSocialPostInfo
+- name: getUserInSocialNetwork
+  method: GET
+  path: /crm/v1/api/accounts/lookup
+  description: Search user in social network or in the CreatorIQ database
+  source_operation: openapi/creatoriq-socials-openapi.yml#getUserInSocialNetwork
+- name: getSocialAccountHistory
+  method: GET
+  path: /crm/v1/api/{network}/account/{socialNetworkId}/history
+  description: Get social account history
+  source_operation: openapi/creatoriq-socials-openapi.yml#getSocialAccountHistory
+- name: getPartnerDivisions
+  method: GET
+  path: /crm/v1/api/divisions
+  description: Get divisions list
+  source_operation: openapi/creatoriq-v1-divisions-openapi.yml#getPartnerDivisions
+- name: getPartnerDivision
+  method: GET
+  path: /crm/v1/api/division/{divisionId}
+  description: Get division by id
+  source_operation: openapi/creatoriq-v1-divisions-openapi.yml#getPartnerDivision
+- name: GetPartnerBrand
+  method: GET
+  path: /crm/v2/api/brands
+  description: List global brands associated with partner
+  source_operation: openapi/creatoriq-v2-campaigns-openapi.yml#GetPartnerBrand
+- name: getBrandById
+  method: GET
+  path: /crm/v2/api/brands/{brandId}
+  description: Get global brand
+  source_operation: openapi/creatoriq-v2-campaigns-openapi.yml#getBrandById
+- name: searchBrandsByName
+  method: GET
+  path: /crm/v2/api/brands/search
+  description: Search global brands by name
+  source_operation: openapi/creatoriq-v2-campaigns-openapi.yml#searchBrandsByName
+- name: getMultiplePublishersAccounts
+  method: GET
+  path: /crm/v2/api/publishers/{publisherIds}/accounts
+  description: GET social accounts for multiple publishers.
+  source_operation: openapi/creatoriq-v2-publishers-openapi.yml#getMultiplePublishersAccounts
+- name: SubscriptionsController_subscribe
+  method: POST
+  path: /subscribe
+  description: Subscribe to event
+  source_operation: openapi/creatoriq-webhooks-openapi.yml#SubscriptionsController_subscribe
+- name: SubscriptionsController_unsubscribe
+  method: DELETE
+  path: /unsubscribe
+  description: Unsubscribe from event
+  source_operation: openapi/creatoriq-webhooks-openapi.yml#SubscriptionsController_unsubscribe
+- name: SubscriptionsController_getSubscriptions
+  method: GET
+  path: /subscriptions
+  description: Get my subscriptions
+  source_operation: openapi/creatoriq-webhooks-openapi.yml#SubscriptionsController_getSubscriptions

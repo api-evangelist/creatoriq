@@ -1,0 +1,893 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: CreatorIQ CRM Lists API
+  description: CreatorIQ CRM APIs for Lists resource
+  termsOfService: 'https://www.creatoriq.com/legal/terms-of-use'
+  contact:
+    name: CreatorIQ
+    url: 'https://www.creatoriq.com'
+    email: support@creatoriq.com
+  license:
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+    name: Apache 2.0
+servers:
+  - url: 'https://apis.creatoriq.com'
+    description: Live
+paths:
+  /crm/v1/api/lists:
+    get:
+      tags:
+        - Lists
+      summary: Get Lists collection
+      description: Return a paginated collection of Lists
+      operationId: getListsCollection
+      parameters:
+        - name: page
+          in: query
+          description: Collection's page to show
+          required: false
+          schema:
+            type: integer
+            default: 1
+            example: 3
+          examples:
+            default:
+              value: 3
+        - name: size
+          in: query
+          description: Amount of items on the page. Default is 20
+          required: false
+          schema:
+            type: integer
+            default: 20
+            example: 50
+          examples:
+            default:
+              value: 50
+        - name: order
+          in: query
+          description: 'Sort order. Default is ''Id,desc'''
+          required: false
+          schema:
+            type: string
+            default: 'Id,desc'
+            example: 'UpdatedAt,desc'
+          examples:
+            default:
+              value: 'UpdatedAt,desc'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListsCollection'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+    post:
+      tags:
+        - Lists
+      summary: Create Publishers List
+      description: Create Publishers List
+      operationId: createList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListBodyModel'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateListResponse201'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/list/{listId}/publishers':
+    post:
+      tags:
+        - Lists
+      summary: Add a Publisher to a List
+      description: Add a Publisher to a List
+      operationId: postPublisherToList
+      parameters:
+        - name: listId
+          in: path
+          description: Unique List identifier
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+            example: 101
+          examples:
+            default:
+              value: 101
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishersListBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/PublisherList200'
+        '400':
+          $ref: '#/components/responses/PublisherList400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+    delete:
+      tags:
+        - Lists
+      summary: Delete a Publisher from a List
+      description: Delete a Publisher from a List
+      operationId: deletePublisherFromList
+      parameters:
+        - name: listId
+          in: path
+          description: Unique List identifier
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+            example: 101
+          examples:
+            default:
+              value: 101
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishersListBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/PublisherList200'
+        '400':
+          $ref: '#/components/responses/PublisherList400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/ErrorResponse404List'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/list/{listId}':
+    get:
+      tags:
+        - Lists
+      summary: Get a single List
+      description: Get a single List
+      operationId: getSingleList
+      parameters:
+        - name: listId
+          in: path
+          description: List Id
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 333333
+          examples:
+            default:
+              value: 333333
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleList'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+    delete:
+      tags:
+        - Lists
+      summary: Delete a Publisher List
+      description: Delete a Publisher List
+      operationId: deletePublisherList
+      parameters:
+        - name: listId
+          in: path
+          description: Unique List identifier
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+            example: 202
+          examples:
+            default:
+              value: 202
+      responses:
+        '204':
+          description: Successful
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/ErrorResponse404List'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+    patch:
+      tags:
+        - Lists
+      summary: Update List
+      description: Makes updates to a publisher list.
+      operationId: updateList
+      parameters:
+        - name: listId
+          in: path
+          description: List Id
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 333333
+          examples:
+            default:
+              value: 333333
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateListBodyModel'
+      responses:
+        '204':
+          description: Success
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+tags:
+  - name: Lists
+    description: Lists public API
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header
+  responses:
+    '400':
+      description: No input data found (or The name field is required).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse400'
+    '401':
+      description: Incorrect x-api-key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse401'
+    '403':
+      description: Access was denied due to the API has insufficient access permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse403'
+    '404':
+      description: The list hasn't been found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse404'
+    CreateListResponse201:
+      description: Create Publishers List - Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListModel'
+    PublisherList200:
+      description: Delete a Publisher from a List - Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListModel'
+    PublisherList400:
+      description: CoreException
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublisherList400Model'
+    ErrorResponse404List:
+      description: NotFoundException
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse404'
+    ListsCollection:
+      description: Lists Collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListsCollectionModel'
+    SingleList:
+      description: List
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListModel'
+  schemas:
+    ListBodyModel:
+      type: object
+      description: Create (and Update) List Body Model
+      properties:
+        loaded:
+          type: boolean
+          nullable: true
+          enum:
+            - true
+            - false
+            - null
+          default: null
+          example: false
+        Name:
+          type: string
+          description: List Name
+          example: List1
+        Description:
+          type: string
+          description: List Description
+          example: Test1
+        Tags:
+          type: string
+          nullable: true
+          description: List Tags
+          example: '"Tag1,Tag2"'
+        Publishers:
+          type: array
+          description: List Publishers (Array with publishers ids)
+          items:
+            oneOf:
+              - type: integer
+                format: int32
+          example:
+            - 311280
+            - 312816
+            - 572313
+            - 572314
+            - 572319
+            - 572320
+            - 572330
+            - 572331
+            - 595106
+        permissions:
+          type: object
+          description: List permissions
+          properties:
+            Create:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Create List Permission
+              example: 0
+            Delete:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Delete List Permission
+              example: 1
+            Enable:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Enable List Permission
+              example: 1
+            Execute:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Execute List Permission
+              example: 0
+            Read:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Read List Permission
+              example: 0
+            Show:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Read List Permission
+              example: 0
+            Write:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Write List Permission
+              example: 0
+            Share:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Share List Permission
+              example: 0
+          minProperties: 1
+        visibilityOption:
+          type: boolean
+          nullable: true
+          enum:
+            - true
+            - false
+            - null
+          description: List Visibility
+          default: null
+          example: true
+      required:
+        - Name
+    PublishersListBody:
+      type: object
+      properties:
+        PublisherId:
+          type: array
+          description: Unique publishers id array
+          items:
+            type: integer
+            format: int32
+            example: 8082160
+          example:
+            - 8082160
+            - 8082161
+    UpdateListBodyModel:
+      type: object
+      description: Create (and Update) List Body Model
+      properties:
+        loaded:
+          type: boolean
+          nullable: true
+          enum:
+            - true
+            - false
+            - null
+          default: null
+          example: false
+        Name:
+          type: string
+          description: List Name
+          example: List1
+        Description:
+          type: string
+          description: List Description
+          example: Test1
+        Tags:
+          type: string
+          nullable: true
+          description: List Tags
+          example: '"Tag1,Tag2"'
+        Publishers:
+          type: array
+          description: List Publishers (Array with publishers ids)
+          items:
+            type: integer
+            format: int32
+          example:
+            - 311280
+            - 312816
+            - 572313
+            - 572314
+            - 572319
+            - 572320
+            - 572330
+            - 572331
+            - 595106
+        permissions:
+          type: object
+          description: List permissions
+          properties:
+            Create:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Create List Permission
+              example: 0
+            Delete:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Delete List Permission
+              example: 1
+            Enable:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Enable List Permission
+              example: 1
+            Execute:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Execute List Permission
+              example: 0
+            Read:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Read List Permission
+              example: 0
+            Show:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Read List Permission
+              example: 0
+            Write:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Write List Permission
+              example: 0
+            Share:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: Share List Permission
+              example: 0
+          minProperties: 1
+        visibilityOption:
+          type: boolean
+          nullable: true
+          enum:
+            - true
+            - false
+            - null
+          description: List Visibility
+          default: null
+          example: true
+      minProperties: 1
+    ErrorResponse400:
+      type: object
+      description: Exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          example: CoreException
+        CoreException:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              format: int32
+              example: 400
+            message:
+              type: string
+              description: Exception message
+              example: No input data found (or The name field is required).
+      required:
+        - type
+    ErrorResponse401:
+      type: object
+      description: Exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          example: CoreException
+        CoreException:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              format: int32
+              example: 401
+            message:
+              type: string
+              description: Exception message
+              example: Incorrect x-api-key
+      required:
+        - type
+    ErrorResponse403:
+      type: object
+      description: Exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          example: CoreException
+        CoreException:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              format: int32
+              example: 403
+            message:
+              type: string
+              description: Exception message
+              example: Access was denied due to the API has insufficient access permissions
+      required:
+        - type
+    ErrorResponse404:
+      type: object
+      description: Exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          example: CoreException
+        CoreException:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              format: int32
+              example: 404
+            message:
+              type: string
+              description: Exception message
+              example: The list hasn't been found
+      required:
+        - type
+    ListModel:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - List
+          description: List
+          example: List
+        href:
+          type: string
+          description: CreatorIQ API URL to get a single list
+          example: 'https://apis.creatoriq.com/crm/v1/api/list/202179'
+        List:
+          $ref: '#/components/schemas/ListInCollection'
+      required:
+        - type
+        - href
+        - List
+    ListInCollection:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type
+          example: List
+        href:
+          type: string
+          description: Href
+          example: 'https://apis.creatoriq.com/crm/v1/api/list/1'
+        List:
+          $ref: '#/components/schemas/ListInCollectionItem'
+      required:
+        - type
+        - href
+        - List
+    ListInCollectionItem:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: List Id
+          format: int32
+          example: 8
+        Name:
+          type: string
+          description: List Name
+          example: List 3
+        Description:
+          type: string
+          description: List Description
+          example: Test1
+        DivisionId:
+          type: integer
+          nullable: true
+          description: Division Id
+          format: int32
+          default: null
+          example: 123
+        DivisionName:
+          type: string
+          nullable: true
+          description: Division Name
+          default: null
+          example: Division Number 1
+        Tags:
+          type: string
+          nullable: true
+          description: List Tags
+          example: '"IT"'
+        Type:
+          type: string
+          nullable: true
+          description: List Type
+          example: Some Type
+        Visibility:
+          type: boolean
+          nullable: true
+          enum:
+            - true
+            - false
+            - null
+          description: List Visibility
+          default: null
+          example: true
+        CreatedAt:
+          type: string
+          description: List Created Time
+          example: '2016-08-16 09:52:28'
+        CreatedBy:
+          type: string
+          description: List Created Person
+          example: John Snow
+        LastUpdated:
+          type: string
+          description: List Last Updated time
+          example: '2017-07-05 14:27:11'
+        UpdatedBy:
+          type: string
+          nullable: true
+          description: List Updated By
+          example: John Snow
+        Publishers:
+          type: array
+          description: List Publishers (Array with publishers ids)
+          items:
+            oneOf:
+              - type: integer
+                format: int32
+          example:
+            - 311280
+            - 312816
+            - 572313
+            - 572314
+            - 572319
+            - 572320
+            - 572330
+            - 572331
+            - 595106
+        Public:
+          type: boolean
+          description: List Public flag
+          example: true
+        CommentsCount:
+          type: integer
+          description: List Comments Count
+          format: int32
+          example: 0
+      required:
+        - Id
+        - Name
+        - Description
+        - DivisionId
+        - DivisionName
+        - Tags
+        - Type
+        - Visibility
+        - CreatedAt
+        - CreatedBy
+        - LastUpdated
+        - UpdatedBy
+        - Publishers
+        - Public
+        - CommentsCount
+    PublisherList400Model:
+      type: object
+      description: Exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          example: CoreException
+        CoreException:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              format: int32
+              example: 400
+            message:
+              type: string
+              description: Exception message
+              example: Publisher Id is mandatory!
+      required:
+        - type
+    ListsCollectionModel:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - ListsCollection
+          description: Type of Search
+          example: ListsCollection
+        href:
+          type: string
+          description: CreatorIQ API URL to get a collection of lists
+          example: 'https://apis.creatoriq.com/crm/v1/api/lists'
+        count:
+          type: integer
+          description: Number of records in current response
+          example: 20
+        total:
+          type: integer
+          description: Total number of found rows
+          example: 1704
+        page:
+          type: integer
+          description: Current page
+          example: 2
+        ListsCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListInCollection'
+      required:
+        - type
+        - href
+        - count
+        - total
+        - page
+        - ListsCollection
+security:
+  - apiKey: []

@@ -1,0 +1,39 @@
+generated: '2026-08-11'
+method: searched
+source: >-
+  npm registry search, PyPI, GitHub org listing, and the CreatorIQ developer portal
+  (apidocs.creatoriq.com)
+package_count: 0
+official_package_count: 0
+packages: []
+searched:
+- registry: npm
+  query: creatoriq
+  url: https://registry.npmjs.org/-/v1/search?text=creatoriq
+  result: >-
+    One unrelated hit — @creatoriq/js-license-checker 1.0.0 (published 2023-10-04, description "test").
+    It is an internal licence-scanning utility, not an API client, and is not documented anywhere on
+    the developer portal. Not recorded as an SDK.
+- registry: npm
+  query: 'scope:creatoriq'
+  result: 0 packages
+- registry: pypi
+  query: creatoriq / creator-iq / creatoriq-api
+  result: 404 on all three
+- registry: github
+  query: https://api.github.com/orgs/CreatorIQ/repos
+  result: >-
+    Organization github.com/CreatorIQ exists (id 120678838) but publishes zero public repositories.
+    The docs-portal organization github.com/creatoriq-api-documentation also publishes zero public
+    repositories, even though the Stoplight project is backed by
+    github.com/creatoriq-api-documentation/CIQ-API-Documentation-Portal.git.
+- source: docs
+  url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/ofoqos0hnmsge-code-samples
+  result: >-
+    The only client-side material CreatorIQ publishes is generated request samples inside the Stoplight
+    reference — curl, C#, JavaScript, Java, Go, Node.js, PHP, Python, R, Ruby, Swift and Clojure.
+    Copy-paste snippets, not versioned, installable, first-party libraries.
+finding: >-
+  CreatorIQ ships no first-party SDK in any language registry. Every integrator writes their own HTTP
+  client against the x-api-key header. No SDKs pointer is emitted in apis.yml, because there is no SDK
+  to point at.

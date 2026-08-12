@@ -1,0 +1,164 @@
+openapi: 3.1.0
+info:
+  version: 2.0.0
+  title: CreatorIQ CRM Campaigns API V2
+  description: CreatorIQ CRM APIs for Campaigns resource
+  termsOfService: 'https://www.creatoriq.com/legal/terms-of-use'
+  contact:
+    name: CreatorIQ
+    url: 'https://www.creatoriq.com'
+    email: support@creatoriq.com
+  license:
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+    name: Apache 2.0
+servers:
+  - url: 'https://apis.creatoriq.com'
+    description: Live
+paths:
+  /crm/v2/api/brands:
+    get:
+      tags:
+        - Campaign
+      summary: List global brands associated with partner
+      description: |
+        Returns global brands available to the current partner.
+
+        Use the returned `brandId` value as `BrandId` when creating or updating a campaign. Do not use the `Brand.BrandId` value returned by `GET /crm/v1/api/brands`; it identifies a custom brand (advertiser) and must be used as `AdvertiserId` instead.
+      operationId: GetPartnerBrand
+      responses:
+        '200':
+          description: Response 200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brand'
+        '204':
+          $ref: '#/components/responses/204'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v2/api/brands/{brandId}':
+    get:
+      tags:
+        - Campaign
+      summary: Get global brand
+      description: Returns a global brand by ID. Use its `brandId` value as `BrandId` when creating or updating a campaign.
+      operationId: getBrandById
+      parameters:
+        - name: brandId
+          in: path
+          description: Unique V2 brand ID
+          required: true
+          schema:
+            type: integer
+            format: int32
+            examples:
+              - 50852
+          examples:
+            default:
+              value: 50852
+      responses:
+        '200':
+          description: Response 200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brand'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  /crm/v2/api/brands/search:
+    get:
+      tags:
+        - Campaign
+      summary: Search global brands by name
+      description: Search global brands available to the current partner by name. Use a returned `brandId` value as `BrandId` when creating or updating a campaign.
+      operationId: searchBrandsByName
+      parameters:
+        - name: query
+          in: query
+          description: Name or part of name of the brand.
+          required: true
+          schema:
+            type: string
+            examples:
+              - Nike
+          examples:
+            default:
+              value: Nike
+      responses:
+        '200':
+          description: Response 200
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Brand'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+tags:
+  - name: Campaign
+    description: Campaign public API V2
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header
+  responses:
+    '204':
+      description: The empty request when no brands not associated with partner
+    '401':
+      description: The request could not be completed due to invalid API credentials
+    '403':
+      description: Access was denied due to the API due to insufficient access permissions.
+    '404':
+      description: Brand not found.
+  schemas:
+    Brand:
+      type: object
+      title: Brand
+      properties:
+        brandId:
+          type: integer
+          description: V2 brand ID. Use this value as `BrandId` when creating or updating a campaign.
+          examples:
+            - 12143
+        name:
+          type: string
+          description: Name of the global brand
+          examples:
+            - Nike
+        globalBrandId:
+          type: integer
+          description: CreatorIQ global brand identifier
+          examples:
+            - 1002286
+      required:
+        - brandId
+        - name
+        - globalBrandId
+security:
+  - apiKey: []

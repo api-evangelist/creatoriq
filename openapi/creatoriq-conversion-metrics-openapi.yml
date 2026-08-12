@@ -1,0 +1,905 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Conversion Metrics API
+  description: |
+    The Conversion Metrics API allows clients to extend CreatorIQ’s link tracking functionality by creating, managing, 
+    and extracting conversion data.
+
+    ## Key Use Cases:
+    - **Integrate third-party data**: Attach conversion metrics from external platforms (e.g., Google Analytics, Shopify, or internal BI systems) to CreatorIQ tracking links.
+    - **Enhance attribution & reporting**: Map conversion events (e.g., purchases, sign-ups) to specific creators, campaigns, and links to improve performance insights.
+    - **Extract CIQ metrics**: Retrieve conversion data from CreatorIQ to enrich business processes, build custom dashboards, or power internal analytics.
+  termsOfService: 'https://www.creatoriq.com/legal/terms-of-use'
+  contact:
+    name: CreatorIQ
+    url: 'https://www.creatoriq.com'
+    email: support@creatoriq.com
+  license:
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+    name: Apache 2.0
+servers:
+  - url: 'https://apis.creatoriq.com'
+    description: Live
+paths:
+  /crm/v1/api/conversions:
+    get:
+      tags:
+        - Global Conversion Metrics Configuration
+      summary: Retrieve Conversion Metrics Configuration
+      description: |
+        Returns a list of defined conversion metrics for the current partner.
+      operationId: getConversionMetrics
+      responses:
+        '200':
+          description: Successfully retrieved conversion metrics.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversionMetricConfigurationCollectionResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/conversion/{conversionMetricId}':
+    get:
+      tags:
+        - Global Conversion Metrics Configuration
+      summary: Retrieve Conversion Metric Configuration by ID
+      description: |
+        Returns the configuration for a specific conversion metric
+      operationId: getConversionMetricById
+      parameters:
+        - $ref: '#/components/parameters/conversionMetricId'
+      responses:
+        '200':
+          description: Successfully retrieved conversion metric configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversionMetricResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+    patch:
+      tags:
+        - Global Conversion Metrics Configuration
+      summary: Update Existing Conversion Metric
+      description: |
+        Updates the configuration for a specific conversion metric.
+      operationId: updateConversionMetric
+      parameters:
+        - $ref: '#/components/parameters/conversionMetricId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversionMetricUpdateRequest'
+      responses:
+        '200':
+          description: Successfully updated the conversion metric.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversionMetricResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/campaign/{campaignId}/conversionsWithData':
+    get:
+      tags:
+        - Campaign Conversion Metrics
+      summary: Get Conversion Names with Data
+      description: |
+        Returns a list of conversion metric names for a specific campaign.
+      operationId: getCampaignConversionsWithData
+      parameters:
+        - name: campaignId
+          in: path
+          description: The unique identifier for the campaign.
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 456
+          examples:
+            default:
+              value: 456
+      responses:
+        '200':
+          description: Successfully retrieved conversion metric names with data.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+                examples:
+                  - Bitly Link Clicks: Bitly Link Clicks
+                    Net Sales: Net Sales
+                    Gross Sales (GMV): Gross Sales (GMV)
+                    Gross Commissions: Gross Commissions
+                    Net Commissions: Net Commissions
+              examples:
+                default:
+                  value:
+                    Bitly Link Clicks: Bitly Link Clicks
+                    Net Sales: Net Sales
+                    Gross Sales (GMV): Gross Sales (GMV)
+                    Gross Commissions: Gross Commissions
+                    Net Commissions: Net Commissions
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/campaign/{campaignId}/conversionMetrics':
+    post:
+      tags:
+        - Campaign Conversion Metrics
+      summary: Upsert Conversion Metrics for a Campaign
+      description: |
+        Upsert Conversion Metrics for a Campaign.
+      operationId: upsertCampaignConversionMetrics
+      parameters:
+        - name: campaignId
+          in: path
+          description: The unique identifier for the campaign.
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 1205052
+          examples:
+            default:
+              value: 1205052
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CampaignConversionMetricUpsert'
+      responses:
+        '200':
+          description: Successfully added or updated conversion metrics.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversionMetricCollectionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/campaign/{campaignId}/tracking-link/{trackingLinkId}/conversionMetric/{conversionMetricName}':
+    get:
+      tags:
+        - Campaign Conversion Metrics
+      summary: Get Conversion Metric by Name
+      description: |
+        Retrieve a specific conversion metric by its name for a given campaign and tracking link.
+        This endpoint is useful for fetching detailed information about a specific conversion metric.
+      operationId: getCampaignConversionMetricByName
+      parameters:
+        - name: campaignId
+          in: path
+          description: The unique identifier for the campaign.
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 1205052
+          examples:
+            default:
+              value: 1205052
+        - name: trackingLinkId
+          in: path
+          description: The unique identifier for the tracking link.
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 1006453
+          examples:
+            default:
+              value: 1006453
+        - name: conversionMetricName
+          in: path
+          description: The name of the conversion metric.
+          required: true
+          schema:
+            type: string
+            examples:
+              - ConversionMetric6
+          examples:
+            default:
+              value: ConversionMetric6
+      responses:
+        '200':
+          description: Successfully retrieved the conversion metric details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversionMetricResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/campaign/{campaignId}/tracking-link/{trackingLinkId}/conversionMetrics':
+    get:
+      tags:
+        - Campaign Conversion Metrics
+      summary: Get All Conversion Metrics by Tracking Link ID
+      description: |
+        Retrieve all conversion metrics associated with a specific tracking link for a given campaign.
+        This endpoint is useful for fetching a comprehensive list of conversion metrics related to a tracking link.
+      operationId: getAllCampaignConversionMetricsByTrackingLink
+      parameters:
+        - name: campaignId
+          in: path
+          description: The unique identifier for the campaign.
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 5678
+          examples:
+            default:
+              value: 5678
+        - name: trackingLinkId
+          in: path
+          description: The unique identifier for the tracking link.
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 5678
+          examples:
+            default:
+              value: 5678
+      responses:
+        '200':
+          description: Successfully retrieved all conversion metrics for the tracking link.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversionMetricCollectionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/campaign/{campaignId}/post/{postId}/conversionMetrics':
+    get:
+      tags:
+        - Campaign Conversion Metrics
+      summary: Get Conversion Metrics for a Specific Post
+      description: |
+        Retrieve conversion metrics for a specific post within a campaign.
+        This endpoint is useful for analyzing the performance of individual posts in terms of conversion metrics.
+      operationId: getCampaignPostConversionMetrics
+      parameters:
+        - name: campaignId
+          in: path
+          description: The unique identifier for the campaign.
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 5678
+          examples:
+            default:
+              value: 5678
+        - name: postId
+          in: path
+          description: The unique identifier for the post.
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 5678
+          examples:
+            default:
+              value: 5678
+      responses:
+        '200':
+          description: Successfully retrieved conversion metrics for the post.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversionMetricForSpecificPostCollectionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/campaign/{campaignId}/publisher/{publisherId}/conversionMetrics':
+    get:
+      tags:
+        - Campaign Conversion Metrics
+      summary: Get Conversion Metrics by Publisher
+      description: |
+        Retrieve conversion metrics for a specific publisher within a campaign.
+        This endpoint is useful for analyzing the performance of individual publishers in terms of conversion metrics.
+      operationId: getCampaignPublisherConversionMetrics
+      parameters:
+        - name: campaignId
+          in: path
+          description: The unique identifier for the campaign.
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 5678
+          examples:
+            default:
+              value: 5678
+        - name: publisherId
+          in: path
+          description: The unique identifier for the publisher.
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 5678
+          examples:
+            default:
+              value: 5678
+      responses:
+        '200':
+          description: Successfully retrieved conversion metrics for the publisher.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversionMetricForSpecificPostResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/campaign/{campaignId}/publisher/{publisherId}/conversionPostMetrics':
+    get:
+      tags:
+        - Campaign Conversion Metrics
+      summary: Get Conversion Metrics by Publisher (Post-Level)
+      description: |
+        Retrieve conversion metrics for a specific publisher at the post level within a campaign.
+        This endpoint is useful for analyzing the performance of individual posts by publisher in terms of conversion metrics.
+      operationId: getCampaignPublisherPostConversionMetrics
+      parameters:
+        - name: campaignId
+          in: path
+          description: The unique identifier for the campaign.
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 1234
+          examples:
+            default:
+              value: 1234
+        - name: publisherId
+          in: path
+          description: The unique identifier for the publisher.
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 5678
+          examples:
+            default:
+              value: 5678
+      responses:
+        '200':
+          description: Successfully retrieved conversion metrics for the publisher at the post level.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversionMetricForSpecificPostCollectionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+tags:
+  - name: Campaign Conversion Metrics
+    description: Campaign Conversion Metrics
+  - name: Conversion Metrics
+    description: Conversion Metrics API
+  - name: Global Conversion Metrics Configuration
+    description: Global Conversion Metrics Configuration
+components:
+  parameters:
+    conversionMetricId:
+      name: conversionMetricId
+      in: path
+      description: The unique identifier for the conversion metric.
+      required: true
+      schema:
+        type: integer
+        examples:
+          - 36942
+      examples:
+        default:
+          value: 36942
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header
+  responses:
+    UnauthorizedError:
+      description: Unauthorized - API key missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                examples:
+                  - Unauthorized
+    ForbiddenError:
+      description: Forbidden - User does not have access.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                examples:
+                  - Forbidden
+    BadRequestError:
+      description: Bad Request - Invalid request format or missing fields.
+      content:
+        application/json:
+          schema:
+            type: object
+            description: Exception
+            properties:
+              type:
+                type: string
+                description: Exception type
+                examples:
+                  - CoreException
+              CoreException:
+                type: object
+                description: Exception information
+                properties:
+                  code:
+                    type: integer
+                    description: Exception status code
+                    format: int32
+                    examples:
+                      - 400
+                  message:
+                    type: string
+                    description: Exception message
+                    examples:
+                      - Some parameters are missing or invalid
+            required:
+              - type
+    NotFoundError:
+      description: Not Found - Resource not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            description: Exception
+            properties:
+              type:
+                type: string
+                description: Exception type
+                examples:
+                  - CoreException
+              CoreException:
+                type: object
+                description: Exception information
+                properties:
+                  code:
+                    type: integer
+                    description: Exception status code
+                    format: int32
+                    examples:
+                      - 404
+                  message:
+                    type: string
+                    description: Exception message
+                    examples:
+                      - Supplied ID was not found
+            required:
+              - type
+  schemas:
+    ConversionMetricConfigurationCollectionResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+            - ConversionCollection
+        href:
+          type: string
+          examples:
+            - 'https://apis.creatoriq.com/crm/v1/api/conversions'
+        count:
+          type: integer
+          examples:
+            - 20
+        total:
+          type: integer
+          examples:
+            - 725
+        page:
+          type: integer
+          examples:
+            - 1
+        ConversionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionMetricConfigurationResponse'
+    ConversionMetricConfigurationResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+            - ConversionMetric
+        href:
+          type: string
+          examples:
+            - 'https://public-api.creatoriq.com/api/api/conversion/36937'
+        ConversionMetric:
+          $ref: '#/components/schemas/ConversionMetricConfiguration'
+    ConversionMetricConfiguration:
+      type: object
+      properties:
+        ConversionMetricId:
+          type: integer
+          examples:
+            - 36942
+        PartnerId:
+          type: integer
+          examples:
+            - 11
+        ConversionMetricName:
+          type: string
+          examples:
+            - ConversionMetric6
+        DisplayName:
+          type: string
+          examples:
+            - Transactions
+        DisplayOrder:
+          type: integer
+          examples:
+            - 6
+        IsVisible:
+          type: integer
+          examples:
+            - 1
+        Type:
+          type: string
+          examples:
+            - Default
+        AdditionalInfo:
+          type:
+            - string
+            - 'null'
+          examples:
+            - null
+        UpdatedAt:
+          type: string
+          format: date-time
+          examples:
+            - '2022-01-11 13:47:34'
+        UpdatedBy:
+          type: string
+          examples:
+            - app-ui
+        CreatedAt:
+          type: string
+          format: date-time
+          examples:
+            - '2022-01-11 13:47:34'
+        CreatedBy:
+          type: string
+          examples:
+            - app-ui
+    ConversionMetricResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+            - ConversionMetric
+        href:
+          type: string
+          examples:
+            - 'https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders'
+        ConversionMetric:
+          $ref: '#/components/schemas/ConversionMetric'
+    ConversionMetric:
+      type: object
+      properties:
+        ConversionMetricId:
+          type: integer
+          examples:
+            - 36942
+        PartnerId:
+          type: integer
+          examples:
+            - 11
+        ConversionMetricName:
+          type: string
+          examples:
+            - ConversionMetric6
+        DisplayName:
+          type: string
+          examples:
+            - Transactions
+        DisplayOrder:
+          type: integer
+          examples:
+            - 6
+        IsVisible:
+          type: integer
+          examples:
+            - 1
+        Type:
+          type: string
+          examples:
+            - Default
+        AdditionalInfo:
+          type:
+            - string
+            - 'null'
+          examples:
+            - null
+        TrackingLinkId:
+          type: string
+          examples:
+            - '123'
+        ConversionMetricValue:
+          type:
+            - number
+            - 'null'
+          examples:
+            - 123
+        Status:
+          type: string
+          examples:
+            - Auto
+        UpdatedAt:
+          type: string
+          format: date-time
+          examples:
+            - '2022-01-11 13:47:34'
+        UpdatedBy:
+          type: string
+          examples:
+            - app-ui
+    ConversionMetricUpdateRequest:
+      type: object
+      properties:
+        DisplayName:
+          type: string
+          examples:
+            - New Conversion Metric
+        DisplayOrder:
+          type: integer
+          examples:
+            - 1
+        IsVisible:
+          type: integer
+          examples:
+            - 1
+    CampaignConversionMetricUpsert:
+      type: object
+      properties:
+        TrackingLinkId:
+          type: integer
+          description: The ID of the tracking link associated with the conversion metric.
+          examples:
+            - 1006453
+        ConversionMetricId:
+          type: integer
+          description: The unique identifier of the conversion metric.
+          examples:
+            - 36942
+        ConversionMetricValue:
+          type: integer
+          description: The numerical value for the conversion metric.
+          examples:
+            - 22
+    ConversionMetricCollectionResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+            - ConversionCollection
+        href:
+          type: string
+          examples:
+            - 'https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetrics'
+        count:
+          type: integer
+          examples:
+            - 20
+        total:
+          type: integer
+          examples:
+            - 725
+        page:
+          type: integer
+          examples:
+            - 1
+        ConversionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionMetricResponse'
+    ConversionMetricForSpecificPostCollectionResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+            - ConversionCollection
+        href:
+          type: string
+          examples:
+            - 'https://public-api.creatoriq.com/api/v1/campaign/123/post/321/conversionMetrics'
+        count:
+          type: integer
+          examples:
+            - 20
+        total:
+          type: integer
+          examples:
+            - 725
+        page:
+          type: integer
+          examples:
+            - 1
+        ConversionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionMetricForSpecificPostResponse'
+    ConversionMetricForSpecificPostResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+            - ConversionMetric
+        href:
+          type: string
+          examples:
+            - 'https://public-api.creatoriq.com/api/v1/campaign/2316554/tracking-link/1144249/conversionMetric/Gross AOV'
+        ConversionMetric:
+          $ref: '#/components/schemas/ConversionMetricForSpecificPost'
+    ConversionMetricForSpecificPost:
+      type: object
+      properties:
+        ConversionMetricId:
+          type: integer
+          examples:
+            - 36942
+        ConversionMetricName:
+          type: string
+          examples:
+            - ConversionMetric6
+        DisplayName:
+          type: string
+          examples:
+            - Transactions
+        DisplayOrder:
+          type: integer
+          examples:
+            - 6
+        IsVisible:
+          type: integer
+          examples:
+            - 1
+        TrackingId:
+          type: integer
+          examples:
+            - 123
+        TrackingLinkId:
+          type: integer
+          examples:
+            - 123
+        PublisherId:
+          type: integer
+          examples:
+            - 123
+        ConversionMetricValue:
+          type:
+            - number
+            - 'null'
+          examples:
+            - 123
+        Status:
+          type: string
+          examples:
+            - Auto
+        Label:
+          type: string
+          examples:
+            - Product
+security:
+  - apiKey: []

@@ -1,0 +1,285 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: CreatorIQ Divisions APIs
+  description: CreatorIQ CRM APIs for Divisions resource
+  termsOfService: 'https://www.creatoriq.com/legal/terms-of-use'
+  contact:
+    name: CreatorIQ
+    url: 'https://www.creatoriq.com'
+    email: support@creatoriq.com
+  license:
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+    name: Apache 2.0
+servers:
+  - url: 'https://apis.creatoriq.com'
+    description: Live
+paths:
+  /crm/v1/api/divisions:
+    get:
+      tags:
+        - Divisions
+      summary: Get divisions list
+      description: |
+        Get list of divisions in the organization.  
+        **Warning:** Depends of api key list of divisions can be different or even empty.
+      operationId: getPartnerDivisions
+      parameters:
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          $ref: '#/components/responses/DivisionCollectionResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/division/{divisionId}':
+    get:
+      tags:
+        - Divisions
+      summary: Get division by id
+      description: |
+        Get division by id in the organization.  
+        **Warning:** Depends of api key response can be 404 even if such division exist for partner.
+      operationId: getPartnerDivision
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - name: divisionId
+          in: path
+          description: ID of the division to retrieve
+          required: true
+          schema:
+            type: integer
+            examples:
+              - 123
+          examples:
+            default:
+              value: 123
+      responses:
+        '200':
+          $ref: '#/components/responses/DivisionResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+tags:
+  - name: Divisions
+    description: Divisions public API
+components:
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: |
+        Comma-separated list of fields to include in the response.  
+        If not specified, all fields will be returned.
+      required: false
+      schema:
+        type: string
+        enum:
+          - Id
+          - Name
+          - FullDivisionName
+          - DivisionHierarchyLevel
+          - ParentDivisionId
+        examples:
+          - Name
+      examples:
+        default:
+          value: Name
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header
+  responses:
+    '400':
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                description: type of error
+                examples:
+                  - BadRequestHttpException
+              BadRequestHttpException:
+                type: object
+                description: exception object
+                properties:
+                  code:
+                    type: integer
+                    description: HTTP status code
+                    examples:
+                      - 400
+                  message:
+                    type: string
+                    description: Error message
+                    examples:
+                      - 'Invalid field(s) provided: UnknownField'
+    '401':
+      description: The request could not be completed due to invalid API credentials
+    '403':
+      description: Access was denied due to the API due to insufficient access permissions.
+    '404':
+      description: Division not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                description: type of error
+                examples:
+                  - NotFoundHttpException
+              NotFoundHttpException:
+                type: object
+                description: exception object
+                properties:
+                  code:
+                    type: integer
+                    description: HTTP status code
+                    examples:
+                      - 404
+                  message:
+                    type: string
+                    description: Error message
+                    examples:
+                      - Division with supplied ID was not found
+    DivisionCollectionResponse:
+      description: Response with collection of divisions
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                description: |
+                  Base set for all models in CreatorIQ API.
+                  It contains common fields like type and href.
+                properties:
+                  type:
+                    type: string
+                    description: Type of Model
+                    examples:
+                      - DivisionsCollection
+                  href:
+                    type: string
+                    description: CreatorIQ API URL to get divisions collection
+                    format: URI
+                    examples:
+                      - 'https://apis.creatoriq.com/crm/v1/api/divisions'
+                  count:
+                    type: integer
+                    description: Fetched number of divisions in the collection
+                    examples:
+                      - 5
+                  total:
+                    type: integer
+                    description: Total number of divisions in the collection
+                    examples:
+                      - 5
+                  page:
+                    type: integer
+                    description: Current page number in the collection
+                    examples:
+                      - 1
+              - $ref: '#/components/schemas/DivisionCollection'
+    DivisionResponse:
+      description: Response with division
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                description: Type of Model
+                examples:
+                  - Division
+              href:
+                type: string
+                description: CreatorIQ API URL to get single division entity
+                format: URI
+                examples:
+                  - 'https://apis.creatoriq.com/crm/v1/api/division/1'
+              Division:
+                $ref: '#/components/schemas/DivisionModel'
+  schemas:
+    DivisionCollection:
+      type: array
+      title: Division Entity Collection
+      items:
+        type: object
+        description: |
+          Item in the collection.
+        properties:
+          type:
+            type: string
+            description: Type of Model
+            examples:
+              - Division
+          href:
+            type: string
+            description: CreatorIQ API URL to get divisions
+            format: URI
+            examples:
+              - 'https://apis.creatoriq.com/crm/v1/api/division/1'
+          Division:
+            $ref: '#/components/schemas/DivisionModel'
+    DivisionModel:
+      type: object
+      title: Division Entity
+      description: |
+        Division entity represents a division in the organization hierarchy.
+        It contains information about the division's name, hierarchy level, parent division, and other related attributes.
+      properties:
+        DivisionHierarchyLevel:
+          type: integer
+          description: |
+            Hierarchy level of the division.  
+            1 - top level division, 2 - sub-division, etc.
+          examples:
+            - 1
+        FullDivisionName:
+          type: string
+          description: Full name of the division including hierarchy.
+          examples:
+            - Parent Division > Child Division
+        Id:
+          type: integer
+          description: ID of the division entity.
+          examples:
+            - 123
+        Name:
+          type: string
+          description: Name of the division.
+          examples:
+            - Division Name
+        ParentDivisionId:
+          type:
+            - integer
+            - 'null'
+          description: 'ID of the parent division, if any.'
+          examples:
+            - 789
+security:
+  - apiKey: []

@@ -1,0 +1,231 @@
+openapi: 3.1.0
+info:
+  version: 2.0.0
+  title: CreatorIQ CRM Publishers API V2
+  description: CreatorIQ CRM APIs for Publishers (Influencer/Creator) resource
+  termsOfService: 'https://www.creatoriq.com/legal/terms-of-use'
+  contact:
+    name: CreatorIQ
+    url: 'https://www.creatoriq.com'
+    email: support@creatoriq.com
+  license:
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+    name: Apache 2.0
+servers:
+  - url: 'https://apis.creatoriq.com'
+    description: Live
+paths:
+  '/crm/v2/api/publishers/{publisherIds}/accounts':
+    get:
+      tags:
+        - Publisher
+      summary: GET social accounts for multiple publishers.
+      description: Fetch the social accounts information for bulk publishers. Max count of publishers 10
+      operationId: getMultiplePublishersAccounts
+      parameters:
+        - name: key
+          in: query
+          description: |
+            Specifies which identifier is used in the request.
+            Set to `id` if you are using the internal `id` field as identifier.
+            If you are using `PublisherId` as identifier(default behavior), this parameter should be omitted.
+          required: true
+          schema:
+            type: string
+            enum:
+              - Id
+              - PublisherId
+            examples:
+              - Id
+          examples:
+            default:
+              value: Id
+        - name: publisherIds
+          in: path
+          description: Comma separated unique Publisher IDs.
+          required: true
+          schema:
+            type: string
+            pattern: '^[0-9]+(,[0-9]+)*$'
+            examples:
+              - '99990,99991'
+          examples:
+            default:
+              value: '99990,99991'
+      responses:
+        '200':
+          description: Response 200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiplePublishersAccounts'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+tags:
+  - name: Publisher
+    description: Publisher public API V2
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header
+  responses:
+    '400':
+      description: 'Bad request, invalid PublisherID format'
+    '401':
+      description: The request could not be completed due to invalid API credentials
+    '403':
+      description: Access was denied due to the API due to insufficient access permissions.
+    '404':
+      description: Publisher with supplied ID was not found
+  schemas:
+    MultiplePublishersAccounts:
+      type: object
+      description: Publishers by IDs as a keys with array of their Social Accounts
+      patternProperties:
+        '/^[0-9]+$/':
+          type: array
+          description: Publisher's Social Accounts
+          items:
+            type: object
+            properties:
+              PublisherId:
+                type: integer
+                examples:
+                  - 99990
+              NetworkPublisherId:
+                type: integer
+                examples:
+                  - 88990
+              Network:
+                type: string
+                enum:
+                  - youtube
+                  - twitter
+                  - facebook
+                  - instagram
+                  - google
+                  - vine
+                  - weibo
+                  - line
+                  - tiktok
+                  - twitch
+                  - tumblr
+                  - pinterest
+                  - snapchat
+                  - linkedin
+                  - reddit
+                  - web
+                  - blog
+                examples:
+                  - youtube
+              NotFound:
+                type: integer
+                enum:
+                  - 0
+                  - 1
+                examples:
+                  - 0
+              isVerifiedBySocialNetwork:
+                type: integer
+                enum:
+                  - 0
+                  - 1
+                examples:
+                  - 1
+              CreatedBy:
+                type: string
+                examples:
+                  - andy.patinkin
+              CreatedAt:
+                type:
+                  - string
+                  - 'null'
+                format: date-time
+                examples:
+                  - '2018-05-15 23:49:05'
+              LogoURL:
+                type: string
+                format: URI
+                examples:
+                  - 'https://yt3.ggpht.com/eijq408tTlu3XbwlIBeu8RsDG4vGTWb2JTOGKuus3sKdAKoxlq770qVga-p3sCT5PHRVEpYfq1M=s800-c-k-c0x00ffffff-no-rj'
+              FollowersCount:
+                type: integer
+                examples:
+                  - 4130000
+              LikesCount:
+                type:
+                  - integer
+                  - 'null'
+                examples:
+                  - 213453
+              CommentsCount:
+                type:
+                  - integer
+                  - 'null'
+                examples:
+                  - 2134
+              ViewsCount:
+                type:
+                  - integer
+                  - 'null'
+                examples:
+                  - 121675291
+              IsBusiness:
+                type: 'null'
+                enum:
+                  - 0
+                  - 1
+                examples:
+                  - 0
+              Gender:
+                type:
+                  - string
+                  - 'null'
+                examples:
+                  - Female
+              Language:
+                type:
+                  - string
+                  - 'null'
+                examples:
+                  - EN
+              LastUpdated:
+                type: string
+                format: date-time
+                examples:
+                  - '2023-06-26 11:39:03'
+              Bio:
+                type: string
+                examples:
+                  - 'Hola, yo soy Ari y subo Gameplays de Minecraft y mas'
+              SocialNetworkId:
+                type: string
+                examples:
+                  - UCdgKwvFibviy0AzNJCxOQL0
+              NetworkUser:
+                type: string
+                examples:
+                  - '@arigameplays'
+              FullName:
+                type: string
+                examples:
+                  - Ari Gameplays
+            required:
+              - PublisherId
+              - NetworkPublisherId
+              - Network
+security:
+  - apiKey: []

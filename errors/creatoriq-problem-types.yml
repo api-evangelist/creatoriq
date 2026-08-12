@@ -1,0 +1,77 @@
+generated: '2026-08-11'
+method: derived
+source: openapi/ (17 documents, 159 operations) + https://apidocs.creatoriq.com/docs/ciq-api-documentation/hgzeuq1b1qhkd-common-errors
+docs: https://apidocs.creatoriq.com/docs/ciq-api-documentation/hgzeuq1b1qhkd-common-errors
+format: bespoke-json
+rfc9457: false
+rfc9457_note: >-
+  No operation in any CreatorIQ spec declares application/problem+json. There is no `type` URI, no
+  problem-type registry, and no stable machine-readable error code — the docs describe "a JSON error
+  message and error code" but never enumerate the codes. An agent can branch on HTTP status and on
+  free-text `message`, nothing more.
+envelope:
+  pubsub:
+    shape: '{status, data, message}'
+    fields:
+      status: 'success | error'
+      data: 'echo of the request plus a message_code on failure'
+      message: human-readable sentence
+    example_source: https://apidocs.creatoriq.com/docs/ciq-api-documentation/vwm8zv3dadjxc-webhooks-events
+  crm:
+    shape: JSON error message plus error code
+    note: Not schematised consistently across the CRM specs; several 4xx responses carry no schema at all.
+problems:
+- status: 400
+  title: Bad Request
+  meaning: >-
+    Malformed request, or — per the docs — the publisher ID or campaign ID supplied is not present in
+    the CRM. CreatorIQ deliberately returns 400 rather than 404 for an unknown publisher/campaign
+    identifier, which is worth knowing before writing retry logic.
+  spec_descriptions: ['Response 400 (Bad Request)', 'Ids not specified', 'PromoCode already has commissions']
+  declared_in: 14 of 17 specs
+  remediation: Correct the identifier or the payload; do not retry unchanged.
+- status: 401
+  title: Unauthorized
+  meaning: The request could not be completed due to invalid API credentials.
+  declared_in: 11 of 17 specs
+  remediation: Check the x-api-key header value; keys are issued per partner or per division.
+- status: 403
+  title: Forbidden
+  meaning: >-
+    The user behind the API key is not authorised for this request. Per the docs this status is ALSO
+    what you get when the x-api-key header is missing entirely — so 403, not 401, is the no-credential
+    response at the gateway. An anonymous request to any path on apis.creatoriq.com returns
+    {"message":"Forbidden"} with HTTP 403.
+  declared_in: 12 of 17 specs
+  remediation: Supply x-api-key, or ask the account manager to widen the key's permissions.
+- status: 404
+  title: Not Found
+  meaning: Route not found — the endpoint URL is wrong. Also used for some resource-level misses (promo codes).
+  declared_in: 13 of 17 specs
+  remediation: Re-check the path against the reference; note the /crm/v1 vs /crm/v2 split.
+- status: 408
+  title: Request Timeout
+  meaning: Documented as indicating CreatorIQ systems are under maintenance.
+  declared_in: 0 specs (docs only)
+  remediation: Contact the account manager or support; not client-correctable.
+- status: 429
+  title: Too Many Requests
+  meaning: Rate limit exceeded — 100,000 requests/day or 5 requests/second per API key.
+  declared_in: 1 of 17 specs (GET /brand-safety/v1/posts only)
+  remediation: >-
+    Back off. No Retry-After and no RateLimit-* headers are documented, so the backoff interval has to
+    be guessed. See rate-limits/creatoriq-rate-limits.yml.
+- status: 500
+  title: Internal Server Error
+  meaning: The server has encountered a situation it doesn't know how to handle.
+  declared_in: 5 of 17 specs
+  remediation: Retry with backoff; escalate to support if persistent.
+- status: 504
+  title: Gateway Timeout
+  meaning: Endpoint request timed out (AWS API Gateway integration timeout).
+  declared_in: 1 of 17 specs
+  remediation: Retry; narrow the query window on reporting endpoints.
+coverage_gaps:
+- 429 is declared on 1 of 159 operations even though the limit is global and documented.
+- 408 and 504 appear in the docs and the gateway respectively but are almost never in the contract.
+- No error response in any spec carries an example body.

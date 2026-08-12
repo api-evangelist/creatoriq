@@ -1,0 +1,132 @@
+generated: '2026-08-11'
+method: derived
+source: openapi/ (17 documents) + https://apidocs.creatoriq.com/docs/ciq-api-documentation/bt1k8lebtfv68-data-model
+docs: https://apidocs.creatoriq.com/docs/ciq-api-documentation/bt1k8lebtfv68-data-model
+root: Partner
+note: >-
+  The CreatorIQ data model is a per-customer CRM. Everything hangs off the Partner (the customer
+  account), optionally subdivided into Divisions, and the two load-bearing entities are Publisher (the
+  creator) and Campaign. Identifiers are bare integers with no type prefix, so an id is only meaningful
+  alongside the endpoint that produced it.
+identifiers:
+  style: opaque integer
+  prefixes: none
+  note: PublisherId, CampaignId, ListId, OneSheetId, DivisionId are all unprefixed numerics.
+entities:
+- name: Partner
+  description: The CreatorIQ customer account; the tenancy root and the scope of a partner-level API key.
+  key: PartnerId
+  relationships:
+  - {type: has_many, target: Division, via: divisionId}
+  - {type: has_many, target: Publisher}
+  - {type: has_many, target: Campaign}
+  - {type: has_many, target: ConversionMetric, via: /crm/v1/api/conversions}
+- name: Division
+  description: Optional sub-tenant of a Partner; scopes division-level API keys and webhook subscriptions.
+  key: divisionId
+  spec: openapi/creatoriq-v1-divisions-openapi.yml
+  relationships:
+  - {type: belongs_to, target: Partner, via: PartnerId}
+- name: Publisher
+  description: A creator/influencer record in the CRM. Interchangeably called Influencer or Creator.
+  key: publisherId
+  spec: openapi/creatoriq-publishers-openapi.yml
+  relationships:
+  - {type: has_many, target: SocialAccount, via: '/crm/v1/api/publisher/{publisherId}/accounts'}
+  - {type: has_many, target: ScheduledPost, via: '/crm/v1/api/publisher/{publisherId}/scheduledPosts'}
+  - {type: has_many, target: Note, via: '/crm/v1/api/notes/{entity}/{entityId}'}
+  - {type: has_many, target: Campaign, via: campaign publishers}
+  - {type: has_many, target: List, via: '/crm/v1/api/list/{listId}/publishers'}
+  - {type: has_many, target: Contact, via: '/crm/v1/api/data/contact/{contactId}'}
+- name: Campaign
+  description: A marketing effort with a name, dates, publishers, posts and advertiser information.
+  key: campaignId
+  spec: openapi/creatoriq-campaigns-openapi.yml
+  relationships:
+  - {type: has_many, target: Publisher, via: '/crm/v1/api/campaign/{campaignId}/publishers'}
+  - {type: has_many, target: Expense, via: '/crm/v1/api/campaign/{campaignId}/expenses'}
+  - {type: has_one, target: CampaignActivity, via: '/crm/v1/api/campaign/{campaignId}/activity'}
+  - {type: has_many, target: ConversionMetric, via: '/crm/v1/api/campaign/{campaignId}/conversionMetrics'}
+  - {type: belongs_to, target: Brand, via: BrandId}
+- name: Brand
+  description: Advertiser/brand attached to campaigns; has its own v2 surface with search.
+  key: brandId
+  spec: openapi/creatoriq-v2-campaigns-openapi.yml
+  relationships:
+  - {type: has_many, target: Campaign}
+- name: SocialAccount
+  description: A creator's account on Instagram, TikTok, YouTube or another network, with history and metrics.
+  key: socialNetworkId
+  spec: openapi/creatoriq-socials-openapi.yml
+  relationships:
+  - {type: belongs_to, target: Publisher, via: publisherId}
+  - {type: has_many, target: Post}
+- name: Post
+  description: A social post attributed to a creator; the unit reporting and brand safety operate on.
+  key: postId
+  relationships:
+  - {type: belongs_to, target: SocialAccount}
+  - {type: belongs_to, target: Campaign, via: campaignId}
+  - {type: has_one, target: BrandSafetyResult, via: '/brand-safety/v1/posts/{post_id}'}
+- name: List
+  description: A curated collection of publishers ("List 2.0" in the webhook vocabulary).
+  key: listId
+  spec: openapi/creatoriq-lists-openapi.yml
+  relationships:
+  - {type: has_many, target: Publisher, via: '/crm/v1/api/list/{listId}/publishers'}
+- name: OneSheet
+  description: Shareable creator pitch sheet with per-publisher comments, approvals and rejections.
+  key: oneSheetId
+  spec: openapi/creatoriq-onesheets-openapi.yml
+  relationships:
+  - {type: has_many, target: Publisher, via: '/crm/v1/api/onesheet/{oneSheetId}/publishers'}
+  - {type: has_many, target: Comment, via: '/crm/v1/api/onesheet/{oneSheetId}/publisher/{publisherId}/comments'}
+- name: Note
+  description: Free-text note attached to a CRM entity and optionally a dimension of it.
+  key: null
+  spec: openapi/creatoriq-notes-openapi.yml
+  relationships:
+  - {type: belongs_to, target: 'polymorphic: {entity}/{entityId}'}
+- name: TrackingLink
+  description: Trackable affiliate link used to attribute traffic and conversions to a creator.
+  key: trackingLinkId
+  spec: openapi/creatoriq-link-tracking-openapi.yml
+  relationships:
+  - {type: belongs_to, target: Campaign, via: campaignId}
+  - {type: has_many, target: ConversionMetric}
+  - {type: belongs_to, target: ScheduledPost, via: ScheduledPostId}
+- name: ConversionMetric
+  description: A named conversion definition, resolvable at partner, campaign, tracking-link, post or publisher scope.
+  key: conversionMetricId
+  spec: openapi/creatoriq-conversion-metrics-openapi.yml
+- name: PromoCode
+  description: Ecommerce discount code issued to a publisher and attributed on transactions.
+  key: id
+  spec: openapi/creatoriq-ecommerce-openapi.yml
+  relationships:
+  - {type: belongs_to, target: Publisher, via: publisherId}
+  - {type: has_many, target: Transaction}
+- name: Transaction
+  description: Ecommerce order attributed to a creator via a promo code or tracking link.
+  spec: openapi/creatoriq-ecommerce-openapi.yml
+- name: Payout
+  description: A creator payment. Read-only over the API; also surfaced as the Campaign payout.paid webhook.
+  spec: openapi/creatoriq-payments-openapi.yml
+  relationships:
+  - {type: belongs_to, target: Publisher}
+  - {type: belongs_to, target: Campaign}
+- name: Payable
+  description: An amount owed to a creator, prior to payout.
+  spec: openapi/creatoriq-payments-openapi.yml
+- name: ReportView
+  description: >-
+    Not an entity so much as a projection — forty named report views addressed as
+    /crm/v1/api/view?view=Reports/<Domain>/<View>, each returning a tabular result set.
+  spec: openapi/creatoriq-reports-openapi.yml
+- name: User
+  description: >-
+    Partner users with access to the CreatorIQ instance. Described in the data-model article and
+    published as a portal service, but the exported OpenAPI declares zero paths, so the entity has no
+    contract.
+  spec: openapi/_original/creatoriq-users-openapi-original.yaml
+  status: undocumented-in-spec

@@ -1,0 +1,91 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: CreatorIQ CRM partner Users API
+  description: CreatorIQ CRM APIs for Users resource
+  termsOfService: 'https://www.creatoriq.com/legal/terms-of-use'
+  contact:
+    name: CreatorIQ
+    url: 'https://www.creatoriq.com'
+    email: support@creatoriq.com
+  license:
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+    name: Apache 2.0
+servers:
+  - url: 'https://apis.creatoriq.com'
+    description: Live
+paths: {}
+tags:
+  - name: Users
+    description: Partner Users public API
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header
+  responses:
+    getPartnerUsersSuccess:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getPartnerUsersSuccessModel'
+  schemas:
+    getPartnerUsersSuccessModel:
+      type: object
+      description: Get Partner Users Model
+      properties:
+        items:
+          type: object
+          description: items
+          properties:
+            recruits:
+              type: array
+              description: Recruits
+              items:
+                type: object
+                description: Recruits items
+                properties:
+                  Name:
+                    type: string
+                    description: Recruit Name
+                    example: User One
+                  Id:
+                    type: integer
+                    format: int32
+                    example: 3136783
+            managers:
+              type: array
+              description: Managers
+              items:
+                type: object
+                description: Managers items
+                properties:
+                  Name:
+                    type: string
+                    description: Manager Name
+                    example: User Two
+                  Id:
+                    type: integer
+                    format: int32
+                    example: 31
+            administrators:
+              type: array
+              description: Administrators
+              items:
+                type: object
+                description: Administrators items
+                properties:
+                  Name:
+                    type: string
+                    description: Administrator Name
+                    example: User Three
+                  Id:
+                    type: integer
+                    format: int32
+                    example: 32
+      required:
+        - items
+security:
+  - apiKey: []

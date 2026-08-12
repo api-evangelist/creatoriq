@@ -1,0 +1,28 @@
+generated: '2026-08-11'
+method: generated
+source: >-
+  Grounded in the 159 operationIds harvested from CreatorIQ's own OpenAPI documents, plus the
+  published conventions, error, rate-limit, webhook and changelog articles on apidocs.creatoriq.com.
+  No provider-published AGENTS.md or skill files exist — searched apidocs.creatoriq.com,
+  creatoriq.com and both GitHub organizations.
+skills:
+- file: creatoriq-onboard-creator-to-campaign.md
+  name: Onboard a creator into a CreatorIQ campaign
+  api: openapi/creatoriq-publishers-openapi.yml, openapi/creatoriq-campaigns-openapi.yml
+  operations: [getUserInSocialNetwork, getAllPublishers, createPublisher, addPublisherSocialAccount, getPublisherAccounts, getCampaigns, assignPublisherToCampaign, updateCampaignPublisherDetails, updateCampaignPublisherPaymentSettings]
+- file: creatoriq-pitch-creators-with-a-onesheet.md
+  name: Build and publish a CreatorIQ One-Sheet
+  api: openapi/creatoriq-onesheets-openapi.yml, openapi/creatoriq-lists-openapi.yml
+  operations: [getListsCollection, createList, postPublisherToList, deletePublisherFromList, createOnesheet, addCreatorToOnesheet, getCreatorsOfOnesheet, PublishOneSheet, approveCreatorToOnesheet, RemoveCreator, UpdateOneSheetCreator, AddPublisherComment]
+- file: creatoriq-subscribe-to-events.md
+  name: Subscribe to CreatorIQ webhook events and verify them
+  api: openapi/creatoriq-webhooks-openapi.yml
+  operations: [SubscriptionsController_subscribe, SubscriptionsController_getSubscriptions, SubscriptionsController_unsubscribe]
+- file: creatoriq-pull-campaign-performance.md
+  name: Pull CreatorIQ campaign performance
+  api: openapi/creatoriq-campaigns-openapi.yml, openapi/creatoriq-reports-openapi.yml
+  operations: [getCampaigns, getCampaignInformation, getCampaignActivity, getCampaignDailyStats, getCampaignPublishers, getCampaignScheduledPosts, getSocialPostInfo]
+- file: creatoriq-reconcile-creator-payouts.md
+  name: Reconcile CreatorIQ creator payouts
+  api: openapi/creatoriq-payments-openapi.yml
+  operations: [listPayables, listPayouts, getPaymentInfoCollectionStatus]

@@ -1,0 +1,642 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: CreatorIQ CRM Publishers API
+  description: CreatorIQ CRM APIs for Publishers (Influencer/Creator) resource
+  termsOfService: 'https://www.creatoriq.com/legal/terms-of-use'
+  contact:
+    name: CreatorIQ
+    url: 'https://www.creatoriq.com'
+    email: support@creatoriq.com
+  license:
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+    name: Apache 2.0
+servers:
+  - url: 'https://apis.creatoriq.com'
+    description: Live
+paths:
+  '/crm/v1/api/notes/{entity}/{entityId}/{dimension}':
+    get:
+      tags:
+        - Notes
+      summary: Get Single Dimension from Notes
+      description: |
+        Provides the list of the one-sheet publisher Ids that have published notes <br/>
+        Get Notes API endpoint returns the data only if it is added via API. The comments/notes left via the UI are not available via these endpoints.
+      operationId: getSingleDimensionFromNotes
+      parameters:
+        - name: entity
+          in: path
+          description: Entity type
+          required: true
+          schema:
+            type: string
+            enum:
+              - campaign
+              - onesheet
+            example: onesheet
+          examples:
+            default:
+              value: onesheet
+        - name: entityId
+          in: path
+          description: Unique entity id
+          required: true
+          schema:
+            type: integer
+            example: 1961163
+          examples:
+            default:
+              value: 1961163
+        - name: dimension
+          in: path
+          description: |
+            Additional entity type according to `entity`:
+            * `campaign`: `campaign-publisher`
+            * `onesheet`: `onesheet-publisher`
+          required: true
+          schema:
+            type: string
+            enum:
+              - campaign-publisher
+              - onesheet-publisher
+            example: onesheet-publisher
+          examples:
+            default:
+              value: onesheet-publisher
+      responses:
+        '200':
+          $ref: '#/components/responses/GetSingleDimensionSuccessResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse400'
+        '403':
+          description: Forbidden
+        '404':
+          $ref: '#/components/responses/ErrorResponse404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+  '/crm/v1/api/notes/{entity}/{entityId}':
+    get:
+      tags:
+        - Notes
+      summary: Get Notes
+      description: |
+        Provides the list of published notes added to a one-sheet or to a one-sheet publisher. <br/>
+        Get Notes API endpoint returns the data only if it is added via API. The comments/notes left via the UI are not available via these endpoints.
+      operationId: getNotes
+      parameters:
+        - name: entity
+          in: path
+          description: Entity type
+          required: true
+          schema:
+            type: string
+            enum:
+              - publisher
+              - campaign
+              - list
+              - onesheet
+              - onesheet-publisher
+            example: onesheet
+          examples:
+            default:
+              value: onesheet
+        - name: entityId
+          in: path
+          description: |
+            Unique entity id.
+            Entity ID should be taken accordingly to `entity` type:
+            * `onesheet-publisher` - the `SalesSheetsPublisherId` field from the response of Reports => OneSheet => Get OneSheet Builder: `/crm/v1/api/view?view=OneSheetBuilder/OneSheetBuilder`
+          required: true
+          schema:
+            type: integer
+            example: 1961163
+          examples:
+            default:
+              value: 1961163
+      responses:
+        '200':
+          $ref: '#/components/responses/GetNotesSuccessResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse400'
+        '403':
+          description: Forbidden
+        '404':
+          $ref: '#/components/responses/ErrorResponse404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+    post:
+      tags:
+        - Notes
+      summary: Add Notes
+      description: Allows adding a published comment to a one-sheet.
+      operationId: addNotes
+      parameters:
+        - name: entity
+          in: path
+          description: Entity type. Should be ```onesheet```
+          required: true
+          schema:
+            type: string
+            enum:
+              - publisher
+              - campaign
+              - list
+              - onesheet
+              - onesheet-publisher
+            example: onesheet
+          examples:
+            default:
+              value: onesheet
+        - name: entityId
+          in: path
+          description: Unique entity id
+          required: true
+          schema:
+            type: integer
+            example: 1961163
+          examples:
+            default:
+              value: 1961163
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddNoteBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/AddNoteSuccessResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse400'
+        '403':
+          description: Forbidden
+        '404':
+          $ref: '#/components/responses/ErrorResponse404'
+      security:
+        - apiKey: []
+      servers:
+        - url: 'https://apis.creatoriq.com'
+          description: Live
+tags:
+  - name: Notes
+    description: Notes public API
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header
+  responses:
+    GetSingleDimensionSuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetSingleDimensionSuccessResponseModel'
+    GetNotesSuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotesCollectionModel'
+    AddNoteSuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NoteModel'
+    ErrorResponse404:
+      description: One-sheet with supplied ID not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseModel'
+    ErrorResponse400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseModel'
+  schemas:
+    AddNoteBody:
+      type: object
+      description: Schema represents request for create note
+      properties:
+        Note:
+          type: string
+          description: Note text
+          example: Some notes here
+        CreatedBy:
+          type: string
+          description: Person who create note
+          example: Admin
+        Email:
+          type: string
+          description: email
+          format: email
+          example: test.user@somemail.com
+      required:
+        - Note
+        - CreatedBy
+        - Email
+      minProperties: 1
+    GetSingleDimensionSuccessResponseModel:
+      type: object
+      oneOf:
+        - allOf:
+            - $ref: '#/components/schemas/CollectionCommonModel'
+            - $ref: '#/components/schemas/OneSheetPublisherCommentsCollectionModel'
+        - allOf:
+            - $ref: '#/components/schemas/CollectionCommonModel'
+            - $ref: '#/components/schemas/CampaignPublisherCommentsCollectionModel'
+    CollectionCommonModel:
+      type: object
+      description: Success
+      properties:
+        type:
+          type: string
+          description: Type of collection
+          example: NotesCollection
+        count:
+          type: integer
+          description: Number of records in current response
+          example: 200
+        total:
+          type: integer
+          description: Total number of found rows
+          example: 20
+        page:
+          type: integer
+          description: Current page
+          example: 1
+      required:
+        - type
+        - count
+        - total
+        - page
+    OneSheetPublisherCommentsCollectionModel:
+      type: object
+      properties:
+        OneSheetPublisherCommentsCollection:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                  - OneSheetPublisherComments
+                example: OneSheetPublisherComments
+              OneSheetPublisherComments:
+                type: object
+                properties:
+                  RecordId:
+                    type: integer
+                    description: Publisher ID from the OneSheet
+                    example: 1961163
+                  Count:
+                    type: integer
+                    description: Count of comments
+                    example: 2
+      required:
+        - OneSheetPublisherCommentsCollection
+    CampaignPublisherCommentsCollectionModel:
+      type: object
+      properties:
+        CampaignPublisherCommentsCollection:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                  - CampaignPublisherComments
+                example: CampaignPublisherComments
+              CampaignPublisherComments:
+                type: object
+                properties:
+                  RecordId:
+                    type: integer
+                    description: Publisher ID from the Campaign
+                    example: 1961163
+                  Count:
+                    type: integer
+                    description: Count of comments
+                    example: 2
+      required:
+        - CampaignPublisherCommentsCollection
+    NotesCollectionModel:
+      type: object
+      description: Success
+      properties:
+        type:
+          type: string
+          enum:
+            - NotesCollection
+          description: Type of Search
+          example: NotesCollection
+        href:
+          type: string
+          description: CreatorIQ API URL to get notes
+          example: 'https://apis.creatoriq.com/crm/v1/api/notes?filter%5B0%5D%5B0%5D=Archived&filter%5B0%5D%5B1%5D=%3D&filter%5B0%5D%5B2%5D=0'
+        count:
+          type: integer
+          description: Number of records in current response
+          example: 200
+        total:
+          type: integer
+          description: Total number of found rows
+          example: 20
+        page:
+          type: integer
+          description: Current page
+          example: 1
+        NotesCollection:
+          type: array
+          description: Notes collection
+          items:
+            $ref: '#/components/schemas/NoteModel'
+        isEntityPublished:
+          type: boolean
+          description: Flag represents is entity in public access
+          example: true
+      required:
+        - type
+        - href
+        - count
+        - total
+        - page
+        - NotesCollection
+    NoteModel:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - Note
+          description: Type of Search
+          example: Note
+        href:
+          type: string
+          description: Link to fetch current note
+          example: 'https://apis.creatoriq.com/crm/v1/api/note/293751'
+        Note:
+          type: object
+          allOf:
+            - $ref: '#/components/schemas/NoteBaseModel'
+            - type: object
+              properties:
+                EntityName:
+                  type: string
+                  description: Entity name
+                  example: enjoycing joyce
+                ParentEntityId:
+                  type: integer
+                  description: 'Unique parent entity (note, onesheet, campaign, publisher etc.) ID'
+                  example: 337724
+                ParentEntityName:
+                  type: string
+                  description: Parent entity name
+                  example: API
+              required:
+                - EntityName
+                - ParentEntityId
+                - ParentEntityName
+      required:
+        - type
+        - href
+        - Note
+    NoteBaseModel:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: Unique note id
+          example: 123
+        RecordId:
+          type: integer
+          description: Entity ID according to `EntityType` that the note relates to
+          example: 72541
+        Note:
+          type: string
+          description: Note text
+          example: Some notes here
+        UpdatedBy:
+          type: string
+          description: Person who update note
+          example: Admin
+        CreatedAt:
+          type: string
+          description: Note created date
+          format: date-time
+          readOnly: true
+          example: '2022-09-12T22:01:24-08:00'
+        UpdatedAt:
+          type: string
+          nullable: true
+          description: Note updated date
+          format: date-time
+          example: '2022-09-12T22:01:24-08:00'
+        CreatedBy:
+          type: string
+          description: Person who create note
+          example: Admin
+        isExternal:
+          type: boolean
+          description: 'Flag of where the Note has been created: externally (e.g., API) or in CRM'
+          example: true
+        User:
+          type: object
+          properties:
+            Id:
+              type: integer
+              description: Unique user id
+              example: 100010093
+            FirstName:
+              type: string
+              description: User first name
+              example: Test
+            LastName:
+              type: string
+              description: User last name
+              example: Test
+            FullName:
+              type: string
+              description: User full name
+              example: Test User
+            AvatarURL:
+              type: string
+              nullable: true
+              description: Url to user avatar
+              format: uri
+              example: 'https://example.com'
+          required:
+            - Id
+            - FirstName
+            - LastName
+            - FullName
+            - AvatarURL
+        Avatar:
+          type: string
+          nullable: true
+          description: Url to avatar
+          format: uri
+          example: 'https://example.com'
+        ThreadNotes:
+          type: array
+          description: Notes in reply thread
+          items:
+            $ref: '#/components/schemas/NoteBaseModel'
+        Status:
+          type: string
+          enum:
+            - Active
+          description: Note status
+          example: Active
+        IsEditable:
+          type: boolean
+          description: Is entity can be edited
+          example: true
+        IsDeletable:
+          type: boolean
+          description: Is entity can be deleted
+          example: true
+        CommentType:
+          type: string
+          enum:
+            - Comments
+          description: Type of comments
+          example: Comments
+        EntityType:
+          type: string
+          enum:
+            - publisher
+            - campaign
+            - list
+            - onesheet
+            - onesheet-publisher
+          description: Entity type
+          example: onesheet-publisher
+        PermissionsAccess:
+          type: object
+          properties:
+            Access:
+              type: string
+              enum:
+                - PUBLIC
+              description: Access type
+              example: PUBLIC
+            Permissions:
+              type: array
+              items:
+                type: object
+                properties:
+                  ClassType:
+                    type: string
+                    enum:
+                      - NOTES
+                    description: Class type
+                    example: NOTES
+                  ClassID:
+                    type: integer
+                    description: Unique class id
+                    example: 293751
+                  ObjectTypeId:
+                    type: integer
+                    example: 1
+                  ObjectTypeName:
+                    type: string
+                    enum:
+                      - User
+                    example: User
+                  ObjectId:
+                    type: integer
+                    description: Unique Object id
+                    example: 100010093
+                  Permission:
+                    type: string
+                    enum:
+                      - Owner
+                    example: Owner
+                  PermissionState:
+                    type: string
+                    example: G
+                  ObjectOktaId:
+                    type: string
+                    description: Unique okta object id
+                    example: 00usf39178lmcQbii0jx
+                required:
+                  - ClassType
+                  - ClassID
+                  - ObjectTypeId
+                  - ObjectTypeName
+                  - ObjectId
+                  - Permission
+                  - PermissionState
+                  - ObjectOktaId
+          required:
+            - Access
+            - Permissions
+        SystemType:
+          type: string
+          enum:
+            - approved
+            - reset
+            - rejected
+            - '""'
+          example: approved
+      required:
+        - Id
+        - RecordId
+        - Note
+        - UpdatedBy
+        - CreatedAt
+        - UpdatedAt
+        - CreatedBy
+        - isExternal
+        - User
+        - Avatar
+        - ThreadNotes
+        - Status
+        - IsEditable
+        - IsDeletable
+        - CommentType
+        - EntityType
+        - PermissionsAccess
+        - SystemType
+    ErrorResponseModel:
+      type: object
+      description: Not found exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          example: CoreException
+        Exception:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              example: 404
+            message:
+              type: string
+              description: Exception message
+              example: Not found
+          required:
+            - code
+            - message
+      required:
+        - type
+        - Exception
+security:
+  - apiKey: []

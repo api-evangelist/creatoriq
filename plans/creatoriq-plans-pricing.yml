@@ -1,0 +1,21 @@
+generated: '2026-08-11'
+method: searched
+source: https://www.creatoriq.com/pricing
+plan_count: 0
+currency: null
+plans: []
+model: enterprise-quote
+note: >-
+  CreatorIQ publishes no priced tiers. https://www.creatoriq.com/pricing resolves (HTTP 200) to
+  https://www.creatoriq.com/pricing-request-modal — a "request pricing" lead form, not a rate card.
+  There is no free tier, no self-serve signup and no published per-call or per-seat price. API access
+  is not a separately purchasable product either: the developer portal states that an API key is
+  issued by a CreatorIQ account manager or sales contact (sales@creatoriq.com / support@creatoriq.com)
+  to existing customers, and that a sandbox instance is provisioned the same way.
+evidence:
+- url: https://www.creatoriq.com/pricing
+  http_status: 200
+  effective_url: https://www.creatoriq.com/pricing-request-modal
+- url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/bdsnkqszbhdx9-general-fa-qs
+  http_status: 200
+  note: '"How do I get the API key?" — routed to sales/account manager, no price named.'

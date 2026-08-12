@@ -1,0 +1,102 @@
+generated: '2026-08-11'
+method: searched
+source: https://apidocs.creatoriq.com/docs/ciq-api-documentation/vwm8zv3dadjxc-webhooks-events
+spec_type: none
+asyncapi_published: false
+asyncapi_note: >-
+  CreatorIQ publishes no AsyncAPI document. It does publish a real, documented, subscribable event
+  surface — a pub/sub webhook API with an OpenAPI of its own, a documented event catalogue with payload
+  examples, a signature scheme and a retry policy. Captured here as a webhook catalogue and wired as
+  type: Webhooks. Nothing about the event shapes is invented; every event below is transcribed from
+  the published event reference.
+status: beta
+status_quote: 'Note: our Webhook APIs are still in beta.'
+subscription_api:
+  base_url: https://apis.creatoriq.com/pubsub
+  spec: openapi/creatoriq-webhooks-openapi.yml
+  operations:
+  - {method: POST, path: /subscribe, operationId: SubscriptionsController_subscribe, returns: 201}
+  - {method: DELETE, path: /unsubscribe, operationId: SubscriptionsController_unsubscribe, returns: 201}
+  - {method: GET, path: /subscriptions, operationId: SubscriptionsController_getSubscriptions, returns: 200}
+  auth: x-api-key (partner-level or division-level)
+  wildcard: '`*` is accepted as the actionType to subscribe to all events of an entity.'
+  errors:
+  - {condition: already subscribed, status: 400, message: 'Subscription on the current event already exists!'}
+  - {condition: not subscribed, status: 404, message: 'No subscription found for deletion'}
+delivery:
+  transport: HTTPS POST to a subscriber-supplied callback URL
+  tls: 'Callback must serve valid HTTPS; CreatorIQ validates the connection before sending.'
+  retries: 2 further attempts at 1-minute intervals after the first failure (5xx or 4xx)
+  retention: Undelivered events stored for a maximum of 4 days, replayable only by emailing support
+  health_monitoring: Endpoints that degrade are marked with a health status and may be deactivated
+  event_logs: Persisted server-side but not exposed via API or UI; retrievable only by support request
+signature:
+  headers:
+  - {name: X-Signature, algorithm: MD5, always: true}
+  - {name: X-Signature-SHA256, algorithm: SHA-256, always: false, condition: partner has ACL enabled}
+  - {name: x-timestamp, role: signing input}
+  signing_string: normalizedJson(payload) + timestamp + apiKey
+  construction: plain hash, NOT an HMAC
+  provider_note: >-
+    CreatorIQ documents this openly — "Although this process is described as HMAC, the current
+    implementation uses a simple hash (not an HMAC construction)" — and notes that switching to a true
+    HMAC would require versioning and break backward compatibility.
+  docs: https://apidocs.creatoriq.com/docs/ciq-api-documentation/gpcfpc5efhwy9-webhook-signature
+envelope:
+  fields: [payload, sender, timestamp, requestId, partnerId, divisionId, divisionName, entityType, entityId, actionType]
+  note: divisionId and divisionName are populated for division-scoped subscriptions.
+event_count: 12
+events:
+- entityType: Campaign
+  actionType: create
+  description: A new campaign is created
+  payload_fields: [CampaignId, TemplateId, ClonedFromId]
+- entityType: Campaign
+  actionType: delete
+  description: A campaign is deleted
+  payload_fields: [CampaignId]
+- entityType: Campaign
+  actionType: update.latestpost
+  description: A campaign's latest posts activity updates
+- entityType: Campaign
+  actionType: payout.paid
+  description: A creator payment status is set to paid
+- entityType: Publisher
+  actionType: account.linked
+  description: The creator links a social account
+- entityType: Publisher
+  actionType: account.linked.failed
+  description: Linking of the creator's social account fails
+- entityType: Publisher
+  actionType: account.unlinked
+  description: A creator's social account is unlinked
+- entityType: Publisher
+  actionType: delete
+  description: The publisher is removed from the CRM or network
+- entityType: Publisher
+  actionType: update
+  description: A publisher's profile information is updated
+  payload_fields: [ChangedData, PublisherId]
+- entityType: Publisher
+  actionType: campaign.added
+  description: A publisher is added to a campaign
+- entityType: Onesheet
+  actionType: publish
+  description: A One-Sheet is published
+- entityType: List_2
+  actionType: publish
+  description: A List 2.0 is published
+testing:
+  docs: https://apidocs.creatoriq.com/docs/ciq-api-documentation/5cbf5f595e39e-testing-webhooks
+  method: >-
+    CreatorIQ's published testing recipe is to register a webhook.site URL as the callback, then
+    trigger the event either by calling the corresponding API or from the CreatorIQ app. There is no
+    event-simulation or trigger endpoint — every test requires causing the real state change.
+  walkthroughs:
+  - {event: 'Campaign create', video: https://share.descript.com/view/B8l2UbMpYho}
+  - {event: 'Campaign update.latestpost', video: https://share.descript.com/view/lvEGyja9Mhg}
+  - {event: 'Campaign payout.paid', video: https://share.descript.com/view/aM5mwYynVLe}
+gaps:
+- No AsyncAPI document, so the event payloads are not machine-readable anywhere.
+- The webhook OpenAPI describes the subscription API only; the event payloads it dispatches are documented in prose and examples, not schema.
+- No event-replay or event-log API; both are support tickets.

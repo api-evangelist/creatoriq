@@ -1,0 +1,687 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: CreatorIQ Brand Safety (draft)
+  description: CreatorIQ BrandSafety API
+  termsOfService: 'https://www.creatoriq.com/legal/terms-of-use'
+  contact:
+    name: CreatorIQ
+    url: 'https://www.creatoriq.com'
+    email: support@creatoriq.com
+  license:
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+    name: Apache 2.0
+servers:
+  - url: 'https://apis.creatoriq.com/BrandSafetyProd'
+    description: Live
+  - url: 'https://apis.creatoriq.com/BrandSafetyStage'
+    description: Stage
+  - url: 'https://apis.creatoriq.com/BrandSafetyDev'
+    description: Dev
+paths:
+  /check:
+    post:
+      tags:
+        - BrandSafety
+      summary: BrandSafety
+      description: |
+        Efficiently screen creators using your tailored brand safety keyword sets, identify potential issues by reviewing flagged posts, and ensure each creator aligns with your brand's safety standards
+
+        **Timeout: ~27 seconds**
+      operationId: BrandSafety
+      parameters:
+        - name: Authorization
+          in: header
+          description: |
+            Format: `Authorization: ciq_token <your_token>`
+          required: true
+          schema:
+            type: string
+            examples:
+              - ciq_token 123
+          examples:
+            default:
+              value: ciq_token 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./brandsafety_schemas.yaml#/components/schemas/BrandSafetyBodyParams
+            examples:
+              Simple:
+                value:
+                  CRM:
+                    - 13731801
+                    - 14336736
+                    - 15678198
+                  Discovery:
+                    - 13731801
+                    - 14336736
+                    - 15678198
+              Short:
+                value:
+                  CRM:
+                    - 13731801
+                    - 14336736
+                    - 15678198
+                  Discovery:
+                    - 13731801
+                    - 14336736
+                    - 15678198
+                  Short: true
+              FullWithAggregation:
+                value:
+                  CRM:
+                    - 13731801
+                    - 14336736
+                    - 15678198
+                  Discovery:
+                    - 13731801
+                    - 14336736
+                    - 15678198
+                  AdditionalFields:
+                    Aggregation:
+                      Brands: true
+                      Games: true
+                      Types: true
+                      Sponsored: true
+                      Networks: true
+      responses:
+        '200':
+          description: A valid response
+          content:
+            application/json:
+              schema:
+                $ref: ./brandsafety_schemas.yaml#/components/schemas/BrandSafetyBodyParams
+              examples:
+                Full:
+                  description: Response when request parameter `Short` is omitted or set to `false`
+                  value:
+                    live:
+                      '13731801':
+                        Posts:
+                          instagram_CgpF5kSFQHX:
+                            Lists:
+                              Crypto:
+                                Keywords:
+                                  - dust
+                                Color: '#f36868'
+                            Network: instagram
+                            PostId: CgpF5kSFQHX
+                            NetworkUser: anastasile
+                            SocialNetworkId: '3663887282'
+                            PostDateTime: '2022-07-30T16:04:44Z'
+                            Type: reel
+                            Link: 'https://www.instagram.com/reel/CgpF5kSFQHX/'
+                            Thumbnail: 'https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/reel/CgpF5kSFQHX/'
+                            Text: "Blue makeup tutorial \U0001F98B products \U0001F447\U0001F3FC\n\nanastasiabeverlyhills brow freeze \nnyxcosmetics brow precision pencil \nsephora collection blue pencil funky cornflower \nsamplebeauty liquid eyeshadows blue and white \nlamel.cosmetics oh my colour blue eye pencil \nbeautybaycom and nikkietutorials palette \nurbandecaycosmetics moon dust space cowboy \nkvdbeauty Apple foundation 010\ncharlottetilbury cream bronzer 2 medium \nnudestix blush cherry blossom \ncharlottetilbury powder \nnatashadenona lip pencil ilona \nvalentino.beauty lipstick 108A\nnyxcosmetics lipstick pink hit"
+                            Title: ''
+                            LikesCount: 162552
+                            CommentCount: 459
+                            ShareCount: 0
+                            ViewCount: 1138744
+                            BrandsInfo:
+                              - Value: Sephora
+                                Hashes:
+                                  - '@sephora'
+                              - Value: KVD Beauty
+                                Hashes:
+                                  - '@kvdbeauty'
+                              - Value: Anastasia Beverly Hills
+                                Hashes:
+                                  - '@anastasiabeverlyhills'
+                              - Value: Natasha Denona
+                                Hashes:
+                                  - '@natashadenona'
+                              - Value: Valentino
+                                Hashes:
+                                  - '@valentino.beauty'
+                              - Value: NYX Professional Makeup
+                                Hashes:
+                                  - '@nyxcosmetics'
+                              - Value: Nudestix
+                                Hashes:
+                                  - '@nudestix'
+                              - Value: Sample Beauty
+                                Hashes:
+                                  - '@samplebeauty'
+                              - Value: Charlotte Tilbury
+                                Hashes:
+                                  - '@charlottetilbury'
+                              - Value: Beauty Bay
+                                Hashes:
+                                  - '@beautybaycom'
+                              - Value: Urban Decay
+                                Hashes:
+                                  - '@urbandecaycosmetics'
+                          instagram_CmCEa3avVxm:
+                            Lists:
+                              Crypto:
+                                Keywords:
+                                  - dust
+                                Color: '#f36868'
+                            Network: instagram
+                            PostId: CmCEa3avVxm
+                            NetworkUser: anastasile
+                            SocialNetworkId: '3663887282'
+                            PostDateTime: '2022-12-11T15:27:30Z'
+                            Type: reel
+                            Link: 'https://www.instagram.com/reel/CmCEa3avVxm/'
+                            Thumbnail: 'https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/reel/CmCEa3avVxm/'
+                            Text: |-
+                              “I’m cold” makeup ✨
+                              colourpopcosmetics trouble maker palette and fairy dust creamy matte eyeshadow stick 
+                              colourpopcosmetics jelly much shadow drama szn 
+                              colourpopcosmetics snitchery blush stix 
+                              and prairie air powder blush 
+                              colourpopcosmetics summer 4ever bronzer 
+                              colourpopcosmetics jubilant chorus highlighter 
+                              colourpopcosmetics lippie pencil oh snap 
+                              colourpopcosmetics Lux lipstick genie and Harry Potter lip gloss 
+                              shiseido lifting radiant foundation 
+                              hudabeauty concealer 
+                              #ad #colourpop
+                            Title: ''
+                            LikesCount: 83163
+                            CommentCount: 213
+                            ShareCount: 0
+                            ViewCount: 632959
+                            BrandsInfo:
+                              - Value: ColourPop Cosmetics
+                                Hashes:
+                                  - '#colourpop'
+                                  - '@colourpopcosmetics'
+                              - Value: Shiseido
+                                Hashes:
+                                  - '@shiseido'
+                              - Value: ColourPop
+                                Hashes:
+                                  - '@colourpopcosmetics'
+                              - Value: Huda Beauty
+                                Hashes:
+                                  - '@hudabeauty'
+                            SponsoredInfo:
+                              Value: true
+                              Hashes:
+                                - '#ad'
+                        Stat:
+                          Crypto: 2
+                      '14336736':
+                        Posts:
+                          instagram_CT-K4seln7z:
+                            Lists:
+                              Crypto:
+                                Keywords:
+                                  - burn
+                                Color: '#f36868'
+                            Network: instagram
+                            PostId: CT-K4seln7z
+                            NetworkUser: poshabeauty
+                            SocialNetworkId: '1117119003'
+                            PostDateTime: '2021-09-18T17:30:00Z'
+                            Type: image
+                            Link: 'https://www.instagram.com/p/CT-K4seln7z/'
+                            Thumbnail: 'https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/p/CT-K4seln7z/'
+                            Text: "\U0001F923\U0001F923\U0001F923\n.\n..\n.\n.\n.\n..\n\n.\n\n.\n.\n\n..\n.\n\n..\n\n.\n.\n.\n..\n.\n.\n\n.\n.\n.\n\n#agreed #agree #chewbacca #cheetah #world #explosion #religion #\U0001F6D0 #meme #burn #memes #funnymemes #memepage #dailymemes #404memes #404error #cod #games #r6 #rainbowsixsiege #rainbow #telepathy #bad #evil #god #tiktok #tiktoks"
+                            Title: ''
+                            LikesCount: 4751
+                            CommentCount: 6
+                            ShareCount: 0
+                            ViewCount: 0
+                          instagram_Cm661eBjfn7:
+                            Lists:
+                              Crypto:
+                                Keywords:
+                                  - burn
+                                Color: '#f36868'
+                            Network: instagram
+                            PostId: Cm661eBjfn7
+                            NetworkUser: poshabeauty
+                            SocialNetworkId: '1117119003'
+                            PostDateTime: '2023-01-02T17:09:34Z'
+                            Type: reel
+                            Link: 'https://www.instagram.com/reel/Cm661eBjfn7/'
+                            Thumbnail: 'https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/reel/Cm661eBjfn7/'
+                            Text: "Silicone Scar Tape glow.tulip Which Can Remove Old Scars, Keloids, Stretch Marks, C-Section Scars, Burn Scars, Acne Scars, Depressed Scars and More \U0001FAE5\U0001F937‍♂️\n\n \U0001F449Follow  GLOW.TULIP \n\n❗Hot ⏰️Winter Sale! Get Upto 60% off Plus FREE Worldwide shipping. \U0001F69B\U0001F6EB❗\n-\n\U0001F6D2 SHOP GLOW.TULIP"
+                            Title: ''
+                            LikesCount: 1491
+                            CommentCount: 37
+                            ShareCount: 0
+                            ViewCount: 0
+                          instagram_CqqvdaHMBtr:
+                            Lists:
+                              Crypto:
+                                Keywords:
+                                  - burn
+                                Color: '#f36868'
+                            Network: instagram
+                            PostId: CqqvdaHMBtr
+                            NetworkUser: poshabeauty
+                            SocialNetworkId: '1117119003'
+                            PostDateTime: '2023-04-05T20:27:22Z'
+                            Type: reel
+                            Link: 'https://www.instagram.com/reel/CqqvdaHMBtr/'
+                            Thumbnail: 'https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/reel/CqqvdaHMBtr/'
+                            Text: "That must burn \U0001F62C\U0001F97A\n\n\U0001F4F8: solangelfragoza on TikTok\n\n#hairtutorialvideo #hairvideo #hairtransformation #braidtutorial #hairvideoshow #hotd #hairvideotutorial #naturalhairtutorial #hairglamvideos #tutorialvideo #tutorialhairdo #hairstyletutorial #hairoftheday #cutehairstyles #tutorialhair #hairvideoshow #braidsofinstagram #hairofinstagram #hairstylevideo #hairstyle"
+                            Title: ''
+                            LikesCount: 6455
+                            CommentCount: 210
+                            ShareCount: 0
+                            ViewCount: 244337
+                          instagram_CtkOWFjOJvq:
+                            Lists:
+                              Crypto:
+                                Keywords:
+                                  - ledger
+                                Color: '#f36868'
+                            Network: instagram
+                            PostId: CtkOWFjOJvq
+                            NetworkUser: poshabeauty
+                            SocialNetworkId: '1117119003'
+                            PostDateTime: '2023-06-16T21:16:54Z'
+                            Type: reel
+                            Link: 'https://www.instagram.com/reel/CtkOWFjOJvq/'
+                            Thumbnail: 'https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/reel/CtkOWFjOJvq/'
+                            Text: "from the talented elizabethkayeturner \U0001F60D\U0001F60D\n\nInspo for this post is\_kali.ledger\_\U0001FAF6\U0001F3FB\nFILTER VS REALITY⚠️ Did you know that 80% of women filter/edit their photos? I used to all the time in the past, because they are so addictive and you just don’t feel pretty without one after using them constantly. So I can understand fully how hard it can be to stop!❤️‍\U0001FA79Just because you can see texture it doesn’t mean your makeup is cakey, texture makes us human and it’s perfectly normal\U0001FAF6\U0001F3FB We are just not used to seeing unfiltered skin at all\U0001F97A The difference is actually crazy and what is worrying the most is the quality of the filtered side, you can actually export a fully filtered video in 4k now which makes it even harder to tell the difference⚠️ so I know it’s really hard but please try not to compare yourself to everyone on social media! Remember you are beautiful!!\U0001F979\U0001FAF6\U0001F3FB\n#repost hudabeauty \U0001FA77"
+                            Title: ''
+                            LikesCount: 242
+                            CommentCount: 0
+                            ShareCount: 0
+                            ViewCount: 10099
+                            BrandsInfo:
+                              - Value: Huda Beauty
+                                Hashes:
+                                  - '@hudabeauty'
+                        Stat:
+                          Crypto: 4
+                      '15678198':
+                        Posts:
+                          instagram_CDiKVNphQ5C:
+                            Lists:
+                              Crypto:
+                                Keywords: null
+                                Color: '#f36868'
+                            Network: instagram
+                            PostId: CDiKVNphQ5C
+                            NetworkUser: cleorabeauty.id
+                            SocialNetworkId: '26066124010'
+                            PostDateTime: '2020-08-06T04:08:06Z'
+                            Type: carousel
+                            Link: 'https://www.instagram.com/p/CDiKVNphQ5C/'
+                            Thumbnail: 'https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/p/CDiKVNphQ5C/'
+                            Text: |-
+                              Penipuan !!!! Tolong jangan TERGIUR dengan harga MURAH di bawah harga pusat dan memberikan gratis barang dan gratis ongkir.Sekali lagi kami sebagai akun PUSAT tidak bertanggung jawab dengan penipuan yang mengatas namakan CLEORA BEAUTY.. DENGAN NAMA REKENING PENIPU MUHAMMAD DIKY ( no rekening 1560015758206)
+                              No HP : 082258126332 
+                              Akun IG selalu ganti2 : cleorabeauty.iid kemudian ganti menjadi clleorabeauty.id, lalu ganti lagi cleorabeautty.id 
+                              Reseller resmi kami Hanya yang tertera di BIO ,web resmi dan Highlight, diluar itu bukan tanggung jawab kami. Hati- hati dengan MODUS PENIPUAN seperti ini. CEK HIGHLIGHT JUDUL PENIPUAN untuk info detailnya
+
+                              Tolong bantu report akun ini!!!! Mohon sekali lagi agar berhati hati
+                            Title: ''
+                            LikesCount: 5503
+                            CommentCount: 776
+                            ShareCount: 0
+                            ViewCount: 0
+                        Stat:
+                          Crypto: 1
+                Full with NSFW:
+                  description: Response when request parameter `Short` is omitted or set to `false` and `NSFW` set to `true`
+                  value:
+                    live:
+                      '13731801':
+                        Posts:
+                          instagram_CgpF5kSFQHX:
+                            Lists:
+                              Crypto:
+                                Keywords:
+                                  - dust
+                                Color: '#f36868'
+                            Network: instagram
+                            PostId: CgpF5kSFQHX
+                            NetworkUser: anastasile
+                            SocialNetworkId: '3663887282'
+                            PostDateTime: '2022-07-30T16:04:44Z'
+                            Type: reel
+                            Link: 'https://www.instagram.com/reel/CgpF5kSFQHX/'
+                            Thumbnail: 'https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/reel/CgpF5kSFQHX/'
+                            Text: "Blue makeup tutorial \U0001F98B products \U0001F447\U0001F3FC\n\nanastasiabeverlyhills brow freeze \nnyxcosmetics brow precision pencil \nsephora collection blue pencil funky cornflower \nsamplebeauty liquid eyeshadows blue and white \nlamel.cosmetics oh my colour blue eye pencil \nbeautybaycom and nikkietutorials palette \nurbandecaycosmetics moon dust space cowboy \nkvdbeauty Apple foundation 010\ncharlottetilbury cream bronzer 2 medium \nnudestix blush cherry blossom \ncharlottetilbury powder \nnatashadenona lip pencil ilona \nvalentino.beauty lipstick 108A\nnyxcosmetics lipstick pink hit"
+                            Title: ''
+                            LikesCount: 162552
+                            CommentCount: 459
+                            ShareCount: 0
+                            ViewCount: 1138744
+                            BrandsInfo:
+                              - Value: Sephora
+                                Hashes:
+                                  - '@sephora'
+                              - Value: KVD Beauty
+                                Hashes:
+                                  - '@kvdbeauty'
+                              - Value: Anastasia Beverly Hills
+                                Hashes:
+                                  - '@anastasiabeverlyhills'
+                              - Value: Natasha Denona
+                                Hashes:
+                                  - '@natashadenona'
+                              - Value: Valentino
+                                Hashes:
+                                  - '@valentino.beauty'
+                              - Value: NYX Professional Makeup
+                                Hashes:
+                                  - '@nyxcosmetics'
+                              - Value: Nudestix
+                                Hashes:
+                                  - '@nudestix'
+                              - Value: Sample Beauty
+                                Hashes:
+                                  - '@samplebeauty'
+                              - Value: Charlotte Tilbury
+                                Hashes:
+                                  - '@charlottetilbury'
+                              - Value: Beauty Bay
+                                Hashes:
+                                  - '@beautybaycom'
+                              - Value: Urban Decay
+                                Hashes:
+                                  - '@urbandecaycosmetics'
+                          instagram_CmCEa3avVxm:
+                            Lists:
+                              Crypto:
+                                Keywords:
+                                  - dust
+                                Color: '#f36868'
+                            Network: instagram
+                            PostId: CmCEa3avVxm
+                            NetworkUser: anastasile
+                            SocialNetworkId: '3663887282'
+                            PostDateTime: '2022-12-11T15:27:30Z'
+                            Type: reel
+                            Link: 'https://www.instagram.com/reel/CmCEa3avVxm/'
+                            Thumbnail: 'https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/reel/CmCEa3avVxm/'
+                            Text: |-
+                              “I’m cold” makeup ✨
+                              colourpopcosmetics trouble maker palette and fairy dust creamy matte eyeshadow stick 
+                              colourpopcosmetics jelly much shadow drama szn 
+                              colourpopcosmetics snitchery blush stix 
+                              and prairie air powder blush 
+                              colourpopcosmetics summer 4ever bronzer 
+                              colourpopcosmetics jubilant chorus highlighter 
+                              colourpopcosmetics lippie pencil oh snap 
+                              colourpopcosmetics Lux lipstick genie and Harry Potter lip gloss 
+                              shiseido lifting radiant foundation 
+                              hudabeauty concealer 
+                              #ad #colourpop
+                            Title: ''
+                            LikesCount: 83163
+                            CommentCount: 213
+                            ShareCount: 0
+                            ViewCount: 632959
+                            BrandsInfo:
+                              - Value: ColourPop Cosmetics
+                                Hashes:
+                                  - '#colourpop'
+                                  - '@colourpopcosmetics'
+                              - Value: Shiseido
+                                Hashes:
+                                  - '@shiseido'
+                              - Value: ColourPop
+                                Hashes:
+                                  - '@colourpopcosmetics'
+                              - Value: Huda Beauty
+                                Hashes:
+                                  - '@hudabeauty'
+                            SponsoredInfo:
+                              Value: true
+                              Hashes:
+                                - '#ad'
+                        Stat:
+                          Crypto: 2
+                      '14336736':
+                        Posts:
+                          instagram_CS_46pFLFvs:
+                            Lists: null
+                            Network: instagram
+                            PostId: CS_46pFLFvs
+                            NetworkUser: poshabeauty
+                            SocialNetworkId: '1117119003'
+                            PostDateTime: '2021-08-25T01:08:04Z'
+                            Type: image
+                            Link: 'https://www.instagram.com/p/CS_46pFLFvs/'
+                            Thumbnail: 'https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/p/CS_46pFLFvs/'
+                            Text: "\nCliterally suck the stress out and join thousands of women. ✨Click the link in the bio of myclimaxworld for more than %50 off sale + free shipping\U0001F49D"
+                            Title: ''
+                            LikesCount: 1985
+                            CommentCount: 72
+                            ShareCount: 0
+                            ViewCount: 0
+                            NSFWInfo:
+                              Value: true
+                              Hashes:
+                                - suck
+                          instagram_CT-K4seln7z:
+                            Lists:
+                              Crypto:
+                                Keywords:
+                                  - burn
+                                Color: '#f36868'
+                            Network: instagram
+                            PostId: CT-K4seln7z
+                            NetworkUser: poshabeauty
+                            SocialNetworkId: '1117119003'
+                            PostDateTime: '2021-09-18T17:30:00Z'
+                            Type: image
+                            Link: 'https://www.instagram.com/p/CT-K4seln7z/'
+                            Thumbnail: 'https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/p/CT-K4seln7z/'
+                            Text: "\U0001F923\U0001F923\U0001F923\n.\n..\n.\n.\n.\n..\n\n.\n\n.\n.\n\n..\n.\n\n..\n\n.\n.\n.\n..\n.\n.\n\n.\n.\n.\n\n#agreed #agree #chewbacca #cheetah #world #explosion #religion #\U0001F6D0 #meme #burn #memes #funnymemes #memepage #dailymemes #404memes #404error #cod #games #r6 #rainbowsixsiege #rainbow #telepathy #bad #evil #god #tiktok #tiktoks"
+                            Title: ''
+                            LikesCount: 4751
+                            CommentCount: 6
+                            ShareCount: 0
+                            ViewCount: 0
+                          instagram_CTj8DkDsY0p:
+                            Lists: null
+                            Network: instagram
+                            PostId: CTj8DkDsY0p
+                            NetworkUser: poshabeauty
+                            SocialNetworkId: '1117119003'
+                            PostDateTime: '2021-09-08T01:09:09Z'
+                            Type: image
+                            Link: 'https://www.instagram.com/p/CTj8DkDsY0p/'
+                            Thumbnail: 'https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/p/CTj8DkDsY0p/'
+                            Text: "\nCliterally suck the stress out and join thousands of women. ✨Click the link in the bio of my_climax_world for more than %50 off sale + free shipping\U0001F49D\n\nmy_climax_world"
+                            Title: ''
+                            LikesCount: 1365
+                            CommentCount: 37
+                            ShareCount: 0
+                            ViewCount: 0
+                            NSFWInfo:
+                              Value: true
+                              Hashes:
+                                - suck
+                          instagram_Cm661eBjfn7:
+                            Lists:
+                              Crypto:
+                                Keywords:
+                                  - burn
+                                Color: '#f36868'
+                            Network: instagram
+                            PostId: Cm661eBjfn7
+                            NetworkUser: poshabeauty
+                            SocialNetworkId: '1117119003'
+                            PostDateTime: '2023-01-02T17:09:34Z'
+                            Type: reel
+                            Link: 'https://www.instagram.com/reel/Cm661eBjfn7/'
+                            Thumbnail: 'https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/reel/Cm661eBjfn7/'
+                            Text: "Silicone Scar Tape glow.tulip Which Can Remove Old Scars, Keloids, Stretch Marks, C-Section Scars, Burn Scars, Acne Scars, Depressed Scars and More \U0001FAE5\U0001F937‍♂️\n\n \U0001F449Follow  GLOW.TULIP \n\n❗Hot ⏰️Winter Sale! Get Upto 60% off Plus FREE Worldwide shipping. \U0001F69B\U0001F6EB❗\n-\n\U0001F6D2 SHOP GLOW.TULIP"
+                            Title: ''
+                            LikesCount: 1491
+                            CommentCount: 37
+                            ShareCount: 0
+                            ViewCount: 0
+                          instagram_CqqvdaHMBtr:
+                            Lists:
+                              Crypto:
+                                Keywords:
+                                  - burn
+                                Color: '#f36868'
+                            Network: instagram
+                            PostId: CqqvdaHMBtr
+                            NetworkUser: poshabeauty
+                            SocialNetworkId: '1117119003'
+                            PostDateTime: '2023-04-05T20:27:22Z'
+                            Type: reel
+                            Link: 'https://www.instagram.com/reel/CqqvdaHMBtr/'
+                            Thumbnail: 'https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/reel/CqqvdaHMBtr/'
+                            Text: "That must burn \U0001F62C\U0001F97A\n\n\U0001F4F8: solangelfragoza on TikTok\n\n#hairtutorialvideo #hairvideo #hairtransformation #braidtutorial #hairvideoshow #hotd #hairvideotutorial #naturalhairtutorial #hairglamvideos #tutorialvideo #tutorialhairdo #hairstyletutorial #hairoftheday #cutehairstyles #tutorialhair #hairvideoshow #braidsofinstagram #hairofinstagram #hairstylevideo #hairstyle"
+                            Title: ''
+                            LikesCount: 6455
+                            CommentCount: 210
+                            ShareCount: 0
+                            ViewCount: 244337
+                          instagram_CtkOWFjOJvq:
+                            Lists:
+                              Crypto:
+                                Keywords:
+                                  - ledger
+                                Color: '#f36868'
+                            Network: instagram
+                            PostId: CtkOWFjOJvq
+                            NetworkUser: poshabeauty
+                            SocialNetworkId: '1117119003'
+                            PostDateTime: '2023-06-16T21:16:54Z'
+                            Type: reel
+                            Link: 'https://www.instagram.com/reel/CtkOWFjOJvq/'
+                            Thumbnail: 'https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/reel/CtkOWFjOJvq/'
+                            Text: "from the talented elizabethkayeturner \U0001F60D\U0001F60D\n\nInspo for this post is\_kali.ledger\_\U0001FAF6\U0001F3FB\nFILTER VS REALITY⚠️ Did you know that 80% of women filter/edit their photos? I used to all the time in the past, because they are so addictive and you just don’t feel pretty without one after using them constantly. So I can understand fully how hard it can be to stop!❤️‍\U0001FA79Just because you can see texture it doesn’t mean your makeup is cakey, texture makes us human and it’s perfectly normal\U0001FAF6\U0001F3FB We are just not used to seeing unfiltered skin at all\U0001F97A The difference is actually crazy and what is worrying the most is the quality of the filtered side, you can actually export a fully filtered video in 4k now which makes it even harder to tell the difference⚠️ so I know it’s really hard but please try not to compare yourself to everyone on social media! Remember you are beautiful!!\U0001F979\U0001FAF6\U0001F3FB\n#repost hudabeauty \U0001FA77"
+                            Title: ''
+                            LikesCount: 242
+                            CommentCount: 0
+                            ShareCount: 0
+                            ViewCount: 10099
+                            BrandsInfo:
+                              - Value: Huda Beauty
+                                Hashes:
+                                  - '@hudabeauty'
+                        Stat:
+                          Crypto: 4
+                          NSFW: 2
+                Short:
+                  description: Response when request parameter `Short` is set to `true`
+                  value:
+                    live:
+                      '13731801':
+                        Stat:
+                          Crypto: 2
+                      '14336736':
+                        Stat:
+                          Crypto: 4
+                      '15678198':
+                        Stat:
+                          Crypto: 1
+                Short with NSFW:
+                  description: Response when request parameter `Short` is set to `true` and `NSFW` set to `true`
+                  value:
+                    live:
+                      '13731801':
+                        Stat:
+                          Crypto: 2
+                      '14336736':
+                        Stat:
+                          Crypto: 4
+                          NSFW: 2
+                      '15678198':
+                        Stat:
+                          Crypto: 1
+                          NSFW: 1
+                Full with Aggregation:
+                  description: Response with `AdditionalFields.Aggregation`
+                  value:
+                    aggregation:
+                      brands:
+                        - google
+                        - tesla
+                        - vice
+                      networks:
+                        - youtube
+                        - twitter
+                      sponsored:
+                        - 'true'
+                      types:
+                        - video
+                        - text
+                        - short
+                        - link
+                        - reply
+                        - image
+                        - photo
+                        - reel
+                        - carousel
+                    live:
+                      '13731801':
+                        Stat:
+                          Crypto: 2
+                      '14336736':
+                        Stat:
+                          Crypto: 4
+                          NSFW: 2
+                      '15678198':
+                        Stat:
+                          Crypto: 1
+                          NSFW: 1
+        '401':
+          $ref: '#/components/responses/UnauthorizedErrorResponse'
+        '429':
+          description: The user has sent too many requests in a given amount of time ("rate limiting").
+          content:
+            application/json:
+              schema:
+                $ref: ./brandsafety_schemas.yaml#/components/schemas/BrandSafetyBodyParams
+              examples:
+                '1160':
+                  summary: Rate limit in third-party api
+                  value:
+                    message: Rate limit
+                    errorCode: 1160
+        '500':
+          description: The server has encountered a situation it doesn't know how to handle.
+          content:
+            application/json:
+              schema:
+                $ref: ./brandsafety_schemas.yaml#/components/schemas/BrandSafetyBodyParams
+              examples:
+                '1666':
+                  summary: Common runtime error
+                  value:
+                    message: 'Runtime error: {message}'
+                    errorCode: 1666
+        '504':
+          description: Endpoint request timed out
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ./brandsafety_responseschemas.yaml#/components/schemas/DefaultErrorResponseSchema
+              examples:
+                '504':
+                  value:
+                    errorCode: 504
+                    message: Endpoint request timed out
+      servers:
+        - url: 'https://apis.creatoriq.com/BrandSafetyProd'
+          description: Live
+        - url: 'https://apis.creatoriq.com/BrandSafetyStage'
+          description: Stage
+        - url: 'https://apis.creatoriq.com/BrandSafetyDev'
+          description: Dev
+      x-internal: false
+tags:
+  - name: BrandSafety
+    description: Brand Safety Public API (draft)
+components:
+  responses:
+    UnauthorizedErrorResponse:
+      description: API key is missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: ./brandsafety_schemas.yaml#/components/schemas/BrandSafetyBodyParams

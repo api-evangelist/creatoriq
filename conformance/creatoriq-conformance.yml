@@ -1,0 +1,65 @@
+generated: '2026-08-11'
+method: derived
+source: openapi/ (17 documents, 159 operations) + CreatorIQ trust and security pages
+docs:
+- https://www.creatoriq.com/trust
+- https://www.creatoriq.com/legal/security
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: 8 of 17 harvested documents declare openapi 3.0.1
+- id: openapi-3.1
+  conforms: true
+  evidence: 9 of 17 harvested documents declare openapi 3.1.0
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme in any spec; authentication is a static x-api-key header
+- id: oidc
+  conforms: false
+  evidence: No openIdConnect scheme and no /.well-known/openid-configuration on any host
+- id: mutual-tls
+  conforms: false
+  evidence: No mutualTLS securityScheme declared
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Zero occurrences of application/problem+json across all specs
+- id: rfc8594-sunset-header
+  conforms: partial
+  evidence: >-
+    The overview page commits to emitting Deprecation and Sunset headers with a one-year window, but no
+    spec declares either header on any response, so the commitment is prose-only
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404/403 on all four CreatorIQ hosts
+- id: asyncapi
+  conforms: false
+  evidence: A documented webhook event surface exists but no AsyncAPI document is published
+- id: json-api
+  conforms: false
+  evidence: Bespoke collection envelopes (type/page/total/count/<Collection>), not JSON:API
+- id: idempotency
+  conforms: false
+  evidence: No idempotency key header or parameter anywhere in the specs or docs
+- id: pagination
+  conforms: partial
+  evidence: >-
+    Three coexisting dialects — page/size on CRM v1, Page/PageSize on the reporting views, cursor on
+    Payments and SafeIQ. Paginated, but not to one convention
+- id: iso-27001-2022
+  conforms: true
+  evidence: 'Certified; certificate published as PDF (SocialEdge, UKAS) and named on https://www.creatoriq.com/trust'
+- id: gdpr
+  conforms: true
+  evidence: Compliance asserted on the trust page with a published sub-processor list
+- id: ccpa
+  conforms: true
+  evidence: Compliance asserted on the trust page
+- id: soc2
+  conforms: false
+  evidence: Not claimed anywhere on the trust or security pages
+- id: pci-dss
+  conforms: false
+  evidence: Not claimed, including for the Payments API
+- id: hipaa
+  conforms: false
+  evidence: Not claimed (not applicable to this sector)

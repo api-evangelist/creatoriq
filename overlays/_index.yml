@@ -1,0 +1,55 @@
+generated: '2026-08-11'
+method: generated
+extends: openapi/
+overlays:
+- file: creatoriq-brand-safety-draft-overlay.yaml
+  extends: openapi/creatoriq-brand-safety-draft-openapi.yml
+  title: CreatorIQ Brand Safety (draft)
+- file: creatoriq-brand-safety-overlay.yaml
+  extends: openapi/creatoriq-brand-safety-openapi.yml
+  title: CreatorIQ SafeIQ Brand Safety API
+- file: creatoriq-campaigns-overlay.yaml
+  extends: openapi/creatoriq-campaigns-openapi.yml
+  title: CreatorIQ Campaign APIs
+- file: creatoriq-conversion-metrics-overlay.yaml
+  extends: openapi/creatoriq-conversion-metrics-openapi.yml
+  title: Conversion Metrics API
+- file: creatoriq-ecommerce-overlay.yaml
+  extends: openapi/creatoriq-ecommerce-openapi.yml
+  title: CreatorIQ Ecommerce APIs
+- file: creatoriq-link-tracking-overlay.yaml
+  extends: openapi/creatoriq-link-tracking-openapi.yml
+  title: CreatorIQ CRM LinkTracking API
+- file: creatoriq-lists-overlay.yaml
+  extends: openapi/creatoriq-lists-openapi.yml
+  title: CreatorIQ CRM Lists API
+- file: creatoriq-notes-overlay.yaml
+  extends: openapi/creatoriq-notes-openapi.yml
+  title: CreatorIQ CRM Publishers API
+- file: creatoriq-onesheets-overlay.yaml
+  extends: openapi/creatoriq-onesheets-openapi.yml
+  title: CreatorIQ CRM Onesheets API
+- file: creatoriq-payments-overlay.yaml
+  extends: openapi/creatoriq-payments-openapi.yml
+  title: CreatorIQ Payments API
+- file: creatoriq-publishers-overlay.yaml
+  extends: openapi/creatoriq-publishers-openapi.yml
+  title: CreatorIQ CRM Publishers API
+- file: creatoriq-reports-overlay.yaml
+  extends: openapi/creatoriq-reports-openapi.yml
+  title: CreatorIQ Reporting APIs
+- file: creatoriq-socials-overlay.yaml
+  extends: openapi/creatoriq-socials-openapi.yml
+  title: CreatorIQ Social Account APIs
+- file: creatoriq-v1-divisions-overlay.yaml
+  extends: openapi/creatoriq-v1-divisions-openapi.yml
+  title: CreatorIQ Divisions APIs
+- file: creatoriq-v2-campaigns-overlay.yaml
+  extends: openapi/creatoriq-v2-campaigns-openapi.yml
+  title: CreatorIQ CRM Campaigns API V2
+- file: creatoriq-v2-publishers-overlay.yaml
+  extends: openapi/creatoriq-v2-publishers-openapi.yml
+  title: CreatorIQ CRM Publishers API V2
+- file: creatoriq-webhooks-overlay.yaml
+  extends: openapi/creatoriq-webhooks-openapi.yml
+  title: CreatorIQ Public APIs

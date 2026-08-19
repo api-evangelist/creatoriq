@@ -1,0 +1,1744 @@
+{
+  "item": [
+    {
+      "id": "46dbfc50-4f81-40a6-b3ea-6817a7836ee1",
+      "name": "Ecommerce",
+      "description": {
+        "content": "Ecommerce public API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1ee8f93f-e477-490a-8d51-3b1452932af1",
+          "name": "Update publisher promo code",
+          "request": {
+            "name": "Update publisher promo code",
+            "description": {
+              "content": "Update existing publisher promo code by ID. Unique identifier is PromoCodePublisherId which is unique ID of relation between PromoCodeId and PublisherId.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "ecommerce",
+                "promo-codes",
+                ":id"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Value of the PromoCodePublisherId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Instruction\": \"<string>\",\n  \"Percentage\": \"<number>\",\n  \"StartDate\": \"<string>\",\n  \"EndDate\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ecb51e75-d6cf-4eca-9f72-30963bb76509",
+              "name": "Response 200",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "ecommerce",
+                    "promo-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Value of the PromoCodePublisherId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Instruction\": \"promo-code instruction\",\n  \"Percentage\": 10.25,\n  \"StartDate\": \"2023-10-10 00:00:00\",\n  \"EndDate\": \"2023-10-10 23:59:59\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"PromoCodeId\": 123,\n  \"PromoCodePublisherId\": 456,\n  \"PromoCodeName\": \"PROMO_CODE\",\n  \"StartDate\": \"2023-10-10 23:59:59\",\n  \"EndDate\": \"2023-10-20 23:59:59\",\n  \"Percentage\": 10.25,\n  \"IntegrationName\": \"CJ\",\n  \"PromotionalPropertyId\": 101001234,\n  \"Instruction\": \"Instruction example for the publisher.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03ae1f43-d016-4fc8-997e-5d4ced0746ec",
+              "name": "Response 400 (Bad Request)",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "ecommerce",
+                    "promo-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Value of the PromoCodePublisherId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Instruction\": \"promo-code instruction\",\n  \"Percentage\": 10.25,\n  \"StartDate\": \"2023-10-10 00:00:00\",\n  \"EndDate\": \"2023-10-10 23:59:59\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "51579b56-2843-43e4-8814-18959ca630ac",
+              "name": "Response 404 (Not found)",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "ecommerce",
+                    "promo-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Value of the PromoCodePublisherId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Instruction\": \"promo-code instruction\",\n  \"Percentage\": 10.25,\n  \"StartDate\": \"2023-10-10 00:00:00\",\n  \"EndDate\": \"2023-10-10 23:59:59\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"Promo code not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85b75aea-fbf5-41fb-bd65-bcdfe01d1fe1",
+          "name": "Get integrations to add promo-code(s)",
+          "request": {
+            "name": "Get integrations to add promo-code(s)",
+            "description": {
+              "content": "Get active integrations list with at least 1 connected account. Note: in case of no connected accounts linked the list will be empty.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "ecommerce",
+                "promo-codes",
+                "integrations"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f5a79932-8c92-47bc-9910-c8fe23350be8",
+              "name": "Response 200",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "ecommerce",
+                    "promo-codes",
+                    "integrations"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Id\": 13,\n    \"Name\": \"impactSubAffiliate\",\n    \"DisplayName\": \"Impact Sub-affiliate\"\n  },\n  {\n    \"Id\": 13,\n    \"Name\": \"impactSubAffiliate\",\n    \"DisplayName\": \"Impact Sub-affiliate\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2dbba25c-3a34-436b-b1aa-3c2151460618",
+          "name": "Get connected accounts list",
+          "request": {
+            "name": "Get connected accounts list",
+            "description": {
+              "content": "Get the list of all the connected accounts for AWIN and CJ integrations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "ecommerce",
+                "integrations",
+                "accounts"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "43cfd5c8-ba54-40b8-9e72-cd394ccd7b59",
+              "name": "Response 200",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "ecommerce",
+                    "integrations",
+                    "accounts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Code\": 200,\n  \"Message\": \"Connected Accounts list\",\n  \"Status\": \"OK\",\n  \"Items\": {\n    \"IntegrationName\": \"CJ\",\n    \"AccountConfigurationId\": 13,\n    \"AccountDisplayName\": \"Test Account\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac249127-d57b-472c-8d6e-bb45ff385022",
+          "name": "Delete publisher promo-code",
+          "request": {
+            "name": "Delete publisher promo-code",
+            "description": {
+              "content": "Delete promo code by PromoCodePublisherId and PublisherId. After adding promo-code with the same name the promo-codes entity ID i.e. PromoCodeId will not be changed. In case of successful deleting the promo-code empty body with 204 status code will be returned. Promo-code which already has commissions can not be deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "ecommerce",
+                "promo-codes",
+                ":promoCodePublisherId",
+                "publisher",
+                ":publisherId"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "promoCodePublisherId",
+                  "description": "(Required) Value of the PromoCodePublisherId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "publisherId",
+                  "description": "(Required) Value of the CreatorIQ PublisherId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d17baabf-9575-473b-9828-06d6bf35b023",
+              "name": "Promo-code deleted successful response.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "ecommerce",
+                    "promo-codes",
+                    ":promoCodePublisherId",
+                    "publisher",
+                    ":publisherId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "promoCodePublisherId",
+                      "description": "(Required) Value of the PromoCodePublisherId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "publisherId",
+                      "description": "(Required) Value of the CreatorIQ PublisherId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1fb1b185-e1e2-4810-8bd2-38b59f05cb57",
+              "name": "Error with deleting promo-code. For example it happens when the promo-code already has commissions.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "ecommerce",
+                    "promo-codes",
+                    ":promoCodePublisherId",
+                    "publisher",
+                    ":publisherId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "promoCodePublisherId",
+                      "description": "(Required) Value of the PromoCodePublisherId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "publisherId",
+                      "description": "(Required) Value of the CreatorIQ PublisherId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 400,\n    \"message\": \"Promo code already has transactions and it can't be deleted.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0bb554a-2284-4491-b67b-052f56109909",
+              "name": "PromoCodePublisherId or PublisherId not found.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "ecommerce",
+                    "promo-codes",
+                    ":promoCodePublisherId",
+                    "publisher",
+                    ":publisherId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "promoCodePublisherId",
+                      "description": "(Required) Value of the PromoCodePublisherId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "publisherId",
+                      "description": "(Required) Value of the CreatorIQ PublisherId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"Promo code not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f5e86a3-722a-47d4-921c-502a84d91936",
+          "name": "Create new promo-codes",
+          "request": {
+            "name": "Create new promo-codes",
+            "description": {
+              "content": "Create promo-codes, 10 items max allowed in 1 request. Different integrations and(or) publishers can be used in 1 request. Also if the integration is CJ and CreatorIQ publisher does not have CJ Promotional Property generated yet than the CJPID(CJ Promotional Property) will be generated using CJ API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "ecommerce",
+                "promo-codes"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Codes\": [\n    {\n      \"Integration\": \"<string>\",\n      \"AccountConfigurationId\": \"<integer>\",\n      \"Code\": \"<string>\",\n      \"Percentage\": \"<number>\",\n      \"StartDate\": \"<string>\",\n      \"PublisherId\": \"<integer>\",\n      \"EndDate\": \"<string>\",\n      \"Instruction\": \"<string,null>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c61faac7-09c8-4a7c-9ed1-ded2b19c6243",
+              "name": "Response 200",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "ecommerce",
+                    "promo-codes"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Codes\": [\n    {\n      \"Integration\": \"cj\",\n      \"AccountConfigurationId\": 123456,\n      \"Code\": \"PROMO_CODE\",\n      \"Percentage\": 10.25,\n      \"StartDate\": \"2023-10-10 00:00:00\",\n      \"PublisherId\": 123456,\n      \"EndDate\": \"2023-11-10 23:59:59\",\n      \"Instruction\": \"promo-code instruction for the specific publisher.\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Code\": 200,\n  \"Message\": \"Promo codes created\",\n  \"Status\": \"CREATED\",\n  \"Codes\": {\n    \"Items\": [\n      {\n        \"PromoCodeId\": 123,\n        \"PromoCodePublisherId\": 456,\n        \"PromoCodeName\": \"PROMO_CODE\",\n        \"StartDate\": \"2023-10-10 23:59:59\",\n        \"EndDate\": \"2023-10-20 23:59:59\",\n        \"Percentage\": 10.25,\n        \"IntegrationName\": \"CJ\",\n        \"PromotionalPropertyId\": 101001234,\n        \"Instruction\": \"Instruction example for the publisher.\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f758136-d4cf-4791-9908-d19a12790d0d",
+              "name": "Response 400",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "ecommerce",
+                    "promo-codes"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Codes\": [\n    {\n      \"Integration\": \"cj\",\n      \"AccountConfigurationId\": 123456,\n      \"Code\": \"PROMO_CODE\",\n      \"Percentage\": 10.25,\n      \"StartDate\": \"2023-10-10 00:00:00\",\n      \"PublisherId\": 123456,\n      \"EndDate\": \"2023-11-10 23:59:59\",\n      \"Instruction\": \"promo-code instruction for the specific publisher.\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Code\": 400,\n  \"Message\": \"Some of items are invalid\",\n  \"Status\": \"INVALID_ARGUMENT\",\n  \"Codes\": {\n    \"Errors\": [\n      {\n        \"Item\": {\n          \"Integration\": \"cj\",\n          \"Code\": \"PROMO_CODE\",\n          \"Percentage\": 10.25,\n          \"StartDate\": \"2023-10-10 23:59:59\",\n          \"EndDate\": \"2023-10-20 23:59:59\",\n          \"Instruction\": \"Text instructions for publisher.\",\n          \"PublisherId\": 9876543\n        },\n        \"Errors\": [\n          {\n            \"Type\": \"ValidationError\",\n            \"Code\": 0,\n            \"Field\": \"Code\",\n            \"Path\": \"Codes.0.Code\",\n            \"Reason\": \"CJ Promo-code PROMO_CODE already exists for this configuration.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1fb677ac-e94b-4de0-88df-459c03d7d54f",
+          "name": "Get promo-codes list",
+          "request": {
+            "name": "Get promo-codes list",
+            "description": {
+              "content": "Get list of all the promo-codes for all publishers in the network with pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "ecommerce",
+                "promo-codes"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Page",
+                  "value": "<integer>",
+                  "description": "1 by default if no parameter provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "PageSize",
+                  "value": "<integer>",
+                  "description": "20 by default if no parameter provided."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ab17130e-96f9-4342-96b6-13403fe589e7",
+              "name": "Response 200",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "ecommerce",
+                    "promo-codes"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Page",
+                      "value": "2"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 527,\n  \"page\": 1,\n  \"size\": 20,\n  \"Code\": 200,\n  \"Message\": \"Promo codes list\",\n  \"Status\": \"OK\",\n  \"Items\": [\n    {\n      \"PromoCodePublisherId\": 456,\n      \"PublisherId\": 123,\n      \"PromoCodeName\": \"PROMO_CODE\",\n      \"IntegrationName\": \"CJ\",\n      \"PublisherName\": \"Test\"\n    },\n    {\n      \"PromoCodePublisherId\": 456,\n      \"PublisherId\": 123,\n      \"PromoCodeName\": \"PROMO_CODE\",\n      \"IntegrationName\": \"CJ\",\n      \"PublisherName\": \"Test\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "30faf1ae-9b48-4df1-af0e-65f84e2743c2",
+          "name": "Get transactions",
+          "request": {
+            "name": "Get transactions",
+            "description": {
+              "content": "Get network transactions of the all publishers. Every transaction ID is unique with latest status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "ecommerce",
+                "transactions"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Page",
+                  "value": "<integer>",
+                  "description": "1 by default if no parameter provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "PageSize",
+                  "value": "<integer>",
+                  "description": "20 by default if no parameter provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "DateType",
+                  "value": "<string>",
+                  "description": "\"TransactionDate\" by default if no parameter provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "DateFrom",
+                  "value": "<string>",
+                  "description": "Two different formats accepted: \"2024-02-16\" or \"2024-02-16 21:30:25\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "DateTo",
+                  "value": "<string>",
+                  "description": "Two different formats accepted: \"2024-02-16\" or \"2024-02-16 21:30:25\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "Status",
+                  "value": "<string>",
+                  "description": "Transaction status."
+                },
+                {
+                  "disabled": false,
+                  "key": "TransactionId",
+                  "value": "<string>",
+                  "description": "Transaction ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "CampaignId",
+                  "value": "<integer>",
+                  "description": "Campaign ID in the CreatorIQ platform."
+                },
+                {
+                  "disabled": false,
+                  "key": "PublisherId",
+                  "value": "<integer>",
+                  "description": "Publisher ID in the CreatorIQ platform."
+                },
+                {
+                  "disabled": false,
+                  "key": "OrderId",
+                  "value": "<string>",
+                  "description": "Id of the order."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fa61c411-e0d7-407a-b46e-02ab9ae72c93",
+              "name": "Response 200",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "ecommerce",
+                    "transactions"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Page",
+                      "value": "2"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "100"
+                    },
+                    {
+                      "key": "DateType",
+                      "value": "LastUpdate"
+                    },
+                    {
+                      "key": "DateFrom",
+                      "value": "2024-02-16"
+                    },
+                    {
+                      "key": "DateTo",
+                      "value": "2024-02-16"
+                    },
+                    {
+                      "key": "Status",
+                      "value": "approved"
+                    },
+                    {
+                      "key": "TransactionId",
+                      "value": "asd8E05QYA31XmxF"
+                    },
+                    {
+                      "key": "CampaignId",
+                      "value": "12345"
+                    },
+                    {
+                      "key": "PublisherId",
+                      "value": "12345"
+                    },
+                    {
+                      "key": "OrderId",
+                      "value": "1234265934"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 527,\n  \"page\": 1,\n  \"size\": 20,\n  \"data\": [\n    {\n      \"CiqTransactionId\": \"c36ce8feXYqlk81\",\n      \"NetworkTransactionId\": \"1234544145\",\n      \"NetworkName\": \"Rakuten Advertising\",\n      \"NetworkAdvertiserId\": \"Asdob36a\",\n      \"AdvertiserName\": \"Test advertiser\",\n      \"OrderId\": \"1234499551\",\n      \"OrderCountry\": \"TH\",\n      \"TransactionDate\": \"2024-02-05 11:24:13\",\n      \"DeviceType\": \"Smartphone\",\n      \"OsType\": \"iOS\",\n      \"NetworkChannelId\": \"Q5f1nY51\",\n      \"ChannelName\": \"Test channel name\",\n      \"DeclineReason\": \"Test decline reason\",\n      \"TransactionCurrency\": \"USD\",\n      \"SaleAmount\": 25.15,\n      \"CommissionAmount\": 0.25,\n      \"Status\": \"Confirmed\",\n      \"StatusUpdatedAt\": \"2024-02-05 11:24:13\",\n      \"CouponCode\": \"COUPON_CODE\",\n      \"LastUpdate\": \"2024-02-05 09:51:22.0000000\",\n      \"PublisherId\": 123456,\n      \"CampaignId\": 54321,\n      \"TrackingItemId\": 56457842,\n      \"CiqPartnerId\": 123,\n      \"CreatedAt\": \"2024-02-05 09:51:22.0000000\",\n      \"ValidationDate\": \"2024-02-05 09:51:22.0000000\",\n      \"TrackingItemsPromotionId\": 56457842\n    },\n    {\n      \"CiqTransactionId\": \"c36ce8feXYqlk81\",\n      \"NetworkTransactionId\": \"1234544145\",\n      \"NetworkName\": \"Rakuten Advertising\",\n      \"NetworkAdvertiserId\": \"Asdob36a\",\n      \"AdvertiserName\": \"Test advertiser\",\n      \"OrderId\": \"1234499551\",\n      \"OrderCountry\": \"TH\",\n      \"TransactionDate\": \"2024-02-05 11:24:13\",\n      \"DeviceType\": \"Smartphone\",\n      \"OsType\": \"iOS\",\n      \"NetworkChannelId\": \"Q5f1nY51\",\n      \"ChannelName\": \"Test channel name\",\n      \"DeclineReason\": \"Test decline reason\",\n      \"TransactionCurrency\": \"USD\",\n      \"SaleAmount\": 25.15,\n      \"CommissionAmount\": 0.25,\n      \"Status\": \"Confirmed\",\n      \"StatusUpdatedAt\": \"2024-02-05 11:24:13\",\n      \"CouponCode\": \"COUPON_CODE\",\n      \"LastUpdate\": \"2024-02-05 09:51:22.0000000\",\n      \"PublisherId\": 123456,\n      \"CampaignId\": 54321,\n      \"TrackingItemId\": 56457842,\n      \"CiqPartnerId\": 123,\n      \"CreatedAt\": \"2024-02-05 09:51:22.0000000\",\n      \"ValidationDate\": \"2024-02-05 09:51:22.0000000\",\n      \"TrackingItemsPromotionId\": 56457842\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b903770-bdac-489f-89f4-24ac3d512b07",
+              "name": "Response 400 (Bad Request)",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "ecommerce",
+                    "transactions"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Page",
+                      "value": "2"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "100"
+                    },
+                    {
+                      "key": "DateType",
+                      "value": "LastUpdate"
+                    },
+                    {
+                      "key": "DateFrom",
+                      "value": "2024-02-16"
+                    },
+                    {
+                      "key": "DateTo",
+                      "value": "2024-02-16"
+                    },
+                    {
+                      "key": "Status",
+                      "value": "approved"
+                    },
+                    {
+                      "key": "TransactionId",
+                      "value": "asd8E05QYA31XmxF"
+                    },
+                    {
+                      "key": "CampaignId",
+                      "value": "12345"
+                    },
+                    {
+                      "key": "PublisherId",
+                      "value": "12345"
+                    },
+                    {
+                      "key": "OrderId",
+                      "value": "1234265934"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 400,\n    \"message\": \"Human readable text message.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85d335c9-0c2d-475e-baf5-4bed1a806fe4",
+          "name": "Get transactions history",
+          "request": {
+            "name": "Get transactions history",
+            "description": {
+              "content": "Get network transactions list of the all publishers. Returns all the transactions history, Transaction ID is not unique.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "ecommerce",
+                "transactions",
+                "history"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Page",
+                  "value": "<integer>",
+                  "description": "1 by default if no parameter provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "PageSize",
+                  "value": "<integer>",
+                  "description": "20 by default if no parameter provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "DateType",
+                  "value": "<string>",
+                  "description": "\"TransactionDate\" by default if no parameter provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "DateFrom",
+                  "value": "<string>",
+                  "description": "Two different formats accepted: \"2024-02-16\" or \"2024-02-16 21:30:25\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "DateTo",
+                  "value": "<string>",
+                  "description": "Two different formats accepted: \"2024-02-16\" or \"2024-02-16 21:30:25\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "Status",
+                  "value": "<string>",
+                  "description": "Status of the transaction."
+                },
+                {
+                  "disabled": false,
+                  "key": "TransactionId",
+                  "value": "<string>",
+                  "description": "ID of the transaction."
+                },
+                {
+                  "disabled": false,
+                  "key": "CampaignId",
+                  "value": "<integer>",
+                  "description": "Campaign ID in the CreatorIQ platform."
+                },
+                {
+                  "disabled": false,
+                  "key": "PublisherId",
+                  "value": "<integer>",
+                  "description": "Publisher ID in the CreatorIQ platform."
+                },
+                {
+                  "disabled": false,
+                  "key": "OrderId",
+                  "value": "<string>",
+                  "description": "Id of the order."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1e03c26d-8bc7-4d50-a826-64afbfab56dd",
+              "name": "Response 200",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "ecommerce",
+                    "transactions",
+                    "history"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Page",
+                      "value": "2"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "100"
+                    },
+                    {
+                      "key": "DateType",
+                      "value": "LastUpdate"
+                    },
+                    {
+                      "key": "DateFrom",
+                      "value": "2024-02-16"
+                    },
+                    {
+                      "key": "DateTo",
+                      "value": "2024-02-16"
+                    },
+                    {
+                      "key": "Status",
+                      "value": "approved"
+                    },
+                    {
+                      "key": "TransactionId",
+                      "value": "asd8E05QYA31XmxF"
+                    },
+                    {
+                      "key": "CampaignId",
+                      "value": "12345"
+                    },
+                    {
+                      "key": "PublisherId",
+                      "value": "12345"
+                    },
+                    {
+                      "key": "OrderId",
+                      "value": "1234265934"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 527,\n  \"page\": 1,\n  \"size\": 20,\n  \"data\": [\n    {\n      \"CiqTransactionId\": \"c36ce8feXYqlk81\",\n      \"NetworkTransactionId\": \"1234544145\",\n      \"NetworkName\": \"Rakuten Advertising\",\n      \"NetworkAdvertiserId\": \"Asdob36a\",\n      \"AdvertiserName\": \"Test advertiser\",\n      \"OrderId\": \"1234499551\",\n      \"OrderCountry\": \"TH\",\n      \"TransactionDate\": \"2024-02-05 11:24:13\",\n      \"DeviceType\": \"Smartphone\",\n      \"OsType\": \"iOS\",\n      \"NetworkChannelId\": \"Q5f1nY51\",\n      \"ChannelName\": \"Test channel name\",\n      \"DeclineReason\": \"Test decline reason\",\n      \"TransactionCurrency\": \"USD\",\n      \"SaleAmount\": 25.15,\n      \"CommissionAmount\": 0.25,\n      \"Status\": \"Confirmed\",\n      \"StatusUpdatedAt\": \"2024-02-05 11:24:13\",\n      \"CouponCode\": \"COUPON_CODE\",\n      \"LastUpdate\": \"2024-02-05 09:51:22.0000000\",\n      \"PublisherId\": 123456,\n      \"CampaignId\": 54321,\n      \"TrackingItemId\": 56457842,\n      \"CiqPartnerId\": 123,\n      \"CreatedAt\": \"2024-02-05 09:51:22.0000000\",\n      \"ValidationDate\": \"2024-02-05 09:51:22.0000000\",\n      \"TrackingItemsPromotionId\": 56457842\n    },\n    {\n      \"CiqTransactionId\": \"c36ce8feXYqlk81\",\n      \"NetworkTransactionId\": \"1234544145\",\n      \"NetworkName\": \"Rakuten Advertising\",\n      \"NetworkAdvertiserId\": \"Asdob36a\",\n      \"AdvertiserName\": \"Test advertiser\",\n      \"OrderId\": \"1234499551\",\n      \"OrderCountry\": \"TH\",\n      \"TransactionDate\": \"2024-02-05 11:24:13\",\n      \"DeviceType\": \"Smartphone\",\n      \"OsType\": \"iOS\",\n      \"NetworkChannelId\": \"Q5f1nY51\",\n      \"ChannelName\": \"Test channel name\",\n      \"DeclineReason\": \"Test decline reason\",\n      \"TransactionCurrency\": \"USD\",\n      \"SaleAmount\": 25.15,\n      \"CommissionAmount\": 0.25,\n      \"Status\": \"Confirmed\",\n      \"StatusUpdatedAt\": \"2024-02-05 11:24:13\",\n      \"CouponCode\": \"COUPON_CODE\",\n      \"LastUpdate\": \"2024-02-05 09:51:22.0000000\",\n      \"PublisherId\": 123456,\n      \"CampaignId\": 54321,\n      \"TrackingItemId\": 56457842,\n      \"CiqPartnerId\": 123,\n      \"CreatedAt\": \"2024-02-05 09:51:22.0000000\",\n      \"ValidationDate\": \"2024-02-05 09:51:22.0000000\",\n      \"TrackingItemsPromotionId\": 56457842\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a2129d1-0bb0-484f-8781-3ab0aed5c330",
+              "name": "Response 400 (Bad Request)",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "ecommerce",
+                    "transactions",
+                    "history"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Page",
+                      "value": "2"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "100"
+                    },
+                    {
+                      "key": "DateType",
+                      "value": "LastUpdate"
+                    },
+                    {
+                      "key": "DateFrom",
+                      "value": "2024-02-16"
+                    },
+                    {
+                      "key": "DateTo",
+                      "value": "2024-02-16"
+                    },
+                    {
+                      "key": "Status",
+                      "value": "approved"
+                    },
+                    {
+                      "key": "TransactionId",
+                      "value": "asd8E05QYA31XmxF"
+                    },
+                    {
+                      "key": "CampaignId",
+                      "value": "12345"
+                    },
+                    {
+                      "key": "PublisherId",
+                      "value": "12345"
+                    },
+                    {
+                      "key": "OrderId",
+                      "value": "1234265934"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 400,\n    \"message\": \"Human readable text message.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apis.creatoriq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8102622f-d3c4-4b01-a597-e7dc648cf9d5",
+    "name": "CreatorIQ Ecommerce APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CreatorIQ CRM APIs for Ecommerce resource\n\nContact Support:\n Name: CreatorIQ\n Email: support@creatoriq.com",
+      "type": "text/plain"
+    }
+  }
+}

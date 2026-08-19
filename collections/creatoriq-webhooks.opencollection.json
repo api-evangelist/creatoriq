@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ Public APIs",
+    "version": "0.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Subscribe to event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/pubsub/subscribe",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Subscribe to an event"
+        },
+        {
+          "info": {
+            "name": "Unsubscribe from event",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apis.creatoriq.com/pubsub/unsubscribe",
+            "params": [
+              {
+                "name": "entityType",
+                "value": "",
+                "type": "query",
+                "description": "Entity being watched"
+              },
+              {
+                "name": "actionType",
+                "value": "",
+                "type": "query",
+                "description": "Action being watched.\n\nAccording to `entityType`, possible values are:\n- Campaign\n  - create\n  - delete\n  - update.latestpost\n  - payout.paid\n- Publisher\n  - account.linked\n  - account.linked.failed\n  - account.unlinked\n  - update\n  - delete\n  - campaign.added\n- Onesheet\n  - publish\n- List_2\n  - publish\n- brand_safety\n  - post_alert.created\n"
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier of the entity to listen a specific one. Listens to all Partner's entities if not specified."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Unsubscribe from an event"
+        },
+        {
+          "info": {
+            "name": "Get my subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/pubsub/subscriptions",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return subscription list"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

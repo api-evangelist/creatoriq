@@ -1,0 +1,223 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ Social Account APIs",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Social",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get stories history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/account/instagram/:id/storiesHistory",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From what date fetch stories"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Count of fetched"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "From date fetch"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Instagram unique Identifier or username"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "## Fetch stories history for Instagram social account\nThe endpoint returns the entire history starting from the moment when the creator's social account was linked\nand story monitoring was enabled. \nFor example, the curl below (without parameters) will return the entire Instagram stories history:\n\n```\ncurl -X GET --location \"https://apis.creatoriq.com/crm/v1/api/account/instagram/changedtokrakow/storiesHistory\" \\\n-H \"X-API-KEY: apikey\" \\\n-H \"Content-Type: application/json\"\n``` \n\n\n\nHowever, if we"
+        },
+        {
+          "info": {
+            "name": "Get social account data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/social/accountInfo",
+            "params": [
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "Account data source (can be 'link' or 'user')"
+              },
+              {
+                "name": "link",
+                "value": "",
+                "type": "query",
+                "description": "link to user social media account. Required if `source=link`"
+              },
+              {
+                "name": "network",
+                "value": "",
+                "type": "query",
+                "description": "Name os social network. Required if `source=user`"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Username or user id on social media. Requred if `source=user`"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns information about a specific social account using either a social account url or a combination of the social network and username. <br/>\nAllowed social networks: tiktok, instagram, twitch, youtube, facebook.\n"
+        },
+        {
+          "info": {
+            "name": "Get Social PostInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/social/postInfo",
+            "params": [
+              {
+                "name": "link",
+                "value": "",
+                "type": "query",
+                "description": "Url to specific social network post"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "query",
+                "description": "Unique publisher id. Required if `checkAccounts=1`"
+              },
+              {
+                "name": "checkAccounts",
+                "value": "",
+                "type": "query",
+                "description": "Check if account exists in database"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns information about a specific social media post"
+        },
+        {
+          "info": {
+            "name": "Search user in social network or in the CreatorIQ database",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/accounts/lookup",
+            "params": [
+              {
+                "name": "network",
+                "value": "",
+                "type": "query",
+                "description": "Name of social network."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search string or username or link to social account"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search Creator by Social handle within your CRM"
+        },
+        {
+          "info": {
+            "name": "Get social account history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/:network/account/:socialNetworkId/history",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "Period which history fetch"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Count"
+              },
+              {
+                "name": "network",
+                "value": "",
+                "type": "path",
+                "description": "Social network"
+              },
+              {
+                "name": "socialNetworkId",
+                "value": "",
+                "type": "path",
+                "description": "Unique id of account from network. Can be fetched from [GET] '/crm/v1/api/publisher/{publisherId}/accounts' endpoint.\nField in response **SocialNetworkId**\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "### Get social account history\nThis endpoint returns the subscription and viewing history of a social account for the period that we set in \nthe parameters. The period can be set in days or months using the parameter ```period=month``` or ```period=day```. \nHowever, the endpoint will not return the account history for 12 months if the database only stores history \nfor 6 months. \n\n\nIf the period field is set to ```period=day```, the endpoint will return the history of changes in \nviews or subscri"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

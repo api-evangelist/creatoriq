@@ -1,0 +1,597 @@
+{
+  "item": [
+    {
+      "id": "b3416bd3-9853-4624-b747-1d065e913e24",
+      "name": "LinkTracking",
+      "description": {
+        "content": "LinkTracking public API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bddd291d-45eb-482e-ad52-1befe3fcf220",
+          "name": "Create new link",
+          "request": {
+            "name": "Create new link",
+            "description": {
+              "content": "Create new link for the certain campaign and publisher. The publisher should already be added to the campaign.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "ecommerce",
+                "v1",
+                "link-management",
+                "link"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"OriginalUrl\": \"<string>\",\n  \"CampaignId\": \"<integer>\",\n  \"PublisherId\": \"<integer>\",\n  \"ScheduledPostId\": \"<integer,null>\",\n  \"Label\": \"<string,null>\",\n  \"Instruction\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e93a1bf-84de-46f1-9196-c1b94f945fd7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "ecommerce",
+                    "v1",
+                    "link-management",
+                    "link"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"OriginalUrl\": \"https://www.creatoriq.com/influencer-marketing-solution/creator-onboarding-and-recruitment\",\n  \"CampaignId\": 11715,\n  \"PublisherId\": 264647,\n  \"ScheduledPostId\": 264647,\n  \"Label\": \"Test label\",\n  \"Instruction\": \"Test instructions for the link.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Data\": {\n    \"TrackingItemId\": 59578,\n    \"CampaignId\": 11715,\n    \"PublisherId\": 260196,\n    \"ScheduledPostId\": 260196,\n    \"OriginalUrl\": \"https://some-store-url.com/product\",\n    \"UtmLink\": \"https://utmlink.here?param1=11&param2=22\",\n    \"Label\": \"Fast and Free Short Sleeve Shirt\",\n    \"Destination\": \"https://example.com\",\n    \"ShortlinkUrl\": \"https://bit.ly/test\",\n    \"Instruction\": \"Instructions here\",\n    \"ArchivedAt\": \"2024-10-18 13:20:31\"\n  },\n  \"Information\": {\n    \"RequestId\": \"d964d976-31b5-43bd-944c-6686ac320190\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a4fab6f-6b31-40ff-a562-38fbe7af316c",
+          "name": "Get links list",
+          "request": {
+            "name": "Get links list",
+            "description": {
+              "content": "Get list of links with possibility to filter by Publisher, Campaign or other parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "ecommerce",
+                "v1",
+                "link-management",
+                "links"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "TrackingItemId",
+                  "value": "<integer>",
+                  "description": "ID of the link."
+                },
+                {
+                  "disabled": false,
+                  "key": "CampaignId",
+                  "value": "<integer>",
+                  "description": "ID of the campaign."
+                },
+                {
+                  "disabled": false,
+                  "key": "PublisherId",
+                  "value": "<integer>",
+                  "description": "ID of the publisher."
+                },
+                {
+                  "disabled": false,
+                  "key": "CreatedAtStart",
+                  "value": "<string>",
+                  "description": "Date to filter links which created after or equal this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "CreatedAtEnd",
+                  "value": "<string>",
+                  "description": "Date to filter links which created before or equal this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "Page",
+                  "value": "<integer>",
+                  "description": "Number of the page for the pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "Count",
+                  "value": "<integer>",
+                  "description": "Count of the links per one page."
+                },
+                {
+                  "disabled": false,
+                  "key": "Include",
+                  "value": "<string>",
+                  "description": "Define what type of links to return. By default all link returned - active and archived."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c1a8923-7a6d-4210-ab28-ab0b6a11f222",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "ecommerce",
+                    "v1",
+                    "link-management",
+                    "links"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "TrackingItemId",
+                      "value": "231231"
+                    },
+                    {
+                      "key": "CampaignId",
+                      "value": "62315"
+                    },
+                    {
+                      "key": "PublisherId",
+                      "value": "837473"
+                    },
+                    {
+                      "key": "CreatedAtStart",
+                      "value": "2024-05-30T11:04:35.623Z"
+                    },
+                    {
+                      "key": "CreatedAtEnd",
+                      "value": "2024-05-30T11:04:35.623Z"
+                    },
+                    {
+                      "key": "Page",
+                      "value": "2"
+                    },
+                    {
+                      "key": "Count",
+                      "value": "20"
+                    },
+                    {
+                      "key": "Include",
+                      "value": "Archived"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Data\": {\n    \"List\": [\n      {\n        \"TrackingItemId\": 59578,\n        \"CampaignId\": 11715,\n        \"PublisherId\": 260196,\n        \"OriginalUrl\": \"https://some-store-url.com/product\",\n        \"UtmLink\": \"https://utmlink.here?param1=11&param2=22\",\n        \"Label\": \"Fast and Free Short Sleeve Shirt\",\n        \"Destination\": \"https://example.com\",\n        \"ShortlinkUrl\": \"https://bit.ly/test\",\n        \"Instruction\": \"Instructions here\",\n        \"ArchivedAt\": \"2024-10-18 13:20:31\",\n        \"SocialNetwork\": \"Facebook\",\n        \"Thumbnail\": \"https://example.com/thumbnail.jpg\",\n        \"Post\": \"This is a test post\",\n        \"PlatformSocialHandle\": \"@publisher_handle\",\n        \"PublishedPostURL\": \"https://example.com/published_post\"\n      },\n      {\n        \"TrackingItemId\": 59578,\n        \"CampaignId\": 11715,\n        \"PublisherId\": 260196,\n        \"OriginalUrl\": \"https://some-store-url.com/product\",\n        \"UtmLink\": \"https://utmlink.here?param1=11&param2=22\",\n        \"Label\": \"Fast and Free Short Sleeve Shirt\",\n        \"Destination\": \"https://example.com\",\n        \"ShortlinkUrl\": \"https://bit.ly/test\",\n        \"Instruction\": \"Instructions here\",\n        \"ArchivedAt\": \"2024-10-18 13:20:31\",\n        \"SocialNetwork\": \"Facebook\",\n        \"Thumbnail\": \"https://example.com/thumbnail.jpg\",\n        \"Post\": \"This is a test post\",\n        \"PlatformSocialHandle\": \"@publisher_handle\",\n        \"PublishedPostURL\": \"https://example.com/published_post\"\n      }\n    ],\n    \"Count\": 312\n  },\n  \"Information\": {\n    \"RequestId\": \"d964d976-31b5-43bd-944c-6686ac320190\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e95f6877-270c-491f-9d1f-4fbe78c16abd",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "ecommerce",
+                    "v1",
+                    "link-management",
+                    "links"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "TrackingItemId",
+                      "value": "231231"
+                    },
+                    {
+                      "key": "CampaignId",
+                      "value": "62315"
+                    },
+                    {
+                      "key": "PublisherId",
+                      "value": "837473"
+                    },
+                    {
+                      "key": "CreatedAtStart",
+                      "value": "2024-05-30T11:04:35.623Z"
+                    },
+                    {
+                      "key": "CreatedAtEnd",
+                      "value": "2024-05-30T11:04:35.623Z"
+                    },
+                    {
+                      "key": "Page",
+                      "value": "2"
+                    },
+                    {
+                      "key": "Count",
+                      "value": "20"
+                    },
+                    {
+                      "key": "Include",
+                      "value": "Archived"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": [\n    \"Error message text here.\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae6451e2-4cca-4354-959f-0d6c98282fa8",
+          "name": "Create new links",
+          "request": {
+            "name": "Create new links",
+            "description": {
+              "content": "Create new links for the certain campaign and publisher. The publisher should already be added to the campaign. Maximum amount of links per request is 10.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "ecommerce",
+                "v1",
+                "link-management",
+                "links"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"links\": [\n    {\n      \"OriginalUrl\": \"<string>\",\n      \"CampaignId\": \"<integer>\",\n      \"PublisherId\": \"<integer>\",\n      \"ScheduledPostId\": \"<integer,null>\",\n      \"Label\": \"<string,null>\",\n      \"Instruction\": \"<string,null>\"\n    },\n    {\n      \"OriginalUrl\": \"<string>\",\n      \"CampaignId\": \"<integer>\",\n      \"PublisherId\": \"<integer>\",\n      \"ScheduledPostId\": \"<integer,null>\",\n      \"Label\": \"<string,null>\",\n      \"Instruction\": \"<string,null>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f9bd63c8-dc23-4a57-b975-0595dddf261d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "ecommerce",
+                    "v1",
+                    "link-management",
+                    "links"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"links\": [\n    {\n      \"OriginalUrl\": \"https://www.creatoriq.com/influencer-marketing-solution/creator-onboarding-and-recruitment\",\n      \"CampaignId\": 11715,\n      \"PublisherId\": 264647,\n      \"ScheduledPostId\": 264647,\n      \"Label\": \"Test label\",\n      \"Instruction\": \"Test instructions for the link.\"\n    },\n    {\n      \"OriginalUrl\": \"https://www.creatoriq.com/influencer-marketing-solution/creator-onboarding-and-recruitment\",\n      \"CampaignId\": 11715,\n      \"PublisherId\": 264647,\n      \"ScheduledPostId\": 264647,\n      \"Label\": \"Test label\",\n      \"Instruction\": \"Test instructions for the link.\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Data\": {\n    \"Links\": {\n      \"Succeeded\": [\n        {\n          \"TrackingItemId\": 59578,\n          \"CampaignId\": 11715,\n          \"PublisherId\": 260196,\n          \"ScheduledPostId\": 260196,\n          \"OriginalUrl\": \"https://some-store-url.com/product\",\n          \"UtmLink\": \"https://utmlink.here?param1=11&param2=22\",\n          \"Label\": \"Fast and Free Short Sleeve Shirt\",\n          \"Destination\": \"https://example.com\",\n          \"ShortlinkUrl\": \"https://bit.ly/test\",\n          \"Instruction\": \"Instructions here\",\n          \"ArchivedAt\": \"2024-10-18 13:20:31\"\n        },\n        {\n          \"TrackingItemId\": 59578,\n          \"CampaignId\": 11715,\n          \"PublisherId\": 260196,\n          \"ScheduledPostId\": 260196,\n          \"OriginalUrl\": \"https://some-store-url.com/product\",\n          \"UtmLink\": \"https://utmlink.here?param1=11&param2=22\",\n          \"Label\": \"Fast and Free Short Sleeve Shirt\",\n          \"Destination\": \"https://example.com\",\n          \"ShortlinkUrl\": \"https://bit.ly/test\",\n          \"Instruction\": \"Instructions here\",\n          \"ArchivedAt\": \"2024-10-18 13:20:31\"\n        }\n      ],\n      \"Errored\": [\n        {\n          \"Link\": {\n            \"OriginalUrl\": \"https://some-store-url.com/product\",\n            \"CampaignId\": 11715,\n            \"PublisherId\": 260196,\n            \"CreatedById\": 122164531,\n            \"Label\": \"Test label\",\n            \"PartnerId\": 11,\n            \"ScheduledPostId\": 264647\n          },\n          \"Reason\": {\n            \"Message\": \"Something went wrong.\"\n          }\n        },\n        {\n          \"Link\": {\n            \"OriginalUrl\": \"https://some-store-url.com/product\",\n            \"CampaignId\": 11715,\n            \"PublisherId\": 260196,\n            \"CreatedById\": 122164531,\n            \"Label\": \"Test label\",\n            \"PartnerId\": 11,\n            \"ScheduledPostId\": 264647\n          },\n          \"Reason\": {\n            \"Message\": \"Something went wrong.\"\n          }\n        }\n      ]\n    }\n  },\n  \"Information\": {\n    \"RequestId\": \"d964d976-31b5-43bd-944c-6686ac320190\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "968d5c08-c371-4f2b-af4f-edb2bbeb1618",
+          "name": "Update a link",
+          "request": {
+            "name": "Update a link",
+            "description": {
+              "content": "Update data of the link. Also archive or unarchive the link by sending IsArchived parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "ecommerce",
+                "v1",
+                "link-management",
+                "link",
+                ":id"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) ID of the TrackingItem."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Instruction\": \"<string,null>\",\n  \"Label\": \"<string,null>\",\n  \"IsArchived\": \"<boolean>\",\n  \"OriginalUrl\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3b24f87c-554f-4bef-acf4-df408bceea85",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "ecommerce",
+                    "v1",
+                    "link-management",
+                    "link",
+                    ":id"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) ID of the TrackingItem."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Instruction\": \"Test instructions for the link.\",\n  \"Label\": \"Test label\",\n  \"IsArchived\": true,\n  \"OriginalUrl\": \"https://some-store-url.com/product\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Data\": {\n    \"TrackingItemId\": 59578,\n    \"CampaignId\": 11715,\n    \"PublisherId\": 260196,\n    \"ScheduledPostId\": 260196,\n    \"OriginalUrl\": \"https://some-store-url.com/product\",\n    \"UtmLink\": \"https://utmlink.here?param1=11&param2=22\",\n    \"Label\": \"Fast and Free Short Sleeve Shirt\",\n    \"Destination\": \"https://example.com\",\n    \"ShortlinkUrl\": \"https://bit.ly/test\",\n    \"Instruction\": \"Instructions here\",\n    \"ArchivedAt\": \"2024-10-18 13:20:31\"\n  },\n  \"Information\": {\n    \"RequestId\": \"d964d976-31b5-43bd-944c-6686ac320190\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apis.creatoriq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "eb6e6311-7382-4023-80de-6df422d792fb",
+    "name": "CreatorIQ CRM LinkTracking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CreatorIQ CRM LinkTracking APIs\n\nContact Support:\n Name: CreatorIQ\n Email: support@creatoriq.com",
+      "type": "text/plain"
+    }
+  }
+}

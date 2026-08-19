@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ CRM Publishers API V2",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Publisher",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET social accounts for multiple publishers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v2/api/publishers/:publisherIds/accounts",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which identifier is used in the request.\nSet to `id` if you are using the internal `id` field as identifier.\nIf you are using `PublisherId` as identifier(default behavior), this parameter should be omitted.\n"
+              },
+              {
+                "name": "publisherIds",
+                "value": "",
+                "type": "path",
+                "description": "Comma separated unique Publisher IDs."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch the social accounts information for bulk publishers. Max count of publishers 10"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

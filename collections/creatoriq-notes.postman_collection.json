@@ -1,0 +1,1136 @@
+{
+  "item": [
+    {
+      "id": "a37de0e2-06ef-4e71-86d7-953a52f9f66f",
+      "name": "Notes",
+      "description": {
+        "content": "Notes public API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4b598332-767b-4542-bc8e-3a2e0db66f1d",
+          "name": "Get Single Dimension from Notes",
+          "request": {
+            "name": "Get Single Dimension from Notes",
+            "description": {
+              "content": "Provides the list of the one-sheet publisher Ids that have published notes <br/>\nGet Notes API endpoint returns the data only if it is added via API. The comments/notes left via the UI are not available via these endpoints.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "notes",
+                ":entity",
+                ":entityId",
+                ":dimension"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity",
+                  "description": "(Required) Entity type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "entityId",
+                  "description": "(Required) Unique entity id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dimension",
+                  "description": "(Required) Additional entity type according to `entity`:\n* `campaign`: `campaign-publisher`\n* `onesheet`: `onesheet-publisher`\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "42a6248c-7f1d-4e18-8514-d77b9a347c88",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "notes",
+                    ":entity",
+                    ":entityId",
+                    ":dimension"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) Entity type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "entityId",
+                      "description": "(Required) Unique entity id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dimension",
+                      "description": "(Required) Additional entity type according to `entity`:\n* `campaign`: `campaign-publisher`\n* `onesheet`: `onesheet-publisher`\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"OneSheetPublisherCommentsCollection\": [\n    {\n      \"type\": \"OneSheetPublisherComments\",\n      \"OneSheetPublisherComments\": {\n        \"RecordId\": 1961163,\n        \"Count\": 2\n      }\n    },\n    {\n      \"type\": \"OneSheetPublisherComments\",\n      \"OneSheetPublisherComments\": {\n        \"RecordId\": 1961163,\n        \"Count\": 2\n      }\n    }\n  ],\n  \"count\": 200,\n  \"page\": 1,\n  \"total\": 20,\n  \"type\": \"NotesCollection\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33af4ef3-3d1f-447c-aeaa-08d80d421bd7",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "notes",
+                    ":entity",
+                    ":entityId",
+                    ":dimension"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) Entity type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "entityId",
+                      "description": "(Required) Unique entity id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dimension",
+                      "description": "(Required) Additional entity type according to `entity`:\n* `campaign`: `campaign-publisher`\n* `onesheet`: `onesheet-publisher`\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"Exception\": {\n    \"code\": 404,\n    \"message\": \"Not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32b220e0-8855-4d6c-b3a0-2b0935fbe33b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "notes",
+                    ":entity",
+                    ":entityId",
+                    ":dimension"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) Entity type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "entityId",
+                      "description": "(Required) Unique entity id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dimension",
+                      "description": "(Required) Additional entity type according to `entity`:\n* `campaign`: `campaign-publisher`\n* `onesheet`: `onesheet-publisher`\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03670546-1ec7-4f21-9af2-3fee3955d2d8",
+              "name": "One-sheet with supplied ID not found",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "notes",
+                    ":entity",
+                    ":entityId",
+                    ":dimension"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) Entity type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "entityId",
+                      "description": "(Required) Unique entity id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dimension",
+                      "description": "(Required) Additional entity type according to `entity`:\n* `campaign`: `campaign-publisher`\n* `onesheet`: `onesheet-publisher`\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"Exception\": {\n    \"code\": 404,\n    \"message\": \"Not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad7f140d-5003-43d6-9147-38d1e11fa71d",
+          "name": "Get Notes",
+          "request": {
+            "name": "Get Notes",
+            "description": {
+              "content": "Provides the list of published notes added to a one-sheet or to a one-sheet publisher. <br/>\nGet Notes API endpoint returns the data only if it is added via API. The comments/notes left via the UI are not available via these endpoints.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "notes",
+                ":entity",
+                ":entityId"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity",
+                  "description": "(Required) Entity type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "entityId",
+                  "description": "(Required) Unique entity id.\nEntity ID should be taken accordingly to `entity` type:\n* `onesheet-publisher` - the `SalesSheetsPublisherId` field from the response of Reports => OneSheet => Get OneSheet Builder: `/crm/v1/api/view?view=OneSheetBuilder/OneSheetBuilder`\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d00aec5c-3146-4637-b6e9-6ad7c6969775",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "notes",
+                    ":entity",
+                    ":entityId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) Entity type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "entityId",
+                      "description": "(Required) Unique entity id.\nEntity ID should be taken accordingly to `entity` type:\n* `onesheet-publisher` - the `SalesSheetsPublisherId` field from the response of Reports => OneSheet => Get OneSheet Builder: `/crm/v1/api/view?view=OneSheetBuilder/OneSheetBuilder`\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"NotesCollection\",\n  \"href\": \"https://apis.creatoriq.com/crm/v1/api/notes?filter%5B0%5D%5B0%5D=Archived&filter%5B0%5D%5B1%5D=%3D&filter%5B0%5D%5B2%5D=0\",\n  \"count\": 200,\n  \"total\": 20,\n  \"page\": 1,\n  \"NotesCollection\": [\n    {\n      \"type\": \"Note\",\n      \"href\": \"https://apis.creatoriq.com/crm/v1/api/note/293751\",\n      \"Note\": {\n        \"Avatar\": \"https://example.com\",\n        \"CommentType\": \"Comments\",\n        \"CreatedAt\": \"2022-09-12T22:01:24-08:00\",\n        \"CreatedBy\": \"Admin\",\n        \"EntityName\": \"enjoycing joyce\",\n        \"EntityType\": \"onesheet-publisher\",\n        \"Id\": 123,\n        \"IsDeletable\": true,\n        \"IsEditable\": true,\n        \"Note\": \"Some notes here\",\n        \"ParentEntityId\": 337724,\n        \"ParentEntityName\": \"API\",\n        \"PermissionsAccess\": {\n          \"Access\": \"PUBLIC\",\n          \"Permissions\": [\n            {\n              \"ClassType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ClassID\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectTypeName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Permission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"PermissionState\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectOktaId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"ClassType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ClassID\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectTypeName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Permission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"PermissionState\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectOktaId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"RecordId\": 72541,\n        \"Status\": \"Active\",\n        \"SystemType\": \"approved\",\n        \"ThreadNotes\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/NoteBaseModel detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/NoteBaseModel detected>\"\n          }\n        ],\n        \"UpdatedAt\": \"2022-09-12T22:01:24-08:00\",\n        \"UpdatedBy\": \"Admin\",\n        \"User\": {\n          \"Id\": 100010093,\n          \"FirstName\": \"Test\",\n          \"LastName\": \"Test\",\n          \"FullName\": \"Test User\",\n          \"AvatarURL\": \"https://example.com\"\n        },\n        \"isExternal\": true\n      }\n    },\n    {\n      \"type\": \"Note\",\n      \"href\": \"https://apis.creatoriq.com/crm/v1/api/note/293751\",\n      \"Note\": {\n        \"Avatar\": \"https://example.com\",\n        \"CommentType\": \"Comments\",\n        \"CreatedAt\": \"2022-09-12T22:01:24-08:00\",\n        \"CreatedBy\": \"Admin\",\n        \"EntityName\": \"enjoycing joyce\",\n        \"EntityType\": \"onesheet-publisher\",\n        \"Id\": 123,\n        \"IsDeletable\": true,\n        \"IsEditable\": true,\n        \"Note\": \"Some notes here\",\n        \"ParentEntityId\": 337724,\n        \"ParentEntityName\": \"API\",\n        \"PermissionsAccess\": {\n          \"Access\": \"PUBLIC\",\n          \"Permissions\": [\n            {\n              \"ClassType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ClassID\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectTypeName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Permission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"PermissionState\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectOktaId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"ClassType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ClassID\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectTypeName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Permission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"PermissionState\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ObjectOktaId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"RecordId\": 72541,\n        \"Status\": \"Active\",\n        \"SystemType\": \"approved\",\n        \"ThreadNotes\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/NoteBaseModel detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/NoteBaseModel detected>\"\n          }\n        ],\n        \"UpdatedAt\": \"2022-09-12T22:01:24-08:00\",\n        \"UpdatedBy\": \"Admin\",\n        \"User\": {\n          \"Id\": 100010093,\n          \"FirstName\": \"Test\",\n          \"LastName\": \"Test\",\n          \"FullName\": \"Test User\",\n          \"AvatarURL\": \"https://example.com\"\n        },\n        \"isExternal\": true\n      }\n    }\n  ],\n  \"isEntityPublished\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc6af0b2-14d6-4600-860e-901408dd4599",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "notes",
+                    ":entity",
+                    ":entityId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) Entity type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "entityId",
+                      "description": "(Required) Unique entity id.\nEntity ID should be taken accordingly to `entity` type:\n* `onesheet-publisher` - the `SalesSheetsPublisherId` field from the response of Reports => OneSheet => Get OneSheet Builder: `/crm/v1/api/view?view=OneSheetBuilder/OneSheetBuilder`\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"Exception\": {\n    \"code\": 404,\n    \"message\": \"Not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69e066c3-dc39-4f43-be62-8bec67a29229",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "notes",
+                    ":entity",
+                    ":entityId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) Entity type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "entityId",
+                      "description": "(Required) Unique entity id.\nEntity ID should be taken accordingly to `entity` type:\n* `onesheet-publisher` - the `SalesSheetsPublisherId` field from the response of Reports => OneSheet => Get OneSheet Builder: `/crm/v1/api/view?view=OneSheetBuilder/OneSheetBuilder`\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "82794ea4-626c-44d3-83cd-4c239ea1da33",
+              "name": "One-sheet with supplied ID not found",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "notes",
+                    ":entity",
+                    ":entityId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) Entity type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "entityId",
+                      "description": "(Required) Unique entity id.\nEntity ID should be taken accordingly to `entity` type:\n* `onesheet-publisher` - the `SalesSheetsPublisherId` field from the response of Reports => OneSheet => Get OneSheet Builder: `/crm/v1/api/view?view=OneSheetBuilder/OneSheetBuilder`\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"Exception\": {\n    \"code\": 404,\n    \"message\": \"Not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba7a2c63-e87c-444d-89e3-a2880350c173",
+          "name": "Add Notes",
+          "request": {
+            "name": "Add Notes",
+            "description": {
+              "content": "Allows adding a published comment to a one-sheet.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "notes",
+                ":entity",
+                ":entityId"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity",
+                  "description": "(Required) Entity type. Should be ```onesheet```"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "entityId",
+                  "description": "(Required) Unique entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Note\": \"<string>\",\n  \"CreatedBy\": \"<string>\",\n  \"Email\": \"<email>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d1dc40ed-fb42-4389-8d69-b889b2414736",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "notes",
+                    ":entity",
+                    ":entityId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) Entity type. Should be ```onesheet```"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "entityId",
+                      "description": "(Required) Unique entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Note\": \"Some notes here\",\n  \"CreatedBy\": \"Admin\",\n  \"Email\": \"test.user@somemail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"Note\",\n  \"href\": \"https://apis.creatoriq.com/crm/v1/api/note/293751\",\n  \"Note\": {\n    \"Avatar\": \"https://example.com\",\n    \"CommentType\": \"Comments\",\n    \"CreatedAt\": \"2022-09-12T22:01:24-08:00\",\n    \"CreatedBy\": \"Admin\",\n    \"EntityName\": \"enjoycing joyce\",\n    \"EntityType\": \"onesheet-publisher\",\n    \"Id\": 123,\n    \"IsDeletable\": true,\n    \"IsEditable\": true,\n    \"Note\": \"Some notes here\",\n    \"ParentEntityId\": 337724,\n    \"ParentEntityName\": \"API\",\n    \"PermissionsAccess\": {\n      \"Access\": \"PUBLIC\",\n      \"Permissions\": [\n        {\n          \"ClassType\": \"NOTES\",\n          \"ClassID\": 293751,\n          \"ObjectTypeId\": 1,\n          \"ObjectTypeName\": \"User\",\n          \"ObjectId\": 100010093,\n          \"Permission\": \"Owner\",\n          \"PermissionState\": \"G\",\n          \"ObjectOktaId\": \"00usf39178lmcQbii0jx\"\n        },\n        {\n          \"ClassType\": \"NOTES\",\n          \"ClassID\": 293751,\n          \"ObjectTypeId\": 1,\n          \"ObjectTypeName\": \"User\",\n          \"ObjectId\": 100010093,\n          \"Permission\": \"Owner\",\n          \"PermissionState\": \"G\",\n          \"ObjectOktaId\": \"00usf39178lmcQbii0jx\"\n        }\n      ]\n    },\n    \"RecordId\": 72541,\n    \"Status\": \"Active\",\n    \"SystemType\": \"approved\",\n    \"ThreadNotes\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NoteBaseModel detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NoteBaseModel detected>\"\n      }\n    ],\n    \"UpdatedAt\": \"2022-09-12T22:01:24-08:00\",\n    \"UpdatedBy\": \"Admin\",\n    \"User\": {\n      \"Id\": 100010093,\n      \"FirstName\": \"Test\",\n      \"LastName\": \"Test\",\n      \"FullName\": \"Test User\",\n      \"AvatarURL\": \"https://example.com\"\n    },\n    \"isExternal\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca8ef883-7842-4b0d-8e22-0ec16353408c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "notes",
+                    ":entity",
+                    ":entityId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) Entity type. Should be ```onesheet```"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "entityId",
+                      "description": "(Required) Unique entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Note\": \"Some notes here\",\n  \"CreatedBy\": \"Admin\",\n  \"Email\": \"test.user@somemail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"Exception\": {\n    \"code\": 404,\n    \"message\": \"Not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69434892-c167-42ff-ab2c-70c3d172e183",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "notes",
+                    ":entity",
+                    ":entityId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) Entity type. Should be ```onesheet```"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "entityId",
+                      "description": "(Required) Unique entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Note\": \"Some notes here\",\n  \"CreatedBy\": \"Admin\",\n  \"Email\": \"test.user@somemail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "229bf6a0-cb6a-417c-ab14-dfe665ab2803",
+              "name": "One-sheet with supplied ID not found",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "notes",
+                    ":entity",
+                    ":entityId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) Entity type. Should be ```onesheet```"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "entityId",
+                      "description": "(Required) Unique entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Note\": \"Some notes here\",\n  \"CreatedBy\": \"Admin\",\n  \"Email\": \"test.user@somemail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"Exception\": {\n    \"code\": 404,\n    \"message\": \"Not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apis.creatoriq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cfa471e0-9618-4603-bc68-7e8901cfcc2e",
+    "name": "CreatorIQ CRM Publishers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CreatorIQ CRM APIs for Publishers (Influencer/Creator) resource\n\nContact Support:\n Name: CreatorIQ\n Email: support@creatoriq.com",
+      "type": "text/plain"
+    }
+  }
+}

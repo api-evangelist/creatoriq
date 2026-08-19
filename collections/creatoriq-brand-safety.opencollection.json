@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ SafeIQ Brand Safety API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Brand Safety",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List brand safety posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/brand-safety/v1/posts",
+            "params": [
+              {
+                "name": "creator_id",
+                "value": "",
+                "type": "query",
+                "description": "Filters posts by creator."
+              },
+              {
+                "name": "detected_after",
+                "value": "",
+                "type": "query",
+                "description": "Returns posts where brand safety issues were detected after this timestamp. Recommended for incremental syncs."
+              },
+              {
+                "name": "detected_before",
+                "value": "",
+                "type": "query",
+                "description": "Returns posts where brand safety issues were detected before this timestamp."
+              },
+              {
+                "name": "published_after",
+                "value": "",
+                "type": "query",
+                "description": "Returns posts published on the social network after this timestamp."
+              },
+              {
+                "name": "published_before",
+                "value": "",
+                "type": "query",
+                "description": "Returns posts published on the social network before this timestamp."
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "Filters by social platform, for example youtube, tiktok, instagram."
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query",
+                "description": "Filters by severity. Accepts a comma-separated subset of high, medium, low."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of posts to return."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor returned from the previous response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated collection of posts where brand safety issues were detected. Supports filtering by creator, detection date, publish date, platform, and severity. Access is implicitly scoped to the authenticated partner and division."
+        },
+        {
+          "info": {
+            "name": "Get brand safety post details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/brand-safety/v1/posts/:post_id",
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path",
+                "description": "Public post identifier."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns full details for a single post, including the complete array of brand safety issues. Webhook consumers use the api_details_link from the webhook payload to call this endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

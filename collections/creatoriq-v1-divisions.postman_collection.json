@@ -1,0 +1,701 @@
+{
+  "item": [
+    {
+      "id": "3ae144f9-4cf9-4c83-993c-258b8900ddca",
+      "name": "Divisions",
+      "description": {
+        "content": "Divisions public API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c3a4bc6a-2a36-4b03-affb-d84d55a6f8ab",
+          "name": "Get divisions list",
+          "request": {
+            "name": "Get divisions list",
+            "description": {
+              "content": "Get list of divisions in the organization.  \n**Warning:** Depends of api key list of divisions can be different or even empty.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "divisions"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response.  \nIf not specified, all fields will be returned.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "371afc40-2e77-4504-b1e5-21e9ca6a03c1",
+              "name": "Response with collection of divisions",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "divisions"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "Name"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a407ce9-e6cb-4a3c-95e4-9f521d1111c9",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "divisions"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "Name"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"BadRequestHttpException\",\n  \"BadRequestHttpException\": {\n    \"code\": 400,\n    \"message\": \"Invalid field(s) provided: UnknownField\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbb5d98d-a60a-4bf3-aa8c-445f529404a9",
+              "name": "The request could not be completed due to invalid API credentials",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "divisions"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "Name"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1e6060de-9a2c-4d2c-b2ff-1d078dba2eea",
+              "name": "Access was denied due to the API due to insufficient access permissions.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "divisions"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "Name"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d02c2588-d28d-4349-a39e-210e33ad7492",
+          "name": "Get division by id",
+          "request": {
+            "name": "Get division by id",
+            "description": {
+              "content": "Get division by id in the organization.  \n**Warning:** Depends of api key response can be 404 even if such division exist for partner.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "division",
+                ":divisionId"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response.  \nIf not specified, all fields will be returned.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "divisionId",
+                  "description": "(Required) ID of the division to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "33443cb7-286e-4da9-9a23-8c3cdba76563",
+              "name": "Response with division",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "division",
+                    ":divisionId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "Name"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "divisionId",
+                      "description": "(Required) ID of the division to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"Division\",\n  \"href\": \"https://apis.creatoriq.com/crm/v1/api/division/1\",\n  \"Division\": {\n    \"DivisionHierarchyLevel\": 1,\n    \"FullDivisionName\": \"Parent Division > Child Division\",\n    \"Id\": 123,\n    \"Name\": \"Division Name\",\n    \"ParentDivisionId\": 789\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f76d0a9a-9f4f-4416-8bb1-e1d6eaaba044",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "division",
+                    ":divisionId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "Name"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "divisionId",
+                      "description": "(Required) ID of the division to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"BadRequestHttpException\",\n  \"BadRequestHttpException\": {\n    \"code\": 400,\n    \"message\": \"Invalid field(s) provided: UnknownField\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f986ae1-d672-4168-a016-a36e4be06c02",
+              "name": "The request could not be completed due to invalid API credentials",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "division",
+                    ":divisionId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "Name"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "divisionId",
+                      "description": "(Required) ID of the division to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "63dace86-4ff9-4188-abd5-e649503f51b3",
+              "name": "Access was denied due to the API due to insufficient access permissions.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "division",
+                    ":divisionId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "Name"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "divisionId",
+                      "description": "(Required) ID of the division to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b61a9fb1-1188-4f6e-aef3-3f258a068df8",
+              "name": "Division not found",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "division",
+                    ":divisionId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "Name"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "divisionId",
+                      "description": "(Required) ID of the division to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"NotFoundHttpException\",\n  \"NotFoundHttpException\": {\n    \"code\": 404,\n    \"message\": \"Division with supplied ID was not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apis.creatoriq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b4a11c6c-a427-453b-bb9f-4de25b59b232",
+    "name": "CreatorIQ Divisions APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CreatorIQ CRM APIs for Divisions resource\n\nContact Support:\n Name: CreatorIQ\n Email: support@creatoriq.com",
+      "type": "text/plain"
+    }
+  }
+}

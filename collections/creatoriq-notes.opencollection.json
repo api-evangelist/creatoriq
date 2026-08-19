@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ CRM Publishers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Single Dimension from Notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/notes/:entity/:entityId/:dimension",
+            "params": [
+              {
+                "name": "entity",
+                "value": "",
+                "type": "path",
+                "description": "Entity type"
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path",
+                "description": "Unique entity id"
+              },
+              {
+                "name": "dimension",
+                "value": "",
+                "type": "path",
+                "description": "Additional entity type according to `entity`:\n* `campaign`: `campaign-publisher`\n* `onesheet`: `onesheet-publisher`\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Provides the list of the one-sheet publisher Ids that have published notes <br/>\nGet Notes API endpoint returns the data only if it is added via API. The comments/notes left via the UI are not available via these endpoints.\n"
+        },
+        {
+          "info": {
+            "name": "Get Notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/notes/:entity/:entityId",
+            "params": [
+              {
+                "name": "entity",
+                "value": "",
+                "type": "path",
+                "description": "Entity type"
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path",
+                "description": "Unique entity id.\nEntity ID should be taken accordingly to `entity` type:\n* `onesheet-publisher` - the `SalesSheetsPublisherId` field from the response of Reports => OneSheet => Get OneSheet Builder: `/crm/v1/api/view?view=OneSheetBuilder/OneSheetBuilder`\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Provides the list of published notes added to a one-sheet or to a one-sheet publisher. <br/>\nGet Notes API endpoint returns the data only if it is added via API. The comments/notes left via the UI are not available via these endpoints.\n"
+        },
+        {
+          "info": {
+            "name": "Add Notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/notes/:entity/:entityId",
+            "params": [
+              {
+                "name": "entity",
+                "value": "",
+                "type": "path",
+                "description": "Entity type. Should be ```onesheet```"
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path",
+                "description": "Unique entity id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Allows adding a published comment to a one-sheet."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,221 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ CRM Lists API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Lists collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/lists",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Collection's page to show"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Amount of items on the page. Default is 20"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order. Default is 'Id,desc'"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return a paginated collection of Lists"
+        },
+        {
+          "info": {
+            "name": "Create Publishers List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/lists",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Publishers List"
+        },
+        {
+          "info": {
+            "name": "Add a Publisher to a List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/list/:listId/publishers",
+            "params": [
+              {
+                "name": "listId",
+                "value": "",
+                "type": "path",
+                "description": "Unique List identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add a Publisher to a List"
+        },
+        {
+          "info": {
+            "name": "Delete a Publisher from a List",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apis.creatoriq.com/crm/v1/api/list/:listId/publishers",
+            "params": [
+              {
+                "name": "listId",
+                "value": "",
+                "type": "path",
+                "description": "Unique List identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a Publisher from a List"
+        },
+        {
+          "info": {
+            "name": "Get a single List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/list/:listId",
+            "params": [
+              {
+                "name": "listId",
+                "value": "",
+                "type": "path",
+                "description": "List Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a single List"
+        },
+        {
+          "info": {
+            "name": "Update List",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/list/:listId",
+            "params": [
+              {
+                "name": "listId",
+                "value": "",
+                "type": "path",
+                "description": "List Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Makes updates to a publisher list."
+        },
+        {
+          "info": {
+            "name": "Delete a Publisher List",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apis.creatoriq.com/crm/v1/api/list/:listId",
+            "params": [
+              {
+                "name": "listId",
+                "value": "",
+                "type": "path",
+                "description": "Unique List identifier"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a Publisher List"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

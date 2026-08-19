@@ -1,0 +1,320 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Conversion Metrics API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Global Conversion Metrics Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Conversion Metrics Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/conversions",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of defined conversion metrics for the current partner.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve Conversion Metric Configuration by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/conversion/:conversionMetricId",
+            "params": [
+              {
+                "name": "conversionMetricId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the conversion metric."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the configuration for a specific conversion metric\n"
+        },
+        {
+          "info": {
+            "name": "Update Existing Conversion Metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/conversion/:conversionMetricId",
+            "params": [
+              {
+                "name": "conversionMetricId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the conversion metric."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the configuration for a specific conversion metric.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Campaign Conversion Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Conversion Names with Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/conversionsWithData",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the campaign."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of conversion metric names for a specific campaign.\n"
+        },
+        {
+          "info": {
+            "name": "Upsert Conversion Metrics for a Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/conversionMetrics",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the campaign."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Upsert Conversion Metrics for a Campaign.\n"
+        },
+        {
+          "info": {
+            "name": "Get Conversion Metric by Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/tracking-link/:trackingLinkId/conversionMetric/:conversionMetricName",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the campaign."
+              },
+              {
+                "name": "trackingLinkId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the tracking link."
+              },
+              {
+                "name": "conversionMetricName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the conversion metric."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a specific conversion metric by its name for a given campaign and tracking link.\nThis endpoint is useful for fetching detailed information about a specific conversion metric.\n"
+        },
+        {
+          "info": {
+            "name": "Get All Conversion Metrics by Tracking Link ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/tracking-link/:trackingLinkId/conversionMetrics",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the campaign."
+              },
+              {
+                "name": "trackingLinkId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the tracking link."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve all conversion metrics associated with a specific tracking link for a given campaign.\nThis endpoint is useful for fetching a comprehensive list of conversion metrics related to a tracking link.\n"
+        },
+        {
+          "info": {
+            "name": "Get Conversion Metrics for a Specific Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/post/:postId/conversionMetrics",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the campaign."
+              },
+              {
+                "name": "postId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the post."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve conversion metrics for a specific post within a campaign.\nThis endpoint is useful for analyzing the performance of individual posts in terms of conversion metrics.\n"
+        },
+        {
+          "info": {
+            "name": "Get Conversion Metrics by Publisher",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/publisher/:publisherId/conversionMetrics",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the campaign."
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the publisher."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve conversion metrics for a specific publisher within a campaign.\nThis endpoint is useful for analyzing the performance of individual publishers in terms of conversion metrics.\n"
+        },
+        {
+          "info": {
+            "name": "Get Conversion Metrics by Publisher (Post-Level)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/publisher/:publisherId/conversionPostMetrics",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the campaign."
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the publisher."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve conversion metrics for a specific publisher at the post level within a campaign.\nThis endpoint is useful for analyzing the performance of individual posts by publisher in terms of conversion metrics.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

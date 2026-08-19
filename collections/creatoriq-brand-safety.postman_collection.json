@@ -1,0 +1,1037 @@
+{
+  "item": [
+    {
+      "id": "02fb5431-9e64-418c-a632-ee5e187f27d7",
+      "name": "Brand Safety",
+      "description": {
+        "content": "SafeIQ brand safety timeline API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7cff751f-4cf4-48af-9802-c94c9d54c0b0",
+          "name": "List brand safety posts",
+          "request": {
+            "name": "List brand safety posts",
+            "description": {
+              "content": "Returns a paginated collection of posts where brand safety issues were detected. Supports filtering by creator, detection date, publish date, platform, and severity. Access is implicitly scoped to the authenticated partner and division.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "brand-safety",
+                "v1",
+                "posts"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "creator_id",
+                  "value": "<string>",
+                  "description": "Filters posts by creator."
+                },
+                {
+                  "disabled": false,
+                  "key": "detected_after",
+                  "value": "<dateTime>",
+                  "description": "Returns posts where brand safety issues were detected after this timestamp. Recommended for incremental syncs."
+                },
+                {
+                  "disabled": false,
+                  "key": "detected_before",
+                  "value": "<dateTime>",
+                  "description": "Returns posts where brand safety issues were detected before this timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "published_after",
+                  "value": "<dateTime>",
+                  "description": "Returns posts published on the social network after this timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "published_before",
+                  "value": "<dateTime>",
+                  "description": "Returns posts published on the social network before this timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "platform",
+                  "value": "<string>",
+                  "description": "Filters by social platform, for example youtube, tiktok, instagram."
+                },
+                {
+                  "disabled": false,
+                  "key": "severity",
+                  "value": "<string>",
+                  "description": "Filters by severity. Accepts a comma-separated subset of high, medium, low."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Number of posts to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor returned from the previous response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8ef6e470-e4f0-42d2-8507-4d46bc3d1a3a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "brand-safety",
+                    "v1",
+                    "posts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "creator_id",
+                      "value": "20985049"
+                    },
+                    {
+                      "key": "detected_after",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "detected_before",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "published_after",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "published_before",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "tiktok"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "high,medium"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJuYW1lIjoiSm9yZGFuIExlZSIsImlkIjoiMTAwNSJ9"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {},\n  \"data\": [\n    {\n      \"object\": {},\n      \"id\": \"post_12345\",\n      \"creator_id\": \"20985049\",\n      \"platform\": \"youtube\",\n      \"issues\": [\n        {\n          \"object\": {},\n          \"id\": \"issue_67890\",\n          \"category\": \"profanity\",\n          \"severity\": \"high\",\n          \"description\": \"Strong language detected in the video audio.\",\n          \"locations\": [\n            \"01:23\",\n            \"02:45\",\n            \"caption\"\n          ],\n          \"detected_at\": \"2026-05-19T07:12:35Z\"\n        },\n        {\n          \"object\": {},\n          \"id\": \"issue_67890\",\n          \"category\": \"profanity\",\n          \"severity\": \"high\",\n          \"description\": \"Strong language detected in the video audio.\",\n          \"locations\": [\n            \"01:23\",\n            \"02:45\",\n            \"caption\"\n          ],\n          \"detected_at\": \"2026-05-19T07:12:35Z\"\n        }\n      ],\n      \"social_account_id\": \"abc123\",\n      \"caption\": \"Check out my latest vlog...\",\n      \"ai_summary\": \"A post set at a crowded outdoor festival with live music.\",\n      \"links\": {\n        \"post_url\": \"https://youtube.com/watch?v=abc123\",\n        \"thumbnail_url\": \"https://static-resources.creatoriq.com/instagram-stories/thumbs/3920090489626404416.jpg\",\n        \"api_details_link\": \"https://apis.creatoriq.com/brand-safety/v1/posts/post_12345\"\n      },\n      \"published_at\": \"2026-05-19T07:00:00Z\"\n    },\n    {\n      \"object\": {},\n      \"id\": \"post_12345\",\n      \"creator_id\": \"20985049\",\n      \"platform\": \"youtube\",\n      \"issues\": [\n        {\n          \"object\": {},\n          \"id\": \"issue_67890\",\n          \"category\": \"profanity\",\n          \"severity\": \"high\",\n          \"description\": \"Strong language detected in the video audio.\",\n          \"locations\": [\n            \"01:23\",\n            \"02:45\",\n            \"caption\"\n          ],\n          \"detected_at\": \"2026-05-19T07:12:35Z\"\n        },\n        {\n          \"object\": {},\n          \"id\": \"issue_67890\",\n          \"category\": \"profanity\",\n          \"severity\": \"high\",\n          \"description\": \"Strong language detected in the video audio.\",\n          \"locations\": [\n            \"01:23\",\n            \"02:45\",\n            \"caption\"\n          ],\n          \"detected_at\": \"2026-05-19T07:12:35Z\"\n        }\n      ],\n      \"social_account_id\": \"abc123\",\n      \"caption\": \"Check out my latest vlog...\",\n      \"ai_summary\": \"A post set at a crowded outdoor festival with live music.\",\n      \"links\": {\n        \"post_url\": \"https://youtube.com/watch?v=abc123\",\n        \"thumbnail_url\": \"https://static-resources.creatoriq.com/instagram-stories/thumbs/3920090489626404416.jpg\",\n        \"api_details_link\": \"https://apis.creatoriq.com/brand-safety/v1/posts/post_12345\"\n      },\n      \"published_at\": \"2026-05-19T07:00:00Z\"\n    }\n  ],\n  \"has_more\": true,\n  \"url\": \"/brand-safety/v1/posts?creator_id=20985049\",\n  \"next_cursor\": \"eyJuYW1lIjoiSm9yZGFuIExlZSIsImlkIjoiMTAwNSJ9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c883c48f-97a6-4aa7-a413-331140371029",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "brand-safety",
+                    "v1",
+                    "posts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "creator_id",
+                      "value": "20985049"
+                    },
+                    {
+                      "key": "detected_after",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "detected_before",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "published_after",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "published_before",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "tiktok"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "high,medium"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJuYW1lIjoiSm9yZGFuIExlZSIsImlkIjoiMTAwNSJ9"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6df1249c-8071-47ae-96ed-200406848cbb",
+              "name": "The request could not be completed due to invalid API credentials.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "brand-safety",
+                    "v1",
+                    "posts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "creator_id",
+                      "value": "20985049"
+                    },
+                    {
+                      "key": "detected_after",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "detected_before",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "published_after",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "published_before",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "tiktok"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "high,medium"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJuYW1lIjoiSm9yZGFuIExlZSIsImlkIjoiMTAwNSJ9"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da62bc31-9f4d-4058-9966-b444ff4edfc4",
+              "name": "Access was denied due to insufficient access permissions.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "brand-safety",
+                    "v1",
+                    "posts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "creator_id",
+                      "value": "20985049"
+                    },
+                    {
+                      "key": "detected_after",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "detected_before",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "published_after",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "published_before",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "tiktok"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "high,medium"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJuYW1lIjoiSm9yZGFuIExlZSIsImlkIjoiMTAwNSJ9"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8c058a16-3d37-47b8-8e45-d99418b63b1a",
+              "name": "No creator was found matching the supplied creator_id.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "brand-safety",
+                    "v1",
+                    "posts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "creator_id",
+                      "value": "20985049"
+                    },
+                    {
+                      "key": "detected_after",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "detected_before",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "published_after",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "published_before",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "tiktok"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "high,medium"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJuYW1lIjoiSm9yZGFuIExlZSIsImlkIjoiMTAwNSJ9"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c6bd67a8-76e3-4223-92af-026979958908",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "brand-safety",
+                    "v1",
+                    "posts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "creator_id",
+                      "value": "20985049"
+                    },
+                    {
+                      "key": "detected_after",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "detected_before",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "published_after",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "published_before",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "tiktok"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "high,medium"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJuYW1lIjoiSm9yZGFuIExlZSIsImlkIjoiMTAwNSJ9"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc1ee5f0-1ac5-40cc-8314-4dd5a8691da8",
+          "name": "Get brand safety post details",
+          "request": {
+            "name": "Get brand safety post details",
+            "description": {
+              "content": "Returns full details for a single post, including the complete array of brand safety issues. Webhook consumers use the api_details_link from the webhook payload to call this endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "brand-safety",
+                "v1",
+                "posts",
+                ":post_id"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "post_id",
+                  "description": "(Required) Public post identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4833a4eb-ebbd-4ffe-846d-a8589275fa7c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "brand-safety",
+                    "v1",
+                    "posts",
+                    ":post_id"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "post_id",
+                      "description": "(Required) Public post identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"creator_id\": \"20985049\",\n  \"highest_severity\": \"high\",\n  \"id\": \"post_12345\",\n  \"issue_count\": 2,\n  \"issues\": [\n    {\n      \"object\": {},\n      \"id\": \"issue_67890\",\n      \"category\": \"profanity\",\n      \"severity\": \"high\",\n      \"description\": \"Strong language detected in the video audio.\",\n      \"locations\": [\n        \"01:23\",\n        \"02:45\",\n        \"caption\"\n      ],\n      \"detected_at\": \"2026-05-19T07:12:35Z\"\n    },\n    {\n      \"object\": {},\n      \"id\": \"issue_67890\",\n      \"category\": \"profanity\",\n      \"severity\": \"high\",\n      \"description\": \"Strong language detected in the video audio.\",\n      \"locations\": [\n        \"01:23\",\n        \"02:45\",\n        \"caption\"\n      ],\n      \"detected_at\": \"2026-05-19T07:12:35Z\"\n    }\n  ],\n  \"object\": {},\n  \"platform\": \"youtube\",\n  \"social_account_id\": \"abc123\",\n  \"caption\": \"Check out my latest vlog...\",\n  \"ai_summary\": \"A post set at a crowded outdoor festival with live music.\",\n  \"links\": {\n    \"post_url\": \"https://youtube.com/watch?v=abc123\",\n    \"thumbnail_url\": \"https://static-resources.creatoriq.com/instagram-stories/thumbs/3920090489626404416.jpg\",\n    \"api_details_link\": \"https://apis.creatoriq.com/brand-safety/v1/posts/post_12345\"\n  },\n  \"published_at\": \"2026-05-19T07:00:00Z\",\n  \"last_issue_detected_at\": \"2026-05-19T07:12:35Z\",\n  \"highest_severity_category\": \"profanity\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18d424ce-f7f3-4170-8edf-bdf534d5b202",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "brand-safety",
+                    "v1",
+                    "posts",
+                    ":post_id"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "post_id",
+                      "description": "(Required) Public post identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "309fccfc-a7fd-4f1f-a434-fdf9783e00be",
+              "name": "The request could not be completed due to invalid API credentials.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "brand-safety",
+                    "v1",
+                    "posts",
+                    ":post_id"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "post_id",
+                      "description": "(Required) Public post identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "289c89dc-243b-423f-9b47-03057faf8736",
+              "name": "Access was denied due to insufficient access permissions.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "brand-safety",
+                    "v1",
+                    "posts",
+                    ":post_id"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "post_id",
+                      "description": "(Required) Public post identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "344f271c-eba5-4077-9330-b819ee04788c",
+              "name": "The requested post was not found.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "brand-safety",
+                    "v1",
+                    "posts",
+                    ":post_id"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "post_id",
+                      "description": "(Required) Public post identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8869c5be-ea49-48b0-bdc6-111a4adcbe13",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "brand-safety",
+                    "v1",
+                    "posts",
+                    ":post_id"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "post_id",
+                      "description": "(Required) Public post identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apis.creatoriq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0ae76327-ac15-4ca6-a842-ca51043a14cd",
+    "name": "CreatorIQ SafeIQ Brand Safety API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "SafeIQ brand safety timeline API for retrieving a historical, paginated collection of posts where brand safety issues were detected. Works together with the SafeIQ brand safety webhook: the webhook delivers notifications, and this REST API provides full details and reconciliation.\n\nContact Support:\n Name: CreatorIQ\n Email: support@creatoriq.com",
+      "type": "text/plain"
+    }
+  }
+}

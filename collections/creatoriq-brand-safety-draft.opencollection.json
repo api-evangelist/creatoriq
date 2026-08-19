@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ Brand Safety (draft)",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "BrandSafety",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "BrandSafety",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/BrandSafetyProd/check",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Efficiently screen creators using your tailored brand safety keyword sets, identify potential issues by reviewing flagged posts, and ensure each creator aligns with your brand's safety standards\n\n**Timeout: ~27 seconds**\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

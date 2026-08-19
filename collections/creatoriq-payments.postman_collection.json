@@ -1,0 +1,1561 @@
+{
+  "item": [
+    {
+      "id": "8e561661-1b1d-4441-ab65-9212f9eaafb8",
+      "name": "Creator Payment Info",
+      "description": {
+        "content": "Creator payment-info collection status",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cbb3e22f-5c09-4a53-851d-06e5d0ffac38",
+          "name": "Get creators' payment info collection status",
+          "request": {
+            "name": "Get creators' payment info collection status",
+            "description": {
+              "content": "Returns a paginated list describing, per creator, whether payment info,\ntax info and approval have been collected. Replaces the legacy Creator\nPayment Info Status report and lets you identify creators whose payouts\nare blocked pending information.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "payments",
+                "v1",
+                "publishers",
+                "payment-info-collection-status"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Cursor",
+                  "value": "<string>",
+                  "description": "Base64 keyset pagination cursor. Pass the `EndCursor` (forward) or `StartCursor` (backward) from the previous response's `Metadata.Pagination`. Omit on the first request."
+                },
+                {
+                  "disabled": false,
+                  "key": "PageSize",
+                  "value": "<integer>",
+                  "description": "(Required) Number of items to return per page. Must be a positive integer, capped at 200."
+                },
+                {
+                  "disabled": false,
+                  "key": "Direction",
+                  "value": "<string>",
+                  "description": "(Required) Pagination direction relative to the supplied cursor."
+                },
+                {
+                  "disabled": false,
+                  "key": "SortOrder",
+                  "value": "<string>",
+                  "description": "(Required) Sort order for the selected `SortField`."
+                },
+                {
+                  "disabled": false,
+                  "key": "PayableStatus",
+                  "value": "<string>",
+                  "description": "Filters by whether the creator is payable (eligible to be paid)."
+                },
+                {
+                  "disabled": false,
+                  "key": "PaymentInfoStatus",
+                  "value": "<string>",
+                  "description": "Comma-separated list of payment-info statuses to filter by. Valid values: Not Submitted, Received, Invalid."
+                },
+                {
+                  "disabled": false,
+                  "key": "ApprovalStatus",
+                  "value": "<string>",
+                  "description": "Filters by approval state. `true` (approved), `false` (not approved) or `null` (no approval required)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "580efc64-2585-4a5f-8833-3f4085b47412",
+              "name": "A paginated list of creator payment-info collection statuses.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "payments",
+                    "v1",
+                    "publishers",
+                    "payment-info-collection-status"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Cursor",
+                      "value": "cGF5b3V0X2RhdGU7OzEyMzQ1"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "Direction",
+                      "value": "forward"
+                    },
+                    {
+                      "key": "SortOrder",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "PayableStatus",
+                      "value": "true"
+                    },
+                    {
+                      "key": "PaymentInfoStatus",
+                      "value": "Received,Invalid"
+                    },
+                    {
+                      "key": "ApprovalStatus",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Data\": [\n    {\n      \"PublisherId\": 20985049,\n      \"PayableStatus\": true,\n      \"PaymentInfoStatus\": \"Received\",\n      \"TaxInfoStatus\": \"Received\",\n      \"ApprovalStatus\": true,\n      \"PayoutCurrency\": \"USD\"\n    },\n    {\n      \"PublisherId\": 20985049,\n      \"PayableStatus\": true,\n      \"PaymentInfoStatus\": \"Received\",\n      \"TaxInfoStatus\": \"Received\",\n      \"ApprovalStatus\": true,\n      \"PayoutCurrency\": \"USD\"\n    }\n  ],\n  \"Metadata\": {\n    \"Pagination\": {\n      \"StartCursor\": \"cGF5b3V0X2RhdGU7OzEyMzQ1\",\n      \"EndCursor\": \"cGF5b3V0X2RhdGU7OzEyMzk5\",\n      \"HasNextPage\": true,\n      \"HasPreviousPage\": false,\n      \"PageSize\": 50\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb8c8aeb-27c7-4b36-837b-f0f4ac931848",
+              "name": "Bad Request - invalid or missing query parameters.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "payments",
+                    "v1",
+                    "publishers",
+                    "payment-info-collection-status"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Cursor",
+                      "value": "cGF5b3V0X2RhdGU7OzEyMzQ1"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "Direction",
+                      "value": "forward"
+                    },
+                    {
+                      "key": "SortOrder",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "PayableStatus",
+                      "value": "true"
+                    },
+                    {
+                      "key": "PaymentInfoStatus",
+                      "value": "Received,Invalid"
+                    },
+                    {
+                      "key": "ApprovalStatus",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorMessage\": \"Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt\",\n  \"Type\": \"InvalidPayoutFiltersError\",\n  \"Details\": [\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    },\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    }\n  ],\n  \"Context\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9bee2fdb-d39d-4949-96bf-f08983139b7b",
+              "name": "Forbidden - the API key is missing, invalid or lacks access.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "payments",
+                    "v1",
+                    "publishers",
+                    "payment-info-collection-status"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Cursor",
+                      "value": "cGF5b3V0X2RhdGU7OzEyMzQ1"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "Direction",
+                      "value": "forward"
+                    },
+                    {
+                      "key": "SortOrder",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "PayableStatus",
+                      "value": "true"
+                    },
+                    {
+                      "key": "PaymentInfoStatus",
+                      "value": "Received,Invalid"
+                    },
+                    {
+                      "key": "ApprovalStatus",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorMessage\": \"Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt\",\n  \"Type\": \"InvalidPayoutFiltersError\",\n  \"Details\": [\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    },\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    }\n  ],\n  \"Context\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2943603-e64d-4735-8edf-062d9758c904",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "payments",
+                    "v1",
+                    "publishers",
+                    "payment-info-collection-status"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Cursor",
+                      "value": "cGF5b3V0X2RhdGU7OzEyMzQ1"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "Direction",
+                      "value": "forward"
+                    },
+                    {
+                      "key": "SortOrder",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "PayableStatus",
+                      "value": "true"
+                    },
+                    {
+                      "key": "PaymentInfoStatus",
+                      "value": "Received,Invalid"
+                    },
+                    {
+                      "key": "ApprovalStatus",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorMessage\": \"Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt\",\n  \"Type\": \"InvalidPayoutFiltersError\",\n  \"Details\": [\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    },\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    }\n  ],\n  \"Context\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "41daff8d-016b-4ab5-8ee2-01a820455d55",
+      "name": "Payables",
+      "description": {
+        "content": "Creator payables",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "183d1005-f708-4de8-a2b5-46ada4493e62",
+          "name": "List payables",
+          "request": {
+            "name": "List payables",
+            "description": {
+              "content": "Returns a paginated list of the authenticated partner's payables.\nPayables are referenced by their customer-facing `PayableID`;\nthe internal payable identifier is never exposed. Filters are additive\n(combined with AND).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "payments",
+                "v1",
+                "payables"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Cursor",
+                  "value": "<string>",
+                  "description": "Base64 keyset pagination cursor. Pass the `EndCursor` (forward) or `StartCursor` (backward) from the previous response's `Metadata.Pagination`. Omit on the first request."
+                },
+                {
+                  "disabled": false,
+                  "key": "PageSize",
+                  "value": "<integer>",
+                  "description": "(Required) Number of items to return per page. Must be a positive integer, capped at 200."
+                },
+                {
+                  "disabled": false,
+                  "key": "Direction",
+                  "value": "<string>",
+                  "description": "(Required) Pagination direction relative to the supplied cursor."
+                },
+                {
+                  "disabled": false,
+                  "key": "SortOrder",
+                  "value": "<string>",
+                  "description": "(Required) Sort order for the selected `SortField`."
+                },
+                {
+                  "disabled": false,
+                  "key": "SortField",
+                  "value": "<string>",
+                  "description": "(Required) Field to sort by. One of: CampaignID, CreatedAt."
+                },
+                {
+                  "disabled": false,
+                  "key": "PublisherID",
+                  "value": "<integer>",
+                  "description": "Filters payables by creator (publisher) id."
+                },
+                {
+                  "disabled": false,
+                  "key": "CampaignID",
+                  "value": "<integer>",
+                  "description": "Filters payables by campaign id."
+                },
+                {
+                  "disabled": false,
+                  "key": "PayoutID",
+                  "value": "<string>",
+                  "description": "Id of the payout the payable is currently assigned to."
+                },
+                {
+                  "disabled": false,
+                  "key": "PayableStatus",
+                  "value": "<string>",
+                  "description": "Comma-separated list of payable statuses to filter by. `NO ACCOUNT` is not accepted as a filter value. Valid values: IN_REVIEW, REJECTED, READY, UNPAYABLE, BELOW MINIMUM, SUBMITTED, PROCESSING, SENT, SUBMISSION FAILED, PAID, CANCELLED, FAILED."
+                },
+                {
+                  "disabled": false,
+                  "key": "Currency",
+                  "value": "<string>",
+                  "description": "Comma-separated list of ISO 4217 currency codes to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "CompletedAtStart",
+                  "value": "<dateTime>",
+                  "description": "Returns payables completed on or after this ISO 8601 UTC timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "CompletedAtEnd",
+                  "value": "<dateTime>",
+                  "description": "Returns payables completed on or before this ISO 8601 UTC timestamp."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e4e3a7a3-7687-4f34-b238-17643c010e78",
+              "name": "A paginated list of payables.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "payments",
+                    "v1",
+                    "payables"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Cursor",
+                      "value": "cGF5b3V0X2RhdGU7OzEyMzQ1"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "Direction",
+                      "value": "forward"
+                    },
+                    {
+                      "key": "SortOrder",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "SortField",
+                      "value": "CreatedAt"
+                    },
+                    {
+                      "key": "PublisherID",
+                      "value": "20985049"
+                    },
+                    {
+                      "key": "CampaignID",
+                      "value": "1205052"
+                    },
+                    {
+                      "key": "PayoutID",
+                      "value": "PO-2026-000123"
+                    },
+                    {
+                      "key": "PayableStatus",
+                      "value": "READY,IN_REVIEW"
+                    },
+                    {
+                      "key": "Currency",
+                      "value": "USD,EUR"
+                    },
+                    {
+                      "key": "CompletedAtStart",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "CompletedAtEnd",
+                      "value": "2026-06-01T00:00:00Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Data\": [\n    {\n      \"PayableID\": \"PA-2026-000987\",\n      \"PublisherID\": 20985049,\n      \"PayableStatus\": \"READY\",\n      \"PayableAmount\": {\n        \"Value\": \"1250.00\",\n        \"Currency\": \"USD\"\n      },\n      \"PONumber\": \"PO-4471\",\n      \"CreatedAt\": \"2026-05-01T09:15:00Z\",\n      \"UpdatedAt\": \"2026-05-18T12:00:00Z\",\n      \"PayoutID\": \"PO-2026-000123\",\n      \"CampaignID\": 1205052,\n      \"CampaignExternalName\": \"Summer 2026 Launch\",\n      \"CampaignInternalName\": \"SUM26-US\",\n      \"CompletedAt\": \"2026-05-18T12:00:00Z\",\n      \"DueDate\": \"2026-06-01T00:00:00Z\",\n      \"RequirementID\": \"req_88231\",\n      \"TransactionID\": \"txn_55120\",\n      \"NetworkCampaignID\": \"nc_4471\"\n    },\n    {\n      \"PayableID\": \"PA-2026-000987\",\n      \"PublisherID\": 20985049,\n      \"PayableStatus\": \"READY\",\n      \"PayableAmount\": {\n        \"Value\": \"1250.00\",\n        \"Currency\": \"USD\"\n      },\n      \"PONumber\": \"PO-4471\",\n      \"CreatedAt\": \"2026-05-01T09:15:00Z\",\n      \"UpdatedAt\": \"2026-05-18T12:00:00Z\",\n      \"PayoutID\": \"PO-2026-000123\",\n      \"CampaignID\": 1205052,\n      \"CampaignExternalName\": \"Summer 2026 Launch\",\n      \"CampaignInternalName\": \"SUM26-US\",\n      \"CompletedAt\": \"2026-05-18T12:00:00Z\",\n      \"DueDate\": \"2026-06-01T00:00:00Z\",\n      \"RequirementID\": \"req_88231\",\n      \"TransactionID\": \"txn_55120\",\n      \"NetworkCampaignID\": \"nc_4471\"\n    }\n  ],\n  \"Metadata\": {\n    \"Pagination\": {\n      \"StartCursor\": \"cGF5b3V0X2RhdGU7OzEyMzQ1\",\n      \"EndCursor\": \"cGF5b3V0X2RhdGU7OzEyMzk5\",\n      \"HasNextPage\": true,\n      \"HasPreviousPage\": false,\n      \"PageSize\": 50\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "257fa30d-9ef1-490f-a5d1-b8a1bcff492b",
+              "name": "Bad Request - invalid or missing query parameters.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "payments",
+                    "v1",
+                    "payables"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Cursor",
+                      "value": "cGF5b3V0X2RhdGU7OzEyMzQ1"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "Direction",
+                      "value": "forward"
+                    },
+                    {
+                      "key": "SortOrder",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "SortField",
+                      "value": "CreatedAt"
+                    },
+                    {
+                      "key": "PublisherID",
+                      "value": "20985049"
+                    },
+                    {
+                      "key": "CampaignID",
+                      "value": "1205052"
+                    },
+                    {
+                      "key": "PayoutID",
+                      "value": "PO-2026-000123"
+                    },
+                    {
+                      "key": "PayableStatus",
+                      "value": "READY,IN_REVIEW"
+                    },
+                    {
+                      "key": "Currency",
+                      "value": "USD,EUR"
+                    },
+                    {
+                      "key": "CompletedAtStart",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "CompletedAtEnd",
+                      "value": "2026-06-01T00:00:00Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorMessage\": \"Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt\",\n  \"Type\": \"InvalidPayoutFiltersError\",\n  \"Details\": [\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    },\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    }\n  ],\n  \"Context\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c177165f-32b6-4f90-b337-8dc9f6d3d3f5",
+              "name": "Forbidden - the API key is missing, invalid or lacks access.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "payments",
+                    "v1",
+                    "payables"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Cursor",
+                      "value": "cGF5b3V0X2RhdGU7OzEyMzQ1"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "Direction",
+                      "value": "forward"
+                    },
+                    {
+                      "key": "SortOrder",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "SortField",
+                      "value": "CreatedAt"
+                    },
+                    {
+                      "key": "PublisherID",
+                      "value": "20985049"
+                    },
+                    {
+                      "key": "CampaignID",
+                      "value": "1205052"
+                    },
+                    {
+                      "key": "PayoutID",
+                      "value": "PO-2026-000123"
+                    },
+                    {
+                      "key": "PayableStatus",
+                      "value": "READY,IN_REVIEW"
+                    },
+                    {
+                      "key": "Currency",
+                      "value": "USD,EUR"
+                    },
+                    {
+                      "key": "CompletedAtStart",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "CompletedAtEnd",
+                      "value": "2026-06-01T00:00:00Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorMessage\": \"Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt\",\n  \"Type\": \"InvalidPayoutFiltersError\",\n  \"Details\": [\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    },\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    }\n  ],\n  \"Context\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d5113bc-7f93-4308-8a4d-c41c1ca5e088",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "payments",
+                    "v1",
+                    "payables"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Cursor",
+                      "value": "cGF5b3V0X2RhdGU7OzEyMzQ1"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "Direction",
+                      "value": "forward"
+                    },
+                    {
+                      "key": "SortOrder",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "SortField",
+                      "value": "CreatedAt"
+                    },
+                    {
+                      "key": "PublisherID",
+                      "value": "20985049"
+                    },
+                    {
+                      "key": "CampaignID",
+                      "value": "1205052"
+                    },
+                    {
+                      "key": "PayoutID",
+                      "value": "PO-2026-000123"
+                    },
+                    {
+                      "key": "PayableStatus",
+                      "value": "READY,IN_REVIEW"
+                    },
+                    {
+                      "key": "Currency",
+                      "value": "USD,EUR"
+                    },
+                    {
+                      "key": "CompletedAtStart",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "CompletedAtEnd",
+                      "value": "2026-06-01T00:00:00Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorMessage\": \"Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt\",\n  \"Type\": \"InvalidPayoutFiltersError\",\n  \"Details\": [\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    },\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    }\n  ],\n  \"Context\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "19a93779-6f9b-4e9b-b0e8-10791ce0dbb0",
+      "name": "Payouts",
+      "description": {
+        "content": "Creator payouts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d9d0ba04-89d2-44d1-b3a2-68cf63c20506",
+          "name": "List payouts",
+          "request": {
+            "name": "List payouts",
+            "description": {
+              "content": "Returns a paginated list of the authenticated partner's payouts in the\ncreator view. Payouts are referenced exclusively by their customer-facing\n`PayoutID`; the internal payout identifier is never exposed.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "payments",
+                "v1",
+                "payouts"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Cursor",
+                  "value": "<string>",
+                  "description": "Base64 keyset pagination cursor. Pass the `EndCursor` (forward) or `StartCursor` (backward) from the previous response's `Metadata.Pagination`. Omit on the first request."
+                },
+                {
+                  "disabled": false,
+                  "key": "PageSize",
+                  "value": "<integer>",
+                  "description": "(Required) Number of items to return per page. Must be a positive integer, capped at 200."
+                },
+                {
+                  "disabled": false,
+                  "key": "Direction",
+                  "value": "<string>",
+                  "description": "(Required) Pagination direction relative to the supplied cursor."
+                },
+                {
+                  "disabled": false,
+                  "key": "SortOrder",
+                  "value": "<string>",
+                  "description": "(Required) Sort order for the selected `SortField`."
+                },
+                {
+                  "disabled": false,
+                  "key": "SortField",
+                  "value": "<string>",
+                  "description": "(Required) Field to sort by. One of: PayoutDate, PublisherID, CreatedAt."
+                },
+                {
+                  "disabled": false,
+                  "key": "PublisherID",
+                  "value": "<integer>",
+                  "description": "Filters payouts by creator (publisher) id."
+                },
+                {
+                  "disabled": false,
+                  "key": "DivisionID",
+                  "value": "<string>",
+                  "description": "Comma-separated list of division ids to filter by. Each entry must be a positive integer or the literal `null` (payouts with no division)."
+                },
+                {
+                  "disabled": false,
+                  "key": "DateStart",
+                  "value": "<dateTime>",
+                  "description": "Returns payouts with a payout date on or after this ISO 8601 UTC timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "DateEnd",
+                  "value": "<dateTime>",
+                  "description": "Returns payouts with a payout date on or before this ISO 8601 UTC timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "IncludePayoutStatus",
+                  "value": "<string>",
+                  "description": "Comma-separated list of payout statuses to include. Mutually exclusive with `ExcludePayoutStatus`. `NO ACCOUNT` is not accepted as a filter value. Valid values: READY, UNPAYABLE, BELOW MINIMUM, SUBMITTED, PROCESSING, SENT, SUBMISSION FAILED, PAID, CANCELLED, FAILED."
+                },
+                {
+                  "disabled": false,
+                  "key": "ExcludePayoutStatus",
+                  "value": "<string>",
+                  "description": "Comma-separated list of payout statuses to exclude. Mutually exclusive with `IncludePayoutStatus`. `NO ACCOUNT` is not accepted as a filter value."
+                },
+                {
+                  "disabled": false,
+                  "key": "Currency",
+                  "value": "<string>",
+                  "description": "Comma-separated list of ISO 4217 currency codes to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "PublisherIsPayable",
+                  "value": "<string>",
+                  "description": "Filters by whether the creator is currently payable."
+                },
+                {
+                  "disabled": false,
+                  "key": "ExcludeCancelledPayouts",
+                  "value": "<string>",
+                  "description": "When `true`, cancelled payouts are omitted from the response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7d820eee-c7cd-4e59-90f9-be32fe3bcb30",
+              "name": "A paginated list of payouts.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "payments",
+                    "v1",
+                    "payouts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Cursor",
+                      "value": "cGF5b3V0X2RhdGU7OzEyMzQ1"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "Direction",
+                      "value": "forward"
+                    },
+                    {
+                      "key": "SortOrder",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "SortField",
+                      "value": "PayoutDate"
+                    },
+                    {
+                      "key": "PublisherID",
+                      "value": "20985049"
+                    },
+                    {
+                      "key": "DivisionID",
+                      "value": "12,34"
+                    },
+                    {
+                      "key": "DateStart",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "DateEnd",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "IncludePayoutStatus",
+                      "value": "READY,PAID"
+                    },
+                    {
+                      "key": "ExcludePayoutStatus",
+                      "value": "CANCELLED,FAILED"
+                    },
+                    {
+                      "key": "Currency",
+                      "value": "USD,EUR"
+                    },
+                    {
+                      "key": "PublisherIsPayable",
+                      "value": "true"
+                    },
+                    {
+                      "key": "ExcludeCancelledPayouts",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Data\": [\n    {\n      \"PayoutID\": \"PO-2026-000123\",\n      \"HasRetries\": false,\n      \"PublisherID\": 20985049,\n      \"PublisherName\": \"Jordan Lee\",\n      \"PublisherIsPayable\": true,\n      \"PayoutStatus\": \"PAID\",\n      \"PayoutAmount\": {\n        \"Value\": \"1250.00\",\n        \"Currency\": \"USD\"\n      },\n      \"PayoutDate\": \"2026-05-19T07:00:00Z\",\n      \"DivisionID\": 12,\n      \"DivisionName\": \"North America\",\n      \"ProfilePictureURL\": \"https://static-resources.creatoriq.com/avatars/20985049.jpg\",\n      \"PrimaryNetwork\": \"instagram\",\n      \"PrimarySocialUsername\": \"jordanlee\",\n      \"PayoutMethod\": \"bank_transfer\",\n      \"ErrorMessage\": \"string\",\n      \"CancellationReason\": \"string\",\n      \"CreatedAt\": \"2026-05-01T09:15:00Z\",\n      \"UpdatedAt\": \"2026-05-19T07:00:00Z\"\n    },\n    {\n      \"PayoutID\": \"PO-2026-000123\",\n      \"HasRetries\": false,\n      \"PublisherID\": 20985049,\n      \"PublisherName\": \"Jordan Lee\",\n      \"PublisherIsPayable\": true,\n      \"PayoutStatus\": \"PAID\",\n      \"PayoutAmount\": {\n        \"Value\": \"1250.00\",\n        \"Currency\": \"USD\"\n      },\n      \"PayoutDate\": \"2026-05-19T07:00:00Z\",\n      \"DivisionID\": 12,\n      \"DivisionName\": \"North America\",\n      \"ProfilePictureURL\": \"https://static-resources.creatoriq.com/avatars/20985049.jpg\",\n      \"PrimaryNetwork\": \"instagram\",\n      \"PrimarySocialUsername\": \"jordanlee\",\n      \"PayoutMethod\": \"bank_transfer\",\n      \"ErrorMessage\": \"string\",\n      \"CancellationReason\": \"string\",\n      \"CreatedAt\": \"2026-05-01T09:15:00Z\",\n      \"UpdatedAt\": \"2026-05-19T07:00:00Z\"\n    }\n  ],\n  \"Metadata\": {\n    \"Pagination\": {\n      \"StartCursor\": \"cGF5b3V0X2RhdGU7OzEyMzQ1\",\n      \"EndCursor\": \"cGF5b3V0X2RhdGU7OzEyMzk5\",\n      \"HasNextPage\": true,\n      \"HasPreviousPage\": false,\n      \"PageSize\": 50\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8823dc6-d858-47da-b0b0-9d4bef023b3a",
+              "name": "Bad Request - invalid or missing query parameters.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "payments",
+                    "v1",
+                    "payouts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Cursor",
+                      "value": "cGF5b3V0X2RhdGU7OzEyMzQ1"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "Direction",
+                      "value": "forward"
+                    },
+                    {
+                      "key": "SortOrder",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "SortField",
+                      "value": "PayoutDate"
+                    },
+                    {
+                      "key": "PublisherID",
+                      "value": "20985049"
+                    },
+                    {
+                      "key": "DivisionID",
+                      "value": "12,34"
+                    },
+                    {
+                      "key": "DateStart",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "DateEnd",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "IncludePayoutStatus",
+                      "value": "READY,PAID"
+                    },
+                    {
+                      "key": "ExcludePayoutStatus",
+                      "value": "CANCELLED,FAILED"
+                    },
+                    {
+                      "key": "Currency",
+                      "value": "USD,EUR"
+                    },
+                    {
+                      "key": "PublisherIsPayable",
+                      "value": "true"
+                    },
+                    {
+                      "key": "ExcludeCancelledPayouts",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorMessage\": \"Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt\",\n  \"Type\": \"InvalidPayoutFiltersError\",\n  \"Details\": [\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    },\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    }\n  ],\n  \"Context\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "294783bd-d691-4df9-ae60-29dfb2a2269a",
+              "name": "Forbidden - the API key is missing, invalid or lacks access.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "payments",
+                    "v1",
+                    "payouts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Cursor",
+                      "value": "cGF5b3V0X2RhdGU7OzEyMzQ1"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "Direction",
+                      "value": "forward"
+                    },
+                    {
+                      "key": "SortOrder",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "SortField",
+                      "value": "PayoutDate"
+                    },
+                    {
+                      "key": "PublisherID",
+                      "value": "20985049"
+                    },
+                    {
+                      "key": "DivisionID",
+                      "value": "12,34"
+                    },
+                    {
+                      "key": "DateStart",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "DateEnd",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "IncludePayoutStatus",
+                      "value": "READY,PAID"
+                    },
+                    {
+                      "key": "ExcludePayoutStatus",
+                      "value": "CANCELLED,FAILED"
+                    },
+                    {
+                      "key": "Currency",
+                      "value": "USD,EUR"
+                    },
+                    {
+                      "key": "PublisherIsPayable",
+                      "value": "true"
+                    },
+                    {
+                      "key": "ExcludeCancelledPayouts",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorMessage\": \"Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt\",\n  \"Type\": \"InvalidPayoutFiltersError\",\n  \"Details\": [\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    },\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    }\n  ],\n  \"Context\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a9d60cd-a85b-4727-a4ce-10b29190cb18",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "payments",
+                    "v1",
+                    "payouts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "Cursor",
+                      "value": "cGF5b3V0X2RhdGU7OzEyMzQ1"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "Direction",
+                      "value": "forward"
+                    },
+                    {
+                      "key": "SortOrder",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "SortField",
+                      "value": "PayoutDate"
+                    },
+                    {
+                      "key": "PublisherID",
+                      "value": "20985049"
+                    },
+                    {
+                      "key": "DivisionID",
+                      "value": "12,34"
+                    },
+                    {
+                      "key": "DateStart",
+                      "value": "2026-05-01T00:00:00Z"
+                    },
+                    {
+                      "key": "DateEnd",
+                      "value": "2026-06-01T00:00:00Z"
+                    },
+                    {
+                      "key": "IncludePayoutStatus",
+                      "value": "READY,PAID"
+                    },
+                    {
+                      "key": "ExcludePayoutStatus",
+                      "value": "CANCELLED,FAILED"
+                    },
+                    {
+                      "key": "Currency",
+                      "value": "USD,EUR"
+                    },
+                    {
+                      "key": "PublisherIsPayable",
+                      "value": "true"
+                    },
+                    {
+                      "key": "ExcludeCancelledPayouts",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorMessage\": \"Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt\",\n  \"Type\": \"InvalidPayoutFiltersError\",\n  \"Details\": [\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    },\n    {\n      \"Type\": \"validation\",\n      \"Message\": \"PageSize must not exceed 200\",\n      \"Context\": {}\n    }\n  ],\n  \"Context\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apis.creatoriq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "918006e9-c8f5-4343-9ce5-65a346f56aa9",
+    "name": "CreatorIQ Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Payments API exposes read-only access to a partner's creator payouts,\npayables and creator payment-info collection status. It is the public\ncounterpart of the CreatorIQ Payments product and lets integrators reconcile\npayout data, monitor payable statuses and track which creators still need to\nsubmit their payment information.\n\n## Key Use Cases:\n- **Reconcile payouts**: Retrieve a paginated list of payouts (creator view) with amounts, statuses and payout dates to reconcile against your own ledger.\n- **Track payables**: List individual payables with their campaign, currency, due/completion dates and current status.\n- **Monitor payment-info collection**: Identify creators whose payment info, tax info or approval is still pending so payouts are not blocked.\n\n## Authentication\nAll requests are authenticated with your API key sent in the `X-API-KEY`\nheader. The platform gateway validates the key and implicitly scopes every\nresponse to the authenticated partner (and division, when the key is\ndivision-scoped).\n\n## Pagination\nAll endpoints use keyset (cursor) pagination. Send `PageSize`, `Direction`,\n`SortField` and `SortOrder` on the first request, then pass the `EndCursor`\n(forward) or `StartCursor` (backward) returned in `Metadata.Pagination` as the\n`Cursor` value to fetch the next page.\n\n\nContact Support:\n Name: CreatorIQ\n Email: support@creatoriq.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,303 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ Payments API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payouts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/payments/v1/payouts",
+            "params": [
+              {
+                "name": "Cursor",
+                "value": "",
+                "type": "query",
+                "description": "Base64 keyset pagination cursor. Pass the `EndCursor` (forward) or `StartCursor` (backward) from the previous response's `Metadata.Pagination`. Omit on the first request."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page. Must be a positive integer, capped at 200."
+              },
+              {
+                "name": "Direction",
+                "value": "",
+                "type": "query",
+                "description": "Pagination direction relative to the supplied cursor."
+              },
+              {
+                "name": "SortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for the selected `SortField`."
+              },
+              {
+                "name": "SortField",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by. One of: PayoutDate, PublisherID, CreatedAt."
+              },
+              {
+                "name": "PublisherID",
+                "value": "",
+                "type": "query",
+                "description": "Filters payouts by creator (publisher) id."
+              },
+              {
+                "name": "DivisionID",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of division ids to filter by. Each entry must be a positive integer or the literal `null` (payouts with no division)."
+              },
+              {
+                "name": "DateStart",
+                "value": "",
+                "type": "query",
+                "description": "Returns payouts with a payout date on or after this ISO 8601 UTC timestamp."
+              },
+              {
+                "name": "DateEnd",
+                "value": "",
+                "type": "query",
+                "description": "Returns payouts with a payout date on or before this ISO 8601 UTC timestamp."
+              },
+              {
+                "name": "IncludePayoutStatus",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of payout statuses to include. Mutually exclusive with `ExcludePayoutStatus`. `NO ACCOUNT` is not accepted as a filter value. Valid values: READY, UNPAYABLE, BELOW MINIMUM, SUBMITTED, PROCESSING, SENT, SUBMISSION FAILED, PAID, CANCELLED, FAILED."
+              },
+              {
+                "name": "ExcludePayoutStatus",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of payout statuses to exclude. Mutually exclusive with `IncludePayoutStatus`. `NO ACCOUNT` is not accepted as a filter value."
+              },
+              {
+                "name": "Currency",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of ISO 4217 currency codes to filter by."
+              },
+              {
+                "name": "PublisherIsPayable",
+                "value": "",
+                "type": "query",
+                "description": "Filters by whether the creator is currently payable."
+              },
+              {
+                "name": "ExcludeCancelledPayouts",
+                "value": "",
+                "type": "query",
+                "description": "When `true`, cancelled payouts are omitted from the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of the authenticated partner's payouts in the\ncreator view. Payouts are referenced exclusively by their customer-facing\n`PayoutID`; the internal payout identifier is never exposed.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/payments/v1/payables",
+            "params": [
+              {
+                "name": "Cursor",
+                "value": "",
+                "type": "query",
+                "description": "Base64 keyset pagination cursor. Pass the `EndCursor` (forward) or `StartCursor` (backward) from the previous response's `Metadata.Pagination`. Omit on the first request."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page. Must be a positive integer, capped at 200."
+              },
+              {
+                "name": "Direction",
+                "value": "",
+                "type": "query",
+                "description": "Pagination direction relative to the supplied cursor."
+              },
+              {
+                "name": "SortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for the selected `SortField`."
+              },
+              {
+                "name": "SortField",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by. One of: CampaignID, CreatedAt."
+              },
+              {
+                "name": "PublisherID",
+                "value": "",
+                "type": "query",
+                "description": "Filters payables by creator (publisher) id."
+              },
+              {
+                "name": "CampaignID",
+                "value": "",
+                "type": "query",
+                "description": "Filters payables by campaign id."
+              },
+              {
+                "name": "PayoutID",
+                "value": "",
+                "type": "query",
+                "description": "Id of the payout the payable is currently assigned to."
+              },
+              {
+                "name": "PayableStatus",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of payable statuses to filter by. `NO ACCOUNT` is not accepted as a filter value. Valid values: IN_REVIEW, REJECTED, READY, UNPAYABLE, BELOW MINIMUM, SUBMITTED, PROCESSING, SENT, SUBMISSION FAILED, PAID, CANCELLED, FAILED."
+              },
+              {
+                "name": "Currency",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of ISO 4217 currency codes to filter by."
+              },
+              {
+                "name": "CompletedAtStart",
+                "value": "",
+                "type": "query",
+                "description": "Returns payables completed on or after this ISO 8601 UTC timestamp."
+              },
+              {
+                "name": "CompletedAtEnd",
+                "value": "",
+                "type": "query",
+                "description": "Returns payables completed on or before this ISO 8601 UTC timestamp."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of the authenticated partner's payables.\nPayables are referenced by their customer-facing `PayableID`;\nthe internal payable identifier is never exposed. Filters are additive\n(combined with AND).\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Creator Payment Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get creators' payment info collection status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/payments/v1/publishers/payment-info-collection-status",
+            "params": [
+              {
+                "name": "Cursor",
+                "value": "",
+                "type": "query",
+                "description": "Base64 keyset pagination cursor. Pass the `EndCursor` (forward) or `StartCursor` (backward) from the previous response's `Metadata.Pagination`. Omit on the first request."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page. Must be a positive integer, capped at 200."
+              },
+              {
+                "name": "Direction",
+                "value": "",
+                "type": "query",
+                "description": "Pagination direction relative to the supplied cursor."
+              },
+              {
+                "name": "SortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for the selected `SortField`."
+              },
+              {
+                "name": "SortField",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by. Currently only PublisherId is supported."
+              },
+              {
+                "name": "PayableStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filters by whether the creator is payable (eligible to be paid)."
+              },
+              {
+                "name": "PaymentInfoStatus",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of payment-info statuses to filter by. Valid values: Not Submitted, Received, Invalid."
+              },
+              {
+                "name": "ApprovalStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filters by approval state. `true` (approved), `false` (not approved) or `null` (no approval required)."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list describing, per creator, whether payment info,\ntax info and approval have been collected. Replaces the legacy Creator\nPayment Info Status report and lets you identify creators whose payouts\nare blocked pending information.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

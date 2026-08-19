@@ -1,0 +1,3593 @@
+{
+  "item": [
+    {
+      "id": "cae213c5-0d0f-49d3-9d57-4c500eb4539a",
+      "name": "Campaign Conversion Metrics",
+      "description": {
+        "content": "Campaign Conversion Metrics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "416165cf-f96b-4f73-ba22-7750793cec36",
+          "name": "Get Conversion Names with Data",
+          "request": {
+            "name": "Get Conversion Names with Data",
+            "description": {
+              "content": "Returns a list of conversion metric names for a specific campaign.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "campaign",
+                ":campaignId",
+                "conversionsWithData"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "campaignId",
+                  "description": "(Required) The unique identifier for the campaign."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "60d5e16d-d33d-45fa-bc83-5ea1963af43e",
+              "name": "Successfully retrieved conversion metric names with data.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "conversionsWithData"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Bitly Link Clicks\": \"Bitly Link Clicks\",\n  \"Net Sales\": \"Net Sales\",\n  \"Gross Sales (GMV)\": \"Gross Sales (GMV)\",\n  \"Gross Commissions\": \"Gross Commissions\",\n  \"Net Commissions\": \"Net Commissions\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a5272bd-0a88-418b-96d7-ec5ca4066614",
+              "name": "Not Found - Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "conversionsWithData"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"Supplied ID was not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db948b48-3c07-4d50-b573-a04fbe243e7c",
+          "name": "Upsert Conversion Metrics for a Campaign",
+          "request": {
+            "name": "Upsert Conversion Metrics for a Campaign",
+            "description": {
+              "content": "Upsert Conversion Metrics for a Campaign.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "campaign",
+                ":campaignId",
+                "conversionMetrics"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "campaignId",
+                  "description": "(Required) The unique identifier for the campaign."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"TrackingLinkId\": \"<integer>\",\n    \"ConversionMetricId\": \"<integer>\",\n    \"ConversionMetricValue\": \"<integer>\"\n  },\n  {\n    \"TrackingLinkId\": \"<integer>\",\n    \"ConversionMetricId\": \"<integer>\",\n    \"ConversionMetricValue\": \"<integer>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "90c74605-6dd0-4ca4-94b2-033748ff16b8",
+              "name": "Successfully added or updated conversion metrics.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"TrackingLinkId\": 1006453,\n    \"ConversionMetricId\": 36942,\n    \"ConversionMetricValue\": 22\n  },\n  {\n    \"TrackingLinkId\": 1006453,\n    \"ConversionMetricId\": 36942,\n    \"ConversionMetricValue\": 22\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"ConversionCollection\",\n  \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetrics\",\n  \"count\": 20,\n  \"total\": 725,\n  \"page\": 1,\n  \"ConversionCollection\": [\n    {\n      \"type\": \"ConversionMetric\",\n      \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders\",\n      \"ConversionMetric\": {\n        \"ConversionMetricId\": 36942,\n        \"PartnerId\": 11,\n        \"ConversionMetricName\": \"ConversionMetric6\",\n        \"DisplayName\": \"Transactions\",\n        \"DisplayOrder\": 6,\n        \"IsVisible\": 1,\n        \"Type\": \"Default\",\n        \"AdditionalInfo\": \"string\",\n        \"TrackingLinkId\": \"123\",\n        \"ConversionMetricValue\": 123,\n        \"Status\": \"Auto\",\n        \"UpdatedAt\": \"2022-01-11 13:47:34\",\n        \"UpdatedBy\": \"app-ui\"\n      }\n    },\n    {\n      \"type\": \"ConversionMetric\",\n      \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders\",\n      \"ConversionMetric\": {\n        \"ConversionMetricId\": 36942,\n        \"PartnerId\": 11,\n        \"ConversionMetricName\": \"ConversionMetric6\",\n        \"DisplayName\": \"Transactions\",\n        \"DisplayOrder\": 6,\n        \"IsVisible\": 1,\n        \"Type\": \"Default\",\n        \"AdditionalInfo\": \"string\",\n        \"TrackingLinkId\": \"123\",\n        \"ConversionMetricValue\": 123,\n        \"Status\": \"Auto\",\n        \"UpdatedAt\": \"2022-01-11 13:47:34\",\n        \"UpdatedBy\": \"app-ui\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fb5fef4-f0bc-40fc-9205-17479ea2d84d",
+              "name": "Bad Request - Invalid request format or missing fields.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"TrackingLinkId\": 1006453,\n    \"ConversionMetricId\": 36942,\n    \"ConversionMetricValue\": 22\n  },\n  {\n    \"TrackingLinkId\": 1006453,\n    \"ConversionMetricId\": 36942,\n    \"ConversionMetricValue\": 22\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 400,\n    \"message\": \"Some parameters are missing or invalid\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b49b12b6-2f72-457d-b255-8fb4f0158ea7",
+              "name": "Unauthorized - API key missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"TrackingLinkId\": 1006453,\n    \"ConversionMetricId\": 36942,\n    \"ConversionMetricValue\": 22\n  },\n  {\n    \"TrackingLinkId\": 1006453,\n    \"ConversionMetricId\": 36942,\n    \"ConversionMetricValue\": 22\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50fd95dd-354f-44cf-82a8-6d02c1c4893b",
+              "name": "Forbidden - User does not have access.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"TrackingLinkId\": 1006453,\n    \"ConversionMetricId\": 36942,\n    \"ConversionMetricValue\": 22\n  },\n  {\n    \"TrackingLinkId\": 1006453,\n    \"ConversionMetricId\": 36942,\n    \"ConversionMetricValue\": 22\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de5b1417-582f-4d0c-a89f-1d1979d0da41",
+              "name": "Not Found - Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"TrackingLinkId\": 1006453,\n    \"ConversionMetricId\": 36942,\n    \"ConversionMetricValue\": 22\n  },\n  {\n    \"TrackingLinkId\": 1006453,\n    \"ConversionMetricId\": 36942,\n    \"ConversionMetricValue\": 22\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"Supplied ID was not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1397e70-4c62-4405-9745-1e21ee65597a",
+          "name": "Get Conversion Metric by Name",
+          "request": {
+            "name": "Get Conversion Metric by Name",
+            "description": {
+              "content": "Retrieve a specific conversion metric by its name for a given campaign and tracking link.\nThis endpoint is useful for fetching detailed information about a specific conversion metric.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "campaign",
+                ":campaignId",
+                "tracking-link",
+                ":trackingLinkId",
+                "conversionMetric",
+                ":conversionMetricName"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "campaignId",
+                  "description": "(Required) The unique identifier for the campaign."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "trackingLinkId",
+                  "description": "(Required) The unique identifier for the tracking link."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "conversionMetricName",
+                  "description": "(Required) The name of the conversion metric."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2991e39c-e558-444e-8eca-a4aae6891b4b",
+              "name": "Successfully retrieved the conversion metric details.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "tracking-link",
+                    ":trackingLinkId",
+                    "conversionMetric",
+                    ":conversionMetricName"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "trackingLinkId",
+                      "description": "(Required) The unique identifier for the tracking link."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "conversionMetricName",
+                      "description": "(Required) The name of the conversion metric."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"ConversionMetric\",\n  \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders\",\n  \"ConversionMetric\": {\n    \"ConversionMetricId\": 36942,\n    \"PartnerId\": 11,\n    \"ConversionMetricName\": \"ConversionMetric6\",\n    \"DisplayName\": \"Transactions\",\n    \"DisplayOrder\": 6,\n    \"IsVisible\": 1,\n    \"Type\": \"Default\",\n    \"AdditionalInfo\": \"string\",\n    \"TrackingLinkId\": \"123\",\n    \"ConversionMetricValue\": 123,\n    \"Status\": \"Auto\",\n    \"UpdatedAt\": \"2022-01-11 13:47:34\",\n    \"UpdatedBy\": \"app-ui\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "804e19f6-7cd4-46fa-90d3-6e61df34d15e",
+              "name": "Bad Request - Invalid request format or missing fields.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "tracking-link",
+                    ":trackingLinkId",
+                    "conversionMetric",
+                    ":conversionMetricName"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "trackingLinkId",
+                      "description": "(Required) The unique identifier for the tracking link."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "conversionMetricName",
+                      "description": "(Required) The name of the conversion metric."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 400,\n    \"message\": \"Some parameters are missing or invalid\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a55706c0-d3f2-4df6-a58b-ccf0f3312a0e",
+              "name": "Unauthorized - API key missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "tracking-link",
+                    ":trackingLinkId",
+                    "conversionMetric",
+                    ":conversionMetricName"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "trackingLinkId",
+                      "description": "(Required) The unique identifier for the tracking link."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "conversionMetricName",
+                      "description": "(Required) The name of the conversion metric."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ecfcdfb6-a49a-46c7-a950-e4439c39c654",
+              "name": "Forbidden - User does not have access.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "tracking-link",
+                    ":trackingLinkId",
+                    "conversionMetric",
+                    ":conversionMetricName"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "trackingLinkId",
+                      "description": "(Required) The unique identifier for the tracking link."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "conversionMetricName",
+                      "description": "(Required) The name of the conversion metric."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cb08f6a-0d92-497c-86ac-1327594e3156",
+              "name": "Not Found - Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "tracking-link",
+                    ":trackingLinkId",
+                    "conversionMetric",
+                    ":conversionMetricName"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "trackingLinkId",
+                      "description": "(Required) The unique identifier for the tracking link."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "conversionMetricName",
+                      "description": "(Required) The name of the conversion metric."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"Supplied ID was not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af64364e-2bb9-440b-abb1-6722a84a0505",
+          "name": "Get All Conversion Metrics by Tracking Link ID",
+          "request": {
+            "name": "Get All Conversion Metrics by Tracking Link ID",
+            "description": {
+              "content": "Retrieve all conversion metrics associated with a specific tracking link for a given campaign.\nThis endpoint is useful for fetching a comprehensive list of conversion metrics related to a tracking link.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "campaign",
+                ":campaignId",
+                "tracking-link",
+                ":trackingLinkId",
+                "conversionMetrics"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "campaignId",
+                  "description": "(Required) The unique identifier for the campaign."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "trackingLinkId",
+                  "description": "(Required) The unique identifier for the tracking link."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e2aa0e09-2951-4f8f-bc1f-dd6821dcb9fd",
+              "name": "Successfully retrieved all conversion metrics for the tracking link.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "tracking-link",
+                    ":trackingLinkId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "trackingLinkId",
+                      "description": "(Required) The unique identifier for the tracking link."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"ConversionCollection\",\n  \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetrics\",\n  \"count\": 20,\n  \"total\": 725,\n  \"page\": 1,\n  \"ConversionCollection\": [\n    {\n      \"type\": \"ConversionMetric\",\n      \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders\",\n      \"ConversionMetric\": {\n        \"ConversionMetricId\": 36942,\n        \"PartnerId\": 11,\n        \"ConversionMetricName\": \"ConversionMetric6\",\n        \"DisplayName\": \"Transactions\",\n        \"DisplayOrder\": 6,\n        \"IsVisible\": 1,\n        \"Type\": \"Default\",\n        \"AdditionalInfo\": \"string\",\n        \"TrackingLinkId\": \"123\",\n        \"ConversionMetricValue\": 123,\n        \"Status\": \"Auto\",\n        \"UpdatedAt\": \"2022-01-11 13:47:34\",\n        \"UpdatedBy\": \"app-ui\"\n      }\n    },\n    {\n      \"type\": \"ConversionMetric\",\n      \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders\",\n      \"ConversionMetric\": {\n        \"ConversionMetricId\": 36942,\n        \"PartnerId\": 11,\n        \"ConversionMetricName\": \"ConversionMetric6\",\n        \"DisplayName\": \"Transactions\",\n        \"DisplayOrder\": 6,\n        \"IsVisible\": 1,\n        \"Type\": \"Default\",\n        \"AdditionalInfo\": \"string\",\n        \"TrackingLinkId\": \"123\",\n        \"ConversionMetricValue\": 123,\n        \"Status\": \"Auto\",\n        \"UpdatedAt\": \"2022-01-11 13:47:34\",\n        \"UpdatedBy\": \"app-ui\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9e75487-904d-4f8f-aec1-af29bf8309c0",
+              "name": "Bad Request - Invalid request format or missing fields.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "tracking-link",
+                    ":trackingLinkId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "trackingLinkId",
+                      "description": "(Required) The unique identifier for the tracking link."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 400,\n    \"message\": \"Some parameters are missing or invalid\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f991e48e-ad02-4da3-8834-2603eddbc39a",
+              "name": "Unauthorized - API key missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "tracking-link",
+                    ":trackingLinkId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "trackingLinkId",
+                      "description": "(Required) The unique identifier for the tracking link."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54d57366-fecb-46a8-bf09-7dba1035e387",
+              "name": "Forbidden - User does not have access.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "tracking-link",
+                    ":trackingLinkId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "trackingLinkId",
+                      "description": "(Required) The unique identifier for the tracking link."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2fecc03a-8ed8-4d06-add0-437bd7e1f220",
+              "name": "Not Found - Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "tracking-link",
+                    ":trackingLinkId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "trackingLinkId",
+                      "description": "(Required) The unique identifier for the tracking link."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"Supplied ID was not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f8a43bf-3fc7-4a41-a1ea-118a170652bb",
+          "name": "Get Conversion Metrics for a Specific Post",
+          "request": {
+            "name": "Get Conversion Metrics for a Specific Post",
+            "description": {
+              "content": "Retrieve conversion metrics for a specific post within a campaign.\nThis endpoint is useful for analyzing the performance of individual posts in terms of conversion metrics.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "campaign",
+                ":campaignId",
+                "post",
+                ":postId",
+                "conversionMetrics"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "campaignId",
+                  "description": "(Required) The unique identifier for the campaign."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "postId",
+                  "description": "(Required) The unique identifier for the post."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d6a56d5c-e81e-4242-a493-41f16425eb3d",
+              "name": "Successfully retrieved conversion metrics for the post.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "post",
+                    ":postId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "postId",
+                      "description": "(Required) The unique identifier for the post."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"ConversionCollection\",\n  \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/123/post/321/conversionMetrics\",\n  \"count\": 20,\n  \"total\": 725,\n  \"page\": 1,\n  \"ConversionCollection\": [\n    {\n      \"type\": \"ConversionMetric\",\n      \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/2316554/tracking-link/1144249/conversionMetric/Gross AOV\",\n      \"ConversionMetric\": {\n        \"ConversionMetricId\": 36942,\n        \"ConversionMetricName\": \"ConversionMetric6\",\n        \"DisplayName\": \"Transactions\",\n        \"DisplayOrder\": 6,\n        \"IsVisible\": 1,\n        \"TrackingId\": 123,\n        \"TrackingLinkId\": 123,\n        \"PublisherId\": 123,\n        \"ConversionMetricValue\": 123,\n        \"Status\": \"Auto\",\n        \"Label\": \"Product\"\n      }\n    },\n    {\n      \"type\": \"ConversionMetric\",\n      \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/2316554/tracking-link/1144249/conversionMetric/Gross AOV\",\n      \"ConversionMetric\": {\n        \"ConversionMetricId\": 36942,\n        \"ConversionMetricName\": \"ConversionMetric6\",\n        \"DisplayName\": \"Transactions\",\n        \"DisplayOrder\": 6,\n        \"IsVisible\": 1,\n        \"TrackingId\": 123,\n        \"TrackingLinkId\": 123,\n        \"PublisherId\": 123,\n        \"ConversionMetricValue\": 123,\n        \"Status\": \"Auto\",\n        \"Label\": \"Product\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e75e9252-32ae-4e30-895b-2b2be44c387b",
+              "name": "Bad Request - Invalid request format or missing fields.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "post",
+                    ":postId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "postId",
+                      "description": "(Required) The unique identifier for the post."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 400,\n    \"message\": \"Some parameters are missing or invalid\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7284a7dc-8bcd-4316-af1f-f60db331674f",
+              "name": "Unauthorized - API key missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "post",
+                    ":postId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "postId",
+                      "description": "(Required) The unique identifier for the post."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f88bf1a-c1f1-476b-a9e7-163136ae087b",
+              "name": "Forbidden - User does not have access.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "post",
+                    ":postId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "postId",
+                      "description": "(Required) The unique identifier for the post."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a9996cf-f2d0-4b7c-ae3b-22359705d8ec",
+              "name": "Not Found - Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "post",
+                    ":postId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "postId",
+                      "description": "(Required) The unique identifier for the post."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"Supplied ID was not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a019057e-11f4-4bf1-a7ef-130d2a43934b",
+          "name": "Get Conversion Metrics by Publisher",
+          "request": {
+            "name": "Get Conversion Metrics by Publisher",
+            "description": {
+              "content": "Retrieve conversion metrics for a specific publisher within a campaign.\nThis endpoint is useful for analyzing the performance of individual publishers in terms of conversion metrics.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "campaign",
+                ":campaignId",
+                "publisher",
+                ":publisherId",
+                "conversionMetrics"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "campaignId",
+                  "description": "(Required) The unique identifier for the campaign."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "publisherId",
+                  "description": "(Required) The unique identifier for the publisher."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9fb9c287-699e-4456-b8a5-9c875d34feea",
+              "name": "Successfully retrieved conversion metrics for the publisher.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "publisher",
+                    ":publisherId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "publisherId",
+                      "description": "(Required) The unique identifier for the publisher."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"ConversionMetric\",\n  \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/2316554/tracking-link/1144249/conversionMetric/Gross AOV\",\n  \"ConversionMetric\": {\n    \"ConversionMetricId\": 36942,\n    \"ConversionMetricName\": \"ConversionMetric6\",\n    \"DisplayName\": \"Transactions\",\n    \"DisplayOrder\": 6,\n    \"IsVisible\": 1,\n    \"TrackingId\": 123,\n    \"TrackingLinkId\": 123,\n    \"PublisherId\": 123,\n    \"ConversionMetricValue\": 123,\n    \"Status\": \"Auto\",\n    \"Label\": \"Product\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "386c308d-aa14-4c75-b078-c5aed1df670b",
+              "name": "Bad Request - Invalid request format or missing fields.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "publisher",
+                    ":publisherId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "publisherId",
+                      "description": "(Required) The unique identifier for the publisher."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 400,\n    \"message\": \"Some parameters are missing or invalid\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a57953a9-af7d-4fa2-9586-ff56f612e4be",
+              "name": "Unauthorized - API key missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "publisher",
+                    ":publisherId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "publisherId",
+                      "description": "(Required) The unique identifier for the publisher."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "091fefd5-3574-470b-ba93-96a821dd79fb",
+              "name": "Forbidden - User does not have access.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "publisher",
+                    ":publisherId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "publisherId",
+                      "description": "(Required) The unique identifier for the publisher."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c61ce6f-6244-49bd-83f0-1659ff184887",
+              "name": "Not Found - Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "publisher",
+                    ":publisherId",
+                    "conversionMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "publisherId",
+                      "description": "(Required) The unique identifier for the publisher."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"Supplied ID was not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43df3f44-b271-4246-8d07-5fc4362ad7da",
+          "name": "Get Conversion Metrics by Publisher (Post-Level)",
+          "request": {
+            "name": "Get Conversion Metrics by Publisher (Post-Level)",
+            "description": {
+              "content": "Retrieve conversion metrics for a specific publisher at the post level within a campaign.\nThis endpoint is useful for analyzing the performance of individual posts by publisher in terms of conversion metrics.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "campaign",
+                ":campaignId",
+                "publisher",
+                ":publisherId",
+                "conversionPostMetrics"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "campaignId",
+                  "description": "(Required) The unique identifier for the campaign."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "publisherId",
+                  "description": "(Required) The unique identifier for the publisher."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "379344e2-6bbf-42c6-b580-7c6aa00eb2f1",
+              "name": "Successfully retrieved conversion metrics for the publisher at the post level.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "publisher",
+                    ":publisherId",
+                    "conversionPostMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "publisherId",
+                      "description": "(Required) The unique identifier for the publisher."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"ConversionCollection\",\n  \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/123/post/321/conversionMetrics\",\n  \"count\": 20,\n  \"total\": 725,\n  \"page\": 1,\n  \"ConversionCollection\": [\n    {\n      \"type\": \"ConversionMetric\",\n      \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/2316554/tracking-link/1144249/conversionMetric/Gross AOV\",\n      \"ConversionMetric\": {\n        \"ConversionMetricId\": 36942,\n        \"ConversionMetricName\": \"ConversionMetric6\",\n        \"DisplayName\": \"Transactions\",\n        \"DisplayOrder\": 6,\n        \"IsVisible\": 1,\n        \"TrackingId\": 123,\n        \"TrackingLinkId\": 123,\n        \"PublisherId\": 123,\n        \"ConversionMetricValue\": 123,\n        \"Status\": \"Auto\",\n        \"Label\": \"Product\"\n      }\n    },\n    {\n      \"type\": \"ConversionMetric\",\n      \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/2316554/tracking-link/1144249/conversionMetric/Gross AOV\",\n      \"ConversionMetric\": {\n        \"ConversionMetricId\": 36942,\n        \"ConversionMetricName\": \"ConversionMetric6\",\n        \"DisplayName\": \"Transactions\",\n        \"DisplayOrder\": 6,\n        \"IsVisible\": 1,\n        \"TrackingId\": 123,\n        \"TrackingLinkId\": 123,\n        \"PublisherId\": 123,\n        \"ConversionMetricValue\": 123,\n        \"Status\": \"Auto\",\n        \"Label\": \"Product\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d45f65d-7e52-4e64-9497-8a8411de6426",
+              "name": "Bad Request - Invalid request format or missing fields.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "publisher",
+                    ":publisherId",
+                    "conversionPostMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "publisherId",
+                      "description": "(Required) The unique identifier for the publisher."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 400,\n    \"message\": \"Some parameters are missing or invalid\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f14ef6fb-4966-48a4-9178-0eed6c160469",
+              "name": "Unauthorized - API key missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "publisher",
+                    ":publisherId",
+                    "conversionPostMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "publisherId",
+                      "description": "(Required) The unique identifier for the publisher."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4f4f83c-6607-4e73-92b3-25b7905da000",
+              "name": "Forbidden - User does not have access.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "publisher",
+                    ":publisherId",
+                    "conversionPostMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "publisherId",
+                      "description": "(Required) The unique identifier for the publisher."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28603490-fe1b-4ed1-ba77-d8509958282f",
+              "name": "Not Found - Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "campaign",
+                    ":campaignId",
+                    "publisher",
+                    ":publisherId",
+                    "conversionPostMetrics"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "campaignId",
+                      "description": "(Required) The unique identifier for the campaign."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "publisherId",
+                      "description": "(Required) The unique identifier for the publisher."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"Supplied ID was not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "32e2b0fe-4b2d-44e2-ae71-206da59a67f6",
+      "name": "Conversion Metrics",
+      "description": {
+        "content": "Conversion Metrics API",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "0ba32f76-65dc-4514-849c-4fffb3f24702",
+      "name": "Global Conversion Metrics Configuration",
+      "description": {
+        "content": "Global Conversion Metrics Configuration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4e86d20f-1702-403a-94cb-85ea093d2632",
+          "name": "Retrieve Conversion Metrics Configuration",
+          "request": {
+            "name": "Retrieve Conversion Metrics Configuration",
+            "description": {
+              "content": "Returns a list of defined conversion metrics for the current partner.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "conversions"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8ba73c4c-229c-4ead-8298-6d8e3672f2af",
+              "name": "Successfully retrieved conversion metrics.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "conversions"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"ConversionCollection\",\n  \"href\": \"https://apis.creatoriq.com/crm/v1/api/conversions\",\n  \"count\": 20,\n  \"total\": 725,\n  \"page\": 1,\n  \"ConversionCollection\": [\n    {\n      \"type\": \"ConversionMetric\",\n      \"href\": \"https://public-api.creatoriq.com/api/api/conversion/36937\",\n      \"ConversionMetric\": {\n        \"ConversionMetricId\": 36942,\n        \"PartnerId\": 11,\n        \"ConversionMetricName\": \"ConversionMetric6\",\n        \"DisplayName\": \"Transactions\",\n        \"DisplayOrder\": 6,\n        \"IsVisible\": 1,\n        \"Type\": \"Default\",\n        \"AdditionalInfo\": \"string\",\n        \"UpdatedAt\": \"2022-01-11 13:47:34\",\n        \"UpdatedBy\": \"app-ui\",\n        \"CreatedAt\": \"2022-01-11 13:47:34\",\n        \"CreatedBy\": \"app-ui\"\n      }\n    },\n    {\n      \"type\": \"ConversionMetric\",\n      \"href\": \"https://public-api.creatoriq.com/api/api/conversion/36937\",\n      \"ConversionMetric\": {\n        \"ConversionMetricId\": 36942,\n        \"PartnerId\": 11,\n        \"ConversionMetricName\": \"ConversionMetric6\",\n        \"DisplayName\": \"Transactions\",\n        \"DisplayOrder\": 6,\n        \"IsVisible\": 1,\n        \"Type\": \"Default\",\n        \"AdditionalInfo\": \"string\",\n        \"UpdatedAt\": \"2022-01-11 13:47:34\",\n        \"UpdatedBy\": \"app-ui\",\n        \"CreatedAt\": \"2022-01-11 13:47:34\",\n        \"CreatedBy\": \"app-ui\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01bd110e-2b93-4e26-889c-7fdcece5e65c",
+              "name": "Unauthorized - API key missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "conversions"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33e8eab1-273c-41fc-ad38-ffcee8419862",
+              "name": "Forbidden - User does not have access.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "conversions"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e91cd012-d7f8-4bee-8a13-16ae535db7c9",
+          "name": "Retrieve Conversion Metric Configuration by ID",
+          "request": {
+            "name": "Retrieve Conversion Metric Configuration by ID",
+            "description": {
+              "content": "Returns the configuration for a specific conversion metric\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "conversion",
+                ":conversionMetricId"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "conversionMetricId",
+                  "description": "(Required) The unique identifier for the conversion metric."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b43e9062-e365-4377-8ea7-8886eb0716d6",
+              "name": "Successfully retrieved conversion metric configuration.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "conversion",
+                    ":conversionMetricId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "conversionMetricId",
+                      "description": "(Required) The unique identifier for the conversion metric."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"ConversionMetric\",\n  \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders\",\n  \"ConversionMetric\": {\n    \"ConversionMetricId\": 36942,\n    \"PartnerId\": 11,\n    \"ConversionMetricName\": \"ConversionMetric6\",\n    \"DisplayName\": \"Transactions\",\n    \"DisplayOrder\": 6,\n    \"IsVisible\": 1,\n    \"Type\": \"Default\",\n    \"AdditionalInfo\": \"string\",\n    \"TrackingLinkId\": \"123\",\n    \"ConversionMetricValue\": 123,\n    \"Status\": \"Auto\",\n    \"UpdatedAt\": \"2022-01-11 13:47:34\",\n    \"UpdatedBy\": \"app-ui\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37ac3e1e-a9b9-4c80-8a73-6110047e4578",
+              "name": "Not Found - Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "conversion",
+                    ":conversionMetricId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "conversionMetricId",
+                      "description": "(Required) The unique identifier for the conversion metric."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"Supplied ID was not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4bc2d87c-ced3-4b5e-8ae0-677a819b5ca1",
+          "name": "Update Existing Conversion Metric",
+          "request": {
+            "name": "Update Existing Conversion Metric",
+            "description": {
+              "content": "Updates the configuration for a specific conversion metric.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "conversion",
+                ":conversionMetricId"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "conversionMetricId",
+                  "description": "(Required) The unique identifier for the conversion metric."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"DisplayName\": \"<string>\",\n  \"DisplayOrder\": \"<integer>\",\n  \"IsVisible\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0a9a58f2-6750-457f-a3d1-94d5c3c50bd0",
+              "name": "Successfully updated the conversion metric.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "conversion",
+                    ":conversionMetricId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "conversionMetricId",
+                      "description": "(Required) The unique identifier for the conversion metric."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DisplayName\": \"New Conversion Metric\",\n  \"DisplayOrder\": 1,\n  \"IsVisible\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"ConversionMetric\",\n  \"href\": \"https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders\",\n  \"ConversionMetric\": {\n    \"ConversionMetricId\": 36942,\n    \"PartnerId\": 11,\n    \"ConversionMetricName\": \"ConversionMetric6\",\n    \"DisplayName\": \"Transactions\",\n    \"DisplayOrder\": 6,\n    \"IsVisible\": 1,\n    \"Type\": \"Default\",\n    \"AdditionalInfo\": \"string\",\n    \"TrackingLinkId\": \"123\",\n    \"ConversionMetricValue\": 123,\n    \"Status\": \"Auto\",\n    \"UpdatedAt\": \"2022-01-11 13:47:34\",\n    \"UpdatedBy\": \"app-ui\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "317569f1-1e4d-414b-8d1f-fa65bb06e2d1",
+              "name": "Bad Request - Invalid request format or missing fields.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "conversion",
+                    ":conversionMetricId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "conversionMetricId",
+                      "description": "(Required) The unique identifier for the conversion metric."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DisplayName\": \"New Conversion Metric\",\n  \"DisplayOrder\": 1,\n  \"IsVisible\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 400,\n    \"message\": \"Some parameters are missing or invalid\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5e883f2-171c-40ac-a616-c5e3b1727961",
+              "name": "Unauthorized - API key missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "conversion",
+                    ":conversionMetricId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "conversionMetricId",
+                      "description": "(Required) The unique identifier for the conversion metric."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DisplayName\": \"New Conversion Metric\",\n  \"DisplayOrder\": 1,\n  \"IsVisible\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c66d8a8-80db-4773-bc8e-86d8a6f8da49",
+              "name": "Forbidden - User does not have access.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "conversion",
+                    ":conversionMetricId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "conversionMetricId",
+                      "description": "(Required) The unique identifier for the conversion metric."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DisplayName\": \"New Conversion Metric\",\n  \"DisplayOrder\": 1,\n  \"IsVisible\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df115272-6f8e-412c-99fa-449fcc04da64",
+              "name": "Not Found - Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "conversion",
+                    ":conversionMetricId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "conversionMetricId",
+                      "description": "(Required) The unique identifier for the conversion metric."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DisplayName\": \"New Conversion Metric\",\n  \"DisplayOrder\": 1,\n  \"IsVisible\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"Supplied ID was not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apis.creatoriq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "83b93eb7-3f5a-471d-9bae-1f47396ea3b4",
+    "name": "Conversion Metrics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Conversion Metrics API allows clients to extend CreatorIQ’s link tracking functionality by creating, managing, \nand extracting conversion data.\n\n## Key Use Cases:\n- **Integrate third-party data**: Attach conversion metrics from external platforms (e.g., Google Analytics, Shopify, or internal BI systems) to CreatorIQ tracking links.\n- **Enhance attribution & reporting**: Map conversion events (e.g., purchases, sign-ups) to specific creators, campaigns, and links to improve performance insights.\n- **Extract CIQ metrics**: Retrieve conversion data from CreatorIQ to enrich business processes, build custom dashboards, or power internal analytics.\n\n\nContact Support:\n Name: CreatorIQ\n Email: support@creatoriq.com",
+      "type": "text/plain"
+    }
+  }
+}

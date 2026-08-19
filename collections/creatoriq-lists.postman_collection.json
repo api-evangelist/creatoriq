@@ -1,0 +1,2370 @@
+{
+  "item": [
+    {
+      "id": "44e4c432-2605-4f13-b1f1-071d28959c30",
+      "name": "Lists",
+      "description": {
+        "content": "Lists public API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5287dad9-1bff-4be9-8ec4-a3527859b90b",
+          "name": "Get Lists collection",
+          "request": {
+            "name": "Get Lists collection",
+            "description": {
+              "content": "Return a paginated collection of Lists",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "lists"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Collection's page to show"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "Amount of items on the page. Default is 20"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "Id,desc",
+                  "description": "Sort order. Default is 'Id,desc'"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e78ca3d1-a492-454b-999b-27e1bddcb7f8",
+              "name": "Lists Collection",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "lists"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "3"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "order",
+                      "value": "UpdatedAt,desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"ListsCollection\",\n  \"href\": \"https://apis.creatoriq.com/crm/v1/api/lists\",\n  \"count\": 20,\n  \"total\": 1704,\n  \"page\": 2,\n  \"ListsCollection\": [\n    {\n      \"type\": \"List\",\n      \"href\": \"https://apis.creatoriq.com/crm/v1/api/list/1\",\n      \"List\": {\n        \"Id\": 8,\n        \"Name\": \"List 3\",\n        \"Description\": \"Test1\",\n        \"DivisionId\": 123,\n        \"DivisionName\": \"Division Number 1\",\n        \"Tags\": \"\\\"IT\\\"\",\n        \"Type\": \"Some Type\",\n        \"Visibility\": true,\n        \"CreatedAt\": \"2016-08-16 09:52:28\",\n        \"CreatedBy\": \"John Snow\",\n        \"LastUpdated\": \"2017-07-05 14:27:11\",\n        \"UpdatedBy\": \"John Snow\",\n        \"Publishers\": [\n          311280,\n          312816,\n          572313,\n          572314,\n          572319,\n          572320,\n          572330,\n          572331,\n          595106\n        ],\n        \"Public\": true,\n        \"CommentsCount\": 0\n      }\n    },\n    {\n      \"type\": \"List\",\n      \"href\": \"https://apis.creatoriq.com/crm/v1/api/list/1\",\n      \"List\": {\n        \"Id\": 8,\n        \"Name\": \"List 3\",\n        \"Description\": \"Test1\",\n        \"DivisionId\": 123,\n        \"DivisionName\": \"Division Number 1\",\n        \"Tags\": \"\\\"IT\\\"\",\n        \"Type\": \"Some Type\",\n        \"Visibility\": true,\n        \"CreatedAt\": \"2016-08-16 09:52:28\",\n        \"CreatedBy\": \"John Snow\",\n        \"LastUpdated\": \"2017-07-05 14:27:11\",\n        \"UpdatedBy\": \"John Snow\",\n        \"Publishers\": [\n          311280,\n          312816,\n          572313,\n          572314,\n          572319,\n          572320,\n          572330,\n          572331,\n          595106\n        ],\n        \"Public\": true,\n        \"CommentsCount\": 0\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3714ff71-4ba3-49f6-b936-82b5dda24341",
+              "name": "Incorrect x-api-key",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "lists"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "3"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "order",
+                      "value": "UpdatedAt,desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 401,\n    \"message\": \"Incorrect x-api-key\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe45bf45-0e4e-421a-affb-81f0229dc7e9",
+              "name": "Access was denied due to the API has insufficient access permissions",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "lists"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "3"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "order",
+                      "value": "UpdatedAt,desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 403,\n    \"message\": \"Access was denied due to the API has insufficient access permissions\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "392e292c-697e-4e9b-ba09-36b56483eab8",
+          "name": "Create Publishers List",
+          "request": {
+            "name": "Create Publishers List",
+            "description": {
+              "content": "Create Publishers List",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "lists"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"loaded\": null,\n  \"Description\": \"<string>\",\n  \"Tags\": \"<string>\",\n  \"Publishers\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"permissions\": {\n    \"Create\": \"<integer>\",\n    \"Delete\": \"<integer>\",\n    \"Enable\": \"<integer>\",\n    \"Execute\": \"<integer>\",\n    \"Read\": \"<integer>\",\n    \"Show\": \"<integer>\",\n    \"Write\": \"<integer>\",\n    \"Share\": \"<integer>\"\n  },\n  \"visibilityOption\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0eb4595d-6d75-43d6-8d7b-11235e4fe7ec",
+              "name": "Create Publishers List - Success",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "lists"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"List1\",\n  \"loaded\": false,\n  \"Description\": \"Test1\",\n  \"Tags\": \"\\\"Tag1,Tag2\\\"\",\n  \"Publishers\": [\n    311280,\n    312816,\n    572313,\n    572314,\n    572319,\n    572320,\n    572330,\n    572331,\n    595106\n  ],\n  \"permissions\": {\n    \"Create\": 0,\n    \"Delete\": 1,\n    \"Enable\": 1,\n    \"Execute\": 0,\n    \"Read\": 0,\n    \"Show\": 0,\n    \"Write\": 0,\n    \"Share\": 0\n  },\n  \"visibilityOption\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"List\",\n  \"href\": \"https://apis.creatoriq.com/crm/v1/api/list/202179\",\n  \"List\": {\n    \"type\": \"List\",\n    \"href\": \"https://apis.creatoriq.com/crm/v1/api/list/1\",\n    \"List\": {\n      \"Id\": 8,\n      \"Name\": \"List 3\",\n      \"Description\": \"Test1\",\n      \"DivisionId\": 123,\n      \"DivisionName\": \"Division Number 1\",\n      \"Tags\": \"\\\"IT\\\"\",\n      \"Type\": \"Some Type\",\n      \"Visibility\": true,\n      \"CreatedAt\": \"2016-08-16 09:52:28\",\n      \"CreatedBy\": \"John Snow\",\n      \"LastUpdated\": \"2017-07-05 14:27:11\",\n      \"UpdatedBy\": \"John Snow\",\n      \"Publishers\": [\n        311280,\n        312816,\n        572313,\n        572314,\n        572319,\n        572320,\n        572330,\n        572331,\n        595106\n      ],\n      \"Public\": true,\n      \"CommentsCount\": 0\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3babe520-c05f-4f5e-93ec-dc5f243b1de5",
+              "name": "No input data found (or The name field is required).",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "lists"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"List1\",\n  \"loaded\": false,\n  \"Description\": \"Test1\",\n  \"Tags\": \"\\\"Tag1,Tag2\\\"\",\n  \"Publishers\": [\n    311280,\n    312816,\n    572313,\n    572314,\n    572319,\n    572320,\n    572330,\n    572331,\n    595106\n  ],\n  \"permissions\": {\n    \"Create\": 0,\n    \"Delete\": 1,\n    \"Enable\": 1,\n    \"Execute\": 0,\n    \"Read\": 0,\n    \"Show\": 0,\n    \"Write\": 0,\n    \"Share\": 0\n  },\n  \"visibilityOption\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 400,\n    \"message\": \"No input data found (or The name field is required).\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11a6fe8c-64df-4bda-b770-f380fd9d108c",
+              "name": "Incorrect x-api-key",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "lists"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"List1\",\n  \"loaded\": false,\n  \"Description\": \"Test1\",\n  \"Tags\": \"\\\"Tag1,Tag2\\\"\",\n  \"Publishers\": [\n    311280,\n    312816,\n    572313,\n    572314,\n    572319,\n    572320,\n    572330,\n    572331,\n    595106\n  ],\n  \"permissions\": {\n    \"Create\": 0,\n    \"Delete\": 1,\n    \"Enable\": 1,\n    \"Execute\": 0,\n    \"Read\": 0,\n    \"Show\": 0,\n    \"Write\": 0,\n    \"Share\": 0\n  },\n  \"visibilityOption\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 401,\n    \"message\": \"Incorrect x-api-key\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b057e21a-599d-4c77-9396-6b33f514280e",
+              "name": "Access was denied due to the API has insufficient access permissions",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "lists"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"List1\",\n  \"loaded\": false,\n  \"Description\": \"Test1\",\n  \"Tags\": \"\\\"Tag1,Tag2\\\"\",\n  \"Publishers\": [\n    311280,\n    312816,\n    572313,\n    572314,\n    572319,\n    572320,\n    572330,\n    572331,\n    595106\n  ],\n  \"permissions\": {\n    \"Create\": 0,\n    \"Delete\": 1,\n    \"Enable\": 1,\n    \"Execute\": 0,\n    \"Read\": 0,\n    \"Show\": 0,\n    \"Write\": 0,\n    \"Share\": 0\n  },\n  \"visibilityOption\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 403,\n    \"message\": \"Access was denied due to the API has insufficient access permissions\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8a1020b-7842-4502-a88d-da9383973dcc",
+          "name": "Add a Publisher to a List",
+          "request": {
+            "name": "Add a Publisher to a List",
+            "description": {
+              "content": "Add a Publisher to a List",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "list",
+                ":listId",
+                "publishers"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "listId",
+                  "description": "(Required) Unique List identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PublisherId\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9133bd54-7f77-4602-91b6-b85cbe84cce0",
+              "name": "Delete a Publisher from a List - Success",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId",
+                    "publishers"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) Unique List identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PublisherId\": [\n    8082160,\n    8082161\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"List\",\n  \"href\": \"https://apis.creatoriq.com/crm/v1/api/list/202179\",\n  \"List\": {\n    \"type\": \"List\",\n    \"href\": \"https://apis.creatoriq.com/crm/v1/api/list/1\",\n    \"List\": {\n      \"Id\": 8,\n      \"Name\": \"List 3\",\n      \"Description\": \"Test1\",\n      \"DivisionId\": 123,\n      \"DivisionName\": \"Division Number 1\",\n      \"Tags\": \"\\\"IT\\\"\",\n      \"Type\": \"Some Type\",\n      \"Visibility\": true,\n      \"CreatedAt\": \"2016-08-16 09:52:28\",\n      \"CreatedBy\": \"John Snow\",\n      \"LastUpdated\": \"2017-07-05 14:27:11\",\n      \"UpdatedBy\": \"John Snow\",\n      \"Publishers\": [\n        311280,\n        312816,\n        572313,\n        572314,\n        572319,\n        572320,\n        572330,\n        572331,\n        595106\n      ],\n      \"Public\": true,\n      \"CommentsCount\": 0\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21673ab6-2fff-4059-b973-b99ee7b27f4f",
+              "name": "CoreException",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId",
+                    "publishers"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) Unique List identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PublisherId\": [\n    8082160,\n    8082161\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 400,\n    \"message\": \"Publisher Id is mandatory!\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95eedcd0-2222-4ff9-8950-3ac1c80250f7",
+              "name": "Incorrect x-api-key",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId",
+                    "publishers"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) Unique List identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PublisherId\": [\n    8082160,\n    8082161\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 401,\n    \"message\": \"Incorrect x-api-key\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d25806b7-d400-4596-92a4-72d9d40ba6cc",
+              "name": "Access was denied due to the API has insufficient access permissions",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId",
+                    "publishers"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) Unique List identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PublisherId\": [\n    8082160,\n    8082161\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 403,\n    \"message\": \"Access was denied due to the API has insufficient access permissions\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0010153c-c5b8-41b9-a7b8-bf218d0c603d",
+              "name": "The list hasn't been found",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId",
+                    "publishers"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) Unique List identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PublisherId\": [\n    8082160,\n    8082161\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"The list hasn't been found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7192bb15-dd7a-4958-8640-1c1eadaa6e07",
+          "name": "Delete a Publisher from a List",
+          "request": {
+            "name": "Delete a Publisher from a List",
+            "description": {
+              "content": "Delete a Publisher from a List",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "list",
+                ":listId",
+                "publishers"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "listId",
+                  "description": "(Required) Unique List identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PublisherId\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "308676e4-793b-49a4-a338-9043c055d8ed",
+              "name": "Delete a Publisher from a List - Success",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId",
+                    "publishers"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) Unique List identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PublisherId\": [\n    8082160,\n    8082161\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"List\",\n  \"href\": \"https://apis.creatoriq.com/crm/v1/api/list/202179\",\n  \"List\": {\n    \"type\": \"List\",\n    \"href\": \"https://apis.creatoriq.com/crm/v1/api/list/1\",\n    \"List\": {\n      \"Id\": 8,\n      \"Name\": \"List 3\",\n      \"Description\": \"Test1\",\n      \"DivisionId\": 123,\n      \"DivisionName\": \"Division Number 1\",\n      \"Tags\": \"\\\"IT\\\"\",\n      \"Type\": \"Some Type\",\n      \"Visibility\": true,\n      \"CreatedAt\": \"2016-08-16 09:52:28\",\n      \"CreatedBy\": \"John Snow\",\n      \"LastUpdated\": \"2017-07-05 14:27:11\",\n      \"UpdatedBy\": \"John Snow\",\n      \"Publishers\": [\n        311280,\n        312816,\n        572313,\n        572314,\n        572319,\n        572320,\n        572330,\n        572331,\n        595106\n      ],\n      \"Public\": true,\n      \"CommentsCount\": 0\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7818f508-390c-4ee0-a948-d13fd6e9ecc5",
+              "name": "CoreException",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId",
+                    "publishers"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) Unique List identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PublisherId\": [\n    8082160,\n    8082161\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 400,\n    \"message\": \"Publisher Id is mandatory!\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8421918-cad7-4c56-a033-802144716b87",
+              "name": "Incorrect x-api-key",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId",
+                    "publishers"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) Unique List identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PublisherId\": [\n    8082160,\n    8082161\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 401,\n    \"message\": \"Incorrect x-api-key\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e006963-ef30-4519-b9a1-dfbb2059c761",
+              "name": "Access was denied due to the API has insufficient access permissions",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId",
+                    "publishers"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) Unique List identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PublisherId\": [\n    8082160,\n    8082161\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 403,\n    \"message\": \"Access was denied due to the API has insufficient access permissions\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d7165d1-e482-4fee-9c04-62553cec9b12",
+              "name": "NotFoundException",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId",
+                    "publishers"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) Unique List identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PublisherId\": [\n    8082160,\n    8082161\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"The list hasn't been found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e69c598-d5a8-44d4-9e2a-89986f50bfcd",
+          "name": "Get a single List",
+          "request": {
+            "name": "Get a single List",
+            "description": {
+              "content": "Get a single List",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "list",
+                ":listId"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "listId",
+                  "description": "(Required) List Id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0a553b5a-9b95-4b9d-bbe3-4b0fba9269b1",
+              "name": "List",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) List Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"List\",\n  \"href\": \"https://apis.creatoriq.com/crm/v1/api/list/202179\",\n  \"List\": {\n    \"type\": \"List\",\n    \"href\": \"https://apis.creatoriq.com/crm/v1/api/list/1\",\n    \"List\": {\n      \"Id\": 8,\n      \"Name\": \"List 3\",\n      \"Description\": \"Test1\",\n      \"DivisionId\": 123,\n      \"DivisionName\": \"Division Number 1\",\n      \"Tags\": \"\\\"IT\\\"\",\n      \"Type\": \"Some Type\",\n      \"Visibility\": true,\n      \"CreatedAt\": \"2016-08-16 09:52:28\",\n      \"CreatedBy\": \"John Snow\",\n      \"LastUpdated\": \"2017-07-05 14:27:11\",\n      \"UpdatedBy\": \"John Snow\",\n      \"Publishers\": [\n        311280,\n        312816,\n        572313,\n        572314,\n        572319,\n        572320,\n        572330,\n        572331,\n        595106\n      ],\n      \"Public\": true,\n      \"CommentsCount\": 0\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9429cb5a-fbe6-4f29-a238-8cffdefba7ea",
+              "name": "Access was denied due to the API has insufficient access permissions",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) List Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 403,\n    \"message\": \"Access was denied due to the API has insufficient access permissions\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec669ecd-5872-4915-965f-c3d34f2ce531",
+              "name": "The list hasn't been found",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) List Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"The list hasn't been found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f78d1193-322a-4c0c-9afa-da54cf1e86dc",
+          "name": "Delete a Publisher List",
+          "request": {
+            "name": "Delete a Publisher List",
+            "description": {
+              "content": "Delete a Publisher List",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "list",
+                ":listId"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "listId",
+                  "description": "(Required) Unique List identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1ce72413-5efd-470f-9d71-18c37bb33ec7",
+              "name": "Successful",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) Unique List identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9f27397e-7c3d-47ca-8b8e-4a90e3cf4435",
+              "name": "No input data found (or The name field is required).",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) Unique List identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 400,\n    \"message\": \"No input data found (or The name field is required).\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45e739d5-a1dd-4ca6-9d57-e7112be98c2a",
+              "name": "Incorrect x-api-key",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) Unique List identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 401,\n    \"message\": \"Incorrect x-api-key\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49000364-9a40-4079-81e1-cfafcac889cb",
+              "name": "Access was denied due to the API has insufficient access permissions",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) Unique List identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 403,\n    \"message\": \"Access was denied due to the API has insufficient access permissions\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "addd8afa-af1f-4a89-bd7e-ce9c19e3127b",
+              "name": "NotFoundException",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) Unique List identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"The list hasn't been found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "317dd9a2-b9d6-4857-8360-a480be22073d",
+          "name": "Update List",
+          "request": {
+            "name": "Update List",
+            "description": {
+              "content": "Makes updates to a publisher list.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "list",
+                ":listId"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "listId",
+                  "description": "(Required) List Id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"loaded\": null,\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"Tags\": \"<string>\",\n  \"Publishers\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"permissions\": {\n    \"Create\": \"<integer>\",\n    \"Delete\": \"<integer>\",\n    \"Enable\": \"<integer>\",\n    \"Execute\": \"<integer>\",\n    \"Read\": \"<integer>\",\n    \"Show\": \"<integer>\",\n    \"Write\": \"<integer>\",\n    \"Share\": \"<integer>\"\n  },\n  \"visibilityOption\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "79e6b9c1-51da-4a82-be23-0c11c295ba60",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) List Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"loaded\": false,\n  \"Name\": \"List1\",\n  \"Description\": \"Test1\",\n  \"Tags\": \"\\\"Tag1,Tag2\\\"\",\n  \"Publishers\": [\n    311280,\n    312816,\n    572313,\n    572314,\n    572319,\n    572320,\n    572330,\n    572331,\n    595106\n  ],\n  \"permissions\": {\n    \"Create\": 0,\n    \"Delete\": 1,\n    \"Enable\": 1,\n    \"Execute\": 0,\n    \"Read\": 0,\n    \"Show\": 0,\n    \"Write\": 0,\n    \"Share\": 0\n  },\n  \"visibilityOption\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ec7ade97-c4be-413f-99b3-93a4b42294d5",
+              "name": "No input data found (or The name field is required).",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) List Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"loaded\": false,\n  \"Name\": \"List1\",\n  \"Description\": \"Test1\",\n  \"Tags\": \"\\\"Tag1,Tag2\\\"\",\n  \"Publishers\": [\n    311280,\n    312816,\n    572313,\n    572314,\n    572319,\n    572320,\n    572330,\n    572331,\n    595106\n  ],\n  \"permissions\": {\n    \"Create\": 0,\n    \"Delete\": 1,\n    \"Enable\": 1,\n    \"Execute\": 0,\n    \"Read\": 0,\n    \"Show\": 0,\n    \"Write\": 0,\n    \"Share\": 0\n  },\n  \"visibilityOption\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 400,\n    \"message\": \"No input data found (or The name field is required).\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4cd343cf-04c7-4593-bb2b-68b1394dc095",
+              "name": "Access was denied due to the API has insufficient access permissions",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) List Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"loaded\": false,\n  \"Name\": \"List1\",\n  \"Description\": \"Test1\",\n  \"Tags\": \"\\\"Tag1,Tag2\\\"\",\n  \"Publishers\": [\n    311280,\n    312816,\n    572313,\n    572314,\n    572319,\n    572320,\n    572330,\n    572331,\n    595106\n  ],\n  \"permissions\": {\n    \"Create\": 0,\n    \"Delete\": 1,\n    \"Enable\": 1,\n    \"Execute\": 0,\n    \"Read\": 0,\n    \"Show\": 0,\n    \"Write\": 0,\n    \"Share\": 0\n  },\n  \"visibilityOption\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 403,\n    \"message\": \"Access was denied due to the API has insufficient access permissions\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3349be7f-de42-443a-b1b0-e8f89efc568d",
+              "name": "The list hasn't been found",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "list",
+                    ":listId"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "listId",
+                      "description": "(Required) List Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"loaded\": false,\n  \"Name\": \"List1\",\n  \"Description\": \"Test1\",\n  \"Tags\": \"\\\"Tag1,Tag2\\\"\",\n  \"Publishers\": [\n    311280,\n    312816,\n    572313,\n    572314,\n    572319,\n    572320,\n    572330,\n    572331,\n    595106\n  ],\n  \"permissions\": {\n    \"Create\": 0,\n    \"Delete\": 1,\n    \"Enable\": 1,\n    \"Execute\": 0,\n    \"Read\": 0,\n    \"Show\": 0,\n    \"Write\": 0,\n    \"Share\": 0\n  },\n  \"visibilityOption\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"CoreException\": {\n    \"code\": 404,\n    \"message\": \"The list hasn't been found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apis.creatoriq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c1f86ce6-ce29-41f5-a1e3-80867cda01aa",
+    "name": "CreatorIQ CRM Lists API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CreatorIQ CRM APIs for Lists resource\n\nContact Support:\n Name: CreatorIQ\n Email: support@creatoriq.com",
+      "type": "text/plain"
+    }
+  }
+}

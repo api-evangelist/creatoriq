@@ -1,0 +1,868 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ CRM Publishers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Publisher",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Find Publisher by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publisher/:publisherId",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which identifier is used in the request.\nSet to `id` if you are using the internal `id` field as identifier.\nIf you are using `PublisherId` as identifier(default behavior), this parameter should be omitted.\n"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Publisher identifier"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return particular Publisher Information"
+        },
+        {
+          "info": {
+            "name": "Update Publisher Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publisher/:publisherId",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which identifier is used in the request.\nSet to `id` if you are using the internal `id` field as identifier.\nIf you are using `PublisherId` as identifier(default behavior), this parameter should be omitted.\n"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Publisher identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Publisher Social accounts with verified and linked flags"
+        },
+        {
+          "info": {
+            "name": "Delete Publisher from Network",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publisher/:publisherId",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which identifier is used in the request.\nSet to `id` if you are using the internal `id` field as identifier.\nIf you are using `PublisherId` as identifier(default behavior), this parameter should be omitted.\n"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Publisher identifier"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete publisher form network"
+        },
+        {
+          "info": {
+            "name": "Get Publisher ScheduledPosts info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publisher/:publisherId/scheduledPosts",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which identifier is used in the request.\nSet to `id` if you are using the internal `id` field as identifier.\nIf you are using `PublisherId` as identifier(default behavior), this parameter should be omitted.\n"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "number of elements on page"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Publisher identifier"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Publisher ScheduledPosts"
+        },
+        {
+          "info": {
+            "name": "GET social accounts for multiple publishers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publishers/:publisherIds/accounts",
+            "params": [
+              {
+                "name": "publisherIds",
+                "value": "",
+                "type": "path",
+                "description": "Comma separated unique Publisher IDs."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch the social accounts information for bulk publishers. Max count of publishers 10.\n> **Warning**: This API endpoint is deprecated and will be removed at 2026-04-16. You could use the [new version of endpoint](https://apidocs.creatoriq.com/docs/ciq-api-documentation/5d20075e89450-get-social-accounts-for-multiple-publishers) instead of this one.\n"
+        },
+        {
+          "info": {
+            "name": "GET publisher's social accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publisher/:publisherId/accounts",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which identifier is used in the request.\nSet to `id` if you are using the internal `id` field as identifier.\nIf you are using `PublisherId` as identifier(default behavior), this parameter should be omitted.\n"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Publisher's ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch the social account information for publisher"
+        },
+        {
+          "info": {
+            "name": "Add Publisher Social accounts information",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publisher/:publisherId/accounts",
+            "params": [
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "Type of input data ('link' or 'user')"
+              },
+              {
+                "name": "accountSource",
+                "value": "",
+                "type": "query",
+                "description": "Account source"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which identifier is used in the request.\nSet to `id` if you are using the internal `id` field as identifier.\nIf you are using `PublisherId` as identifier(default behavior), this parameter should be omitted.\n"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Publisher identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add Publisher Social accounts information"
+        },
+        {
+          "info": {
+            "name": "Update Publisher Social accounts information",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publisher/:publisherId/accounts",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "An additional parameter that should be used if you use `Id` instead of `PublisherId`."
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Publisher identifier, `PublisherId` from Get all Publishers endpoint"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Publisher Social accounts information <br/>\nSocial network (Facebook, Instagram, Google, Vine, Tumblr etc.)\n"
+        },
+        {
+          "info": {
+            "name": "Delete Publisher Social accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publisher/:publisherId/accounts",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which identifier is used in the request.\nSet to `id` if you are using the internal `id` field as identifier.\nIf you are using `PublisherId` as identifier(default behavior), this parameter should be omitted.\n"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Publisher identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes a social account from a creator."
+        },
+        {
+          "info": {
+            "name": "Get Contact Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/data/contact/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Contact identifier"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a single contact from a publisher (creator)."
+        },
+        {
+          "info": {
+            "name": "Edit publisher contact data",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/data/contact/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Contact identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Makes updates to a publisher contact."
+        },
+        {
+          "info": {
+            "name": "Delete a Publisher Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apis.creatoriq.com/crm/v1/api/data/contact/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Contact identifier"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a Publisher Contact"
+        },
+        {
+          "info": {
+            "name": "Create publisher contact data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/data/contact",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new publisher contact."
+        },
+        {
+          "info": {
+            "name": "Get Publisher Log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publisher/:publisherId/log",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Optional, search key field. NetworkPublisherId used by default"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page to go"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Publisher identifier"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the action history for a single publisher (creator)"
+        },
+        {
+          "info": {
+            "name": "Get Publisher Audience",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publisher/:publisherId/audience",
+            "params": [
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Publisher identifier"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns any first-party audience data for a specific publisher (creator).\n\nPlease note that the response may contain one of the following options:\n* an object with data (if there is a publisher and there is an audience data) \n* an empty array (if there is a publisher, but we do not have an audience of data)\n"
+        },
+        {
+          "info": {
+            "name": "Get all available Publishers statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/statuses",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all available publisher statuses that the 'Status' field can return"
+        },
+        {
+          "info": {
+            "name": "Get all Publishers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publishers",
+            "params": [
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Limit the result set. Default is 20."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number in the result set"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter for records. Can be a set of filters: Column1=Value1,Value2;Column2=Value3\n\nE.g., Status=Active;Gender=female\n\nThe list of the fields that can be used for filtering:\n- Id\n- PublisherName\n- NetworkPublisherId\n- DateOfBirth\n- Language\n- EthnicBackground\n- Gender\n- RecruiterName\n- Category\n- SubCategories\n- Description\n- LastUpdated\n- Country\n- Relationship\n- Children\n- Pets\n- EyeColor\n- HairColor\n- InternalDescription\n- Tags\n- TotalSubscribers\n"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Order records. Can be specified as Column,direction I.e. PublisherName,asc.\nYou can omit the direction by providing only Column i.e. PublisherName, in such case it will equal to PublisherName,asc.\nThe list of available values for sorting:\n- PublisherName\n- TotalSubscribers\n- DateRecruitingStarted\n"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "fields"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the list of publishers (creators)."
+        },
+        {
+          "info": {
+            "name": "Create publisher",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publishers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create publisher in network. You should pass **PublisherName** or **accounts** field for creating publisher.\n"
+        },
+        {
+          "info": {
+            "name": "Get all Publishers accounts changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/reports/PublishersDataChanges",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit the result set."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset the result set."
+              },
+              {
+                "name": "DateRangeStart",
+                "value": "",
+                "type": "query",
+                "description": "Date range start."
+              },
+              {
+                "name": "DateRangeEnd",
+                "value": "",
+                "type": "query",
+                "description": "Date range end."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all Publishers accounts changes"
+        },
+        {
+          "info": {
+            "name": "Send a message to publisher",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/communication/send",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Send a message to publisher"
+        },
+        {
+          "info": {
+            "name": "Get Campaigns assigned to Publisher",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publisher/:publisherId/campaigns",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which identifier the `publisherId` path value is matched against.\nDefaults to the internal `Id` when omitted (equivalent to `key=Id`).\nSet to `PublisherId` to match by the network `PublisherId` returned by the Get all Publishers endpoint.\n"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Publisher identifier"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of campaign objects for all the campaigns a specific publisher (creator) is associated with"
+        },
+        {
+          "info": {
+            "name": "Send a message to publisher (regarding to particular campaign)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/communication/CampaignMessaging",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Send a message to publisher (regarding to particular campaign)"
+        },
+        {
+          "info": {
+            "name": "Send emails to publishers in bulk.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/communication/sendBulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Send emails to publishers in bulk."
+        },
+        {
+          "info": {
+            "name": "Get Publisher property details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publisher/:publisherId/:property",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which identifier is used in the request.\nSet to `id` if you are using the internal `id` field as identifier.\nIf you are using `PublisherId` as identifier(default behavior), this parameter should be omitted.\n"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Publisher identifier"
+              },
+              {
+                "name": "property",
+                "value": "",
+                "type": "path",
+                "description": "<b>channels</b>: Get Publisher Channels information;<br/> <b>accounts</b>: Get Publisher Social accounts information.\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Publisher property details"
+        },
+        {
+          "info": {
+            "name": "Add tags to publishers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publishers/tags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add tags to publisher without rewriting previous tags"
+        },
+        {
+          "info": {
+            "name": "Remove tags from publishers",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publishers/tags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Remove tags from publishers"
+        },
+        {
+          "info": {
+            "name": "Trigger an update for a particular Publisher's social account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/publisher/:publisherId/updateAccounts",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Specifies which identifier is used in the request.\nSet to `id` if you are using the internal `id` field as identifier.\nIf you are using `PublisherId` as identifier(default behavior), this parameter should be omitted.\n"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Publisher ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a social account info"
+        },
+        {
+          "info": {
+            "name": "Add/Update the audience data for a publisher.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/data/publisher/:publisherId/audience",
+            "params": [
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Publisher identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Edit or add audience data to the publisher's social account. To be able to use this API, you need required fields that can be derived from [Get publisher's social accounts API](https://creatoriq.stoplight.io/docs/ciq-api-documentation/53138e18cb0a8-get-publisher-s-social-accounts).\n\n  1. Fetch list of social accounts from [Get publisher's social accounts API](https://creatoriq.stoplight.io/docs/ciq-api-documentation/53138e18cb0a8-get-publisher-s-social-accounts) for the publisher.\n  2. From the "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

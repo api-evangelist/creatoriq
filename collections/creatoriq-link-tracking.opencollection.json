@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ CRM LinkTracking API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LinkTracking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create new link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/ecommerce/v1/link-management/link",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new link for the certain campaign and publisher. The publisher should already be added to the campaign."
+        },
+        {
+          "info": {
+            "name": "Get links list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/ecommerce/v1/link-management/links",
+            "params": [
+              {
+                "name": "TrackingItemId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the link."
+              },
+              {
+                "name": "CampaignId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the campaign."
+              },
+              {
+                "name": "PublisherId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the publisher."
+              },
+              {
+                "name": "CreatedAtStart",
+                "value": "",
+                "type": "query",
+                "description": "Date to filter links which created after or equal this date."
+              },
+              {
+                "name": "CreatedAtEnd",
+                "value": "",
+                "type": "query",
+                "description": "Date to filter links which created before or equal this date."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "Number of the page for the pagination."
+              },
+              {
+                "name": "Count",
+                "value": "",
+                "type": "query",
+                "description": "Count of the links per one page."
+              },
+              {
+                "name": "Include",
+                "value": "",
+                "type": "query",
+                "description": "Define what type of links to return. By default all link returned - active and archived."
+              }
+            ]
+          },
+          "docs": "Get list of links with possibility to filter by Publisher, Campaign or other parameters."
+        },
+        {
+          "info": {
+            "name": "Create new links",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/ecommerce/v1/link-management/links",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new links for the certain campaign and publisher. The publisher should already be added to the campaign. Maximum amount of links per request is 10."
+        },
+        {
+          "info": {
+            "name": "Update a link",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/ecommerce/v1/link-management/link/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the TrackingItem."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update data of the link. Also archive or unarchive the link by sending IsArchived parameter."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

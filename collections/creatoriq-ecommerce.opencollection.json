@@ -1,0 +1,330 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ Ecommerce APIs",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ecommerce",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update publisher promo code",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/ecommerce/promo-codes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Value of the PromoCodePublisherId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update existing publisher promo code by ID. Unique identifier is PromoCodePublisherId which is unique ID of relation between PromoCodeId and PublisherId."
+        },
+        {
+          "info": {
+            "name": "Get integrations to add promo-code(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/ecommerce/promo-codes/integrations",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get active integrations list with at least 1 connected account. Note: in case of no connected accounts linked the list will be empty."
+        },
+        {
+          "info": {
+            "name": "Get connected accounts list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/ecommerce/integrations/accounts",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the list of all the connected accounts for AWIN and CJ integrations."
+        },
+        {
+          "info": {
+            "name": "Delete publisher promo-code",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apis.creatoriq.com/crm/v1/api/ecommerce/promo-codes/:promoCodePublisherId/publisher/:publisherId",
+            "params": [
+              {
+                "name": "promoCodePublisherId",
+                "value": "",
+                "type": "path",
+                "description": "Value of the PromoCodePublisherId"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Value of the CreatorIQ PublisherId"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete promo code by PromoCodePublisherId and PublisherId. After adding promo-code with the same name the promo-codes entity ID i.e. PromoCodeId will not be changed. In case of successful deleting the promo-code empty body with 204 status code will be returned. Promo-code which already has commissions can not be deleted."
+        },
+        {
+          "info": {
+            "name": "Get promo-codes list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/ecommerce/promo-codes",
+            "params": [
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "1 by default if no parameter provided."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "20 by default if no parameter provided."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get list of all the promo-codes for all publishers in the network with pagination."
+        },
+        {
+          "info": {
+            "name": "Create new promo-codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/ecommerce/promo-codes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create promo-codes, 10 items max allowed in 1 request. Different integrations and(or) publishers can be used in 1 request. Also if the integration is CJ and CreatorIQ publisher does not have CJ Promotional Property generated yet than the CJPID(CJ Promotional Property) will be generated using CJ API."
+        },
+        {
+          "info": {
+            "name": "Get transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/ecommerce/transactions",
+            "params": [
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "1 by default if no parameter provided."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "20 by default if no parameter provided."
+              },
+              {
+                "name": "DateType",
+                "value": "",
+                "type": "query",
+                "description": "\"TransactionDate\" by default if no parameter provided."
+              },
+              {
+                "name": "DateFrom",
+                "value": "",
+                "type": "query",
+                "description": "Two different formats accepted: \"2024-02-16\" or \"2024-02-16 21:30:25\"."
+              },
+              {
+                "name": "DateTo",
+                "value": "",
+                "type": "query",
+                "description": "Two different formats accepted: \"2024-02-16\" or \"2024-02-16 21:30:25\"."
+              },
+              {
+                "name": "Status",
+                "value": "",
+                "type": "query",
+                "description": "Transaction status."
+              },
+              {
+                "name": "TransactionId",
+                "value": "",
+                "type": "query",
+                "description": "Transaction ID."
+              },
+              {
+                "name": "CampaignId",
+                "value": "",
+                "type": "query",
+                "description": "Campaign ID in the CreatorIQ platform."
+              },
+              {
+                "name": "PublisherId",
+                "value": "",
+                "type": "query",
+                "description": "Publisher ID in the CreatorIQ platform."
+              },
+              {
+                "name": "OrderId",
+                "value": "",
+                "type": "query",
+                "description": "Id of the order."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get network transactions of the all publishers. Every transaction ID is unique with latest status."
+        },
+        {
+          "info": {
+            "name": "Get transactions history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/ecommerce/transactions/history",
+            "params": [
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "1 by default if no parameter provided."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "20 by default if no parameter provided."
+              },
+              {
+                "name": "DateType",
+                "value": "",
+                "type": "query",
+                "description": "\"TransactionDate\" by default if no parameter provided."
+              },
+              {
+                "name": "DateFrom",
+                "value": "",
+                "type": "query",
+                "description": "Two different formats accepted: \"2024-02-16\" or \"2024-02-16 21:30:25\"."
+              },
+              {
+                "name": "DateTo",
+                "value": "",
+                "type": "query",
+                "description": "Two different formats accepted: \"2024-02-16\" or \"2024-02-16 21:30:25\"."
+              },
+              {
+                "name": "Status",
+                "value": "",
+                "type": "query",
+                "description": "Status of the transaction."
+              },
+              {
+                "name": "TransactionId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the transaction."
+              },
+              {
+                "name": "CampaignId",
+                "value": "",
+                "type": "query",
+                "description": "Campaign ID in the CreatorIQ platform."
+              },
+              {
+                "name": "PublisherId",
+                "value": "",
+                "type": "query",
+                "description": "Publisher ID in the CreatorIQ platform."
+              },
+              {
+                "name": "OrderId",
+                "value": "",
+                "type": "query",
+                "description": "Id of the order."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get network transactions list of the all publishers. Returns all the transactions history, Transaction ID is not unique."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

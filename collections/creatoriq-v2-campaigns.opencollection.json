@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ CRM Campaigns API V2",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Campaign",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List global brands associated with partner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v2/api/brands",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns global brands available to the current partner.\n\nUse the returned `brandId` value as `BrandId` when creating or updating a campaign. Do not use the `Brand.BrandId` value returned by `GET /crm/v1/api/brands`; it identifies a custom brand (advertiser) and must be used as `AdvertiserId` instead.\n"
+        },
+        {
+          "info": {
+            "name": "Get global brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v2/api/brands/:brandId",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path",
+                "description": "Unique V2 brand ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a global brand by ID. Use its `brandId` value as `BrandId` when creating or updating a campaign."
+        },
+        {
+          "info": {
+            "name": "Search global brands by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v2/api/brands/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Name or part of name of the brand."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search global brands available to the current partner by name. Use a returned `brandId` value as `BrandId` when creating or updating a campaign."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

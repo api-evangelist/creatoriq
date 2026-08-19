@@ -815,3 +815,9 @@ tools:
   path: /subscriptions
   description: Get my subscriptions
   source_operation: openapi/creatoriq-webhooks-openapi.yml#SubscriptionsController_getSubscriptions
+deployment:
+  mode: none
+  verified: derived
+  tools: 159
+  checked: '2026-08-12'
+  source: catalog MCP census

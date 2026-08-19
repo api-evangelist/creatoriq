@@ -1,0 +1,349 @@
+{
+  "item": [
+    {
+      "id": "27035e00-5538-4947-bebe-12bf8ce69e43",
+      "name": "BrandSafety",
+      "description": {
+        "content": "Brand Safety Public API (draft)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ad8a3d1c-33ae-4fbc-b43b-05d63c11aebc",
+          "name": "BrandSafety",
+          "request": {
+            "name": "BrandSafety",
+            "description": {
+              "content": "Efficiently screen creators using your tailored brand safety keyword sets, identify potential issues by reviewing flagged posts, and ensure each creator aligns with your brand's safety standards\n\n**Timeout: ~27 seconds**\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "BrandSafetyProd",
+                "check"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8dead386-f777-4013-b6c3-5e6a9ec18c17",
+              "name": "A valid response",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "BrandSafetyProd",
+                    "check"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format: `Authorization: ciq_token <your_token>`\n",
+                    "key": "Authorization",
+                    "value": "ciq_token 123"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CRM\": [\n    13731801,\n    14336736,\n    15678198\n  ],\n  \"Discovery\": [\n    13731801,\n    14336736,\n    15678198\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"live\": {\n    \"13731801\": {\n      \"Posts\": {\n        \"instagram_CgpF5kSFQHX\": {\n          \"Lists\": {\n            \"Crypto\": {\n              \"Keywords\": [\n                \"dust\"\n              ],\n              \"Color\": \"#f36868\"\n            }\n          },\n          \"Network\": \"instagram\",\n          \"PostId\": \"CgpF5kSFQHX\",\n          \"NetworkUser\": \"anastasile\",\n          \"SocialNetworkId\": \"3663887282\",\n          \"PostDateTime\": \"2022-07-30T16:04:44Z\",\n          \"Type\": \"reel\",\n          \"Link\": \"https://www.instagram.com/reel/CgpF5kSFQHX/\",\n          \"Thumbnail\": \"https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/reel/CgpF5kSFQHX/\",\n          \"Text\": \"Blue makeup tutorial 🦋 products 👇🏼\\n\\nanastasiabeverlyhills brow freeze \\nnyxcosmetics brow precision pencil \\nsephora collection blue pencil funky cornflower \\nsamplebeauty liquid eyeshadows blue and white \\nlamel.cosmetics oh my colour blue eye pencil \\nbeautybaycom and nikkietutorials palette \\nurbandecaycosmetics moon dust space cowboy \\nkvdbeauty Apple foundation 010\\ncharlottetilbury cream bronzer 2 medium \\nnudestix blush cherry blossom \\ncharlottetilbury powder \\nnatashadenona lip pencil ilona \\nvalentino.beauty lipstick 108A\\nnyxcosmetics lipstick pink hit\",\n          \"Title\": \"\",\n          \"LikesCount\": 162552,\n          \"CommentCount\": 459,\n          \"ShareCount\": 0,\n          \"ViewCount\": 1138744,\n          \"BrandsInfo\": [\n            {\n              \"Value\": \"Sephora\",\n              \"Hashes\": [\n                \"@sephora\"\n              ]\n            },\n            {\n              \"Value\": \"KVD Beauty\",\n              \"Hashes\": [\n                \"@kvdbeauty\"\n              ]\n            },\n            {\n              \"Value\": \"Anastasia Beverly Hills\",\n              \"Hashes\": [\n                \"@anastasiabeverlyhills\"\n              ]\n            },\n            {\n              \"Value\": \"Natasha Denona\",\n              \"Hashes\": [\n                \"@natashadenona\"\n              ]\n            },\n            {\n              \"Value\": \"Valentino\",\n              \"Hashes\": [\n                \"@valentino.beauty\"\n              ]\n            },\n            {\n              \"Value\": \"NYX Professional Makeup\",\n              \"Hashes\": [\n                \"@nyxcosmetics\"\n              ]\n            },\n            {\n              \"Value\": \"Nudestix\",\n              \"Hashes\": [\n                \"@nudestix\"\n              ]\n            },\n            {\n              \"Value\": \"Sample Beauty\",\n              \"Hashes\": [\n                \"@samplebeauty\"\n              ]\n            },\n            {\n              \"Value\": \"Charlotte Tilbury\",\n              \"Hashes\": [\n                \"@charlottetilbury\"\n              ]\n            },\n            {\n              \"Value\": \"Beauty Bay\",\n              \"Hashes\": [\n                \"@beautybaycom\"\n              ]\n            },\n            {\n              \"Value\": \"Urban Decay\",\n              \"Hashes\": [\n                \"@urbandecaycosmetics\"\n              ]\n            }\n          ]\n        },\n        \"instagram_CmCEa3avVxm\": {\n          \"Lists\": {\n            \"Crypto\": {\n              \"Keywords\": [\n                \"dust\"\n              ],\n              \"Color\": \"#f36868\"\n            }\n          },\n          \"Network\": \"instagram\",\n          \"PostId\": \"CmCEa3avVxm\",\n          \"NetworkUser\": \"anastasile\",\n          \"SocialNetworkId\": \"3663887282\",\n          \"PostDateTime\": \"2022-12-11T15:27:30Z\",\n          \"Type\": \"reel\",\n          \"Link\": \"https://www.instagram.com/reel/CmCEa3avVxm/\",\n          \"Thumbnail\": \"https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/reel/CmCEa3avVxm/\",\n          \"Text\": \"“I’m cold” makeup ✨\\ncolourpopcosmetics trouble maker palette and fairy dust creamy matte eyeshadow stick \\ncolourpopcosmetics jelly much shadow drama szn \\ncolourpopcosmetics snitchery blush stix \\nand prairie air powder blush \\ncolourpopcosmetics summer 4ever bronzer \\ncolourpopcosmetics jubilant chorus highlighter \\ncolourpopcosmetics lippie pencil oh snap \\ncolourpopcosmetics Lux lipstick genie and Harry Potter lip gloss \\nshiseido lifting radiant foundation \\nhudabeauty concealer \\n#ad #colourpop\",\n          \"Title\": \"\",\n          \"LikesCount\": 83163,\n          \"CommentCount\": 213,\n          \"ShareCount\": 0,\n          \"ViewCount\": 632959,\n          \"BrandsInfo\": [\n            {\n              \"Value\": \"ColourPop Cosmetics\",\n              \"Hashes\": [\n                \"#colourpop\",\n                \"@colourpopcosmetics\"\n              ]\n            },\n            {\n              \"Value\": \"Shiseido\",\n              \"Hashes\": [\n                \"@shiseido\"\n              ]\n            },\n            {\n              \"Value\": \"ColourPop\",\n              \"Hashes\": [\n                \"@colourpopcosmetics\"\n              ]\n            },\n            {\n              \"Value\": \"Huda Beauty\",\n              \"Hashes\": [\n                \"@hudabeauty\"\n              ]\n            }\n          ],\n          \"SponsoredInfo\": {\n            \"Value\": true,\n            \"Hashes\": [\n              \"#ad\"\n            ]\n          }\n        }\n      },\n      \"Stat\": {\n        \"Crypto\": 2\n      }\n    },\n    \"14336736\": {\n      \"Posts\": {\n        \"instagram_CT-K4seln7z\": {\n          \"Lists\": {\n            \"Crypto\": {\n              \"Keywords\": [\n                \"burn\"\n              ],\n              \"Color\": \"#f36868\"\n            }\n          },\n          \"Network\": \"instagram\",\n          \"PostId\": \"CT-K4seln7z\",\n          \"NetworkUser\": \"poshabeauty\",\n          \"SocialNetworkId\": \"1117119003\",\n          \"PostDateTime\": \"2021-09-18T17:30:00Z\",\n          \"Type\": \"image\",\n          \"Link\": \"https://www.instagram.com/p/CT-K4seln7z/\",\n          \"Thumbnail\": \"https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/p/CT-K4seln7z/\",\n          \"Text\": \"🤣🤣🤣\\n.\\n..\\n.\\n.\\n.\\n..\\n\\n.\\n\\n.\\n.\\n\\n..\\n.\\n\\n..\\n\\n.\\n.\\n.\\n..\\n.\\n.\\n\\n.\\n.\\n.\\n\\n#agreed #agree #chewbacca #cheetah #world #explosion #religion #🛐 #meme #burn #memes #funnymemes #memepage #dailymemes #404memes #404error #cod #games #r6 #rainbowsixsiege #rainbow #telepathy #bad #evil #god #tiktok #tiktoks\",\n          \"Title\": \"\",\n          \"LikesCount\": 4751,\n          \"CommentCount\": 6,\n          \"ShareCount\": 0,\n          \"ViewCount\": 0\n        },\n        \"instagram_Cm661eBjfn7\": {\n          \"Lists\": {\n            \"Crypto\": {\n              \"Keywords\": [\n                \"burn\"\n              ],\n              \"Color\": \"#f36868\"\n            }\n          },\n          \"Network\": \"instagram\",\n          \"PostId\": \"Cm661eBjfn7\",\n          \"NetworkUser\": \"poshabeauty\",\n          \"SocialNetworkId\": \"1117119003\",\n          \"PostDateTime\": \"2023-01-02T17:09:34Z\",\n          \"Type\": \"reel\",\n          \"Link\": \"https://www.instagram.com/reel/Cm661eBjfn7/\",\n          \"Thumbnail\": \"https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/reel/Cm661eBjfn7/\",\n          \"Text\": \"Silicone Scar Tape glow.tulip Which Can Remove Old Scars, Keloids, Stretch Marks, C-Section Scars, Burn Scars, Acne Scars, Depressed Scars and More 🫥🤷‍♂️\\n\\n 👉Follow  GLOW.TULIP \\n\\n❗Hot ⏰️Winter Sale! Get Upto 60% off Plus FREE Worldwide shipping. 🚛🛫❗\\n-\\n🛒 SHOP GLOW.TULIP\",\n          \"Title\": \"\",\n          \"LikesCount\": 1491,\n          \"CommentCount\": 37,\n          \"ShareCount\": 0,\n          \"ViewCount\": 0\n        },\n        \"instagram_CqqvdaHMBtr\": {\n          \"Lists\": {\n            \"Crypto\": {\n              \"Keywords\": [\n                \"burn\"\n              ],\n              \"Color\": \"#f36868\"\n            }\n          },\n          \"Network\": \"instagram\",\n          \"PostId\": \"CqqvdaHMBtr\",\n          \"NetworkUser\": \"poshabeauty\",\n          \"SocialNetworkId\": \"1117119003\",\n          \"PostDateTime\": \"2023-04-05T20:27:22Z\",\n          \"Type\": \"reel\",\n          \"Link\": \"https://www.instagram.com/reel/CqqvdaHMBtr/\",\n          \"Thumbnail\": \"https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/reel/CqqvdaHMBtr/\",\n          \"Text\": \"That must burn 😬🥺\\n\\n📸: solangelfragoza on TikTok\\n\\n#hairtutorialvideo #hairvideo #hairtransformation #braidtutorial #hairvideoshow #hotd #hairvideotutorial #naturalhairtutorial #hairglamvideos #tutorialvideo #tutorialhairdo #hairstyletutorial #hairoftheday #cutehairstyles #tutorialhair #hairvideoshow #braidsofinstagram #hairofinstagram #hairstylevideo #hairstyle\",\n          \"Title\": \"\",\n          \"LikesCount\": 6455,\n          \"CommentCount\": 210,\n          \"ShareCount\": 0,\n          \"ViewCount\": 244337\n        },\n        \"instagram_CtkOWFjOJvq\": {\n          \"Lists\": {\n            \"Crypto\": {\n              \"Keywords\": [\n                \"ledger\"\n              ],\n              \"Color\": \"#f36868\"\n            }\n          },\n          \"Network\": \"instagram\",\n          \"PostId\": \"CtkOWFjOJvq\",\n          \"NetworkUser\": \"poshabeauty\",\n          \"SocialNetworkId\": \"1117119003\",\n          \"PostDateTime\": \"2023-06-16T21:16:54Z\",\n          \"Type\": \"reel\",\n          \"Link\": \"https://www.instagram.com/reel/CtkOWFjOJvq/\",\n          \"Thumbnail\": \"https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/reel/CtkOWFjOJvq/\",\n          \"Text\": \"from the talented elizabethkayeturner 😍😍\\n\\nInspo for this post is kali.ledger 🫶🏻\\nFILTER VS REALITY⚠️ Did you know that 80% of women filter/edit their photos? I used to all the time in the past, because they are so addictive and you just don’t feel pretty without one after using them constantly. So I can understand fully how hard it can be to stop!❤️‍🩹Just because you can see texture it doesn’t mean your makeup is cakey, texture makes us human and it’s perfectly normal🫶🏻 We are just not used to seeing unfiltered skin at all🥺 The difference is actually crazy and what is worrying the most is the quality of the filtered side, you can actually export a fully filtered video in 4k now which makes it even harder to tell the difference⚠️ so I know it’s really hard but please try not to compare yourself to everyone on social media! Remember you are beautiful!!🥹🫶🏻\\n#repost hudabeauty 🩷\",\n          \"Title\": \"\",\n          \"LikesCount\": 242,\n          \"CommentCount\": 0,\n          \"ShareCount\": 0,\n          \"ViewCount\": 10099,\n          \"BrandsInfo\": [\n            {\n              \"Value\": \"Huda Beauty\",\n              \"Hashes\": [\n                \"@hudabeauty\"\n              ]\n            }\n          ]\n        }\n      },\n      \"Stat\": {\n        \"Crypto\": 4\n      }\n    },\n    \"15678198\": {\n      \"Posts\": {\n        \"instagram_CDiKVNphQ5C\": {\n          \"Lists\": {\n            \"Crypto\": {\n              \"Keywords\": null,\n              \"Color\": \"#f36868\"\n            }\n          },\n          \"Network\": \"instagram\",\n          \"PostId\": \"CDiKVNphQ5C\",\n          \"NetworkUser\": \"cleorabeauty.id\",\n          \"SocialNetworkId\": \"26066124010\",\n          \"PostDateTime\": \"2020-08-06T04:08:06Z\",\n          \"Type\": \"carousel\",\n          \"Link\": \"https://www.instagram.com/p/CDiKVNphQ5C/\",\n          \"Thumbnail\": \"https://apis.creatoriq.com/socialapi-thumbnail-live/instagram?permalink=https://www.instagram.com/p/CDiKVNphQ5C/\",\n          \"Text\": \"Penipuan !!!! Tolong jangan TERGIUR dengan harga MURAH di bawah harga pusat dan memberikan gratis barang dan gratis ongkir.Sekali lagi kami sebagai akun PUSAT tidak bertanggung jawab dengan penipuan yang mengatas namakan CLEORA BEAUTY.. DENGAN NAMA REKENING PENIPU MUHAMMAD DIKY ( no rekening 1560015758206)\\nNo HP : 082258126332 \\nAkun IG selalu ganti2 : cleorabeauty.iid kemudian ganti menjadi clleorabeauty.id, lalu ganti lagi cleorabeautty.id \\nReseller resmi kami Hanya yang tertera di BIO ,web resmi dan Highlight, diluar itu bukan tanggung jawab kami. Hati- hati dengan MODUS PENIPUAN seperti ini. CEK HIGHLIGHT JUDUL PENIPUAN untuk info detailnya\\n\\nTolong bantu report akun ini!!!! Mohon sekali lagi agar berhati hati\",\n          \"Title\": \"\",\n          \"LikesCount\": 5503,\n          \"CommentCount\": 776,\n          \"ShareCount\": 0,\n          \"ViewCount\": 0\n        }\n      },\n      \"Stat\": {\n        \"Crypto\": 1\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5c95968-f7fb-48bd-987c-a530159b1e59",
+              "name": "API key is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "BrandSafetyProd",
+                    "check"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format: `Authorization: ciq_token <your_token>`\n",
+                    "key": "Authorization",
+                    "value": "ciq_token 123"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CRM\": [\n    13731801,\n    14336736,\n    15678198\n  ],\n  \"Discovery\": [\n    13731801,\n    14336736,\n    15678198\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca91fec2-7709-4acd-9304-78a91216c6f1",
+              "name": "The user has sent too many requests in a given amount of time (\"rate limiting\").",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "BrandSafetyProd",
+                    "check"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format: `Authorization: ciq_token <your_token>`\n",
+                    "key": "Authorization",
+                    "value": "ciq_token 123"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CRM\": [\n    13731801,\n    14336736,\n    15678198\n  ],\n  \"Discovery\": [\n    13731801,\n    14336736,\n    15678198\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit\",\n  \"errorCode\": 1160\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "196f83a1-b3a8-4a30-897f-ed6041b2e9f3",
+              "name": "The server has encountered a situation it doesn't know how to handle.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "BrandSafetyProd",
+                    "check"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format: `Authorization: ciq_token <your_token>`\n",
+                    "key": "Authorization",
+                    "value": "ciq_token 123"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CRM\": [\n    13731801,\n    14336736,\n    15678198\n  ],\n  \"Discovery\": [\n    13731801,\n    14336736,\n    15678198\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Runtime error: {message}\",\n  \"errorCode\": 1666\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04d149f3-e766-4b54-92c8-59094bb2231d",
+              "name": "Endpoint request timed out",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "BrandSafetyProd",
+                    "check"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format: `Authorization: ciq_token <your_token>`\n",
+                    "key": "Authorization",
+                    "value": "ciq_token 123"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CRM\": [\n    13731801,\n    14336736,\n    15678198\n  ],\n  \"Discovery\": [\n    13731801,\n    14336736,\n    15678198\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 504,\n  \"message\": \"Endpoint request timed out\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apis.creatoriq.com/BrandSafetyProd",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "75e77955-5844-4354-a995-6ea8b2a89f77",
+    "name": "CreatorIQ Brand Safety (draft)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CreatorIQ BrandSafety API\n\nContact Support:\n Name: CreatorIQ\n Email: support@creatoriq.com",
+      "type": "text/plain"
+    }
+  }
+}

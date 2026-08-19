@@ -1,0 +1,2104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ Reporting APIs",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reporting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get campaign post statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/Campaigns/CampaignPosts",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Default section"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting can be sorted by \n* CampaignName\n* Comments\n* Likes\n* SocialNetwork\n* Reach\n* PublisherName\n* FlagshipPropertyTitle : represents primary account\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Your report will be stored at Result => Headers => Location url when status task is DONE\n"
+        },
+        {
+          "info": {
+            "name": "Get campaign summary report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/Campaigns/CampaignsSummary",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Default section"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Can sort by \n*  CampaignId\n*  CampaignName\n*  YTPosts: count of Youtube posts\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get statistics for all campaigns like number of creators, number of posts by campaign"
+        },
+        {
+          "info": {
+            "name": "Get campaigns top creators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/Campaigns/CampaignsTopInfluencers",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Default section"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Top influencers can by sorted by \n* NumOfPosts: number of posts\n* TotalSubscribers: number of subscribers\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch top influencers by all campaigns"
+        },
+        {
+          "info": {
+            "name": "Get Campaign publishers report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/Campaigns/CampaignPublishers",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Default section"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Publishers field for sort\n* FlagshipPropertyTitle: Sort by primary account\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch info for publishers in campaigns"
+        },
+        {
+          "info": {
+            "name": "Get videos views for all campaign videos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/Campaigns/CampaignVideos",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Default section"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Publishers field for sort\n* FlagshipPropertyTitle: Sort by primary account\n* Post : sort by video title\n* DateSubmittedF : sort by DateUploaded time\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch video statistics by campaign like views, video title, creator"
+        },
+        {
+          "info": {
+            "name": "Get Instagram campaign posts statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CampaignsByNetwork/InstagramCampaignPosts",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Default section"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[params][Month]",
+                "value": "",
+                "type": "query",
+                "description": "Month number for reporting"
+              },
+              {
+                "name": "requestData[params][Year]",
+                "value": "",
+                "type": "query",
+                "description": "Year number for reporting"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sort"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Instagram posts statistics by campaign"
+        },
+        {
+          "info": {
+            "name": "Get Instagram weekly updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CampaignsByNetwork/InstagramWeeklyCampaignUpdates",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Fields for sort\n* WeekNum: Date start of the week when calculated metrics delta\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch all posts which updated in campaigns last week"
+        },
+        {
+          "info": {
+            "name": "Get info for youtube campaign posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CampaignsByNetwork/YoutubeCampaignPosts",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sort"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch statistics for youtube campaign posts"
+        },
+        {
+          "info": {
+            "name": "Get youtube weekly campaign updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CampaignsByNetwork/YoutubeWeeklyCampaignUpdates",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sort"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Statistic for youtube post in all campaigns in one week"
+        },
+        {
+          "info": {
+            "name": "Get fraud statistics for publishers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/FollowerFraudAudit/Summary",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sort"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get fraud statistics for publishers in all campaigns"
+        },
+        {
+          "info": {
+            "name": "Get creator's payment info collection status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CreatorsPaymentCollectionStatusDetails",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Default section"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sort"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all Creator's Payment Info Collection"
+        },
+        {
+          "info": {
+            "name": "Get GrowthRate for creators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/FollowerFraudAudit/GrowthRate",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sort"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch GrowthRate for all publishers"
+        },
+        {
+          "info": {
+            "name": "Get EngagementRate for publishers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/FollowerFraudAudit/EngagementRate",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sort\n* NetworkUser: Social handle\n* AVGLowEngagement: Average value for engagement rate for period\n* MedianEngagement: median value for ER for period\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch EngagementRate for all publishers"
+        },
+        {
+          "info": {
+            "name": "Get broken links with linked account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/LinkedAccountsByNetwork/BrokenLinks",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch broken links with all linked accounts"
+        },
+        {
+          "info": {
+            "name": "Get linked accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/LinkedAccounts/LinkedAccountsReport",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch linked accounts"
+        },
+        {
+          "info": {
+            "name": "Get all linked account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/LinkedAccountsByNetwork/LinkedAccounts",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch broken links with all linked accounts"
+        },
+        {
+          "info": {
+            "name": "Get non-linked accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/LinkedAccountsByNetwork/NonLinkedAccounts",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch non-linked accounts"
+        },
+        {
+          "info": {
+            "name": "Get Creator Payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CreatorPaymentsReport",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Creator Payments"
+        },
+        {
+          "info": {
+            "name": "Get Campaigns Posts Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CampaignsByNetwork/CampaignsPosts",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              },
+              {
+                "name": "requestData[params][Year]",
+                "value": "",
+                "type": "query",
+                "description": "Year for which need to collect the data (should be always present and empty if you want to collect data for all time)"
+              },
+              {
+                "name": "requestData[params][Month]",
+                "value": "",
+                "type": "query",
+                "description": "Month for which need to collect the data (should be always present and empty if you want to collect data for year or for all time)"
+              },
+              {
+                "name": "requestData[params][isAll]",
+                "value": "",
+                "type": "query",
+                "description": "Flag to collect all data. Should be present for collect data for all time."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Campaigns Posts Statistics"
+        },
+        {
+          "info": {
+            "name": "Get Campaign Messaging",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/Campaigns/CampaignMessaging",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[params][Month]",
+                "value": "",
+                "type": "query",
+                "description": "Month number for reporting"
+              },
+              {
+                "name": "requestData[params][Year]",
+                "value": "",
+                "type": "query",
+                "description": "Year number for reporting"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Campaign Messaging"
+        },
+        {
+          "info": {
+            "name": "Get Reach Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/ReachReport",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Reach Report"
+        },
+        {
+          "info": {
+            "name": "Get Campaigns Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CampaignsByNetwork/Campaigns",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              },
+              {
+                "name": "requestData[params][PartnerId]",
+                "value": "",
+                "type": "query",
+                "description": "Partner Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Campaigns Report"
+        },
+        {
+          "info": {
+            "name": "Get Campaign Weekly Updates Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CampaignsByNetwork/CampaignWeeklyUpdates",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              },
+              {
+                "name": "requestData[params][PartnerId]",
+                "value": "",
+                "type": "query",
+                "description": "Partner Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Campaign Weekly Updates Report"
+        },
+        {
+          "info": {
+            "name": "Get Facebook Weekly Campaign Updates Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CampaignsByNetwork/FacebookWeeklyCampaignUpdates",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              },
+              {
+                "name": "requestData[params][PartnerId]",
+                "value": "",
+                "type": "query",
+                "description": "Partner Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Facebook Weekly Campaign Updates Report"
+        },
+        {
+          "info": {
+            "name": "Get Twitter Campaign Posts Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CampaignsByNetwork/TwitterCampaignPosts",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              },
+              {
+                "name": "requestData[params][PartnerId]",
+                "value": "",
+                "type": "query",
+                "description": "Partner Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Twitter Campaign Posts Report"
+        },
+        {
+          "info": {
+            "name": "Get Twitter Weekly Campaign Updates Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CampaignsByNetwork/TwitterWeeklyCampaignUpdates",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              },
+              {
+                "name": "requestData[params][PartnerId]",
+                "value": "",
+                "type": "query",
+                "description": "Partner Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Twitter Weekly Campaign Updates Report"
+        },
+        {
+          "info": {
+            "name": "Get Pinterest Campaign Posts Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CampaignsByNetwork/PinterestCampaignPosts",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              },
+              {
+                "name": "requestData[params][PartnerId]",
+                "value": "",
+                "type": "query",
+                "description": "Partner Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Pinterest Campaign Posts Report"
+        },
+        {
+          "info": {
+            "name": "Get Pinterest Weekly Campaign Updates Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CampaignsByNetwork/PinterestWeeklyCampaignUpdates",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              },
+              {
+                "name": "requestData[params][PartnerId]",
+                "value": "",
+                "type": "query",
+                "description": "Partner Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Pinterest Weekly Campaign Updates Report"
+        },
+        {
+          "info": {
+            "name": "Get Twitch Campaign Posts Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CampaignsByNetwork/TwitchCampaignPosts",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              },
+              {
+                "name": "requestData[params][PartnerId]",
+                "value": "",
+                "type": "query",
+                "description": "Partner Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Twitch Campaign Posts Report"
+        },
+        {
+          "info": {
+            "name": "Get Twitch Weekly Campaign Updates Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CampaignsByNetwork/TwitchWeeklyCampaignUpdates",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[page]",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              },
+              {
+                "name": "requestData[params][PartnerId]",
+                "value": "",
+                "type": "query",
+                "description": "Partner Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Twitch Weekly Campaign Updates Report"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "General",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "YouTube Channel Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/Channels",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "YouTube channel report for all publishers in the CRM"
+        },
+        {
+          "info": {
+            "name": "Get Creator Contact Info Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CreatorContactInfo",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Default section"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Creator Contacts"
+        },
+        {
+          "info": {
+            "name": "Get Import Template Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/ImportTemplateReport",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Default section"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Import template containing creator information including social handles, name and ID for all creators in the CRM"
+        },
+        {
+          "info": {
+            "name": "Get Daily Campaign Posts Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/DailyCampaignPosts",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Default section"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Daily Campaign Posts"
+        },
+        {
+          "info": {
+            "name": "Get Creator Promote Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CreatorPromoteReport",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Default section"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Creator Promote"
+        },
+        {
+          "info": {
+            "name": "Get Creators Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CreatorsReport",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Default section"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch report about creators"
+        },
+        {
+          "info": {
+            "name": "Get Creator Connect Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CreatorConnectCreators",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Default section"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch report for all the creators in the CRM that were added via Creator Connect"
+        },
+        {
+          "info": {
+            "name": "Get Publishers Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/Publishers",
+            "params": [
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Default section"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Publishers"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OneSheet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get OneSheet Builder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=OneSheetBuilder/OneSheetBuilder",
+            "params": [
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Default section"
+              },
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              },
+              {
+                "name": "requestData[sort][0][dir]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting"
+              },
+              {
+                "name": "requestData[sort][0][field]",
+                "value": "",
+                "type": "query",
+                "description": "Field for sorting can be sorted by \n* SortOrder\n* PublisherName\n* TotalSubscribers\n* CreatedAt\n* UpdatedAt\n* FlagshipSocialNetwork : represents primary social network\n* FlagshipPropertyTitle : represents primary account\n"
+              },
+              {
+                "name": "requestData[sort][0][name]",
+                "value": "",
+                "type": "query",
+                "description": "Sorting field name\n* SortOrder\n* PublisherName\n* TotalSubscribers\n* CreatedAt\n* UpdatedAt\n* FlagshipSocialNetwork\n* FlagshipPropertyTitle\n"
+              },
+              {
+                "name": "requestData[params][SalesSheetId]",
+                "value": "",
+                "type": "query",
+                "description": "OneSheet ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch OneSheet Publishers"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CJ",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CJ Accounts Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/view?view=Reports/CJAccountsReport",
+            "params": [
+              {
+                "name": "requestData[take]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch"
+              },
+              {
+                "name": "requestData[skip]",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "CJ Accounts Report"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

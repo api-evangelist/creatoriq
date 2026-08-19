@@ -1,0 +1,852 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ Campaign APIs",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Campaign",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Campaign Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/activity",
+            "params": [
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "query",
+                "description": "Unique publisher id. If not passed, will return activity for all publishers."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Filter by date - Date start"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Filter by date - Date end"
+              },
+              {
+                "name": "socialNetwork",
+                "value": "",
+                "type": "query",
+                "description": "Filter by social networks"
+              },
+              {
+                "name": "postType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by post types"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter by return fields. If not set - returns all fields data"
+              },
+              {
+                "name": "groupBy",
+                "value": "",
+                "type": "query",
+                "description": "Group by entities"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "How many rows should be fetch"
+              },
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the aggregate campaign-level metrics as well as all the posts from a single campaign."
+        },
+        {
+          "info": {
+            "name": "Post Campaign Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/activity",
+            "params": [
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "Request source"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "query",
+                "description": "Unique publisher id"
+              },
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Api creates a new campaign manual post."
+        },
+        {
+          "info": {
+            "name": "Change Publishers status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/publishers/status",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Change Publishers status"
+        },
+        {
+          "info": {
+            "name": "Get Campaign Expenses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/expenses",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the list of expenses associated with a campaign."
+        },
+        {
+          "info": {
+            "name": "Get Campaign Expense by Expense Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/expense/:expenseId",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              },
+              {
+                "name": "expenseId",
+                "value": "",
+                "type": "path",
+                "description": "Unique expense id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a single expense from a campaign."
+        },
+        {
+          "info": {
+            "name": "Get Campaigns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaigns",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "How many rows should fetch"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response. Possible values are listed below.\nExample: `fields=CampaignId,CampaignName`.\nFields: CampaignId, NetworkId, CampaignVisibility, EarnedPostsFlag, \nCurrency, SparkAdsPermission, SparkAdsPeriod will always return.\n"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Search campaigns by filter. You can use multiple filters separated by a semicolon.\nFilter value should be encoded.\nExample: `filter=StartDate%3D2024-01-01%3BDivisionId%3D1234`.\nFilter value without encoding: `filter=StartDate=2024-01-01;DivisionId=1234` may not work properly.\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return collections of campaigns."
+        },
+        {
+          "info": {
+            "name": "Create Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaigns",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Api creates a new campaign."
+        },
+        {
+          "info": {
+            "name": "List custom brands (advertisers)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/brands",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns custom brands (advertisers) configured for the current partner.\n\nUse the `Brand.BrandId` value from this response as `AdvertiserId` when creating or updating a campaign. Do not use this value as the campaign `BrandId`; `BrandId` requires a global brand ID from `GET /crm/v2/api/brands`.\n"
+        },
+        {
+          "info": {
+            "name": "Create an Advertiser(Custom brand)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/brands",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new advertiser (Custom brand)."
+        },
+        {
+          "info": {
+            "name": "Get an Advertiser(Custom brand)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/brands/:brandId",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path",
+                "description": "Unique custom brand id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new advertiser (Custom brand)."
+        },
+        {
+          "info": {
+            "name": "Update Advertiser(Custom brand)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/brands/:brandId",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path",
+                "description": "Unique custom brand id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Makes updates to a advertiser (Custom brand)."
+        },
+        {
+          "info": {
+            "name": "Delete Advertiser(Custom brand)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apis.creatoriq.com/crm/v1/api/brands/:brandId",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path",
+                "description": "Unique custom brand id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a specific advertiser (Custom brand)."
+        },
+        {
+          "info": {
+            "name": "Get Campaign information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response. Possible values are listed below.  \nExample: `fields=CampaignId,CampaignName`.  \nFields: CampaignId, NetworkId, CampaignVisibility, EarnedPostsFlag, \nCurrency, SparkAdsPermission, SparkAdsPeriod will always return.\n"
+              },
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Campaign information"
+        },
+        {
+          "info": {
+            "name": "Update Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates a certain set of fields of a campaign.<br><br>To fill the field CampaignManagerId properly use this API (https://public-apidoc.creatoriq.com/#4d43df49-10dc-49ec-855b-d447369fd7ca) to get users and their IDs."
+        },
+        {
+          "info": {
+            "name": "Delete Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a specific campaign"
+        },
+        {
+          "info": {
+            "name": "Get Campaign Publishers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/publishers",
+            "params": [
+              {
+                "name": "candidates",
+                "value": "",
+                "type": "query",
+                "description": "0 - Show \"ActiveInCampaign\" only (default value)<br>1 - Show \"CandidateToCampaign\" only<br>2 - Show both \"ActiveInCampaign\" and \"CandidateToCampaign\""
+              },
+              {
+                "name": "sections",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of sections you need. Show additional info about publisher if publisherId in query params\nPossible values are:\n  - ScheduledPosts\n  - Contract\n  - InstructionsForPublishers\n  - CampaignDashboardLink\n  - FinalPayout\n  - PublisherCampaignsListLink\n  - PublishersCustomFields\n  - FraudSummary\n  - CampaignFlags\n  - SocialAccounts\n"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "query",
+                "description": "Id of publisher"
+              },
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the list of publishers associated with a campaign, post requirements and campaign specific information.\n ***\nExample of url with query parameters:\n> https://apis.creatoriq.com/crm/v1/api/campaign/{{campaignId}}/publishers?candidates={{candidates}}&sections={{sections}}&publisherId={{publisherId}}\n"
+        },
+        {
+          "info": {
+            "name": "Assign Publisher to Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/publishers",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Assign a publisher (creator) to a specific campaign.<br>This API endpoint requires campaignId in the parameters. The body should contain publisherId and status"
+        },
+        {
+          "info": {
+            "name": "Update Campaign Publisher details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/publishers",
+            "params": [
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "query",
+                "description": "Unique publisher id"
+              },
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Campaign Publisher details"
+        },
+        {
+          "info": {
+            "name": "Delete Publishers from Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/publishers",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes a publishers (creator) from a specific campaign."
+        },
+        {
+          "info": {
+            "name": "Get Campaign Scheduled Posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/scheduledPosts",
+            "params": [
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "query",
+                "description": "CIQ identifier/Id to uniquely identify the publisher. Do not pass publisherId or networkPublisherId here. Instead pass the Id attribute for the publisher/creator."
+              },
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the set of scheduled posts from a single campaign."
+        },
+        {
+          "info": {
+            "name": "Get Campaign Publishers List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/publishersList",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Fields to include in the response. Possible values are listed below.\nExample: `fields=PublisherId,PublisherName`.\nFields: MPID will always be returned.\n"
+              },
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "returns the list of publishers (creators) with the standard publisher object within a single campaign."
+        },
+        {
+          "info": {
+            "name": "Update Activity Async",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/updateActivity",
+            "params": [
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "query",
+                "description": "Unique publisher id"
+              },
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "In order to update campaign activity asynchronously you need to make a sequence of the same queries and review status of the task.<br>First request must return an object with \"TaskId\"<br>In the next iteration if the item is still processing the endpoint must return the same object but in \"PROCESSING\" status.<br>When the item processed it must return the same object but in \"DONE\" status."
+        },
+        {
+          "info": {
+            "name": "Get Campaign Daily Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/dailyStats",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the campaign-level metrics. The data is grouped by the post-publish date."
+        },
+        {
+          "info": {
+            "name": "Get Campaign Additional Requirements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/publisher/:publisherId/additionalRequirements",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "Unique campaign id"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Unique publisher id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "returns the Campaign Additional Requirements."
+        },
+        {
+          "info": {
+            "name": "Update campaign publisher payment settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/publisher/:publisherId/payment/settings",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "campaign id"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Unique publisher id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update campaign publisher payment settings. \nFor payment information, use this endpoint  [Get Campaign Publishers](https://apidocs.creatoriq.com/docs/ciq-api-documentation/branches/SPRTN-45533/29a9db1c3c89d-get-campaign-publishers). \nAlso note that with `PerPost` payment type, you will get a summarized value.\n"
+        },
+        {
+          "info": {
+            "name": "Update campaign publisher payment value for the requirement",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/campaign/:campaignId/requirement/:postId/payment/settings",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path",
+                "description": "campaign id"
+              },
+              {
+                "name": "postId",
+                "value": "",
+                "type": "path",
+                "description": "Unique publisher's requirement id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update campaign's publisher payment settings for the specific requirement. The API call used for the updating campaign with per post type only.\nYou can get publisher's postId from this API call [Get Campaign Scheduled Posts](https://creatoriq.stoplight.io/docs/ciq-api-documentation/7504b827abd10-get-campaign-scheduled-posts).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

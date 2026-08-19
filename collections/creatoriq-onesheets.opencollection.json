@@ -1,0 +1,415 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ CRM Onesheets API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Onesheet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Onesheets collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/onesheets",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Collection's page to show"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Amount of items on the page. Default is 20"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order. Default is 'Id,desc'"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return a paginated collection of Onesheets"
+        },
+        {
+          "info": {
+            "name": "Create a new OneSheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/onesheets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new OneSheet"
+        },
+        {
+          "info": {
+            "name": "Get Single Onesheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/onesheet/:oneSheetId",
+            "params": [
+              {
+                "name": "oneSheetId",
+                "value": "",
+                "type": "path",
+                "description": "OneSheet Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return a Onesheet"
+        },
+        {
+          "info": {
+            "name": "Update Onesheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/onesheet/:oneSheetId",
+            "params": [
+              {
+                "name": "oneSheetId",
+                "value": "",
+                "type": "path",
+                "description": "OneSheet Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates Onesheet"
+        },
+        {
+          "info": {
+            "name": "Delete Onesheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apis.creatoriq.com/crm/v1/api/onesheet/:oneSheetId",
+            "params": [
+              {
+                "name": "oneSheetId",
+                "value": "",
+                "type": "path",
+                "description": "OneSheet Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes Onesheet"
+        },
+        {
+          "info": {
+            "name": "Gets Onesheet's Creators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/onesheet/:oneSheetId/publishers",
+            "params": [
+              {
+                "name": "oneSheetId",
+                "value": "",
+                "type": "path",
+                "description": "OneSheet Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets Onesheet's Creators"
+        },
+        {
+          "info": {
+            "name": "Add Creator to Onesheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/onesheet/:oneSheetId/publishers",
+            "params": [
+              {
+                "name": "oneSheetId",
+                "value": "",
+                "type": "path",
+                "description": "OneSheet Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds Creator to Onesheet"
+        },
+        {
+          "info": {
+            "name": "Get a certain Onesheet's Creator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/onesheet/:oneSheetId/publisher/:publisherId",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "\\ Data fields to get info for. Default set (when parameter is not set or empty) is \"summary,comments,isPostMigrationProcess,demographics,locations,audienceTotal,infoForAdvertisers\""
+              },
+              {
+                "name": "oneSheetId",
+                "value": "",
+                "type": "path",
+                "description": "OneSheet Id"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Creator Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets a certain Onesheet's Creators"
+        },
+        {
+          "info": {
+            "name": "Update one-sheet creator",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/onesheet/:oneSheetId/publisher/:publisherId",
+            "params": [
+              {
+                "name": "oneSheetId",
+                "value": "",
+                "type": "path",
+                "description": "OneSheet Id"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Creator Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update one-sheet creator"
+        },
+        {
+          "info": {
+            "name": "Remove creator from one-sheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apis.creatoriq.com/crm/v1/api/onesheet/:oneSheetId/publisher/:publisherId",
+            "params": [
+              {
+                "name": "oneSheetId",
+                "value": "",
+                "type": "path",
+                "description": "OneSheet Id"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Creator Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Remove creator from one-sheet"
+        },
+        {
+          "info": {
+            "name": "Approve Creator to Onesheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.creatoriq.com/crm/v1/api/onesheet/:oneSheetId/publisher/:publisherId/approve",
+            "params": [
+              {
+                "name": "oneSheetId",
+                "value": "",
+                "type": "path",
+                "description": "OneSheet Id"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Creator Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Approves Creator to Onesheet"
+        },
+        {
+          "info": {
+            "name": "Add publisher comment to one-sheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/onesheet/:oneSheetId/publisher/:publisherId/comments",
+            "params": [
+              {
+                "name": "oneSheetId",
+                "value": "",
+                "type": "path",
+                "description": "OneSheet Id"
+              },
+              {
+                "name": "publisherId",
+                "value": "",
+                "type": "path",
+                "description": "Creator Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add publisher comment to one-sheet"
+        },
+        {
+          "info": {
+            "name": "Publish one-sheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.creatoriq.com/crm/v1/api/onesheet/:oneSheetId/publish",
+            "params": [
+              {
+                "name": "oneSheetId",
+                "value": "",
+                "type": "path",
+                "description": "OneSheet Id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Publish one-sheet"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

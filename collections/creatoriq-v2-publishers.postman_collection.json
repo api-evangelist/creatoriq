@@ -1,0 +1,427 @@
+{
+  "item": [
+    {
+      "id": "715dd14d-1443-407e-8f11-4831c1d7cece",
+      "name": "Publisher",
+      "description": {
+        "content": "Publisher public API V2",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ebffde8d-6628-4282-b404-44e8aa086b98",
+          "name": "GET social accounts for multiple publishers.",
+          "request": {
+            "name": "GET social accounts for multiple publishers.",
+            "description": {
+              "content": "Fetch the social accounts information for bulk publishers. Max count of publishers 10",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v2",
+                "api",
+                "publishers",
+                ":publisherIds",
+                "accounts"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) Specifies which identifier is used in the request.\nSet to `id` if you are using the internal `id` field as identifier.\nIf you are using `PublisherId` as identifier(default behavior), this parameter should be omitted.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "publisherIds",
+                  "description": "(Required) Comma separated unique Publisher IDs."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fb7b7e04-605d-4847-9427-8b79e96ef151",
+              "name": "Response 200",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v2",
+                    "api",
+                    "publishers",
+                    ":publisherIds",
+                    "accounts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "Id"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publisherIds",
+                      "description": "(Required) Comma separated unique Publisher IDs."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"/12572995/\": [\n    {\n      \"PublisherId\": 4850,\n      \"NetworkPublisherId\": 9491,\n      \"Network\": \"vine\",\n      \"NotFound\": 0,\n      \"isVerifiedBySocialNetwork\": 1,\n      \"CreatedBy\": \"string\",\n      \"CreatedAt\": null,\n      \"LogoURL\": \"string\",\n      \"FollowersCount\": 108,\n      \"LikesCount\": null,\n      \"CommentsCount\": null,\n      \"ViewsCount\": null,\n      \"IsBusiness\": 1,\n      \"Gender\": \"string\",\n      \"Language\": null,\n      \"LastUpdated\": \"1973-09-22T15:17:10.550Z\",\n      \"Bio\": \"string\",\n      \"SocialNetworkId\": \"string\",\n      \"NetworkUser\": \"string\",\n      \"FullName\": \"string\"\n    },\n    {\n      \"PublisherId\": 2557,\n      \"NetworkPublisherId\": 4665,\n      \"Network\": \"vine\",\n      \"NotFound\": 0,\n      \"isVerifiedBySocialNetwork\": 1,\n      \"CreatedBy\": \"string\",\n      \"CreatedAt\": null,\n      \"LogoURL\": \"string\",\n      \"FollowersCount\": 1969,\n      \"LikesCount\": null,\n      \"CommentsCount\": null,\n      \"ViewsCount\": null,\n      \"IsBusiness\": 0,\n      \"Gender\": \"string\",\n      \"Language\": \"string\",\n      \"LastUpdated\": \"2016-04-11T10:26:22.027Z\",\n      \"Bio\": \"string\",\n      \"SocialNetworkId\": \"string\",\n      \"NetworkUser\": \"string\",\n      \"FullName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b9b3b93-b54d-49de-a81e-a3ef8add921e",
+              "name": "Bad request, invalid PublisherID format",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v2",
+                    "api",
+                    "publishers",
+                    ":publisherIds",
+                    "accounts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "Id"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publisherIds",
+                      "description": "(Required) Comma separated unique Publisher IDs."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8d70b1c6-0961-4373-bef7-035d96a11331",
+              "name": "The request could not be completed due to invalid API credentials",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v2",
+                    "api",
+                    "publishers",
+                    ":publisherIds",
+                    "accounts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "Id"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publisherIds",
+                      "description": "(Required) Comma separated unique Publisher IDs."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "791ec59a-ca95-4d3d-9be0-1a4ff0564a9e",
+              "name": "Access was denied due to the API due to insufficient access permissions.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v2",
+                    "api",
+                    "publishers",
+                    ":publisherIds",
+                    "accounts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "Id"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publisherIds",
+                      "description": "(Required) Comma separated unique Publisher IDs."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "076b1b18-1380-4c18-9ea7-4f57a3644687",
+              "name": "Publisher with supplied ID was not found",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v2",
+                    "api",
+                    "publishers",
+                    ":publisherIds",
+                    "accounts"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "Id"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publisherIds",
+                      "description": "(Required) Comma separated unique Publisher IDs."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apis.creatoriq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "18bdba7e-57e8-4227-8806-a995480c29ec",
+    "name": "CreatorIQ CRM Publishers API V2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CreatorIQ CRM APIs for Publishers (Influencer/Creator) resource\n\nContact Support:\n Name: CreatorIQ\n Email: support@creatoriq.com",
+      "type": "text/plain"
+    }
+  }
+}

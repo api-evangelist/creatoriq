@@ -1,0 +1,1263 @@
+{
+  "item": [
+    {
+      "id": "784ceec8-77ab-47b2-8024-b672b297ee89",
+      "name": "Social",
+      "description": {
+        "content": "Public social API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0c21afb5-de59-419b-9ef8-b5ea6d13dada",
+          "name": "Get stories history",
+          "request": {
+            "name": "Get stories history",
+            "description": {
+              "content": "## Fetch stories history for Instagram social account\nThe endpoint returns the entire history starting from the moment when the creator's social account was linked\nand story monitoring was enabled. \nFor example, the curl below (without parameters) will return the entire Instagram stories history:\n\n```\ncurl -X GET --location \"https://apis.creatoriq.com/crm/v1/api/account/instagram/changedtokrakow/storiesHistory\" \\\n-H \"X-API-KEY: apikey\" \\\n-H \"Content-Type: application/json\"\n``` \n\n\n\nHowever, if we want to retrieve stories for a \nspecific period (in days), we set the exact dates of the period using the parameters ```from``` and ```to```. The format of \nthe ```from``` and ```to``` fields is ```YYYY-MM-DD```. The maximum number of entities obtained per request can be regulated by \nthe ```size``` parameter.\nFor example:\n```\ncurl -X GET --location \"https://apis.creatoriq.com/crm/v1/api/account/instagram/changedtokrakow/storiesHistory?from=2022-06-20&to=2022-06-23&size=2\" \\\n    -H \"X-API-KEY: apikey\" \\\n    -H \"Content-Type: application/json\"\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "account",
+                "instagram",
+                ":id",
+                "storiesHistory"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<date>",
+                  "description": "From what date fetch stories"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Count of fetched"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<date>",
+                  "description": "From date fetch"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Instagram unique Identifier or username"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "107f5ab8-69b8-4a9b-9a48-6302ef925cbd",
+              "name": "Return Instagram account post collection",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "account",
+                    "instagram",
+                    ":id",
+                    "storiesHistory"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-09-13"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-09-13"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Instagram unique Identifier or username"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"SocialPostsCollection\",\n  \"href\": \"https://apis.creatoriq.com/crm/v1/api/account/instagram/account/stories\",\n  \"SocialPostsCollection\": [\n    {\n      \"type\": \"InstagramPost\",\n      \"href\": \"https://apis.creatoriq.com/crm/v1/api/social/instagram/post/Cm-qszQrIla\",\n      \"InstagramPost\": {\n        \"id\": \"Cm-qszQrIlf\",\n        \"url\": \"https://www.instagram.com/p/Cm-qszQrIlf\",\n        \"thumbnail\": \"https://social-pictures-storage.s3.us-west-1.amazonaws.com/instagram/thumbnail/Cm-qszQrIla.jpg\",\n        \"savedThumbnail\": \"https://static-resources.creatoriq.com/social-pictures/instagram/thumbnail/Cm-qszQrIlf.jpg\",\n        \"video\": \"\",\n        \"type\": \"carousel\",\n        \"userName\": \"therock\",\n        \"accountId\": 18428653,\n        \"mediaId\": \"18198237445238010_18428658\",\n        \"createdAt\": \"2023-01-03T20:04:29-08:00\",\n        \"caption\": \"\\n♥️ night! ♥️\",\n        \"location\": {\n          \"latitude\": 47.5180288,\n          \"longitude\": 12.9037159\n        },\n        \"comments\": 1113,\n        \"likes\": 9134,\n        \"reach\": 340245835,\n        \"engagement\": 3175554,\n        \"impressions\": 81659000,\n        \"earnings\": 3880714.15,\n        \"isElastic\": true,\n        \"network\": \"instagram\",\n        \"insights\": {\n          \"impressions\": null,\n          \"reach\": 2000,\n          \"type\": \"reel\"\n        },\n        \"source\": \"elastic\",\n        \"cachedAt\": \"2022-09-12T22:01:24-08:00\",\n        \"linkedInfo\": {\n          \"linked\": false,\n          \"linkedAt\": \"2023-03-15 17:23:37\",\n          \"linkBroken\": \"2023-03-15 17:23:37\",\n          \"isPrivateAccount\": false\n        },\n        \"lastUpdated\": \"2023-03-27T08:11:44+00:00\",\n        \"views_next\": 81659000,\n        \"videoViews\": null,\n        \"pnkHash\": \"d93eab6d9ac3a37c12a242f347934e816285230d\"\n      }\n    },\n    {\n      \"type\": \"InstagramPost\",\n      \"href\": \"https://apis.creatoriq.com/crm/v1/api/social/instagram/post/Cm-qszQrIla\",\n      \"InstagramPost\": {\n        \"id\": \"Cm-qszQrIlf\",\n        \"url\": \"https://www.instagram.com/p/Cm-qszQrIlf\",\n        \"thumbnail\": \"https://social-pictures-storage.s3.us-west-1.amazonaws.com/instagram/thumbnail/Cm-qszQrIla.jpg\",\n        \"savedThumbnail\": \"https://static-resources.creatoriq.com/social-pictures/instagram/thumbnail/Cm-qszQrIlf.jpg\",\n        \"video\": \"\",\n        \"type\": \"carousel\",\n        \"userName\": \"therock\",\n        \"accountId\": 18428653,\n        \"mediaId\": \"18198237445238010_18428658\",\n        \"createdAt\": \"2023-01-03T20:04:29-08:00\",\n        \"caption\": \"\\n♥️ night! ♥️\",\n        \"location\": {\n          \"latitude\": 47.5180288,\n          \"longitude\": 12.9037159\n        },\n        \"comments\": 1113,\n        \"likes\": 9134,\n        \"reach\": 340245835,\n        \"engagement\": 3175554,\n        \"impressions\": 81659000,\n        \"earnings\": 3880714.15,\n        \"isElastic\": true,\n        \"network\": \"instagram\",\n        \"insights\": {\n          \"impressions\": null,\n          \"reach\": 2000,\n          \"type\": \"reel\"\n        },\n        \"source\": \"elastic\",\n        \"cachedAt\": \"2022-09-12T22:01:24-08:00\",\n        \"linkedInfo\": {\n          \"linked\": false,\n          \"linkedAt\": \"2023-03-15 17:23:37\",\n          \"linkBroken\": \"2023-03-15 17:23:37\",\n          \"isPrivateAccount\": false\n        },\n        \"lastUpdated\": \"2023-03-27T08:11:44+00:00\",\n        \"views_next\": 81659000,\n        \"videoViews\": null,\n        \"pnkHash\": \"d93eab6d9ac3a37c12a242f347934e816285230d\"\n      }\n    }\n  ],\n  \"count\": 200,\n  \"total\": 20,\n  \"page\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e5e642e-9dcc-451a-a60d-be860ef64706",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "account",
+                    "instagram",
+                    ":id",
+                    "storiesHistory"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-09-13"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-09-13"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Instagram unique Identifier or username"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"Exception\": {\n    \"code\": 404,\n    \"message\": \"Not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9bb90871-1e06-4bfd-bbce-b976b962f2d9",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "account",
+                    "instagram",
+                    ":id",
+                    "storiesHistory"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-09-13"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-09-13"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Instagram unique Identifier or username"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"Exception\": {\n    \"code\": 404,\n    \"message\": \"Not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c71150db-9ce5-4beb-900b-fae25e4a257f",
+          "name": "Get social account data",
+          "request": {
+            "name": "Get social account data",
+            "description": {
+              "content": "Returns information about a specific social account using either a social account url or a combination of the social network and username. <br/>\nAllowed social networks: tiktok, instagram, twitch, youtube, facebook.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "social",
+                "accountInfo"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "source",
+                  "value": "<string>",
+                  "description": "(Required) Account data source (can be 'link' or 'user')"
+                },
+                {
+                  "disabled": false,
+                  "key": "link",
+                  "value": "<string>",
+                  "description": "link to user social media account. Required if `source=link`"
+                },
+                {
+                  "disabled": false,
+                  "key": "network",
+                  "value": "<string>",
+                  "description": "Name os social network. Required if `source=user`"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "Username or user id on social media. Requred if `source=user`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "94be6439-74d1-48f2-8320-e67928f6c840",
+              "name": "One of possible responses.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "social",
+                    "accountInfo"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "source",
+                      "value": "link"
+                    },
+                    {
+                      "key": "link",
+                      "value": "https:\\\\www.tiktok.com\\@therock"
+                    },
+                    {
+                      "key": "network",
+                      "value": "youtube"
+                    },
+                    {
+                      "key": "user",
+                      "value": "therock"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"InstagramAccount\",\n  \"href\": \"https://apis.creatoriq.com/crm/v1/api/account/instagram/account/therock\",\n  \"InstagramAccount\": {\n    \"id\": 18428653,\n    \"url\": \"https://instagram.com/therock\",\n    \"name\": \"therock\",\n    \"profileImageUrl\": \"https:\\\\\\\\scontent-sea1-1.xx.fbcdn.net\\\\v\\\\t51.2885-15\\\\314397231_636674618202803_1672434101401302981_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=86c713&_nc_ohc=iiq9WDog-BkAX-0fEDs&_nc_ht=scontent-sea1-1.xx&edm=AL-3X8kEAAAA&oh=00_AfAKZgC1wAOCZXrs0ocIY-MHoehwyqpA7IBbtpzDn6sgeA&oe=63BDBD13\",\n    \"posts\": 5767,\n    \"followers\": 5767339728669,\n    \"likes\": 0,\n    \"bio\": \"The best instagram account\",\n    \"avgLikes\": 0,\n    \"avgLikes10\": 0,\n    \"comments\": 0,\n    \"avgComments\": 0,\n    \"avgComments10\": 0,\n    \"timeline\": {\n      \"type\": \"SocialPostsCollection\",\n      \"href\": \"\"\n    },\n    \"insights\": null,\n    \"videoStatistics\": \"\",\n    \"verified\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "337560fd-f401-4d1a-aa2b-eedaa41c086f",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "social",
+                    "accountInfo"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "source",
+                      "value": "link"
+                    },
+                    {
+                      "key": "link",
+                      "value": "https:\\\\www.tiktok.com\\@therock"
+                    },
+                    {
+                      "key": "network",
+                      "value": "youtube"
+                    },
+                    {
+                      "key": "user",
+                      "value": "therock"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"Exception\": {\n    \"code\": 404,\n    \"message\": \"Not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d47ae94a-4ba8-4030-a50f-47c3fbc0b22d",
+          "name": "Get Social PostInfo",
+          "request": {
+            "name": "Get Social PostInfo",
+            "description": {
+              "content": "Returns information about a specific social media post",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "social",
+                "postInfo"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "link",
+                  "value": "<string>",
+                  "description": "(Required) Url to specific social network post"
+                },
+                {
+                  "disabled": false,
+                  "key": "publisherId",
+                  "value": "<integer>",
+                  "description": "Unique publisher id. Required if `checkAccounts=1`"
+                },
+                {
+                  "disabled": false,
+                  "key": "checkAccounts",
+                  "value": "<integer>",
+                  "description": "Check if account exists in database"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e8960fb3-7ca5-4887-86fc-3b986d433d78",
+              "name": "One of possible responses",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "social",
+                    "postInfo"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "link",
+                      "value": "https://www.instagram.com/p/Cm-qszQrIla"
+                    },
+                    {
+                      "key": "publisherId",
+                      "value": "841602"
+                    },
+                    {
+                      "key": "checkAccounts",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"InstagramPost\",\n  \"href\": \"https://apis.creatoriq.com/crm/v1/api/social/instagram/post/Cm-qszQrIla\",\n  \"InstagramPost\": {\n    \"id\": \"Cm-qszQrIlf\",\n    \"url\": \"https://www.instagram.com/p/Cm-qszQrIlf\",\n    \"thumbnail\": \"https://social-pictures-storage.s3.us-west-1.amazonaws.com/instagram/thumbnail/Cm-qszQrIla.jpg\",\n    \"savedThumbnail\": \"https://static-resources.creatoriq.com/social-pictures/instagram/thumbnail/Cm-qszQrIlf.jpg\",\n    \"video\": \"\",\n    \"type\": \"carousel\",\n    \"userName\": \"therock\",\n    \"accountId\": 18428653,\n    \"mediaId\": \"18198237445238010_18428658\",\n    \"createdAt\": \"2023-01-03T20:04:29-08:00\",\n    \"caption\": \"\\n♥️ night! ♥️\",\n    \"location\": {\n      \"latitude\": 47.5180288,\n      \"longitude\": 12.9037159\n    },\n    \"comments\": 1113,\n    \"likes\": 9134,\n    \"reach\": 340245835,\n    \"engagement\": 3175554,\n    \"impressions\": 81659000,\n    \"earnings\": 3880714.15,\n    \"isElastic\": true,\n    \"network\": \"instagram\",\n    \"insights\": {\n      \"impressions\": null,\n      \"reach\": 2000,\n      \"type\": \"reel\"\n    },\n    \"source\": \"elastic\",\n    \"cachedAt\": \"2022-09-12T22:01:24-08:00\",\n    \"linkedInfo\": {\n      \"linked\": false,\n      \"linkedAt\": \"2023-03-15 17:23:37\",\n      \"linkBroken\": \"2023-03-15 17:23:37\",\n      \"isPrivateAccount\": false\n    },\n    \"lastUpdated\": \"2023-03-27T08:11:44+00:00\",\n    \"views_next\": 81659000,\n    \"videoViews\": null,\n    \"pnkHash\": \"d93eab6d9ac3a37c12a242f347934e816285230d\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b069efcb-4de6-4abe-84e7-17a8205178be",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "social",
+                    "postInfo"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "link",
+                      "value": "https://www.instagram.com/p/Cm-qszQrIla"
+                    },
+                    {
+                      "key": "publisherId",
+                      "value": "841602"
+                    },
+                    {
+                      "key": "checkAccounts",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"Exception\": {\n    \"code\": 404,\n    \"message\": \"Not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "662a8efc-3f99-4f09-bf6b-863ff83779f5",
+          "name": "Search user in social network or in the CreatorIQ database",
+          "request": {
+            "name": "Search user in social network or in the CreatorIQ database",
+            "description": {
+              "content": "Search Creator by Social handle within your CRM",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                "accounts",
+                "lookup"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "network",
+                  "value": "<string>",
+                  "description": "(Required) Name of social network."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "(Required) Search string or username or link to social account"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b3844e58-0cac-436f-b964-3df49fc21da1",
+              "name": "Return lookup account data",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "accounts",
+                    "lookup"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "network",
+                      "value": "youtube"
+                    },
+                    {
+                      "key": "search",
+                      "value": "therock"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"LookupResult\",\n  \"href\": \"https://apis.creatoriq.com/crm/v1/api/accounts/lookup?network=instagram&search=%22https%3A%2F%2Fwww.instagram.com%2Ftherock%2F%22\",\n  \"LookupResult\": {\n    \"existsInDatabase\": true,\n    \"data\": {\n      \"Id\": 12472164,\n      \"PublisherName\": \"The Rock\",\n      \"LegalGuardian\": null,\n      \"OutsideManagerName\": null,\n      \"ManagementCompany\": null,\n      \"NetworkPublisherId\": \"10011233269\",\n      \"InvitedToPortal\": 0,\n      \"LogoURL\": \"https://social-pictures-storage.s3.us-west-1.amazonaws.com/Logo/therock_instagram_Logo.jpg\",\n      \"PrimaryContactId\": 117093285,\n      \"ShipToContactId\": null,\n      \"FinanceContactId\": null,\n      \"OutsideManagerContactId\": null,\n      \"LegalGuardianContactId\": null,\n      \"DateOfBirth\": null,\n      \"GeoRegionId\": null,\n      \"Language\": \"English\",\n      \"Language2\": null,\n      \"EthnicBackground\": null,\n      \"AgeRange\": null,\n      \"Gender\": \"Male\",\n      \"RecruiterName\": \"Test User\",\n      \"AccountManagerName\": null,\n      \"NetworkId\": 21,\n      \"NetworkName\": \"Test\",\n      \"SubNetworkId\": null,\n      \"SubNetworkName\": null,\n      \"FlagshipProperty\": \"therock\",\n      \"NumberOfChannels\": null,\n      \"ChannelList\": null,\n      \"Category\": null,\n      \"PublisherType\": null,\n      \"BrandsWishes\": null,\n      \"BrandsContracts\": null,\n      \"PressList\": null,\n      \"SubCategories\": null,\n      \"CRMOpportunityId\": null,\n      \"CRMOpportunityName\": null,\n      \"CRMOpportunityState\": null,\n      \"Size\": null,\n      \"PublisherState\": \"Active\",\n      \"PublisherStateChangeReason\": \"In Network\",\n      \"PipelineId\": null,\n      \"Pipeline\": \"RecruitingOutreach\",\n      \"PipelineStage\": null,\n      \"PipelineStageChangeReason\": null,\n      \"ExpectedCloseDate\": null,\n      \"Probability\": null,\n      \"LeadSource\": \"Broad Search\",\n      \"ContractSummary\": null,\n      \"DatedClaimed\": null,\n      \"DateInvited\": null,\n      \"DateWelcomeEmailSent\": null,\n      \"DateRecruitingStarted\": \"2022-10-25 15:52:28\",\n      \"DateFirstContractSigned\": null,\n      \"DateFirstChannelActivated\": null,\n      \"MonthFirstChannelActivated\": null,\n      \"DateFirstNetworkVideoViews\": null,\n      \"MonthFirstNetworkVideoViews\": null,\n      \"DateJoinedNetwork\": null,\n      \"DateLastContact\": null,\n      \"DatePublisherStateChanged\": \"2023-01-05\",\n      \"DatePipelineStageChanged\": null,\n      \"DateJoinedPublisherPortal\": null,\n      \"DateLastPublisherPortalLogin\": null,\n      \"Description\": \"Some description here\",\n      \"CustomTag1\": null,\n      \"CustomTag2\": null,\n      \"CustomTag3\": null,\n      \"CustomField1\": null,\n      \"CustomValue1\": null,\n      \"CustomField2\": null,\n      \"CustomValue2\": null,\n      \"CustomField3\": null,\n      \"CustomValue3\": null,\n      \"CustomField4\": null,\n      \"CustomValue4\": null,\n      \"CustomField5\": null,\n      \"CustomValue5\": null,\n      \"LastUpdated\": \"2023-01-11 08:44:06\",\n      \"UpdatedBy\": \"Test User\",\n      \"HasAdSense\": 0,\n      \"AdSenseDisabled\": 0,\n      \"AdSenseIssue\": null,\n      \"OtherNetwork\": null,\n      \"AllowReApply\": null,\n      \"RegistrationCompleted\": 0,\n      \"DatePublisherActivated\": \"2023-01-05\",\n      \"DatePublisherDeActivated\": null,\n      \"Relationship\": null,\n      \"InternalDescription\": null,\n      \"ShortDescription\": null,\n      \"Children\": null,\n      \"Pets\": null,\n      \"Car\": null,\n      \"LogoHighResURL\": \"https://social-pictures-storage.s3.us-west-1.amazonaws.com/Logo/therock_instagram_Logo.jpg\",\n      \"Tags\": null,\n      \"InterfaceLocale\": null,\n      \"FlagshipSocialNetwork\": \"instagram\",\n      \"TalentAgency\": null,\n      \"Unsubscribe\": 0,\n      \"DontContact\": 0,\n      \"WillTravel\": null,\n      \"ContentRating\": null,\n      \"ContactPreference\": null,\n      \"TermsAccepted\": null,\n      \"DateTermsAccepted\": null,\n      \"BrandsWontWork\": \"Array\",\n      \"BrandsWorked\": null,\n      \"BrandsWishWork\": null,\n      \"Glasses\": null,\n      \"EyeColor\": null,\n      \"HairColor\": null,\n      \"Height\": null,\n      \"HeightUnit\": null,\n      \"DressSize\": null,\n      \"OtherInfo\": null,\n      \"SalesSheetImageURL\": null,\n      \"TotalSubscribers\": \"447364229\",\n      \"HaveKids\": null,\n      \"HavePets\": null,\n      \"PoliticalAffiliation\": null,\n      \"PhoneType\": null,\n      \"ShirtSize\": null,\n      \"HasDriverLicense\": null,\n      \"HasPassport\": null,\n      \"ShoeSize\": null,\n      \"PantSize\": null,\n      \"PantWaist\": null,\n      \"PantLength\": null,\n      \"LDACompliant\": null,\n      \"AccessControl\": null,\n      \"ThumbLogoURL\": \"https://social-pictures-storage.s3.us-west-1.amazonaws.com/Logo/therock_instagram_Logo.jpg\",\n      \"SalesSheetThumbImageUrl\": \"https://social-pictures-storage.s3.us-west-1.amazonaws.com/Logo/therock_instagram_Logo.jpg\",\n      \"Token\": \"aea14c0dbd4a86f5f9e411750891bb4a\",\n      \"CIQCertifiedFlag\": 0,\n      \"CIQCertifiedFlagDate\": null,\n      \"CustomField6\": null,\n      \"CustomValue6\": null,\n      \"CustomField7\": null,\n      \"CustomValue7\": null,\n      \"CustomField8\": null,\n      \"CustomValue8\": null,\n      \"CustomField9\": null,\n      \"CustomValue9\": null,\n      \"CustomField10\": null,\n      \"CustomValue10\": null,\n      \"CustomField11\": null,\n      \"CustomValue11\": null,\n      \"CustomField12\": null,\n      \"CustomValue12\": null,\n      \"CustomField13\": null,\n      \"CustomValue13\": null,\n      \"CustomField14\": null,\n      \"CustomValue14\": null,\n      \"CustomField15\": null,\n      \"CustomValue15\": null,\n      \"CustomField16\": null,\n      \"CustomValue16\": null,\n      \"CustomField17\": null,\n      \"CustomValue17\": null,\n      \"aggConnAmountJSON\": \"{\\\"youtube\\\":6240000,\\\"twitter\\\":17011413,\\\"instagram\\\":359139604,\\\"tiktok\\\":65100000}\",\n      \"aggSocialCountJSON\": \"{\\\"youtube\\\":1,\\\"twitter\\\":1,\\\"instagram\\\":1,\\\"tiktok\\\":1}\",\n      \"aggSocialMetricsJSON\": \"{\\\"youtube\\\":{\\\"totalviews\\\":348108219,\\\"totalvideos\\\":245,\\\"averagemonthlyviews\\\":1697606.375609800000},\\\"twitter\\\":{},\\\"instagram\\\":{},\\\"tiktok\\\":{}}\",\n      \"PrimarySocialAccountId\": 3738735,\n      \"PublisherVerified\": 1,\n      \"SocialAccountsXML\": \"<row xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance><Network>youtube</Network><SocialNetworkId>UCBdw4dLCLLHmTgAOnW4V0hQ</SocialNetworkId><NetworkUser>UCBdw4dLCLLHmTgAOnW4V0hQ</NetworkUser><AccountWeight>12</AccountWeight><WebReach>0</WebReach><Title>The Rock</Title><Followers>6240000</Followers><LinkedBy xsi:nil=true/><LinkedAt xsi:nil=true/><isVerifiedBySocialNetwork>1</isVerifiedBySocialNetwork><Linked>0</Linked><Unlinked>1</Unlinked><LinkBroken>0</LinkBroken><Business>0</Business><TokenInvalidDate xsi:nil=true/><DateSocialStatsUpdated>2023-01-17T05:01:00</DateSocialStatsUpdated><WhitelistingExpirationDate xsi:nil=true/></row><row xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance><Network>twitter</Network><SocialNetworkId>250831586</SocialNetworkId><NetworkUser>TheRock</NetworkUser><AccountWeight>8</AccountWeight><WebReach>0</WebReach><Title>TheRock</Title><Followers>17008900</Followers><LinkedBy xsi:nil=true/><LinkedAt xsi:nil=true/><isVerifiedBySocialNetwork>1</isVerifiedBySocialNetwork><Linked>0</Linked><Unlinked>1</Unlinked><LinkBroken>0</LinkBroken><Business>0</Business><TokenInvalidDate xsi:nil=true/><DateSocialStatsUpdated>2023-01-17T01:37:00</DateSocialStatsUpdated><WhitelistingExpirationDate xsi:nil=true/></row><row xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance><Network>instagram</Network><SocialNetworkId>232192182</SocialNetworkId><NetworkUser>therock</NetworkUser><AccountWeight>6</AccountWeight><WebReach>0</WebReach><Title>therock</Title><Followers>359015329</Followers><LinkedBy xsi:nil=true/><LinkedAt xsi:nil=true/><isVerifiedBySocialNetwork>1</isVerifiedBySocialNetwork><Linked>0</Linked><Unlinked>1</Unlinked><LinkBroken>0</LinkBroken><Business>1</Business><TokenInvalidDate xsi:nil=true/><DateSocialStatsUpdated>2023-01-17T04:46:00</DateSocialStatsUpdated><WhitelistingExpirationDate xsi:nil=true/></row><row xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance><Network>tiktok</Network><SocialNetworkId>6745191554350760966</SocialNetworkId><NetworkUser>therock</NetworkUser><AccountWeight>0</AccountWeight><WebReach>0</WebReach><Title>therock</Title><Followers>65100000</Followers><LinkedBy xsi:nil=true/><LinkedAt xsi:nil=true/><isVerifiedBySocialNetwork>1</isVerifiedBySocialNetwork><Linked>0</Linked><Unlinked>1</Unlinked><LinkBroken>0</LinkBroken><Business>0</Business><TokenInvalidDate xsi:nil=true/><DateSocialStatsUpdated>2023-01-16T18:39:54</DateSocialStatsUpdated><WhitelistingExpirationDate xsi:nil=true/></row>\",\n      \"PublisherNameSort\": \"Dwayne Joh\",\n      \"channels\": [\n        {\n          \"ChannelId\": 24107722,\n          \"ChannelName\": \"The Rock\",\n          \"Channel\": \"UCBdw4dLCLLHmTgAOnW4V0ho\",\n          \"Title\": \"The Rock\",\n          \"LogoURL\": \"https://yt3.ggpht.com/ytc/AMLnZu-G9dSrxaxDNS20FEqfa3vrphwiwf4tyhwS5cAM6w=s88-c-k-c0x00ffffff-no-rj\",\n          \"Summary\": \"Some summary here\",\n          \"PublisherId\": 12472164,\n          \"ContractId\": null,\n          \"NetworkId\": 21,\n          \"NetworkName\": \"Test\",\n          \"SubNetworkId\": null,\n          \"SubNetworkName\": null,\n          \"Category\": null,\n          \"RecruiterName\": null,\n          \"Status\": \"Open - In process\",\n          \"AccountManagerName\": null,\n          \"AffiliateManagerName\": null,\n          \"DateFirstContractSigned\": null,\n          \"DateActivated\": null,\n          \"MonthActivated\": null,\n          \"DateFirstNetworkVideoViews\": null,\n          \"MonthFirstNetworkVideoViews\": null,\n          \"YTProductCategory\": null,\n          \"YTLanguage\": \"English\",\n          \"YTGeoRegion\": \"US\",\n          \"YTGender\": \"Male\",\n          \"YTAgeRange\": null,\n          \"AuthorName\": null,\n          \"AuthorUserId\": null,\n          \"CustomTag1\": null,\n          \"CustomTag2\": null,\n          \"CustomTag3\": null,\n          \"CustomField1\": null,\n          \"CustomValue1\": null,\n          \"CustomField2\": null,\n          \"CustomValue2\": null,\n          \"CustomField3\": null,\n          \"CustomValue3\": null,\n          \"ContentOwner\": \"\",\n          \"TotalSubscribers\": \"6240000\",\n          \"TotalViews\": \"348080641\",\n          \"TotalVideos\": 245,\n          \"ChannelSize\": null,\n          \"CreateDateTime\": \"2005-11-24 09:49:22\",\n          \"LastUpdated\": \"2023-01-17T04:26:59-08:00\",\n          \"UpdatedBy\": \"Discovery\",\n          \"NotFound\": 0,\n          \"AverageMonthlyViews\": 1697606.3756098,\n          \"LastComments\": null,\n          \"LastLikes\": null,\n          \"LastDislikes\": null,\n          \"AvgLastViewsPerVideo\": null,\n          \"AvgLastCommentsPerVideo\": null,\n          \"AvgLastLikesPerVideo\": null,\n          \"AvgLastDislikesPerVideo\": null,\n          \"AvgLastSharesPerVideo\": null,\n          \"AvgLastFacebookSharesPerVideo\": null,\n          \"AvgLastTwitterSharesPerVideo\": null,\n          \"AvgLastMinutesWatchedPerVideo\": null,\n          \"LastVideoLength\": null,\n          \"StatusChangedManually\": 0,\n          \"TotalLikes\": null,\n          \"TotalDislikes\": null,\n          \"TotalFavoritesAdded\": null,\n          \"TotalFavoritesRemoved\": null,\n          \"TotalShares\": null,\n          \"EstimatedMinutesWatched\": null,\n          \"AverageViewDuration\": null,\n          \"TotalComments\": null,\n          \"IncludeInContract\": 1,\n          \"Protected\": 0,\n          \"AvgLastFacebookLikesPerVideo\": null,\n          \"AvgLastFacebookCommentsPerVideo\": null,\n          \"AvgLastGooglePlusSharesPerVideo\": null,\n          \"AvgLastPinterestSharesPerVideo\": null,\n          \"DateLastVideoUploaded\": \"2017-08-15 20:11:00\",\n          \"DateDeActivated\": \"2017-08-15 20:11:00\",\n          \"DateStatusChanged\": \"2017-08-15 20:11:00\",\n          \"GooglePlusUserId\": null,\n          \"LogoHighResURL\": \"https://yt3.ggpht.com/ytc/AMLnZu-G9dSrxaxDNS20FEqfa3vrphwiwf4tyhwS5cAM6w=s88-c-k-c0x00ffffff-no-rj\",\n          \"AVV30\": null,\n          \"AVV60\": null,\n          \"AVV90\": null,\n          \"Tags\": null,\n          \"CreatedBy\": \"Test User\",\n          \"CreatedAt\": \"2020-02-07 14:00:14\",\n          \"CreatorRole\": \"Account owner\",\n          \"VerifiedBy\": null,\n          \"VerifiedAt\": null,\n          \"LinkedBy\": null,\n          \"LinkedAt\": null,\n          \"AvgLastInstagramSharesPerVideo\": null,\n          \"Last30DaysViews\": null,\n          \"MonthToDateViews\": null,\n          \"LastMonthViews\": null,\n          \"DateScraped\": null,\n          \"CPP\": null,\n          \"CPE\": null,\n          \"CPM\": null,\n          \"Engagement\": null,\n          \"EngagementRate\": null,\n          \"isVerifiedBySocialNetwork\": 1,\n          \"IsTokenInvalid\": 0,\n          \"TokenInvalidDate\": null,\n          \"DateAnalytics\": null,\n          \"NewSocialAccountID\": -738931,\n          \"Network\": \"youtube\",\n          \"SocialNetworkId\": \"UCBdw4dLCLLHmTgAOnW4V0hQ\",\n          \"NetworkUser\": \"UCBdw4dLCLLHmTgAOnW4V0hQ\",\n          \"NumberOfPosts\": 245,\n          \"DateSocialStatsUpdated\": \"2023-01-17T05:01:00+00:00\",\n          \"AvgLastEngagementPerVideoYT\": 0,\n          \"Linked\": true,\n          \"Unlinked\": true,\n          \"LinkBroken\": true,\n          \"Verified\": true,\n          \"Business\": true,\n          \"SocialEngagement\": [\n            {\n              \"EngagementRate30Days\": \"\",\n              \"EngagementRate60Days\": \"\",\n              \"EngagementRate90Days\": 0.0061,\n              \"EngagementRate20Posts\": 0.0202,\n              \"EngagementRateLifetime\": 0.007,\n              \"EngagementCalculated\": \"2015-06-26 22:46:50\",\n              \"PostsCount30Days\": 86705,\n              \"PostsCount60Days\": 86705,\n              \"PostsCount90Days\": 86705,\n              \"PostsCountLifetime\": 86705,\n              \"LastPostDate\": \"2015-06-26 22:46:50\",\n              \"AVV30\": 86705,\n              \"AVV60\": 86705,\n              \"AVV90\": 86705,\n              \"ID\": 509137,\n              \"AccountSource\": \"\",\n              \"Engagement30Days\": 86705,\n              \"Engagement60Days\": 86705,\n              \"Engagement90Days\": 86705,\n              \"Engagement20Posts\": 86705,\n              \"EngagementLifetime\": 86705,\n              \"SharesPerPost30Days\": 86705,\n              \"SharesPerPost60Days\": 86705,\n              \"SharesPerPost90Days\": 86705,\n              \"SharesPerPost20Posts\": 86705,\n              \"SharesPerPostLifetime\": 86705,\n              \"LikesPerPost30Days\": 86705,\n              \"LikesPerPost60Days\": 86705,\n              \"LikesPerPost90Days\": 86705,\n              \"LikesPerPost20Posts\": 14233.65,\n              \"LikesPerPostLifetime\": 3407.2684,\n              \"CommentsPerPost30Days\": 86705,\n              \"CommentsPerPost60Days\": 86705,\n              \"CommentsPerPost90Days\": 527,\n              \"CommentsPerPost20Posts\": 832.55,\n              \"CommentsPerPostLifetime\": 90.8368,\n              \"ViewsPerPost30Days\": 527,\n              \"ViewsPerPost60Days\": 527,\n              \"ViewsPerPost90Days\": 86705,\n              \"ViewsPerPost20Posts\": 747087.15,\n              \"ViewsPerPostLifetime\": 497148.1421,\n              \"DisLikesPerPost30Days\": 547,\n              \"DisLikesPerPost60Days\": 547,\n              \"DisLikesPerPost90Days\": 547,\n              \"DisLikesPerPost20Posts\": 547,\n              \"DisLikesPerPostLifetime\": 547,\n              \"CloseUpsPerPost30Days\": 547,\n              \"CloseUpsPerPost60Days\": 547,\n              \"CloseUpsPerPost90Days\": 547,\n              \"CloseUpsPerPost20Posts\": 547,\n              \"CloseUpsPerPostLifetime\": 547,\n              \"ImpressionsPerPost30Days\": \"\",\n              \"ImpressionsPerPost60Days\": 547,\n              \"ImpressionsPerPost90Days\": 547,\n              \"ImpressionsPerPost20Posts\": 547,\n              \"ImpressionsPerPostLifetime\": 547,\n              \"ClicksPerPost30Days\": 547,\n              \"ClicksPerPost60Days\": 547,\n              \"ClicksPerPost90Days\": 547,\n              \"ClicksPerPost20Posts\": 547,\n              \"ClicksPerPostLifetime\": 547,\n              \"SavesPerPost30Days\": 547,\n              \"SavesPerPost60Days\": 547,\n              \"SavesPerPost90Days\": 547,\n              \"SavesPerPost20Posts\": 547,\n              \"SavesPerPostLifetime\": 547,\n              \"ReachRate30days\": 547,\n              \"ReachRate60days\": 547,\n              \"ReachRate90days\": 547,\n              \"ReachRate20posts\": 547,\n              \"ReachRateLifetime\": 547,\n              \"SavesPerVideo30Days\": 547,\n              \"SavesPerVideo60Days\": 547,\n              \"SavesPerVideo90Days\": 547,\n              \"SavesPerVideo20Posts\": 547,\n              \"SavesPerVideoLifetime\": 547,\n              \"ClicksPerVideo30Days\": 547,\n              \"ClicksPerVideo60Days\": 547,\n              \"ClicksPerVideo90Days\": 547,\n              \"ClicksPerVideo20Posts\": 547,\n              \"ClicksPerVideoLifetime\": 547,\n              \"ImpressionsRate30days\": 547,\n              \"ImpressionsRate60days\": 547,\n              \"ImpressionsRate90days\": 547,\n              \"ImpressionsRate20posts\": 547,\n              \"ImpressionsRatelifetime\": 547,\n              \"ReachPerPost30days\": 547,\n              \"ReachPerPost60days\": 547,\n              \"ReachPerPost90days\": 547,\n              \"ReachPerPost20posts\": 547,\n              \"ReachPerPostlifetime\": 547,\n              \"AvgStreamPeakViews30Days\": 547,\n              \"AvgStreamPeakViews60Days\": 547,\n              \"AvgStreamPeakViews90Days\": 547,\n              \"AvgStreamPeakViews20Posts\": 547,\n              \"AvgStreamAverageViews30Days\": 547,\n              \"AvgStreamAverageViews60Days\": 547,\n              \"AvgStreamAverageViews90Days\": 547,\n              \"AvgStreamAverageViews20Posts\": 547,\n              \"IsHiddenLike30Days\": 547,\n              \"IsHiddenLike60Days\": 547,\n              \"IsHiddenLike90Days\": 547,\n              \"IsHiddenLike20Posts\": 547,\n              \"MedianViews20Posts\": 547\n            },\n            {\n              \"EngagementRate30Days\": \"\",\n              \"EngagementRate60Days\": \"\",\n              \"EngagementRate90Days\": 0.0061,\n              \"EngagementRate20Posts\": 0.0202,\n              \"EngagementRateLifetime\": 0.007,\n              \"EngagementCalculated\": \"2015-06-26 22:46:50\",\n              \"PostsCount30Days\": 86705,\n              \"PostsCount60Days\": 86705,\n              \"PostsCount90Days\": 86705,\n              \"PostsCountLifetime\": 86705,\n              \"LastPostDate\": \"2015-06-26 22:46:50\",\n              \"AVV30\": 86705,\n              \"AVV60\": 86705,\n              \"AVV90\": 86705,\n              \"ID\": 509137,\n              \"AccountSource\": \"\",\n              \"Engagement30Days\": 86705,\n              \"Engagement60Days\": 86705,\n              \"Engagement90Days\": 86705,\n              \"Engagement20Posts\": 86705,\n              \"EngagementLifetime\": 86705,\n              \"SharesPerPost30Days\": 86705,\n              \"SharesPerPost60Days\": 86705,\n              \"SharesPerPost90Days\": 86705,\n              \"SharesPerPost20Posts\": 86705,\n              \"SharesPerPostLifetime\": 86705,\n              \"LikesPerPost30Days\": 86705,\n              \"LikesPerPost60Days\": 86705,\n              \"LikesPerPost90Days\": 86705,\n              \"LikesPerPost20Posts\": 14233.65,\n              \"LikesPerPostLifetime\": 3407.2684,\n              \"CommentsPerPost30Days\": 86705,\n              \"CommentsPerPost60Days\": 86705,\n              \"CommentsPerPost90Days\": 527,\n              \"CommentsPerPost20Posts\": 832.55,\n              \"CommentsPerPostLifetime\": 90.8368,\n              \"ViewsPerPost30Days\": 527,\n              \"ViewsPerPost60Days\": 527,\n              \"ViewsPerPost90Days\": 86705,\n              \"ViewsPerPost20Posts\": 747087.15,\n              \"ViewsPerPostLifetime\": 497148.1421,\n              \"DisLikesPerPost30Days\": 547,\n              \"DisLikesPerPost60Days\": 547,\n              \"DisLikesPerPost90Days\": 547,\n              \"DisLikesPerPost20Posts\": 547,\n              \"DisLikesPerPostLifetime\": 547,\n              \"CloseUpsPerPost30Days\": 547,\n              \"CloseUpsPerPost60Days\": 547,\n              \"CloseUpsPerPost90Days\": 547,\n              \"CloseUpsPerPost20Posts\": 547,\n              \"CloseUpsPerPostLifetime\": 547,\n              \"ImpressionsPerPost30Days\": \"\",\n              \"ImpressionsPerPost60Days\": 547,\n              \"ImpressionsPerPost90Days\": 547,\n              \"ImpressionsPerPost20Posts\": 547,\n              \"ImpressionsPerPostLifetime\": 547,\n              \"ClicksPerPost30Days\": 547,\n              \"ClicksPerPost60Days\": 547,\n              \"ClicksPerPost90Days\": 547,\n              \"ClicksPerPost20Posts\": 547,\n              \"ClicksPerPostLifetime\": 547,\n              \"SavesPerPost30Days\": 547,\n              \"SavesPerPost60Days\": 547,\n              \"SavesPerPost90Days\": 547,\n              \"SavesPerPost20Posts\": 547,\n              \"SavesPerPostLifetime\": 547,\n              \"ReachRate30days\": 547,\n              \"ReachRate60days\": 547,\n              \"ReachRate90days\": 547,\n              \"ReachRate20posts\": 547,\n              \"ReachRateLifetime\": 547,\n              \"SavesPerVideo30Days\": 547,\n              \"SavesPerVideo60Days\": 547,\n              \"SavesPerVideo90Days\": 547,\n              \"SavesPerVideo20Posts\": 547,\n              \"SavesPerVideoLifetime\": 547,\n              \"ClicksPerVideo30Days\": 547,\n              \"ClicksPerVideo60Days\": 547,\n              \"ClicksPerVideo90Days\": 547,\n              \"ClicksPerVideo20Posts\": 547,\n              \"ClicksPerVideoLifetime\": 547,\n              \"ImpressionsRate30days\": 547,\n              \"ImpressionsRate60days\": 547,\n              \"ImpressionsRate90days\": 547,\n              \"ImpressionsRate20posts\": 547,\n              \"ImpressionsRatelifetime\": 547,\n              \"ReachPerPost30days\": 547,\n              \"ReachPerPost60days\": 547,\n              \"ReachPerPost90days\": 547,\n              \"ReachPerPost20posts\": 547,\n              \"ReachPerPostlifetime\": 547,\n              \"AvgStreamPeakViews30Days\": 547,\n              \"AvgStreamPeakViews60Days\": 547,\n              \"AvgStreamPeakViews90Days\": 547,\n              \"AvgStreamPeakViews20Posts\": 547,\n              \"AvgStreamAverageViews30Days\": 547,\n              \"AvgStreamAverageViews60Days\": 547,\n              \"AvgStreamAverageViews90Days\": 547,\n              \"AvgStreamAverageViews20Posts\": 547,\n              \"IsHiddenLike30Days\": 547,\n              \"IsHiddenLike60Days\": 547,\n              \"IsHiddenLike90Days\": 547,\n              \"IsHiddenLike20Posts\": 547,\n              \"MedianViews20Posts\": 547\n            }\n          ]\n        },\n        {\n          \"ChannelId\": 24107722,\n          \"ChannelName\": \"The Rock\",\n          \"Channel\": \"UCBdw4dLCLLHmTgAOnW4V0ho\",\n          \"Title\": \"The Rock\",\n          \"LogoURL\": \"https://yt3.ggpht.com/ytc/AMLnZu-G9dSrxaxDNS20FEqfa3vrphwiwf4tyhwS5cAM6w=s88-c-k-c0x00ffffff-no-rj\",\n          \"Summary\": \"Some summary here\",\n          \"PublisherId\": 12472164,\n          \"ContractId\": null,\n          \"NetworkId\": 21,\n          \"NetworkName\": \"Test\",\n          \"SubNetworkId\": null,\n          \"SubNetworkName\": null,\n          \"Category\": null,\n          \"RecruiterName\": null,\n          \"Status\": \"Open - In process\",\n          \"AccountManagerName\": null,\n          \"AffiliateManagerName\": null,\n          \"DateFirstContractSigned\": null,\n          \"DateActivated\": null,\n          \"MonthActivated\": null,\n          \"DateFirstNetworkVideoViews\": null,\n          \"MonthFirstNetworkVideoViews\": null,\n          \"YTProductCategory\": null,\n          \"YTLanguage\": \"English\",\n          \"YTGeoRegion\": \"US\",\n          \"YTGender\": \"Male\",\n          \"YTAgeRange\": null,\n          \"AuthorName\": null,\n          \"AuthorUserId\": null,\n          \"CustomTag1\": null,\n          \"CustomTag2\": null,\n          \"CustomTag3\": null,\n          \"CustomField1\": null,\n          \"CustomValue1\": null,\n          \"CustomField2\": null,\n          \"CustomValue2\": null,\n          \"CustomField3\": null,\n          \"CustomValue3\": null,\n          \"ContentOwner\": \"\",\n          \"TotalSubscribers\": \"6240000\",\n          \"TotalViews\": \"348080641\",\n          \"TotalVideos\": 245,\n          \"ChannelSize\": null,\n          \"CreateDateTime\": \"2005-11-24 09:49:22\",\n          \"LastUpdated\": \"2023-01-17T04:26:59-08:00\",\n          \"UpdatedBy\": \"Discovery\",\n          \"NotFound\": 0,\n          \"AverageMonthlyViews\": 1697606.3756098,\n          \"LastComments\": null,\n          \"LastLikes\": null,\n          \"LastDislikes\": null,\n          \"AvgLastViewsPerVideo\": null,\n          \"AvgLastCommentsPerVideo\": null,\n          \"AvgLastLikesPerVideo\": null,\n          \"AvgLastDislikesPerVideo\": null,\n          \"AvgLastSharesPerVideo\": null,\n          \"AvgLastFacebookSharesPerVideo\": null,\n          \"AvgLastTwitterSharesPerVideo\": null,\n          \"AvgLastMinutesWatchedPerVideo\": null,\n          \"LastVideoLength\": null,\n          \"StatusChangedManually\": 0,\n          \"TotalLikes\": null,\n          \"TotalDislikes\": null,\n          \"TotalFavoritesAdded\": null,\n          \"TotalFavoritesRemoved\": null,\n          \"TotalShares\": null,\n          \"EstimatedMinutesWatched\": null,\n          \"AverageViewDuration\": null,\n          \"TotalComments\": null,\n          \"IncludeInContract\": 1,\n          \"Protected\": 0,\n          \"AvgLastFacebookLikesPerVideo\": null,\n          \"AvgLastFacebookCommentsPerVideo\": null,\n          \"AvgLastGooglePlusSharesPerVideo\": null,\n          \"AvgLastPinterestSharesPerVideo\": null,\n          \"DateLastVideoUploaded\": \"2017-08-15 20:11:00\",\n          \"DateDeActivated\": \"2017-08-15 20:11:00\",\n          \"DateStatusChanged\": \"2017-08-15 20:11:00\",\n          \"GooglePlusUserId\": null,\n          \"LogoHighResURL\": \"https://yt3.ggpht.com/ytc/AMLnZu-G9dSrxaxDNS20FEqfa3vrphwiwf4tyhwS5cAM6w=s88-c-k-c0x00ffffff-no-rj\",\n          \"AVV30\": null,\n          \"AVV60\": null,\n          \"AVV90\": null,\n          \"Tags\": null,\n          \"CreatedBy\": \"Test User\",\n          \"CreatedAt\": \"2020-02-07 14:00:14\",\n          \"CreatorRole\": \"Account owner\",\n          \"VerifiedBy\": null,\n          \"VerifiedAt\": null,\n          \"LinkedBy\": null,\n          \"LinkedAt\": null,\n          \"AvgLastInstagramSharesPerVideo\": null,\n          \"Last30DaysViews\": null,\n          \"MonthToDateViews\": null,\n          \"LastMonthViews\": null,\n          \"DateScraped\": null,\n          \"CPP\": null,\n          \"CPE\": null,\n          \"CPM\": null,\n          \"Engagement\": null,\n          \"EngagementRate\": null,\n          \"isVerifiedBySocialNetwork\": 1,\n          \"IsTokenInvalid\": 0,\n          \"TokenInvalidDate\": null,\n          \"DateAnalytics\": null,\n          \"NewSocialAccountID\": -738931,\n          \"Network\": \"youtube\",\n          \"SocialNetworkId\": \"UCBdw4dLCLLHmTgAOnW4V0hQ\",\n          \"NetworkUser\": \"UCBdw4dLCLLHmTgAOnW4V0hQ\",\n          \"NumberOfPosts\": 245,\n          \"DateSocialStatsUpdated\": \"2023-01-17T05:01:00+00:00\",\n          \"AvgLastEngagementPerVideoYT\": 0,\n          \"Linked\": true,\n          \"Unlinked\": true,\n          \"LinkBroken\": true,\n          \"Verified\": true,\n          \"Business\": true,\n          \"SocialEngagement\": [\n            {\n              \"EngagementRate30Days\": \"\",\n              \"EngagementRate60Days\": \"\",\n              \"EngagementRate90Days\": 0.0061,\n              \"EngagementRate20Posts\": 0.0202,\n              \"EngagementRateLifetime\": 0.007,\n              \"EngagementCalculated\": \"2015-06-26 22:46:50\",\n              \"PostsCount30Days\": 86705,\n              \"PostsCount60Days\": 86705,\n              \"PostsCount90Days\": 86705,\n              \"PostsCountLifetime\": 86705,\n              \"LastPostDate\": \"2015-06-26 22:46:50\",\n              \"AVV30\": 86705,\n              \"AVV60\": 86705,\n              \"AVV90\": 86705,\n              \"ID\": 509137,\n              \"AccountSource\": \"\",\n              \"Engagement30Days\": 86705,\n              \"Engagement60Days\": 86705,\n              \"Engagement90Days\": 86705,\n              \"Engagement20Posts\": 86705,\n              \"EngagementLifetime\": 86705,\n              \"SharesPerPost30Days\": 86705,\n              \"SharesPerPost60Days\": 86705,\n              \"SharesPerPost90Days\": 86705,\n              \"SharesPerPost20Posts\": 86705,\n              \"SharesPerPostLifetime\": 86705,\n              \"LikesPerPost30Days\": 86705,\n              \"LikesPerPost60Days\": 86705,\n              \"LikesPerPost90Days\": 86705,\n              \"LikesPerPost20Posts\": 14233.65,\n              \"LikesPerPostLifetime\": 3407.2684,\n              \"CommentsPerPost30Days\": 86705,\n              \"CommentsPerPost60Days\": 86705,\n              \"CommentsPerPost90Days\": 527,\n              \"CommentsPerPost20Posts\": 832.55,\n              \"CommentsPerPostLifetime\": 90.8368,\n              \"ViewsPerPost30Days\": 527,\n              \"ViewsPerPost60Days\": 527,\n              \"ViewsPerPost90Days\": 86705,\n              \"ViewsPerPost20Posts\": 747087.15,\n              \"ViewsPerPostLifetime\": 497148.1421,\n              \"DisLikesPerPost30Days\": 547,\n              \"DisLikesPerPost60Days\": 547,\n              \"DisLikesPerPost90Days\": 547,\n              \"DisLikesPerPost20Posts\": 547,\n              \"DisLikesPerPostLifetime\": 547,\n              \"CloseUpsPerPost30Days\": 547,\n              \"CloseUpsPerPost60Days\": 547,\n              \"CloseUpsPerPost90Days\": 547,\n              \"CloseUpsPerPost20Posts\": 547,\n              \"CloseUpsPerPostLifetime\": 547,\n              \"ImpressionsPerPost30Days\": \"\",\n              \"ImpressionsPerPost60Days\": 547,\n              \"ImpressionsPerPost90Days\": 547,\n              \"ImpressionsPerPost20Posts\": 547,\n              \"ImpressionsPerPostLifetime\": 547,\n              \"ClicksPerPost30Days\": 547,\n              \"ClicksPerPost60Days\": 547,\n              \"ClicksPerPost90Days\": 547,\n              \"ClicksPerPost20Posts\": 547,\n              \"ClicksPerPostLifetime\": 547,\n              \"SavesPerPost30Days\": 547,\n              \"SavesPerPost60Days\": 547,\n              \"SavesPerPost90Days\": 547,\n              \"SavesPerPost20Posts\": 547,\n              \"SavesPerPostLifetime\": 547,\n              \"ReachRate30days\": 547,\n              \"ReachRate60days\": 547,\n              \"ReachRate90days\": 547,\n              \"ReachRate20posts\": 547,\n              \"ReachRateLifetime\": 547,\n              \"SavesPerVideo30Days\": 547,\n              \"SavesPerVideo60Days\": 547,\n              \"SavesPerVideo90Days\": 547,\n              \"SavesPerVideo20Posts\": 547,\n              \"SavesPerVideoLifetime\": 547,\n              \"ClicksPerVideo30Days\": 547,\n              \"ClicksPerVideo60Days\": 547,\n              \"ClicksPerVideo90Days\": 547,\n              \"ClicksPerVideo20Posts\": 547,\n              \"ClicksPerVideoLifetime\": 547,\n              \"ImpressionsRate30days\": 547,\n              \"ImpressionsRate60days\": 547,\n              \"ImpressionsRate90days\": 547,\n              \"ImpressionsRate20posts\": 547,\n              \"ImpressionsRatelifetime\": 547,\n              \"ReachPerPost30days\": 547,\n              \"ReachPerPost60days\": 547,\n              \"ReachPerPost90days\": 547,\n              \"ReachPerPost20posts\": 547,\n              \"ReachPerPostlifetime\": 547,\n              \"AvgStreamPeakViews30Days\": 547,\n              \"AvgStreamPeakViews60Days\": 547,\n              \"AvgStreamPeakViews90Days\": 547,\n              \"AvgStreamPeakViews20Posts\": 547,\n              \"AvgStreamAverageViews30Days\": 547,\n              \"AvgStreamAverageViews60Days\": 547,\n              \"AvgStreamAverageViews90Days\": 547,\n              \"AvgStreamAverageViews20Posts\": 547,\n              \"IsHiddenLike30Days\": 547,\n              \"IsHiddenLike60Days\": 547,\n              \"IsHiddenLike90Days\": 547,\n              \"IsHiddenLike20Posts\": 547,\n              \"MedianViews20Posts\": 547\n            },\n            {\n              \"EngagementRate30Days\": \"\",\n              \"EngagementRate60Days\": \"\",\n              \"EngagementRate90Days\": 0.0061,\n              \"EngagementRate20Posts\": 0.0202,\n              \"EngagementRateLifetime\": 0.007,\n              \"EngagementCalculated\": \"2015-06-26 22:46:50\",\n              \"PostsCount30Days\": 86705,\n              \"PostsCount60Days\": 86705,\n              \"PostsCount90Days\": 86705,\n              \"PostsCountLifetime\": 86705,\n              \"LastPostDate\": \"2015-06-26 22:46:50\",\n              \"AVV30\": 86705,\n              \"AVV60\": 86705,\n              \"AVV90\": 86705,\n              \"ID\": 509137,\n              \"AccountSource\": \"\",\n              \"Engagement30Days\": 86705,\n              \"Engagement60Days\": 86705,\n              \"Engagement90Days\": 86705,\n              \"Engagement20Posts\": 86705,\n              \"EngagementLifetime\": 86705,\n              \"SharesPerPost30Days\": 86705,\n              \"SharesPerPost60Days\": 86705,\n              \"SharesPerPost90Days\": 86705,\n              \"SharesPerPost20Posts\": 86705,\n              \"SharesPerPostLifetime\": 86705,\n              \"LikesPerPost30Days\": 86705,\n              \"LikesPerPost60Days\": 86705,\n              \"LikesPerPost90Days\": 86705,\n              \"LikesPerPost20Posts\": 14233.65,\n              \"LikesPerPostLifetime\": 3407.2684,\n              \"CommentsPerPost30Days\": 86705,\n              \"CommentsPerPost60Days\": 86705,\n              \"CommentsPerPost90Days\": 527,\n              \"CommentsPerPost20Posts\": 832.55,\n              \"CommentsPerPostLifetime\": 90.8368,\n              \"ViewsPerPost30Days\": 527,\n              \"ViewsPerPost60Days\": 527,\n              \"ViewsPerPost90Days\": 86705,\n              \"ViewsPerPost20Posts\": 747087.15,\n              \"ViewsPerPostLifetime\": 497148.1421,\n              \"DisLikesPerPost30Days\": 547,\n              \"DisLikesPerPost60Days\": 547,\n              \"DisLikesPerPost90Days\": 547,\n              \"DisLikesPerPost20Posts\": 547,\n              \"DisLikesPerPostLifetime\": 547,\n              \"CloseUpsPerPost30Days\": 547,\n              \"CloseUpsPerPost60Days\": 547,\n              \"CloseUpsPerPost90Days\": 547,\n              \"CloseUpsPerPost20Posts\": 547,\n              \"CloseUpsPerPostLifetime\": 547,\n              \"ImpressionsPerPost30Days\": \"\",\n              \"ImpressionsPerPost60Days\": 547,\n              \"ImpressionsPerPost90Days\": 547,\n              \"ImpressionsPerPost20Posts\": 547,\n              \"ImpressionsPerPostLifetime\": 547,\n              \"ClicksPerPost30Days\": 547,\n              \"ClicksPerPost60Days\": 547,\n              \"ClicksPerPost90Days\": 547,\n              \"ClicksPerPost20Posts\": 547,\n              \"ClicksPerPostLifetime\": 547,\n              \"SavesPerPost30Days\": 547,\n              \"SavesPerPost60Days\": 547,\n              \"SavesPerPost90Days\": 547,\n              \"SavesPerPost20Posts\": 547,\n              \"SavesPerPostLifetime\": 547,\n              \"ReachRate30days\": 547,\n              \"ReachRate60days\": 547,\n              \"ReachRate90days\": 547,\n              \"ReachRate20posts\": 547,\n              \"ReachRateLifetime\": 547,\n              \"SavesPerVideo30Days\": 547,\n              \"SavesPerVideo60Days\": 547,\n              \"SavesPerVideo90Days\": 547,\n              \"SavesPerVideo20Posts\": 547,\n              \"SavesPerVideoLifetime\": 547,\n              \"ClicksPerVideo30Days\": 547,\n              \"ClicksPerVideo60Days\": 547,\n              \"ClicksPerVideo90Days\": 547,\n              \"ClicksPerVideo20Posts\": 547,\n              \"ClicksPerVideoLifetime\": 547,\n              \"ImpressionsRate30days\": 547,\n              \"ImpressionsRate60days\": 547,\n              \"ImpressionsRate90days\": 547,\n              \"ImpressionsRate20posts\": 547,\n              \"ImpressionsRatelifetime\": 547,\n              \"ReachPerPost30days\": 547,\n              \"ReachPerPost60days\": 547,\n              \"ReachPerPost90days\": 547,\n              \"ReachPerPost20posts\": 547,\n              \"ReachPerPostlifetime\": 547,\n              \"AvgStreamPeakViews30Days\": 547,\n              \"AvgStreamPeakViews60Days\": 547,\n              \"AvgStreamPeakViews90Days\": 547,\n              \"AvgStreamPeakViews20Posts\": 547,\n              \"AvgStreamAverageViews30Days\": 547,\n              \"AvgStreamAverageViews60Days\": 547,\n              \"AvgStreamAverageViews90Days\": 547,\n              \"AvgStreamAverageViews20Posts\": 547,\n              \"IsHiddenLike30Days\": 547,\n              \"IsHiddenLike60Days\": 547,\n              \"IsHiddenLike90Days\": 547,\n              \"IsHiddenLike20Posts\": 547,\n              \"MedianViews20Posts\": 547\n            }\n          ]\n        }\n      ],\n      \"Youtube\": [\n        {\n          \"ChannelId\": 24107722,\n          \"ChannelName\": \"The Rock\",\n          \"Channel\": \"UCBdw4dLCLLHmTgAOnW4V0ho\",\n          \"Title\": \"The Rock\",\n          \"LogoURL\": \"https://yt3.ggpht.com/ytc/AMLnZu-G9dSrxaxDNS20FEqfa3vrphwiwf4tyhwS5cAM6w=s88-c-k-c0x00ffffff-no-rj\",\n          \"Summary\": \"Some summary here\",\n          \"PublisherId\": 12472164,\n          \"ContractId\": null,\n          \"NetworkId\": 21,\n          \"NetworkName\": null,\n          \"SubNetworkId\": null,\n          \"SubNetworkName\": null,\n          \"Category\": null,\n          \"RecruiterName\": null,\n          \"Status\": \"Open - In process\",\n          \"AccountManagerName\": null,\n          \"AffiliateManagerName\": null,\n          \"DateFirstContractSigned\": null,\n          \"DateActivated\": null,\n          \"MonthActivated\": null,\n          \"DateFirstNetworkVideoViews\": null,\n          \"MonthFirstNetworkVideoViews\": null,\n          \"YTProductCategory\": null,\n          \"YTLanguage\": \"English\",\n          \"YTGeoRegion\": \"US\",\n          \"YTGender\": \"Male\",\n          \"YTAgeRange\": null,\n          \"AuthorName\": null,\n          \"AuthorUserId\": null,\n          \"CustomTag1\": null,\n          \"CustomTag2\": null,\n          \"CustomTag3\": null,\n          \"CustomField1\": null,\n          \"CustomValue1\": null,\n          \"CustomField2\": null,\n          \"CustomValue2\": null,\n          \"CustomField3\": null,\n          \"CustomValue3\": null,\n          \"ContentOwner\": \"\",\n          \"TotalSubscribers\": \"6240000\",\n          \"TotalViews\": \"348080641\",\n          \"TotalVideos\": 245,\n          \"ChannelSize\": null,\n          \"CreateDateTime\": \"2005-11-24 09:49:22\",\n          \"LastUpdated\": \"2023-01-17T04:26:59-08:00\",\n          \"UpdatedBy\": \"Discovery\",\n          \"NotFound\": 0,\n          \"AverageMonthlyViews\": 1697606.3756098,\n          \"LastComments\": null,\n          \"LastLikes\": null,\n          \"LastDislikes\": null,\n          \"AvgLastViewsPerVideo\": null,\n          \"AvgLastCommentsPerVideo\": null,\n          \"AvgLastLikesPerVideo\": null,\n          \"AvgLastDislikesPerVideo\": null,\n          \"AvgLastSharesPerVideo\": null,\n          \"AvgLastFacebookSharesPerVideo\": null,\n          \"AvgLastTwitterSharesPerVideo\": null,\n          \"AvgLastMinutesWatchedPerVideo\": null,\n          \"LastVideoLength\": null,\n          \"StatusChangedManually\": 0,\n          \"TotalLikes\": null,\n          \"TotalDislikes\": null,\n          \"TotalFavoritesAdded\": null,\n          \"TotalFavoritesRemoved\": null,\n          \"TotalShares\": null,\n          \"EstimatedMinutesWatched\": null,\n          \"AverageViewDuration\": null,\n          \"TotalComments\": null,\n          \"IncludeInContract\": 1,\n          \"Protected\": 0,\n          \"AvgLastFacebookLikesPerVideo\": null,\n          \"AvgLastFacebookCommentsPerVideo\": null,\n          \"AvgLastGooglePlusSharesPerVideo\": null,\n          \"AvgLastPinterestSharesPerVideo\": null,\n          \"DateLastVideoUploaded\": \"2017-08-15 20:11:00\",\n          \"DateDeActivated\": null,\n          \"DateStatusChanged\": null,\n          \"GooglePlusUserId\": null,\n          \"LogoHighResURL\": \"https://yt3.ggpht.com/ytc/AMLnZu-G9dSrxaxDNS20FEqfa3vrphwiwf4tyhwS5cAM6w=s88-c-k-c0x00ffffff-no-rj\",\n          \"AVV30\": null,\n          \"AVV60\": null,\n          \"AVV90\": null,\n          \"Tags\": null,\n          \"CreatedBy\": \"Test User\",\n          \"CreatedAt\": \"2020-02-07 14:00:14\",\n          \"CreatorRole\": \"Account owner\",\n          \"VerifiedBy\": null,\n          \"VerifiedAt\": \"2020-02-07 14:00:14\",\n          \"LinkedBy\": null,\n          \"LinkedAt\": null,\n          \"AvgLastInstagramSharesPerVideo\": null,\n          \"Last30DaysViews\": null,\n          \"MonthToDateViews\": null,\n          \"LastMonthViews\": null,\n          \"DateScraped\": null,\n          \"CPP\": null,\n          \"CPE\": null,\n          \"CPM\": null,\n          \"Engagement\": null,\n          \"EngagementRate\": null,\n          \"isVerifiedBySocialNetwork\": 1,\n          \"IsTokenInvalid\": 0,\n          \"TokenInvalidDate\": null,\n          \"DateAnalytics\": null,\n          \"NewSocialAccountID\": -738931,\n          \"Network\": \"youtube\",\n          \"SocialNetworkId\": \"UCBdw4dLCLLHmTgAOnW4V0hQ\",\n          \"NetworkUser\": \"UCBdw4dLCLLHmTgAOnW4V0hQ\",\n          \"NumberOfPosts\": 245,\n          \"DateSocialStatsUpdated\": \"2023-01-17T05:01:00+00:00\",\n          \"AvgLastEngagementPerVideoYT\": 0,\n          \"Linked\": true,\n          \"Unlinked\": true,\n          \"LinkBroken\": true,\n          \"Verified\": true,\n          \"Business\": true,\n          \"SocialEngagement\": [\n            {\n              \"EngagementRate30Days\": \"\",\n              \"EngagementRate60Days\": \"\",\n              \"EngagementRate90Days\": 0.0061,\n              \"EngagementRate20Posts\": 0.0202,\n              \"EngagementRateLifetime\": 0.007,\n              \"EngagementCalculated\": \"2015-06-26 22:46:50\",\n              \"PostsCount30Days\": 86705,\n              \"PostsCount60Days\": 86705,\n              \"PostsCount90Days\": 86705,\n              \"PostsCountLifetime\": 86705,\n              \"LastPostDate\": \"2015-06-26 22:46:50\",\n              \"AVV30\": 86705,\n              \"AVV60\": 86705,\n              \"AVV90\": 86705,\n              \"ID\": 509137,\n              \"AccountSource\": \"\",\n              \"Engagement30Days\": 86705,\n              \"Engagement60Days\": 86705,\n              \"Engagement90Days\": 86705,\n              \"Engagement20Posts\": 86705,\n              \"EngagementLifetime\": 86705,\n              \"SharesPerPost30Days\": 86705,\n              \"SharesPerPost60Days\": 86705,\n              \"SharesPerPost90Days\": 86705,\n              \"SharesPerPost20Posts\": 86705,\n              \"SharesPerPostLifetime\": 86705,\n              \"LikesPerPost30Days\": 86705,\n              \"LikesPerPost60Days\": 86705,\n              \"LikesPerPost90Days\": 86705,\n              \"LikesPerPost20Posts\": 14233.65,\n              \"LikesPerPostLifetime\": 3407.2684,\n              \"CommentsPerPost30Days\": 86705,\n              \"CommentsPerPost60Days\": 86705,\n              \"CommentsPerPost90Days\": 527,\n              \"CommentsPerPost20Posts\": 832.55,\n              \"CommentsPerPostLifetime\": 90.8368,\n              \"ViewsPerPost30Days\": 527,\n              \"ViewsPerPost60Days\": 527,\n              \"ViewsPerPost90Days\": 86705,\n              \"ViewsPerPost20Posts\": 747087.15,\n              \"ViewsPerPostLifetime\": 497148.1421,\n              \"DisLikesPerPost30Days\": 547,\n              \"DisLikesPerPost60Days\": 547,\n              \"DisLikesPerPost90Days\": 547,\n              \"DisLikesPerPost20Posts\": 547,\n              \"DisLikesPerPostLifetime\": 547,\n              \"CloseUpsPerPost30Days\": 547,\n              \"CloseUpsPerPost60Days\": 547,\n              \"CloseUpsPerPost90Days\": 547,\n              \"CloseUpsPerPost20Posts\": 547,\n              \"CloseUpsPerPostLifetime\": 547,\n              \"ImpressionsPerPost30Days\": \"\",\n              \"ImpressionsPerPost60Days\": 547,\n              \"ImpressionsPerPost90Days\": 547,\n              \"ImpressionsPerPost20Posts\": 547,\n              \"ImpressionsPerPostLifetime\": 547,\n              \"ClicksPerPost30Days\": 547,\n              \"ClicksPerPost60Days\": 547,\n              \"ClicksPerPost90Days\": 547,\n              \"ClicksPerPost20Posts\": 547,\n              \"ClicksPerPostLifetime\": 547,\n              \"SavesPerPost30Days\": 547,\n              \"SavesPerPost60Days\": 547,\n              \"SavesPerPost90Days\": 547,\n              \"SavesPerPost20Posts\": 547,\n              \"SavesPerPostLifetime\": 547,\n              \"ReachRate30days\": 547,\n              \"ReachRate60days\": 547,\n              \"ReachRate90days\": 547,\n              \"ReachRate20posts\": 547,\n              \"ReachRateLifetime\": 547,\n              \"SavesPerVideo30Days\": 547,\n              \"SavesPerVideo60Days\": 547,\n              \"SavesPerVideo90Days\": 547,\n              \"SavesPerVideo20Posts\": 547,\n              \"SavesPerVideoLifetime\": 547,\n              \"ClicksPerVideo30Days\": 547,\n              \"ClicksPerVideo60Days\": 547,\n              \"ClicksPerVideo90Days\": 547,\n              \"ClicksPerVideo20Posts\": 547,\n              \"ClicksPerVideoLifetime\": 547,\n              \"ImpressionsRate30days\": 547,\n              \"ImpressionsRate60days\": 547,\n              \"ImpressionsRate90days\": 547,\n              \"ImpressionsRate20posts\": 547,\n              \"ImpressionsRatelifetime\": 547,\n              \"ReachPerPost30days\": 547,\n              \"ReachPerPost60days\": 547,\n              \"ReachPerPost90days\": 547,\n              \"ReachPerPost20posts\": 547,\n              \"ReachPerPostlifetime\": 547,\n              \"AvgStreamPeakViews30Days\": 547,\n              \"AvgStreamPeakViews60Days\": 547,\n              \"AvgStreamPeakViews90Days\": 547,\n              \"AvgStreamPeakViews20Posts\": 547,\n              \"AvgStreamAverageViews30Days\": 547,\n              \"AvgStreamAverageViews60Days\": 547,\n              \"AvgStreamAverageViews90Days\": 547,\n              \"AvgStreamAverageViews20Posts\": 547,\n              \"IsHiddenLike30Days\": 547,\n              \"IsHiddenLike60Days\": 547,\n              \"IsHiddenLike90Days\": 547,\n              \"IsHiddenLike20Posts\": 547,\n              \"MedianViews20Posts\": 547\n            },\n            {\n              \"EngagementRate30Days\": \"\",\n              \"EngagementRate60Days\": \"\",\n              \"EngagementRate90Days\": 0.0061,\n              \"EngagementRate20Posts\": 0.0202,\n              \"EngagementRateLifetime\": 0.007,\n              \"EngagementCalculated\": \"2015-06-26 22:46:50\",\n              \"PostsCount30Days\": 86705,\n              \"PostsCount60Days\": 86705,\n              \"PostsCount90Days\": 86705,\n              \"PostsCountLifetime\": 86705,\n              \"LastPostDate\": \"2015-06-26 22:46:50\",\n              \"AVV30\": 86705,\n              \"AVV60\": 86705,\n              \"AVV90\": 86705,\n              \"ID\": 509137,\n              \"AccountSource\": \"\",\n              \"Engagement30Days\": 86705,\n              \"Engagement60Days\": 86705,\n              \"Engagement90Days\": 86705,\n              \"Engagement20Posts\": 86705,\n              \"EngagementLifetime\": 86705,\n              \"SharesPerPost30Days\": 86705,\n              \"SharesPerPost60Days\": 86705,\n              \"SharesPerPost90Days\": 86705,\n              \"SharesPerPost20Posts\": 86705,\n              \"SharesPerPostLifetime\": 86705,\n              \"LikesPerPost30Days\": 86705,\n              \"LikesPerPost60Days\": 86705,\n              \"LikesPerPost90Days\": 86705,\n              \"LikesPerPost20Posts\": 14233.65,\n              \"LikesPerPostLifetime\": 3407.2684,\n              \"CommentsPerPost30Days\": 86705,\n              \"CommentsPerPost60Days\": 86705,\n              \"CommentsPerPost90Days\": 527,\n              \"CommentsPerPost20Posts\": 832.55,\n              \"CommentsPerPostLifetime\": 90.8368,\n              \"ViewsPerPost30Days\": 527,\n              \"ViewsPerPost60Days\": 527,\n              \"ViewsPerPost90Days\": 86705,\n              \"ViewsPerPost20Posts\": 747087.15,\n              \"ViewsPerPostLifetime\": 497148.1421,\n              \"DisLikesPerPost30Days\": 547,\n              \"DisLikesPerPost60Days\": 547,\n              \"DisLikesPerPost90Days\": 547,\n              \"DisLikesPerPost20Posts\": 547,\n              \"DisLikesPerPostLifetime\": 547,\n              \"CloseUpsPerPost30Days\": 547,\n              \"CloseUpsPerPost60Days\": 547,\n              \"CloseUpsPerPost90Days\": 547,\n              \"CloseUpsPerPost20Posts\": 547,\n              \"CloseUpsPerPostLifetime\": 547,\n              \"ImpressionsPerPost30Days\": \"\",\n              \"ImpressionsPerPost60Days\": 547,\n              \"ImpressionsPerPost90Days\": 547,\n              \"ImpressionsPerPost20Posts\": 547,\n              \"ImpressionsPerPostLifetime\": 547,\n              \"ClicksPerPost30Days\": 547,\n              \"ClicksPerPost60Days\": 547,\n              \"ClicksPerPost90Days\": 547,\n              \"ClicksPerPost20Posts\": 547,\n              \"ClicksPerPostLifetime\": 547,\n              \"SavesPerPost30Days\": 547,\n              \"SavesPerPost60Days\": 547,\n              \"SavesPerPost90Days\": 547,\n              \"SavesPerPost20Posts\": 547,\n              \"SavesPerPostLifetime\": 547,\n              \"ReachRate30days\": 547,\n              \"ReachRate60days\": 547,\n              \"ReachRate90days\": 547,\n              \"ReachRate20posts\": 547,\n              \"ReachRateLifetime\": 547,\n              \"SavesPerVideo30Days\": 547,\n              \"SavesPerVideo60Days\": 547,\n              \"SavesPerVideo90Days\": 547,\n              \"SavesPerVideo20Posts\": 547,\n              \"SavesPerVideoLifetime\": 547,\n              \"ClicksPerVideo30Days\": 547,\n              \"ClicksPerVideo60Days\": 547,\n              \"ClicksPerVideo90Days\": 547,\n              \"ClicksPerVideo20Posts\": 547,\n              \"ClicksPerVideoLifetime\": 547,\n              \"ImpressionsRate30days\": 547,\n              \"ImpressionsRate60days\": 547,\n              \"ImpressionsRate90days\": 547,\n              \"ImpressionsRate20posts\": 547,\n              \"ImpressionsRatelifetime\": 547,\n              \"ReachPerPost30days\": 547,\n              \"ReachPerPost60days\": 547,\n              \"ReachPerPost90days\": 547,\n              \"ReachPerPost20posts\": 547,\n              \"ReachPerPostlifetime\": 547,\n              \"AvgStreamPeakViews30Days\": 547,\n              \"AvgStreamPeakViews60Days\": 547,\n              \"AvgStreamPeakViews90Days\": 547,\n              \"AvgStreamPeakViews20Posts\": 547,\n              \"AvgStreamAverageViews30Days\": 547,\n              \"AvgStreamAverageViews60Days\": 547,\n              \"AvgStreamAverageViews90Days\": 547,\n              \"AvgStreamAverageViews20Posts\": 547,\n              \"IsHiddenLike30Days\": 547,\n              \"IsHiddenLike60Days\": 547,\n              \"IsHiddenLike90Days\": 547,\n              \"IsHiddenLike20Posts\": 547,\n              \"MedianViews20Posts\": 547\n            }\n          ]\n        },\n        {\n          \"ChannelId\": 24107722,\n          \"ChannelName\": \"The Rock\",\n          \"Channel\": \"UCBdw4dLCLLHmTgAOnW4V0ho\",\n          \"Title\": \"The Rock\",\n          \"LogoURL\": \"https://yt3.ggpht.com/ytc/AMLnZu-G9dSrxaxDNS20FEqfa3vrphwiwf4tyhwS5cAM6w=s88-c-k-c0x00ffffff-no-rj\",\n          \"Summary\": \"Some summary here\",\n          \"PublisherId\": 12472164,\n          \"ContractId\": null,\n          \"NetworkId\": 21,\n          \"NetworkName\": null,\n          \"SubNetworkId\": null,\n          \"SubNetworkName\": null,\n          \"Category\": null,\n          \"RecruiterName\": null,\n          \"Status\": \"Open - In process\",\n          \"AccountManagerName\": null,\n          \"AffiliateManagerName\": null,\n          \"DateFirstContractSigned\": null,\n          \"DateActivated\": null,\n          \"MonthActivated\": null,\n          \"DateFirstNetworkVideoViews\": null,\n          \"MonthFirstNetworkVideoViews\": null,\n          \"YTProductCategory\": null,\n          \"YTLanguage\": \"English\",\n          \"YTGeoRegion\": \"US\",\n          \"YTGender\": \"Male\",\n          \"YTAgeRange\": null,\n          \"AuthorName\": null,\n          \"AuthorUserId\": null,\n          \"CustomTag1\": null,\n          \"CustomTag2\": null,\n          \"CustomTag3\": null,\n          \"CustomField1\": null,\n          \"CustomValue1\": null,\n          \"CustomField2\": null,\n          \"CustomValue2\": null,\n          \"CustomField3\": null,\n          \"CustomValue3\": null,\n          \"ContentOwner\": \"\",\n          \"TotalSubscribers\": \"6240000\",\n          \"TotalViews\": \"348080641\",\n          \"TotalVideos\": 245,\n          \"ChannelSize\": null,\n          \"CreateDateTime\": \"2005-11-24 09:49:22\",\n          \"LastUpdated\": \"2023-01-17T04:26:59-08:00\",\n          \"UpdatedBy\": \"Discovery\",\n          \"NotFound\": 0,\n          \"AverageMonthlyViews\": 1697606.3756098,\n          \"LastComments\": null,\n          \"LastLikes\": null,\n          \"LastDislikes\": null,\n          \"AvgLastViewsPerVideo\": null,\n          \"AvgLastCommentsPerVideo\": null,\n          \"AvgLastLikesPerVideo\": null,\n          \"AvgLastDislikesPerVideo\": null,\n          \"AvgLastSharesPerVideo\": null,\n          \"AvgLastFacebookSharesPerVideo\": null,\n          \"AvgLastTwitterSharesPerVideo\": null,\n          \"AvgLastMinutesWatchedPerVideo\": null,\n          \"LastVideoLength\": null,\n          \"StatusChangedManually\": 0,\n          \"TotalLikes\": null,\n          \"TotalDislikes\": null,\n          \"TotalFavoritesAdded\": null,\n          \"TotalFavoritesRemoved\": null,\n          \"TotalShares\": null,\n          \"EstimatedMinutesWatched\": null,\n          \"AverageViewDuration\": null,\n          \"TotalComments\": null,\n          \"IncludeInContract\": 1,\n          \"Protected\": 0,\n          \"AvgLastFacebookLikesPerVideo\": null,\n          \"AvgLastFacebookCommentsPerVideo\": null,\n          \"AvgLastGooglePlusSharesPerVideo\": null,\n          \"AvgLastPinterestSharesPerVideo\": null,\n          \"DateLastVideoUploaded\": \"2017-08-15 20:11:00\",\n          \"DateDeActivated\": null,\n          \"DateStatusChanged\": null,\n          \"GooglePlusUserId\": null,\n          \"LogoHighResURL\": \"https://yt3.ggpht.com/ytc/AMLnZu-G9dSrxaxDNS20FEqfa3vrphwiwf4tyhwS5cAM6w=s88-c-k-c0x00ffffff-no-rj\",\n          \"AVV30\": null,\n          \"AVV60\": null,\n          \"AVV90\": null,\n          \"Tags\": null,\n          \"CreatedBy\": \"Test User\",\n          \"CreatedAt\": \"2020-02-07 14:00:14\",\n          \"CreatorRole\": \"Account owner\",\n          \"VerifiedBy\": null,\n          \"VerifiedAt\": \"2020-02-07 14:00:14\",\n          \"LinkedBy\": null,\n          \"LinkedAt\": null,\n          \"AvgLastInstagramSharesPerVideo\": null,\n          \"Last30DaysViews\": null,\n          \"MonthToDateViews\": null,\n          \"LastMonthViews\": null,\n          \"DateScraped\": null,\n          \"CPP\": null,\n          \"CPE\": null,\n          \"CPM\": null,\n          \"Engagement\": null,\n          \"EngagementRate\": null,\n          \"isVerifiedBySocialNetwork\": 1,\n          \"IsTokenInvalid\": 0,\n          \"TokenInvalidDate\": null,\n          \"DateAnalytics\": null,\n          \"NewSocialAccountID\": -738931,\n          \"Network\": \"youtube\",\n          \"SocialNetworkId\": \"UCBdw4dLCLLHmTgAOnW4V0hQ\",\n          \"NetworkUser\": \"UCBdw4dLCLLHmTgAOnW4V0hQ\",\n          \"NumberOfPosts\": 245,\n          \"DateSocialStatsUpdated\": \"2023-01-17T05:01:00+00:00\",\n          \"AvgLastEngagementPerVideoYT\": 0,\n          \"Linked\": true,\n          \"Unlinked\": true,\n          \"LinkBroken\": true,\n          \"Verified\": true,\n          \"Business\": true,\n          \"SocialEngagement\": [\n            {\n              \"EngagementRate30Days\": \"\",\n              \"EngagementRate60Days\": \"\",\n              \"EngagementRate90Days\": 0.0061,\n              \"EngagementRate20Posts\": 0.0202,\n              \"EngagementRateLifetime\": 0.007,\n              \"EngagementCalculated\": \"2015-06-26 22:46:50\",\n              \"PostsCount30Days\": 86705,\n              \"PostsCount60Days\": 86705,\n              \"PostsCount90Days\": 86705,\n              \"PostsCountLifetime\": 86705,\n              \"LastPostDate\": \"2015-06-26 22:46:50\",\n              \"AVV30\": 86705,\n              \"AVV60\": 86705,\n              \"AVV90\": 86705,\n              \"ID\": 509137,\n              \"AccountSource\": \"\",\n              \"Engagement30Days\": 86705,\n              \"Engagement60Days\": 86705,\n              \"Engagement90Days\": 86705,\n              \"Engagement20Posts\": 86705,\n              \"EngagementLifetime\": 86705,\n              \"SharesPerPost30Days\": 86705,\n              \"SharesPerPost60Days\": 86705,\n              \"SharesPerPost90Days\": 86705,\n              \"SharesPerPost20Posts\": 86705,\n              \"SharesPerPostLifetime\": 86705,\n              \"LikesPerPost30Days\": 86705,\n              \"LikesPerPost60Days\": 86705,\n              \"LikesPerPost90Days\": 86705,\n              \"LikesPerPost20Posts\": 14233.65,\n              \"LikesPerPostLifetime\": 3407.2684,\n              \"CommentsPerPost30Days\": 86705,\n              \"CommentsPerPost60Days\": 86705,\n              \"CommentsPerPost90Days\": 527,\n              \"CommentsPerPost20Posts\": 832.55,\n              \"CommentsPerPostLifetime\": 90.8368,\n              \"ViewsPerPost30Days\": 527,\n              \"ViewsPerPost60Days\": 527,\n              \"ViewsPerPost90Days\": 86705,\n              \"ViewsPerPost20Posts\": 747087.15,\n              \"ViewsPerPostLifetime\": 497148.1421,\n              \"DisLikesPerPost30Days\": 547,\n              \"DisLikesPerPost60Days\": 547,\n              \"DisLikesPerPost90Days\": 547,\n              \"DisLikesPerPost20Posts\": 547,\n              \"DisLikesPerPostLifetime\": 547,\n              \"CloseUpsPerPost30Days\": 547,\n              \"CloseUpsPerPost60Days\": 547,\n              \"CloseUpsPerPost90Days\": 547,\n              \"CloseUpsPerPost20Posts\": 547,\n              \"CloseUpsPerPostLifetime\": 547,\n              \"ImpressionsPerPost30Days\": \"\",\n              \"ImpressionsPerPost60Days\": 547,\n              \"ImpressionsPerPost90Days\": 547,\n              \"ImpressionsPerPost20Posts\": 547,\n              \"ImpressionsPerPostLifetime\": 547,\n              \"ClicksPerPost30Days\": 547,\n              \"ClicksPerPost60Days\": 547,\n              \"ClicksPerPost90Days\": 547,\n              \"ClicksPerPost20Posts\": 547,\n              \"ClicksPerPostLifetime\": 547,\n              \"SavesPerPost30Days\": 547,\n              \"SavesPerPost60Days\": 547,\n              \"SavesPerPost90Days\": 547,\n              \"SavesPerPost20Posts\": 547,\n              \"SavesPerPostLifetime\": 547,\n              \"ReachRate30days\": 547,\n              \"ReachRate60days\": 547,\n              \"ReachRate90days\": 547,\n              \"ReachRate20posts\": 547,\n              \"ReachRateLifetime\": 547,\n              \"SavesPerVideo30Days\": 547,\n              \"SavesPerVideo60Days\": 547,\n              \"SavesPerVideo90Days\": 547,\n              \"SavesPerVideo20Posts\": 547,\n              \"SavesPerVideoLifetime\": 547,\n              \"ClicksPerVideo30Days\": 547,\n              \"ClicksPerVideo60Days\": 547,\n              \"ClicksPerVideo90Days\": 547,\n              \"ClicksPerVideo20Posts\": 547,\n              \"ClicksPerVideoLifetime\": 547,\n              \"ImpressionsRate30days\": 547,\n              \"ImpressionsRate60days\": 547,\n              \"ImpressionsRate90days\": 547,\n              \"ImpressionsRate20posts\": 547,\n              \"ImpressionsRatelifetime\": 547,\n              \"ReachPerPost30days\": 547,\n              \"ReachPerPost60days\": 547,\n              \"ReachPerPost90days\": 547,\n              \"ReachPerPost20posts\": 547,\n              \"ReachPerPostlifetime\": 547,\n              \"AvgStreamPeakViews30Days\": 547,\n              \"AvgStreamPeakViews60Days\": 547,\n              \"AvgStreamPeakViews90Days\": 547,\n              \"AvgStreamPeakViews20Posts\": 547,\n              \"AvgStreamAverageViews30Days\": 547,\n              \"AvgStreamAverageViews60Days\": 547,\n              \"AvgStreamAverageViews90Days\": 547,\n              \"AvgStreamAverageViews20Posts\": 547,\n              \"IsHiddenLike30Days\": 547,\n              \"IsHiddenLike60Days\": 547,\n              \"IsHiddenLike90Days\": 547,\n              \"IsHiddenLike20Posts\": 547,\n              \"MedianViews20Posts\": 547\n            },\n            {\n              \"EngagementRate30Days\": \"\",\n              \"EngagementRate60Days\": \"\",\n              \"EngagementRate90Days\": 0.0061,\n              \"EngagementRate20Posts\": 0.0202,\n              \"EngagementRateLifetime\": 0.007,\n              \"EngagementCalculated\": \"2015-06-26 22:46:50\",\n              \"PostsCount30Days\": 86705,\n              \"PostsCount60Days\": 86705,\n              \"PostsCount90Days\": 86705,\n              \"PostsCountLifetime\": 86705,\n              \"LastPostDate\": \"2015-06-26 22:46:50\",\n              \"AVV30\": 86705,\n              \"AVV60\": 86705,\n              \"AVV90\": 86705,\n              \"ID\": 509137,\n              \"AccountSource\": \"\",\n              \"Engagement30Days\": 86705,\n              \"Engagement60Days\": 86705,\n              \"Engagement90Days\": 86705,\n              \"Engagement20Posts\": 86705,\n              \"EngagementLifetime\": 86705,\n              \"SharesPerPost30Days\": 86705,\n              \"SharesPerPost60Days\": 86705,\n              \"SharesPerPost90Days\": 86705,\n              \"SharesPerPost20Posts\": 86705,\n              \"SharesPerPostLifetime\": 86705,\n              \"LikesPerPost30Days\": 86705,\n              \"LikesPerPost60Days\": 86705,\n              \"LikesPerPost90Days\": 86705,\n              \"LikesPerPost20Posts\": 14233.65,\n              \"LikesPerPostLifetime\": 3407.2684,\n              \"CommentsPerPost30Days\": 86705,\n              \"CommentsPerPost60Days\": 86705,\n              \"CommentsPerPost90Days\": 527,\n              \"CommentsPerPost20Posts\": 832.55,\n              \"CommentsPerPostLifetime\": 90.8368,\n              \"ViewsPerPost30Days\": 527,\n              \"ViewsPerPost60Days\": 527,\n              \"ViewsPerPost90Days\": 86705,\n              \"ViewsPerPost20Posts\": 747087.15,\n              \"ViewsPerPostLifetime\": 497148.1421,\n              \"DisLikesPerPost30Days\": 547,\n              \"DisLikesPerPost60Days\": 547,\n              \"DisLikesPerPost90Days\": 547,\n              \"DisLikesPerPost20Posts\": 547,\n              \"DisLikesPerPostLifetime\": 547,\n              \"CloseUpsPerPost30Days\": 547,\n              \"CloseUpsPerPost60Days\": 547,\n              \"CloseUpsPerPost90Days\": 547,\n              \"CloseUpsPerPost20Posts\": 547,\n              \"CloseUpsPerPostLifetime\": 547,\n              \"ImpressionsPerPost30Days\": \"\",\n              \"ImpressionsPerPost60Days\": 547,\n              \"ImpressionsPerPost90Days\": 547,\n              \"ImpressionsPerPost20Posts\": 547,\n              \"ImpressionsPerPostLifetime\": 547,\n              \"ClicksPerPost30Days\": 547,\n              \"ClicksPerPost60Days\": 547,\n              \"ClicksPerPost90Days\": 547,\n              \"ClicksPerPost20Posts\": 547,\n              \"ClicksPerPostLifetime\": 547,\n              \"SavesPerPost30Days\": 547,\n              \"SavesPerPost60Days\": 547,\n              \"SavesPerPost90Days\": 547,\n              \"SavesPerPost20Posts\": 547,\n              \"SavesPerPostLifetime\": 547,\n              \"ReachRate30days\": 547,\n              \"ReachRate60days\": 547,\n              \"ReachRate90days\": 547,\n              \"ReachRate20posts\": 547,\n              \"ReachRateLifetime\": 547,\n              \"SavesPerVideo30Days\": 547,\n              \"SavesPerVideo60Days\": 547,\n              \"SavesPerVideo90Days\": 547,\n              \"SavesPerVideo20Posts\": 547,\n              \"SavesPerVideoLifetime\": 547,\n              \"ClicksPerVideo30Days\": 547,\n              \"ClicksPerVideo60Days\": 547,\n              \"ClicksPerVideo90Days\": 547,\n              \"ClicksPerVideo20Posts\": 547,\n              \"ClicksPerVideoLifetime\": 547,\n              \"ImpressionsRate30days\": 547,\n              \"ImpressionsRate60days\": 547,\n              \"ImpressionsRate90days\": 547,\n              \"ImpressionsRate20posts\": 547,\n              \"ImpressionsRatelifetime\": 547,\n              \"ReachPerPost30days\": 547,\n              \"ReachPerPost60days\": 547,\n              \"ReachPerPost90days\": 547,\n              \"ReachPerPost20posts\": 547,\n              \"ReachPerPostlifetime\": 547,\n              \"AvgStreamPeakViews30Days\": 547,\n              \"AvgStreamPeakViews60Days\": 547,\n              \"AvgStreamPeakViews90Days\": 547,\n              \"AvgStreamPeakViews20Posts\": 547,\n              \"AvgStreamAverageViews30Days\": 547,\n              \"AvgStreamAverageViews60Days\": 547,\n              \"AvgStreamAverageViews90Days\": 547,\n              \"AvgStreamAverageViews20Posts\": 547,\n              \"IsHiddenLike30Days\": 547,\n              \"IsHiddenLike60Days\": 547,\n              \"IsHiddenLike90Days\": 547,\n              \"IsHiddenLike20Posts\": 547,\n              \"MedianViews20Posts\": 547\n            }\n          ]\n        }\n      ],\n      \"contacts\": \"getContactsCollection\",\n      \"accounts\": {},\n      \"demographics\": null,\n      \"audienceTotal\": null,\n      \"infoForAdvertisers\": null,\n      \"socialAccounts\": null,\n      \"Social\": null,\n      \"summary\": null\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8cf9b68-98a1-4e3e-b11c-dd84197f7b02",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "accounts",
+                    "lookup"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "network",
+                      "value": "youtube"
+                    },
+                    {
+                      "key": "search",
+                      "value": "therock"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"Exception\": {\n    \"code\": 404,\n    \"message\": \"Not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "739e9550-9f7c-4d3f-b49b-92b9f445e428",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    "accounts",
+                    "lookup"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "network",
+                      "value": "youtube"
+                    },
+                    {
+                      "key": "search",
+                      "value": "therock"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"Exception\": {\n    \"code\": 404,\n    \"message\": \"Not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c0667ff-926e-44fc-b1ed-becbde15ee1f",
+          "name": "Get social account history",
+          "request": {
+            "name": "Get social account history",
+            "description": {
+              "content": "### Get social account history\nThis endpoint returns the subscription and viewing history of a social account for the period that we set in \nthe parameters. The period can be set in days or months using the parameter ```period=month``` or ```period=day```. \nHowever, the endpoint will not return the account history for 12 months if the database only stores history \nfor 6 months. \n\n\nIf the period field is set to ```period=day```, the endpoint will return the history of changes in \nviews or subscriptions for the dates when the CreatorIQ cron recorded changes in the number of views or \nsubscribers. For example, if the account had 4 subscribers and 0 views on September 1, 2022, and the \naccount was added to CreatorIQ on the same day - September 1, 2022, and 49 views were added on October 1, 2022, \nthe output will be:\n```\n  {\n    \"SocialHistory\":[\n      {\n        \"Date\":\"2022-10-01 00:00:00\",\n        \"Subscribers\":\"4\",\n        \"Views\":\"49\"\n      },\n      {\n        \"Date\":\"2022-09-01 00:00:00\",\n        \"Subscribers\":\"4\",\n        \"Views\":\"0\"\n      }\n    ],\n    \"href\":\"https://apis.creatoriq.com/crm/v1/api/youtube/account/UCJ80aAk5PcrD_bEYscCRkpQ/history?period=day&size=2\",\n    \"type\":\"SocialHistory\"\n}\n``` \nAs we can see, the data is returned starting from the oldest date. \nInput curl was:\n```\ncurl -X GET --location \"https://apis.creatoriq.com/crm/v1/api/youtube/account/UCJ80aAk5PcrD_bEYscCRkpQ/history?period=day&size=2\" \\\n-H \"X-API-KEY: apikey\" \\\n-H \"Content-Type: application/json\"\n```\n\n\nIf ```period=month```, the history of changes in the number of subscribers or views of the social account is returned \nby months. For example:\n```\n{\n   \"SocialHistory\":[\n      {\n         \"Month\":\"December 2022\",\n         \"Subscribers\":\"2050000\",\n         \"Views\":228074626\n      },\n      {\n         \"Month\":\"January 2023\",\n         \"Subscribers\":\"2770000\",\n         \"Views\":214931823.33333\n      },\n      {\n         \"Month\":\"February 2023\",\n         \"Subscribers\":\"2993334\",\n         \"Views\":81111695.5\n      }\n   ],\n   \"href\":\"https://apis.creatoriq.com/crm/v1/api/youtube/account/UCd84KUlhKQYXrMHsOPfyxcw/history?period=month&size=40\",\n   \"type\":\"SocialHistory\"\n}\n``` \nThe data is returned starting from the most recent date.\nInput curl was:\n```\ncurl -X GET --location \"https://apis.creatoriq.com/crm/v1/api/youtube/account/UCd84KUlhKQYXrMHsOPfyxcw/history?period=month&size=40\" \\\n-H \"X-API-KEY: apikey\" \\\n-H \"Content-Type: application/json\"\n```\n\nUsing the ```size``` parameter, we can regulate the maximum number of entities in the response.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "crm",
+                "v1",
+                "api",
+                ":network",
+                "account",
+                ":socialNetworkId",
+                "history"
+              ],
+              "host": [
+                "apis",
+                "creatoriq",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "day",
+                  "description": "Period which history fetch"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Count"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "network",
+                  "description": "(Required) Social network"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "socialNetworkId",
+                  "description": "(Required) Unique id of account from network. Can be fetched from [GET] '/crm/v1/api/publisher/{publisherId}/accounts' endpoint.\nField in response **SocialNetworkId**\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ba042cca-d192-4958-9469-640e36e326df",
+              "name": "Social history response",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    ":network",
+                    "account",
+                    ":socialNetworkId",
+                    "history"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "key": "size",
+                      "value": "6"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Social network"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "socialNetworkId",
+                      "description": "(Required) Unique id of account from network. Can be fetched from [GET] '/crm/v1/api/publisher/{publisherId}/accounts' endpoint.\nField in response **SocialNetworkId**\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"SocialHistory\",\n  \"href\": \"https://apis.creatoriq.com/crm/v1/api/instagram/account/2094200507/history\",\n  \"SocialHistory\": [\n    {\n      \"Date\": \"2023-01-15 00:00:00\",\n      \"Subscribers\": 32343\n    },\n    {\n      \"Date\": \"2023-01-15 00:00:00\",\n      \"Subscribers\": 32343\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf5088f2-48e7-4f0c-991d-875c7e6e0f07",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "crm",
+                    "v1",
+                    "api",
+                    ":network",
+                    "account",
+                    ":socialNetworkId",
+                    "history"
+                  ],
+                  "host": [
+                    "apis",
+                    "creatoriq",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "key": "size",
+                      "value": "6"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Social network"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "socialNetworkId",
+                      "description": "(Required) Unique id of account from network. Can be fetched from [GET] '/crm/v1/api/publisher/{publisherId}/accounts' endpoint.\nField in response **SocialNetworkId**\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"CoreException\",\n  \"Exception\": {\n    \"code\": 404,\n    \"message\": \"Not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apis.creatoriq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c623d6e8-0fe3-4a50-aba8-d5ee52f8df3d",
+    "name": "CreatorIQ Social Account APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CreatorIQ CRM APIs for Social Account resource\n### Changelog\n\n#### 2025-02-27\n\n#### Added\n\n- new value `savedThumbnail` for YouTube video item for endpoint:\nGET [https://apis.creatoriq.com/crm/v1/api/social/postInfo YouTube video only](https://creatoriq.stoplight.io/docs/ciq-api-documentation/f575c27239d31-get-social-post-info)\n\n\n#### 2025-01-22\n\n#### Added\n\n- Added new value `pnkHash` for social post item for endpoints:\n  - [GET https://apis.creatoriq.com/crm/v1/api/social/postInfo](https://creatoriq.stoplight.io/docs/ciq-api-documentation/f575c27239d31-get-social-post-info)\n  - [GET https://apis.creatoriq.com/crm/v1/api/account/instagram/{id}/storiesHistory](https://creatoriq.stoplight.io/docs/ciq-api-documentation/d83baf3f82db6-get-stories-history)\n\n\nContact Support:\n Name: CreatorIQ\n Email: support@creatoriq.com",
+      "type": "text/plain"
+    }
+  }
+}

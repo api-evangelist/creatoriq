@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CreatorIQ Divisions APIs",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Divisions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get divisions list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/divisions",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response.  \nIf not specified, all fields will be returned.\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get list of divisions in the organization.  \n**Warning:** Depends of api key list of divisions can be different or even empty.\n"
+        },
+        {
+          "info": {
+            "name": "Get division by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.creatoriq.com/crm/v1/api/division/:divisionId",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response.  \nIf not specified, all fields will be returned.\n"
+              },
+              {
+                "name": "divisionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the division to retrieve"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get division by id in the organization.  \n**Warning:** Depends of api key response can be 404 even if such division exist for partner.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -48,288 +48,1262 @@ tags_raw:
 - reporting
 - webhooks
 apis:
-- name: CreatorIQ CRM Publishers API
-  description: >-
-    Read, create, update and delete creator (publisher) records in the customer's CreatorIQ CRM, plus
-    their linked social accounts, scheduled posts, contacts and campaign relationships.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+- aid: creatoriq:creatoriq-brand-safety-api
+  name: CreatorIQ Brand Safety API
+  description: SafeIQ brand safety timeline API
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
-  - creator-crm
-  - Influencer Marketing
-  - Publishers
-  tags_raw:
-  - creator-crm
-  - influencer-marketing
-  - publishers
+  - Brand Safety
   properties:
   - type: OpenAPI
-    url: openapi/creatoriq-publishers-openapi.yml
+    url: openapi/creatoriq-brand-safety-api-openapi.yml
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
-- name: CreatorIQ CRM Publishers API V2
-  description: >-
-    Version 2 of the publishers surface, currently exposing bulk retrieval of linked social accounts
-    for a set of publisher identifiers.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-brandsafety-api
+  name: CreatorIQ Brand Safety API
+  description: Brand Safety Public API (draft)
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
-  - creator-crm
-  - Publishers
-  tags_raw:
-  - creator-crm
-  - publishers
+  - BrandSafety
   properties:
   - type: OpenAPI
-    url: openapi/creatoriq-v2-publishers-openapi.yml
+    url: openapi/creatoriq-brandsafety-api-openapi.yml
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
-- name: CreatorIQ Campaign APIs
-  description: >-
-    Create and manage campaigns, campaign publishers and their status, campaign activity, expenses,
-    brands and advertiser information.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-campaign-api
+  name: CreatorIQ Campaign API
+  description: Campaign information
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
-  - Campaign Management
-  - Influencer Marketing
-  tags_raw:
-  - campaign-management
-  - influencer-marketing
+  - Campaign
   properties:
   - type: OpenAPI
-    url: openapi/creatoriq-campaigns-openapi.yml
+    url: openapi/creatoriq-campaign-api-openapi.yml
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
-- name: CreatorIQ CRM Campaigns API V2
-  description: >-
-    Version 2 brands surface — list, retrieve and search the brands attached to campaigns.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-campaign-conversion-metrics-api
+  name: CreatorIQ Campaign Conversion Metrics API
+  description: Campaign Conversion Metrics
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
-  - Campaign Management
-  - Brands
-  tags_raw:
-  - campaign-management
-  - brands
+  - Campaign Conversion Metrics
   properties:
   - type: OpenAPI
-    url: openapi/creatoriq-v2-campaigns-openapi.yml
+    url: openapi/creatoriq-campaign-conversion-metrics-api-openapi.yml
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
-- name: CreatorIQ Reporting APIs
-  description: >-
-    Asynchronous reporting surface exposing forty report views over campaigns, campaign posts, top
-    influencers, videos, per-network breakdowns, audience data and creator-linked account metrics.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-cj-api
+  name: CreatorIQ CJ API
+  description: CJ reports
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
-  - Reporting
-  - Social Analytics
-  tags_raw:
-  - reporting
-  - social-analytics
+  - CJ
   properties:
   - type: OpenAPI
-    url: openapi/creatoriq-reports-openapi.yml
+    url: openapi/creatoriq-cj-api-openapi.yml
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
-- name: CreatorIQ Social Account APIs
-  description: >-
-    Look up social accounts and posts by link or handle across Instagram, TikTok and YouTube, retrieve
-    account history and Instagram stories history.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-creator-payment-info-api
+  name: CreatorIQ Creator Payment Info API
+  description: Creator payment-info collection status
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
-  - Social-Media
-  - Social Analytics
-  tags_raw:
-  - social-media
-  - social-analytics
+  - Creator Payment Info
   properties:
   - type: OpenAPI
-    url: openapi/creatoriq-socials-openapi.yml
+    url: openapi/creatoriq-creator-payment-info-api-openapi.yml
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
-- name: CreatorIQ CRM Lists API
-  description: >-
-    Create, update and delete lists of creators and add or remove publishers from a list.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
-  baseURL: https://apis.creatoriq.com
-  tags:
-  - creator-crm
-  - List
-  tags_raw:
-  - creator-crm
-  - lists
-  properties:
-  - type: OpenAPI
-    url: openapi/creatoriq-lists-openapi.yml
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
-- name: CreatorIQ CRM Onesheets API
-  description: >-
-    Create, publish and manage One-Sheets — shareable creator pitch sheets — including adding
-    publishers, comments, approvals and rejections.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
-  baseURL: https://apis.creatoriq.com
-  tags:
-  - creator-crm
-  - onesheets
-  properties:
-  - type: OpenAPI
-    url: openapi/creatoriq-onesheets-openapi.yml
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
-- name: CreatorIQ CRM Notes API
-  description: >-
-    Attach and retrieve notes against CRM entities and their dimensions.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
-  baseURL: https://apis.creatoriq.com
-  tags:
-  - creator-crm
-  - Notes
-  tags_raw:
-  - creator-crm
-  - notes
-  properties:
-  - type: OpenAPI
-    url: openapi/creatoriq-notes-openapi.yml
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
-- name: CreatorIQ Divisions APIs
-  description: >-
-    List and retrieve the divisions of a partner account — the tenancy boundary that division-level
-    API keys and webhook subscriptions are scoped to.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-divisions-api
+  name: CreatorIQ Divisions API
+  description: Divisions public API
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
   - Divisions
-  - creator-crm
-  tags_raw:
-  - divisions
-  - creator-crm
   properties:
   - type: OpenAPI
-    url: openapi/creatoriq-v1-divisions-openapi.yml
+    url: openapi/creatoriq-divisions-api-openapi.yml
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
-- name: CreatorIQ Ecommerce APIs
-  description: >-
-    Manage promo codes, promo-code integrations, connected ecommerce accounts and read ecommerce
-    transactions attributed to creators.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-ecommerce-api
+  name: CreatorIQ Ecommerce API
+  description: Ecommerce public API
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
-  - E-Commerce
-  - Affiliate Marketing
-  tags_raw:
-  - ecommerce
-  - affiliate-marketing
+  - Ecommerce
   properties:
   - type: OpenAPI
-    url: openapi/creatoriq-ecommerce-openapi.yml
+    url: openapi/creatoriq-ecommerce-api-openapi.yml
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
-- name: CreatorIQ CRM LinkTracking API
-  description: >-
-    Create, list and manage trackable affiliate links used to attribute traffic and conversions to
-    creators.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-general-api
+  name: CreatorIQ General API
+  description: General section of reporting
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
-  - Affiliate Marketing
-  - Link Tracking
-  tags_raw:
-  - affiliate-marketing
-  - link-tracking
+  - General
   properties:
   - type: OpenAPI
-    url: openapi/creatoriq-link-tracking-openapi.yml
+    url: openapi/creatoriq-general-api-openapi.yml
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
-- name: CreatorIQ Conversion Metrics API
-  description: >-
-    Define and read global and per-campaign conversion metrics, including metrics bound to individual
-    tracking links.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-global-conversion-metrics-configuration-api
+  name: CreatorIQ Global Conversion Metrics Configuration API
+  description: Global Conversion Metrics Configuration
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
-  - Affiliate Marketing
-  - Reporting
-  tags_raw:
-  - affiliate-marketing
-  - reporting
+  - Global Conversion Metrics Configuration
   properties:
   - type: OpenAPI
-    url: openapi/creatoriq-conversion-metrics-openapi.yml
+    url: openapi/creatoriq-global-conversion-metrics-configuration-api-openapi.yml
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
-- name: CreatorIQ SafeIQ Brand Safety API
-  description: >-
-    Submit posts for brand-safety analysis and retrieve the resulting scoring for a post.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-linktracking-api
+  name: CreatorIQ Link Tracking API
+  description: LinkTracking public API
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
-  - Brand Safety
-  - Social-Media
-  tags_raw:
-  - brand-safety
-  - social-media
+  - LinkTracking
   properties:
   - type: OpenAPI
-    url: openapi/creatoriq-brand-safety-openapi.yml
+    url: openapi/creatoriq-linktracking-api-openapi.yml
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
-- name: CreatorIQ Brand Safety (draft)
-  description: >-
-    Draft brand-safety check endpoint published alongside SafeIQ, with separate prod, stage and dev
-    server entries.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
-  baseURL: https://apis.creatoriq.com/BrandSafetyProd
-  tags:
-  - Brand Safety
-  tags_raw:
-  - brand-safety
-  properties:
-  - type: OpenAPI
-    url: openapi/creatoriq-brand-safety-draft-openapi.yml
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
-- name: CreatorIQ Payments API
-  description: >-
-    Read creator payouts and payables, and check the payment-information collection status of
-    creators.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-lists-api
+  name: CreatorIQ Lists API
+  description: Lists public API
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
-  - Creator Payments
+  - Lists
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-lists-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-notes-api
+  name: CreatorIQ Notes API
+  description: Notes public API
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - Notes
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-notes-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-onesheet-api
+  name: CreatorIQ Onesheet API
+  description: Onesheets public API
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - Onesheet
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-onesheet-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-payables-api
+  name: CreatorIQ Payables API
+  description: Creator payables
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - Payables
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-payables-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-payouts-api
+  name: CreatorIQ Payouts API
+  description: Creator payouts
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  baseURL: https://apis.creatoriq.com
+  tags:
   - Payouts
-  tags_raw:
-  - creator-payments
-  - payouts
   properties:
   - type: OpenAPI
-    url: openapi/creatoriq-payments-openapi.yml
+    url: openapi/creatoriq-payouts-api-openapi.yml
   - type: Documentation
-    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
-- name: CreatorIQ Webhooks (pub/sub) API
-  description: >-
-    Subscribe to, unsubscribe from and list CreatorIQ event subscriptions. Events cover campaign
-    create/delete/latest-post/payout-paid, creator account link/unlink/update/delete/campaign-added,
-    One-Sheet publish and List 2.0 publish. Callbacks are signed with X-Signature (MD5) and,
-    for ACL-enabled partners, X-Signature-SHA256.
-  humanURL: https://apidocs.creatoriq.com/docs/ciq-api-documentation/6p0j6gzpc6f66-creator-iq-public-ap-is
-  baseURL: https://apis.creatoriq.com/pubsub
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-publisher-api
+  name: CreatorIQ Publisher API
+  description: Publisher public API
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  baseURL: https://apis.creatoriq.com
   tags:
-  - Webhook
-  - Event
-  tags_raw:
-  - webhooks
-  - events
+  - Publisher
   properties:
   - type: OpenAPI
-    url: openapi/creatoriq-webhooks-openapi.yml
+    url: openapi/creatoriq-publisher-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-reporting-api
+  name: CreatorIQ Reporting API
+  description: Reporting
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - Reporting
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-reporting-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-social-api
+  name: CreatorIQ Social API
+  description: Public social API
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - Social
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-social-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
+  - type: Webhooks
+    url: asyncapi/creatoriq-webhooks.yml
+  - type: Documentation
+    url: https://apidocs.creatoriq.com/docs/ciq-api-documentation/052262c05afe6-overview
+- aid: creatoriq:creatoriq-subscription-api
+  name: CreatorIQ Subscription API
+  description: Subscription API part
+  humanURL: >-
+    https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  baseURL: https://apis.creatoriq.com
+  tags:
+  - Subscription
+  properties:
+  - type: OpenAPI
+    url: openapi/creatoriq-subscription-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/550a4dd4b1c4c-creator-iq-crm-publishers-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/23bf95a24efdc-creator-iq-campaign-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/1782008e04401-creator-iq-crm-campaigns-api-v2
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/7e7ec9da4e860-creator-iq-reporting-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/01ce2c98ffb66-creator-iq-social-account-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/eb8bcd088eeca-creator-iq-crm-lists-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/38b54f6883f05-creator-iq-crm-onesheets-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/4959b70086ddd-creator-iq-crm-publishers-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/cd253b6f9f728-creator-iq-divisions-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ff893196191a0-creator-iq-ecommerce-ap-is
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/f8d0b276f1a9d-creator-iq-crm-link-tracking-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/0a94acde695e7-conversion-metrics-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/62c9deaa94659-creator-iq-safe-iq-brand-safety-api
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/ce6e15986dd02-creator-iq-brand-safety-draft
+  - type: Documentation
+    url: >-
+      https://apidocs.creatoriq.com/docs/ciq-api-documentation/2359b1f62de77-creator-iq-payments-api
   - type: Webhooks
     url: asyncapi/creatoriq-webhooks.yml
   - type: Documentation

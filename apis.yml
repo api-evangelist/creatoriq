@@ -13,6 +13,18 @@ description: >-
   list events with MD5 and SHA-256 signed callbacks. Authentication is a single `x-api-key` header
   issued per partner or per division by a CreatorIQ account manager; there is no self-serve signup.
 url: https://raw.githubusercontent.com/api-evangelist/creatoriq/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.creatoriq.com/hubfs/2025%20Rebrading%20Assets%20%3E%20DO%20NOT%20DELETE/Logos/creatorIQ-logo-new.svg
 x-type: company
 x-source: harvest:secondary-market

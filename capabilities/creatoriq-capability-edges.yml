@@ -1,0 +1,27 @@
+slug: creatoriq
+provider: CreatorIQ
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Campaign Conversion Metrics
+  spec_file: creatoriq-campaign-conversion-metrics-api-openapi.yml
+  capability_id: BC-400
+  capability_id_l1: BC-400
+  capability_name: Marketing Management
+  confidence: 0.7
+  evidence: '"Enhance attribution & reporting: Map conversion events (e.g., purchases, sign-ups) to specific
+    creators, campaigns, and links to improve performance insights"'
+  reason: Operations upsert and retrieve conversion metrics against campaign tracking links, creators
+    and posts — this is influencer-campaign performance measurement and attribution, i.e. marketing management.
+    Sub-capability is ambiguous between digital marketing and marketing operations measurement, so only
+    the L1 is asserted.

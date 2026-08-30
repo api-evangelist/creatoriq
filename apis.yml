@@ -32,16 +32,16 @@ specificationVersion: '0.23'
 created: '2026-08-11'
 modified: '2026-08-11'
 tags:
-- Influencer Marketing
-- Creator Economy
-- Social-Media
+- influencer-marketing
+- creator-economy
+- social-media
 - Marketing
-- Campaign Management
+- campaign-management
 - creator-crm
-- Social Analytics
-- Brand Safety
-- Affiliate Marketing
-- Creator Payments
+- social-analytics
+- brand-safety
+- affiliate-marketing
+- creator-payments
 - E-Commerce
 - Reporting
 - Webhook
@@ -130,6 +130,8 @@ apis:
     https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
+  - Brand Safety
+  tags_raw:
   - BrandSafety
   properties:
   - type: OpenAPI
@@ -508,6 +510,8 @@ apis:
     https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
+  - E-Commerce
+  tags_raw:
   - Ecommerce
   properties:
   - type: OpenAPI
@@ -570,7 +574,8 @@ apis:
   humanURL: >-
     https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
-  tags:
+  tags: []
+  tags_raw:
   - General
   properties:
   - type: OpenAPI
@@ -760,6 +765,8 @@ apis:
     https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
+  - List
+  tags_raw:
   - Lists
   properties:
   - type: OpenAPI
@@ -1075,6 +1082,8 @@ apis:
     https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api
   baseURL: https://apis.creatoriq.com
   tags:
+  - Publishers
+  tags_raw:
   - Publisher
   properties:
   - type: OpenAPI

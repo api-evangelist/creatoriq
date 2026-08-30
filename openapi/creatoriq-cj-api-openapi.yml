@@ -1,0 +1,1615 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: CreatorIQ Reporting CJ API
+  description: 'This is reporting async API
+
+    '
+  termsOfService: https://www.creatoriq.com/legal/terms-of-use
+  contact:
+    name: CreatorIQ
+    url: https://www.creatoriq.com
+    email: support@creatoriq.com
+  license:
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+    name: Apache 2.0
+servers:
+- url: https://apis.creatoriq.com
+  description: Live
+security:
+- apiKey: []
+tags:
+- name: CJ
+  description: CJ reports
+paths:
+  /crm/v1/api/view?view=Reports/CJAccountsReport:
+    get:
+      tags:
+      - CJ
+      summary: CJ Accounts Report
+      description: CJ Accounts Report
+      operationId: getCJAccountsReport
+      parameters:
+      - $ref: '#/components/parameters/take'
+      - $ref: '#/components/parameters/skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncResponse'
+        Result:
+          $ref: '#/components/responses/CJAccountsReport'
+      security:
+      - apiKey: []
+      servers:
+      - url: https://apis.creatoriq.com
+        description: Live
+components:
+  schemas:
+    commonResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Count of all reports
+          example: 300
+        dataGenerationTime:
+          type: string
+          description: Date when report generated
+          example: '2023-01-20T13:43:47+00:00'
+        cached:
+          type: boolean
+          description: Is view cached or not
+        time:
+          type: number
+          description: Time taken to generate report
+          format: float32
+          example: 0.571
+      required:
+      - count
+      - dataGenerationTime
+      - cached
+      - time
+    CJAccountsReport:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/commonResponse'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              type: object
+              properties:
+                CIQPublisherId:
+                  type: integer
+                  example: 61461
+                CJPublisherId:
+                  type: integer
+                  example: 35435
+                type:
+                  type: string
+                  example: Channel
+                CIQAccountId:
+                  type: integer
+                  example: 35785
+                CJPropertyId:
+                  type: string
+                  example: John Carpenter
+                Channel:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      ChannelId:
+                        type: integer
+                        description: Internal unique Id
+                        format: int32
+                        example: 17982764
+                      ChannelName:
+                        type: string
+                        description: Channel name in Youtube
+                        example: ZendayaVEVO
+                      Channel:
+                        type: string
+                        description: Channel ID in Youtube
+                        example: UCVQ2Z9dNQ2aJJ10f6SgBH0g
+                      Title:
+                        type: string
+                        description: Channel title in Youtube
+                        example: ZendayaVEVO
+                      LogoURL:
+                        type: string
+                        description: Link to logo
+                        example: https://yt3.ggpht.com/ytc/AMLnZu84MgVNNeswv0Vwz4IJzSilI_qQkx1JIRXsqrNvYw=s800-c-k-c0x00ffffff-no-rj-mo
+                      Summary:
+                        type:
+                        - string
+                        - 'null'
+                        default: null
+                      PublisherId:
+                        type: integer
+                        description: Id of publisher which attached to Youtube channel
+                        format: int32
+                        example: 9202903
+                      NetworkId:
+                        type: integer
+                        description: Id of partner
+                        format: int32
+                        example: 141
+                      Category:
+                        type:
+                        - string
+                        - 'null'
+                        description: Category of channel
+                        default: null
+                      Status:
+                        type: string
+                        description: Status of publisher in network
+                        example: Open - In process
+                      DateActivated:
+                        type:
+                        - string
+                        - 'null'
+                        default: null
+                      YTLanguage:
+                        type:
+                        - string
+                        - 'null'
+                        description: Language of youtube channel
+                        example: English
+                      YTGeoRegion:
+                        type: string
+                        example: US
+                      YTGender:
+                        type:
+                        - string
+                        - 'null'
+                        default: null
+                      CustomTag1:
+                        type:
+                        - string
+                        - 'null'
+                        default: null
+                      CustomTag2:
+                        type:
+                        - string
+                        - 'null'
+                        default: null
+                      CustomTag3:
+                        type:
+                        - string
+                        - 'null'
+                        default: null
+                      CustomField1:
+                        type:
+                        - string
+                        - 'null'
+                        default: null
+                      CustomValue1:
+                        type:
+                        - string
+                        - 'null'
+                        default: null
+                      CustomField2:
+                        type:
+                        - string
+                        - 'null'
+                        default: null
+                      CustomValue2:
+                        type:
+                        - string
+                        - 'null'
+                        default: null
+                      CustomField3:
+                        type:
+                        - string
+                        - 'null'
+                        default: null
+                      CustomValue3:
+                        type:
+                        - string
+                        - 'null'
+                        default: null
+                      ContentOwner:
+                        type: string
+                        example: Admin
+                      TotalSubscribers:
+                        type: integer
+                        description: Count of subscribers for this channel
+                        format: int32
+                        example: 1310000
+                      TotalViews:
+                        type: string
+                        description: Count of views channel
+                        example: '390807217'
+                      TotalVideos:
+                        type: integer
+                        description: Count of videos channel
+                        format: int32
+                        example: 35
+                      CreateDateTime:
+                        type: string
+                        description: Date-time when channel created
+                        example: '2014-02-13T03:40:11'
+                      LastUpdated:
+                        type: string
+                        description: Date-time when channel last updated
+                        example: '2014-02-13T03:40:11'
+                      UpdatedBy:
+                        type: string
+                        description: Channel updated by
+                        example: Discovery
+                      NotFound:
+                        type: boolean
+                        description: Is channel not found
+                        example: false
+                      AverageMonthlyViews:
+                        type:
+                        - number
+                        - 'null'
+                        description: Average Monthly Views
+                        example: 125173.49152542
+                      AvgLastViewsPerVideo:
+                        type:
+                        - number
+                        - 'null'
+                        description: Avg Last Views Per Video
+                        example: 125173.49152542
+                      AvgLastCommentsPerVideo:
+                        type:
+                        - number
+                        - 'null'
+                        description: Avg Last Comments Per Video
+                        example: 125173.49152542
+                      AvgLastLikesPerVideo:
+                        type:
+                        - number
+                        - 'null'
+                        description: Avg Last Likes Per Video
+                        example: 125173.49152542
+                      AvgLastDislikesPerVideo:
+                        type:
+                        - number
+                        - 'null'
+                        description: Avg Last Dislikes Per Video
+                        example: 125173.49152542
+                      AvgLastSharesPerVideo:
+                        type:
+                        - number
+                        - 'null'
+                        description: Avg Last Shares Per Video
+                        example: 125173.49152542
+                      AvgLastTwitterSharesPerVideo:
+                        type:
+                        - number
+                        - 'null'
+                        description: Avg Last Twitter Shares Per Video
+                        example: 125173.49152542
+                      StatusChangedManually:
+                        type: boolean
+                        description: Is status changed manually
+                        example: false
+                      TotalLikes:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Total likes
+                        example: 20
+                      TotalDislikes:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Total dislikes
+                        example: 20
+                      TotalComments:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Total comments
+                        example: 20
+                      IncludeInContract:
+                        type: boolean
+                        description: Is include in contract
+                        example: true
+                      Protected:
+                        type: boolean
+                        description: Is protected
+                        example: true
+                      AvgLastPinterestSharesPerVideo:
+                        type:
+                        - number
+                        - 'null'
+                        description: Avg Last Pinterest Shares Per Video
+                        example: 125173.49152542
+                      DateDeActivated:
+                        type:
+                        - string
+                        - 'null'
+                        description: Date-time when channel was deactivated
+                        example: '2014-02-13T03:40:11'
+                      DateStatusChanged:
+                        type:
+                        - string
+                        - 'null'
+                        description: Date-time when status changed
+                        example: '2014-02-13T03:40:11'
+                      LogoHighResURL:
+                        type:
+                        - string
+                        - 'null'
+                        description: Logo url
+                        example: https://yt3.ggpht.com/ytc/AIdro_n0Alr6iBFQwLS24pDhFCmTL1LMUP4XhUc7yI_4-CRKqGo=s88-c-k-c0x00ffffff-no-rj
+                      CreatedBy:
+                        type: string
+                        description: Channel created by
+                        example: John Doe
+                      CreatedAt:
+                        type: string
+                        description: Date-time when channel created at
+                        example: '2014-02-13T03:40:11'
+                      CreatorRole:
+                        type: string
+                        description: Channel creator role
+                        example: Account owner
+                      VerifiedBy:
+                        type:
+                        - string
+                        - 'null'
+                        description: Channel verified by
+                        example: John Doe
+                      LinkedBy:
+                        type:
+                        - string
+                        - 'null'
+                        description: Channel linked by
+                        example: John Doe
+                      LinkedAt:
+                        type:
+                        - string
+                        - 'null'
+                        description: Date-time when channel linked at
+                        example: '2014-02-13T03:40:11'
+                      ApiToken:
+                        type:
+                        - string
+                        - 'null'
+                        description: Api token
+                        example: Br2131243243kmfslekfmekf1432432432kmdmseaedf
+                      isVerifiedBySocialNetwork:
+                        type: integer
+                        enum:
+                        - 0
+                        - 1
+                        description: is Verified By Social Network
+                        example: 1
+                      IsTokenInvalid:
+                        type: integer
+                        enum:
+                        - 0
+                        - 1
+                        description: Is Token Invalid
+                        example: 1
+                      TokenInvalidDate:
+                        type:
+                        - string
+                        - 'null'
+                        description: Date-time when token invalid
+                        example: '2014-02-13T03:40:11'
+                      DateAnalytics:
+                        type:
+                        - string
+                        - 'null'
+                        description: Date-time of analytics
+                        example: '2014-02-13T03:40:11'
+                      NewSocialAccountID:
+                        type: number
+                        description: New social account id
+                        example: -733557
+                      Network:
+                        type: string
+                        description: Network name
+                        example: youtube
+                      SocialNetworkId:
+                        type: string
+                        description: Social network id
+                        example: UCI8AQqkapE9K6pd8aK71B7w
+                      NetworkUser:
+                        type: string
+                        description: Social handle
+                        example: joshdarnit
+                      NumberOfPosts:
+                        type: integer
+                        description: Number of posts
+                        example: 362
+                      DateSocialStatsUpdated:
+                        type:
+                        - string
+                        - 'null'
+                        description: Date-time of social stats updated
+                        example: '2014-02-13T03:40:11'
+                      Contracts:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            description: Contracts type
+                            example: ContractCollection
+                      Linked:
+                        type: integer
+                        enum:
+                        - 0
+                        - 1
+                        description: Is linked
+                        example: 1
+                      Unlinked:
+                        type: integer
+                        enum:
+                        - 0
+                        - 1
+                        description: Is unlinked
+                        example: 1
+                      LinkBroken:
+                        type: integer
+                        enum:
+                        - 0
+                        - 1
+                        description: Is link broken
+                        example: 1
+                      Verified:
+                        type: integer
+                        enum:
+                        - 0
+                        - 1
+                        description: Is Verified
+                        example: 1
+                      Business:
+                        type:
+                        - integer
+                        - 'null'
+                        enum:
+                        - 0
+                        - 1
+                        - null
+                        description: Is Verified
+                        example: 1
+                      SocialEngagement:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SocialEngagement'
+                Social:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      Id:
+                        type: integer
+                        description: Social id
+                        example: 17982764
+                      PublisherId:
+                        type: integer
+                        description: Publisher ID which attached to social account
+                        example: 4630799
+                      Network:
+                        type: string
+                        description: Network name
+                        example: instagram
+                      SocialNetworkId:
+                        type: string
+                        description: Social network id
+                        example: amandamurakamy2
+                      NetworkUser:
+                        type: string
+                        description: Social handle
+                        example: amandamurakamy2
+                      ApiToken:
+                        type:
+                        - string
+                        - 'null'
+                        description: Api token
+                        example: Br2131243243kmfslekfmekf1432432432kmdmseaedf
+                      Followers:
+                        type: string
+                        description: Followers count
+                        example: '10'
+                      DateSocialStatsUpdated:
+                        type:
+                        - string
+                        - 'null'
+                        description: Date-time when social stats updated
+                        example: '2014-02-13T03:40:11'
+                      LastUpdated:
+                        type: string
+                        description: Date-time when social last updated
+                        example: '2014-02-13T03:40:11'
+                      UpdatedBy:
+                        type: string
+                        description: Social updated by
+                        example: Discovery
+                      NotFound:
+                        type: boolean
+                        description: Is social not found
+                        example: false
+                      Protected:
+                        type: boolean
+                        description: Is protected
+                        example: true
+                      NetworkId:
+                        type: integer
+                        description: Id of partner
+                        example: 141
+                      NumberOfPosts:
+                        type: integer
+                        description: Number of posts
+                        example: 362
+                      EngagementPercentage:
+                        type:
+                        - number
+                        - 'null'
+                        description: Engagement Percentage
+                        example: 0.42
+                      TotalComments:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Total comments
+                        example: 20
+                      TotalLikes:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Total likes
+                        example: 20
+                      LastPostDate:
+                        type:
+                        - string
+                        - 'null'
+                        description: Date-time when last post published
+                        example: '2014-02-13T03:40:11'
+                      LogoURL:
+                        type: string
+                        description: Link to logo
+                        example: https://static-resources.creatoriq.com/social-pictures/instagram/thumbnail/amandamurakamy.jpg
+                      ThumbnailURL:
+                        type: string
+                        description: Link to thumbnail
+                        example: https://static-resources.creatoriq.com/social-pictures/instagram/thumbnail/amandamurakamy.jpg
+                      Location:
+                        type:
+                        - string
+                        - 'null'
+                        description: Location name
+                        example: New York
+                      Gender:
+                        type:
+                        - string
+                        - 'null'
+                        description: Gender
+                        default: null
+                      AvgCommentsPerPost:
+                        type:
+                        - number
+                        - 'null'
+                        description: Avg Comments per post
+                        example: 125173.4
+                      AvgLastLikesPerPost:
+                        type:
+                        - number
+                        - 'null'
+                        description: Avg Likes Per Post
+                        example: 125173.4
+                      AvgSharesPerVideo:
+                        type:
+                        - number
+                        - 'null'
+                        description: Avg Shares Per Post
+                        example: 125173.4
+                      TotalViews:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Count of views social
+                        example: 390807217
+                      CreatedBy:
+                        type: string
+                        description: Social created by
+                        example: John Doe
+                      CreatedAt:
+                        type: string
+                        description: Date-time when social created at
+                        example: '2014-02-13T03:40:11'
+                      CreatorRole:
+                        type: string
+                        description: Social creator role
+                        example: Account owner
+                      VerifiedBy:
+                        type:
+                        - string
+                        - 'null'
+                        description: Social verified by
+                        example: John Doe
+                      LinkedBy:
+                        type:
+                        - string
+                        - 'null'
+                        description: Social linked by
+                        example: John Doe
+                      LinkedAt:
+                        type:
+                        - string
+                        - 'null'
+                        description: Date-time when social linked at
+                        example: '2014-02-13T03:40:11'
+                      MonthlyUniqueVisitors:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Number of unique monthly visitors
+                        example: 500
+                      Bio:
+                        type:
+                        - string
+                        - 'null'
+                        description: Description of the social account
+                        example: Sejam bem-vindos!\nUma bagunça organizada
+                      AvgViewsPerVideo:
+                        type:
+                        - number
+                        - 'null'
+                        description: Avg Views Per Post
+                        example: 125173.4
+                      MonthlyVisitors:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Number of monthly visitors
+                        example: 500
+                      AvgTimeSpentOnPost:
+                        type:
+                        - number
+                        - 'null'
+                        description: Avg Time Spent On Post
+                        example: 125173.4
+                      Language:
+                        type:
+                        - string
+                        - 'null'
+                        description: Language
+                        example: EN
+                      NumberFollowing:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Count of following
+                        example: 390807217
+                      FullName:
+                        type: string
+                        description: Full name of account
+                        example: Amanda Murakami
+                      IsTokenInvalid:
+                        type: integer
+                        enum:
+                        - 0
+                        - 1
+                        description: Is Token Invalid
+                        example: 1
+                      WebSessions:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Web sessions count
+                        example: 390807217
+                      PageViews:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Social views count
+                        example: 390807217
+                      ViewsPerSession:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Views per session count
+                        example: 390807217
+                      SessionDuration:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Session duration
+                        example: 390807217
+                      ThreeMonthAverageVisitors:
+                        type:
+                        - number
+                        - 'null'
+                        description: Avg visitors of three month
+                        example: 125173.4
+                      ThreeMonthAverageViewsPerSession:
+                        type:
+                        - number
+                        - 'null'
+                        description: Avg views per session of three month
+                        example: 125173.4
+                      ThreeMonthAverageSessionDuration:
+                        type:
+                        - number
+                        - 'null'
+                        description: Avg session duration of three of three month
+                        example: 125173.4
+                      GaProfile:
+                        type:
+                        - string
+                        - 'null'
+                        description: Ga profile
+                        default: null
+                      IGFBAccessToken:
+                        type:
+                        - string
+                        - 'null'
+                        description: IG FB access token
+                        example: EAAG38GadgKoBACHq9yrqbTiPEaCZCv1ZAYx6gmo1ZCn28ApnlK7AqZA48eNseXV4yXA3AtWxvP9SDkW6eMmzuhypfkdQqaVPZARZAZCTBs47tpJ7Ep2nsC4ff4JJl1InrjRlms8OLaHvVEU0lESUqkKZAhDM3NBUowlRZAKrvCNhatIZCLSHhIa1BbZCG0HPKM3daww2
+                      isVerifiedBySocialNetwork:
+                        type:
+                        - integer
+                        - 'null'
+                        enum:
+                        - 0
+                        - 1
+                        - null
+                        description: is Verified By Social Network
+                        example: 1
+                      IsBusiness:
+                        type:
+                        - integer
+                        - 'null'
+                        enum:
+                        - 0
+                        - 1
+                        - null
+                        description: Is account business
+                        example: 1
+                      TokenInvalidDate:
+                        type:
+                        - string
+                        - 'null'
+                        description: Date-time when token invalid
+                        example: '2014-02-13T03:40:11'
+                      IGFBId:
+                        type:
+                        - string
+                        - 'null'
+                        description: IG FB id
+                        example: '17841401408454960'
+                      Stories:
+                        type:
+                        - string
+                        - 'null'
+                        description: Stories
+                        default: null
+                      StoriesViewCount:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Stories view count
+                        example: 123
+                      NewSocialAccountID:
+                        type: number
+                        description: New social account id
+                        example: -733557
+                      PeakStreamConcurrentViews:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Stream views count
+                        example: 123
+                      AvgStreamConcurrentViews:
+                        type:
+                        - number
+                        - 'null'
+                        description: Stream views count
+                        example: 123.4
+                      Subscribers:
+                        type: integer
+                        description: Count of subscribers for this social
+                        example: 1310000
+                      VideoDuration:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Video duration
+                        example: 213412
+                      EstimatedUniqueStreamViews:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Estimated Unique Stream Views
+                        example: 123
+                      ViewsVideoCount:
+                        type:
+                        - integer
+                        - 'null'
+                        description: Views Video Count
+                        example: 123
+                      Linked:
+                        type: integer
+                        enum:
+                        - 0
+                        - 1
+                        description: is Linked
+                        example: 1
+                      Unlinked:
+                        type: integer
+                        enum:
+                        - 0
+                        - 1
+                        description: is unLinked
+                        example: 1
+                      LinkBroken:
+                        type: integer
+                        enum:
+                        - 0
+                        - 1
+                        description: is Link broken
+                        example: 1
+                      Verified:
+                        type:
+                        - integer
+                        - 'null'
+                        enum:
+                        - 0
+                        - 1
+                        - null
+                        description: Is Verified
+                        example: 1
+                      Business:
+                        type:
+                        - integer
+                        - 'null'
+                        enum:
+                        - 0
+                        - 1
+                        - null
+                        description: Is Verified
+                      WhitelistingExpirationDate:
+                        type:
+                        - string
+                        - 'null'
+                        description: Date-time when whitelisting will be expired
+                        example: '2014-02-13T03:40:11'
+                      VideoInformation:
+                        type: object
+                        properties:
+                          TotalViews:
+                            type:
+                            - integer
+                            - 'null'
+                            description: Count of video views
+                            example: 390807217
+                          TotalVideos:
+                            type:
+                            - integer
+                            - 'null'
+                            description: Count of total videos count
+                            example: 390807217
+                          TotalLikes:
+                            type:
+                            - integer
+                            - 'null'
+                            description: Count of total likes
+                            example: 390807217
+                          TotalShares:
+                            type:
+                            - integer
+                            - 'null'
+                            description: Count of total shares
+                            example: 390807217
+                          TotalViewsOrganic:
+                            type:
+                            - integer
+                            - 'null'
+                            description: Count of total organic views
+                            example: 390807217
+                          TotalViewsPaid:
+                            type:
+                            - integer
+                            - 'null'
+                            description: Count of total paid views
+                            example: 390807217
+                          TotalViewsUnique:
+                            type:
+                            - integer
+                            - 'null'
+                            description: Count of total unique views
+                            example: 390807217
+                          AverageMonthlyViews:
+                            type:
+                            - number
+                            - 'null'
+                            description: Average Monthly Views
+                            example: 123
+                          AvgLastViewsPerVideo:
+                            type:
+                            - number
+                            - 'null'
+                            description: Average last views per video
+                            example: 123
+                          AvgLastCommentsPerVideo:
+                            type:
+                            - number
+                            - 'null'
+                            description: Avg last comments per video
+                            example: 123
+                          AvgLastLikesPerVideo:
+                            type:
+                            - number
+                            - 'null'
+                            description: Avg last likes per video
+                            example: 123
+                          AvgLastSharesPerVideo:
+                            type:
+                            - number
+                            - 'null'
+                            description: Avg last shares per video
+                            example: 123
+                          AvgLastMinutesWatchedPerVideo:
+                            type:
+                            - number
+                            - 'null'
+                            description: Avg last minutes watched per video
+                            example: 123
+                      SocialEngagement:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SocialEngagement'
+              required:
+              - CIQPublisherId
+              - CJPublisherId
+              - type
+              - CIQAccountId
+              - CJPropertyId
+        required:
+        - results
+    SocialEngagement:
+      type: object
+      properties:
+        EngagementRate30Days:
+          type:
+          - string
+          - 'null'
+          example: ''
+        EngagementRate60Days:
+          type:
+          - string
+          - 'null'
+          example: ''
+        EngagementRate90Days:
+          type:
+          - number
+          - 'null'
+          example: 0.0061
+        EngagementRate20Posts:
+          type:
+          - number
+          - 'null'
+          example: 0.0202
+        EngagementRateLifetime:
+          type:
+          - number
+          - 'null'
+          example: 0.007
+        EngagementCalculated:
+          type: string
+          description: Timestamp of the most recent run of the engagement-metrics aggregation job for this account (calculates per-post and rolling-window engagement rates). Driven by its own background job on a different schedule from `LastUpdated` and `DateSocialStatsUpdated`, so the three timestamps can legitimately differ for the same account — some divergence between these timestamps is expected and does not indicate stale data.
+          format: date-time
+          example: '2015-06-26 22:46:50'
+        PostsCount30Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        PostsCount60Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        PostsCount90Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        PostsCountLifetime:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        LastPostDate:
+          type: string
+          description: Unique youtube account id
+          format: date-time
+          example: '2015-06-26 22:46:50'
+        AVV30:
+          type:
+          - integer
+          - 'null'
+          example: 86705
+        AVV60:
+          type:
+          - integer
+          - 'null'
+          example: 86705
+        AVV90:
+          type:
+          - integer
+          - 'null'
+          example: 86705
+        ID:
+          type: number
+          example: 509137
+        AccountSource:
+          type: string
+          example: ''
+        Engagement30Days:
+          type: number
+          example: 86705
+        Engagement60Days:
+          type: number
+          example: 86705
+        Engagement90Days:
+          type: number
+          example: 86705
+        Engagement20Posts:
+          type: number
+          example: 86705
+        EngagementLifetime:
+          type: number
+          example: 86705
+        SharesPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        SharesPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        SharesPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        SharesPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        SharesPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        LikesPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        LikesPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        LikesPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        LikesPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 14233.65
+        LikesPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 3407.2684
+        CommentsPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        CommentsPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        CommentsPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 527
+        CommentsPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 832.55
+        CommentsPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 90.8368
+        ViewsPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 527
+        ViewsPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 527
+        ViewsPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        ViewsPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 747087.15
+        ViewsPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 497148.1421
+        DisLikesPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        DisLikesPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        DisLikesPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        DisLikesPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        DisLikesPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        CloseUpsPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        CloseUpsPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        CloseUpsPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        CloseUpsPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        CloseUpsPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsPerPost30Days:
+          type:
+          - string
+          - 'null'
+          example: ''
+        ImpressionsPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachRate30days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachRate60days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachRate90days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachRate20posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachRateLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerVideo30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerVideo60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerVideo90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerVideo20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerVideoLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerVideo30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerVideo60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerVideo90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerVideo20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerVideoLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsRate30days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsRate60days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsRate90days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsRate20posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsRatelifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachPerPost30days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachPerPost60days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachPerPost90days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachPerPost20posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachPerPostlifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamPeakViews30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamPeakViews60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamPeakViews90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamPeakViews20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamAverageViews30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamAverageViews60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamAverageViews90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamAverageViews20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        IsHiddenLike30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        IsHiddenLike60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        IsHiddenLike90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        IsHiddenLike20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        MedianViews20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+    generalSchema:
+      type: object
+      properties:
+        TaskId:
+          type: string
+          description: Unique id of report
+          example: 79985e5d-8871-4f38-be44-605d58f90bd9
+        TaskStatus:
+          type: string
+          enum:
+          - CREATED
+          - PROCESSING
+          - DONE
+          description: "Status of request. \n* CREATED: represents of new created report\n* PROCESSING: your report is progress \n* DONE: your report is ready. Result present in  **Result => Headers => Location URL**\n"
+        CreatedAtTS:
+          type: integer
+          description: Timestamp when task is created in seconds
+          example: 1674135497
+        UpdatedAtTS:
+          type: integer
+          description: Timestamp when task is updated in seconds
+          example: 1674135497
+        ExpiresAtTS:
+          type: integer
+          description: Timestamp when task is expired in seconds.
+          example: 1674136497
+        CreatedAt:
+          type: string
+          description: Date which task created in human readable format
+          example: 2023-01-19T13:38:17+0000
+        UpdatedAt:
+          type: string
+          description: Date which task updated in human readable format
+          example: 2023-01-19T13:38:17+0000
+        ExpiredAt:
+          type: string
+          description: Date which task updated in human readable format
+          example: 2023-01-19T13:38:17+0000
+        Metadata:
+          type: object
+          properties:
+            PartnerId:
+              type: integer
+              example: 21
+            Gri:
+              type: object
+              description: Used for logging
+            ValidUntil:
+              type: string
+              example: 2023-01-19T14:08:16+0000
+            ValidUntilTS:
+              type: integer
+              example: 1674137296
+        Result:
+          type: object
+          oneOf:
+          - type: object
+            description: If your object ready you fetch you receive 302 result
+            properties:
+              Status:
+                type: integer
+                description: Http status of response
+                example: 302
+              Body:
+                type: string
+                description: Empty string represents body of response.
+                example: ''
+              Headers:
+                type: object
+                properties:
+                  Cache-Control:
+                    type: string
+                    example: max-age=7200
+                  Date:
+                    type: string
+                    example: Thu, 19 Jan 2023 13:39:22 +0000
+                  Location:
+                    type: string
+                    description: Most important field! Result location of data
+                    readOnly: true
+                    example: https://ciq-api-async-results-data.s3.us-west-1.amazonaws.com/creatoriq-live/report.json
+                required:
+                - Location
+            required:
+            - Status
+            - Headers
+          - type: object
+            description: If your report not ready empty object
+      required:
+      - TaskId
+      - TaskStatus
+      - CreatedAtTS
+      - UpdatedAtTS
+      - ExpiresAtTS
+      - CreatedAt
+      - UpdatedAt
+      - ExpiredAt
+      - Result
+  parameters:
+    skip:
+      name: requestData[skip]
+      in: query
+      description: Number of rows to skip
+      schema:
+        type: integer
+        example: 0
+      examples:
+        default:
+          value: 0
+    take:
+      name: requestData[take]
+      in: query
+      description: Number of rows to fetch
+      required: true
+      schema:
+        type: integer
+        example: 20
+      examples:
+        default:
+          value: 20
+  responses:
+    CJAccountsReport:
+      description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CJAccountsReport'
+    asyncResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/generalSchema'
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header

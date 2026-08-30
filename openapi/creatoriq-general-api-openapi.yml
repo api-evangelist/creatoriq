@@ -1,0 +1,1857 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: CreatorIQ Reporting General API
+  description: 'This is reporting async API
+
+    '
+  termsOfService: https://www.creatoriq.com/legal/terms-of-use
+  contact:
+    name: CreatorIQ
+    url: https://www.creatoriq.com
+    email: support@creatoriq.com
+  license:
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+    name: Apache 2.0
+servers:
+- url: https://apis.creatoriq.com
+  description: Live
+security:
+- apiKey: []
+tags:
+- name: General
+  description: General section of reporting
+paths:
+  /crm/v1/api/view?view=Reports/Channels:
+    get:
+      tags:
+      - General
+      summary: YouTube Channel Report
+      description: YouTube channel report for all publishers in the CRM
+      operationId: getYoutubeChannelReport
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncResponse'
+        Result:
+          $ref: '#/components/responses/channelReport'
+      security:
+      - apiKey: []
+      servers:
+      - url: https://apis.creatoriq.com
+        description: Live
+  /crm/v1/api/view?view=Reports/CreatorContactInfo:
+    get:
+      tags:
+      - General
+      summary: Get Creator Contact Info Report
+      description: Fetch Creator Contacts
+      operationId: getCreatorContactInfoReport
+      parameters:
+      - $ref: '#/components/parameters/dir'
+      - $ref: '#/components/parameters/take'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/section'
+      - name: requestData[sort][0][field]
+        in: query
+        description: Field for sorting
+        schema:
+          type: string
+          enum:
+          - PublisherId
+          - PublisherName
+          example: PublisherId
+        examples:
+          default:
+            value: PublisherId
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncResponse'
+        Result:
+          $ref: '#/components/responses/creatorContactInfoReport'
+      security:
+      - apiKey: []
+      servers:
+      - url: https://apis.creatoriq.com
+        description: Live
+  /crm/v1/api/view?view=Reports/ImportTemplateReport:
+    get:
+      tags:
+      - General
+      summary: Get Import Template Report
+      description: Import template containing creator information including social handles, name and ID for all creators in the CRM
+      operationId: getImportTemplateReport
+      parameters:
+      - $ref: '#/components/parameters/dir'
+      - $ref: '#/components/parameters/take'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/section'
+      - name: requestData[sort][0][field]
+        in: query
+        description: Field for sorting
+        schema:
+          type: string
+          enum:
+          - PublisherName
+          example: PublisherName
+        examples:
+          default:
+            value: PublisherName
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncResponse'
+        Result:
+          $ref: '#/components/responses/importTemplateReport'
+      security:
+      - apiKey: []
+      servers:
+      - url: https://apis.creatoriq.com
+        description: Live
+  /crm/v1/api/view?view=Reports/DailyCampaignPosts:
+    get:
+      tags:
+      - General
+      summary: Get Daily Campaign Posts Report
+      description: Fetch Daily Campaign Posts
+      operationId: getDailyCampaignPosts
+      parameters:
+      - $ref: '#/components/parameters/dir'
+      - $ref: '#/components/parameters/take'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/section'
+      - name: requestData[sort][0][field]
+        in: query
+        description: Field for sorting
+        schema:
+          type: string
+          enum:
+          - campaignId
+          example: campaignId
+        examples:
+          default:
+            value: campaignId
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncResponse'
+        Result:
+          $ref: '#/components/responses/dailyCampaignPosts'
+      security:
+      - apiKey: []
+      servers:
+      - url: https://apis.creatoriq.com
+        description: Live
+  /crm/v1/api/view?view=Reports/CreatorPromoteReport:
+    get:
+      tags:
+      - General
+      summary: Get Creator Promote Report
+      description: Fetch Creator Promote
+      operationId: getCreatorPromote
+      parameters:
+      - $ref: '#/components/parameters/dir'
+      - $ref: '#/components/parameters/take'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/section'
+      - name: requestData[sort][0][field]
+        in: query
+        description: Field for sorting
+        schema:
+          type: string
+          enum:
+          - DatePermissionsGranted
+          - PublisherName
+          - PublisherId
+          - SocialNetwork
+          example: DatePermissionsGranted
+        examples:
+          default:
+            value: DatePermissionsGranted
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncResponse'
+        Result:
+          $ref: '#/components/responses/creatorPromote'
+      security:
+      - apiKey: []
+      servers:
+      - url: https://apis.creatoriq.com
+        description: Live
+  /crm/v1/api/view?view=Reports/CreatorsReport:
+    get:
+      tags:
+      - General
+      summary: Get Creators Report
+      description: Fetch report about creators
+      operationId: getCreatorsReport
+      parameters:
+      - $ref: '#/components/parameters/dir'
+      - $ref: '#/components/parameters/take'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/section'
+      - name: requestData[sort][0][field]
+        in: query
+        description: Field for sorting
+        schema:
+          type: string
+          enum:
+          - publisherid
+          - publishername
+          example: publisherid
+        examples:
+          default:
+            value: publisherid
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncResponse'
+        Result:
+          $ref: '#/components/responses/creatorsReport'
+      security:
+      - apiKey: []
+      servers:
+      - url: https://apis.creatoriq.com
+        description: Live
+  /crm/v1/api/view?view=Reports/CreatorConnectCreators:
+    get:
+      tags:
+      - General
+      summary: Get Creator Connect Report
+      description: Fetch report for all the creators in the CRM that were added via Creator Connect
+      operationId: getCreatorConnect
+      parameters:
+      - $ref: '#/components/parameters/dir'
+      - $ref: '#/components/parameters/take'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/section'
+      - name: requestData[sort][0][field]
+        in: query
+        description: Field for sorting
+        schema:
+          type: string
+          enum:
+          - PublisherName
+          - PublisherId
+          - SocialNetwork
+          example: PublisherId
+        examples:
+          default:
+            value: PublisherId
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncResponse'
+        Result:
+          $ref: '#/components/responses/creatorConnect'
+      security:
+      - apiKey: []
+      servers:
+      - url: https://apis.creatoriq.com
+        description: Live
+  /crm/v1/api/view?view=Reports/Publishers:
+    get:
+      tags:
+      - General
+      summary: Get Publishers Report
+      description: Fetch Publishers
+      operationId: getPublishersList
+      parameters:
+      - $ref: '#/components/parameters/dir'
+      - $ref: '#/components/parameters/take'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/section'
+      - name: requestData[sort][0][field]
+        in: query
+        description: Field for sorting
+        schema:
+          type: string
+          enum:
+          - PublisherName
+          - PublisherId
+          - SocialNetwork
+          example: PublisherId
+        examples:
+          default:
+            value: PublisherId
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncResponse'
+        Result:
+          $ref: '#/components/responses/publishersList'
+      security:
+      - apiKey: []
+      servers:
+      - url: https://apis.creatoriq.com
+        description: Live
+components:
+  responses:
+    creatorPromote:
+      description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/creatorPromote'
+    dailyCampaignPosts:
+      description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/dailyCampaignPosts'
+    importTemplateReport:
+      description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/importTemplateReport'
+    asyncResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/generalSchema'
+    creatorsReport:
+      description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/creatorsReport'
+    channelReport:
+      description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/channelReport'
+    creatorConnect:
+      description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/creatorConnect'
+    publishersList:
+      description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/publishersList'
+    creatorContactInfoReport:
+      description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/creatorContactInfoReport'
+  schemas:
+    publishersList:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/commonResponse'
+      - type: object
+        properties:
+          results:
+            type: array
+            minItems: 1
+            items:
+              type: object
+              properties:
+                PublisherId:
+                  type: integer
+                  example: 572571
+                LogoURL:
+                  type: string
+                  description: Publisher Logo URL
+                  format: URI
+                  example: https://social-pictures-storage.s3.amazonaws.com/medium_f60bb277b588e9dc652f2abe8197864457257.jpeg
+                ThumbLogoURL:
+                  type: string
+                  description: Publisher Logo URL with reduced size
+                  format: URI
+                  example: https://social-pictures-storage.s3.amazonaws.com/thumb_f60bb277b588e9dc652f2abe8197864457257.jpeg
+                PublisherName:
+                  type: string
+                  example: John Doe
+                Email:
+                  type:
+                  - string
+                  - 'null'
+                  format: email
+                  example: john.doe@example.com
+                FlagshipProperty:
+                  type:
+                  - string
+                  - 'null'
+                  description: Main social account handle of publisher
+                  example: '@johndoe22222'
+                FlagshipPropertyTitle:
+                  type:
+                  - string
+                  - 'null'
+                  description: Title of main social account in publisher
+                  example: '@johndoe22222'
+                FlagshipSocialNetwork:
+                  type:
+                  - string
+                  - 'null'
+                  enum:
+                  - youtube
+                  - twitter
+                  - facebook
+                  - instagram
+                  - google
+                  - vine
+                  - weibo
+                  - line
+                  - tiktok
+                  - twitch
+                  - tumblr
+                  - pinterest
+                  - snapchat
+                  - linkedin
+                  - reddit
+                  - web
+                  - blog
+                  - null
+                  description: Main social network for publisher
+                  example: youtube
+                SocialAccountsList:
+                  type:
+                  - string
+                  - 'null'
+                  description: XML representation of publisher's Social Accounts
+                  example: <row xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Network>instagram</Network><SocialNetworkId>103892434426157</SocialNetworkId><NetworkUser>john.doe.ig</NetworkUser><AccountWeight>10</AccountWeight><WebReach>0</WebReach><Title>john.doe.ig</Title><Followers>14</Followers><LinkedBy>John Doe</LinkedBy><LinkedAt>2022-07-18T13:28:34</LinkedAt><isVerifiedBySocialNetwork>0</isVerifiedBySocialNetwork><Linked>0</Linked><Unlinked>0</Unlinked><LinkBroken>1</LinkBroken><Business>0</Business><TokenInvalidDate>2022-10-20T08:44:24.147</TokenInvalidDate><DateSocialStatsUpdated>2023-03-01T16:35:33</DateSocialStatsUpdated><WhitelistingExpirationDate xsi:nil="true"/></row>
+                YT_Subscribers:
+                  type: integer
+                  example: 7572
+                YT_AverageMonthlyViews:
+                  type: number
+                  example: 4365757257.72725
+                Status:
+                  type: string
+                  example: Open
+                StatusCategory:
+                  type: string
+                  example: In process
+              required:
+              - PublisherId
+        required:
+        - results
+    creatorsReport:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/commonResponse'
+      - type: object
+        properties:
+          results:
+            type: array
+            description: 'Depending on the partner, the report may contain different set of properties.
+
+              '
+            minItems: 1
+            items:
+              type: object
+              properties:
+                average_facebook_post_engagement_rate:
+                  type:
+                  - number
+                  - 'null'
+                  example: 0.2345
+                average_facebook_post_engagements_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 567.89
+                average_facebook_post_impressions_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 2345.67
+                average_facebook_post_reach_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 890.12
+                average_instagram_post_engagement_rate:
+                  type:
+                  - number
+                  - 'null'
+                  example: 0.1234
+                average_instagram_post_engagements_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 456.78
+                average_instagram_post_impressions_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 1234.56
+                average_instagram_post_reach_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 789.01
+                average_tiktok_post_engagement_rate:
+                  type:
+                  - number
+                  - 'null'
+                  example: 0.4567
+                average_tiktok_post_engagements_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 789.01
+                average_tiktok_post_impressions_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 4567.89
+                average_tiktok_post_reach_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 123.45
+                average_twitch_post_engagement_rate:
+                  type:
+                  - number
+                  - 'null'
+                  example: 0.5678
+                average_twitch_post_engagements_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 890.12
+                average_twitch_post_impressions_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 5678.9
+                average_twitch_post_reach_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 234.56
+                average_twitter_post_engagement_rate:
+                  type:
+                  - number
+                  - 'null'
+                  example: 0.6789
+                average_twitter_post_engagements_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 901.23
+                average_twitter_post_impressions_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 6789.01
+                average_twitter_post_reach_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 345.67
+                average_youtube_post_engagement_rate:
+                  type:
+                  - number
+                  - 'null'
+                  example: 0.3456
+                average_youtube_post_engagements_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 678.9
+                average_youtube_post_impressions_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 3456.78
+                average_youtube_post_reach_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 901.23
+                count_of_facebook_posts_within_date_range:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 3
+                count_of_instagram_posts_within_date_range:
+                  type: integer
+                  example: 5
+                count_of_tiktok_posts_within_date_range:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 4
+                count_of_twitch_posts_within_date_range:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 6
+                count_of_twitter_posts_within_date_range:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 7
+                count_of_youtube_posts_within_date_range:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 2
+                creator_city:
+                  type:
+                  - string
+                  - 'null'
+                  example: Los Angeles
+                creator_country:
+                  type: string
+                  example: United States
+                creator_primary_social_platform:
+                  type: string
+                  example: instagram
+                creator_primary_social_title:
+                  type:
+                  - string
+                  - 'null'
+                  example: '@johndoe22222'
+                creator_state:
+                  type:
+                  - string
+                  - 'null'
+                  example: California
+                crm_email:
+                  type:
+                  - string
+                  - 'null'
+                  description: 'This property may be missing for some partners.
+
+                    '
+                  format: email
+                  example: john.doe@mail.com
+                json_of_associated_social_handles:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties:
+                      type: string
+                      example: azevedoja
+                  example:
+                  - instagram: azevedoja
+                  - twitter: azevedoja
+                disco_emails:
+                  type:
+                  - string
+                  - 'null'
+                  description: 'This property may be missing for some partners.
+
+                    '
+                  example: john.doe@mail.com,jane.doe@mail.com
+                primary_audience_interest_category:
+                  type:
+                  - string
+                  - 'null'
+                  example: Beauty
+                primary_creator_category:
+                  type:
+                  - string
+                  - 'null'
+                  example: Fashion
+                primary_creator_travel_affinity_city:
+                  type:
+                  - string
+                  - 'null'
+                  example: New York
+                publisherid:
+                  type: integer
+                  example: 72537585
+                publishername:
+                  type: string
+                  example: John Doe
+                secondary_audience_interest_category:
+                  type:
+                  - string
+                  - 'null'
+                  example: Travel
+                secondary_creator_category:
+                  type:
+                  - string
+                  - 'null'
+                  example: Lifestyle
+                secondary_creator_travel_affinity_city:
+                  type:
+                  - string
+                  - 'null'
+                  example: Los Angeles
+                tags:
+                  type:
+                  - string
+                  - 'null'
+                  example: '"Science & Technology","News"'
+                total_facebook_fans:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 2345678
+                total_instagram_followers:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 1234567
+                total_tiktok_followers:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 4567890
+                total_twitch_subscribers:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 5678901
+                total_twitter_followers:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 4567890
+                total_youtube_subscribers:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 3456789
+        required:
+        - results
+    commonResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Count of all reports
+          example: 300
+        dataGenerationTime:
+          type: string
+          description: Date when report generated
+          example: '2023-01-20T13:43:47+00:00'
+        cached:
+          type: boolean
+          description: Is view cached or not
+        time:
+          type: number
+          description: Time taken to generate report
+          format: float32
+          example: 0.571
+      required:
+      - count
+      - dataGenerationTime
+      - cached
+      - time
+    importTemplateReport:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/commonResponse'
+      - type: object
+        properties:
+          results:
+            type: array
+            minItems: 1
+            items:
+              type: object
+              properties:
+                PublisherId:
+                  type: integer
+                  example: 4234940
+                PublisherName:
+                  type: string
+                  example: therock
+                Status:
+                  type: string
+                  example: Open
+                LogoURL:
+                  type: string
+                  description: Publisher Logo URL
+                  format: URI
+                  example: https://url.to/logoUrl.png
+                IG_Handle:
+                  type:
+                  - string
+                  - 'null'
+                  example: dfghg
+                TW_Handle:
+                  type:
+                  - string
+                  - 'null'
+                  example: jstgj
+                FB_Handle:
+                  type:
+                  - string
+                  - 'null'
+                  example: asetsah
+                PN_Handle:
+                  type:
+                  - string
+                  - 'null'
+                  example: tebf
+                Tumblr_Handle:
+                  type:
+                  - string
+                  - 'null'
+                  example: ssg
+                WEB_Handle:
+                  type:
+                  - string
+                  - 'null'
+                  example: juwaryas
+                SP_Handle:
+                  type:
+                  - string
+                  - 'null'
+                  example: asdtyterusrz
+                Channel:
+                  type:
+                  - string
+                  - 'null'
+                  example: waeuias
+                DateOfBirth:
+                  type:
+                  - string
+                  - 'null'
+                  example: '1995-05-19'
+                Gender:
+                  type:
+                  - string
+                  - 'null'
+                  example: Female
+                LANGUAGE:
+                  type:
+                  - string
+                  - 'null'
+                  example: Czech, Korean, English
+                Description:
+                  type:
+                  - string
+                  - 'null'
+                  example: Some description
+                SubNetworkName:
+                  type:
+                  - string
+                  - 'null'
+                  example: test
+                OutsideManagerName:
+                  type:
+                  - string
+                  - 'null'
+                  example: Melissa
+                CustomValue1:
+                  type:
+                  - string
+                  - 'null'
+                  example: ''
+                CustomValue2:
+                  type:
+                  - string
+                  - 'null'
+                  example: ''
+                CustomValue3:
+                  type:
+                  - string
+                  - 'null'
+                  example: ''
+                CustomValue4:
+                  type:
+                  - string
+                  - 'null'
+                  example: ''
+                CustomValue5:
+                  type:
+                  - string
+                  - 'null'
+                  example: ''
+                AccountManagerName:
+                  type:
+                  - string
+                  - 'null'
+                  example: Mike
+                Category:
+                  type:
+                  - string
+                  - 'null'
+                  example: Politics, News & Journalism
+                Tags:
+                  type:
+                  - string
+                  - 'null'
+                  example: '"World","Action","and","Reaction","News"'
+                Email:
+                  type:
+                  - string
+                  - 'null'
+                  example: test@example.com
+                StatusCategory:
+                  type:
+                  - string
+                  - 'null'
+                  example: In process
+                PhoneNumber1:
+                  type:
+                  - string
+                  - 'null'
+                  example: 099999999999
+                StreetAddress:
+                  type:
+                  - string
+                  - 'null'
+                  example: jfgsd setah
+                City:
+                  type:
+                  - string
+                  - 'null'
+                  example: City Name
+                State:
+                  type:
+                  - string
+                  - 'null'
+                  example: AL
+                ZipCode:
+                  type:
+                  - string
+                  - 'null'
+                  example: '11111'
+                Country:
+                  type:
+                  - string
+                  - 'null'
+                  example: Albania
+                ManagementCompany:
+                  type:
+                  - string
+                  - 'null'
+                  example: Some Company
+              required:
+              - PublisherId
+        required:
+        - results
+    creatorConnect:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/commonResponse'
+      - type: object
+        properties:
+          results:
+            type: array
+            minItems: 1
+            items:
+              type: object
+              description: 'Depending on the partner, the report may contain different set of properties.
+
+                '
+              properties:
+                Category:
+                  type:
+                  - string
+                  - 'null'
+                  example: '"Science & Technology","News"'
+                CIQId:
+                  type: integer
+                  description: Creator Id in CIQ
+                  example: 52717781
+                City:
+                  type:
+                  - string
+                  - 'null'
+                  example: Los Angeles
+                Country:
+                  type: string
+                  example: United States
+                CustomValue1:
+                  type:
+                  - string
+                  - 'null'
+                  example: 'Children: -  |  Phone Type: -  |  Political Affiliation: -  |  Content Rating: -'
+                CustomValue2:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                CustomValue3:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                CustomValue4:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                CustomValue5:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                CustomValue6:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                CustomValue7:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                CustomValue8:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                CustomValue9:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                CustomValue10:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                CustomValue11:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                CustomValue12:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                CustomValue13:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                CustomValue14:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                CustomValue15:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                CustomValue16:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                CustomValue17:
+                  type:
+                  - string
+                  - 'null'
+                  example: '-'
+                DateJoinedPortal:
+                  type: string
+                  format: date
+                  example: '2022-04-11'
+                DateOfBirth:
+                  type:
+                  - string
+                  - 'null'
+                  format: date
+                  example: '1990-01-01'
+                DateOfBirthFormatted:
+                  type:
+                  - string
+                  - 'null'
+                  description: Date of Birth in MM-DD-YYYY format
+                  example: 12-31-1990
+                DatePublisherStateChanged:
+                  type: string
+                  format: date
+                  example: '2022-04-11'
+                Email:
+                  type:
+                  - string
+                  - 'null'
+                  format: email
+                  example: john.doe@example.com
+                Email1:
+                  type:
+                  - string
+                  - 'null'
+                  format: email
+                  example: john.doe2@example.com
+                EthnicBackground:
+                  type:
+                  - string
+                  - 'null'
+                  example: Hispanic/Latino
+                FlagshipAccountURL:
+                  type:
+                  - string
+                  - 'null'
+                  description: URL of main social account in publisher
+                  format: URI
+                  example: https://www.instagram.com/johndoe22222/
+                FlagshipProperty:
+                  type:
+                  - string
+                  - 'null'
+                  description: Main social account handle of publisher
+                  example: '@johndoe22222'
+                FlagshipPropertyTitle:
+                  type:
+                  - string
+                  - 'null'
+                  description: Title of main social account in publisher
+                  example: '@johndoe22222'
+                FlagshipSocialNetwork:
+                  type:
+                  - string
+                  - 'null'
+                  enum:
+                  - behance
+                  - blog
+                  - broadcast
+                  - douyin
+                  - facebook
+                  - google
+                  - instagram
+                  - line
+                  - linkedin
+                  - musical.ly
+                  - pinterest
+                  - podcast
+                  - reddit
+                  - snapchat
+                  - tiktok
+                  - tumblr
+                  - twitch
+                  - twitter
+                  - web
+                  - weibo
+                  - youtube
+                  - null
+                  description: Main social network for publisher
+                  example: youtube
+                Full Name:
+                  type: string
+                  example: John Doe
+                Gender:
+                  type: string
+                  example: Female
+                LastPortalLoginDate:
+                  type: string
+                  format: date-time
+                  example: '2023-01-23 09:49:57'
+                LastPortalLoginEmail:
+                  type: string
+                  format: email
+                  example: john.doe@example.com
+                LogoURL:
+                  type: string
+                  description: Publisher Logo URL with reduced size
+                  format: URI
+                  example: https://social-pictures-storage.s3.amazonaws.com/thumb_f60bb277b588e9dc652f2abe8197864457257.jpeg
+                NetworkPublisherId:
+                  type: integer
+                  example: 54868825665
+                PhoneNumber:
+                  type:
+                  - string
+                  - 'null'
+                  example: '0111111111111'
+                PublisherId:
+                  type: integer
+                  example: 72537585
+                PublisherName:
+                  type: string
+                  example: John Doe
+                PublisherTags:
+                  type:
+                  - string
+                  - 'null'
+                  example: Tag1,Tag2,Tag3
+                RegistrationStatus:
+                  type: string
+                  example: Complete
+                SocialAccountsList:
+                  type:
+                  - string
+                  - 'null'
+                  description: XML representation of publisher's Social Accounts
+                  example: <row xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Network>instagram</Network><SocialNetworkId>103892434426157</SocialNetworkId><NetworkUser>john.doe.ig</NetworkUser><AccountWeight>10</AccountWeight><WebReach>0</WebReach><Title>john.doe.ig</Title><Followers>14</Followers><LinkedBy>John Doe</LinkedBy><LinkedAt>2022-07-18T13:28:34</LinkedAt><isVerifiedBySocialNetwork>0</isVerifiedBySocialNetwork><Linked>0</Linked><Unlinked>0</Unlinked><LinkBroken>1</LinkBroken><Business>0</Business><TokenInvalidDate>2022-10-20T08:44:24.147</TokenInvalidDate><DateSocialStatsUpdated>2023-03-01T16:35:33</DateSocialStatsUpdated><WhitelistingExpirationDate xsi:nil="true"/></row>
+                State:
+                  type:
+                  - string
+                  - 'null'
+                  example: California
+                Status:
+                  type: string
+                  example: Active
+                StatusCategory:
+                  type: string
+                  example: In Network
+                StreetAddress:
+                  type:
+                  - string
+                  - 'null'
+                  example: Some address
+                StreetAddress2:
+                  type:
+                  - string
+                  - 'null'
+                  example: Some address line 2
+                SubLeadSource:
+                  type:
+                  - string
+                  - 'null'
+                  example: SomeSource
+                TCPPDate:
+                  type:
+                  - string
+                  - 'null'
+                  example: '2022-11-17 15:08:31.0000000 +00:00'
+                ZipCode:
+                  type:
+                  - string
+                  - 'null'
+                  example: '01000'
+        required:
+        - results
+    dailyCampaignPosts:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/commonResponse'
+      - type: object
+        properties:
+          results:
+            type: array
+            minItems: 1
+            items:
+              type: object
+              properties:
+                brand:
+                  type: string
+                  description: Name of the Brand which the Campaign is addressed to
+                  example: Brand name
+                campaign:
+                  type: string
+                  description: Campaign's name
+                  example: Some Campaign
+                campaignid:
+                  type: integer
+                  description: Campaign Id
+                  example: 834527
+                campaigncost:
+                  type:
+                  - number
+                  - 'null'
+                  description: Cost of the whole Campaign
+                  example: 30000.5
+                influencer:
+                  type: string
+                  description: Creator's name
+                  example: John Doe
+                creatorid:
+                  type: integer
+                  description: Creator Id
+                  example: 34624
+                postid:
+                  type: string
+                  description: Post Id
+                  example: gdHWgste9f3
+                permalink:
+                  type: string
+                  description: Permalink to the post
+                  format: URI
+                  example: https://url.to/post
+                platform:
+                  type: string
+                  enum:
+                  - YouTube
+                  - Twitter
+                  - Facebook
+                  - Instagram
+                  - Google
+                  - Vine
+                  - Weibo
+                  - Line
+                  - Tiktok
+                  - Twitch
+                  - Tumblr
+                  - Pinterest
+                  - Snapchat
+                  - Linkedin
+                  - Reddit
+                  - Web
+                  description: Name of Social Network
+                  example: Twitch
+                postformat:
+                  type: string
+                  enum:
+                  - permalink
+                  - story
+                  - image
+                  - reel
+                  - Photo
+                  - video
+                  - tweet
+                  - TiktokPost
+                  - stream
+                  - other
+                  - article
+                  - status
+                  - blog
+                  - short
+                  - link
+                  - carousel
+                  - clip
+                  - post
+                  - text
+                  - Album
+                  description: Type of the post
+                  example: video
+                postdate:
+                  type: string
+                  description: Date of the post
+                  example: '2014-08-31 02:31:29'
+                caption:
+                  type:
+                  - string
+                  - 'null'
+                  description: Post caption
+                  example: some text
+                datedatapulled:
+                  type: string
+                  description: Date of the post last pulled
+                  example: '2016-02-19 00:00:00'
+                impressions:
+                  type:
+                  - integer
+                  - 'null'
+                  description: Impressions
+                  example: 234
+                reach:
+                  type:
+                  - integer
+                  - 'null'
+                  description: Reach
+                  example: 234
+                totalengagements:
+                  type:
+                  - integer
+                  - 'null'
+                  description: Total Engagements
+                  example: 234
+                engagementrate:
+                  type:
+                  - number
+                  - 'null'
+                  description: Engagement rate
+                  example: 1.49
+                followers:
+                  type:
+                  - integer
+                  - 'null'
+                  description: Followers of the Creator
+                  example: 234
+                contentlikes:
+                  type:
+                  - integer
+                  - 'null'
+                  description: Likes count
+                  example: 234
+                comments:
+                  type:
+                  - integer
+                  - 'null'
+                  description: Comments count
+                  example: 234
+                shares:
+                  type:
+                  - integer
+                  - 'null'
+                  description: Shares count
+                  example: 234
+                saved:
+                  type:
+                  - integer
+                  - 'null'
+                  description: Shares count
+                  example: 234
+                videoviews:
+                  type:
+                  - integer
+                  - 'null'
+                  description: Video views count
+                  example: 234
+                clicks:
+                  type:
+                  - integer
+                  - 'null'
+                  description: Clicks count
+                  example: 234
+                socialmediavalue:
+                  type:
+                  - number
+                  - 'null'
+                  description: Social media value
+                  example: 234.12
+                logourl:
+                  type:
+                  - string
+                  - 'null'
+                  description: Creator Logo URL
+                  format: URI
+                  example: https://social-pictures-storage.s3-us-west-1.amazonaws.com/thumbs/instagram-111.jpg
+                daynum:
+                  type: string
+                  description: Date of the post last pulled (duplicate)
+                  example: '2016-02-19 00:00:00'
+                id:
+                  type: integer
+                  description: Post Id in CIQ
+                  example: 5724825
+                pnk_hash:
+                  type:
+                  - string
+                  - 'null'
+                  example: 057a0175c9434a2d1eef6fd1c0a6983b
+              required:
+              - campaignid
+              - creatorid
+              - postid
+        required:
+        - results
+    channelReport:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/commonResponse'
+      - type: object
+        properties:
+          results:
+            type: array
+            minItems: 1
+            items:
+              type: object
+              properties:
+                PublisherId:
+                  type: integer
+                  example: 4234940
+                ChannelId:
+                  type: integer
+                  example: 6327517
+                LogoURL:
+                  type: string
+                  description: Publisher Logo URL
+                  format: URI
+                  example: https://yt3.ggpht.com/ytc/AL5GRJW72viQH8jaCBXPwVgIOXAdGGxgB6_p1Yw2mOkfCA=s88-c-k-c0x00ffffff-no-rj-mo
+                PublisherName:
+                  type: string
+                  example: therock
+                Email:
+                  type: string
+                  format: email
+                  example: channel@gmail.com
+                ChannelName:
+                  type: string
+                  example: TheRock
+                YT_Subscribers:
+                  type: integer
+                  example: 2323232
+                YT_AverageMonthlyViews:
+                  type: integer
+                  example: 232322
+                ChannelStatus:
+                  type: string
+                  enum:
+                  - Active
+                  - Open
+                StatusCategory:
+                  type: string
+                  example: In Network
+                NetworkPublisherId:
+                  type: string
+                  example: '10003967859'
+                Channel:
+                  type: string
+                  example: ChannelTitle
+                ContentOwner:
+                  type: string
+                  example: Movieclips
+              required:
+              - PublisherId
+        required:
+        - results
+    creatorPromote:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/commonResponse'
+      - type: object
+        properties:
+          results:
+            type: array
+            minItems: 1
+            items:
+              type: object
+              properties:
+                CIQId:
+                  type: integer
+                  description: Creator Id in CIQ
+                  example: 52717781
+                PublisherName:
+                  type: string
+                  example: John Doe
+                SocialNetwork:
+                  type: string
+                  enum:
+                  - youtube
+                  - twitter
+                  - facebook
+                  - instagram
+                  - google
+                  - vine
+                  - weibo
+                  - line
+                  - tiktok
+                  - twitch
+                  - tumblr
+                  - pinterest
+                  - snapchat
+                  - linkedin
+                  - reddit
+                  - web
+                  - blog
+                  example: instagram
+                NetworkUser:
+                  type: string
+                  example: john.doe.ig
+                DatePermissionsGranted:
+                  type: string
+                  description: Date of Permissions has been granted for publisher
+                  example: '2023-03-03'
+                AdPermissionExpirationDate:
+                  type: string
+                  example: '2023-04-16'
+                FlagshipSocialNetwork:
+                  type:
+                  - string
+                  - 'null'
+                  enum:
+                  - youtube
+                  - twitter
+                  - facebook
+                  - instagram
+                  - google
+                  - vine
+                  - weibo
+                  - line
+                  - tiktok
+                  - twitch
+                  - tumblr
+                  - pinterest
+                  - snapchat
+                  - linkedin
+                  - reddit
+                  - web
+                  - blog
+                  - null
+                  description: Main social network for publisher
+                  example: facebook
+                FlagshipProperty:
+                  type:
+                  - string
+                  - 'null'
+                  description: Main social account handle of publisher
+                  example: john.doe.fb
+                SocialAccountsList:
+                  type:
+                  - string
+                  - 'null'
+                  description: XML representation of publisher's Social Accounts
+                  example: <row xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Network>instagram</Network><SocialNetworkId>103892434426157</SocialNetworkId><NetworkUser>john.doe.ig</NetworkUser><AccountWeight>10</AccountWeight><WebReach>0</WebReach><Title>john.doe.ig</Title><Followers>14</Followers><LinkedBy>John Doe</LinkedBy><LinkedAt>2022-07-18T13:28:34</LinkedAt><isVerifiedBySocialNetwork>0</isVerifiedBySocialNetwork><Linked>0</Linked><Unlinked>0</Unlinked><LinkBroken>1</LinkBroken><Business>0</Business><TokenInvalidDate>2022-10-20T08:44:24.147</TokenInvalidDate><DateSocialStatsUpdated>2023-03-01T16:35:33</DateSocialStatsUpdated><WhitelistingExpirationDate xsi:nil="true"/></row>
+                LogoURL:
+                  type: string
+                  description: Publisher Logo URL
+                  format: URI
+                  example: https://social-pictures-storage.s3.amazonaws.com/medium_f60bb277b588e9dc652f2abe8197864457257.jpeg
+                PublisherId:
+                  type: integer
+                  example: 72537585
+              required:
+              - PublisherId
+        required:
+        - results
+    generalSchema:
+      type: object
+      properties:
+        TaskId:
+          type: string
+          description: Unique id of report
+          example: 79985e5d-8871-4f38-be44-605d58f90bd9
+        TaskStatus:
+          type: string
+          enum:
+          - CREATED
+          - PROCESSING
+          - DONE
+          description: "Status of request. \n* CREATED: represents of new created report\n* PROCESSING: your report is progress \n* DONE: your report is ready. Result present in  **Result => Headers => Location URL**\n"
+        CreatedAtTS:
+          type: integer
+          description: Timestamp when task is created in seconds
+          example: 1674135497
+        UpdatedAtTS:
+          type: integer
+          description: Timestamp when task is updated in seconds
+          example: 1674135497
+        ExpiresAtTS:
+          type: integer
+          description: Timestamp when task is expired in seconds.
+          example: 1674136497
+        CreatedAt:
+          type: string
+          description: Date which task created in human readable format
+          example: 2023-01-19T13:38:17+0000
+        UpdatedAt:
+          type: string
+          description: Date which task updated in human readable format
+          example: 2023-01-19T13:38:17+0000
+        ExpiredAt:
+          type: string
+          description: Date which task updated in human readable format
+          example: 2023-01-19T13:38:17+0000
+        Metadata:
+          type: object
+          properties:
+            PartnerId:
+              type: integer
+              example: 21
+            Gri:
+              type: object
+              description: Used for logging
+            ValidUntil:
+              type: string
+              example: 2023-01-19T14:08:16+0000
+            ValidUntilTS:
+              type: integer
+              example: 1674137296
+        Result:
+          type: object
+          oneOf:
+          - type: object
+            description: If your object ready you fetch you receive 302 result
+            properties:
+              Status:
+                type: integer
+                description: Http status of response
+                example: 302
+              Body:
+                type: string
+                description: Empty string represents body of response.
+                example: ''
+              Headers:
+                type: object
+                properties:
+                  Cache-Control:
+                    type: string
+                    example: max-age=7200
+                  Date:
+                    type: string
+                    example: Thu, 19 Jan 2023 13:39:22 +0000
+                  Location:
+                    type: string
+                    description: Most important field! Result location of data
+                    readOnly: true
+                    example: https://ciq-api-async-results-data.s3.us-west-1.amazonaws.com/creatoriq-live/report.json
+                required:
+                - Location
+            required:
+            - Status
+            - Headers
+          - type: object
+            description: If your report not ready empty object
+      required:
+      - TaskId
+      - TaskStatus
+      - CreatedAtTS
+      - UpdatedAtTS
+      - ExpiresAtTS
+      - CreatedAt
+      - UpdatedAt
+      - ExpiredAt
+      - Result
+    creatorContactInfoReport:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/commonResponse'
+      - type: object
+        properties:
+          results:
+            type: array
+            minItems: 1
+            items:
+              type: object
+              properties:
+                PublisherId:
+                  type: integer
+                  example: 4234940
+                NetworkPublisherId:
+                  type: integer
+                  example: 4234940
+                LogoURL:
+                  type: string
+                  description: Publisher Logo URL
+                  format: URI
+                  example: https://url.to/logoUrl.png
+                ThumbLogoURL:
+                  type: string
+                  description: Publisher Logo URL with reduced size
+                  format: URI
+                  example: https://url.to/thumbLogoUrl.png
+                PublisherName:
+                  type: string
+                  example: therock
+                FlagshipProperty:
+                  type:
+                  - string
+                  - 'null'
+                  description: Main social account handle of publisher
+                  example: therocker
+                FlagshipPropertyTitle:
+                  type:
+                  - string
+                  - 'null'
+                  description: Title of main social account in publisher
+                  example: therocker
+                FlagshipSocialNetwork:
+                  type:
+                  - string
+                  - 'null'
+                  enum:
+                  - youtube
+                  - twitter
+                  - facebook
+                  - instagram
+                  - google
+                  - vine
+                  - weibo
+                  - line
+                  - tiktok
+                  - twitch
+                  - tumblr
+                  - pinterest
+                  - snapchat
+                  - linkedin
+                  - reddit
+                  - web
+                  - blog
+                  - null
+                  description: Main social network for publisher
+                  example: youtube
+                SocialAccountsList:
+                  type:
+                  - string
+                  - 'null'
+                  description: XML representation of publisher's Social Accounts
+                  example: <row xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Network>youtube</Network><SocialNetworkId>UC4PooiX37Pld1T8J5Sj7tpC</SocialNetworkId><NetworkUser>@therocker</NetworkUser><AccountWeight>12</AccountWeight><WebReach>0</WebReach><Title>Good Mythical Morning</Title><Followers>18100000</Followers><LinkedBy xsi:nil="true"/><LinkedAt xsi:nil="true"/><isVerifiedBySocialNetwork>1</isVerifiedBySocialNetwork><Linked>0</Linked><Unlinked>1</Unlinked><LinkBroken>0</LinkBroken><Business>0</Business><TokenInvalidDate xsi:nil="true"/><DateSocialStatsUpdated>2023-03-02T20:08:00</DateSocialStatsUpdated><WhitelistingExpirationDate xsi:nil="true"/></row>
+                Full Name:
+                  type: string
+                  example: The Rockie Rocker
+                Email:
+                  type:
+                  - string
+                  - 'null'
+                  format: email
+                  example: channel@gmail.com
+                PhoneNumber1:
+                  type:
+                  - string
+                  - 'null'
+                  example: '04444444444'
+                StreetAddress1:
+                  type:
+                  - string
+                  - 'null'
+                  example: afdhsdfhfdhfda
+                StreetAddress2:
+                  type:
+                  - string
+                  - 'null'
+                  example: jfgsd setah
+                City:
+                  type:
+                  - string
+                  - 'null'
+                  example: City Name
+                State:
+                  type:
+                  - string
+                  - 'null'
+                  example: AL
+                ZipCode:
+                  type:
+                  - string
+                  - 'null'
+                  example: '11111'
+                Country:
+                  type:
+                  - string
+                  - 'null'
+                  example: Albania
+                Birthday:
+                  type:
+                  - string
+                  - 'null'
+                  example: '1984-02-27'
+                IsEmailExists:
+                  type:
+                  - string
+                  - 'null'
+                  example: 'Yes'
+              required:
+              - PublisherId
+        required:
+        - results
+  parameters:
+    skip:
+      name: requestData[skip]
+      in: query
+      description: Number of rows to skip
+      schema:
+        type: integer
+        example: 0
+      examples:
+        default:
+          value: 0
+    take:
+      name: requestData[take]
+      in: query
+      description: Number of rows to fetch
+      required: true
+      schema:
+        type: integer
+        example: 20
+      examples:
+        default:
+          value: 20
+    dir:
+      name: requestData[sort][0][dir]
+      in: query
+      description: Sorting
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        example: asc
+      examples:
+        default:
+          value: asc
+    section:
+      name: section
+      in: query
+      description: Default section
+      schema:
+        type: string
+        enum:
+        - default
+        example: default
+      examples:
+        default:
+          value: default
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header

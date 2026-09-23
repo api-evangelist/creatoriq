@@ -4,46 +4,7 @@ info:
   title: CreatorIQ Payments Creator Payment Info API
   description: 'The Payments API exposes read-only access to a partner''s creator payouts,
 
-    payables and creator payment-info collection status. It is the public
-
-    counterpart of the CreatorIQ Payments product and lets integrators reconcile
-
-    payout data, monitor payable statuses and track which creators still need to
-
-    submit their payment information.
-
-
-    ## Key Use Cases:
-
-    - **Reconcile payouts**: Retrieve a paginated list of payouts (creator view) with amounts, statuses and payout dates to reconcile against your own ledger.
-
-    - **Track payables**: List individual payables with their campaign, currency, due/completion dates and current status.
-
-    - **Monitor payment-info collection**: Identify creators whose payment info, tax info or approval is still pending so payouts are not blocked.
-
-
-    ## Authentication
-
-    All requests are authenticated with your API key sent in the `X-API-KEY`
-
-    header. The platform gateway validates the key and implicitly scopes every
-
-    response to the authenticated partner (and division, when the key is
-
-    division-scoped).
-
-
-    ## Pagination
-
-    All endpoints use keyset (cursor) pagination. Send `PageSize`, `Direction`,
-
-    `SortField` and `SortOrder` on the first request, then pass the `EndCursor`
-
-    (forward) or `StartCursor` (backward) returned in `Metadata.Pagination` as the
-
-    `Cursor` value to fetch the next page.
-
-    '
+    payables and creator payment-info collection status.'
   termsOfService: https://www.creatoriq.com/legal/terms-of-use
   contact:
     name: CreatorIQ
@@ -72,9 +33,7 @@ paths:
 
         Payment Info Status report and lets you identify creators whose payouts
 
-        are blocked pending information.
-
-        '
+        are blocked pending information.'
       operationId: getPaymentInfoCollectionStatus
       parameters:
       - $ref: '#/components/parameters/Cursor'
@@ -151,34 +110,64 @@ paths:
       - url: https://apis.creatoriq.com
         description: Live
 components:
-  responses:
-    ForbiddenError:
-      description: Forbidden - the API key is missing, invalid or lacks access.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequestError:
-      description: Bad Request - invalid or missing query parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalServerError:
-      description: Internal Server Error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    Cursor:
+      name: Cursor
+      in: query
+      description: Base64 keyset pagination cursor. Pass the `EndCursor` (forward) or `StartCursor` (backward) from the previous response's `Metadata.Pagination`. Omit on the first request.
+      required: false
+      schema:
+        type: string
+        examples:
+        - cGF5b3V0X2RhdGU7OzEyMzQ1
+      examples:
+        default:
+          value: cGF5b3V0X2RhdGU7OzEyMzQ1
+    PageSize:
+      name: PageSize
+      in: query
+      description: Number of items to return per page. Must be a positive integer, capped at 200.
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        examples:
+        - 50
+      examples:
+        default:
+          value: 50
+    SortOrder:
+      name: SortOrder
+      in: query
+      description: Sort order for the selected `SortField`.
+      required: true
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        examples:
+        - desc
+      examples:
+        default:
+          value: desc
+    Direction:
+      name: Direction
+      in: query
+      description: Pagination direction relative to the supplied cursor.
+      required: true
+      schema:
+        type: string
+        enum:
+        - forward
+        - backward
+        examples:
+        - forward
+      examples:
+        default:
+          value: forward
   schemas:
-    CollectionMetadata:
-      type: object
-      description: Metadata wrapper carrying pagination details.
-      properties:
-        Pagination:
-          $ref: '#/components/schemas/PaginationResponse'
-      required:
-      - Pagination
     PaginationResponse:
       type: object
       description: Keyset pagination metadata.
@@ -218,6 +207,14 @@ components:
       - HasNextPage
       - HasPreviousPage
       - PageSize
+    CollectionMetadata:
+      type: object
+      description: Metadata wrapper carrying pagination details.
+      properties:
+        Pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      required:
+      - Pagination
     CreatorPaymentInfoStatus:
       type: object
       description: Payment-info collection status for a single creator.
@@ -263,6 +260,25 @@ components:
       required:
       - PublisherId
       - PayableStatus
+    ErrorDetail:
+      type: object
+      description: A single error detail entry.
+      properties:
+        Type:
+          type: string
+          description: Detail type.
+          examples:
+          - validation
+        Message:
+          type: string
+          description: Detail message.
+          examples:
+          - PageSize must not exceed 200
+        Context:
+          type: object
+          description: Detail context.
+      required:
+      - Type
     ErrorResponse:
       type: object
       description: Standard error response body.
@@ -287,25 +303,6 @@ components:
           description: Additional error context.
       required:
       - ErrorMessage
-    ErrorDetail:
-      type: object
-      description: A single error detail entry.
-      properties:
-        Type:
-          type: string
-          description: Detail type.
-          examples:
-          - validation
-        Message:
-          type: string
-          description: Detail message.
-          examples:
-          - PageSize must not exceed 200
-        Context:
-          type: object
-          description: Detail context.
-      required:
-      - Type
     CreatorPaymentInfoStatusCollectionResponse:
       type: object
       description: A page of creator payment-info statuses with pagination metadata.
@@ -320,63 +317,25 @@ components:
       required:
       - Data
       - Metadata
-  parameters:
-    SortOrder:
-      name: SortOrder
-      in: query
-      description: Sort order for the selected `SortField`.
-      required: true
-      schema:
-        type: string
-        enum:
-        - asc
-        - desc
-        examples:
-        - desc
-      examples:
-        default:
-          value: desc
-    Cursor:
-      name: Cursor
-      in: query
-      description: Base64 keyset pagination cursor. Pass the `EndCursor` (forward) or `StartCursor` (backward) from the previous response's `Metadata.Pagination`. Omit on the first request.
-      required: false
-      schema:
-        type: string
-        examples:
-        - cGF5b3V0X2RhdGU7OzEyMzQ1
-      examples:
-        default:
-          value: cGF5b3V0X2RhdGU7OzEyMzQ1
-    PageSize:
-      name: PageSize
-      in: query
-      description: Number of items to return per page. Must be a positive integer, capped at 200.
-      required: true
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 200
-        examples:
-        - 50
-      examples:
-        default:
-          value: 50
-    Direction:
-      name: Direction
-      in: query
-      description: Pagination direction relative to the supplied cursor.
-      required: true
-      schema:
-        type: string
-        enum:
-        - forward
-        - backward
-        examples:
-        - forward
-      examples:
-        default:
-          value: forward
+  responses:
+    InternalServerError:
+      description: Internal Server Error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ForbiddenError:
+      description: Forbidden - the API key is missing, invalid or lacks access.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequestError:
+      description: Bad Request - invalid or missing query parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     apiKey:
       type: apiKey

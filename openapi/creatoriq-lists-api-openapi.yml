@@ -77,7 +77,6 @@ paths:
       tags:
       - Lists
       summary: Create Publishers List
-      description: Create Publishers List
       operationId: createList
       requestBody:
         content:
@@ -103,7 +102,6 @@ paths:
       tags:
       - Lists
       summary: Add a Publisher to a List
-      description: Add a Publisher to a List
       operationId: postPublisherToList
       parameters:
       - name: listId
@@ -144,7 +142,6 @@ paths:
       tags:
       - Lists
       summary: Delete a Publisher from a List
-      description: Delete a Publisher from a List
       operationId: deletePublisherFromList
       parameters:
       - name: listId
@@ -186,7 +183,6 @@ paths:
       tags:
       - Lists
       summary: Get a single List
-      description: Get a single List
       operationId: getSingleList
       parameters:
       - name: listId
@@ -216,7 +212,6 @@ paths:
       tags:
       - Lists
       summary: Delete a Publisher List
-      description: Delete a Publisher List
       operationId: deletePublisherList
       parameters:
       - name: listId
@@ -293,61 +288,202 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ListsCollectionModel'
-    CreateListResponse201:
-      description: Create Publishers List - Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ListModel'
-    PublisherList200:
-      description: Delete a Publisher from a List - Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ListModel'
-    SingleList:
-      description: List
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ListModel'
-    '403':
-      description: Access was denied due to the API has insufficient access permissions
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse403'
-    '401':
-      description: Incorrect x-api-key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse401'
-    PublisherList400:
-      description: CoreException
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PublisherList400Model'
-    '404':
-      description: The list hasn't been found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse404'
     ErrorResponse404List:
       description: NotFoundException
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse404'
+    SingleList:
+      description: List
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListModel'
+    '404':
+      description: The list hasn't been found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse404'
+    '401':
+      description: Incorrect x-api-key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse401'
+    '403':
+      description: Access was denied due to the API has insufficient access permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse403'
+    CreateListResponse201:
+      description: Create Publishers List - Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListModel'
     '400':
       description: No input data found (or The name field is required).
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse400'
+    PublisherList200:
+      description: Delete a Publisher from a List - Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListModel'
+    PublisherList400:
+      description: CoreException
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublisherList400Model'
   schemas:
+    ErrorResponse404:
+      type: object
+      description: Exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          example: CoreException
+        CoreException:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              format: int32
+              example: 404
+            message:
+              type: string
+              description: Exception message
+              example: The list hasn't been found
+      required:
+      - type
+    ListsCollectionModel:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - ListsCollection
+          description: Type of Search
+          example: ListsCollection
+        href:
+          type: string
+          description: CreatorIQ API URL to get a collection of lists
+          example: https://apis.creatoriq.com/crm/v1/api/lists
+        count:
+          type: integer
+          description: Number of records in current response
+          example: 20
+        total:
+          type: integer
+          description: Total number of found rows
+          example: 1704
+        page:
+          type: integer
+          description: Current page
+          example: 2
+        ListsCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListInCollection'
+      required:
+      - type
+      - href
+      - count
+      - total
+      - page
+      - ListsCollection
+    ListModel:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - List
+          description: List
+          example: List
+        href:
+          type: string
+          description: CreatorIQ API URL to get a single list
+          example: https://apis.creatoriq.com/crm/v1/api/list/202179
+        List:
+          $ref: '#/components/schemas/ListInCollection'
+      required:
+      - type
+      - href
+      - List
+    PublisherList400Model:
+      type: object
+      description: Exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          example: CoreException
+        CoreException:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              format: int32
+              example: 400
+            message:
+              type: string
+              description: Exception message
+              example: Publisher Id is mandatory!
+      required:
+      - type
+    ErrorResponse400:
+      type: object
+      description: Exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          example: CoreException
+        CoreException:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              format: int32
+              example: 400
+            message:
+              type: string
+              description: Exception message
+              example: No input data found (or The name field is required).
+      required:
+      - type
+    ListInCollection:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type
+          example: List
+        href:
+          type: string
+          description: Href
+          example: https://apis.creatoriq.com/crm/v1/api/list/1
+        List:
+          $ref: '#/components/schemas/ListInCollectionItem'
+      required:
+      - type
+      - href
+      - List
     ListBodyModel:
       type: object
       description: Create (and Update) List Body Model
@@ -467,6 +603,179 @@ components:
           example: true
       required:
       - Name
+    ErrorResponse401:
+      type: object
+      description: Exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          example: CoreException
+        CoreException:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              format: int32
+              example: 401
+            message:
+              type: string
+              description: Exception message
+              example: Incorrect x-api-key
+      required:
+      - type
+    PublishersListBody:
+      type: object
+      properties:
+        PublisherId:
+          type: array
+          description: Unique publishers id array
+          items:
+            type: integer
+            format: int32
+            example: 8082160
+          example:
+          - 8082160
+          - 8082161
+    ErrorResponse403:
+      type: object
+      description: Exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          example: CoreException
+        CoreException:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              format: int32
+              example: 403
+            message:
+              type: string
+              description: Exception message
+              example: Access was denied due to the API has insufficient access permissions
+      required:
+      - type
+    ListInCollectionItem:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: List Id
+          format: int32
+          example: 8
+        Name:
+          type: string
+          description: List Name
+          example: List 3
+        Description:
+          type: string
+          description: List Description
+          example: Test1
+        DivisionId:
+          type:
+          - integer
+          - 'null'
+          description: Division Id
+          format: int32
+          default: null
+          example: 123
+        DivisionName:
+          type:
+          - string
+          - 'null'
+          description: Division Name
+          default: null
+          example: Division Number 1
+        Tags:
+          type:
+          - string
+          - 'null'
+          description: List Tags
+          example: '"IT"'
+        Type:
+          type:
+          - string
+          - 'null'
+          description: List Type
+          example: Some Type
+        Visibility:
+          type:
+          - boolean
+          - 'null'
+          enum:
+          - true
+          - false
+          - null
+          description: List Visibility
+          default: null
+          example: true
+        CreatedAt:
+          type: string
+          description: List Created Time
+          example: '2016-08-16 09:52:28'
+        CreatedBy:
+          type: string
+          description: List Created Person
+          example: John Snow
+        LastUpdated:
+          type: string
+          description: List Last Updated time
+          example: '2017-07-05 14:27:11'
+        UpdatedBy:
+          type:
+          - string
+          - 'null'
+          description: List Updated By
+          example: John Snow
+        Publishers:
+          type: array
+          description: List Publishers (Array with publishers ids)
+          items:
+            oneOf:
+            - type: integer
+              format: int32
+          example:
+          - 311280
+          - 312816
+          - 572313
+          - 572314
+          - 572319
+          - 572320
+          - 572330
+          - 572331
+          - 595106
+        Public:
+          type: boolean
+          description: List Public flag
+          example: true
+        CommentsCount:
+          type: integer
+          description: List Comments Count
+          format: int32
+          example: 0
+      required:
+      - Id
+      - Name
+      - Description
+      - DivisionId
+      - DivisionName
+      - Tags
+      - Type
+      - Visibility
+      - CreatedAt
+      - CreatedBy
+      - LastUpdated
+      - UpdatedBy
+      - Publishers
+      - Public
+      - CommentsCount
     UpdateListBodyModel:
       type: object
       description: Create (and Update) List Body Model
@@ -584,320 +893,6 @@ components:
           default: null
           example: true
       minProperties: 1
-    ListModel:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - List
-          description: List
-          example: List
-        href:
-          type: string
-          description: CreatorIQ API URL to get a single list
-          example: https://apis.creatoriq.com/crm/v1/api/list/202179
-        List:
-          $ref: '#/components/schemas/ListInCollection'
-      required:
-      - type
-      - href
-      - List
-    ErrorResponse400:
-      type: object
-      description: Exception
-      properties:
-        type:
-          type: string
-          description: Exception type
-          example: CoreException
-        CoreException:
-          type: object
-          description: Exception information
-          properties:
-            code:
-              type: integer
-              description: Exception status code
-              format: int32
-              example: 400
-            message:
-              type: string
-              description: Exception message
-              example: No input data found (or The name field is required).
-      required:
-      - type
-    ListInCollection:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Type
-          example: List
-        href:
-          type: string
-          description: Href
-          example: https://apis.creatoriq.com/crm/v1/api/list/1
-        List:
-          $ref: '#/components/schemas/ListInCollectionItem'
-      required:
-      - type
-      - href
-      - List
-    ListsCollectionModel:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - ListsCollection
-          description: Type of Search
-          example: ListsCollection
-        href:
-          type: string
-          description: CreatorIQ API URL to get a collection of lists
-          example: https://apis.creatoriq.com/crm/v1/api/lists
-        count:
-          type: integer
-          description: Number of records in current response
-          example: 20
-        total:
-          type: integer
-          description: Total number of found rows
-          example: 1704
-        page:
-          type: integer
-          description: Current page
-          example: 2
-        ListsCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/ListInCollection'
-      required:
-      - type
-      - href
-      - count
-      - total
-      - page
-      - ListsCollection
-    ListInCollectionItem:
-      type: object
-      properties:
-        Id:
-          type: integer
-          description: List Id
-          format: int32
-          example: 8
-        Name:
-          type: string
-          description: List Name
-          example: List 3
-        Description:
-          type: string
-          description: List Description
-          example: Test1
-        DivisionId:
-          type:
-          - integer
-          - 'null'
-          description: Division Id
-          format: int32
-          default: null
-          example: 123
-        DivisionName:
-          type:
-          - string
-          - 'null'
-          description: Division Name
-          default: null
-          example: Division Number 1
-        Tags:
-          type:
-          - string
-          - 'null'
-          description: List Tags
-          example: '"IT"'
-        Type:
-          type:
-          - string
-          - 'null'
-          description: List Type
-          example: Some Type
-        Visibility:
-          type:
-          - boolean
-          - 'null'
-          enum:
-          - true
-          - false
-          - null
-          description: List Visibility
-          default: null
-          example: true
-        CreatedAt:
-          type: string
-          description: List Created Time
-          example: '2016-08-16 09:52:28'
-        CreatedBy:
-          type: string
-          description: List Created Person
-          example: John Snow
-        LastUpdated:
-          type: string
-          description: List Last Updated time
-          example: '2017-07-05 14:27:11'
-        UpdatedBy:
-          type:
-          - string
-          - 'null'
-          description: List Updated By
-          example: John Snow
-        Publishers:
-          type: array
-          description: List Publishers (Array with publishers ids)
-          items:
-            oneOf:
-            - type: integer
-              format: int32
-          example:
-          - 311280
-          - 312816
-          - 572313
-          - 572314
-          - 572319
-          - 572320
-          - 572330
-          - 572331
-          - 595106
-        Public:
-          type: boolean
-          description: List Public flag
-          example: true
-        CommentsCount:
-          type: integer
-          description: List Comments Count
-          format: int32
-          example: 0
-      required:
-      - Id
-      - Name
-      - Description
-      - DivisionId
-      - DivisionName
-      - Tags
-      - Type
-      - Visibility
-      - CreatedAt
-      - CreatedBy
-      - LastUpdated
-      - UpdatedBy
-      - Publishers
-      - Public
-      - CommentsCount
-    ErrorResponse403:
-      type: object
-      description: Exception
-      properties:
-        type:
-          type: string
-          description: Exception type
-          example: CoreException
-        CoreException:
-          type: object
-          description: Exception information
-          properties:
-            code:
-              type: integer
-              description: Exception status code
-              format: int32
-              example: 403
-            message:
-              type: string
-              description: Exception message
-              example: Access was denied due to the API has insufficient access permissions
-      required:
-      - type
-    ErrorResponse401:
-      type: object
-      description: Exception
-      properties:
-        type:
-          type: string
-          description: Exception type
-          example: CoreException
-        CoreException:
-          type: object
-          description: Exception information
-          properties:
-            code:
-              type: integer
-              description: Exception status code
-              format: int32
-              example: 401
-            message:
-              type: string
-              description: Exception message
-              example: Incorrect x-api-key
-      required:
-      - type
-    PublishersListBody:
-      type: object
-      properties:
-        PublisherId:
-          type: array
-          description: Unique publishers id array
-          items:
-            type: integer
-            format: int32
-            example: 8082160
-          example:
-          - 8082160
-          - 8082161
-    ErrorResponse404:
-      type: object
-      description: Exception
-      properties:
-        type:
-          type: string
-          description: Exception type
-          example: CoreException
-        CoreException:
-          type: object
-          description: Exception information
-          properties:
-            code:
-              type: integer
-              description: Exception status code
-              format: int32
-              example: 404
-            message:
-              type: string
-              description: Exception message
-              example: The list hasn't been found
-      required:
-      - type
-    PublisherList400Model:
-      type: object
-      description: Exception
-      properties:
-        type:
-          type: string
-          description: Exception type
-          example: CoreException
-        CoreException:
-          type: object
-          description: Exception information
-          properties:
-            code:
-              type: integer
-              description: Exception status code
-              format: int32
-              example: 400
-            message:
-              type: string
-              description: Exception message
-              example: Publisher Id is mandatory!
-      required:
-      - type
   securitySchemes:
     apiKey:
       type: apiKey

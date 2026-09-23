@@ -503,6 +503,51 @@ paths:
         description: Live
 components:
   schemas:
+    ConnectedPromoCodeAccountsResponse:
+      type: object
+      properties:
+        Code:
+          type: integer
+          description: 'Status code. Available statuses: 200, 400.'
+          examples:
+          - 200
+        Message:
+          type: string
+          description: User friendly message about status of the request.
+          examples:
+          - Connected Accounts list
+        Status:
+          type: string
+          description: 'Status slug. Available statuses: OK.'
+          examples:
+          - OK
+        Items:
+          type: object
+          properties:
+            IntegrationName:
+              type: string
+              description: Name of the integration.
+              examples:
+              - CJ
+            AccountConfigurationId:
+              type: integer
+              description: ID of the account configuration in the CreatorIQ platform.
+              examples:
+              - 13
+            AccountDisplayName:
+              type: string
+              description: Name of the account.
+              examples:
+              - Test Account
+          required:
+          - IntegrationName
+          - AccountConfigurationId
+          - AccountDisplayName
+      required:
+      - Code
+      - Message
+      - Status
+      - Items
     PromoCodeErrorModel:
       type: object
       properties:
@@ -537,53 +582,6 @@ components:
       - Field
       - Path
       - Reason
-    PatchPromoCodeBody:
-      type: object
-      properties:
-        Instruction:
-          type: string
-          description: Description to the CreatorIQ publisher how to use the promo-code.
-          examples:
-          - promo-code instruction
-        Percentage:
-          type: number
-          description: Percent of the discount. If we want to have discount 5.5% the value should be as is 5.5.
-          examples:
-          - 10.25
-        StartDate:
-          type: string
-          description: Date from when the promo-code is active and the code can be applied.
-          examples:
-          - '2023-10-10 00:00:00'
-        EndDate:
-          type: string
-          description: Date when the promo-code expires and it will not be applicable any more.
-          examples:
-          - '2023-10-10 23:59:59'
-    DeletePromoCodesResponse400:
-      type: object
-      properties:
-        type:
-          type: string
-          examples:
-          - CoreException
-        CoreException:
-          type: object
-          properties:
-            code:
-              type: integer
-              examples:
-              - 400
-            message:
-              type: string
-              examples:
-              - Promo code already has transactions and it can't be deleted.
-          required:
-          - code
-          - message
-      required:
-      - type
-      - CoreException
     PromoCodeListItem:
       type: object
       properties:
@@ -618,227 +616,6 @@ components:
       - PromoCodeName
       - IntegrationName
       - PublisherName
-    CoreExceptionResponse400:
-      type: object
-      properties:
-        type:
-          type: string
-          examples:
-          - CoreException
-        CoreException:
-          type: object
-          properties:
-            code:
-              type: integer
-              examples:
-              - 400
-            message:
-              type: string
-              examples:
-              - Human readable text message.
-          required:
-          - code
-          - message
-      required:
-      - type
-      - CoreException
-    PromoCodeModel:
-      type: object
-      properties:
-        PromoCodeId:
-          type: integer
-          description: ID of the promo-code entity.
-          examples:
-          - 123
-        PromoCodePublisherId:
-          type: integer
-          description: ID of the promo-code related to a specific publisher.
-          examples:
-          - 456
-        PromoCodeName:
-          type: string
-          description: Name of the promo-code to apply in the external services.
-          examples:
-          - PROMO_CODE
-        StartDate:
-          type: string
-          description: Date from when the promo-code is active and the code can be applied.
-          examples:
-          - '2023-10-10 23:59:59'
-        EndDate:
-          type:
-          - string
-          - 'null'
-          description: Date when the promo-code expires and it will not be applicable any more.
-          examples:
-          - '2023-10-20 23:59:59'
-        Percentage:
-          type:
-          - number
-          - 'null'
-          description: Percent of the discount. If we want to have discount 5.5% the value should be as is 5.5.
-          format: float
-          examples:
-          - 10.25
-        IntegrationName:
-          type: string
-          description: Name of the integration to which promo-code relates to.
-          examples:
-          - CJ
-        PromotionalPropertyId:
-          type:
-          - integer
-          - 'null'
-          description: ID of the Promotional Property entity in the external integration.
-          examples:
-          - 101001234
-        Instruction:
-          type:
-          - string
-          - 'null'
-          description: Description to the CreatorIQ publisher how to use the promo-code.
-          examples:
-          - Instruction example for the publisher.
-      required:
-      - PromoCodeId
-      - PromoCodePublisherId
-      - PromoCodeName
-      - StartDate
-      - EndDate
-      - Percentage
-      - IntegrationName
-      - PromotionalPropertyId
-      - Instruction
-    GetPromoCodesResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: Count of all the items.
-          examples:
-          - 527
-        page:
-          type: integer
-          description: Page number.
-          examples:
-          - 1
-        size:
-          type: integer
-          description: Page size.
-          examples:
-          - 20
-        Code:
-          type: integer
-          description: 'Status code of creating all the promo-codes. Available statuses: 200, 400.'
-          examples:
-          - 200
-        Message:
-          type: string
-          description: User friendly message about status of the request.
-          examples:
-          - Promo codes list
-        Status:
-          type: string
-          description: 'Status slug regarding creating the promo-code. Available statuses: CREATED or INVALID_ARGUMENT.'
-          examples:
-          - OK
-        Items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PromoCodeListItem'
-      required:
-      - count
-      - page
-      - size
-      - Code
-      - Message
-      - Status
-      - Items
-    IntegrationsResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          Id:
-            type: integer
-            description: ID of the integration.
-            examples:
-            - 13
-          Name:
-            type: string
-            description: Integration slug, should be used in the API requests.
-            examples:
-            - impactSubAffiliate
-          DisplayName:
-            type: string
-            description: This is how this integration will be named on the UI in the CreatorIQ application.
-            examples:
-            - Impact Sub-affiliate
-        required:
-        - Id
-        - Name
-        - DisplayName
-    PostPromoCodesBody:
-      type: object
-      properties:
-        Codes:
-          type: array
-          minItems: 1
-          maxItems: 10
-          items:
-            type: object
-            properties:
-              Integration:
-                type: string
-                description: Slug of the active integration.
-                examples:
-                - cj
-              AccountConfigurationId:
-                type: integer
-                description: ID of the account configuration in the CreatorIQ platform.
-                examples:
-                - 123456
-              Code:
-                type: string
-                description: Name of the promo-code to apply in the external services.
-                examples:
-                - PROMO_CODE
-              Percentage:
-                type: number
-                description: Percent of the discount. If we want to have discount 5.5% the value should be as is 5.5.
-                examples:
-                - 10.25
-              StartDate:
-                type: string
-                description: Date from when the promo-code is active and the code can be applied.
-                examples:
-                - '2023-10-10 00:00:00'
-              EndDate:
-                type: string
-                description: Date when the promo-code expires and it will not be applicable any more.
-                examples:
-                - '2023-11-10 23:59:59'
-              Instruction:
-                type:
-                - string
-                - 'null'
-                description: Description to the CreatorIQ publisher how to use the promo-code.
-                examples:
-                - promo-code instruction for the specific publisher.
-              PublisherId:
-                type: integer
-                description: PublisherId in the CreatorIQ platform.
-                examples:
-                - 123456
-            required:
-            - Integration
-            - AccountConfigurationId
-            - Code
-            - Percentage
-            - StartDate
-            - PublisherId
-      required:
-      - Codes
     CreatePromoCodesResponse400:
       type: object
       properties:
@@ -921,9 +698,51 @@ components:
       - Message
       - Status
       - Codes
-    CreatePromoCodesResponse200:
+    GetTransactionsResponse200:
       type: object
       properties:
+        count:
+          type: integer
+          description: Count of all the items.
+          examples:
+          - 527
+        page:
+          type: integer
+          description: Page number.
+          examples:
+          - 1
+        size:
+          type: integer
+          description: Page size.
+          examples:
+          - 20
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionModel'
+      required:
+      - count
+      - page
+      - size
+      - data
+    GetPromoCodesResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Count of all the items.
+          examples:
+          - 527
+        page:
+          type: integer
+          description: Page number.
+          examples:
+          - 1
+        size:
+          type: integer
+          description: Page size.
+          examples:
+          - 20
         Code:
           type: integer
           description: 'Status code of creating all the promo-codes. Available statuses: 200, 400.'
@@ -933,24 +752,84 @@ components:
           type: string
           description: User friendly message about status of the request.
           examples:
-          - Promo codes created
+          - Promo codes list
         Status:
           type: string
           description: 'Status slug regarding creating the promo-code. Available statuses: CREATED or INVALID_ARGUMENT.'
           examples:
-          - CREATED
-        Codes:
-          type: object
-          properties:
-            Items:
-              type: array
-              minItems: 1
-              items:
-                $ref: '#/components/schemas/PromoCodeModel'
+          - OK
+        Items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromoCodeListItem'
       required:
+      - count
+      - page
+      - size
       - Code
       - Message
       - Status
+      - Items
+    PostPromoCodesBody:
+      type: object
+      properties:
+        Codes:
+          type: array
+          minItems: 1
+          maxItems: 10
+          items:
+            type: object
+            properties:
+              Integration:
+                type: string
+                description: Slug of the active integration.
+                examples:
+                - cj
+              AccountConfigurationId:
+                type: integer
+                description: ID of the account configuration in the CreatorIQ platform.
+                examples:
+                - 123456
+              Code:
+                type: string
+                description: Name of the promo-code to apply in the external services.
+                examples:
+                - PROMO_CODE
+              Percentage:
+                type: number
+                description: Percent of the discount. If we want to have discount 5.5% the value should be as is 5.5.
+                examples:
+                - 10.25
+              StartDate:
+                type: string
+                description: Date from when the promo-code is active and the code can be applied.
+                examples:
+                - '2023-10-10 00:00:00'
+              EndDate:
+                type: string
+                description: Date when the promo-code expires and it will not be applicable any more.
+                examples:
+                - '2023-11-10 23:59:59'
+              Instruction:
+                type:
+                - string
+                - 'null'
+                description: Description to the CreatorIQ publisher how to use the promo-code.
+                examples:
+                - promo-code instruction for the specific publisher.
+              PublisherId:
+                type: integer
+                description: PublisherId in the CreatorIQ platform.
+                examples:
+                - 123456
+            required:
+            - Integration
+            - AccountConfigurationId
+            - Code
+            - Percentage
+            - StartDate
+            - PublisherId
+      required:
       - Codes
     TransactionModel:
       type: object
@@ -1144,6 +1023,37 @@ components:
       - CiqPartnerId
       - CreatedAt
       - ValidationDate
+    CreatePromoCodesResponse200:
+      type: object
+      properties:
+        Code:
+          type: integer
+          description: 'Status code of creating all the promo-codes. Available statuses: 200, 400.'
+          examples:
+          - 200
+        Message:
+          type: string
+          description: User friendly message about status of the request.
+          examples:
+          - Promo codes created
+        Status:
+          type: string
+          description: 'Status slug regarding creating the promo-code. Available statuses: CREATED or INVALID_ARGUMENT.'
+          examples:
+          - CREATED
+        Codes:
+          type: object
+          properties:
+            Items:
+              type: array
+              minItems: 1
+              items:
+                $ref: '#/components/schemas/PromoCodeModel'
+      required:
+      - Code
+      - Message
+      - Status
+      - Codes
     PromoCodeNotFoundResponse:
       type: object
       properties:
@@ -1168,78 +1078,168 @@ components:
       required:
       - type
       - CoreException
-    GetTransactionsResponse200:
+    PatchPromoCodeBody:
       type: object
       properties:
-        count:
-          type: integer
-          description: Count of all the items.
+        Instruction:
+          type: string
+          description: Description to the CreatorIQ publisher how to use the promo-code.
           examples:
-          - 527
-        page:
-          type: integer
-          description: Page number.
+          - promo-code instruction
+        Percentage:
+          type: number
+          description: Percent of the discount. If we want to have discount 5.5% the value should be as is 5.5.
           examples:
-          - 1
-        size:
-          type: integer
-          description: Page size.
+          - 10.25
+        StartDate:
+          type: string
+          description: Date from when the promo-code is active and the code can be applied.
           examples:
-          - 20
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionModel'
-      required:
-      - count
-      - page
-      - size
-      - data
-    ConnectedPromoCodeAccountsResponse:
+          - '2023-10-10 00:00:00'
+        EndDate:
+          type: string
+          description: Date when the promo-code expires and it will not be applicable any more.
+          examples:
+          - '2023-10-10 23:59:59'
+    DeletePromoCodesResponse400:
       type: object
       properties:
-        Code:
-          type: integer
-          description: 'Status code. Available statuses: 200, 400.'
-          examples:
-          - 200
-        Message:
+        type:
           type: string
-          description: User friendly message about status of the request.
           examples:
-          - Connected Accounts list
-        Status:
-          type: string
-          description: 'Status slug. Available statuses: OK.'
-          examples:
-          - OK
-        Items:
+          - CoreException
+        CoreException:
           type: object
           properties:
-            IntegrationName:
-              type: string
-              description: Name of the integration.
-              examples:
-              - CJ
-            AccountConfigurationId:
+            code:
               type: integer
-              description: ID of the account configuration in the CreatorIQ platform.
               examples:
-              - 13
-            AccountDisplayName:
+              - 400
+            message:
               type: string
-              description: Name of the account.
               examples:
-              - Test Account
+              - Promo code already has transactions and it can't be deleted.
           required:
-          - IntegrationName
-          - AccountConfigurationId
-          - AccountDisplayName
+          - code
+          - message
       required:
-      - Code
-      - Message
-      - Status
-      - Items
+      - type
+      - CoreException
+    PromoCodeModel:
+      type: object
+      properties:
+        PromoCodeId:
+          type: integer
+          description: ID of the promo-code entity.
+          examples:
+          - 123
+        PromoCodePublisherId:
+          type: integer
+          description: ID of the promo-code related to a specific publisher.
+          examples:
+          - 456
+        PromoCodeName:
+          type: string
+          description: Name of the promo-code to apply in the external services.
+          examples:
+          - PROMO_CODE
+        StartDate:
+          type: string
+          description: Date from when the promo-code is active and the code can be applied.
+          examples:
+          - '2023-10-10 23:59:59'
+        EndDate:
+          type:
+          - string
+          - 'null'
+          description: Date when the promo-code expires and it will not be applicable any more.
+          examples:
+          - '2023-10-20 23:59:59'
+        Percentage:
+          type:
+          - number
+          - 'null'
+          description: Percent of the discount. If we want to have discount 5.5% the value should be as is 5.5.
+          format: float
+          examples:
+          - 10.25
+        IntegrationName:
+          type: string
+          description: Name of the integration to which promo-code relates to.
+          examples:
+          - CJ
+        PromotionalPropertyId:
+          type:
+          - integer
+          - 'null'
+          description: ID of the Promotional Property entity in the external integration.
+          examples:
+          - 101001234
+        Instruction:
+          type:
+          - string
+          - 'null'
+          description: Description to the CreatorIQ publisher how to use the promo-code.
+          examples:
+          - Instruction example for the publisher.
+      required:
+      - PromoCodeId
+      - PromoCodePublisherId
+      - PromoCodeName
+      - StartDate
+      - EndDate
+      - Percentage
+      - IntegrationName
+      - PromotionalPropertyId
+      - Instruction
+    IntegrationsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          Id:
+            type: integer
+            description: ID of the integration.
+            examples:
+            - 13
+          Name:
+            type: string
+            description: Integration slug, should be used in the API requests.
+            examples:
+            - impactSubAffiliate
+          DisplayName:
+            type: string
+            description: This is how this integration will be named on the UI in the CreatorIQ application.
+            examples:
+            - Impact Sub-affiliate
+        required:
+        - Id
+        - Name
+        - DisplayName
+    CoreExceptionResponse400:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+          - CoreException
+        CoreException:
+          type: object
+          properties:
+            code:
+              type: integer
+              examples:
+              - 400
+            message:
+              type: string
+              examples:
+              - Human readable text message.
+          required:
+          - code
+          - message
+      required:
+      - type
+      - CoreException
   securitySchemes:
     apiKey:
       type: apiKey

@@ -2,7 +2,9 @@ openapi: 3.2.0
 info:
   version: 1.0.0
   title: Campaign Conversion Metrics API
-  description: "The Conversion Metrics API allows clients to extend CreatorIQ’s link tracking functionality by creating, managing, \nand extracting conversion data.\n\n## Key Use Cases:\n- **Integrate third-party data**: Attach conversion metrics from external platforms (e.g., Google Analytics, Shopify, or internal BI systems) to CreatorIQ tracking links.\n- **Enhance attribution & reporting**: Map conversion events (e.g., purchases, sign-ups) to specific creators, campaigns, and links to improve performance insights.\n- **Extract CIQ metrics**: Retrieve conversion data from CreatorIQ to enrich business processes, build custom dashboards, or power internal analytics.\n"
+  description: 'The Conversion Metrics API allows clients to extend CreatorIQ’s link tracking functionality by creating, managing,
+
+    and extracting conversion data.'
   termsOfService: https://www.creatoriq.com/legal/terms-of-use
   contact:
     name: CreatorIQ
@@ -25,9 +27,7 @@ paths:
       tags:
       - Campaign Conversion Metrics
       summary: Get Conversion Names with Data
-      description: 'Returns a list of conversion metric names for a specific campaign.
-
-        '
+      description: Returns a list of conversion metric names for a specific campaign.
       operationId: getCampaignConversionsWithData
       parameters:
       - name: campaignId
@@ -76,9 +76,7 @@ paths:
       tags:
       - Campaign Conversion Metrics
       summary: Upsert Conversion Metrics for a Campaign
-      description: 'Upsert Conversion Metrics for a Campaign.
-
-        '
+      description: Upsert Conversion Metrics for a Campaign.
       operationId: upsertCampaignConversionMetrics
       parameters:
       - name: campaignId
@@ -127,9 +125,7 @@ paths:
       summary: Get Conversion Metric by Name
       description: 'Retrieve a specific conversion metric by its name for a given campaign and tracking link.
 
-        This endpoint is useful for fetching detailed information about a specific conversion metric.
-
-        '
+        This endpoint is useful for fetching detailed information about a specific conversion metric.'
       operationId: getCampaignConversionMetricByName
       parameters:
       - name: campaignId
@@ -192,9 +188,7 @@ paths:
       summary: Get All Conversion Metrics by Tracking Link ID
       description: 'Retrieve all conversion metrics associated with a specific tracking link for a given campaign.
 
-        This endpoint is useful for fetching a comprehensive list of conversion metrics related to a tracking link.
-
-        '
+        This endpoint is useful for fetching a comprehensive list of conversion metrics related to a tracking link.'
       operationId: getAllCampaignConversionMetricsByTrackingLink
       parameters:
       - name: campaignId
@@ -246,9 +240,7 @@ paths:
       summary: Get Conversion Metrics for a Specific Post
       description: 'Retrieve conversion metrics for a specific post within a campaign.
 
-        This endpoint is useful for analyzing the performance of individual posts in terms of conversion metrics.
-
-        '
+        This endpoint is useful for analyzing the performance of individual posts in terms of conversion metrics.'
       operationId: getCampaignPostConversionMetrics
       parameters:
       - name: campaignId
@@ -300,9 +292,7 @@ paths:
       summary: Get Conversion Metrics by Publisher
       description: 'Retrieve conversion metrics for a specific publisher within a campaign.
 
-        This endpoint is useful for analyzing the performance of individual publishers in terms of conversion metrics.
-
-        '
+        This endpoint is useful for analyzing the performance of individual publishers in terms of conversion metrics.'
       operationId: getCampaignPublisherConversionMetrics
       parameters:
       - name: campaignId
@@ -354,9 +344,7 @@ paths:
       summary: Get Conversion Metrics by Publisher (Post-Level)
       description: 'Retrieve conversion metrics for a specific publisher at the post level within a campaign.
 
-        This endpoint is useful for analyzing the performance of individual posts by publisher in terms of conversion metrics.
-
-        '
+        This endpoint is useful for analyzing the performance of individual posts by publisher in terms of conversion metrics.'
       operationId: getCampaignPublisherPostConversionMetrics
       parameters:
       - name: campaignId
@@ -402,90 +390,154 @@ paths:
       - url: https://apis.creatoriq.com
         description: Live
 components:
-  responses:
-    UnauthorizedError:
-      description: Unauthorized - API key missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                examples:
-                - Unauthorized
-    ForbiddenError:
-      description: Forbidden - User does not have access.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                examples:
-                - Forbidden
-    BadRequestError:
-      description: Bad Request - Invalid request format or missing fields.
-      content:
-        application/json:
-          schema:
-            type: object
-            description: Exception
-            properties:
-              type:
-                type: string
-                description: Exception type
-                examples:
-                - CoreException
-              CoreException:
-                type: object
-                description: Exception information
-                properties:
-                  code:
-                    type: integer
-                    description: Exception status code
-                    format: int32
-                    examples:
-                    - 400
-                  message:
-                    type: string
-                    description: Exception message
-                    examples:
-                    - Some parameters are missing or invalid
-            required:
-            - type
-    NotFoundError:
-      description: Not Found - Resource not found.
-      content:
-        application/json:
-          schema:
-            type: object
-            description: Exception
-            properties:
-              type:
-                type: string
-                description: Exception type
-                examples:
-                - CoreException
-              CoreException:
-                type: object
-                description: Exception information
-                properties:
-                  code:
-                    type: integer
-                    description: Exception status code
-                    format: int32
-                    examples:
-                    - 404
-                  message:
-                    type: string
-                    description: Exception message
-                    examples:
-                    - Supplied ID was not found
-            required:
-            - type
   schemas:
+    ConversionMetricForSpecificPostCollectionResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+          - ConversionCollection
+        href:
+          type: string
+          examples:
+          - https://public-api.creatoriq.com/api/v1/campaign/123/post/321/conversionMetrics
+        count:
+          type: integer
+          examples:
+          - 20
+        total:
+          type: integer
+          examples:
+          - 725
+        page:
+          type: integer
+          examples:
+          - 1
+        ConversionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionMetricForSpecificPostResponse'
+    ConversionMetricForSpecificPostResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+          - ConversionMetric
+        href:
+          type: string
+          examples:
+          - https://public-api.creatoriq.com/api/v1/campaign/2316554/tracking-link/1144249/conversionMetric/Gross AOV
+        ConversionMetric:
+          $ref: '#/components/schemas/ConversionMetricForSpecificPost'
+    ConversionMetricCollectionResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+          - ConversionCollection
+        href:
+          type: string
+          examples:
+          - https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetrics
+        count:
+          type: integer
+          examples:
+          - 20
+        total:
+          type: integer
+          examples:
+          - 725
+        page:
+          type: integer
+          examples:
+          - 1
+        ConversionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionMetricResponse'
+    ConversionMetricForSpecificPost:
+      type: object
+      properties:
+        ConversionMetricId:
+          type: integer
+          examples:
+          - 36942
+        ConversionMetricName:
+          type: string
+          examples:
+          - ConversionMetric6
+        DisplayName:
+          type: string
+          examples:
+          - Transactions
+        DisplayOrder:
+          type: integer
+          examples:
+          - 6
+        IsVisible:
+          type: integer
+          examples:
+          - 1
+        TrackingId:
+          type: integer
+          examples:
+          - 123
+        TrackingLinkId:
+          type: integer
+          examples:
+          - 123
+        PublisherId:
+          type: integer
+          examples:
+          - 123
+        ConversionMetricValue:
+          type:
+          - number
+          - 'null'
+          examples:
+          - 123
+        Status:
+          type: string
+          examples:
+          - Auto
+        Label:
+          type: string
+          examples:
+          - Product
+    CampaignConversionMetricUpsert:
+      type: object
+      properties:
+        TrackingLinkId:
+          type: integer
+          description: The ID of the tracking link associated with the conversion metric.
+          examples:
+          - 1006453
+        ConversionMetricId:
+          type: integer
+          description: The unique identifier of the conversion metric.
+          examples:
+          - 36942
+        ConversionMetricValue:
+          type: integer
+          description: The numerical value for the conversion metric.
+          examples:
+          - 22
+    ConversionMetricResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+          - ConversionMetric
+        href:
+          type: string
+          examples:
+          - https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders
+        ConversionMetric:
+          $ref: '#/components/schemas/ConversionMetric'
     ConversionMetric:
       type: object
       properties:
@@ -546,153 +598,89 @@ components:
           type: string
           examples:
           - app-ui
-    ConversionMetricForSpecificPostResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          examples:
-          - ConversionMetric
-        href:
-          type: string
-          examples:
-          - https://public-api.creatoriq.com/api/v1/campaign/2316554/tracking-link/1144249/conversionMetric/Gross AOV
-        ConversionMetric:
-          $ref: '#/components/schemas/ConversionMetricForSpecificPost'
-    ConversionMetricForSpecificPostCollectionResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          examples:
-          - ConversionCollection
-        href:
-          type: string
-          examples:
-          - https://public-api.creatoriq.com/api/v1/campaign/123/post/321/conversionMetrics
-        count:
-          type: integer
-          examples:
-          - 20
-        total:
-          type: integer
-          examples:
-          - 725
-        page:
-          type: integer
-          examples:
-          - 1
-        ConversionCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConversionMetricForSpecificPostResponse'
-    CampaignConversionMetricUpsert:
-      type: object
-      properties:
-        TrackingLinkId:
-          type: integer
-          description: The ID of the tracking link associated with the conversion metric.
-          examples:
-          - 1006453
-        ConversionMetricId:
-          type: integer
-          description: The unique identifier of the conversion metric.
-          examples:
-          - 36942
-        ConversionMetricValue:
-          type: integer
-          description: The numerical value for the conversion metric.
-          examples:
-          - 22
-    ConversionMetricForSpecificPost:
-      type: object
-      properties:
-        ConversionMetricId:
-          type: integer
-          examples:
-          - 36942
-        ConversionMetricName:
-          type: string
-          examples:
-          - ConversionMetric6
-        DisplayName:
-          type: string
-          examples:
-          - Transactions
-        DisplayOrder:
-          type: integer
-          examples:
-          - 6
-        IsVisible:
-          type: integer
-          examples:
-          - 1
-        TrackingId:
-          type: integer
-          examples:
-          - 123
-        TrackingLinkId:
-          type: integer
-          examples:
-          - 123
-        PublisherId:
-          type: integer
-          examples:
-          - 123
-        ConversionMetricValue:
-          type:
-          - number
-          - 'null'
-          examples:
-          - 123
-        Status:
-          type: string
-          examples:
-          - Auto
-        Label:
-          type: string
-          examples:
-          - Product
-    ConversionMetricResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          examples:
-          - ConversionMetric
-        href:
-          type: string
-          examples:
-          - https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders
-        ConversionMetric:
-          $ref: '#/components/schemas/ConversionMetric'
-    ConversionMetricCollectionResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          examples:
-          - ConversionCollection
-        href:
-          type: string
-          examples:
-          - https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetrics
-        count:
-          type: integer
-          examples:
-          - 20
-        total:
-          type: integer
-          examples:
-          - 725
-        page:
-          type: integer
-          examples:
-          - 1
-        ConversionCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConversionMetricResponse'
+  responses:
+    ForbiddenError:
+      description: Forbidden - User does not have access.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                examples:
+                - Forbidden
+    UnauthorizedError:
+      description: Unauthorized - API key missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                examples:
+                - Unauthorized
+    BadRequestError:
+      description: Bad Request - Invalid request format or missing fields.
+      content:
+        application/json:
+          schema:
+            type: object
+            description: Exception
+            properties:
+              type:
+                type: string
+                description: Exception type
+                examples:
+                - CoreException
+              CoreException:
+                type: object
+                description: Exception information
+                properties:
+                  code:
+                    type: integer
+                    description: Exception status code
+                    format: int32
+                    examples:
+                    - 400
+                  message:
+                    type: string
+                    description: Exception message
+                    examples:
+                    - Some parameters are missing or invalid
+            required:
+            - type
+    NotFoundError:
+      description: Not Found - Resource not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            description: Exception
+            properties:
+              type:
+                type: string
+                description: Exception type
+                examples:
+                - CoreException
+              CoreException:
+                type: object
+                description: Exception information
+                properties:
+                  code:
+                    type: integer
+                    description: Exception status code
+                    format: int32
+                    examples:
+                    - 404
+                  message:
+                    type: string
+                    description: Exception message
+                    examples:
+                    - Supplied ID was not found
+            required:
+            - type
   securitySchemes:
     apiKey:
       type: apiKey

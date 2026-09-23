@@ -2,9 +2,7 @@ openapi: 3.2.0
 info:
   version: 1.0.0
   title: CreatorIQ Reporting CJ API
-  description: 'This is reporting async API
-
-    '
+  description: This is reporting async API
   termsOfService: https://www.creatoriq.com/legal/terms-of-use
   contact:
     name: CreatorIQ
@@ -27,7 +25,6 @@ paths:
       tags:
       - CJ
       summary: CJ Accounts Report
-      description: CJ Accounts Report
       operationId: getCJAccountsReport
       parameters:
       - $ref: '#/components/parameters/take'
@@ -43,31 +40,118 @@ paths:
       - url: https://apis.creatoriq.com
         description: Live
 components:
+  responses:
+    asyncResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/generalSchema'
+    CJAccountsReport:
+      description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CJAccountsReport'
   schemas:
-    commonResponse:
+    generalSchema:
       type: object
       properties:
-        count:
-          type: integer
-          description: Count of all reports
-          example: 300
-        dataGenerationTime:
+        TaskId:
           type: string
-          description: Date when report generated
-          example: '2023-01-20T13:43:47+00:00'
-        cached:
-          type: boolean
-          description: Is view cached or not
-        time:
-          type: number
-          description: Time taken to generate report
-          format: float32
-          example: 0.571
+          description: Unique id of report
+          example: 79985e5d-8871-4f38-be44-605d58f90bd9
+        TaskStatus:
+          type: string
+          enum:
+          - CREATED
+          - PROCESSING
+          - DONE
+          description: "Status of request. \n* CREATED: represents of new created report\n* PROCESSING: your report is progress \n* DONE: your report is ready. Result present in  **Result => Headers => Location URL**\n"
+        CreatedAtTS:
+          type: integer
+          description: Timestamp when task is created in seconds
+          example: 1674135497
+        UpdatedAtTS:
+          type: integer
+          description: Timestamp when task is updated in seconds
+          example: 1674135497
+        ExpiresAtTS:
+          type: integer
+          description: Timestamp when task is expired in seconds.
+          example: 1674136497
+        CreatedAt:
+          type: string
+          description: Date which task created in human readable format
+          example: 2023-01-19T13:38:17+0000
+        UpdatedAt:
+          type: string
+          description: Date which task updated in human readable format
+          example: 2023-01-19T13:38:17+0000
+        ExpiredAt:
+          type: string
+          description: Date which task updated in human readable format
+          example: 2023-01-19T13:38:17+0000
+        Metadata:
+          type: object
+          properties:
+            PartnerId:
+              type: integer
+              example: 21
+            Gri:
+              type: object
+              description: Used for logging
+            ValidUntil:
+              type: string
+              example: 2023-01-19T14:08:16+0000
+            ValidUntilTS:
+              type: integer
+              example: 1674137296
+        Result:
+          type: object
+          oneOf:
+          - type: object
+            description: If your object ready you fetch you receive 302 result
+            properties:
+              Status:
+                type: integer
+                description: Http status of response
+                example: 302
+              Body:
+                type: string
+                description: Empty string represents body of response.
+                example: ''
+              Headers:
+                type: object
+                properties:
+                  Cache-Control:
+                    type: string
+                    example: max-age=7200
+                  Date:
+                    type: string
+                    example: Thu, 19 Jan 2023 13:39:22 +0000
+                  Location:
+                    type: string
+                    description: Most important field! Result location of data
+                    readOnly: true
+                    example: https://ciq-api-async-results-data.s3.us-west-1.amazonaws.com/creatoriq-live/report.json
+                required:
+                - Location
+            required:
+            - Status
+            - Headers
+          - type: object
+            description: If your report not ready empty object
       required:
-      - count
-      - dataGenerationTime
-      - cached
-      - time
+      - TaskId
+      - TaskStatus
+      - CreatedAtTS
+      - UpdatedAtTS
+      - ExpiresAtTS
+      - CreatedAt
+      - UpdatedAt
+      - ExpiredAt
+      - Result
     CJAccountsReport:
       type: object
       allOf:
@@ -966,6 +1050,30 @@ components:
               - CJPropertyId
         required:
         - results
+    commonResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Count of all reports
+          example: 300
+        dataGenerationTime:
+          type: string
+          description: Date when report generated
+          example: '2023-01-20T13:43:47+00:00'
+        cached:
+          type: boolean
+          description: Is view cached or not
+        time:
+          type: number
+          description: Time taken to generate report
+          format: float32
+          example: 0.571
+      required:
+      - count
+      - dataGenerationTime
+      - cached
+      - time
     SocialEngagement:
       type: object
       properties:
@@ -1475,115 +1583,7 @@ components:
           - number
           - 'null'
           example: 547
-    generalSchema:
-      type: object
-      properties:
-        TaskId:
-          type: string
-          description: Unique id of report
-          example: 79985e5d-8871-4f38-be44-605d58f90bd9
-        TaskStatus:
-          type: string
-          enum:
-          - CREATED
-          - PROCESSING
-          - DONE
-          description: "Status of request. \n* CREATED: represents of new created report\n* PROCESSING: your report is progress \n* DONE: your report is ready. Result present in  **Result => Headers => Location URL**\n"
-        CreatedAtTS:
-          type: integer
-          description: Timestamp when task is created in seconds
-          example: 1674135497
-        UpdatedAtTS:
-          type: integer
-          description: Timestamp when task is updated in seconds
-          example: 1674135497
-        ExpiresAtTS:
-          type: integer
-          description: Timestamp when task is expired in seconds.
-          example: 1674136497
-        CreatedAt:
-          type: string
-          description: Date which task created in human readable format
-          example: 2023-01-19T13:38:17+0000
-        UpdatedAt:
-          type: string
-          description: Date which task updated in human readable format
-          example: 2023-01-19T13:38:17+0000
-        ExpiredAt:
-          type: string
-          description: Date which task updated in human readable format
-          example: 2023-01-19T13:38:17+0000
-        Metadata:
-          type: object
-          properties:
-            PartnerId:
-              type: integer
-              example: 21
-            Gri:
-              type: object
-              description: Used for logging
-            ValidUntil:
-              type: string
-              example: 2023-01-19T14:08:16+0000
-            ValidUntilTS:
-              type: integer
-              example: 1674137296
-        Result:
-          type: object
-          oneOf:
-          - type: object
-            description: If your object ready you fetch you receive 302 result
-            properties:
-              Status:
-                type: integer
-                description: Http status of response
-                example: 302
-              Body:
-                type: string
-                description: Empty string represents body of response.
-                example: ''
-              Headers:
-                type: object
-                properties:
-                  Cache-Control:
-                    type: string
-                    example: max-age=7200
-                  Date:
-                    type: string
-                    example: Thu, 19 Jan 2023 13:39:22 +0000
-                  Location:
-                    type: string
-                    description: Most important field! Result location of data
-                    readOnly: true
-                    example: https://ciq-api-async-results-data.s3.us-west-1.amazonaws.com/creatoriq-live/report.json
-                required:
-                - Location
-            required:
-            - Status
-            - Headers
-          - type: object
-            description: If your report not ready empty object
-      required:
-      - TaskId
-      - TaskStatus
-      - CreatedAtTS
-      - UpdatedAtTS
-      - ExpiresAtTS
-      - CreatedAt
-      - UpdatedAt
-      - ExpiredAt
-      - Result
   parameters:
-    skip:
-      name: requestData[skip]
-      in: query
-      description: Number of rows to skip
-      schema:
-        type: integer
-        example: 0
-      examples:
-        default:
-          value: 0
     take:
       name: requestData[take]
       in: query
@@ -1595,19 +1595,16 @@ components:
       examples:
         default:
           value: 20
-  responses:
-    CJAccountsReport:
-      description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CJAccountsReport'
-    asyncResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/generalSchema'
+    skip:
+      name: requestData[skip]
+      in: query
+      description: Number of rows to skip
+      schema:
+        type: integer
+        example: 0
+      examples:
+        default:
+          value: 0
   securitySchemes:
     apiKey:
       type: apiKey

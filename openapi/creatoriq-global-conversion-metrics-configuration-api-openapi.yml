@@ -2,7 +2,9 @@ openapi: 3.2.0
 info:
   version: 1.0.0
   title: Global Conversion Metrics Configuration API
-  description: "The Conversion Metrics API allows clients to extend CreatorIQ’s link tracking functionality by creating, managing, \nand extracting conversion data.\n\n## Key Use Cases:\n- **Integrate third-party data**: Attach conversion metrics from external platforms (e.g., Google Analytics, Shopify, or internal BI systems) to CreatorIQ tracking links.\n- **Enhance attribution & reporting**: Map conversion events (e.g., purchases, sign-ups) to specific creators, campaigns, and links to improve performance insights.\n- **Extract CIQ metrics**: Retrieve conversion data from CreatorIQ to enrich business processes, build custom dashboards, or power internal analytics.\n"
+  description: 'The Conversion Metrics API allows clients to extend CreatorIQ’s link tracking functionality by creating, managing,
+
+    and extracting conversion data.'
   termsOfService: https://www.creatoriq.com/legal/terms-of-use
   contact:
     name: CreatorIQ
@@ -25,9 +27,7 @@ paths:
       tags:
       - Global Conversion Metrics Configuration
       summary: Retrieve Conversion Metrics Configuration
-      description: 'Returns a list of defined conversion metrics for the current partner.
-
-        '
+      description: Returns a list of defined conversion metrics for the current partner.
       operationId: getConversionMetrics
       responses:
         '200':
@@ -50,9 +50,7 @@ paths:
       tags:
       - Global Conversion Metrics Configuration
       summary: Retrieve Conversion Metric Configuration by ID
-      description: 'Returns the configuration for a specific conversion metric
-
-        '
+      description: Returns the configuration for a specific conversion metric
       operationId: getConversionMetricById
       parameters:
       - $ref: '#/components/parameters/conversionMetricId'
@@ -74,9 +72,7 @@ paths:
       tags:
       - Global Conversion Metrics Configuration
       summary: Update Existing Conversion Metric
-      description: 'Updates the configuration for a specific conversion metric.
-
-        '
+      description: Updates the configuration for a specific conversion metric.
       operationId: updateConversionMetric
       parameters:
       - $ref: '#/components/parameters/conversionMetricId'
@@ -107,165 +103,7 @@ paths:
       - url: https://apis.creatoriq.com
         description: Live
 components:
-  responses:
-    UnauthorizedError:
-      description: Unauthorized - API key missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                examples:
-                - Unauthorized
-    ForbiddenError:
-      description: Forbidden - User does not have access.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                examples:
-                - Forbidden
-    BadRequestError:
-      description: Bad Request - Invalid request format or missing fields.
-      content:
-        application/json:
-          schema:
-            type: object
-            description: Exception
-            properties:
-              type:
-                type: string
-                description: Exception type
-                examples:
-                - CoreException
-              CoreException:
-                type: object
-                description: Exception information
-                properties:
-                  code:
-                    type: integer
-                    description: Exception status code
-                    format: int32
-                    examples:
-                    - 400
-                  message:
-                    type: string
-                    description: Exception message
-                    examples:
-                    - Some parameters are missing or invalid
-            required:
-            - type
-    NotFoundError:
-      description: Not Found - Resource not found.
-      content:
-        application/json:
-          schema:
-            type: object
-            description: Exception
-            properties:
-              type:
-                type: string
-                description: Exception type
-                examples:
-                - CoreException
-              CoreException:
-                type: object
-                description: Exception information
-                properties:
-                  code:
-                    type: integer
-                    description: Exception status code
-                    format: int32
-                    examples:
-                    - 404
-                  message:
-                    type: string
-                    description: Exception message
-                    examples:
-                    - Supplied ID was not found
-            required:
-            - type
   schemas:
-    ConversionMetric:
-      type: object
-      properties:
-        ConversionMetricId:
-          type: integer
-          examples:
-          - 36942
-        PartnerId:
-          type: integer
-          examples:
-          - 11
-        ConversionMetricName:
-          type: string
-          examples:
-          - ConversionMetric6
-        DisplayName:
-          type: string
-          examples:
-          - Transactions
-        DisplayOrder:
-          type: integer
-          examples:
-          - 6
-        IsVisible:
-          type: integer
-          examples:
-          - 1
-        Type:
-          type: string
-          examples:
-          - Default
-        AdditionalInfo:
-          type:
-          - string
-          - 'null'
-          examples:
-          - null
-        TrackingLinkId:
-          type: string
-          examples:
-          - '123'
-        ConversionMetricValue:
-          type:
-          - number
-          - 'null'
-          examples:
-          - 123
-        Status:
-          type: string
-          examples:
-          - Auto
-        UpdatedAt:
-          type: string
-          format: date-time
-          examples:
-          - '2022-01-11 13:47:34'
-        UpdatedBy:
-          type: string
-          examples:
-          - app-ui
-    ConversionMetricUpdateRequest:
-      type: object
-      properties:
-        DisplayName:
-          type: string
-          examples:
-          - New Conversion Metric
-        DisplayOrder:
-          type: integer
-          examples:
-          - 1
-        IsVisible:
-          type: integer
-          examples:
-          - 1
     ConversionMetricConfigurationCollectionResponse:
       type: object
       properties:
@@ -348,6 +186,21 @@ components:
           type: string
           examples:
           - app-ui
+    ConversionMetricUpdateRequest:
+      type: object
+      properties:
+        DisplayName:
+          type: string
+          examples:
+          - New Conversion Metric
+        DisplayOrder:
+          type: integer
+          examples:
+          - 1
+        IsVisible:
+          type: integer
+          examples:
+          - 1
     ConversionMetricConfigurationResponse:
       type: object
       properties:
@@ -374,6 +227,66 @@ components:
           - https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders
         ConversionMetric:
           $ref: '#/components/schemas/ConversionMetric'
+    ConversionMetric:
+      type: object
+      properties:
+        ConversionMetricId:
+          type: integer
+          examples:
+          - 36942
+        PartnerId:
+          type: integer
+          examples:
+          - 11
+        ConversionMetricName:
+          type: string
+          examples:
+          - ConversionMetric6
+        DisplayName:
+          type: string
+          examples:
+          - Transactions
+        DisplayOrder:
+          type: integer
+          examples:
+          - 6
+        IsVisible:
+          type: integer
+          examples:
+          - 1
+        Type:
+          type: string
+          examples:
+          - Default
+        AdditionalInfo:
+          type:
+          - string
+          - 'null'
+          examples:
+          - null
+        TrackingLinkId:
+          type: string
+          examples:
+          - '123'
+        ConversionMetricValue:
+          type:
+          - number
+          - 'null'
+          examples:
+          - 123
+        Status:
+          type: string
+          examples:
+          - Auto
+        UpdatedAt:
+          type: string
+          format: date-time
+          examples:
+          - '2022-01-11 13:47:34'
+        UpdatedBy:
+          type: string
+          examples:
+          - app-ui
   parameters:
     conversionMetricId:
       name: conversionMetricId
@@ -387,6 +300,89 @@ components:
       examples:
         default:
           value: 36942
+  responses:
+    ForbiddenError:
+      description: Forbidden - User does not have access.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                examples:
+                - Forbidden
+    UnauthorizedError:
+      description: Unauthorized - API key missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                examples:
+                - Unauthorized
+    BadRequestError:
+      description: Bad Request - Invalid request format or missing fields.
+      content:
+        application/json:
+          schema:
+            type: object
+            description: Exception
+            properties:
+              type:
+                type: string
+                description: Exception type
+                examples:
+                - CoreException
+              CoreException:
+                type: object
+                description: Exception information
+                properties:
+                  code:
+                    type: integer
+                    description: Exception status code
+                    format: int32
+                    examples:
+                    - 400
+                  message:
+                    type: string
+                    description: Exception message
+                    examples:
+                    - Some parameters are missing or invalid
+            required:
+            - type
+    NotFoundError:
+      description: Not Found - Resource not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            description: Exception
+            properties:
+              type:
+                type: string
+                description: Exception type
+                examples:
+                - CoreException
+              CoreException:
+                type: object
+                description: Exception information
+                properties:
+                  code:
+                    type: integer
+                    description: Exception status code
+                    format: int32
+                    examples:
+                    - 404
+                  message:
+                    type: string
+                    description: Exception message
+                    examples:
+                    - Supplied ID was not found
+            required:
+            - type
   securitySchemes:
     apiKey:
       type: apiKey

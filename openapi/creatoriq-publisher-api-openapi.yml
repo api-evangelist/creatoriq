@@ -10,7 +10,7 @@ info:
     name: Apache 2.0
   termsOfService: https://www.creatoriq.com/legal/terms-of-use
   version: '1.0'
-  description: 'Operations tagged Publisher across 2 of this provider''s published API definitions: creatoriq-publishers-openapi.yml, creatoriq-v2-publishers-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Publisher across 2 of this provider''s published API definitions: creatoriq-publishers-openapi-original.yaml, creatoriq-v2-publishers-openapi-original.yaml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://apis.creatoriq.com
   description: Live
@@ -902,12 +902,10 @@ paths:
     get:
       tags:
       - Publisher
-      summary: GET social accounts for multiple publishers.
+      summary: GET social accounts for multiple publishers
       description: 'Fetch the social accounts information for bulk publishers. Max count of publishers 10.
 
-        > **Warning**: This API endpoint is deprecated and will be removed at 2026-04-16. You could use the [new version of endpoint](https://apidocs.creatoriq.com/docs/ciq-api-documentation/5d20075e89450-get-social-accounts-for-multiple-publishers) instead of this one.
-
-        '
+        > **Warning**: This API endpoint is deprecated and will be removed at 2026-04-16. You could use the new version of endpoint instead of this one.'
       operationId: getMultiplePublishersAccounts
       parameters:
       - name: publisherIds
@@ -1030,7 +1028,6 @@ paths:
       tags:
       - Publisher
       summary: Add Publisher Social accounts information
-      description: Add Publisher Social accounts information
       operationId: addPublisherSocialAccount
       parameters:
       - name: source
@@ -1283,11 +1280,10 @@ paths:
       tags:
       - Publisher
       summary: Update Publisher Social accounts information
-      description: 'Update Publisher Social accounts information <br/>
+      description: 'Update Publisher Social accounts information
 
-        Social network (Facebook, Instagram, Google, Vine, Tumblr etc.)
 
-        '
+        Social network (Facebook, Instagram, Google, Vine, Tumblr etc.)'
       operationId: updatePublisherSocialAccounts
       parameters:
       - name: key
@@ -1670,7 +1666,6 @@ paths:
       tags:
       - Publisher
       summary: Delete a Publisher Contact
-      description: Delete a Publisher Contact
       operationId: deletePublisherContact
       parameters:
       - name: contactId
@@ -1832,7 +1827,14 @@ paths:
       tags:
       - Publisher
       summary: Get Publisher Audience
-      description: "Returns any first-party audience data for a specific publisher (creator).\n\nPlease note that the response may contain one of the following options:\n* an object with data (if there is a publisher and there is an audience data) \n* an empty array (if there is a publisher, but we do not have an audience of data)\n"
+      description: 'Returns any first-party audience data for a specific publisher (creator).
+
+
+        Please note that the response may contain one of the following options:
+
+        * an object with data (if there is a publisher and there is an audience data)
+
+        * an empty array (if there is a publisher, but we do not have an audience of data)'
       operationId: getPublisherAudience
       parameters:
       - name: publisherId
@@ -2142,9 +2144,7 @@ paths:
       tags:
       - Publisher
       summary: Create publisher
-      description: 'Create publisher in network. You should pass **PublisherName** or **accounts** field for creating publisher.
-
-        '
+      description: Create publisher in network. You should pass **PublisherName** or **accounts** field for creating publisher.
       operationId: createPublisher
       requestBody:
         content:
@@ -2258,7 +2258,6 @@ paths:
       tags:
       - Publisher
       summary: Get all Publishers accounts changes
-      description: Get all Publishers accounts changes
       operationId: getAllPublishersAccountsChanges
       parameters:
       - name: limit
@@ -2359,7 +2358,6 @@ paths:
       tags:
       - Publisher
       summary: Send a message to publisher
-      description: Send a message to publisher
       operationId: sendMessageToPublisher
       requestBody:
         content:
@@ -2519,7 +2517,6 @@ paths:
       tags:
       - Publisher
       summary: Send a message to publisher (regarding to particular campaign)
-      description: Send a message to publisher (regarding to particular campaign)
       operationId: sendMessageToPublisherRegardingToParticularCampaign)
       requestBody:
         content:
@@ -2669,7 +2666,7 @@ paths:
     post:
       tags:
       - Publisher
-      summary: Send emails to publishers in bulk.
+      summary: Send emails to publishers in bulk
       description: Send emails to publishers in bulk.
       operationId: sendMessageToPublishersBulk
       requestBody:
@@ -2833,7 +2830,6 @@ paths:
       tags:
       - Publisher
       summary: Get Publisher property details
-      description: Get Publisher property details
       operationId: getPublisherPublisherIdProperty
       parameters:
       - name: key
@@ -3107,7 +3103,6 @@ paths:
       tags:
       - Publisher
       summary: Remove tags from publishers
-      description: Remove tags from publishers
       operationId: deletePublishersTags
       requestBody:
         required: true
@@ -3196,8 +3191,23 @@ paths:
     patch:
       tags:
       - Publisher
-      summary: Add/Update the audience data for a publisher.
-      description: "Edit or add audience data to the publisher's social account. To be able to use this API, you need required fields that can be derived from [Get publisher's social accounts API](https://creatoriq.stoplight.io/docs/ciq-api-documentation/53138e18cb0a8-get-publisher-s-social-accounts).\n\n  1. Fetch list of social accounts from [Get publisher's social accounts API](https://creatoriq.stoplight.io/docs/ciq-api-documentation/53138e18cb0a8-get-publisher-s-social-accounts) for the publisher.\n  2. From the `AccountCollection` property, get the following for the social network you intend to add/edit audience data:\n    - SocialId (use value of `ChannelId` for Youtube Account or `Id` field for any other Social Account)\n    - Network\n    - SocialNetworkId\n    - NetworkUser   \n  3. Fill in these required fields when calling this API.\n"
+      summary: Add/Update the audience data for a publisher
+      description: 'Edit or add audience data to the publisher''s social account. To be able to use this API, you need required fields that can be derived from Get publisher''s social accounts API.
+
+
+        1. Fetch list of social accounts from Get publisher''s social accounts API for the publisher.
+
+        2. From the `AccountCollection` property, get the following for the social network you intend to add/edit audience data:
+
+        - SocialId (use value of `ChannelId` for Youtube Account or `Id` field for any other Social Account)
+
+        - Network
+
+        - SocialNetworkId
+
+        - NetworkUser
+
+        3. Fill in these required fields when calling this API.'
       operationId: manualAudienceAddEdit
       parameters:
       - name: publisherId
@@ -3794,7 +3804,7 @@ paths:
     get:
       tags:
       - Publisher
-      summary: GET social accounts for multiple publishers.
+      summary: GET social accounts for multiple publishers
       description: Fetch the social accounts information for bulk publishers. Max count of publishers 10
       operationId: getMultiplePublishersAccounts
       parameters:
@@ -3854,7 +3864,125 @@ paths:
     - url: https://apis.creatoriq.com
       description: Live
 components:
+  responses:
+    400DeleteContactData:
+      description: Oops! Something went wrong.
+    POSTContactResponse:
+      description: Ok
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                const: Address
+                examples:
+                - Address
+              href:
+                type: string
+                examples:
+                - https://apis.creatoriq.com/crm/v1/api/data/contact/117938214
+              Address:
+                $ref: '#/components/schemas/AddressModel'
+            required:
+            - type
+            - href
+            - Address
+    updatePublisherSocialAccountResponse:
+      description: Social account data update info
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updatePublisherSocialAccountResponseModel'
+    '404':
+      description: Publisher with supplied ID was not found
+    createPublisherResponse200:
+      description: Ok
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                const: Publisher
+                examples:
+                - Publisher
+              href:
+                type: string
+                examples:
+                - https://apis.creatoriq.com/crm/v1/api/publisher/10011762349
+              Publisher:
+                $ref: '#/components/schemas/PublisherModel'
+            required:
+            - type
+            - href
+            - Publisher
+    '401':
+      description: The request could not be completed due to invalid API credentials
+    ErrorResponse404PATCHContactData:
+      description: Supplied ID was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse404PATCHContactDataModel'
+    '403':
+      description: Access was denied due to the API due to insufficient access permissions.
+    '400':
+      description: Bad request, invalid PublisherID format
+    POSTContactResponse400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/POSTContactResponse400Model'
   schemas:
+    AudienceEmpty:
+      type: array
+      description: Return an empty array if the publisher is available, but there is no audience data
+      examples:
+      - []
+      items:
+        type: object
+    SocialAccountModel:
+      type: object
+      oneOf:
+      - $ref: '#/components/schemas/channelItem'
+      - $ref: '#/components/schemas/socialItem'
+    EventLog:
+      type: object
+      properties:
+        Type:
+          type: string
+          description: Event Log type. Can be name of general Event Group or any other abstract category.
+          examples:
+          - Social account updated
+        Note:
+          type: string
+          description: Event Log text body
+          examples:
+          - Social Facebook account \"NameName\" (:id) updated
+        Time:
+          type: string
+          description: 'Event Log entity timestamp. Format is: Y-m-d H:i:s.'
+          examples:
+          - '2020-10-16 18:41:55'
+        UserName:
+          type: string
+          description: Event Log entry Creator name. Unchangeable from API.
+          examples:
+          - John Smith
+        Link:
+          type:
+          - string
+          - 'null'
+          description: External link to supporting document or any other resource.
+          default: null
+          examples:
+          - https://link.com
+      required:
+      - Type
+      - Note
+      - Time
     ErrorResponse404PATCHContactDataModel:
       type: object
       description: Exception
@@ -3881,326 +4009,608 @@ components:
               - Supplied ID was not found
       required:
       - type
-    SocialAccountModel:
+    SocialAccountItem:
       type: object
-      oneOf:
-      - $ref: '#/components/schemas/channelItem'
-      - $ref: '#/components/schemas/socialItem'
-    POSTContactDataRequest:
-      type: object
-      description: POST Contact Data Request
       properties:
-        PrimaryContact:
-          type: integer
-          enum:
-          - 0
-          - 1
-          description: PrimaryContact - 0 or 1
-          format: int32
-          examples:
-          - 0
-        FirstName:
+        Network:
           type: string
-          description: Publisher First Name
           examples:
-          - Publisher First Name
-        LastName:
+          - youtube
+        SocialNetworkId:
           type: string
-          description: Publisher Last Name
           examples:
-          - Publisher Last Name
-        FullName:
+          - UCZsapl0PQ1dZ7pHYoBpRCow
+        NetworkUser:
           type: string
-          description: Publisher Full Name
           examples:
-          - Publisher Full Name
-        FinanceContact:
-          type: integer
-          enum:
-          - 0
-          - 1
-          description: Finance Contact attribute - 0 or 1
-          format: int32
-          examples:
-          - 0
-        ShipToAddress:
-          type: integer
-          enum:
-          - 0
-          - 1
-          description: Ship To Address attribute - 0 or 1
-          format: int32
-          examples:
-          - 1
-        LegalGuardianContact:
-          type: integer
-          enum:
-          - 0
-          - 1
-          description: Legal Guardian Contact - 0 or 1
-          format: int32
-          examples:
-          - 0
-        ContactType:
+          - UCZsapl0PQ1dZ7pHYoBpRCow
+        AccountWeight:
           type: string
-          description: Contact Type
           examples:
-          - Publisher
-        PublisherId:
-          type: integer
-          description: Unique publisher id
-          format: int32
+          - '12'
+        WebReach:
+          type: string
           examples:
-          - 8082160
+          - '0'
+        Title:
+          type: string
+          examples:
+          - Cristiano Ronaldo
+        Followers:
+          type: string
+          examples:
+          - '2140000'
+        LinkedBy:
+          type:
+          - string
+          - 'null'
+          default: null
+        LinkedAt:
+          type:
+          - string
+          - 'null'
+          default: null
+        isVerifiedBySocialNetwork:
+          type: string
+          enum:
+          - '0'
+          - '1'
+        Linked:
+          type: string
+          enum:
+          - '0'
+          - '1'
+        Unlinked:
+          type: string
+          enum:
+          - '0'
+          - '1'
+        LinkBroken:
+          type: string
+          enum:
+          - '0'
+          - '1'
+        Business:
+          type: string
+          enum:
+          - '0'
+          - '1'
+        TokenInvalidDate:
+          type:
+          - string
+          - 'null'
+          default: null
+        DateSocialStatsUpdated:
+          type: string
+          description: Timestamp of the most recent successful run of the social-statistics refresh job for this account. Independent of `LastUpdated` and `EngagementCalculated` — the three are driven by separate background jobs and can legitimately differ for the same account.
+          examples:
+          - '2023-01-03T12:40:00'
+        WhitelistingExpirationDate:
+          type:
+          - string
+          - 'null'
+          default: null
+        IsCreatorMarketplaceEnabled:
+          type:
+          - string
+          - 'null'
+          default: null
       required:
-      - PublisherId
-      minProperties: 1
-    AudienceEmpty:
-      type: array
-      description: Return an empty array if the publisher is available, but there is no audience data
-      examples:
-      - []
-      items:
-        type: object
-    PublisherDataChangesCollectionEventLog:
+      - Network
+      - SocialNetworkId
+      - NetworkUser
+    Audience:
       type: object
-      description: EventLog object
       properties:
-        UserName:
-          type: string
-          description: Event Log entry Creator name. Unchangeable from API.
-          examples:
-          - John Smith
-        RecordId:
-          type: integer
-          description: Record Id
-          examples:
-          - 99999999
-        EventType:
-          type: string
-          description: Event Type
-          examples:
-          - Unlinked accounts
-        EventTime:
-          type: string
-          description: Event time
-          examples:
-          - '2023-01-03 06:15:14.0000000 -07:00'
-        LastUpdated:
-          type: string
-          description: Last updated
-          examples:
-          - '2023-01-03 06:15:14.0000000 -07:00'
-        PublisherId:
-          type: string
-          description: Unique publisherId
-          examples:
-          - '99999999999'
-        LogoURL:
-          type: string
-          description: Link to image to use for Publisher.  If this field is left blank and YouTube ChannelId is specified SocialEdge will attempt to retrieve thumbnail from YouTube API and use it as a default value
-          examples:
-          - https://someside.com/someimg.png
-        PublisherName:
-          type: string
-          description: Publisher Name.  I.e. John Smith.  If this field is left blank and YouTube channel is specified SocialEdge will use YouTube Channel Name as default and will attempt to look this up via Google Plus API
-          examples:
-          - John Smith
-        Note:
-          type: string
-          description: Event Log text body
-          examples:
-          - Social Facebook account "NameName" (:id) updated
-      required:
-      - UserName
-    PublisherByIdModel:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/PublisherModel'
-      - type: object
-        properties:
-          LDACompliant:
-            type: integer
-            enum:
-            - 2
-            - 1
-            - 0
-            - null
-            description: 'Legal Drinking Age (LDA) Compliant flag.
-
-
-              Meanings:
-
-              - `2`: Creator is highly likely to have an LDA-compliant audience on their Instagram account(s) (green)
-
-              - `1`: Creator is likely to have an LDA-compliant audience on at least one of their Instagram accounts (orange)
-
-              - `0`: Creator is unlikely to have an LDA-compliant audience on their Instagram account(s) (red)
-
-              - `null`: Creator doesn''t have Instagram accounts. It''s also possible that error has occurred while getting an LDA value
-
-              '
-            examples:
-            - 1
-        required:
-        - LDACompliant
-    POSTContactResponse400Model:
-      type: object
-      description: Exception
-      properties:
-        type:
-          type: string
-          description: Exception type
-          examples:
-          - CoreException
-        CoreException:
+        '9999999':
           type: object
-          description: Exception information
+          description: Social Id
           properties:
-            code:
-              type: integer
-              description: Exception status code
-              format: int32
-              examples:
-              - 404
-            message:
-              type: string
-              description: Exception message
-              examples:
-              - No input data found
-      required:
-      - type
-    MultiplePublishersAccounts:
+            Demographics:
+              type: object
+              properties:
+                RowNumber:
+                  type: integer
+                  description: Row number
+                  examples:
+                  - 1
+                SocialId:
+                  type: integer
+                  description: Uniq social Id
+                  examples:
+                  - 9999999
+                SocialNetworkId:
+                  type: string
+                  description: Uniq social network Id
+                  examples:
+                  - '9999999'
+                SocialNetworkName:
+                  type: string
+                  description: Social network name
+                  examples:
+                  - John Smith
+                Network:
+                  type: string
+                  description: Source network
+                  examples:
+                  - instagram
+                Female:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: Gender flag
+                  examples:
+                  - 0
+                Male:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: Gender flag
+                  examples:
+                  - 1
+                age13-17:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: Age flag
+                  examples:
+                  - 1
+                age18-24:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: Age flag
+                  examples:
+                  - 0
+                age25-34:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: Age flag
+                  examples:
+                  - 0
+                age35-44:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: Age flag
+                  examples:
+                  - 0
+                age45-54:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: Age flag
+                  examples:
+                  - 0
+                age55-64:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: Age flag
+                  examples:
+                  - 0
+                age65-:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: Age flag
+                  examples:
+                  - 1
+                AudienceEthnicity_Top1:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience ethnicity
+                  default: null
+                  examples:
+                  - Asian
+                AudienceEthnicityShare_Top1:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience ethnicity share
+                  default: null
+                  examples:
+                  - 88.888888
+                AudienceEthnicity_Top2:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience ethnicity
+                  default: null
+                  examples:
+                  - Asian
+                AudienceEthnicityShare_Top2:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience ethnicity share
+                  default: null
+                  examples:
+                  - 88.888888
+                AudienceEthnicity_Top3:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience ethnicity
+                  default: null
+                  examples:
+                  - Asian
+                AudienceEthnicityShare_Top3:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience ethnicity share
+                  default: null
+                  examples:
+                  - 88.888888
+                AudienceEthnicity_Top4:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience ethnicity
+                  default: null
+                  examples:
+                  - Asian
+                AudienceEthnicityShare_Top4:
+                  type: number
+                  description: Audience ethnicity share
+                  examples:
+                  - 88.888888
+                AudienceEthnicity_Top5:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience ethnicity
+                  default: null
+                  examples:
+                  - Asian
+                AudienceEthnicityShare_Top5:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience ethnicity share
+                  default: null
+                  examples:
+                  - 88.888888
+                NetworkUser:
+                  type: string
+                  description: Network user name
+                  examples:
+                  - John Smith
+            FullLocations:
+              type: object
+              properties:
+                RowNumber:
+                  type: integer
+                  description: Row number
+                  examples:
+                  - 1
+                SocialId:
+                  type: integer
+                  description: Uniq social Id
+                  examples:
+                  - 9999999
+                SocialNetworkId:
+                  type: string
+                  description: Uniq social network Id
+                  examples:
+                  - '9999999'
+                SocialNetworkName:
+                  type: string
+                  description: Social network name
+                  examples:
+                  - John Smith
+                Network:
+                  type: string
+                  description: Source network
+                  examples:
+                  - instagram
+                AudienceCountry_Top1:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience country
+                  default: null
+                  examples:
+                  - USA
+                AudienceShare_Top1:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience share top
+                  default: null
+                  examples:
+                  - 88.888888
+                AudienceCountry_Top2:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience country
+                  default: null
+                  examples:
+                  - USA
+                AudienceShare_Top2:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience share top
+                  default: null
+                  examples:
+                  - 88.888888
+                AudienceCountry_Top3:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience country
+                  default: null
+                  examples:
+                  - USA
+                AudienceShare_Top3:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience share top
+                  default: null
+                  examples:
+                  - 88.888888
+                AudienceCountry_Top4:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience country
+                  default: null
+                  examples:
+                  - USA
+                AudienceShare_Top4:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience share top
+                  default: null
+                  examples:
+                  - 88.888888
+                AudienceState_Top1:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience state
+                  default: null
+                  examples:
+                  - CA
+                AudienceStateShare_Top1:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience state top
+                  default: null
+                  examples:
+                  - 88.888888
+                AudienceState_Top2:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience state
+                  default: null
+                  examples:
+                  - CA
+                AudienceStateShare_Top2:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience state top
+                  default: null
+                  examples:
+                  - 88.888888
+                AudienceState_Top3:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience state
+                  default: null
+                  examples:
+                  - CA
+                AudienceStateShare_Top3:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience state top
+                  default: null
+                  examples:
+                  - 88.888888
+                AudienceState_Top4:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience state
+                  default: null
+                  examples:
+                  - CA
+                AudienceStateShare_Top4:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience state top
+                  default: null
+                  examples:
+                  - 88.888888
+                AudienceState_Top5:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience state
+                  default: null
+                  examples:
+                  - CA
+                AudienceStateShare_Top5:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience state top
+                  default: null
+                  examples:
+                  - 88.888888
+                AudienceCity_Top1:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience city
+                  default: null
+                  examples:
+                  - Selangor, Malaysia
+                AudienceCityShare_Top1:
+                  type:
+                  - number
+                  - 'null'
+                  default: null
+                AudienceCity_Top2:
+                  type: string
+                  description: Audience city
+                  examples:
+                  - Selangor, Malaysia
+                AudienceCityShare_Top2:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience city top
+                  default: null
+                  examples:
+                  - 88.888888
+                AudienceCity_Top3:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience city
+                  default: null
+                  examples:
+                  - Selangor, Malaysia
+                AudienceCityShare_Top3:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience city top
+                  default: null
+                  examples:
+                  - 88.888888
+                AudienceCity_Top4:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience city
+                  default: null
+                  examples:
+                  - Selangor, Malaysia
+                AudienceCityShare_Top4:
+                  type:
+                  - number
+                  - 'null'
+                  description: Audience city top
+                  default: null
+                  examples:
+                  - 88.888888
+                AudienceCity_Top5:
+                  type:
+                  - string
+                  - 'null'
+                  description: Audience city
+                  default: null
+                  examples:
+                  - Selangor, Malaysia
+                AudienceCityShare_Top5:
+                  type: number
+                  description: Audience city top
+                  examples:
+                  - 88.888888
+                NetworkUser:
+                  type: string
+                  description: Network user name
+                  examples:
+                  - John Smith
+            Locations:
+              type: array
+              items:
+                type: object
+                properties:
+                  RowNumber:
+                    type: integer
+                    description: Row number
+                    examples:
+                    - 1
+                  SocialId:
+                    type: integer
+                    description: Uniq social Id
+                    examples:
+                    - 9999999
+                  SocialNetworkId:
+                    type: string
+                    description: Uniq social network Id
+                    examples:
+                    - '9999999'
+                  SocialNetworkName:
+                    type: string
+                    description: Social network name
+                    examples:
+                    - John Smith
+                  Network:
+                    type: string
+                    description: Source network
+                    examples:
+                    - instagram
+                  Region:
+                    type:
+                    - string
+                    - 'null'
+                    description: Region
+                    default: null
+                    examples:
+                    - Brazil
+                  RegionPercentage:
+                    type:
+                    - number
+                    - 'null'
+                    description: Region percentage
+                    default: null
+                    examples:
+                    - 88.888888
+                  NetworkUser:
+                    type: string
+                    description: Network user name
+                    examples:
+                    - John Smith
+    tagSchema:
       type: object
-      description: Publishers by IDs as a keys with array of their Social Accounts
-      patternProperties:
-        /^[0-9]+$/:
+      properties:
+        ids:
           type: array
-          description: Publisher's Social Accounts
+          description: List of publisher ids
+          minItems: 1
           items:
-            type: object
-            properties:
-              PublisherId:
-                type: integer
-                examples:
-                - 99990
-              Network:
-                type: string
-                enum:
-                - youtube
-                - twitter
-                - facebook
-                - instagram
-                - google
-                - vine
-                - weibo
-                - line
-                - tiktok
-                - twitch
-                - tumblr
-                - pinterest
-                - snapchat
-                - linkedin
-                - reddit
-                - web
-                - blog
-                examples:
-                - youtube
-              NotFound:
-                type: integer
-                enum:
-                - 0
-                - 1
-                examples:
-                - 0
-              isVerifiedBySocialNetwork:
-                type: integer
-                enum:
-                - 0
-                - 1
-                examples:
-                - 1
-              CreatedBy:
-                type: string
-                examples:
-                - andy.patinkin
-              CreatedAt:
-                type:
-                - string
-                - 'null'
-                format: date-time
-                examples:
-                - '2018-05-15 23:49:05'
-              LogoURL:
-                type: string
-                format: URI
-                examples:
-                - https://yt3.ggpht.com/eijq408tTlu3XbwlIBeu8RsDG4vGTWb2JTOGKuus3sKdAKoxlq770qVga-p3sCT5PHRVEpYfq1M=s800-c-k-c0x00ffffff-no-rj
-              FollowersCount:
-                type: integer
-                examples:
-                - 4130000
-              LikesCount:
-                type:
-                - integer
-                - 'null'
-                examples:
-                - 213453
-              CommentsCount:
-                type:
-                - integer
-                - 'null'
-                examples:
-                - 2134
-              ViewsCount:
-                type:
-                - integer
-                - 'null'
-                examples:
-                - 121675291
-              IsBusiness:
-                type: 'null'
-                enum:
-                - 0
-                - 1
-                examples:
-                - 0
-              Gender:
-                type:
-                - string
-                - 'null'
-                examples:
-                - Female
-              Language:
-                type:
-                - string
-                - 'null'
-                examples:
-                - EN
-              LastUpdated:
-                type: string
-                format: date-time
-                examples:
-                - '2023-06-26 11:39:03'
-              Bio:
-                type: string
-                examples:
-                - Hola, yo soy Ari y subo Gameplays de Minecraft y mas
-              SocialNetworkId:
-                type: string
-                examples:
-                - UCdgKwvFibviy0AzNJCxOQL0
-              NetworkUser:
-                type: string
-                examples:
-                - '@arigameplays'
-              FullName:
-                type: string
-                examples:
-                - Ari Gameplays
-            required:
-            - PublisherId
-            - Network
+            type: integer
+            format: int32
+            examples:
+            - 232323
+        tags:
+          type: array
+          description: List of tags
+          minItems: 1
+          examples:
+          - - Tag1
+            - Tag2
+          items:
+            type: string
+      required:
+      - ids
+      - tags
     AddressModel:
       type: object
       properties:
@@ -4308,114 +4718,6 @@ components:
       required:
       - Id
       - PublisherId
-    SocialAccountItem:
-      type: object
-      properties:
-        Network:
-          type: string
-          examples:
-          - youtube
-        SocialNetworkId:
-          type: string
-          examples:
-          - UCZsapl0PQ1dZ7pHYoBpRCow
-        NetworkUser:
-          type: string
-          examples:
-          - UCZsapl0PQ1dZ7pHYoBpRCow
-        AccountWeight:
-          type: string
-          examples:
-          - '12'
-        WebReach:
-          type: string
-          examples:
-          - '0'
-        Title:
-          type: string
-          examples:
-          - Cristiano Ronaldo
-        Followers:
-          type: string
-          examples:
-          - '2140000'
-        LinkedBy:
-          type:
-          - string
-          - 'null'
-          default: null
-        LinkedAt:
-          type:
-          - string
-          - 'null'
-          default: null
-        isVerifiedBySocialNetwork:
-          type: string
-          enum:
-          - '0'
-          - '1'
-        Linked:
-          type: string
-          enum:
-          - '0'
-          - '1'
-        Unlinked:
-          type: string
-          enum:
-          - '0'
-          - '1'
-        LinkBroken:
-          type: string
-          enum:
-          - '0'
-          - '1'
-        Business:
-          type: string
-          enum:
-          - '0'
-          - '1'
-        TokenInvalidDate:
-          type:
-          - string
-          - 'null'
-          default: null
-        DateSocialStatsUpdated:
-          type: string
-          description: Timestamp of the most recent successful run of the social-statistics refresh job for this account. Independent of `LastUpdated` and `EngagementCalculated` — the three are driven by separate background jobs and can legitimately differ for the same account.
-          examples:
-          - '2023-01-03T12:40:00'
-        WhitelistingExpirationDate:
-          type:
-          - string
-          - 'null'
-          default: null
-        IsCreatorMarketplaceEnabled:
-          type:
-          - string
-          - 'null'
-          default: null
-      required:
-      - Network
-      - SocialNetworkId
-      - NetworkUser
-    CampaignInformationSuccessResponseModel:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Type of Search
-          examples:
-          - PublisherInCampaign
-        href:
-          type: string
-          description: CreatorIQ API URL to get campaign information,
-          examples:
-          - https://apis.creatoriq.com/crm/v1/api/campaign/99999
-        PublisherInCampaign:
-          $ref: '#/components/schemas/CampaignModel'
-      required:
-      - type
-      - href
     CampaignModel:
       type: object
       properties:
@@ -5886,649 +6188,1045 @@ components:
           - https://socialedge-campaigns.s3.amazonaws.com/thumb_7382.png
       required:
       - PublisherId
-    Channel:
+    updatePublisherSocialAccountResponseModel:
+      type: object
+      oneOf:
+      - $ref: '#/components/schemas/socialItem'
+      - $ref: '#/components/schemas/channelItem'
+      - type: object
+        description: Empty object
+        maxProperties: 0
+        default: {}
+        examples:
+        - {}
+    ContactModel:
       type: object
       properties:
-        ChannelId:
+        FirstName:
+          type: string
+          description: First name
+          examples:
+          - Christy
+        LastName:
+          type: string
+          description: First name
+          examples:
+          - Weimann
+        FullName:
+          type: string
+          description: First name
+          examples:
+          - Christy Weimann
+        Email:
+          type: string
+          description: Email
+          examples:
+          - Estevan.Conn54@yahoo.com
+        Email1:
+          type: string
+          description: Email
+          examples:
+          - Robb82@gmail.com
+        AddressLine1:
+          type: string
+          description: Address
+          examples:
+          - Robert Robertson, 1234 NW Bobcat Lane, St. Robert
+        AddressLine2:
+          type: string
+          description: Address
+          examples:
+          - Robert Robertson, 1234 NW Bobcat Lane, St. Robert
+        City:
+          type: string
+          description: City
+          examples:
+          - Boston
+        State:
+          type: string
+          description: State
+          examples:
+          - Massachusetts
+        Zip:
+          type: string
+          description: Zip
+          examples:
+          - 02108
+        Country:
+          type: string
+          description: Country
+          examples:
+          - USA
+      required:
+      - FirstName
+    updatePublisherSocialAccountBody:
+      type: object
+      properties:
+        accountId:
+          type: string
+          description: Social Account ID
+          examples:
+          - '7554368935252'
+        network:
+          type: string
+          enum:
+          - youtube
+          - twitter
+          - facebook
+          - instagram
+          - google
+          - vine
+          - weibo
+          - line
+          - tiktok
+          - twitch
+          - tumblr
+          - pinterest
+          - snapchat
+          - linkedin
+          - reddit
+          - web
+          - blog
+          description: Social Network name
+          examples:
+          - instagram
+      required:
+      - accountId
+      - network
+    PublisherByIdModel:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/PublisherModel'
+      - type: object
+        properties:
+          LDACompliant:
+            type: integer
+            enum:
+            - 2
+            - 1
+            - 0
+            - null
+            description: 'Legal Drinking Age (LDA) Compliant flag.
+
+
+              Meanings:
+
+              - `2`: Creator is highly likely to have an LDA-compliant audience on their Instagram account(s) (green)
+
+              - `1`: Creator is likely to have an LDA-compliant audience on at least one of their Instagram accounts (orange)
+
+              - `0`: Creator is unlikely to have an LDA-compliant audience on their Instagram account(s) (red)
+
+              - `null`: Creator doesn''t have Instagram accounts. It''s also possible that error has occurred while getting an LDA value
+
+              '
+            examples:
+            - 1
+        required:
+        - LDACompliant
+    PublisherModel:
+      type: object
+      properties:
+        Id:
           type: integer
-          description: Internal unique Id
-          format: int32
+          description: Internal CreatorIQ identifier. This value is unique and immutable (cannot be changed). It is used by the system to uniquely identify the entity. This ID can be found in the UI (e.g., in the browser URL). To use this identifier in update requests, you must explicitly specify the query parameter `key=id`
           examples:
-          - 17982764
-        ChannelName:
+          - 2386944
+        NetworkPublisherId:
           type: string
-          description: Channel name in Youtube
+          description: Same as `PublisherId`. This field contains the same value and is provided for compatibility. It represents an external identifier that can be updated and is used by default in update operations.
           examples:
-          - ZendayaVEVO
-        Channel:
-          type: string
-          description: Channel ID in Youtube
-          examples:
-          - UCVQ2Z9dNQ2aJJ10f6SgBH0g
-        Title:
-          type: string
-          description: Channel title in Youtube
-          examples:
-          - ZendayaVEVO
-        LogoURL:
-          type: string
-          description: Link to logo
-          examples:
-          - https://yt3.ggpht.com/ytc/AMLnZu84MgVNNeswv0Vwz4IJzSilI_qQkx1JIRXsqrNvYw=s800-c-k-c0x00ffffff-no-rj-mo
-        Summary:
-          type:
-          - string
-          - 'null'
-          default: null
+          - '10001356198'
         PublisherId:
-          type: integer
-          description: Id of publisher which attached to Youtube channel
-          format: int32
+          type: string
+          description: External identifier used for integrations and mapping with third-party systems. This value can be updated. By default, this identifier is used when updating an account (unless `key=id` is specified)
           examples:
-          - 9202903
-        ContractId:
+          - '10001356198'
+        ChannelId:
           type:
-          - integer
+          - string
           - 'null'
-          description: Uniq id of contract publisher
-          default: null
-        NetworkId:
-          type: integer
-          description: Id of partner
-          format: int32
+          description: YouTube unique channel Identifier.  i.e. UCkDbLiXbx6CIRZuyW9sZK1g
           examples:
-          - 141
-        NetworkName:
+          - UCkDbLiXbx6CIRZuyW9sZK1g
+        ChannelName:
           type:
           - string
           - 'null'
-          description: Name of partner
-          default: null
-        SubNetworkId:
+          description: YouTube Channel Name.  If this field is left blank and YouTube ChannelId is specified SocialEdge will attempt to retrieve ChannelName via YouTube API
+          examples:
+          - My YouTube channel
+        ChannelTitle:
           type:
           - string
           - 'null'
-          description: Internal id for technical  use
-          default: null
-        SubNetworkName:
+          description: Primary YouTube Channel title
+          examples:
+          - My YouTube Channel title
+        ContentOwner:
           type:
           - string
           - 'null'
-          description: Internal name for technical  use
+          description: Content owner
+          examples:
+          - John Smith
+        Token:
+          type:
+          - string
+          - 'null'
+          description: YouTube access token for this channel
+          examples:
+          - 20c965fe7b0c3aec8a596a74b8f4deee
+        PublisherName:
+          type: string
+          description: Publisher Name.  I.e. John Smith.  If this field is left blank and YouTube channel is specified SocialEdge will use YouTube Channel Name as default and will attempt to look this up via Google Plus API
+          examples:
+          - John Smith
+        LastUpdated:
+          type: string
+          description: Date when publisher last updated
+          examples:
+          - '2022-03-01 08:12:26'
+        Status:
+          type:
+          - string
+          - 'null'
+          description: Publisher status
           default: null
+          examples:
+          - Active
+        StatusCategory:
+          type:
+          - string
+          - 'null'
+          description: Status category
+          default: null
+          examples:
+          - In Network
+        Language:
+          type:
+          - string
+          - 'null'
+          description: Publisher's primary language.  I.E. English.  If this field is left blank and YouTube channel is specified SocialEdge will attempt to look this up via YouTube API
+          default: null
+          examples:
+          - English
+        SecondaryLanguage:
+          type:
+          - string
+          - 'null'
+          description: Publisher's secondary language
+          default: null
+          examples:
+          - English
+        Size:
+          type:
+          - string
+          - 'null'
+          description: This field can be used to categorize Publishers.  I.e. 'Star', 'Starlet' or 'Large', 'Small'
+          default: null
+          examples:
+          - Starlet
+        LeadSource:
+          type:
+          - string
+          - 'null'
+          description: I.e. Web, Outreach, Referral
+          default: null
+          examples:
+          - Web
+        EthnicBackground:
+          type:
+          - string
+          - 'null'
+          description: I.e. Asian, Caucasian, African American
+          default: null
+          examples:
+          - Asian
         Category:
           type:
           - string
           - 'null'
-          description: Category of channel
+          description: Primary category. I.e. Music, Style, Fitness
           default: null
+          examples:
+          - Style
+        SubCategories:
+          type:
+          - string
+          - 'null'
+          description: Comma separated subcategories for publisher
+          default: null
+        Gender:
+          type:
+          - string
+          - 'null'
+          description: I.e. Male, Female, Transgender
+          default: null
+          examples:
+          - Female
+        DateOfBirth:
+          type:
+          - string
+          - 'null'
+          description: Publisher's date of birth
+          default: null
+          examples:
+          - 15/05/1996 16:30:20
+        Description:
+          type:
+          - string
+          - 'null'
+          description: If this field is left blank and YouTube channel is specified SocialEdge will attempt to look up YouTube channel description via YouTube API and use it as default value
+          default: null
+          examples:
+          - My channel description
+        PublisherStatus:
+          type:
+          - string
+          - 'null'
+          description: Used to indicate recruiting status.  I.e. 'Contract Signed', 'Rejected'.  Refer to product documentation for list of options
+          default: null
+          examples:
+          - In Network
+        PublisherStatusCategory:
+          type:
+          - string
+          - 'null'
+          description: Additional information about recruiting status.   I.e. 'Waiting for Activation', 'Too Small'.  This field is used together with PublisherStatus.  Refer to product documentation for list of options
+          default: null
+          examples:
+          - Waiting for Activation
+        LogoURL:
+          type:
+          - string
+          - 'null'
+          description: Link to image to use for Publisher.  If this field is left blank and YouTube ChannelId is specified SocialEdge will attempt to retrieve thumbnail from YouTube API and use it as a default value
+          default: null
+          examples:
+          - https://someside.com/someimg.png
+        DateRecruitingStarted:
+          type:
+          - string
+          - 'null'
+          description: The date when creator was added to CRM
+          default: null
+          examples:
+          - 15/05/1996 16:30:20
+        LegalGuardian:
+          type: string
+          description: Publisher's legal guardian if Publisher is a minor
+          examples:
+          - John Smith
+        LegalGuardianEmail:
+          type: string
+          description: Publisher's legal guardian email
+          examples:
+          - johnsmith@gmail.com
+        HasAdSense:
+          type: boolean
+          examples:
+          - false
+        AdSenseIssue:
+          type: string
+          description: Indicates if Publisher has AdSence issues for Primary YouTube Channel
+          examples:
+          - ''
         RecruiterName:
           type:
           - string
           - 'null'
-          description: Name of user which added channel
+          description: Name of the person who recruited or is recruiting Publisher
           default: null
           examples:
-          - Admin
-        Status:
+          - John Smith
+        SubNetworkName:
           type: string
-          description: Status of publisher in network
+          description: Use to farther categorize Publishers and Channels, usually based on YouTube network.  I.e. Owned and Operated
           examples:
-          - Open - In process
-        AccountManagerName:
+          - Owned and Operated
+        InterfaceLocale:
           type:
           - string
           - 'null'
           default: null
-          examples:
-          - Admin
-        AffiliateManagerName:
-          type:
-          - string
-          - 'null'
-          default: null
-        DateFirstContractSigned:
-          type:
-          - string
-          - 'null'
-          default: null
-        DateActivated:
-          type:
-          - string
-          - 'null'
-          default: null
-        MonthActivated:
-          type:
-          - string
-          - 'null'
-          default: null
-        DateFirstNetworkVideoViews:
-          type:
-          - string
-          - 'null'
-          default: null
-        MonthFirstNetworkVideoViews:
-          type:
-          - string
-          - 'null'
-          default: null
-        YTProductCategory:
-          type:
-          - string
-          - 'null'
-          default: null
-        YTLanguage:
-          type:
-          - string
-          - 'null'
-          description: Language of youtube channel
-          examples:
-          - English
-        YTGeoRegion:
-          type: string
-          examples:
-          - US
-        YTGender:
-          type:
-          - string
-          - 'null'
-          default: null
-        YTAgeRange:
-          type:
-          - string
-          - 'null'
-          default: null
-        AuthorName:
-          type:
-          - string
-          - 'null'
-          default: null
-        AuthorUserId:
-          type:
-          - string
-          - 'null'
-          default: null
-        CustomTag1:
-          type:
-          - string
-          - 'null'
-          default: null
-        CustomTag2:
-          type:
-          - string
-          - 'null'
-          default: null
-        CustomTag3:
-          type:
-          - string
-          - 'null'
-          default: null
-        CustomField1:
-          type:
-          - string
-          - 'null'
-          default: null
-        CustomValue1:
-          type:
-          - string
-          - 'null'
-          default: null
-        CustomField2:
-          type:
-          - string
-          - 'null'
-          default: null
-        CustomValue2:
-          type:
-          - string
-          - 'null'
-          default: null
-        CustomField3:
-          type:
-          - string
-          - 'null'
-          default: null
-        CustomValue3:
-          type:
-          - string
-          - 'null'
-          default: null
-        ContentOwner:
-          type: string
-          examples:
-          - Admin
-        TotalSubscribers:
-          type: integer
-          description: Count of subscribers for this channel
-          format: int32
-          examples:
-          - 1310000
-        TotalViews:
-          type: string
-          description: Count of views channel
-          examples:
-          - '390807217'
-        TotalVideos:
-          type: integer
-          description: Count of videos channel
-          format: int32
-          examples:
-          - 35
-        ChannelSize:
-          type:
-          - string
-          - 'null'
-          default: null
-        CreateDateTime:
-          type: string
-          description: DateTime when channel created
-          examples:
-          - '2011-03-01 19:18:47'
-        LastUpdated:
-          type: string
-          format: date-time
-          examples:
-          - '2023-01-09T02:21:46-08:00'
-        UpdatedBy:
-          type: string
-          description: Name of user which updated channel info
-          examples:
-          - Discovery
-        NotFound:
-          type:
-          - boolean
-          - 'null'
-          description: Is channel exists on Youtube
-          default: null
-        AverageMonthlyViews:
-          type: number
-          examples:
-          - 2749551.9859155
-        LastComments:
-          type:
-          - string
-          - 'null'
-          default: null
-        LastLikes:
-          type:
-          - string
-          - 'null'
-          default: null
-        LastDislikes:
-          type:
-          - string
-          - 'null'
-          default: null
-        AvgLastViewsPerVideo:
-          type:
-          - string
-          - 'null'
-          default: null
-        AvgLastCommentsPerVideo:
-          type:
-          - string
-          - 'null'
-          default: null
-        AvgLastLikesPerVideo:
-          type:
-          - string
-          - 'null'
-          default: null
-        AvgLastDislikesPerVideo:
-          type:
-          - string
-          - 'null'
-          default: null
-        AvgLastSharesPerVideo:
-          type:
-          - string
-          - 'null'
-          default: null
-        AvgLastFacebookSharesPerVideo:
-          type:
-          - string
-          - 'null'
-          default: null
-        AvgLastTwitterSharesPerVideo:
-          type:
-          - string
-          - 'null'
-          default: null
-        AvgLastMinutesWatchedPerVideo:
-          type:
-          - string
-          - 'null'
-          default: null
-        LastVideoLength:
-          type:
-          - string
-          - 'null'
-          default: null
-        StatusChangedManually:
-          type: integer
-          enum:
-          - 0
-          - 1
-          format: int32
-          examples:
-          - 0
-        TotalLikes:
-          type:
-          - string
-          - 'null'
-          default: null
-          examples:
-          - '2323'
-        TotalDislikes:
-          type:
-          - string
-          - 'null'
-          default: null
-        TotalFavoritesAdded:
-          type:
-          - string
-          - 'null'
-          default: null
-        TotalFavoritesRemoved:
-          type:
-          - string
-          - 'null'
-          default: null
-        TotalShares:
-          type:
-          - string
-          - 'null'
-          default: null
-        EstimatedMinutesWatched:
-          type:
-          - string
-          - 'null'
-          default: null
-        AverageViewDuration:
-          type:
-          - string
-          - 'null'
-          default: null
-        TotalComments:
-          type:
-          - string
-          - 'null'
-          default: null
-          examples:
-          - '34'
-        IncludeInContract:
-          type: integer
-          enum:
-          - 0
-          - 1
-          format: int32
-          examples:
-          - 1
-        Protected:
-          type: integer
-          enum:
-          - 0
-          - 1
-          format: int32
-          examples:
-          - 0
-        AvgLastFacebookLikesPerVideo:
-          type:
-          - string
-          - 'null'
-          default: null
-        AvgLastFacebookCommentsPerVideo:
-          type:
-          - string
-          - 'null'
-          default: null
-        AvgLastGooglePlusSharesPerVideo:
-          type:
-          - string
-          - 'null'
-          default: null
-        AvgLastPinterestSharesPerVideo:
-          type:
-          - string
-          - 'null'
-          default: null
-        DateLastVideoUploaded:
-          type: string
-          examples:
-          - '2016-02-23 08:00:00'
-        DateDeActivated:
-          type:
-          - string
-          - 'null'
-          default: null
-        DateStatusChanged:
-          type:
-          - string
-          - 'null'
-          default: null
-        GooglePlusUserId:
-          type:
-          - string
-          - 'null'
-          default: null
-        LogoHighResURL:
-          type: string
-          examples:
-          - https://yt3.ggpht.com/ytc/AMLnZu84MgVNNeswv0Vwz4IJzSilI_qQkx1JIRXsqrNvYw=s88-c-k-c0x00ffffff-no-rj-mo
-        AVV30:
-          type:
-          - string
-          - 'null'
-          default: null
-        AVV60:
-          type:
-          - string
-          - 'null'
-          default: null
-        AVV90:
-          type:
-          - string
-          - 'null'
-          default: null
-        Tags:
-          type:
-          - string
-          - 'null'
-          default: null
-        CreatedBy:
-          type: string
-          examples:
-          - Admin
-        CreatedAt:
-          type: string
-          examples:
-          - '2019-03-07 18:35:59'
-        CreatorRole:
-          type: string
-          examples:
-          - Account owner
-        VerifiedBy:
-          type:
-          - string
-          - 'null'
-          default: null
-        VerifiedAt:
-          type:
-          - string
-          - 'null'
-          default: null
-        LinkedBy:
-          type:
-          - string
-          - 'null'
-          default: null
-        LinkedAt:
-          type:
-          - string
-          - 'null'
-          default: null
-        AvgLastInstagramSharesPerVideo:
-          type:
-          - string
-          - 'null'
-          default: null
-        Last30DaysViews:
-          type:
-          - string
-          - 'null'
-          default: null
-        MonthToDateViews:
-          type:
-          - string
-          - 'null'
-          default: null
-        LastMonthViews:
-          type:
-          - string
-          - 'null'
-          default: null
-          examples:
-          - '2323'
-        DateScraped:
-          type:
-          - string
-          - 'null'
-          default: null
-        CPP:
-          type:
-          - number
-          - 'null'
-          default: null
-          examples:
-          - 23
-        CPE:
-          type:
-          - number
-          - 'null'
-          default: null
-          examples:
-          - 23
-        CPM:
-          type:
-          - number
-          - 'null'
-          examples:
-          - 23
-        Engagement:
-          type:
-          - string
-          - 'null'
-          default: null
-        EngagementRate:
-          type:
-          - string
-          - 'null'
-          default: null
-        isVerifiedBySocialNetwork:
-          type: integer
-          format: int32
-          examples:
-          - 1
-        IsTokenInvalid:
-          type: integer
-          format: int32
-          examples:
-          - 0
-        TokenInvalidDate:
-          type:
-          - string
-          - 'null'
-          default: null
-        DateAnalytics:
-          type:
-          - string
-          - 'null'
-          default: null
-        NewSocialAccountID:
-          type: integer
-          description: Internal Id for technical use
-          format: int32
-          examples:
-          - -739328
-        Network:
-          const: youtube
-          examples:
-          - youtube
-        SocialNetworkId:
-          type: string
-          examples:
-          - UCVQ2Z9dNQ2aJJ10f6SgBH0g
-        NetworkUser:
-          type: string
-          examples:
-          - UCVQ2Z9dNQ2aJJ10f6SgBH0g
-        NumberOfPosts:
-          type: integer
-          format: int32
-          examples:
-          - 35
-        DateSocialStatsUpdated:
-          type: string
-          description: Timestamp of the most recent successful run of the social-statistics refresh job for this account. Independent of `LastUpdated` and `EngagementCalculated` — the three are driven by separate background jobs and can legitimately differ for the same account.
-          format: date-time
-          examples:
-          - '2023-01-17T11:09:00+00:00'
-        Contracts:
+        Address:
           type: object
           properties:
             type:
               type: string
+              description: Type of Search
               examples:
-              - ContractCollection
+              - Address
             href:
               type: string
+              description: CreatorIQ API URL to get publisher’s contact information.
               examples:
-              - https://apis.creatoriq.com/crm/v1/api/data/youtube/channel/17982764/contracts
-        AvgLastEngagementPerVideoYT:
-          type: integer
-          format: int32
-          examples:
-          - 0
-        Linked:
-          type: boolean
-        Unlinked:
-          type: boolean
-        LinkBroken:
-          type: boolean
-        Verified:
-          type: boolean
-        Business:
-          type: boolean
-        SocialEngagement:
-          $ref: '#/components/schemas/socialEngagement'
-      required:
-      - ChannelId
-      - Channel
-      - PublisherId
-    tagSchema:
-      type: object
-      properties:
-        ids:
+              - https://apis.creatoriq.com/crm/v1/api/data/contact/111209220
+          required:
+          - type
+        FinanceContact:
+          $ref: '#/components/schemas/ContactModel'
+        LegalGuardianContact:
+          $ref: '#/components/schemas/ContactModel'
+        ShipToContact:
+          $ref: '#/components/schemas/ContactModel'
+        Contract:
+          type: object
+          properties:
+            ChannelId:
+              type: string
+              description: YouTube channel Identifier.  i.e. UCkDbLiXbx6CIRZuyW9sZK1g or human readable unique channel name
+              pattern: ^[a-zA-Z0-9]+$
+              examples:
+              - UCkDbLiXbx6CIRZuyW9sZK1g
+            Summary:
+              type: string
+              description: Contract summary. I.e. 'Active, Rev-share, 70%; Expires 04/09/2015;
+              pattern: ^[a-zA-Z0-9]+$
+              examples:
+              - Active
+            Link:
+              type: string
+              description: Contract document location link
+              pattern: ^[a-zA-Z0-9]+$
+              examples:
+              - Link
+            DateSigned:
+              type: string
+              description: Date when Contract is signed
+              examples:
+              - 15/05/1996 16:30:20
+            DateExpired:
+              type: string
+              description: Date when Contract will expire
+              examples:
+              - 15/05/1996 16:30:20
+            DateActive:
+              type: string
+              description: Date when Contract is active
+              examples:
+              - 15/05/1996 16:30:20
+            DateSent:
+              type: string
+              description: Date when Contract is sent
+              examples:
+              - 15/05/1996 16:30:20
+            EchoSignTemplate:
+              type: string
+              description: EchoSign Template
+              pattern: ^[a-zA-Z0-9]+$
+              examples:
+              - Template
+            BonusPeriod:
+              type: boolean
+              description: Bonus Period
+              examples:
+              - false
+            RenewalPeriod:
+              type: boolean
+              description: Renewal Period
+              examples:
+              - false
+            Active:
+              type: boolean
+              description: Is contract active
+              examples:
+              - false
+          required:
+          - ChannelId
+        Demographics:
+          type: object
+          properties:
+            type:
+              type: string
+              description: Type of Search
+              examples:
+              - Demographics
+            href:
+              type: string
+              description: CreatorIQ API URL to get publisher’s demographic information.
+              examples:
+              - https://apis.creatoriq.com/crm/v1/api/publisher/10001356198/demographics
+          required:
+          - type
+          - href
+        Summary:
+          type: object
+          properties:
+            type:
+              const: Summary
+              description: Type of Search
+            href:
+              type: string
+              description: CreatorIQ API URL to get publisher’s summary.
+              examples:
+              - https://apis.creatoriq.com/crm/v1/api/publisher/10001356198/summary
+          required:
+          - type
+          - href
+        SocialAccounts:
+          type: object
+          properties:
+            type:
+              const: SocialAccounts
+              description: Type of Search
+              examples:
+              - SocialAccounts
+            href:
+              type: string
+              description: CreatorIQ API URL to get publisher’s social account information summary.
+              examples:
+              - https://apis.creatoriq.com/crm/v1/api/publisher/10001356198/socialAccounts
+          required:
+          - type
+          - href
+        InfoForAdvertisers:
+          type: object
+          properties:
+            type:
+              const: InfoForAdvertisers
+              description: Type of Search
+              examples:
+              - InfoForAdvertisers
+            href:
+              type: string
+              description: CreatorIQ API URL to get advertiser information for the publisher.
+              examples:
+              - https://apis.creatoriq.com/crm/v1/api/publisher/99999999999/infoForAdvertisers
+          required:
+          - type
+          - href
+        accounts:
+          type: object
+          properties:
+            type:
+              type: string
+              description: Type of Search
+              examples:
+              - Accounts
+            href:
+              type: string
+              description: CreatorIQ API URL to get detailed information about publisher’s social networks and social engagement.
+              examples:
+              - https://apis.creatoriq.com/crm/v1/api/publisher/99999999999/accounts
+          required:
+          - type
+          - href
+        channels:
+          type: object
+          properties:
+            type:
+              type: string
+              description: Type of Search
+              examples:
+              - channels
+            href:
+              type: string
+              description: CreatorIQ API URL to get detailed information about publisher’s YouTube channels.
+              examples:
+              - https://apis.creatoriq.com/crm/v1/api/publisher/99999999999/channels
+          required:
+          - type
+          - href
+        Campaigns:
+          type: object
+          properties:
+            type:
+              const: Campaigns
+              description: Type of Search
+              examples:
+              - Campaigns
+            href:
+              type: string
+              description: CreatorIQ API URL to get detailed information about publisher’s campaigns.
+              examples:
+              - https://apis.creatoriq.com/crm/v1/api/publisher/10001356198/campaigns
+          required:
+          - type
+          - href
+        AvailableCampaigns:
+          type: object
+          properties:
+            type:
+              type: string
+              description: Type of Search
+              examples:
+              - CampaignCollection
+            href:
+              type: string
+              description: CreatorIQ API URL to get information about campaigns available for a publisher.
+              examples:
+              - https://apis.creatoriq.com/crm/v1/api/publisher/99999999999/availableCampaigns
+          required:
+          - type
+          - href
+        Notes:
+          type: object
+          properties:
+            type:
+              const: NotesCollection
+              description: Type of Search
+              examples:
+              - NotesCollection
+            href:
+              type: string
+              description: CreatorIQ API URL to get publisher notes.
+              examples:
+              - https://apis.creatoriq.com/crm/v1/api/publisher/99999999999/notes
+          required:
+          - type
+          - href
+        Log:
+          type: object
+          properties:
+            type:
+              const: EventLogCollection
+              description: Type of Search
+              examples:
+              - EventLogCollection
+            href:
+              type: string
+              description: CreatorIQ API URL to get event logs for changes to publisher social account information.
+              examples:
+              - https://apis.creatoriq.com/crm/v1/api/publisher/99999999999/log
+          required:
+          - type
+          - href
+        Messages:
+          type: object
+          properties:
+            type:
+              type: string
+              description: Type of Search
+              examples:
+              - Messages
+            href:
+              type: string
+              description: CreatorIQ API URL to get publisher messages.
+              examples:
+              - https://apis.creatoriq.com/crm/v1/api/publisher/99999999999/messages
+          required:
+          - type
+          - href
+        AllowedPaymentMethods:
           type: array
-          description: List of publisher ids
-          minItems: 1
-          items:
-            type: integer
-            format: int32
-            examples:
-            - 232323
-        tags:
-          type: array
-          description: List of tags
-          minItems: 1
           examples:
-          - - Tag1
-            - Tag2
+          - - Paypal
           items:
             type: string
+            description: List of allowed payment methods
+            examples:
+            - Paypal
+        InternalDescription:
+          type:
+          - string
+          - 'null'
+          description: Internal notes about Publisher
+          default: null
+          examples:
+          - Loyal and willing
+        TalentAgency:
+          type:
+          - string
+          - 'null'
+          description: Publisher's talent agency
+          default: null
+          examples:
+          - My talent agency
+        Kids:
+          type:
+          - string
+          - 'null'
+          description: Publisher's kids
+          default: null
+          examples:
+          - One
+        Unsubscribe:
+          type:
+          - boolean
+          - 'null'
+          description: Unsubscribe flag
+          default: null
+          examples:
+          - false
+        DontContact:
+          type:
+          - boolean
+          - 'null'
+          description: Don't contact this publisher
+          default: null
+          examples:
+          - false
+        Tags:
+          type:
+          - string
+          - 'null'
+          description: Publisher''s tags (comma separated)'
+          default: null
+          examples:
+          - News,Sport
+        TagNames:
+          type:
+          - string
+          - 'null'
+          description: Publisher''s tags (comma separated)'
+          default: null
+          examples:
+          - Nike, Nike Running, Running, Micro, Sports, APAC
+        DateJoinedNetwork:
+          type:
+          - string
+          - 'null'
+          description: The date when creator was activated, i.e. status changed to active
+          default: null
+          examples:
+          - 15/05/1996 16:30:20
+        CustomValue1:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue2:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue3:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue4:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue5:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue6:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue7:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue8:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue9:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue10:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue11:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue12:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue13:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue14:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue15:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue16:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        CustomValue17:
+          type:
+          - string
+          - 'null'
+          description: Publisher's value for custom field defined in Network configuration
+          default: null
+          examples:
+          - CustomValue
+        DateLastPublisherPortalLogin:
+          type:
+          - string
+          - 'null'
+          description: Date last publisher logged in to portal
+          default: null
+          examples:
+          - 15/05/1996 16:30:20
+        TermsAccepted:
+          type:
+          - boolean
+          - 'null'
+          description: Terms accepted by publisher
+          default: null
+          examples:
+          - false
+        Height:
+          type:
+          - number
+          - 'null'
+          description: Publisher's height
+          default: null
+          examples:
+          - 1111
+        HeightUnit:
+          type:
+          - string
+          - 'null'
+          description: Publisher's height unit
+          default: null
+          examples:
+          - Unit
+        DressSize:
+          type:
+          - string
+          - 'null'
+          description: 'Publisher''s dress size (JSON data) Format: {"ShowSize":"","DressSize":"0","PantSize":"0","ShirtSize":"","PantWaist":"0","PantLength":"0"}'
+          default: null
+          examples:
+          - '{"ShowSize":"","DressSize":"0","PantSize":"0","ShirtSize":"","PantWaist":"0","PantLength":"0"}'
+        Glasses:
+          type:
+          - string
+          - 'null'
+          description: Publisher's glasses
+          default: null
+          examples:
+          - Glass
+        EyeColor:
+          type:
+          - string
+          - 'null'
+          description: Publisher's eye color
+          default: null
+          examples:
+          - Red
+        HairColor:
+          type:
+          - string
+          - 'null'
+          description: Publisher's hair color
+          default: null
+          examples:
+          - Red
+        Relationship:
+          type:
+          - string
+          - 'null'
+          description: Publisher's relationship
+          default: null
+          examples:
+          - Single
+        Children:
+          type:
+          - string
+          - 'null'
+          description: Publisher's children
+          default: null
+          examples:
+          - Female, 5 years<br>Male, 4 years
+        Pets:
+          type:
+          - string
+          - 'null'
+          description: Publisher's pets
+          default: null
+          examples:
+          - Dog(s),Cat(s),Bird,Fish(es),Other
+        HaveKids:
+          type:
+          - boolean
+          - 'null'
+          description: Flag which dedicates if publisher has kids
+          default: null
+          examples:
+          - true
+        HavePets:
+          type:
+          - boolean
+          - 'null'
+          description: Flag which dedicates if publisher has pets
+          default: null
+          examples:
+          - true
+        ContentRating:
+          type:
+          - string
+          - 'null'
+          description: Publisher's content rating
+          default: null
+          examples:
+          - '99'
+        OtherInfo:
+          type:
+          - string
+          - 'null'
+          default: null
+        BrandsWontWork:
+          type:
+          - string
+          - 'null'
+          default: null
+          examples:
+          - Cola
+        BrandsWorked:
+          type:
+          - string
+          - 'null'
+          default: null
+        BrandsWishWork:
+          type:
+          - string
+          - 'null'
+          default: null
+        LinkAccountsPage:
+          type: string
+          description: Publisher's link accounts page URL
+          examples:
+          - https://app.creatoriq.com/link_accounts/?id=999999999999999999999999&hash=de2aa72d400e44afb1bedff78f063fb56ca1ed4a
+        BrandedLinkAccountsPage:
+          type:
+          - string
+          - 'null'
+          description: Publisher's link accounts page URL on branded site (if set)
+          examples:
+          - https://branded-url.site/link_accounts/?id=999999999999999999999999&hash=de2aa72d400e44afb1bedff78f063fb56ca1ed4a
+        PublisherCampaignsListLink:
+          type: string
+          description: Publisher campaigns list link
+          examples:
+          - https://app.creatoriq.com/dashboard/?id=999999999999999999999999&hash=de2aa72d400e44afb1bedff78f063fb56ca1ed4a
+        FraudFlags:
+          type: object
+          properties:
+            CIQCertifiedFlag:
+              type: boolean
+              examples:
+              - false
+            CIQCertifiedFlagDate:
+              type:
+              - string
+              - 'null'
+              default: null
+            AudienceFlags:
+              type: boolean
+              examples:
+              - false
+            EngagementFlags:
+              type: boolean
+              examples:
+              - false
+            GrowthFlags:
+              type: boolean
+              examples:
+              - false
+            TotalFraudFlags:
+              type: integer
+              examples:
+              - 1111
+        CampaignsCount:
+          type: integer
+          description: Campaigns count
+          examples:
+          - 1111
+        TotalSubscribers:
+          type: string
+          description: Total subscribers
+          examples:
+          - '9999999'
+        Country:
+          type: string
+          description: Country
+          examples:
+          - USA
+        MPID:
+          type:
+          - string
+          - 'null'
+          default: null
+        CJPID:
+          type:
+          - string
+          - 'null'
+          default: null
+          examples:
+          - '100748169'
       required:
-      - ids
-      - tags
+      - Id
+      - PublisherId
     Summary:
       type: object
       properties:
@@ -7933,6 +8631,625 @@ components:
           - 0
       required:
       - PublisherId
+    Channel:
+      type: object
+      properties:
+        ChannelId:
+          type: integer
+          description: Internal unique Id
+          format: int32
+          examples:
+          - 17982764
+        ChannelName:
+          type: string
+          description: Channel name in Youtube
+          examples:
+          - ZendayaVEVO
+        Channel:
+          type: string
+          description: Channel ID in Youtube
+          examples:
+          - UCVQ2Z9dNQ2aJJ10f6SgBH0g
+        Title:
+          type: string
+          description: Channel title in Youtube
+          examples:
+          - ZendayaVEVO
+        LogoURL:
+          type: string
+          description: Link to logo
+          examples:
+          - https://yt3.ggpht.com/ytc/AMLnZu84MgVNNeswv0Vwz4IJzSilI_qQkx1JIRXsqrNvYw=s800-c-k-c0x00ffffff-no-rj-mo
+        Summary:
+          type:
+          - string
+          - 'null'
+          default: null
+        PublisherId:
+          type: integer
+          description: Id of publisher which attached to Youtube channel
+          format: int32
+          examples:
+          - 9202903
+        ContractId:
+          type:
+          - integer
+          - 'null'
+          description: Uniq id of contract publisher
+          default: null
+        NetworkId:
+          type: integer
+          description: Id of partner
+          format: int32
+          examples:
+          - 141
+        NetworkName:
+          type:
+          - string
+          - 'null'
+          description: Name of partner
+          default: null
+        SubNetworkId:
+          type:
+          - string
+          - 'null'
+          description: Internal id for technical  use
+          default: null
+        SubNetworkName:
+          type:
+          - string
+          - 'null'
+          description: Internal name for technical  use
+          default: null
+        Category:
+          type:
+          - string
+          - 'null'
+          description: Category of channel
+          default: null
+        RecruiterName:
+          type:
+          - string
+          - 'null'
+          description: Name of user which added channel
+          default: null
+          examples:
+          - Admin
+        Status:
+          type: string
+          description: Status of publisher in network
+          examples:
+          - Open - In process
+        AccountManagerName:
+          type:
+          - string
+          - 'null'
+          default: null
+          examples:
+          - Admin
+        AffiliateManagerName:
+          type:
+          - string
+          - 'null'
+          default: null
+        DateFirstContractSigned:
+          type:
+          - string
+          - 'null'
+          default: null
+        DateActivated:
+          type:
+          - string
+          - 'null'
+          default: null
+        MonthActivated:
+          type:
+          - string
+          - 'null'
+          default: null
+        DateFirstNetworkVideoViews:
+          type:
+          - string
+          - 'null'
+          default: null
+        MonthFirstNetworkVideoViews:
+          type:
+          - string
+          - 'null'
+          default: null
+        YTProductCategory:
+          type:
+          - string
+          - 'null'
+          default: null
+        YTLanguage:
+          type:
+          - string
+          - 'null'
+          description: Language of youtube channel
+          examples:
+          - English
+        YTGeoRegion:
+          type: string
+          examples:
+          - US
+        YTGender:
+          type:
+          - string
+          - 'null'
+          default: null
+        YTAgeRange:
+          type:
+          - string
+          - 'null'
+          default: null
+        AuthorName:
+          type:
+          - string
+          - 'null'
+          default: null
+        AuthorUserId:
+          type:
+          - string
+          - 'null'
+          default: null
+        CustomTag1:
+          type:
+          - string
+          - 'null'
+          default: null
+        CustomTag2:
+          type:
+          - string
+          - 'null'
+          default: null
+        CustomTag3:
+          type:
+          - string
+          - 'null'
+          default: null
+        CustomField1:
+          type:
+          - string
+          - 'null'
+          default: null
+        CustomValue1:
+          type:
+          - string
+          - 'null'
+          default: null
+        CustomField2:
+          type:
+          - string
+          - 'null'
+          default: null
+        CustomValue2:
+          type:
+          - string
+          - 'null'
+          default: null
+        CustomField3:
+          type:
+          - string
+          - 'null'
+          default: null
+        CustomValue3:
+          type:
+          - string
+          - 'null'
+          default: null
+        ContentOwner:
+          type: string
+          examples:
+          - Admin
+        TotalSubscribers:
+          type: integer
+          description: Count of subscribers for this channel
+          format: int32
+          examples:
+          - 1310000
+        TotalViews:
+          type: string
+          description: Count of views channel
+          examples:
+          - '390807217'
+        TotalVideos:
+          type: integer
+          description: Count of videos channel
+          format: int32
+          examples:
+          - 35
+        ChannelSize:
+          type:
+          - string
+          - 'null'
+          default: null
+        CreateDateTime:
+          type: string
+          description: DateTime when channel created
+          examples:
+          - '2011-03-01 19:18:47'
+        LastUpdated:
+          type: string
+          format: date-time
+          examples:
+          - '2023-01-09T02:21:46-08:00'
+        UpdatedBy:
+          type: string
+          description: Name of user which updated channel info
+          examples:
+          - Discovery
+        NotFound:
+          type:
+          - boolean
+          - 'null'
+          description: Is channel exists on Youtube
+          default: null
+        AverageMonthlyViews:
+          type: number
+          examples:
+          - 2749551.9859155
+        LastComments:
+          type:
+          - string
+          - 'null'
+          default: null
+        LastLikes:
+          type:
+          - string
+          - 'null'
+          default: null
+        LastDislikes:
+          type:
+          - string
+          - 'null'
+          default: null
+        AvgLastViewsPerVideo:
+          type:
+          - string
+          - 'null'
+          default: null
+        AvgLastCommentsPerVideo:
+          type:
+          - string
+          - 'null'
+          default: null
+        AvgLastLikesPerVideo:
+          type:
+          - string
+          - 'null'
+          default: null
+        AvgLastDislikesPerVideo:
+          type:
+          - string
+          - 'null'
+          default: null
+        AvgLastSharesPerVideo:
+          type:
+          - string
+          - 'null'
+          default: null
+        AvgLastFacebookSharesPerVideo:
+          type:
+          - string
+          - 'null'
+          default: null
+        AvgLastTwitterSharesPerVideo:
+          type:
+          - string
+          - 'null'
+          default: null
+        AvgLastMinutesWatchedPerVideo:
+          type:
+          - string
+          - 'null'
+          default: null
+        LastVideoLength:
+          type:
+          - string
+          - 'null'
+          default: null
+        StatusChangedManually:
+          type: integer
+          enum:
+          - 0
+          - 1
+          format: int32
+          examples:
+          - 0
+        TotalLikes:
+          type:
+          - string
+          - 'null'
+          default: null
+          examples:
+          - '2323'
+        TotalDislikes:
+          type:
+          - string
+          - 'null'
+          default: null
+        TotalFavoritesAdded:
+          type:
+          - string
+          - 'null'
+          default: null
+        TotalFavoritesRemoved:
+          type:
+          - string
+          - 'null'
+          default: null
+        TotalShares:
+          type:
+          - string
+          - 'null'
+          default: null
+        EstimatedMinutesWatched:
+          type:
+          - string
+          - 'null'
+          default: null
+        AverageViewDuration:
+          type:
+          - string
+          - 'null'
+          default: null
+        TotalComments:
+          type:
+          - string
+          - 'null'
+          default: null
+          examples:
+          - '34'
+        IncludeInContract:
+          type: integer
+          enum:
+          - 0
+          - 1
+          format: int32
+          examples:
+          - 1
+        Protected:
+          type: integer
+          enum:
+          - 0
+          - 1
+          format: int32
+          examples:
+          - 0
+        AvgLastFacebookLikesPerVideo:
+          type:
+          - string
+          - 'null'
+          default: null
+        AvgLastFacebookCommentsPerVideo:
+          type:
+          - string
+          - 'null'
+          default: null
+        AvgLastGooglePlusSharesPerVideo:
+          type:
+          - string
+          - 'null'
+          default: null
+        AvgLastPinterestSharesPerVideo:
+          type:
+          - string
+          - 'null'
+          default: null
+        DateLastVideoUploaded:
+          type: string
+          examples:
+          - '2016-02-23 08:00:00'
+        DateDeActivated:
+          type:
+          - string
+          - 'null'
+          default: null
+        DateStatusChanged:
+          type:
+          - string
+          - 'null'
+          default: null
+        GooglePlusUserId:
+          type:
+          - string
+          - 'null'
+          default: null
+        LogoHighResURL:
+          type: string
+          examples:
+          - https://yt3.ggpht.com/ytc/AMLnZu84MgVNNeswv0Vwz4IJzSilI_qQkx1JIRXsqrNvYw=s88-c-k-c0x00ffffff-no-rj-mo
+        AVV30:
+          type:
+          - string
+          - 'null'
+          default: null
+        AVV60:
+          type:
+          - string
+          - 'null'
+          default: null
+        AVV90:
+          type:
+          - string
+          - 'null'
+          default: null
+        Tags:
+          type:
+          - string
+          - 'null'
+          default: null
+        CreatedBy:
+          type: string
+          examples:
+          - Admin
+        CreatedAt:
+          type: string
+          examples:
+          - '2019-03-07 18:35:59'
+        CreatorRole:
+          type: string
+          examples:
+          - Account owner
+        VerifiedBy:
+          type:
+          - string
+          - 'null'
+          default: null
+        VerifiedAt:
+          type:
+          - string
+          - 'null'
+          default: null
+        LinkedBy:
+          type:
+          - string
+          - 'null'
+          default: null
+        LinkedAt:
+          type:
+          - string
+          - 'null'
+          default: null
+        AvgLastInstagramSharesPerVideo:
+          type:
+          - string
+          - 'null'
+          default: null
+        Last30DaysViews:
+          type:
+          - string
+          - 'null'
+          default: null
+        MonthToDateViews:
+          type:
+          - string
+          - 'null'
+          default: null
+        LastMonthViews:
+          type:
+          - string
+          - 'null'
+          default: null
+          examples:
+          - '2323'
+        DateScraped:
+          type:
+          - string
+          - 'null'
+          default: null
+        CPP:
+          type:
+          - number
+          - 'null'
+          default: null
+          examples:
+          - 23
+        CPE:
+          type:
+          - number
+          - 'null'
+          default: null
+          examples:
+          - 23
+        CPM:
+          type:
+          - number
+          - 'null'
+          examples:
+          - 23
+        Engagement:
+          type:
+          - string
+          - 'null'
+          default: null
+        EngagementRate:
+          type:
+          - string
+          - 'null'
+          default: null
+        isVerifiedBySocialNetwork:
+          type: integer
+          format: int32
+          examples:
+          - 1
+        IsTokenInvalid:
+          type: integer
+          format: int32
+          examples:
+          - 0
+        TokenInvalidDate:
+          type:
+          - string
+          - 'null'
+          default: null
+        DateAnalytics:
+          type:
+          - string
+          - 'null'
+          default: null
+        NewSocialAccountID:
+          type: integer
+          description: Internal Id for technical use
+          format: int32
+          examples:
+          - -739328
+        Network:
+          const: youtube
+          examples:
+          - youtube
+        SocialNetworkId:
+          type: string
+          examples:
+          - UCVQ2Z9dNQ2aJJ10f6SgBH0g
+        NetworkUser:
+          type: string
+          examples:
+          - UCVQ2Z9dNQ2aJJ10f6SgBH0g
+        NumberOfPosts:
+          type: integer
+          format: int32
+          examples:
+          - 35
+        DateSocialStatsUpdated:
+          type: string
+          description: Timestamp of the most recent successful run of the social-statistics refresh job for this account. Independent of `LastUpdated` and `EngagementCalculated` — the three are driven by separate background jobs and can legitimately differ for the same account.
+          format: date-time
+          examples:
+          - '2023-01-17T11:09:00+00:00'
+        Contracts:
+          type: object
+          properties:
+            type:
+              type: string
+              examples:
+              - ContractCollection
+            href:
+              type: string
+              examples:
+              - https://apis.creatoriq.com/crm/v1/api/data/youtube/channel/17982764/contracts
+        AvgLastEngagementPerVideoYT:
+          type: integer
+          format: int32
+          examples:
+          - 0
+        Linked:
+          type: boolean
+        Unlinked:
+          type: boolean
+        LinkBroken:
+          type: boolean
+        Verified:
+          type: boolean
+        Business:
+          type: boolean
+        SocialEngagement:
+          $ref: '#/components/schemas/socialEngagement'
+      required:
+      - ChannelId
+      - Channel
+      - PublisherId
     socialItem:
       type: object
       description: Social Network Account
@@ -7953,909 +9270,185 @@ components:
       - type
       - href
       - Social
-    PublisherModel:
+    POSTContactDataRequest:
       type: object
+      description: POST Contact Data Request
       properties:
-        Id:
+        PrimaryContact:
           type: integer
-          description: Internal CreatorIQ identifier. This value is unique and immutable (cannot be changed). It is used by the system to uniquely identify the entity. This ID can be found in the UI (e.g., in the browser URL). To use this identifier in update requests, you must explicitly specify the query parameter `key=id`
+          enum:
+          - 0
+          - 1
+          description: PrimaryContact - 0 or 1
+          format: int32
           examples:
-          - 2386944
-        NetworkPublisherId:
+          - 0
+        FirstName:
           type: string
-          description: Same as `PublisherId`. This field contains the same value and is provided for compatibility. It represents an external identifier that can be updated and is used by default in update operations.
+          description: Publisher First Name
           examples:
-          - '10001356198'
-        PublisherId:
+          - Publisher First Name
+        LastName:
           type: string
-          description: External identifier used for integrations and mapping with third-party systems. This value can be updated. By default, this identifier is used when updating an account (unless `key=id` is specified)
+          description: Publisher Last Name
           examples:
-          - '10001356198'
-        ChannelId:
-          type:
-          - string
-          - 'null'
-          description: YouTube unique channel Identifier.  i.e. UCkDbLiXbx6CIRZuyW9sZK1g
-          examples:
-          - UCkDbLiXbx6CIRZuyW9sZK1g
-        ChannelName:
-          type:
-          - string
-          - 'null'
-          description: YouTube Channel Name.  If this field is left blank and YouTube ChannelId is specified SocialEdge will attempt to retrieve ChannelName via YouTube API
-          examples:
-          - My YouTube channel
-        ChannelTitle:
-          type:
-          - string
-          - 'null'
-          description: Primary YouTube Channel title
-          examples:
-          - My YouTube Channel title
-        ContentOwner:
-          type:
-          - string
-          - 'null'
-          description: Content owner
-          examples:
-          - John Smith
-        Token:
-          type:
-          - string
-          - 'null'
-          description: YouTube access token for this channel
-          examples:
-          - 20c965fe7b0c3aec8a596a74b8f4deee
-        PublisherName:
+          - Publisher Last Name
+        FullName:
           type: string
-          description: Publisher Name.  I.e. John Smith.  If this field is left blank and YouTube channel is specified SocialEdge will use YouTube Channel Name as default and will attempt to look this up via Google Plus API
+          description: Publisher Full Name
           examples:
-          - John Smith
-        LastUpdated:
-          type: string
-          description: Date when publisher last updated
-          examples:
-          - '2022-03-01 08:12:26'
-        Status:
-          type:
-          - string
-          - 'null'
-          description: Publisher status
-          default: null
-          examples:
-          - Active
-        StatusCategory:
-          type:
-          - string
-          - 'null'
-          description: Status category
-          default: null
-          examples:
-          - In Network
-        Language:
-          type:
-          - string
-          - 'null'
-          description: Publisher's primary language.  I.E. English.  If this field is left blank and YouTube channel is specified SocialEdge will attempt to look this up via YouTube API
-          default: null
-          examples:
-          - English
-        SecondaryLanguage:
-          type:
-          - string
-          - 'null'
-          description: Publisher's secondary language
-          default: null
-          examples:
-          - English
-        Size:
-          type:
-          - string
-          - 'null'
-          description: This field can be used to categorize Publishers.  I.e. 'Star', 'Starlet' or 'Large', 'Small'
-          default: null
-          examples:
-          - Starlet
-        LeadSource:
-          type:
-          - string
-          - 'null'
-          description: I.e. Web, Outreach, Referral
-          default: null
-          examples:
-          - Web
-        EthnicBackground:
-          type:
-          - string
-          - 'null'
-          description: I.e. Asian, Caucasian, African American
-          default: null
-          examples:
-          - Asian
-        Category:
-          type:
-          - string
-          - 'null'
-          description: Primary category. I.e. Music, Style, Fitness
-          default: null
-          examples:
-          - Style
-        SubCategories:
-          type:
-          - string
-          - 'null'
-          description: Comma separated subcategories for publisher
-          default: null
-        Gender:
-          type:
-          - string
-          - 'null'
-          description: I.e. Male, Female, Transgender
-          default: null
-          examples:
-          - Female
-        DateOfBirth:
-          type:
-          - string
-          - 'null'
-          description: Publisher's date of birth
-          default: null
-          examples:
-          - 15/05/1996 16:30:20
-        Description:
-          type:
-          - string
-          - 'null'
-          description: If this field is left blank and YouTube channel is specified SocialEdge will attempt to look up YouTube channel description via YouTube API and use it as default value
-          default: null
-          examples:
-          - My channel description
-        PublisherStatus:
-          type:
-          - string
-          - 'null'
-          description: Used to indicate recruiting status.  I.e. 'Contract Signed', 'Rejected'.  Refer to product documentation for list of options
-          default: null
-          examples:
-          - In Network
-        PublisherStatusCategory:
-          type:
-          - string
-          - 'null'
-          description: Additional information about recruiting status.   I.e. 'Waiting for Activation', 'Too Small'.  This field is used together with PublisherStatus.  Refer to product documentation for list of options
-          default: null
-          examples:
-          - Waiting for Activation
-        LogoURL:
-          type:
-          - string
-          - 'null'
-          description: Link to image to use for Publisher.  If this field is left blank and YouTube ChannelId is specified SocialEdge will attempt to retrieve thumbnail from YouTube API and use it as a default value
-          default: null
-          examples:
-          - https://someside.com/someimg.png
-        DateRecruitingStarted:
-          type:
-          - string
-          - 'null'
-          description: The date when creator was added to CRM
-          default: null
-          examples:
-          - 15/05/1996 16:30:20
-        LegalGuardian:
-          type: string
-          description: Publisher's legal guardian if Publisher is a minor
-          examples:
-          - John Smith
-        LegalGuardianEmail:
-          type: string
-          description: Publisher's legal guardian email
-          examples:
-          - johnsmith@gmail.com
-        HasAdSense:
-          type: boolean
-          examples:
-          - false
-        AdSenseIssue:
-          type: string
-          description: Indicates if Publisher has AdSence issues for Primary YouTube Channel
-          examples:
-          - ''
-        RecruiterName:
-          type:
-          - string
-          - 'null'
-          description: Name of the person who recruited or is recruiting Publisher
-          default: null
-          examples:
-          - John Smith
-        SubNetworkName:
-          type: string
-          description: Use to farther categorize Publishers and Channels, usually based on YouTube network.  I.e. Owned and Operated
-          examples:
-          - Owned and Operated
-        InterfaceLocale:
-          type:
-          - string
-          - 'null'
-          default: null
-        Address:
-          type: object
-          properties:
-            type:
-              type: string
-              description: Type of Search
-              examples:
-              - Address
-            href:
-              type: string
-              description: CreatorIQ API URL to get publisher’s contact information.
-              examples:
-              - https://apis.creatoriq.com/crm/v1/api/data/contact/111209220
-          required:
-          - type
+          - Publisher Full Name
         FinanceContact:
-          $ref: '#/components/schemas/ContactModel'
-        LegalGuardianContact:
-          $ref: '#/components/schemas/ContactModel'
-        ShipToContact:
-          $ref: '#/components/schemas/ContactModel'
-        Contract:
-          type: object
-          properties:
-            ChannelId:
-              type: string
-              description: YouTube channel Identifier.  i.e. UCkDbLiXbx6CIRZuyW9sZK1g or human readable unique channel name
-              pattern: ^[a-zA-Z0-9]+$
-              examples:
-              - UCkDbLiXbx6CIRZuyW9sZK1g
-            Summary:
-              type: string
-              description: Contract summary. I.e. 'Active, Rev-share, 70%; Expires 04/09/2015;
-              pattern: ^[a-zA-Z0-9]+$
-              examples:
-              - Active
-            Link:
-              type: string
-              description: Contract document location link
-              pattern: ^[a-zA-Z0-9]+$
-              examples:
-              - Link
-            DateSigned:
-              type: string
-              description: Date when Contract is signed
-              examples:
-              - 15/05/1996 16:30:20
-            DateExpired:
-              type: string
-              description: Date when Contract will expire
-              examples:
-              - 15/05/1996 16:30:20
-            DateActive:
-              type: string
-              description: Date when Contract is active
-              examples:
-              - 15/05/1996 16:30:20
-            DateSent:
-              type: string
-              description: Date when Contract is sent
-              examples:
-              - 15/05/1996 16:30:20
-            EchoSignTemplate:
-              type: string
-              description: EchoSign Template
-              pattern: ^[a-zA-Z0-9]+$
-              examples:
-              - Template
-            BonusPeriod:
-              type: boolean
-              description: Bonus Period
-              examples:
-              - false
-            RenewalPeriod:
-              type: boolean
-              description: Renewal Period
-              examples:
-              - false
-            Active:
-              type: boolean
-              description: Is contract active
-              examples:
-              - false
-          required:
-          - ChannelId
-        Demographics:
-          type: object
-          properties:
-            type:
-              type: string
-              description: Type of Search
-              examples:
-              - Demographics
-            href:
-              type: string
-              description: CreatorIQ API URL to get publisher’s demographic information.
-              examples:
-              - https://apis.creatoriq.com/crm/v1/api/publisher/10001356198/demographics
-          required:
-          - type
-          - href
-        Summary:
-          type: object
-          properties:
-            type:
-              const: Summary
-              description: Type of Search
-            href:
-              type: string
-              description: CreatorIQ API URL to get publisher’s summary.
-              examples:
-              - https://apis.creatoriq.com/crm/v1/api/publisher/10001356198/summary
-          required:
-          - type
-          - href
-        SocialAccounts:
-          type: object
-          properties:
-            type:
-              const: SocialAccounts
-              description: Type of Search
-              examples:
-              - SocialAccounts
-            href:
-              type: string
-              description: CreatorIQ API URL to get publisher’s social account information summary.
-              examples:
-              - https://apis.creatoriq.com/crm/v1/api/publisher/10001356198/socialAccounts
-          required:
-          - type
-          - href
-        InfoForAdvertisers:
-          type: object
-          properties:
-            type:
-              const: InfoForAdvertisers
-              description: Type of Search
-              examples:
-              - InfoForAdvertisers
-            href:
-              type: string
-              description: CreatorIQ API URL to get advertiser information for the publisher.
-              examples:
-              - https://apis.creatoriq.com/crm/v1/api/publisher/99999999999/infoForAdvertisers
-          required:
-          - type
-          - href
-        accounts:
-          type: object
-          properties:
-            type:
-              type: string
-              description: Type of Search
-              examples:
-              - Accounts
-            href:
-              type: string
-              description: CreatorIQ API URL to get detailed information about publisher’s social networks and social engagement.
-              examples:
-              - https://apis.creatoriq.com/crm/v1/api/publisher/99999999999/accounts
-          required:
-          - type
-          - href
-        channels:
-          type: object
-          properties:
-            type:
-              type: string
-              description: Type of Search
-              examples:
-              - channels
-            href:
-              type: string
-              description: CreatorIQ API URL to get detailed information about publisher’s YouTube channels.
-              examples:
-              - https://apis.creatoriq.com/crm/v1/api/publisher/99999999999/channels
-          required:
-          - type
-          - href
-        Campaigns:
-          type: object
-          properties:
-            type:
-              const: Campaigns
-              description: Type of Search
-              examples:
-              - Campaigns
-            href:
-              type: string
-              description: CreatorIQ API URL to get detailed information about publisher’s campaigns.
-              examples:
-              - https://apis.creatoriq.com/crm/v1/api/publisher/10001356198/campaigns
-          required:
-          - type
-          - href
-        AvailableCampaigns:
-          type: object
-          properties:
-            type:
-              type: string
-              description: Type of Search
-              examples:
-              - CampaignCollection
-            href:
-              type: string
-              description: CreatorIQ API URL to get information about campaigns available for a publisher.
-              examples:
-              - https://apis.creatoriq.com/crm/v1/api/publisher/99999999999/availableCampaigns
-          required:
-          - type
-          - href
-        Notes:
-          type: object
-          properties:
-            type:
-              const: NotesCollection
-              description: Type of Search
-              examples:
-              - NotesCollection
-            href:
-              type: string
-              description: CreatorIQ API URL to get publisher notes.
-              examples:
-              - https://apis.creatoriq.com/crm/v1/api/publisher/99999999999/notes
-          required:
-          - type
-          - href
-        Log:
-          type: object
-          properties:
-            type:
-              const: EventLogCollection
-              description: Type of Search
-              examples:
-              - EventLogCollection
-            href:
-              type: string
-              description: CreatorIQ API URL to get event logs for changes to publisher social account information.
-              examples:
-              - https://apis.creatoriq.com/crm/v1/api/publisher/99999999999/log
-          required:
-          - type
-          - href
-        Messages:
-          type: object
-          properties:
-            type:
-              type: string
-              description: Type of Search
-              examples:
-              - Messages
-            href:
-              type: string
-              description: CreatorIQ API URL to get publisher messages.
-              examples:
-              - https://apis.creatoriq.com/crm/v1/api/publisher/99999999999/messages
-          required:
-          - type
-          - href
-        AllowedPaymentMethods:
-          type: array
-          examples:
-          - - Paypal
-          items:
-            type: string
-            description: List of allowed payment methods
-            examples:
-            - Paypal
-        InternalDescription:
-          type:
-          - string
-          - 'null'
-          description: Internal notes about Publisher
-          default: null
-          examples:
-          - Loyal and willing
-        TalentAgency:
-          type:
-          - string
-          - 'null'
-          description: Publisher's talent agency
-          default: null
-          examples:
-          - My talent agency
-        Kids:
-          type:
-          - string
-          - 'null'
-          description: Publisher's kids
-          default: null
-          examples:
-          - One
-        Unsubscribe:
-          type:
-          - boolean
-          - 'null'
-          description: Unsubscribe flag
-          default: null
-          examples:
-          - false
-        DontContact:
-          type:
-          - boolean
-          - 'null'
-          description: Don't contact this publisher
-          default: null
-          examples:
-          - false
-        Tags:
-          type:
-          - string
-          - 'null'
-          description: Publisher''s tags (comma separated)'
-          default: null
-          examples:
-          - News,Sport
-        TagNames:
-          type:
-          - string
-          - 'null'
-          description: Publisher''s tags (comma separated)'
-          default: null
-          examples:
-          - Nike, Nike Running, Running, Micro, Sports, APAC
-        DateJoinedNetwork:
-          type:
-          - string
-          - 'null'
-          description: The date when creator was activated, i.e. status changed to active
-          default: null
-          examples:
-          - 15/05/1996 16:30:20
-        CustomValue1:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue2:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue3:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue4:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue5:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue6:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue7:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue8:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue9:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue10:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue11:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue12:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue13:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue14:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue15:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue16:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        CustomValue17:
-          type:
-          - string
-          - 'null'
-          description: Publisher's value for custom field defined in Network configuration
-          default: null
-          examples:
-          - CustomValue
-        DateLastPublisherPortalLogin:
-          type:
-          - string
-          - 'null'
-          description: Date last publisher logged in to portal
-          default: null
-          examples:
-          - 15/05/1996 16:30:20
-        TermsAccepted:
-          type:
-          - boolean
-          - 'null'
-          description: Terms accepted by publisher
-          default: null
-          examples:
-          - false
-        Height:
-          type:
-          - number
-          - 'null'
-          description: Publisher's height
-          default: null
-          examples:
-          - 1111
-        HeightUnit:
-          type:
-          - string
-          - 'null'
-          description: Publisher's height unit
-          default: null
-          examples:
-          - Unit
-        DressSize:
-          type:
-          - string
-          - 'null'
-          description: 'Publisher''s dress size (JSON data) Format: {"ShowSize":"","DressSize":"0","PantSize":"0","ShirtSize":"","PantWaist":"0","PantLength":"0"}'
-          default: null
-          examples:
-          - '{"ShowSize":"","DressSize":"0","PantSize":"0","ShirtSize":"","PantWaist":"0","PantLength":"0"}'
-        Glasses:
-          type:
-          - string
-          - 'null'
-          description: Publisher's glasses
-          default: null
-          examples:
-          - Glass
-        EyeColor:
-          type:
-          - string
-          - 'null'
-          description: Publisher's eye color
-          default: null
-          examples:
-          - Red
-        HairColor:
-          type:
-          - string
-          - 'null'
-          description: Publisher's hair color
-          default: null
-          examples:
-          - Red
-        Relationship:
-          type:
-          - string
-          - 'null'
-          description: Publisher's relationship
-          default: null
-          examples:
-          - Single
-        Children:
-          type:
-          - string
-          - 'null'
-          description: Publisher's children
-          default: null
-          examples:
-          - Female, 5 years<br>Male, 4 years
-        Pets:
-          type:
-          - string
-          - 'null'
-          description: Publisher's pets
-          default: null
-          examples:
-          - Dog(s),Cat(s),Bird,Fish(es),Other
-        HaveKids:
-          type:
-          - boolean
-          - 'null'
-          description: Flag which dedicates if publisher has kids
-          default: null
-          examples:
-          - true
-        HavePets:
-          type:
-          - boolean
-          - 'null'
-          description: Flag which dedicates if publisher has pets
-          default: null
-          examples:
-          - true
-        ContentRating:
-          type:
-          - string
-          - 'null'
-          description: Publisher's content rating
-          default: null
-          examples:
-          - '99'
-        OtherInfo:
-          type:
-          - string
-          - 'null'
-          default: null
-        BrandsWontWork:
-          type:
-          - string
-          - 'null'
-          default: null
-          examples:
-          - Cola
-        BrandsWorked:
-          type:
-          - string
-          - 'null'
-          default: null
-        BrandsWishWork:
-          type:
-          - string
-          - 'null'
-          default: null
-        LinkAccountsPage:
-          type: string
-          description: Publisher's link accounts page URL
-          examples:
-          - https://app.creatoriq.com/link_accounts/?id=999999999999999999999999&hash=de2aa72d400e44afb1bedff78f063fb56ca1ed4a
-        BrandedLinkAccountsPage:
-          type:
-          - string
-          - 'null'
-          description: Publisher's link accounts page URL on branded site (if set)
-          examples:
-          - https://branded-url.site/link_accounts/?id=999999999999999999999999&hash=de2aa72d400e44afb1bedff78f063fb56ca1ed4a
-        PublisherCampaignsListLink:
-          type: string
-          description: Publisher campaigns list link
-          examples:
-          - https://app.creatoriq.com/dashboard/?id=999999999999999999999999&hash=de2aa72d400e44afb1bedff78f063fb56ca1ed4a
-        FraudFlags:
-          type: object
-          properties:
-            CIQCertifiedFlag:
-              type: boolean
-              examples:
-              - false
-            CIQCertifiedFlagDate:
-              type:
-              - string
-              - 'null'
-              default: null
-            AudienceFlags:
-              type: boolean
-              examples:
-              - false
-            EngagementFlags:
-              type: boolean
-              examples:
-              - false
-            GrowthFlags:
-              type: boolean
-              examples:
-              - false
-            TotalFraudFlags:
-              type: integer
-              examples:
-              - 1111
-        CampaignsCount:
           type: integer
-          description: Campaigns count
+          enum:
+          - 0
+          - 1
+          description: Finance Contact attribute - 0 or 1
+          format: int32
           examples:
-          - 1111
-        TotalSubscribers:
+          - 0
+        ShipToAddress:
+          type: integer
+          enum:
+          - 0
+          - 1
+          description: Ship To Address attribute - 0 or 1
+          format: int32
+          examples:
+          - 1
+        LegalGuardianContact:
+          type: integer
+          enum:
+          - 0
+          - 1
+          description: Legal Guardian Contact - 0 or 1
+          format: int32
+          examples:
+          - 0
+        ContactType:
           type: string
-          description: Total subscribers
+          description: Contact Type
           examples:
-          - '9999999'
+          - Publisher
+        PublisherId:
+          type: integer
+          description: Unique publisher id
+          format: int32
+          examples:
+          - 8082160
+      required:
+      - PublisherId
+      minProperties: 1
+    PATCHContactDataRequest:
+      type: object
+      description: PATCH Contact Data Request
+      properties:
+        PrimaryContact:
+          type: integer
+          enum:
+          - 0
+          - 1
+          description: PrimaryContact - 0 or 1
+          format: int32
+          examples:
+          - 0
+        Email:
+          type: string
+          description: Primary Email
+          format: email
+          examples:
+          - example@gmail.com
+        Email1:
+          type: string
+          description: Additional Email
+          format: email
+          examples:
+          - example1@gmail.com
+        FirstName:
+          type: string
+          description: Publisher First Name
+          examples:
+          - Publisher First Name
+        LastName:
+          type: string
+          description: Publisher Last Name
+          examples:
+          - Publisher Last Name
+        FullName:
+          type: string
+          description: Publisher Full Name
+          examples:
+          - Publisher Full Name
+        StreetAddress:
+          type: string
+          description: Primary Street Address
+          examples:
+          - Street Address, 123
+        StreetAddress2:
+          type: string
+          description: Additional Street Address
+          examples:
+          - Street Address, 123
+        City:
+          type: string
+          description: City
+          examples:
+          - New York
+        State:
+          type: string
+          description: State
+          examples:
+          - Montana
+        ZipCode:
+          type: string
+          description: Zip Code
+          examples:
+          - '1000001'
         Country:
           type: string
           description: Country
           examples:
           - USA
-        MPID:
-          type:
-          - string
-          - 'null'
-          default: null
-        CJPID:
-          type:
-          - string
-          - 'null'
-          default: null
+        PhoneNumber1:
+          type: string
+          description: Primary Phone Number
           examples:
-          - '100748169'
+          - (555) 555-1234
+        FinanceContact:
+          type: integer
+          enum:
+          - 0
+          - 1
+          description: Finance Contact attribute - 0 or 1
+          format: int32
+          examples:
+          - 0
+        ShipToAddress:
+          type: integer
+          enum:
+          - 0
+          - 1
+          description: Ship To Address attribute - 0 or 1
+          format: int32
+          examples:
+          - 1
+        LegalGuardianContact:
+          type: integer
+          enum:
+          - 0
+          - 1
+          description: Legal Guardian Contact - 0 or 1
+          format: int32
+          examples:
+          - 0
+        ContactType:
+          type: string
+          description: Contact Type
+          examples:
+          - Publisher
       required:
-      - Id
-      - PublisherId
+      - ContactType
+      minProperties: 1
     socialEngagement:
       type: object
       properties:
@@ -8979,338 +9572,98 @@ components:
           - 9999
       required:
       - EngagementRate30Days
-    CampaignScheduledPostsSuccessResponseModel:
+    EventLogCollection:
       type: object
       properties:
         type:
-          const: ScheduledPostsCollection
-          description: Type of Search
-          examples:
-          - ScheduledPostsCollection
-        href:
           type: string
-          description: CreatorIQ API URL to get publisher's scheduled posts
+          description: Name of entity
           examples:
-          - https://apis.creatoriq.com/crm/v1/api/publisher/123455/scheduledPosts?key=Id
-        count:
-          type: integer
-          description: Number of records in current response
-          default: 20
-          examples:
-          - 20
-        total:
-          type: integer
-          description: Total number of found rows
-          examples:
-          - 100
-        page:
-          type: integer
-          description: Current page
-          default: 1
-          examples:
-          - 1
-        ScheduledPostsCollection:
+          - EventLog
+        EventLog:
           type: array
-          description: List of Scheduled Posts
           items:
-            type: object
-            properties:
-              type:
-                const: ScheduledPost
-                examples:
-                - ScheduledPost
-              ScheduledPost:
-                type: object
-                description: Scheduled Post information
-                properties:
-                  PostId:
-                    type: integer
-                    description: Unique post Id
-                    examples:
-                    - 15165007
-                  PublisherId:
-                    type: integer
-                    description: Unique publisher id
-                    examples:
-                    - 8082160
-                  SocialAccountId:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                    examples:
-                    - '6829119326546723846'
-                  CampaignId:
-                    type: integer
-                    description: Unique campaign id
-                    examples:
-                    - 42066
-                  CompletedPostId:
-                    type:
-                    - integer
-                    - 'null'
-                    default: null
-                    examples:
-                    - 122323
-                  CompletedPostUrl:
-                    type:
-                    - string
-                    - 'null'
-                    format: URI
-                    default: null
-                  SocialNetwork:
-                    type: string
-                    enum:
-                    - Facebook
-                    - Instagram
-                    - YouTube
-                    - Web
-                    - Twitter
-                    - Twitch
-                    - TikTok
-                    - Snapchat
-                    - Pinterest
-                    description: Social network name
-                    examples:
-                    - Facebook
-                  ScheduledDateTime:
-                    type:
-                    - string
-                    - 'null'
-                    examples:
-                    - '2015-06-04 10:00:01.000'
-                  PublishBefore:
-                    type:
-                    - string
-                    - 'null'
-                    description: Should be posted before date
-                    examples:
-                    - 'false'
-                  ActualDateTime:
-                    type:
-                    - string
-                    - 'null'
-                    examples:
-                    - '2015-06-04 10:00:01.000'
-                  Instructions:
-                    type: string
-                    description: Instructions for post
-                    default: ''
-                  InstructionsTrigger:
-                    type:
-                    - integer
-                    - 'null'
-                    description: '> Equal 1 if instructions enabled'
-                    default: null
-                    examples:
-                    - 1
-                  Status:
-                    type:
-                    - string
-                    - 'null'
-                    description: Current status of the post
-                    default: null
-                    examples:
-                    - Not submitted
-                  PostType:
-                    type: string
-                    examples:
-                    - Video
-                  DesiredPostCaption:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                  DesiredPostText:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                  DesiredPostMediaURL:
-                    type:
-                    - string
-                    - 'null'
-                    format: URL
-                    default: null
-                  Payout:
-                    type:
-                    - number
-                    - 'null'
-                    default: null
-                  LastModifiedBy:
-                    type: string
-                    description: Name of person who make last update
-                    examples:
-                    - Admin
-                  LastUpdated:
-                    type: string
-                    description: Last update date
-                    examples:
-                    - '2022-12-27 11:32:46'
-                  CreatedBy:
-                    type: string
-                    description: Name of person who create
-                    examples:
-                    - Admin
-                  Approval:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                    examples:
-                    - '0'
-                  SubmitByDate:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                    examples:
-                    - '2022-12-11T22:00:00+00:00'
-                  PublishAfter:
-                    type:
-                    - string
-                    - 'null'
-                    description: Should be posted after date
-                    default: null
-                    examples:
-                    - '2022-12-12T22:00:00+00:00'
-                  ContentApproval:
-                    type: string
-                    enum:
-                    - Required
-                    - Not Required
-                    description: Name of content approval person
-                    examples:
-                    - Not Required
-                  PostNote:
-                    type:
-                    - string
-                    - 'null'
-                    description: Notes of post
-                    default: null
-                  PostStatus:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                  ActualPostStatus:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                  SubmitBeforeDate:
-                    type:
-                    - string
-                    - 'null'
-                    description: Should be submit before date
-                    default: null
-                  PostContent:
-                    type: object
-                    description: Post information
-                    properties:
-                      type:
-                        type: string
-                        description: Type of Search
-                        examples:
-                        - PostContent
-                      href:
-                        type: string
-                        description: CreatorIQ API URL to get creator's instagram timeline
-                        examples:
-                        - https://apis.creatoriq.com/crm/v1/api/postContent
-                      count:
-                        type: integer
-                        description: Number of records in current response
-                        examples:
-                        - 20
-                      total:
-                        type: integer
-                        description: Total number of found rows
-                        examples:
-                        - 100
-                      page:
-                        type: integer
-                        description: Current page
-                        examples:
-                        - 1
-                      PostContentCollection:
-                        type: array
-                        description: List of posts
-                        items:
-                          type: object
-                    required:
-                    - type
-                    - href
-                    - PostContentCollection
-                  Description:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                  PaymentStatus:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                  PaymentStatusDate:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                  PaymentErrorMessage:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                  PaymentRejectionNote:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                  RequirementsCompletedAt:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                  PaymentTerm:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                  PaymentDueDate:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                  CampaignCode:
-                    type:
-                    - string
-                    - 'null'
-                    default: null
-                    examples:
-                    - 1HQLLV01B01
-                required:
-                - PublisherId
-            required:
-            - type
-            - ScheduledPost
+            $ref: '#/components/schemas/EventLog'
       required:
       - type
-      - href
-      - count
-      - total
-      - ScheduledPostsCollection
-    updatePublisherSocialAccountResponseModel:
+      - EventLog
+    PublisherDataChangesCollectionEventLog:
       type: object
-      oneOf:
-      - $ref: '#/components/schemas/socialItem'
-      - $ref: '#/components/schemas/channelItem'
-      - type: object
-        description: Empty object
-        maxProperties: 0
-        default: {}
-        examples:
-        - {}
+      description: EventLog object
+      properties:
+        UserName:
+          type: string
+          description: Event Log entry Creator name. Unchangeable from API.
+          examples:
+          - John Smith
+        RecordId:
+          type: integer
+          description: Record Id
+          examples:
+          - 99999999
+        EventType:
+          type: string
+          description: Event Type
+          examples:
+          - Unlinked accounts
+        EventTime:
+          type: string
+          description: Event time
+          examples:
+          - '2023-01-03 06:15:14.0000000 -07:00'
+        LastUpdated:
+          type: string
+          description: Last updated
+          examples:
+          - '2023-01-03 06:15:14.0000000 -07:00'
+        PublisherId:
+          type: string
+          description: Unique publisherId
+          examples:
+          - '99999999999'
+        LogoURL:
+          type: string
+          description: Link to image to use for Publisher.  If this field is left blank and YouTube ChannelId is specified SocialEdge will attempt to retrieve thumbnail from YouTube API and use it as a default value
+          examples:
+          - https://someside.com/someimg.png
+        PublisherName:
+          type: string
+          description: Publisher Name.  I.e. John Smith.  If this field is left blank and YouTube channel is specified SocialEdge will use YouTube Channel Name as default and will attempt to look this up via Google Plus API
+          examples:
+          - John Smith
+        Note:
+          type: string
+          description: Event Log text body
+          examples:
+          - Social Facebook account "NameName" (:id) updated
+      required:
+      - UserName
+    POSTContactResponse400Model:
+      type: object
+      description: Exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          examples:
+          - CoreException
+        CoreException:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              format: int32
+              examples:
+              - 404
+            message:
+              type: string
+              description: Exception message
+              examples:
+              - No input data found
+      required:
+      - type
     channelItem:
       type: object
       description: Youtube Channel Account
@@ -9331,21 +9684,6 @@ components:
       - type
       - href
       - Channel
-    EventLogCollection:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Name of entity
-          examples:
-          - EventLog
-        EventLog:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventLog'
-      required:
-      - type
-      - EventLog
     Social:
       type: object
       properties:
@@ -9901,733 +10239,476 @@ components:
       - PublisherId
       - Network
       - SocialNetworkId
-    updatePublisherSocialAccountBody:
+    CampaignInformationSuccessResponseModel:
       type: object
       properties:
-        accountId:
+        type:
           type: string
-          description: Social Account ID
+          description: Type of Search
           examples:
-          - '7554368935252'
-        network:
+          - PublisherInCampaign
+        href:
           type: string
-          enum:
-          - youtube
-          - twitter
-          - facebook
-          - instagram
-          - google
-          - vine
-          - weibo
-          - line
-          - tiktok
-          - twitch
-          - tumblr
-          - pinterest
-          - snapchat
-          - linkedin
-          - reddit
-          - web
-          - blog
-          description: Social Network name
+          description: CreatorIQ API URL to get campaign information,
           examples:
-          - instagram
+          - https://apis.creatoriq.com/crm/v1/api/campaign/99999
+        PublisherInCampaign:
+          $ref: '#/components/schemas/CampaignModel'
       required:
-      - accountId
-      - network
-    EventLog:
+      - type
+      - href
+    MultiplePublishersAccounts:
+      type: object
+      description: Publishers by IDs as a keys with array of their Social Accounts
+      patternProperties:
+        /^[0-9]+$/:
+          type: array
+          description: Publisher's Social Accounts
+          items:
+            type: object
+            properties:
+              PublisherId:
+                type: integer
+                examples:
+                - 99990
+              Network:
+                type: string
+                enum:
+                - youtube
+                - twitter
+                - facebook
+                - instagram
+                - google
+                - vine
+                - weibo
+                - line
+                - tiktok
+                - twitch
+                - tumblr
+                - pinterest
+                - snapchat
+                - linkedin
+                - reddit
+                - web
+                - blog
+                examples:
+                - youtube
+              NotFound:
+                type: integer
+                enum:
+                - 0
+                - 1
+                examples:
+                - 0
+              isVerifiedBySocialNetwork:
+                type: integer
+                enum:
+                - 0
+                - 1
+                examples:
+                - 1
+              CreatedBy:
+                type: string
+                examples:
+                - andy.patinkin
+              CreatedAt:
+                type:
+                - string
+                - 'null'
+                format: date-time
+                examples:
+                - '2018-05-15 23:49:05'
+              LogoURL:
+                type: string
+                format: URI
+                examples:
+                - https://yt3.ggpht.com/eijq408tTlu3XbwlIBeu8RsDG4vGTWb2JTOGKuus3sKdAKoxlq770qVga-p3sCT5PHRVEpYfq1M=s800-c-k-c0x00ffffff-no-rj
+              FollowersCount:
+                type: integer
+                examples:
+                - 4130000
+              LikesCount:
+                type:
+                - integer
+                - 'null'
+                examples:
+                - 213453
+              CommentsCount:
+                type:
+                - integer
+                - 'null'
+                examples:
+                - 2134
+              ViewsCount:
+                type:
+                - integer
+                - 'null'
+                examples:
+                - 121675291
+              IsBusiness:
+                type: 'null'
+                enum:
+                - 0
+                - 1
+                examples:
+                - 0
+              Gender:
+                type:
+                - string
+                - 'null'
+                examples:
+                - Female
+              Language:
+                type:
+                - string
+                - 'null'
+                examples:
+                - EN
+              LastUpdated:
+                type: string
+                format: date-time
+                examples:
+                - '2023-06-26 11:39:03'
+              Bio:
+                type: string
+                examples:
+                - Hola, yo soy Ari y subo Gameplays de Minecraft y mas
+              SocialNetworkId:
+                type: string
+                examples:
+                - UCdgKwvFibviy0AzNJCxOQL0
+              NetworkUser:
+                type: string
+                examples:
+                - '@arigameplays'
+              FullName:
+                type: string
+                examples:
+                - Ari Gameplays
+            required:
+            - PublisherId
+            - Network
+    CampaignScheduledPostsSuccessResponseModel:
       type: object
       properties:
-        Type:
+        type:
+          const: ScheduledPostsCollection
+          description: Type of Search
+          examples:
+          - ScheduledPostsCollection
+        href:
           type: string
-          description: Event Log type. Can be name of general Event Group or any other abstract category.
+          description: CreatorIQ API URL to get publisher's scheduled posts
           examples:
-          - Social account updated
-        Note:
-          type: string
-          description: Event Log text body
+          - https://apis.creatoriq.com/crm/v1/api/publisher/123455/scheduledPosts?key=Id
+        count:
+          type: integer
+          description: Number of records in current response
+          default: 20
           examples:
-          - Social Facebook account \"NameName\" (:id) updated
-        Time:
-          type: string
-          description: 'Event Log entity timestamp. Format is: Y-m-d H:i:s.'
+          - 20
+        total:
+          type: integer
+          description: Total number of found rows
           examples:
-          - '2020-10-16 18:41:55'
-        UserName:
-          type: string
-          description: Event Log entry Creator name. Unchangeable from API.
+          - 100
+        page:
+          type: integer
+          description: Current page
+          default: 1
           examples:
-          - John Smith
-        Link:
-          type:
-          - string
-          - 'null'
-          description: External link to supporting document or any other resource.
-          default: null
-          examples:
-          - https://link.com
-      required:
-      - Type
-      - Note
-      - Time
-    ContactModel:
-      type: object
-      properties:
-        FirstName:
-          type: string
-          description: First name
-          examples:
-          - Christy
-        LastName:
-          type: string
-          description: First name
-          examples:
-          - Weimann
-        FullName:
-          type: string
-          description: First name
-          examples:
-          - Christy Weimann
-        Email:
-          type: string
-          description: Email
-          examples:
-          - Estevan.Conn54@yahoo.com
-        Email1:
-          type: string
-          description: Email
-          examples:
-          - Robb82@gmail.com
-        AddressLine1:
-          type: string
-          description: Address
-          examples:
-          - Robert Robertson, 1234 NW Bobcat Lane, St. Robert
-        AddressLine2:
-          type: string
-          description: Address
-          examples:
-          - Robert Robertson, 1234 NW Bobcat Lane, St. Robert
-        City:
-          type: string
-          description: City
-          examples:
-          - Boston
-        State:
-          type: string
-          description: State
-          examples:
-          - Massachusetts
-        Zip:
-          type: string
-          description: Zip
-          examples:
-          - 02108
-        Country:
-          type: string
-          description: Country
-          examples:
-          - USA
-      required:
-      - FirstName
-    Audience:
-      type: object
-      properties:
-        '9999999':
-          type: object
-          description: Social Id
-          properties:
-            Demographics:
-              type: object
-              properties:
-                RowNumber:
-                  type: integer
-                  description: Row number
-                  examples:
-                  - 1
-                SocialId:
-                  type: integer
-                  description: Uniq social Id
-                  examples:
-                  - 9999999
-                SocialNetworkId:
-                  type: string
-                  description: Uniq social network Id
-                  examples:
-                  - '9999999'
-                SocialNetworkName:
-                  type: string
-                  description: Social network name
-                  examples:
-                  - John Smith
-                Network:
-                  type: string
-                  description: Source network
-                  examples:
-                  - instagram
-                Female:
-                  type: integer
-                  enum:
-                  - 0
-                  - 1
-                  description: Gender flag
-                  examples:
-                  - 0
-                Male:
-                  type: integer
-                  enum:
-                  - 0
-                  - 1
-                  description: Gender flag
-                  examples:
-                  - 1
-                age13-17:
-                  type: integer
-                  enum:
-                  - 0
-                  - 1
-                  description: Age flag
-                  examples:
-                  - 1
-                age18-24:
-                  type: integer
-                  enum:
-                  - 0
-                  - 1
-                  description: Age flag
-                  examples:
-                  - 0
-                age25-34:
-                  type: integer
-                  enum:
-                  - 0
-                  - 1
-                  description: Age flag
-                  examples:
-                  - 0
-                age35-44:
-                  type: integer
-                  enum:
-                  - 0
-                  - 1
-                  description: Age flag
-                  examples:
-                  - 0
-                age45-54:
-                  type: integer
-                  enum:
-                  - 0
-                  - 1
-                  description: Age flag
-                  examples:
-                  - 0
-                age55-64:
-                  type: integer
-                  enum:
-                  - 0
-                  - 1
-                  description: Age flag
-                  examples:
-                  - 0
-                age65-:
-                  type: integer
-                  enum:
-                  - 0
-                  - 1
-                  description: Age flag
-                  examples:
-                  - 1
-                AudienceEthnicity_Top1:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience ethnicity
-                  default: null
-                  examples:
-                  - Asian
-                AudienceEthnicityShare_Top1:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience ethnicity share
-                  default: null
-                  examples:
-                  - 88.888888
-                AudienceEthnicity_Top2:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience ethnicity
-                  default: null
-                  examples:
-                  - Asian
-                AudienceEthnicityShare_Top2:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience ethnicity share
-                  default: null
-                  examples:
-                  - 88.888888
-                AudienceEthnicity_Top3:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience ethnicity
-                  default: null
-                  examples:
-                  - Asian
-                AudienceEthnicityShare_Top3:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience ethnicity share
-                  default: null
-                  examples:
-                  - 88.888888
-                AudienceEthnicity_Top4:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience ethnicity
-                  default: null
-                  examples:
-                  - Asian
-                AudienceEthnicityShare_Top4:
-                  type: number
-                  description: Audience ethnicity share
-                  examples:
-                  - 88.888888
-                AudienceEthnicity_Top5:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience ethnicity
-                  default: null
-                  examples:
-                  - Asian
-                AudienceEthnicityShare_Top5:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience ethnicity share
-                  default: null
-                  examples:
-                  - 88.888888
-                NetworkUser:
-                  type: string
-                  description: Network user name
-                  examples:
-                  - John Smith
-            FullLocations:
-              type: object
-              properties:
-                RowNumber:
-                  type: integer
-                  description: Row number
-                  examples:
-                  - 1
-                SocialId:
-                  type: integer
-                  description: Uniq social Id
-                  examples:
-                  - 9999999
-                SocialNetworkId:
-                  type: string
-                  description: Uniq social network Id
-                  examples:
-                  - '9999999'
-                SocialNetworkName:
-                  type: string
-                  description: Social network name
-                  examples:
-                  - John Smith
-                Network:
-                  type: string
-                  description: Source network
-                  examples:
-                  - instagram
-                AudienceCountry_Top1:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience country
-                  default: null
-                  examples:
-                  - USA
-                AudienceShare_Top1:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience share top
-                  default: null
-                  examples:
-                  - 88.888888
-                AudienceCountry_Top2:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience country
-                  default: null
-                  examples:
-                  - USA
-                AudienceShare_Top2:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience share top
-                  default: null
-                  examples:
-                  - 88.888888
-                AudienceCountry_Top3:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience country
-                  default: null
-                  examples:
-                  - USA
-                AudienceShare_Top3:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience share top
-                  default: null
-                  examples:
-                  - 88.888888
-                AudienceCountry_Top4:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience country
-                  default: null
-                  examples:
-                  - USA
-                AudienceShare_Top4:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience share top
-                  default: null
-                  examples:
-                  - 88.888888
-                AudienceState_Top1:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience state
-                  default: null
-                  examples:
-                  - CA
-                AudienceStateShare_Top1:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience state top
-                  default: null
-                  examples:
-                  - 88.888888
-                AudienceState_Top2:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience state
-                  default: null
-                  examples:
-                  - CA
-                AudienceStateShare_Top2:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience state top
-                  default: null
-                  examples:
-                  - 88.888888
-                AudienceState_Top3:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience state
-                  default: null
-                  examples:
-                  - CA
-                AudienceStateShare_Top3:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience state top
-                  default: null
-                  examples:
-                  - 88.888888
-                AudienceState_Top4:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience state
-                  default: null
-                  examples:
-                  - CA
-                AudienceStateShare_Top4:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience state top
-                  default: null
-                  examples:
-                  - 88.888888
-                AudienceState_Top5:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience state
-                  default: null
-                  examples:
-                  - CA
-                AudienceStateShare_Top5:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience state top
-                  default: null
-                  examples:
-                  - 88.888888
-                AudienceCity_Top1:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience city
-                  default: null
-                  examples:
-                  - Selangor, Malaysia
-                AudienceCityShare_Top1:
-                  type:
-                  - number
-                  - 'null'
-                  default: null
-                AudienceCity_Top2:
-                  type: string
-                  description: Audience city
-                  examples:
-                  - Selangor, Malaysia
-                AudienceCityShare_Top2:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience city top
-                  default: null
-                  examples:
-                  - 88.888888
-                AudienceCity_Top3:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience city
-                  default: null
-                  examples:
-                  - Selangor, Malaysia
-                AudienceCityShare_Top3:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience city top
-                  default: null
-                  examples:
-                  - 88.888888
-                AudienceCity_Top4:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience city
-                  default: null
-                  examples:
-                  - Selangor, Malaysia
-                AudienceCityShare_Top4:
-                  type:
-                  - number
-                  - 'null'
-                  description: Audience city top
-                  default: null
-                  examples:
-                  - 88.888888
-                AudienceCity_Top5:
-                  type:
-                  - string
-                  - 'null'
-                  description: Audience city
-                  default: null
-                  examples:
-                  - Selangor, Malaysia
-                AudienceCityShare_Top5:
-                  type: number
-                  description: Audience city top
-                  examples:
-                  - 88.888888
-                NetworkUser:
-                  type: string
-                  description: Network user name
-                  examples:
-                  - John Smith
-            Locations:
-              type: array
-              items:
+          - 1
+        ScheduledPostsCollection:
+          type: array
+          description: List of Scheduled Posts
+          items:
+            type: object
+            properties:
+              type:
+                const: ScheduledPost
+                examples:
+                - ScheduledPost
+              ScheduledPost:
                 type: object
+                description: Scheduled Post information
                 properties:
-                  RowNumber:
+                  PostId:
                     type: integer
-                    description: Row number
+                    description: Unique post Id
                     examples:
-                    - 1
-                  SocialId:
+                    - 15165007
+                  PublisherId:
                     type: integer
-                    description: Uniq social Id
+                    description: Unique publisher id
                     examples:
-                    - 9999999
-                  SocialNetworkId:
-                    type: string
-                    description: Uniq social network Id
-                    examples:
-                    - '9999999'
-                  SocialNetworkName:
-                    type: string
-                    description: Social network name
-                    examples:
-                    - John Smith
-                  Network:
-                    type: string
-                    description: Source network
-                    examples:
-                    - instagram
-                  Region:
+                    - 8082160
+                  SocialAccountId:
                     type:
                     - string
                     - 'null'
-                    description: Region
                     default: null
                     examples:
-                    - Brazil
-                  RegionPercentage:
+                    - '6829119326546723846'
+                  CampaignId:
+                    type: integer
+                    description: Unique campaign id
+                    examples:
+                    - 42066
+                  CompletedPostId:
+                    type:
+                    - integer
+                    - 'null'
+                    default: null
+                    examples:
+                    - 122323
+                  CompletedPostUrl:
+                    type:
+                    - string
+                    - 'null'
+                    format: URI
+                    default: null
+                  SocialNetwork:
+                    type: string
+                    enum:
+                    - Facebook
+                    - Instagram
+                    - YouTube
+                    - Web
+                    - Twitter
+                    - Twitch
+                    - TikTok
+                    - Snapchat
+                    - Pinterest
+                    description: Social network name
+                    examples:
+                    - Facebook
+                  ScheduledDateTime:
+                    type:
+                    - string
+                    - 'null'
+                    examples:
+                    - '2015-06-04 10:00:01.000'
+                  PublishBefore:
+                    type:
+                    - string
+                    - 'null'
+                    description: Should be posted before date
+                    examples:
+                    - 'false'
+                  ActualDateTime:
+                    type:
+                    - string
+                    - 'null'
+                    examples:
+                    - '2015-06-04 10:00:01.000'
+                  Instructions:
+                    type: string
+                    description: Instructions for post
+                    default: ''
+                  InstructionsTrigger:
+                    type:
+                    - integer
+                    - 'null'
+                    description: '> Equal 1 if instructions enabled'
+                    default: null
+                    examples:
+                    - 1
+                  Status:
+                    type:
+                    - string
+                    - 'null'
+                    description: Current status of the post
+                    default: null
+                    examples:
+                    - Not submitted
+                  PostType:
+                    type: string
+                    examples:
+                    - Video
+                  DesiredPostCaption:
+                    type:
+                    - string
+                    - 'null'
+                    default: null
+                  DesiredPostText:
+                    type:
+                    - string
+                    - 'null'
+                    default: null
+                  DesiredPostMediaURL:
+                    type:
+                    - string
+                    - 'null'
+                    format: URL
+                    default: null
+                  Payout:
                     type:
                     - number
                     - 'null'
-                    description: Region percentage
+                    default: null
+                  LastModifiedBy:
+                    type: string
+                    description: Name of person who make last update
+                    examples:
+                    - Admin
+                  LastUpdated:
+                    type: string
+                    description: Last update date
+                    examples:
+                    - '2022-12-27 11:32:46'
+                  CreatedBy:
+                    type: string
+                    description: Name of person who create
+                    examples:
+                    - Admin
+                  Approval:
+                    type:
+                    - string
+                    - 'null'
                     default: null
                     examples:
-                    - 88.888888
-                  NetworkUser:
-                    type: string
-                    description: Network user name
+                    - '0'
+                  SubmitByDate:
+                    type:
+                    - string
+                    - 'null'
+                    default: null
                     examples:
-                    - John Smith
-    PATCHContactDataRequest:
-      type: object
-      description: PATCH Contact Data Request
-      properties:
-        PrimaryContact:
-          type: integer
-          enum:
-          - 0
-          - 1
-          description: PrimaryContact - 0 or 1
-          format: int32
-          examples:
-          - 0
-        Email:
-          type: string
-          description: Primary Email
-          format: email
-          examples:
-          - example@gmail.com
-        Email1:
-          type: string
-          description: Additional Email
-          format: email
-          examples:
-          - example1@gmail.com
-        FirstName:
-          type: string
-          description: Publisher First Name
-          examples:
-          - Publisher First Name
-        LastName:
-          type: string
-          description: Publisher Last Name
-          examples:
-          - Publisher Last Name
-        FullName:
-          type: string
-          description: Publisher Full Name
-          examples:
-          - Publisher Full Name
-        StreetAddress:
-          type: string
-          description: Primary Street Address
-          examples:
-          - Street Address, 123
-        StreetAddress2:
-          type: string
-          description: Additional Street Address
-          examples:
-          - Street Address, 123
-        City:
-          type: string
-          description: City
-          examples:
-          - New York
-        State:
-          type: string
-          description: State
-          examples:
-          - Montana
-        ZipCode:
-          type: string
-          description: Zip Code
-          examples:
-          - '1000001'
-        Country:
-          type: string
-          description: Country
-          examples:
-          - USA
-        PhoneNumber1:
-          type: string
-          description: Primary Phone Number
-          examples:
-          - (555) 555-1234
-        FinanceContact:
-          type: integer
-          enum:
-          - 0
-          - 1
-          description: Finance Contact attribute - 0 or 1
-          format: int32
-          examples:
-          - 0
-        ShipToAddress:
-          type: integer
-          enum:
-          - 0
-          - 1
-          description: Ship To Address attribute - 0 or 1
-          format: int32
-          examples:
-          - 1
-        LegalGuardianContact:
-          type: integer
-          enum:
-          - 0
-          - 1
-          description: Legal Guardian Contact - 0 or 1
-          format: int32
-          examples:
-          - 0
-        ContactType:
-          type: string
-          description: Contact Type
-          examples:
-          - Publisher
+                    - '2022-12-11T22:00:00+00:00'
+                  PublishAfter:
+                    type:
+                    - string
+                    - 'null'
+                    description: Should be posted after date
+                    default: null
+                    examples:
+                    - '2022-12-12T22:00:00+00:00'
+                  ContentApproval:
+                    type: string
+                    enum:
+                    - Required
+                    - Not Required
+                    description: Name of content approval person
+                    examples:
+                    - Not Required
+                  PostNote:
+                    type:
+                    - string
+                    - 'null'
+                    description: Notes of post
+                    default: null
+                  PostStatus:
+                    type:
+                    - string
+                    - 'null'
+                    default: null
+                  ActualPostStatus:
+                    type:
+                    - string
+                    - 'null'
+                    default: null
+                  SubmitBeforeDate:
+                    type:
+                    - string
+                    - 'null'
+                    description: Should be submit before date
+                    default: null
+                  PostContent:
+                    type: object
+                    description: Post information
+                    properties:
+                      type:
+                        type: string
+                        description: Type of Search
+                        examples:
+                        - PostContent
+                      href:
+                        type: string
+                        description: CreatorIQ API URL to get creator's instagram timeline
+                        examples:
+                        - https://apis.creatoriq.com/crm/v1/api/postContent
+                      count:
+                        type: integer
+                        description: Number of records in current response
+                        examples:
+                        - 20
+                      total:
+                        type: integer
+                        description: Total number of found rows
+                        examples:
+                        - 100
+                      page:
+                        type: integer
+                        description: Current page
+                        examples:
+                        - 1
+                      PostContentCollection:
+                        type: array
+                        description: List of posts
+                        items:
+                          type: object
+                    required:
+                    - type
+                    - href
+                    - PostContentCollection
+                  Description:
+                    type:
+                    - string
+                    - 'null'
+                    default: null
+                  PaymentStatus:
+                    type:
+                    - string
+                    - 'null'
+                    default: null
+                  PaymentStatusDate:
+                    type:
+                    - string
+                    - 'null'
+                    default: null
+                  PaymentErrorMessage:
+                    type:
+                    - string
+                    - 'null'
+                    default: null
+                  PaymentRejectionNote:
+                    type:
+                    - string
+                    - 'null'
+                    default: null
+                  RequirementsCompletedAt:
+                    type:
+                    - string
+                    - 'null'
+                    default: null
+                  PaymentTerm:
+                    type:
+                    - string
+                    - 'null'
+                    default: null
+                  PaymentDueDate:
+                    type:
+                    - string
+                    - 'null'
+                    default: null
+                  CampaignCode:
+                    type:
+                    - string
+                    - 'null'
+                    default: null
+                    examples:
+                    - 1HQLLV01B01
+                required:
+                - PublisherId
+            required:
+            - type
+            - ScheduledPost
       required:
-      - ContactType
-      minProperties: 1
+      - type
+      - href
+      - count
+      - total
+      - ScheduledPostsCollection
     MultiplePublishersAccounts_2:
       type: object
       description: Publishers by IDs as a keys with array of their Social Accounts
@@ -10764,82 +10845,11 @@ components:
             - PublisherId
             - NetworkPublisherId
             - Network
-  responses:
-    ErrorResponse404PATCHContactData:
-      description: Supplied ID was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse404PATCHContactDataModel'
-    POSTContactResponse400:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/POSTContactResponse400Model'
-    createPublisherResponse200:
-      description: Ok
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              type:
-                const: Publisher
-                examples:
-                - Publisher
-              href:
-                type: string
-                examples:
-                - https://apis.creatoriq.com/crm/v1/api/publisher/10011762349
-              Publisher:
-                $ref: '#/components/schemas/PublisherModel'
-            required:
-            - type
-            - href
-            - Publisher
-    '403':
-      description: Access was denied due to the API due to insufficient access permissions.
-    '401':
-      description: The request could not be completed due to invalid API credentials
-    '404':
-      description: Publisher with supplied ID was not found
-    400DeleteContactData:
-      description: Oops! Something went wrong.
-    POSTContactResponse:
-      description: Ok
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              type:
-                const: Address
-                examples:
-                - Address
-              href:
-                type: string
-                examples:
-                - https://apis.creatoriq.com/crm/v1/api/data/contact/117938214
-              Address:
-                $ref: '#/components/schemas/AddressModel'
-            required:
-            - type
-            - href
-            - Address
-    '400':
-      description: Bad request, invalid PublisherID format
-    updatePublisherSocialAccountResponse:
-      description: Social account data update info
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/updatePublisherSocialAccountResponseModel'
   securitySchemes:
     apiKey:
       type: apiKey
       name: x-api-key
       in: header
 x-refined-from:
-- creatoriq-publishers-openapi.yml
-- creatoriq-v2-publishers-openapi.yml
+- creatoriq-publishers-openapi-original.yaml
+- creatoriq-v2-publishers-openapi-original.yaml

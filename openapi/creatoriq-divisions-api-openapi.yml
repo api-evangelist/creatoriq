@@ -25,7 +25,9 @@ paths:
       tags:
       - Divisions
       summary: Get divisions list
-      description: "Get list of divisions in the organization.  \n**Warning:** Depends of api key list of divisions can be different or even empty.\n"
+      description: 'Get list of divisions in the organization.
+
+        **Warning:** Depends of api key list of divisions can be different or even empty.'
       operationId: getPartnerDivisions
       parameters:
       - $ref: '#/components/parameters/fields'
@@ -48,7 +50,9 @@ paths:
       tags:
       - Divisions
       summary: Get division by id
-      description: "Get division by id in the organization.  \n**Warning:** Depends of api key response can be 404 even if such division exist for partner.\n"
+      description: 'Get division by id in the organization.
+
+        **Warning:** Depends of api key response can be 404 even if such division exist for partner.'
       operationId: getPartnerDivision
       parameters:
       - $ref: '#/components/parameters/fields'
@@ -81,6 +85,36 @@ paths:
         description: Live
 components:
   responses:
+    '400':
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                description: type of error
+                examples:
+                - BadRequestHttpException
+              BadRequestHttpException:
+                type: object
+                description: exception object
+                properties:
+                  code:
+                    type: integer
+                    description: HTTP status code
+                    examples:
+                    - 400
+                  message:
+                    type: string
+                    description: Error message
+                    examples:
+                    - 'Invalid field(s) provided: UnknownField'
+    '401':
+      description: The request could not be completed due to invalid API credentials
+    '403':
+      description: Access was denied due to the API due to insufficient access permissions.
     DivisionCollectionResponse:
       description: Response with collection of divisions
       content:
@@ -167,59 +201,26 @@ components:
                     description: Error message
                     examples:
                     - Division with supplied ID was not found
-    '400':
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              type:
-                type: string
-                description: type of error
-                examples:
-                - BadRequestHttpException
-              BadRequestHttpException:
-                type: object
-                description: exception object
-                properties:
-                  code:
-                    type: integer
-                    description: HTTP status code
-                    examples:
-                    - 400
-                  message:
-                    type: string
-                    description: Error message
-                    examples:
-                    - 'Invalid field(s) provided: UnknownField'
-    '401':
-      description: The request could not be completed due to invalid API credentials
-    '403':
-      description: Access was denied due to the API due to insufficient access permissions.
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: "Comma-separated list of fields to include in the response.  \nIf not specified, all fields will be returned.\n"
+      required: false
+      schema:
+        type: string
+        enum:
+        - Id
+        - Name
+        - FullDivisionName
+        - DivisionHierarchyLevel
+        - ParentDivisionId
+        examples:
+        - Name
+      examples:
+        default:
+          value: Name
   schemas:
-    DivisionCollection:
-      type: array
-      title: Division Entity Collection
-      items:
-        type: object
-        description: 'Item in the collection.
-
-          '
-        properties:
-          type:
-            type: string
-            description: Type of Model
-            examples:
-            - Division
-          href:
-            type: string
-            description: CreatorIQ API URL to get divisions
-            format: URI
-            examples:
-            - https://apis.creatoriq.com/crm/v1/api/division/1
-          Division:
-            $ref: '#/components/schemas/DivisionModel'
     DivisionModel:
       type: object
       title: Division Entity
@@ -256,25 +257,28 @@ components:
           description: ID of the parent division, if any.
           examples:
           - 789
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: "Comma-separated list of fields to include in the response.  \nIf not specified, all fields will be returned.\n"
-      required: false
-      schema:
-        type: string
-        enum:
-        - Id
-        - Name
-        - FullDivisionName
-        - DivisionHierarchyLevel
-        - ParentDivisionId
-        examples:
-        - Name
-      examples:
-        default:
-          value: Name
+    DivisionCollection:
+      type: array
+      title: Division Entity Collection
+      items:
+        type: object
+        description: 'Item in the collection.
+
+          '
+        properties:
+          type:
+            type: string
+            description: Type of Model
+            examples:
+            - Division
+          href:
+            type: string
+            description: CreatorIQ API URL to get divisions
+            format: URI
+            examples:
+            - https://apis.creatoriq.com/crm/v1/api/division/1
+          Division:
+            $ref: '#/components/schemas/DivisionModel'
   securitySchemes:
     apiKey:
       type: apiKey

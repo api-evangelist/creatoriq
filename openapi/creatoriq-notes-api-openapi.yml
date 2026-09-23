@@ -25,11 +25,10 @@ paths:
       tags:
       - Notes
       summary: Get Single Dimension from Notes
-      description: 'Provides the list of the one-sheet publisher Ids that have published notes <br/>
+      description: 'Provides the list of the one-sheet publisher Ids that have published notes
 
-        Get Notes API endpoint returns the data only if it is added via API. The comments/notes left via the UI are not available via these endpoints.
 
-        '
+        Get Notes API endpoint returns the data only if it is added via API. The comments/notes left via the UI are not available via these endpoints.'
       operationId: getSingleDimensionFromNotes
       parameters:
       - name: entity
@@ -93,11 +92,10 @@ paths:
       tags:
       - Notes
       summary: Get Notes
-      description: 'Provides the list of published notes added to a one-sheet or to a one-sheet publisher. <br/>
+      description: 'Provides the list of published notes added to a one-sheet or to a one-sheet publisher.
 
-        Get Notes API endpoint returns the data only if it is added via API. The comments/notes left via the UI are not available via these endpoints.
 
-        '
+        Get Notes API endpoint returns the data only if it is added via API. The comments/notes left via the UI are not available via these endpoints.'
       operationId: getNotes
       parameters:
       - name: entity
@@ -200,63 +198,7 @@ paths:
       - url: https://apis.creatoriq.com
         description: Live
 components:
-  responses:
-    ErrorResponse400:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponseModel'
-    GetNotesSuccessResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/NotesCollectionModel'
-    ErrorResponse404:
-      description: One-sheet with supplied ID not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponseModel'
-    AddNoteSuccessResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/NoteModel'
-    GetSingleDimensionSuccessResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GetSingleDimensionSuccessResponseModel'
   schemas:
-    CollectionCommonModel:
-      type: object
-      description: Success
-      properties:
-        type:
-          type: string
-          description: Type of collection
-          example: NotesCollection
-        count:
-          type: integer
-          description: Number of records in current response
-          example: 200
-        total:
-          type: integer
-          description: Total number of found rows
-          example: 20
-        page:
-          type: integer
-          description: Current page
-          example: 1
-      required:
-      - type
-      - count
-      - total
-      - page
     OneSheetPublisherCommentsCollectionModel:
       type: object
       properties:
@@ -283,6 +225,40 @@ components:
                     example: 2
       required:
       - OneSheetPublisherCommentsCollection
+    CollectionCommonModel:
+      type: object
+      description: Success
+      properties:
+        type:
+          type: string
+          description: Type of collection
+          example: NotesCollection
+        count:
+          type: integer
+          description: Number of records in current response
+          example: 200
+        total:
+          type: integer
+          description: Total number of found rows
+          example: 20
+        page:
+          type: integer
+          description: Current page
+          example: 1
+      required:
+      - type
+      - count
+      - total
+      - page
+    GetSingleDimensionSuccessResponseModel:
+      type: object
+      oneOf:
+      - allOf:
+        - $ref: '#/components/schemas/CollectionCommonModel'
+        - $ref: '#/components/schemas/OneSheetPublisherCommentsCollectionModel'
+      - allOf:
+        - $ref: '#/components/schemas/CollectionCommonModel'
+        - $ref: '#/components/schemas/CampaignPublisherCommentsCollectionModel'
     NoteModel:
       type: object
       properties:
@@ -523,15 +499,6 @@ components:
       - EntityType
       - PermissionsAccess
       - SystemType
-    GetSingleDimensionSuccessResponseModel:
-      type: object
-      oneOf:
-      - allOf:
-        - $ref: '#/components/schemas/CollectionCommonModel'
-        - $ref: '#/components/schemas/OneSheetPublisherCommentsCollectionModel'
-      - allOf:
-        - $ref: '#/components/schemas/CollectionCommonModel'
-        - $ref: '#/components/schemas/CampaignPublisherCommentsCollectionModel'
     CampaignPublisherCommentsCollectionModel:
       type: object
       properties:
@@ -648,6 +615,37 @@ components:
       - CreatedBy
       - Email
       minProperties: 1
+  responses:
+    ErrorResponse400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseModel'
+    ErrorResponse404:
+      description: One-sheet with supplied ID not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseModel'
+    GetSingleDimensionSuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetSingleDimensionSuccessResponseModel'
+    GetNotesSuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotesCollectionModel'
+    AddNoteSuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NoteModel'
   securitySchemes:
     apiKey:
       type: apiKey

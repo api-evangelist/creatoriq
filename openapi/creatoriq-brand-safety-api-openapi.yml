@@ -950,8 +950,6 @@ paths:
       x-internal: false
 components:
   responses:
-    '400':
-      description: Bad Request
     '401':
       description: The request could not be completed due to invalid API credentials.
     BrandSafetyPostDetail:
@@ -960,6 +958,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/BrandSafetyPostDetail'
+    '500':
+      description: Internal server error
+    Creator404:
+      description: No creator was found matching the supplied creator_id.
+    '404':
+      description: The requested post was not found.
     BrandSafetyPostsCollection:
       description: OK
       content:
@@ -968,12 +972,8 @@ components:
             $ref: '#/components/schemas/BrandSafetyPostsCollection'
     '403':
       description: Access was denied due to insufficient access permissions.
-    Creator404:
-      description: No creator was found matching the supplied creator_id.
-    '500':
-      description: Internal server error
-    '404':
-      description: The requested post was not found.
+    '400':
+      description: Bad Request
     UnauthorizedErrorResponse:
       description: API key is missing or invalid
       content:

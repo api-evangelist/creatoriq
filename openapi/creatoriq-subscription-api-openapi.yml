@@ -150,25 +150,6 @@ paths:
         description: Live Environment
 components:
   schemas:
-    ErrorUnsubscriptionNotFoundResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - error
-          description: Response status
-          example: error
-        data:
-          $ref: '#/components/schemas/ErrorUnsubscriptionNotFoundData'
-        message:
-          type: string
-          description: Response message
-          example: No subscription found for deletion
-      required:
-      - status
-      - data
-      - message
     ErrorUnsubscribeData:
       type: object
       description: Response data
@@ -182,14 +163,57 @@ components:
             example: Failed to unsubscribe
         required:
         - message_code
-    EntityActionTypes:
+    ErrorUnsubscriptionNotFoundData:
       type: object
-      oneOf:
-      - $ref: '#/components/schemas/EntityCampaign'
-      - $ref: '#/components/schemas/EntityPublisher'
-      - $ref: '#/components/schemas/EntityOnesheet'
-      - $ref: '#/components/schemas/EntityList2'
-      - $ref: '#/components/schemas/EntityBrandSafety'
+      description: Response data
+      allOf:
+      - $ref: '#/components/schemas/EntityActionTypes'
+      - type: object
+        properties:
+          message_code:
+            type: string
+            description: Error description message
+            example: Subscription not found
+        required:
+        - message_code
+    UnsubscriptionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          description: Response status
+          example: success
+        data:
+          $ref: '#/components/schemas/EntityActionTypes'
+        message:
+          type: string
+          description: Response message
+          example: Successfully unsubscribed
+      required:
+      - status
+      - data
+      - message
+    ErrorSubscriptionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+          description: Response status
+          example: error
+        data:
+          $ref: '#/components/schemas/ErrorSubscribeData'
+        message:
+          type: string
+          description: Response message
+          example: Subscription on the current event already exists!
+      required:
+      - status
+      - data
+      - message
     EntityCampaign:
       type: object
       properties:
@@ -211,6 +235,24 @@ components:
       required:
       - entityType
       - actionType
+    Subscription:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/EntityActionTypes'
+      - type: object
+        properties:
+          callback:
+            type: string
+            description: Callback URL
+            example: http://webhook.url
+          entityId:
+            type:
+            - number
+            - 'null'
+            description: Unique identifier of the entity to listen a specific one. Listens to all Partner's entities if not specified.
+            example: 11
+        required:
+        - callback
     EntityList2:
       type: object
       properties:
@@ -229,6 +271,120 @@ components:
       required:
       - entityType
       - actionType
+    ErrorSubscribeData:
+      type: object
+      description: Response data
+      allOf:
+      - $ref: '#/components/schemas/EntityActionTypes'
+      - type: object
+        properties:
+          message_code:
+            type: string
+            description: Error description message
+            example: Failed to subscribe
+        required:
+        - message_code
+    SubscriptionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          description: Response status
+          example: success
+        data:
+          $ref: '#/components/schemas/EntityActionTypes'
+        message:
+          type: string
+          description: Response message
+          example: Successfully subscribed
+      required:
+      - status
+      - data
+      - message
+    ErrorUnsubscriptionNotFoundResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+          description: Response status
+          example: error
+        data:
+          $ref: '#/components/schemas/ErrorUnsubscriptionNotFoundData'
+        message:
+          type: string
+          description: Response message
+          example: No subscription found for deletion
+      required:
+      - status
+      - data
+      - message
+    EntityActionTypes:
+      type: object
+      oneOf:
+      - $ref: '#/components/schemas/EntityCampaign'
+      - $ref: '#/components/schemas/EntityPublisher'
+      - $ref: '#/components/schemas/EntityOnesheet'
+      - $ref: '#/components/schemas/EntityList2'
+      - $ref: '#/components/schemas/EntityBrandSafety'
+    EntityBrandSafety:
+      type: object
+      properties:
+        entityType:
+          type: string
+          enum:
+          - brand_safety
+          description: Entity being watched
+          example: brand_safety
+        actionType:
+          type: string
+          enum:
+          - post_alert.created
+          description: Action being watched
+          example: post_alert.created
+      required:
+      - entityType
+      - actionType
+    EntityOnesheet:
+      type: object
+      properties:
+        entityType:
+          type: string
+          enum:
+          - Onesheet
+          description: Entity being watched
+          example: Onesheet
+        actionType:
+          type: string
+          enum:
+          - publish
+          description: Action being watched
+          example: publish
+      required:
+      - entityType
+      - actionType
+    ErrorUnsubscriptionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+          description: Response status
+          example: error
+        data:
+          $ref: '#/components/schemas/ErrorUnsubscribeData'
+        message:
+          type: string
+          description: Response message
+          example: Wrong entityType or actionType
+      required:
+      - status
+      - data
+      - message
     EntityPublisher:
       type: object
       properties:
@@ -252,169 +408,7 @@ components:
       required:
       - entityType
       - actionType
-    SubscriptionResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          description: Response status
-          example: success
-        data:
-          $ref: '#/components/schemas/EntityActionTypes'
-        message:
-          type: string
-          description: Response message
-          example: Successfully subscribed
-      required:
-      - status
-      - data
-      - message
-    EntityOnesheet:
-      type: object
-      properties:
-        entityType:
-          type: string
-          enum:
-          - Onesheet
-          description: Entity being watched
-          example: Onesheet
-        actionType:
-          type: string
-          enum:
-          - publish
-          description: Action being watched
-          example: publish
-      required:
-      - entityType
-      - actionType
-    Subscription:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/EntityActionTypes'
-      - type: object
-        properties:
-          callback:
-            type: string
-            description: Callback URL
-            example: http://webhook.url
-          entityId:
-            type:
-            - number
-            - 'null'
-            description: Unique identifier of the entity to listen a specific one. Listens to all Partner's entities if not specified.
-            example: 11
-        required:
-        - callback
-    ErrorUnsubscriptionNotFoundData:
-      type: object
-      description: Response data
-      allOf:
-      - $ref: '#/components/schemas/EntityActionTypes'
-      - type: object
-        properties:
-          message_code:
-            type: string
-            description: Error description message
-            example: Subscription not found
-        required:
-        - message_code
-    ErrorSubscribeData:
-      type: object
-      description: Response data
-      allOf:
-      - $ref: '#/components/schemas/EntityActionTypes'
-      - type: object
-        properties:
-          message_code:
-            type: string
-            description: Error description message
-            example: Failed to subscribe
-        required:
-        - message_code
-    ErrorSubscriptionResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - error
-          description: Response status
-          example: error
-        data:
-          $ref: '#/components/schemas/ErrorSubscribeData'
-        message:
-          type: string
-          description: Response message
-          example: Subscription on the current event already exists!
-      required:
-      - status
-      - data
-      - message
-    ErrorUnsubscriptionResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - error
-          description: Response status
-          example: error
-        data:
-          $ref: '#/components/schemas/ErrorUnsubscribeData'
-        message:
-          type: string
-          description: Response message
-          example: Wrong entityType or actionType
-      required:
-      - status
-      - data
-      - message
-    UnsubscriptionResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          description: Response status
-          example: success
-        data:
-          $ref: '#/components/schemas/EntityActionTypes'
-        message:
-          type: string
-          description: Response message
-          example: Successfully unsubscribed
-      required:
-      - status
-      - data
-      - message
-    EntityBrandSafety:
-      type: object
-      properties:
-        entityType:
-          type: string
-          enum:
-          - brand_safety
-          description: Entity being watched
-          example: brand_safety
-        actionType:
-          type: string
-          enum:
-          - post_alert.created
-          description: Action being watched
-          example: post_alert.created
-      required:
-      - entityType
-      - actionType
   responses:
-    unsubscription_error:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorUnsubscriptionResponse'
     subscription_success:
       description: Success
       content:
@@ -427,6 +421,30 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorUnsubscriptionNotFoundResponse'
+    subscription_error:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorSubscriptionResponse'
+    '400':
+      description: Bad Request
+    '500':
+      description: Internal server error
+    unsubscription_error:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorUnsubscriptionResponse'
+    unsubscription_success:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnsubscriptionResponse'
+    '401':
+      description: The request could not be completed due to invalid API credentials.
     subscriptions_list:
       description: OK
       content:
@@ -435,26 +453,8 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/Subscription'
-    '401':
-      description: The request could not be completed due to invalid API credentials.
     '403':
       description: Access was denied due to the API due to insufficient access permissions.
-    '400':
-      description: Bad Request
-    subscription_error:
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorSubscriptionResponse'
-    '500':
-      description: Internal server error
-    unsubscription_success:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UnsubscriptionResponse'
   securitySchemes:
     apiKey:
       type: apiKey

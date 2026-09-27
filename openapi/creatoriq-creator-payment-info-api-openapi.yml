@@ -123,20 +123,6 @@ components:
       examples:
         default:
           value: cGF5b3V0X2RhdGU7OzEyMzQ1
-    PageSize:
-      name: PageSize
-      in: query
-      description: Number of items to return per page. Must be a positive integer, capped at 200.
-      required: true
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 200
-        examples:
-        - 50
-      examples:
-        default:
-          value: 50
     SortOrder:
       name: SortOrder
       in: query
@@ -167,7 +153,35 @@ components:
       examples:
         default:
           value: forward
+    PageSize:
+      name: PageSize
+      in: query
+      description: Number of items to return per page. Must be a positive integer, capped at 200.
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        examples:
+        - 50
+      examples:
+        default:
+          value: 50
   schemas:
+    CreatorPaymentInfoStatusCollectionResponse:
+      type: object
+      description: A page of creator payment-info statuses with pagination metadata.
+      properties:
+        Data:
+          type: array
+          description: Creator payment-info statuses in this page.
+          items:
+            $ref: '#/components/schemas/CreatorPaymentInfoStatus'
+        Metadata:
+          $ref: '#/components/schemas/CollectionMetadata'
+      required:
+      - Data
+      - Metadata
     PaginationResponse:
       type: object
       description: Keyset pagination metadata.
@@ -207,14 +221,6 @@ components:
       - HasNextPage
       - HasPreviousPage
       - PageSize
-    CollectionMetadata:
-      type: object
-      description: Metadata wrapper carrying pagination details.
-      properties:
-        Pagination:
-          $ref: '#/components/schemas/PaginationResponse'
-      required:
-      - Pagination
     CreatorPaymentInfoStatus:
       type: object
       description: Payment-info collection status for a single creator.
@@ -303,20 +309,14 @@ components:
           description: Additional error context.
       required:
       - ErrorMessage
-    CreatorPaymentInfoStatusCollectionResponse:
+    CollectionMetadata:
       type: object
-      description: A page of creator payment-info statuses with pagination metadata.
+      description: Metadata wrapper carrying pagination details.
       properties:
-        Data:
-          type: array
-          description: Creator payment-info statuses in this page.
-          items:
-            $ref: '#/components/schemas/CreatorPaymentInfoStatus'
-        Metadata:
-          $ref: '#/components/schemas/CollectionMetadata'
+        Pagination:
+          $ref: '#/components/schemas/PaginationResponse'
       required:
-      - Data
-      - Metadata
+      - Pagination
   responses:
     InternalServerError:
       description: Internal Server Error.
@@ -324,14 +324,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ForbiddenError:
-      description: Forbidden - the API key is missing, invalid or lacks access.
+    BadRequestError:
+      description: Bad Request - invalid or missing query parameters.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequestError:
-      description: Bad Request - invalid or missing query parameters.
+    ForbiddenError:
+      description: Forbidden - the API key is missing, invalid or lacks access.
       content:
         application/json:
           schema:

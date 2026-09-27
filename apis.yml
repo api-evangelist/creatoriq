@@ -47,10 +47,13 @@ x-source: harvest:secondary-market
 specificationVersion: '0.23'
 created: '2026-08-11'
 modified: '2026-08-11'
+x-docs-platform: stoplight
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-09-24
 tags:
 - Influencer Marketing
 - Creator Economy
-- Social-Media
+- Social Media
 - Marketing
 - Campaign Management
 - creator-crm
@@ -75,6 +78,7 @@ tags_raw:
 - ecommerce
 - reporting
 - webhooks
+- Social-Media
 apis:
 - aid: creatoriq:creatoriq-brand-safety-api
   name: CreatorIQ Brand Safety API

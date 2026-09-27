@@ -167,20 +167,6 @@ components:
       examples:
         default:
           value: cGF5b3V0X2RhdGU7OzEyMzQ1
-    PageSize:
-      name: PageSize
-      in: query
-      description: Number of items to return per page. Must be a positive integer, capped at 200.
-      required: true
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 200
-        examples:
-        - 50
-      examples:
-        default:
-          value: 50
     SortOrder:
       name: SortOrder
       in: query
@@ -196,6 +182,20 @@ components:
       examples:
         default:
           value: desc
+    PageSize:
+      name: PageSize
+      in: query
+      description: Number of items to return per page. Must be a positive integer, capped at 200.
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        examples:
+        - 50
+      examples:
+        default:
+          value: 50
     Direction:
       name: Direction
       in: query
@@ -251,14 +251,6 @@ components:
       - HasNextPage
       - HasPreviousPage
       - PageSize
-    CollectionMetadata:
-      type: object
-      description: Metadata wrapper carrying pagination details.
-      properties:
-        Pagination:
-          $ref: '#/components/schemas/PaginationResponse'
-      required:
-      - Pagination
     PayablesCollectionResponse:
       type: object
       description: A page of payables with pagination metadata.
@@ -273,66 +265,6 @@ components:
       required:
       - Data
       - Metadata
-    ErrorDetail:
-      type: object
-      description: A single error detail entry.
-      properties:
-        Type:
-          type: string
-          description: Detail type.
-          examples:
-          - validation
-        Message:
-          type: string
-          description: Detail message.
-          examples:
-          - PageSize must not exceed 200
-        Context:
-          type: object
-          description: Detail context.
-      required:
-      - Type
-    ErrorResponse:
-      type: object
-      description: Standard error response body.
-      properties:
-        ErrorMessage:
-          type: string
-          description: Human-readable error message.
-          examples:
-          - 'Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt'
-        Type:
-          type: string
-          description: Error type identifier.
-          examples:
-          - InvalidPayoutFiltersError
-        Details:
-          type: array
-          description: Additional error details.
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-        Context:
-          type: object
-          description: Additional error context.
-      required:
-      - ErrorMessage
-    Amount:
-      type: object
-      description: A monetary amount with its currency.
-      properties:
-        Value:
-          type: string
-          description: Decimal amount, serialized as a string to preserve precision.
-          examples:
-          - '1250.00'
-        Currency:
-          type: string
-          description: ISO 4217 currency code.
-          examples:
-          - USD
-      required:
-      - Value
-      - Currency
     Payable:
       type: object
       description: A single payable.
@@ -460,13 +392,75 @@ components:
       - PONumber
       - CreatedAt
       - UpdatedAt
+    ErrorDetail:
+      type: object
+      description: A single error detail entry.
+      properties:
+        Type:
+          type: string
+          description: Detail type.
+          examples:
+          - validation
+        Message:
+          type: string
+          description: Detail message.
+          examples:
+          - PageSize must not exceed 200
+        Context:
+          type: object
+          description: Detail context.
+      required:
+      - Type
+    Amount:
+      type: object
+      description: A monetary amount with its currency.
+      properties:
+        Value:
+          type: string
+          description: Decimal amount, serialized as a string to preserve precision.
+          examples:
+          - '1250.00'
+        Currency:
+          type: string
+          description: ISO 4217 currency code.
+          examples:
+          - USD
+      required:
+      - Value
+      - Currency
+    ErrorResponse:
+      type: object
+      description: Standard error response body.
+      properties:
+        ErrorMessage:
+          type: string
+          description: Human-readable error message.
+          examples:
+          - 'Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt'
+        Type:
+          type: string
+          description: Error type identifier.
+          examples:
+          - InvalidPayoutFiltersError
+        Details:
+          type: array
+          description: Additional error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+        Context:
+          type: object
+          description: Additional error context.
+      required:
+      - ErrorMessage
+    CollectionMetadata:
+      type: object
+      description: Metadata wrapper carrying pagination details.
+      properties:
+        Pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      required:
+      - Pagination
   responses:
-    ForbiddenError:
-      description: Forbidden - the API key is missing, invalid or lacks access.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     InternalServerError:
       description: Internal Server Error.
       content:
@@ -475,6 +469,12 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     BadRequestError:
       description: Bad Request - invalid or missing query parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ForbiddenError:
+      description: Forbidden - the API key is missing, invalid or lacks access.
       content:
         application/json:
           schema:

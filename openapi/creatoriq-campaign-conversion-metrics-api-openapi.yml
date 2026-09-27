@@ -391,73 +391,6 @@ paths:
         description: Live
 components:
   schemas:
-    ConversionMetricForSpecificPostCollectionResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          examples:
-          - ConversionCollection
-        href:
-          type: string
-          examples:
-          - https://public-api.creatoriq.com/api/v1/campaign/123/post/321/conversionMetrics
-        count:
-          type: integer
-          examples:
-          - 20
-        total:
-          type: integer
-          examples:
-          - 725
-        page:
-          type: integer
-          examples:
-          - 1
-        ConversionCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConversionMetricForSpecificPostResponse'
-    ConversionMetricForSpecificPostResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          examples:
-          - ConversionMetric
-        href:
-          type: string
-          examples:
-          - https://public-api.creatoriq.com/api/v1/campaign/2316554/tracking-link/1144249/conversionMetric/Gross AOV
-        ConversionMetric:
-          $ref: '#/components/schemas/ConversionMetricForSpecificPost'
-    ConversionMetricCollectionResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          examples:
-          - ConversionCollection
-        href:
-          type: string
-          examples:
-          - https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetrics
-        count:
-          type: integer
-          examples:
-          - 20
-        total:
-          type: integer
-          examples:
-          - 725
-        page:
-          type: integer
-          examples:
-          - 1
-        ConversionCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConversionMetricResponse'
     ConversionMetricForSpecificPost:
       type: object
       properties:
@@ -525,19 +458,33 @@ components:
           description: The numerical value for the conversion metric.
           examples:
           - 22
-    ConversionMetricResponse:
+    ConversionMetricForSpecificPostCollectionResponse:
       type: object
       properties:
         type:
           type: string
           examples:
-          - ConversionMetric
+          - ConversionCollection
         href:
           type: string
           examples:
-          - https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders
-        ConversionMetric:
-          $ref: '#/components/schemas/ConversionMetric'
+          - https://public-api.creatoriq.com/api/v1/campaign/123/post/321/conversionMetrics
+        count:
+          type: integer
+          examples:
+          - 20
+        total:
+          type: integer
+          examples:
+          - 725
+        page:
+          type: integer
+          examples:
+          - 1
+        ConversionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionMetricForSpecificPostResponse'
     ConversionMetric:
       type: object
       properties:
@@ -598,18 +545,60 @@ components:
           type: string
           examples:
           - app-ui
+    ConversionMetricCollectionResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+          - ConversionCollection
+        href:
+          type: string
+          examples:
+          - https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetrics
+        count:
+          type: integer
+          examples:
+          - 20
+        total:
+          type: integer
+          examples:
+          - 725
+        page:
+          type: integer
+          examples:
+          - 1
+        ConversionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionMetricResponse'
+    ConversionMetricResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+          - ConversionMetric
+        href:
+          type: string
+          examples:
+          - https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders
+        ConversionMetric:
+          $ref: '#/components/schemas/ConversionMetric'
+    ConversionMetricForSpecificPostResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+          - ConversionMetric
+        href:
+          type: string
+          examples:
+          - https://public-api.creatoriq.com/api/v1/campaign/2316554/tracking-link/1144249/conversionMetric/Gross AOV
+        ConversionMetric:
+          $ref: '#/components/schemas/ConversionMetricForSpecificPost'
   responses:
-    ForbiddenError:
-      description: Forbidden - User does not have access.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                examples:
-                - Forbidden
     UnauthorizedError:
       description: Unauthorized - API key missing or invalid.
       content:
@@ -681,6 +670,17 @@ components:
                     - Supplied ID was not found
             required:
             - type
+    ForbiddenError:
+      description: Forbidden - User does not have access.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                examples:
+                - Forbidden
   securitySchemes:
     apiKey:
       type: apiKey

@@ -667,6 +667,43 @@ components:
           example: http://onesheets.creatoriq.com/One_Sheet_15_02_63ecf14d1d3a7
       required:
       - url
+    OneSheetsCollectionModel:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - OneSheetsCollection
+          description: Type of Search
+          example: OneSheetsCollection
+        href:
+          type: string
+          description: CreatorIQ API URL to get a collection of onesheets
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/onesheets
+        count:
+          type: integer
+          description: Number of records in current response
+          example: 20
+        total:
+          type: integer
+          description: Total number of found rows
+          example: 1704
+        page:
+          type: integer
+          description: Current page
+          example: 2
+        OneSheetsCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/OneSheetInCollection'
+      required:
+      - type
+      - href
+      - count
+      - total
+      - page
+      - OneSheetsCollection
     OneSheetUpdatedModel:
       type: object
       properties:
@@ -681,114 +718,271 @@ components:
       required:
       - Id
       - templateId
-    OneSheetCreatedModel:
+    CreateOneSheetBody:
       type: object
+      properties:
+        Name:
+          type: string
+          description: Name of OneSheet
+          example: Test OneSheet
+        TotalReachCalculation:
+          type: string
+          enum:
+          - Selected
+          - Full
+        templateId:
+          type:
+          - integer
+          - 'null'
+          example: 2351
+      required:
+      - Name
+    OneSheetCreatorsModel:
+      type: array
+      items:
+        type: object
+        properties:
+          PublisherId:
+            type: integer
+            example: 52362
+          PublisherName:
+            type: string
+            example: Creator Name
+          InvitedToPortal:
+            type: integer
+            enum:
+            - 0
+            - 1
+            example: 0
+          LastUpdated:
+            type: string
+            example: '2023-01-27 12:53:55'
+          Language:
+            type:
+            - string
+            - 'null'
+            example: Czech
+          LogoURL:
+            type: string
+            format: URI
+            example: https://social-pictures-storage.s3.amazonaws.com/43389c13bcf54f4d3b02809c2cbc40b2_5466075.jpeg
+          Tags:
+            type:
+            - string
+            - 'null'
+            example: Tag1,Tag2,TagN
+          Approved:
+            type:
+            - integer
+            - 'null'
+            enum:
+            - 0
+            - 1
+            - null
+            example: 0
+          Position:
+            type: integer
+            description: The position field indicates the numeric position of a creator within a specific OneSheet. It represents the order in which creators are arranged, with smaller values typically indicating earlier positions in a OneSheet.
+            example: 2
+        required:
+        - PublisherId
+        - PublisherName
+        - InvitedToPortal
+        - LastUpdated
+        - Language
+        - LogoURL
+        - Tags
+    UpdateOneSheetCreatorBody:
+      type: object
+      description: Update one-sheet creator request body
+      properties:
+        Description:
+          type:
+          - string
+          - 'null'
+          description: Description
+          example: Long description text
+        SalesSheetImageURL:
+          type:
+          - string
+          - 'null'
+          description: Sales one-sheet image URL
+          format: URI
+          maxLength: 1024
+          example: https://socialedge-sales-sheet-publishers.s3.amazonaws.com/485110.jpg
+        SalesSheetLogoURL:
+          type:
+          - string
+          - 'null'
+          description: Sales one-sheet logo URL
+          format: URI
+          maxLength: 1024
+          example: https://social-pictures-storage.s3.amazonaws.com/talent_mayawashington_headshot1.jpg_1506633937.jpg
+        ShortDescription:
+          type:
+          - string
+          - 'null'
+          description: Short description
+          example: Short Description Text Example
+        InternalNotes:
+          type:
+          - string
+          - 'null'
+          description: Internal notes
+          example: Internal notes text example
+        Sections:
+          type:
+          - string
+          - 'null'
+          description: Sections
+          format: json
+          maxLength: 2048
+          example: '{"Musical.ly":1,"SalesSheetImageURL":1,"StatusInCampaign":1,"SocialMetrics":0,"SampleVideosPostBlog":1}'
+        SortOrder:
+          type:
+          - number
+          - 'null'
+          description: Sort order
+          format: float
+          example: 1.1
+        UpdatedBy:
+          type:
+          - string
+          - 'null'
+          description: Updated by
+          maxLength: 128
+          example: Name Surname
+        CreatedBy:
+          type:
+          - string
+          - 'null'
+          description: Created by
+          maxLength: 128
+          example: Name Surname
+        Approved:
+          type:
+          - boolean
+          - 'null'
+          description: Approved
+          example: true
+        Category:
+          type:
+          - string
+          - 'null'
+          description: Category
+          maxLength: 1024
+          example: '"Entertainment","Fitness","Lifestyle"'
+        Tags:
+          type:
+          - string
+          - 'null'
+          description: Tags
+          example: '"vlogger","beauty","goddard","F|challenge","F|parody","F|rachel","F|Fullscreen Affiliate"'
+        AudienceSocialNetwork:
+          type:
+          - string
+          - 'null'
+          description: Audience social network
+          maxLength: 50
+          example: instagram
+        AudienceSocialNetworkId:
+          type:
+          - string
+          - 'null'
+          description: Audience social network id
+          maxLength: 128
+          example: '2279929'
+        AudienceType:
+          type:
+          - string
+          - 'null'
+          description: Audience type
+          maxLength: 7
+          example: Blended
+        TopMetrics:
+          type:
+          - string
+          - 'null'
+          description: Top metrics
+          maxLength: 1024
+          example: '[{"network":"Youtube","field":"Followers","label":"subscribers"},{"network":"Facebook","field":"Followers","label":"likes"},{"network":"Twitter","field":"Followers","label":"followers"},{"network":"Instagram","field":"Followers","label":"followers"},{"network":"Google","field":"Followers","label":"followers"},{"network":"Tumblr","field":"Followers","label":"followers"},{"network":"Pinterest","field":"Followers","label":"followers"},{"network":"Snapchat","field":"AvgViewsPerPost","label":"views per snap"},{"network":"Web","field":"Followers","label":"uniques"}]'
+        IsFeatured:
+          type:
+          - boolean
+          - 'null'
+          description: Is featured flag
+          default: false
+          example: true
+        DescriptionVisibleSymbolsNumber:
+          type:
+          - integer
+          - 'null'
+          description: Description visible symbols number
+          example: 123
+        isPostMigrationProcess:
+          type:
+          - boolean
+          - 'null'
+          description: Is post migration process flag
+          default: false
+          example: true
+      required:
+      - Sections
+      minProperties: 1
+    AddPublisherToOneSheetBody:
+      type: object
+      properties:
+        PublisherIds:
+          type: array
+          items:
+            type: integer
+            example: 13201168
+      required:
+      - PublisherIds
+    ErrorResponse:
+      type: object
+      description: Exception
       properties:
         type:
           type: string
-          enum:
-          - OneSheet
-          description: Type of Search
-          example: OneSheet
-        href:
-          type: string
-          description: CreatorIQ API URL to get onesheet
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/onesheet/99999
-        OneSheet:
+          description: Exception type
+          example: CoreException
+        CoreException:
           type: object
+          description: Exception information
           properties:
-            Id:
+            code:
               type: integer
-              example: 4326
-            Name:
+              description: Exception status code
+              format: int32
+              example: 404
+            message:
               type: string
-              example: Test OneSheet
-            VanityURL:
-              type: string
-              example: Test_OneSheet_63dcba77c85
-            CreatedById:
-              type: integer
-              example: 10004117
-            PartnerId:
-              type: integer
-              example: 21
-            UpdatedAt:
-              type: string
-              example: '2023-02-03 07:44:01'
-            CreatedBy:
-              type: string
-              example: Test app
-            SalesSheetImageURL:
-              type:
-              - string
-              - 'null'
-              format: URI
-              example: https://s3.us-west-1.amazonaws.com/resources.creatoriq.com/whitelabelling/21_b744bd6c3cd/dark_logo_8dq7maua0m.png
-            VanityHost:
-              type: string
-              format: URI
-              example: https://onesheets.creatoriq.com
-            Expired:
-              type: boolean
-              example: false
-            TotalReachCalculation:
-              type: string
-              enum:
-              - Selected
-              - Full
-              example: Full
-            TopMetrics:
-              type: array
-              items:
-                type: object
-                properties:
-                  network:
-                    type: string
-                    example: web
-                  field:
-                    type: string
-                    example: MonthlyUniqueVisitors
-                  label:
-                    type: string
-                    example: Last 30 Days Uniques
-            PublishersCount:
-              type: integer
-              example: 0
-            CommentsCount:
-              type: integer
-              example: 6
+              description: Exception message
+              example: Supplied ID was not found
       required:
       - type
-      - href
-      - OneSheet
-    AddPublisherCommentToOneSheetBody:
+    ApprovePublisherToOneSheetBody:
       type: object
       properties:
-        Email:
-          type: string
-          description: Publisher comment email
-          format: email
-          example: test@gmail.com
-        CreatedBy:
-          type: string
-          description: Publisher comment creator
-          example: Test Name
-        Comment:
-          type:
-          - string
-          - 'null'
-          description: Publisher comment
-          example: Test comment
-        SocialEdgeId:
-          type:
-          - string
-          - 'null'
-          description: Publisher comment SocialEdgeId
-          example: Test Comment SocialEdgeId
+        Approved:
+          type: boolean
+          example: true
+        ApprovedBy:
+          type: object
+          properties:
+            Email:
+              type: string
+              example: test1@example.com
+            Name:
+              type: string
+              example: First Last
+          required:
+          - Email
+          - Name
       required:
-      - Email
-      - CreatedBy
+      - Approved
+      - ApprovedBy
     OneSheetInCollection:
       type: object
       properties:
@@ -1240,6 +1434,305 @@ components:
       - type
       - href
       - OneSheet
+    OneSheetCreatedModel:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - OneSheet
+          description: Type of Search
+          example: OneSheet
+        href:
+          type: string
+          description: CreatorIQ API URL to get onesheet
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/onesheet/99999
+        OneSheet:
+          type: object
+          properties:
+            Id:
+              type: integer
+              example: 4326
+            Name:
+              type: string
+              example: Test OneSheet
+            VanityURL:
+              type: string
+              example: Test_OneSheet_63dcba77c85
+            CreatedById:
+              type: integer
+              example: 10004117
+            PartnerId:
+              type: integer
+              example: 21
+            UpdatedAt:
+              type: string
+              example: '2023-02-03 07:44:01'
+            CreatedBy:
+              type: string
+              example: Test app
+            SalesSheetImageURL:
+              type:
+              - string
+              - 'null'
+              format: URI
+              example: https://s3.us-west-1.amazonaws.com/resources.creatoriq.com/whitelabelling/21_b744bd6c3cd/dark_logo_8dq7maua0m.png
+            VanityHost:
+              type: string
+              format: URI
+              example: https://onesheets.creatoriq.com
+            Expired:
+              type: boolean
+              example: false
+            TotalReachCalculation:
+              type: string
+              enum:
+              - Selected
+              - Full
+              example: Full
+            TopMetrics:
+              type: array
+              items:
+                type: object
+                properties:
+                  network:
+                    type: string
+                    example: web
+                  field:
+                    type: string
+                    example: MonthlyUniqueVisitors
+                  label:
+                    type: string
+                    example: Last 30 Days Uniques
+            PublishersCount:
+              type: integer
+              example: 0
+            CommentsCount:
+              type: integer
+              example: 6
+      required:
+      - type
+      - href
+      - OneSheet
+    AddPublisherCommentToOneSheetBody:
+      type: object
+      properties:
+        Email:
+          type: string
+          description: Publisher comment email
+          format: email
+          example: test@gmail.com
+        CreatedBy:
+          type: string
+          description: Publisher comment creator
+          example: Test Name
+        Comment:
+          type:
+          - string
+          - 'null'
+          description: Publisher comment
+          example: Test comment
+        SocialEdgeId:
+          type:
+          - string
+          - 'null'
+          description: Publisher comment SocialEdgeId
+          example: Test Comment SocialEdgeId
+      required:
+      - Email
+      - CreatedBy
+    UpdateOneSheetBody:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: Name of OneSheet
+          example: Test OneSheet
+        TotalReachCalculation:
+          type: string
+          enum:
+          - Selected
+          - Full
+        templateId:
+          type: integer
+          example: 2351
+        Expired:
+          type: boolean
+          example: true
+        Template:
+          type: string
+          enum:
+          - OneSheet
+          example: OneSheet
+        VanityURL:
+          type: string
+          example: Test_OneSheet_63dcba77c85
+        NotifyEmails:
+          type:
+          - string
+          - 'null'
+          example: test1@test.com,test2@example.com
+        ACLSections:
+          type: object
+          properties:
+            AudienceEthnicity:
+              type: integer
+              enum:
+              - 0
+              - 1
+              example: 0
+            PersonalDataEthnicBackground:
+              type: integer
+              enum:
+              - 0
+              - 1
+              example: 0
+            AudienceIncomeRange:
+              type: integer
+              enum:
+              - 0
+              - 1
+              example: 0
+          required:
+          - AudienceEthnicity
+          - PersonalDataEthnicBackground
+          - AudienceIncomeRange
+        isEnableThemeImageGlobal:
+          type: boolean
+          example: true
+        isCreatorHighlights:
+          type:
+          - string
+          - 'null'
+          example: '1'
+        IsSupportFeaturedCreators:
+          type: boolean
+          example: true
+        BrandLogoImageURL:
+          type:
+          - string
+          - 'null'
+          format: URI
+          example: https://social-pictures-storage.s3.amazonaws.com/6df9256e14d5cba4fa663acb252cb33f_7800601.jpeg
+        SalesSheetImageURL:
+          type:
+          - string
+          - 'null'
+          format: URI
+          example: https://social-pictures-storage.s3.amazonaws.com/6df9256e14d5cba4fa663acb252cb33f_7800601.jpeg
+        BrandingOptions:
+          type: object
+          properties:
+            colorScheme:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: name
+                headerBgColor:
+                  type: array
+                  items:
+                    type: string
+                    example: '#223a99'
+                  example:
+                  - '#ffaa00'
+                  - '#223a99'
+                headerTextColor:
+                  type: string
+                  example: '#223a99'
+                introBgColor:
+                  type: array
+                  items:
+                    type: string
+                    example: '#223a99'
+                  example:
+                  - '#ffaa00'
+                  - '#223a99'
+                introTextColor:
+                  type: string
+                  example: '#223a99'
+                pageBgColor:
+                  type: string
+                  example: '#223a99'
+                featuredBgColor:
+                  type: array
+                  items:
+                    type: string
+                    example: '#223a99'
+                  example:
+                  - '#ffaa00'
+                  - '#223a99'
+                featuredTextColor:
+                  type: string
+                  example: '#223a99'
+              required:
+              - name
+              - headerBgColor
+              - headerTextColor
+              - introBgColor
+              - introTextColor
+              - pageBgColor
+              - featuredBgColor
+              - featuredTextColor
+            leftAlignment:
+              type: integer
+              enum:
+              - 0
+              - 1
+              example: 1
+            squareFrame:
+              type:
+              - integer
+              - 'null'
+              enum:
+              - 0
+              - 1
+              - null
+              example: 0
+            imageSize:
+              type: string
+              enum:
+              - small
+              - medium
+              - large
+              example: small
+          minProperties: 1
+        Sections:
+          type: object
+          properties:
+            Audience:
+              type: integer
+              example: 0
+            AudienceAge:
+              type: integer
+              example: 0
+            AudienceBrands:
+              type: integer
+              example: 0
+            AudienceCity:
+              type: integer
+              example: 0
+            AudienceCountry:
+              type: integer
+              example: 0
+            AudienceEthnicity:
+              type: integer
+              example: 0
+            AudienceGender:
+              type: integer
+              example: 0
+            AudienceInfluencers:
+              type: integer
+              example: 0
+            AudienceInterests:
+              type: integer
+              example: 0
+            AudienceState:
+              type: integer
+              example: 0
+          minProperties: 1
+      minProperties: 1
     OneSheetModel:
       type: object
       properties:
@@ -2417,597 +2910,6 @@ components:
       required:
       - type
       - href
-    OneSheetCreatorsModel:
-      type: array
-      items:
-        type: object
-        properties:
-          PublisherId:
-            type: integer
-            example: 52362
-          PublisherName:
-            type: string
-            example: Creator Name
-          InvitedToPortal:
-            type: integer
-            enum:
-            - 0
-            - 1
-            example: 0
-          LastUpdated:
-            type: string
-            example: '2023-01-27 12:53:55'
-          Language:
-            type:
-            - string
-            - 'null'
-            example: Czech
-          LogoURL:
-            type: string
-            format: URI
-            example: https://social-pictures-storage.s3.amazonaws.com/43389c13bcf54f4d3b02809c2cbc40b2_5466075.jpeg
-          Tags:
-            type:
-            - string
-            - 'null'
-            example: Tag1,Tag2,TagN
-          Approved:
-            type:
-            - integer
-            - 'null'
-            enum:
-            - 0
-            - 1
-            - null
-            example: 0
-          Position:
-            type: integer
-            description: The position field indicates the numeric position of a creator within a specific OneSheet. It represents the order in which creators are arranged, with smaller values typically indicating earlier positions in a OneSheet.
-            example: 2
-        required:
-        - PublisherId
-        - PublisherName
-        - InvitedToPortal
-        - LastUpdated
-        - Language
-        - LogoURL
-        - Tags
-    UpdateOneSheetCreatorBody:
-      type: object
-      description: Update one-sheet creator request body
-      properties:
-        Description:
-          type:
-          - string
-          - 'null'
-          description: Description
-          example: Long description text
-        SalesSheetImageURL:
-          type:
-          - string
-          - 'null'
-          description: Sales one-sheet image URL
-          format: URI
-          maxLength: 1024
-          example: https://socialedge-sales-sheet-publishers.s3.amazonaws.com/485110.jpg
-        SalesSheetLogoURL:
-          type:
-          - string
-          - 'null'
-          description: Sales one-sheet logo URL
-          format: URI
-          maxLength: 1024
-          example: https://social-pictures-storage.s3.amazonaws.com/talent_mayawashington_headshot1.jpg_1506633937.jpg
-        ShortDescription:
-          type:
-          - string
-          - 'null'
-          description: Short description
-          example: Short Description Text Example
-        InternalNotes:
-          type:
-          - string
-          - 'null'
-          description: Internal notes
-          example: Internal notes text example
-        Sections:
-          type:
-          - string
-          - 'null'
-          description: Sections
-          format: json
-          maxLength: 2048
-          example: '{"Musical.ly":1,"SalesSheetImageURL":1,"StatusInCampaign":1,"SocialMetrics":0,"SampleVideosPostBlog":1}'
-        SortOrder:
-          type:
-          - number
-          - 'null'
-          description: Sort order
-          format: float
-          example: 1.1
-        UpdatedBy:
-          type:
-          - string
-          - 'null'
-          description: Updated by
-          maxLength: 128
-          example: Name Surname
-        CreatedBy:
-          type:
-          - string
-          - 'null'
-          description: Created by
-          maxLength: 128
-          example: Name Surname
-        Approved:
-          type:
-          - boolean
-          - 'null'
-          description: Approved
-          example: true
-        Category:
-          type:
-          - string
-          - 'null'
-          description: Category
-          maxLength: 1024
-          example: '"Entertainment","Fitness","Lifestyle"'
-        Tags:
-          type:
-          - string
-          - 'null'
-          description: Tags
-          example: '"vlogger","beauty","goddard","F|challenge","F|parody","F|rachel","F|Fullscreen Affiliate"'
-        AudienceSocialNetwork:
-          type:
-          - string
-          - 'null'
-          description: Audience social network
-          maxLength: 50
-          example: instagram
-        AudienceSocialNetworkId:
-          type:
-          - string
-          - 'null'
-          description: Audience social network id
-          maxLength: 128
-          example: '2279929'
-        AudienceType:
-          type:
-          - string
-          - 'null'
-          description: Audience type
-          maxLength: 7
-          example: Blended
-        TopMetrics:
-          type:
-          - string
-          - 'null'
-          description: Top metrics
-          maxLength: 1024
-          example: '[{"network":"Youtube","field":"Followers","label":"subscribers"},{"network":"Facebook","field":"Followers","label":"likes"},{"network":"Twitter","field":"Followers","label":"followers"},{"network":"Instagram","field":"Followers","label":"followers"},{"network":"Google","field":"Followers","label":"followers"},{"network":"Tumblr","field":"Followers","label":"followers"},{"network":"Pinterest","field":"Followers","label":"followers"},{"network":"Snapchat","field":"AvgViewsPerPost","label":"views per snap"},{"network":"Web","field":"Followers","label":"uniques"}]'
-        IsFeatured:
-          type:
-          - boolean
-          - 'null'
-          description: Is featured flag
-          default: false
-          example: true
-        DescriptionVisibleSymbolsNumber:
-          type:
-          - integer
-          - 'null'
-          description: Description visible symbols number
-          example: 123
-        isPostMigrationProcess:
-          type:
-          - boolean
-          - 'null'
-          description: Is post migration process flag
-          default: false
-          example: true
-      required:
-      - Sections
-      minProperties: 1
-    AddPublisherToOneSheetBody:
-      type: object
-      properties:
-        PublisherIds:
-          type: array
-          items:
-            type: integer
-            example: 13201168
-      required:
-      - PublisherIds
-    CreateOneSheetBody:
-      type: object
-      properties:
-        Name:
-          type: string
-          description: Name of OneSheet
-          example: Test OneSheet
-        TotalReachCalculation:
-          type: string
-          enum:
-          - Selected
-          - Full
-        templateId:
-          type:
-          - integer
-          - 'null'
-          example: 2351
-      required:
-      - Name
-    OneSheetsCollectionModel:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - OneSheetsCollection
-          description: Type of Search
-          example: OneSheetsCollection
-        href:
-          type: string
-          description: CreatorIQ API URL to get a collection of onesheets
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/onesheets
-        count:
-          type: integer
-          description: Number of records in current response
-          example: 20
-        total:
-          type: integer
-          description: Total number of found rows
-          example: 1704
-        page:
-          type: integer
-          description: Current page
-          example: 2
-        OneSheetsCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/OneSheetInCollection'
-      required:
-      - type
-      - href
-      - count
-      - total
-      - page
-      - OneSheetsCollection
-    ErrorResponse:
-      type: object
-      description: Exception
-      properties:
-        type:
-          type: string
-          description: Exception type
-          example: CoreException
-        CoreException:
-          type: object
-          description: Exception information
-          properties:
-            code:
-              type: integer
-              description: Exception status code
-              format: int32
-              example: 404
-            message:
-              type: string
-              description: Exception message
-              example: Supplied ID was not found
-      required:
-      - type
-    ApprovePublisherToOneSheetBody:
-      type: object
-      properties:
-        Approved:
-          type: boolean
-          example: true
-        ApprovedBy:
-          type: object
-          properties:
-            Email:
-              type: string
-              example: test1@example.com
-            Name:
-              type: string
-              example: First Last
-          required:
-          - Email
-          - Name
-      required:
-      - Approved
-      - ApprovedBy
-    UpdateOneSheetBody:
-      type: object
-      properties:
-        Name:
-          type: string
-          description: Name of OneSheet
-          example: Test OneSheet
-        TotalReachCalculation:
-          type: string
-          enum:
-          - Selected
-          - Full
-        templateId:
-          type: integer
-          example: 2351
-        Expired:
-          type: boolean
-          example: true
-        Template:
-          type: string
-          enum:
-          - OneSheet
-          example: OneSheet
-        VanityURL:
-          type: string
-          example: Test_OneSheet_63dcba77c85
-        NotifyEmails:
-          type:
-          - string
-          - 'null'
-          example: test1@test.com,test2@example.com
-        ACLSections:
-          type: object
-          properties:
-            AudienceEthnicity:
-              type: integer
-              enum:
-              - 0
-              - 1
-              example: 0
-            PersonalDataEthnicBackground:
-              type: integer
-              enum:
-              - 0
-              - 1
-              example: 0
-            AudienceIncomeRange:
-              type: integer
-              enum:
-              - 0
-              - 1
-              example: 0
-          required:
-          - AudienceEthnicity
-          - PersonalDataEthnicBackground
-          - AudienceIncomeRange
-        isEnableThemeImageGlobal:
-          type: boolean
-          example: true
-        isCreatorHighlights:
-          type:
-          - string
-          - 'null'
-          example: '1'
-        IsSupportFeaturedCreators:
-          type: boolean
-          example: true
-        BrandLogoImageURL:
-          type:
-          - string
-          - 'null'
-          format: URI
-          example: https://social-pictures-storage.s3.amazonaws.com/6df9256e14d5cba4fa663acb252cb33f_7800601.jpeg
-        SalesSheetImageURL:
-          type:
-          - string
-          - 'null'
-          format: URI
-          example: https://social-pictures-storage.s3.amazonaws.com/6df9256e14d5cba4fa663acb252cb33f_7800601.jpeg
-        BrandingOptions:
-          type: object
-          properties:
-            colorScheme:
-              type: object
-              properties:
-                name:
-                  type: string
-                  example: name
-                headerBgColor:
-                  type: array
-                  items:
-                    type: string
-                    example: '#223a99'
-                  example:
-                  - '#ffaa00'
-                  - '#223a99'
-                headerTextColor:
-                  type: string
-                  example: '#223a99'
-                introBgColor:
-                  type: array
-                  items:
-                    type: string
-                    example: '#223a99'
-                  example:
-                  - '#ffaa00'
-                  - '#223a99'
-                introTextColor:
-                  type: string
-                  example: '#223a99'
-                pageBgColor:
-                  type: string
-                  example: '#223a99'
-                featuredBgColor:
-                  type: array
-                  items:
-                    type: string
-                    example: '#223a99'
-                  example:
-                  - '#ffaa00'
-                  - '#223a99'
-                featuredTextColor:
-                  type: string
-                  example: '#223a99'
-              required:
-              - name
-              - headerBgColor
-              - headerTextColor
-              - introBgColor
-              - introTextColor
-              - pageBgColor
-              - featuredBgColor
-              - featuredTextColor
-            leftAlignment:
-              type: integer
-              enum:
-              - 0
-              - 1
-              example: 1
-            squareFrame:
-              type:
-              - integer
-              - 'null'
-              enum:
-              - 0
-              - 1
-              - null
-              example: 0
-            imageSize:
-              type: string
-              enum:
-              - small
-              - medium
-              - large
-              example: small
-          minProperties: 1
-        Sections:
-          type: object
-          properties:
-            Audience:
-              type: integer
-              example: 0
-            AudienceAge:
-              type: integer
-              example: 0
-            AudienceBrands:
-              type: integer
-              example: 0
-            AudienceCity:
-              type: integer
-              example: 0
-            AudienceCountry:
-              type: integer
-              example: 0
-            AudienceEthnicity:
-              type: integer
-              example: 0
-            AudienceGender:
-              type: integer
-              example: 0
-            AudienceInfluencers:
-              type: integer
-              example: 0
-            AudienceInterests:
-              type: integer
-              example: 0
-            AudienceState:
-              type: integer
-              example: 0
-          minProperties: 1
-      minProperties: 1
-    generalSchema:
-      type: object
-      properties:
-        TaskId:
-          type: string
-          description: Unique id of report
-          example: 79985e5d-8871-4f38-be44-605d58f90bd9
-        TaskStatus:
-          type: string
-          enum:
-          - CREATED
-          - PROCESSING
-          - DONE
-          description: "Status of request. \n* CREATED: represents of new created report\n* PROCESSING: your report is progress \n* DONE: your report is ready. Result present in  **Result => Headers => Location URL**\n"
-        CreatedAtTS:
-          type: integer
-          description: Timestamp when task is created in seconds
-          example: 1674135497
-        UpdatedAtTS:
-          type: integer
-          description: Timestamp when task is updated in seconds
-          example: 1674135497
-        ExpiresAtTS:
-          type: integer
-          description: Timestamp when task is expired in seconds.
-          example: 1674136497
-        CreatedAt:
-          type: string
-          description: Date which task created in human readable format
-          example: 2023-01-19T13:38:17+0000
-        UpdatedAt:
-          type: string
-          description: Date which task updated in human readable format
-          example: 2023-01-19T13:38:17+0000
-        ExpiredAt:
-          type: string
-          description: Date which task updated in human readable format
-          example: 2023-01-19T13:38:17+0000
-        Metadata:
-          type: object
-          properties:
-            PartnerId:
-              type: integer
-              example: 21
-            Gri:
-              type: object
-              description: Used for logging
-            ValidUntil:
-              type: string
-              example: 2023-01-19T14:08:16+0000
-            ValidUntilTS:
-              type: integer
-              example: 1674137296
-        Result:
-          type: object
-          oneOf:
-          - type: object
-            description: If your object ready you fetch you receive 302 result
-            properties:
-              Status:
-                type: integer
-                description: Http status of response
-                example: 302
-              Body:
-                type: string
-                description: Empty string represents body of response.
-                example: ''
-              Headers:
-                type: object
-                properties:
-                  Cache-Control:
-                    type: string
-                    example: max-age=7200
-                  Date:
-                    type: string
-                    example: Thu, 19 Jan 2023 13:39:22 +0000
-                  Location:
-                    type: string
-                    description: Most important field! Result location of data
-                    readOnly: true
-                    example: https://ciq-api-async-results-data.s3.us-west-1.amazonaws.com/creatoriq-live/report.json
-                required:
-                - Location
-            required:
-            - Status
-            - Headers
-          - type: object
-            description: If your report not ready empty object
-      required:
-      - TaskId
-      - TaskStatus
-      - CreatedAtTS
-      - UpdatedAtTS
-      - ExpiresAtTS
-      - CreatedAt
-      - UpdatedAt
-      - ExpiredAt
-      - Result
     oneSheetBuilder:
       type: object
       allOf:
@@ -3178,6 +3080,104 @@ components:
               - PublisherName
         required:
         - results
+    generalSchema:
+      type: object
+      properties:
+        TaskId:
+          type: string
+          description: Unique id of report
+          example: 79985e5d-8871-4f38-be44-605d58f90bd9
+        TaskStatus:
+          type: string
+          enum:
+          - CREATED
+          - PROCESSING
+          - DONE
+          description: "Status of request. \n* CREATED: represents of new created report\n* PROCESSING: your report is progress \n* DONE: your report is ready. Result present in  **Result => Headers => Location URL**\n"
+        CreatedAtTS:
+          type: integer
+          description: Timestamp when task is created in seconds
+          example: 1674135497
+        UpdatedAtTS:
+          type: integer
+          description: Timestamp when task is updated in seconds
+          example: 1674135497
+        ExpiresAtTS:
+          type: integer
+          description: Timestamp when task is expired in seconds.
+          example: 1674136497
+        CreatedAt:
+          type: string
+          description: Date which task created in human readable format
+          example: 2023-01-19T13:38:17+0000
+        UpdatedAt:
+          type: string
+          description: Date which task updated in human readable format
+          example: 2023-01-19T13:38:17+0000
+        ExpiredAt:
+          type: string
+          description: Date which task updated in human readable format
+          example: 2023-01-19T13:38:17+0000
+        Metadata:
+          type: object
+          properties:
+            PartnerId:
+              type: integer
+              example: 21
+            Gri:
+              type: object
+              description: Used for logging
+            ValidUntil:
+              type: string
+              example: 2023-01-19T14:08:16+0000
+            ValidUntilTS:
+              type: integer
+              example: 1674137296
+        Result:
+          type: object
+          oneOf:
+          - type: object
+            description: If your object ready you fetch you receive 302 result
+            properties:
+              Status:
+                type: integer
+                description: Http status of response
+                example: 302
+              Body:
+                type: string
+                description: Empty string represents body of response.
+                example: ''
+              Headers:
+                type: object
+                properties:
+                  Cache-Control:
+                    type: string
+                    example: max-age=7200
+                  Date:
+                    type: string
+                    example: Thu, 19 Jan 2023 13:39:22 +0000
+                  Location:
+                    type: string
+                    description: Most important field! Result location of data
+                    readOnly: true
+                    example: https://ciq-api-async-results-data.s3.us-west-1.amazonaws.com/creatoriq-live/report.json
+                required:
+                - Location
+            required:
+            - Status
+            - Headers
+          - type: object
+            description: If your report not ready empty object
+      required:
+      - TaskId
+      - TaskStatus
+      - CreatedAtTS
+      - UpdatedAtTS
+      - ExpiresAtTS
+      - CreatedAt
+      - UpdatedAt
+      - ExpiredAt
+      - Result
     commonResponse:
       type: object
       properties:
@@ -3203,24 +3203,42 @@ components:
       - cached
       - time
   responses:
+    OneSheetUpdated:
+      description: OneSheet updated
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneSheetUpdatedModel'
     '404':
       description: OneSheet with supplied ID not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    OneSheetCreator:
-      description: Creator of Onesheet
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OneSheetCreatorModel'
     OneSheetCreators:
       description: Array of Creators of Onesheet
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/OneSheetCreatorsModel'
+    OneSheetsCollection:
+      description: One-sheets collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneSheetsCollectionModel'
+    '400':
+      description: Bad request, invalid OneSheetId format or something goes wrong
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    OneSheetSingle:
+      description: OneSheet
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneSheetModel'
     PublishOneSheet:
       description: Publish one-sheet response
       content:
@@ -3229,50 +3247,32 @@ components:
             $ref: '#/components/schemas/PublishOneSheetResponse'
     '401':
       description: Incorrect x-api-key
-    OneSheetsCollection:
-      description: One-sheets collection
+    OneSheetCreator:
+      description: Creator of Onesheet
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/OneSheetsCollectionModel'
+            $ref: '#/components/schemas/OneSheetCreatorModel'
     '403':
       description: Access was denied due to the API has insufficient access permissions
-    OneSheetSingle:
-      description: OneSheet
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OneSheetModel'
-    OneSheetUpdated:
-      description: OneSheet updated
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OneSheetUpdatedModel'
-    '400':
-      description: Bad request, invalid OneSheetId format or something goes wrong
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     OneSheetCreated:
       description: OneSheet
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/OneSheetCreatedModel'
-    asyncResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/generalSchema'
     oneSheetBuilder:
       description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/oneSheetBuilder'
+    asyncResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/generalSchema'
   parameters:
     section:
       name: section

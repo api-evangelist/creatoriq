@@ -281,6 +281,67 @@ paths:
       - url: https://apis.creatoriq.com
         description: Live
 components:
+  responses:
+    '401':
+      description: Incorrect x-api-key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse401'
+    '400':
+      description: No input data found (or The name field is required).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse400'
+    ListsCollection:
+      description: Lists Collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListsCollectionModel'
+    PublisherList400:
+      description: CoreException
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublisherList400Model'
+    ErrorResponse404List:
+      description: NotFoundException
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse404'
+    CreateListResponse201:
+      description: Create Publishers List - Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListModel'
+    '404':
+      description: The list hasn't been found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse404'
+    SingleList:
+      description: List
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListModel'
+    PublisherList200:
+      description: Delete a Publisher from a List - Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListModel'
+    '403':
+      description: Access was denied due to the API has insufficient access permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse403'
   schemas:
     PublishersListBody:
       type: object
@@ -295,7 +356,7 @@ components:
           example:
           - 8082160
           - 8082161
-    ErrorResponse404:
+    ErrorResponse400:
       type: object
       description: Exception
       properties:
@@ -311,13 +372,30 @@ components:
               type: integer
               description: Exception status code
               format: int32
-              example: 404
+              example: 400
             message:
               type: string
               description: Exception message
-              example: The list hasn't been found
+              example: No input data found (or The name field is required).
       required:
       - type
+    ListInCollection:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type
+          example: List
+        href:
+          type: string
+          description: Href
+          example: https://apis.creatoriq.com/crm/v1/api/list/1
+        List:
+          $ref: '#/components/schemas/ListInCollectionItem'
+      required:
+      - type
+      - href
+      - List
     UpdateListBodyModel:
       type: object
       description: Create (and Update) List Body Model
@@ -435,7 +513,26 @@ components:
           default: null
           example: true
       minProperties: 1
-    ErrorResponse400:
+    ListModel:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - List
+          description: List
+          example: List
+        href:
+          type: string
+          description: CreatorIQ API URL to get a single list
+          example: https://apis.creatoriq.com/crm/v1/api/list/202179
+        List:
+          $ref: '#/components/schemas/ListInCollection'
+      required:
+      - type
+      - href
+      - List
+    ErrorResponse404:
       type: object
       description: Exception
       properties:
@@ -451,11 +548,11 @@ components:
               type: integer
               description: Exception status code
               format: int32
-              example: 400
+              example: 404
             message:
               type: string
               description: Exception message
-              example: No input data found (or The name field is required).
+              example: The list hasn't been found
       required:
       - type
     ListInCollectionItem:
@@ -691,6 +788,29 @@ components:
           example: true
       required:
       - Name
+    PublisherList400Model:
+      type: object
+      description: Exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          example: CoreException
+        CoreException:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              format: int32
+              example: 400
+            message:
+              type: string
+              description: Exception message
+              example: Publisher Id is mandatory!
+      required:
+      - type
     ListsCollectionModel:
       type: object
       properties:
@@ -727,48 +847,6 @@ components:
       - total
       - page
       - ListsCollection
-    ListModel:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - List
-          description: List
-          example: List
-        href:
-          type: string
-          description: CreatorIQ API URL to get a single list
-          example: https://apis.creatoriq.com/crm/v1/api/list/202179
-        List:
-          $ref: '#/components/schemas/ListInCollection'
-      required:
-      - type
-      - href
-      - List
-    ErrorResponse401:
-      type: object
-      description: Exception
-      properties:
-        type:
-          type: string
-          description: Exception type
-          example: CoreException
-        CoreException:
-          type: object
-          description: Exception information
-          properties:
-            code:
-              type: integer
-              description: Exception status code
-              format: int32
-              example: 401
-            message:
-              type: string
-              description: Exception message
-              example: Incorrect x-api-key
-      required:
-      - type
     ErrorResponse403:
       type: object
       description: Exception
@@ -792,7 +870,7 @@ components:
               example: Access was denied due to the API has insufficient access permissions
       required:
       - type
-    PublisherList400Model:
+    ErrorResponse401:
       type: object
       description: Exception
       properties:
@@ -808,91 +886,13 @@ components:
               type: integer
               description: Exception status code
               format: int32
-              example: 400
+              example: 401
             message:
               type: string
               description: Exception message
-              example: Publisher Id is mandatory!
+              example: Incorrect x-api-key
       required:
       - type
-    ListInCollection:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Type
-          example: List
-        href:
-          type: string
-          description: Href
-          example: https://apis.creatoriq.com/crm/v1/api/list/1
-        List:
-          $ref: '#/components/schemas/ListInCollectionItem'
-      required:
-      - type
-      - href
-      - List
-  responses:
-    PublisherList200:
-      description: Delete a Publisher from a List - Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ListModel'
-    '404':
-      description: The list hasn't been found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse404'
-    CreateListResponse201:
-      description: Create Publishers List - Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ListModel'
-    ListsCollection:
-      description: Lists Collection
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ListsCollectionModel'
-    '400':
-      description: No input data found (or The name field is required).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse400'
-    PublisherList400:
-      description: CoreException
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PublisherList400Model'
-    '401':
-      description: Incorrect x-api-key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse401'
-    SingleList:
-      description: List
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ListModel'
-    ErrorResponse404List:
-      description: NotFoundException
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse404'
-    '403':
-      description: Access was denied due to the API has insufficient access permissions
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse403'
   securitySchemes:
     apiKey:
       type: apiKey

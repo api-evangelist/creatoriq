@@ -949,96 +949,7 @@ paths:
         description: Dev
       x-internal: false
 components:
-  responses:
-    '401':
-      description: The request could not be completed due to invalid API credentials.
-    BrandSafetyPostDetail:
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BrandSafetyPostDetail'
-    '500':
-      description: Internal server error
-    Creator404:
-      description: No creator was found matching the supplied creator_id.
-    '404':
-      description: The requested post was not found.
-    BrandSafetyPostsCollection:
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BrandSafetyPostsCollection'
-    '403':
-      description: Access was denied due to insufficient access permissions.
-    '400':
-      description: Bad Request
-    UnauthorizedErrorResponse:
-      description: API key is missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: ./brandsafety_schemas.yaml#/components/schemas/BrandSafetyBodyParams
   schemas:
-    BrandSafetyPost:
-      type: object
-      properties:
-        object:
-          const: post
-          description: Object type.
-          examples:
-          - post
-        id:
-          type: string
-          description: Public post identifier.
-          examples:
-          - post_12345
-        creator_id:
-          type: string
-          description: Creator identifier.
-          examples:
-          - '20985049'
-        social_account_id:
-          type: string
-          description: Social account identifier.
-          examples:
-          - abc123
-        platform:
-          type: string
-          description: Social platform.
-          examples:
-          - youtube
-        caption:
-          type: string
-          description: Post caption or text, if available.
-          examples:
-          - Check out my latest vlog...
-        ai_summary:
-          type: string
-          description: AI-generated summary of the post content.
-          examples:
-          - A post set at a crowded outdoor festival with live music.
-        links:
-          $ref: '#/components/schemas/BrandSafetyLinks'
-        published_at:
-          type: string
-          description: When the post was published on the social network.
-          format: date-time
-          readOnly: true
-          examples:
-          - '2026-05-19T07:00:00Z'
-        issues:
-          type: array
-          description: Array of brand safety issue objects.
-          items:
-            $ref: '#/components/schemas/BrandSafetyIssue'
-      required:
-      - object
-      - id
-      - creator_id
-      - platform
-      - issues
     BrandSafetyPostDetail:
       description: Full details for a single brand safety post.
       allOf:
@@ -1108,25 +1019,64 @@ components:
       - object
       - data
       - has_more
-    BrandSafetyLinks:
+    BrandSafetyPost:
       type: object
-      description: URLs associated with the post.
       properties:
-        post_url:
-          type: string
-          description: Public post URL.
+        object:
+          const: post
+          description: Object type.
           examples:
-          - https://youtube.com/watch?v=abc123
-        thumbnail_url:
+          - post
+        id:
           type: string
-          description: Thumbnail URL, if available.
+          description: Public post identifier.
           examples:
-          - https://static-resources.creatoriq.com/instagram-stories/thumbs/3920090489626404416.jpg
-        api_details_link:
+          - post_12345
+        creator_id:
           type: string
-          description: API URL for retrieving full post details.
+          description: Creator identifier.
           examples:
-          - https://apis.creatoriq.com/brand-safety/v1/posts/post_12345
+          - '20985049'
+        social_account_id:
+          type: string
+          description: Social account identifier.
+          examples:
+          - abc123
+        platform:
+          type: string
+          description: Social platform.
+          examples:
+          - youtube
+        caption:
+          type: string
+          description: Post caption or text, if available.
+          examples:
+          - Check out my latest vlog...
+        ai_summary:
+          type: string
+          description: AI-generated summary of the post content.
+          examples:
+          - A post set at a crowded outdoor festival with live music.
+        links:
+          $ref: '#/components/schemas/BrandSafetyLinks'
+        published_at:
+          type: string
+          description: When the post was published on the social network.
+          format: date-time
+          readOnly: true
+          examples:
+          - '2026-05-19T07:00:00Z'
+        issues:
+          type: array
+          description: Array of brand safety issue objects.
+          items:
+            $ref: '#/components/schemas/BrandSafetyIssue'
+      required:
+      - object
+      - id
+      - creator_id
+      - platform
+      - issues
     BrandSafetyIssue:
       type: object
       properties:
@@ -1180,6 +1130,56 @@ components:
       - id
       - category
       - severity
+    BrandSafetyLinks:
+      type: object
+      description: URLs associated with the post.
+      properties:
+        post_url:
+          type: string
+          description: Public post URL.
+          examples:
+          - https://youtube.com/watch?v=abc123
+        thumbnail_url:
+          type: string
+          description: Thumbnail URL, if available.
+          examples:
+          - https://static-resources.creatoriq.com/instagram-stories/thumbs/3920090489626404416.jpg
+        api_details_link:
+          type: string
+          description: API URL for retrieving full post details.
+          examples:
+          - https://apis.creatoriq.com/brand-safety/v1/posts/post_12345
+  responses:
+    '401':
+      description: The request could not be completed due to invalid API credentials.
+    '400':
+      description: Bad Request
+    '500':
+      description: Internal server error
+    BrandSafetyPostDetail:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BrandSafetyPostDetail'
+    BrandSafetyPostsCollection:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BrandSafetyPostsCollection'
+    Creator404:
+      description: No creator was found matching the supplied creator_id.
+    '404':
+      description: The requested post was not found.
+    '403':
+      description: Access was denied due to insufficient access permissions.
+    UnauthorizedErrorResponse:
+      description: API key is missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: ./brandsafety_schemas.yaml#/components/schemas/BrandSafetyBodyParams
   securitySchemes:
     bearerAuth:
       type: http

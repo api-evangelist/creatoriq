@@ -110,78 +110,7 @@ paths:
       - url: https://apis.creatoriq.com
         description: Live
 components:
-  parameters:
-    Cursor:
-      name: Cursor
-      in: query
-      description: Base64 keyset pagination cursor. Pass the `EndCursor` (forward) or `StartCursor` (backward) from the previous response's `Metadata.Pagination`. Omit on the first request.
-      required: false
-      schema:
-        type: string
-        examples:
-        - cGF5b3V0X2RhdGU7OzEyMzQ1
-      examples:
-        default:
-          value: cGF5b3V0X2RhdGU7OzEyMzQ1
-    SortOrder:
-      name: SortOrder
-      in: query
-      description: Sort order for the selected `SortField`.
-      required: true
-      schema:
-        type: string
-        enum:
-        - asc
-        - desc
-        examples:
-        - desc
-      examples:
-        default:
-          value: desc
-    Direction:
-      name: Direction
-      in: query
-      description: Pagination direction relative to the supplied cursor.
-      required: true
-      schema:
-        type: string
-        enum:
-        - forward
-        - backward
-        examples:
-        - forward
-      examples:
-        default:
-          value: forward
-    PageSize:
-      name: PageSize
-      in: query
-      description: Number of items to return per page. Must be a positive integer, capped at 200.
-      required: true
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 200
-        examples:
-        - 50
-      examples:
-        default:
-          value: 50
   schemas:
-    CreatorPaymentInfoStatusCollectionResponse:
-      type: object
-      description: A page of creator payment-info statuses with pagination metadata.
-      properties:
-        Data:
-          type: array
-          description: Creator payment-info statuses in this page.
-          items:
-            $ref: '#/components/schemas/CreatorPaymentInfoStatus'
-        Metadata:
-          $ref: '#/components/schemas/CollectionMetadata'
-      required:
-      - Data
-      - Metadata
     PaginationResponse:
       type: object
       description: Keyset pagination metadata.
@@ -221,6 +150,57 @@ components:
       - HasNextPage
       - HasPreviousPage
       - PageSize
+    ErrorResponse:
+      type: object
+      description: Standard error response body.
+      properties:
+        ErrorMessage:
+          type: string
+          description: Human-readable error message.
+          examples:
+          - 'Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt'
+        Type:
+          type: string
+          description: Error type identifier.
+          examples:
+          - InvalidPayoutFiltersError
+        Details:
+          type: array
+          description: Additional error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+        Context:
+          type: object
+          description: Additional error context.
+      required:
+      - ErrorMessage
+    CollectionMetadata:
+      type: object
+      description: Metadata wrapper carrying pagination details.
+      properties:
+        Pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      required:
+      - Pagination
+    ErrorDetail:
+      type: object
+      description: A single error detail entry.
+      properties:
+        Type:
+          type: string
+          description: Detail type.
+          examples:
+          - validation
+        Message:
+          type: string
+          description: Detail message.
+          examples:
+          - PageSize must not exceed 200
+        Context:
+          type: object
+          description: Detail context.
+      required:
+      - Type
     CreatorPaymentInfoStatus:
       type: object
       description: Payment-info collection status for a single creator.
@@ -266,58 +246,27 @@ components:
       required:
       - PublisherId
       - PayableStatus
-    ErrorDetail:
+    CreatorPaymentInfoStatusCollectionResponse:
       type: object
-      description: A single error detail entry.
+      description: A page of creator payment-info statuses with pagination metadata.
       properties:
-        Type:
-          type: string
-          description: Detail type.
-          examples:
-          - validation
-        Message:
-          type: string
-          description: Detail message.
-          examples:
-          - PageSize must not exceed 200
-        Context:
-          type: object
-          description: Detail context.
-      required:
-      - Type
-    ErrorResponse:
-      type: object
-      description: Standard error response body.
-      properties:
-        ErrorMessage:
-          type: string
-          description: Human-readable error message.
-          examples:
-          - 'Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt'
-        Type:
-          type: string
-          description: Error type identifier.
-          examples:
-          - InvalidPayoutFiltersError
-        Details:
+        Data:
           type: array
-          description: Additional error details.
+          description: Creator payment-info statuses in this page.
           items:
-            $ref: '#/components/schemas/ErrorDetail'
-        Context:
-          type: object
-          description: Additional error context.
+            $ref: '#/components/schemas/CreatorPaymentInfoStatus'
+        Metadata:
+          $ref: '#/components/schemas/CollectionMetadata'
       required:
-      - ErrorMessage
-    CollectionMetadata:
-      type: object
-      description: Metadata wrapper carrying pagination details.
-      properties:
-        Pagination:
-          $ref: '#/components/schemas/PaginationResponse'
-      required:
-      - Pagination
+      - Data
+      - Metadata
   responses:
+    ForbiddenError:
+      description: Forbidden - the API key is missing, invalid or lacks access.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     InternalServerError:
       description: Internal Server Error.
       content:
@@ -330,12 +279,63 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ForbiddenError:
-      description: Forbidden - the API key is missing, invalid or lacks access.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    Cursor:
+      name: Cursor
+      in: query
+      description: Base64 keyset pagination cursor. Pass the `EndCursor` (forward) or `StartCursor` (backward) from the previous response's `Metadata.Pagination`. Omit on the first request.
+      required: false
+      schema:
+        type: string
+        examples:
+        - cGF5b3V0X2RhdGU7OzEyMzQ1
+      examples:
+        default:
+          value: cGF5b3V0X2RhdGU7OzEyMzQ1
+    Direction:
+      name: Direction
+      in: query
+      description: Pagination direction relative to the supplied cursor.
+      required: true
+      schema:
+        type: string
+        enum:
+        - forward
+        - backward
+        examples:
+        - forward
+      examples:
+        default:
+          value: forward
+    SortOrder:
+      name: SortOrder
+      in: query
+      description: Sort order for the selected `SortField`.
+      required: true
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        examples:
+        - desc
+      examples:
+        default:
+          value: desc
+    PageSize:
+      name: PageSize
+      in: query
+      description: Number of items to return per page. Must be a positive integer, capped at 200.
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        examples:
+        - 50
+      examples:
+        default:
+          value: 50
   securitySchemes:
     apiKey:
       type: apiKey

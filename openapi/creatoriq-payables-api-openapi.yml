@@ -154,64 +154,31 @@ paths:
       - url: https://apis.creatoriq.com
         description: Live
 components:
-  parameters:
-    Cursor:
-      name: Cursor
-      in: query
-      description: Base64 keyset pagination cursor. Pass the `EndCursor` (forward) or `StartCursor` (backward) from the previous response's `Metadata.Pagination`. Omit on the first request.
-      required: false
-      schema:
-        type: string
-        examples:
-        - cGF5b3V0X2RhdGU7OzEyMzQ1
-      examples:
-        default:
-          value: cGF5b3V0X2RhdGU7OzEyMzQ1
-    SortOrder:
-      name: SortOrder
-      in: query
-      description: Sort order for the selected `SortField`.
-      required: true
-      schema:
-        type: string
-        enum:
-        - asc
-        - desc
-        examples:
-        - desc
-      examples:
-        default:
-          value: desc
-    PageSize:
-      name: PageSize
-      in: query
-      description: Number of items to return per page. Must be a positive integer, capped at 200.
-      required: true
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 200
-        examples:
-        - 50
-      examples:
-        default:
-          value: 50
-    Direction:
-      name: Direction
-      in: query
-      description: Pagination direction relative to the supplied cursor.
-      required: true
-      schema:
-        type: string
-        enum:
-        - forward
-        - backward
-        examples:
-        - forward
-      examples:
-        default:
-          value: forward
   schemas:
+    ErrorResponse:
+      type: object
+      description: Standard error response body.
+      properties:
+        ErrorMessage:
+          type: string
+          description: Human-readable error message.
+          examples:
+          - 'Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt'
+        Type:
+          type: string
+          description: Error type identifier.
+          examples:
+          - InvalidPayoutFiltersError
+        Details:
+          type: array
+          description: Additional error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+        Context:
+          type: object
+          description: Additional error context.
+      required:
+      - ErrorMessage
     PaginationResponse:
       type: object
       description: Keyset pagination metadata.
@@ -251,6 +218,14 @@ components:
       - HasNextPage
       - HasPreviousPage
       - PageSize
+    CollectionMetadata:
+      type: object
+      description: Metadata wrapper carrying pagination details.
+      properties:
+        Pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      required:
+      - Pagination
     PayablesCollectionResponse:
       type: object
       description: A page of payables with pagination metadata.
@@ -392,6 +367,23 @@ components:
       - PONumber
       - CreatedAt
       - UpdatedAt
+    Amount:
+      type: object
+      description: A monetary amount with its currency.
+      properties:
+        Value:
+          type: string
+          description: Decimal amount, serialized as a string to preserve precision.
+          examples:
+          - '1250.00'
+        Currency:
+          type: string
+          description: ISO 4217 currency code.
+          examples:
+          - USD
+      required:
+      - Value
+      - Currency
     ErrorDetail:
       type: object
       description: A single error detail entry.
@@ -411,56 +403,13 @@ components:
           description: Detail context.
       required:
       - Type
-    Amount:
-      type: object
-      description: A monetary amount with its currency.
-      properties:
-        Value:
-          type: string
-          description: Decimal amount, serialized as a string to preserve precision.
-          examples:
-          - '1250.00'
-        Currency:
-          type: string
-          description: ISO 4217 currency code.
-          examples:
-          - USD
-      required:
-      - Value
-      - Currency
-    ErrorResponse:
-      type: object
-      description: Standard error response body.
-      properties:
-        ErrorMessage:
-          type: string
-          description: Human-readable error message.
-          examples:
-          - 'Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt'
-        Type:
-          type: string
-          description: Error type identifier.
-          examples:
-          - InvalidPayoutFiltersError
-        Details:
-          type: array
-          description: Additional error details.
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-        Context:
-          type: object
-          description: Additional error context.
-      required:
-      - ErrorMessage
-    CollectionMetadata:
-      type: object
-      description: Metadata wrapper carrying pagination details.
-      properties:
-        Pagination:
-          $ref: '#/components/schemas/PaginationResponse'
-      required:
-      - Pagination
   responses:
+    ForbiddenError:
+      description: Forbidden - the API key is missing, invalid or lacks access.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     InternalServerError:
       description: Internal Server Error.
       content:
@@ -473,12 +422,63 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ForbiddenError:
-      description: Forbidden - the API key is missing, invalid or lacks access.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    Cursor:
+      name: Cursor
+      in: query
+      description: Base64 keyset pagination cursor. Pass the `EndCursor` (forward) or `StartCursor` (backward) from the previous response's `Metadata.Pagination`. Omit on the first request.
+      required: false
+      schema:
+        type: string
+        examples:
+        - cGF5b3V0X2RhdGU7OzEyMzQ1
+      examples:
+        default:
+          value: cGF5b3V0X2RhdGU7OzEyMzQ1
+    Direction:
+      name: Direction
+      in: query
+      description: Pagination direction relative to the supplied cursor.
+      required: true
+      schema:
+        type: string
+        enum:
+        - forward
+        - backward
+        examples:
+        - forward
+      examples:
+        default:
+          value: forward
+    SortOrder:
+      name: SortOrder
+      in: query
+      description: Sort order for the selected `SortField`.
+      required: true
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        examples:
+        - desc
+      examples:
+        default:
+          value: desc
+    PageSize:
+      name: PageSize
+      in: query
+      description: Number of items to return per page. Must be a positive integer, capped at 200.
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        examples:
+        - 50
+      examples:
+        default:
+          value: 50
   securitySchemes:
     apiKey:
       type: apiKey

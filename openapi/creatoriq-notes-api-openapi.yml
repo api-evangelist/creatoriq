@@ -198,6 +198,37 @@ paths:
       - url: https://apis.creatoriq.com
         description: Live
 components:
+  responses:
+    ErrorResponse404:
+      description: One-sheet with supplied ID not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseModel'
+    ErrorResponse400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseModel'
+    GetSingleDimensionSuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetSingleDimensionSuccessResponseModel'
+    AddNoteSuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NoteModel'
+    GetNotesSuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotesCollectionModel'
   schemas:
     CollectionCommonModel:
       type: object
@@ -224,6 +255,170 @@ components:
       - count
       - total
       - page
+    NoteModel:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - Note
+          description: Type of Search
+          example: Note
+        href:
+          type: string
+          description: Link to fetch current note
+          example: https://apis.creatoriq.com/crm/v1/api/note/293751
+        Note:
+          type: object
+          allOf:
+          - $ref: '#/components/schemas/NoteBaseModel'
+          - type: object
+            properties:
+              EntityName:
+                type: string
+                description: Entity name
+                example: enjoycing joyce
+              ParentEntityId:
+                type: integer
+                description: Unique parent entity (note, onesheet, campaign, publisher etc.) ID
+                example: 337724
+              ParentEntityName:
+                type: string
+                description: Parent entity name
+                example: API
+            required:
+            - EntityName
+            - ParentEntityId
+            - ParentEntityName
+      required:
+      - type
+      - href
+      - Note
+    AddNoteBody:
+      type: object
+      description: Schema represents request for create note
+      properties:
+        Note:
+          type: string
+          description: Note text
+          example: Some notes here
+        CreatedBy:
+          type: string
+          description: Person who create note
+          example: Admin
+        Email:
+          type: string
+          description: email
+          format: email
+          example: test.user@somemail.com
+      required:
+      - Note
+      - CreatedBy
+      - Email
+      minProperties: 1
+    GetSingleDimensionSuccessResponseModel:
+      type: object
+      oneOf:
+      - allOf:
+        - $ref: '#/components/schemas/CollectionCommonModel'
+        - $ref: '#/components/schemas/OneSheetPublisherCommentsCollectionModel'
+      - allOf:
+        - $ref: '#/components/schemas/CollectionCommonModel'
+        - $ref: '#/components/schemas/CampaignPublisherCommentsCollectionModel'
+    OneSheetPublisherCommentsCollectionModel:
+      type: object
+      properties:
+        OneSheetPublisherCommentsCollection:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - OneSheetPublisherComments
+                example: OneSheetPublisherComments
+              OneSheetPublisherComments:
+                type: object
+                properties:
+                  RecordId:
+                    type: integer
+                    description: Publisher ID from the OneSheet
+                    example: 1961163
+                  Count:
+                    type: integer
+                    description: Count of comments
+                    example: 2
+      required:
+      - OneSheetPublisherCommentsCollection
+    ErrorResponseModel:
+      type: object
+      description: Not found exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          example: CoreException
+        Exception:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              example: 404
+            message:
+              type: string
+              description: Exception message
+              example: Not found
+          required:
+          - code
+          - message
+      required:
+      - type
+      - Exception
+    NotesCollectionModel:
+      type: object
+      description: Success
+      properties:
+        type:
+          type: string
+          enum:
+          - NotesCollection
+          description: Type of Search
+          example: NotesCollection
+        href:
+          type: string
+          description: CreatorIQ API URL to get notes
+          example: https://apis.creatoriq.com/crm/v1/api/notes?filter%5B0%5D%5B0%5D=Archived&filter%5B0%5D%5B1%5D=%3D&filter%5B0%5D%5B2%5D=0
+        count:
+          type: integer
+          description: Number of records in current response
+          example: 200
+        total:
+          type: integer
+          description: Total number of found rows
+          example: 20
+        page:
+          type: integer
+          description: Current page
+          example: 1
+        NotesCollection:
+          type: array
+          description: Notes collection
+          items:
+            $ref: '#/components/schemas/NoteModel'
+        isEntityPublished:
+          type: boolean
+          description: Flag represents is entity in public access
+          example: true
+      required:
+      - type
+      - href
+      - count
+      - total
+      - page
+      - NotesCollection
     CampaignPublisherCommentsCollectionModel:
       type: object
       properties:
@@ -250,28 +445,6 @@ components:
                     example: 2
       required:
       - CampaignPublisherCommentsCollection
-    AddNoteBody:
-      type: object
-      description: Schema represents request for create note
-      properties:
-        Note:
-          type: string
-          description: Note text
-          example: Some notes here
-        CreatedBy:
-          type: string
-          description: Person who create note
-          example: Admin
-        Email:
-          type: string
-          description: email
-          format: email
-          example: test.user@somemail.com
-      required:
-      - Note
-      - CreatedBy
-      - Email
-      minProperties: 1
     NoteBaseModel:
       type: object
       properties:
@@ -473,179 +646,6 @@ components:
       - EntityType
       - PermissionsAccess
       - SystemType
-    OneSheetPublisherCommentsCollectionModel:
-      type: object
-      properties:
-        OneSheetPublisherCommentsCollection:
-          type: array
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-                enum:
-                - OneSheetPublisherComments
-                example: OneSheetPublisherComments
-              OneSheetPublisherComments:
-                type: object
-                properties:
-                  RecordId:
-                    type: integer
-                    description: Publisher ID from the OneSheet
-                    example: 1961163
-                  Count:
-                    type: integer
-                    description: Count of comments
-                    example: 2
-      required:
-      - OneSheetPublisherCommentsCollection
-    NoteModel:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - Note
-          description: Type of Search
-          example: Note
-        href:
-          type: string
-          description: Link to fetch current note
-          example: https://apis.creatoriq.com/crm/v1/api/note/293751
-        Note:
-          type: object
-          allOf:
-          - $ref: '#/components/schemas/NoteBaseModel'
-          - type: object
-            properties:
-              EntityName:
-                type: string
-                description: Entity name
-                example: enjoycing joyce
-              ParentEntityId:
-                type: integer
-                description: Unique parent entity (note, onesheet, campaign, publisher etc.) ID
-                example: 337724
-              ParentEntityName:
-                type: string
-                description: Parent entity name
-                example: API
-            required:
-            - EntityName
-            - ParentEntityId
-            - ParentEntityName
-      required:
-      - type
-      - href
-      - Note
-    ErrorResponseModel:
-      type: object
-      description: Not found exception
-      properties:
-        type:
-          type: string
-          description: Exception type
-          example: CoreException
-        Exception:
-          type: object
-          description: Exception information
-          properties:
-            code:
-              type: integer
-              description: Exception status code
-              example: 404
-            message:
-              type: string
-              description: Exception message
-              example: Not found
-          required:
-          - code
-          - message
-      required:
-      - type
-      - Exception
-    NotesCollectionModel:
-      type: object
-      description: Success
-      properties:
-        type:
-          type: string
-          enum:
-          - NotesCollection
-          description: Type of Search
-          example: NotesCollection
-        href:
-          type: string
-          description: CreatorIQ API URL to get notes
-          example: https://apis.creatoriq.com/crm/v1/api/notes?filter%5B0%5D%5B0%5D=Archived&filter%5B0%5D%5B1%5D=%3D&filter%5B0%5D%5B2%5D=0
-        count:
-          type: integer
-          description: Number of records in current response
-          example: 200
-        total:
-          type: integer
-          description: Total number of found rows
-          example: 20
-        page:
-          type: integer
-          description: Current page
-          example: 1
-        NotesCollection:
-          type: array
-          description: Notes collection
-          items:
-            $ref: '#/components/schemas/NoteModel'
-        isEntityPublished:
-          type: boolean
-          description: Flag represents is entity in public access
-          example: true
-      required:
-      - type
-      - href
-      - count
-      - total
-      - page
-      - NotesCollection
-    GetSingleDimensionSuccessResponseModel:
-      type: object
-      oneOf:
-      - allOf:
-        - $ref: '#/components/schemas/CollectionCommonModel'
-        - $ref: '#/components/schemas/OneSheetPublisherCommentsCollectionModel'
-      - allOf:
-        - $ref: '#/components/schemas/CollectionCommonModel'
-        - $ref: '#/components/schemas/CampaignPublisherCommentsCollectionModel'
-  responses:
-    AddNoteSuccessResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/NoteModel'
-    ErrorResponse404:
-      description: One-sheet with supplied ID not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponseModel'
-    GetNotesSuccessResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/NotesCollectionModel'
-    GetSingleDimensionSuccessResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GetSingleDimensionSuccessResponseModel'
-    ErrorResponse400:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponseModel'
   securitySchemes:
     apiKey:
       type: apiKey

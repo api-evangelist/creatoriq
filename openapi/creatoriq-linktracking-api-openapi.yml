@@ -191,274 +191,38 @@ paths:
       - url: https://apis.creatoriq.com
         description: Live
 components:
+  responses:
+    PostLinkSuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PostLinkResponseModel'
+    PostLinksSuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PostLinksResponseModel'
+    PatchLinkSuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TrackingItemResponseModel'
+    BadRequestResponse:
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BadRequestResponseModel'
+    GetLinksSuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TrackingItemsResponseModel'
   schemas:
-    PostErroredModel:
-      type: object
-      properties:
-        Link:
-          type: object
-          properties:
-            OriginalUrl:
-              type:
-              - string
-              - 'null'
-              description: Original URL of the link.
-              examples:
-              - https://some-store-url.com/product
-            CampaignId:
-              type: integer
-              description: ID of the campaign.
-              examples:
-              - 11715
-            PublisherId:
-              type: integer
-              description: ID of the publisher.
-              examples:
-              - 260196
-            ScheduledPostId:
-              type:
-              - integer
-              - 'null'
-              description: ID of the scheduled post.
-              examples:
-              - 264647
-            CreatedById:
-              type: integer
-              description: ID of the user who created the link.
-              examples:
-              - 122164531
-            Label:
-              type:
-              - string
-              - 'null'
-              description: Label of the link. Typically title of the destination page.
-              examples:
-              - Test label
-            PartnerId:
-              type: integer
-              description: ID of the partner.
-              examples:
-              - 11
-          required:
-          - OriginalUrl
-          - CampaignId
-          - PublisherId
-          - CreatedById
-          - Label
-          - PartnerId
-        Reason:
-          type: object
-          properties:
-            Message:
-              type: string
-              description: Error message.
-              examples:
-              - Something went wrong.
-          required:
-          - Message
-      required:
-      - Link
-      - Reason
-    PostLinksBody:
-      type: object
-      properties:
-        links:
-          type: array
-          description: Array of links to create.
-          items:
-            $ref: '#/components/schemas/PostLinkBody'
-      required:
-      - links
-    PostLinkBody:
-      type: object
-      properties:
-        OriginalUrl:
-          type: string
-          description: Original URL of the link.
-          examples:
-          - https://www.creatoriq.com/influencer-marketing-solution/creator-onboarding-and-recruitment
-        CampaignId:
-          type: integer
-          description: ID of the campaign.
-          examples:
-          - 11715
-        PublisherId:
-          type: integer
-          description: ID of the publisher.
-          examples:
-          - 264647
-        ScheduledPostId:
-          type:
-          - integer
-          - 'null'
-          description: ID of the scheduled post.
-          examples:
-          - 264647
-        Label:
-          type:
-          - string
-          - 'null'
-          description: Label of the link. Typically title of the destination page.
-          examples:
-          - Test label
-        Instruction:
-          type:
-          - string
-          - 'null'
-          description: Instructions for the link.
-          examples:
-          - Test instructions for the link.
-      required:
-      - OriginalUrl
-      - CampaignId
-      - PublisherId
-    BadRequestResponseModel:
-      type: object
-      properties:
-        message:
-          type: array
-          description: Array of all errors happened during the request.
-          examples:
-          - - Error message text here.
-          items:
-            type: string
-            description: Error message.
-            examples:
-            - Error message text here.
-        error:
-          type: string
-          description: Error message.
-          examples:
-          - Bad Request
-        statusCode:
-          type: integer
-          description: HTTP status code.
-          examples:
-          - 400
-      required:
-      - message
-      - error
-      - statusCode
-    TrackingItemModel:
-      type: object
-      properties:
-        TrackingItemId:
-          type: integer
-          description: ID of the tracking item.
-          examples:
-          - 59578
-        CampaignId:
-          type: integer
-          description: ID of the campaign.
-          examples:
-          - 11715
-        PublisherId:
-          type: integer
-          description: ID of the publisher.
-          examples:
-          - 260196
-        ScheduledPostId:
-          type:
-          - integer
-          - 'null'
-          description: ID of the scheduled post.
-          examples:
-          - 260196
-        OriginalUrl:
-          type:
-          - string
-          - 'null'
-          description: Original URL of the link.
-          examples:
-          - https://some-store-url.com/product
-        UtmLink:
-          type:
-          - string
-          - 'null'
-          description: UTM link of the tracking item.
-          examples:
-          - https://utmlink.here?param1=11&param2=22
-        Label:
-          type:
-          - string
-          - 'null'
-          description: Label of the link. Typically title of the destination page.
-          examples:
-          - Fast and Free Short Sleeve Shirt
-        Destination:
-          type: string
-          description: Destination URL of the link. Typically URL of the destination page.
-          examples:
-          - https://example.com
-        ShortlinkUrl:
-          type:
-          - string
-          - 'null'
-          description: Short URL of the destination URL.
-          examples:
-          - https://bit.ly/test
-        Instruction:
-          type:
-          - string
-          - 'null'
-          description: Additional description field.
-          examples:
-          - Instructions here
-        ArchivedAt:
-          type:
-          - string
-          - 'null'
-          description: Date when the link was archived.
-          examples:
-          - '2024-10-18 13:20:31'
-      required:
-      - TrackingItemId
-      - CampaignId
-      - PublisherId
-      - ScheduledPostId
-      - OriginalUrl
-      - UtmLink
-      - Label
-      - Destination
-      - ShortlinkUrl
-      - Instruction
-      - ArchivedAt
-    PostLinkResponseModel:
-      type: object
-      properties:
-        Data:
-          $ref: '#/components/schemas/TrackingItemModel'
-        Information:
-          type: object
-          properties:
-            RequestId:
-              type: string
-              description: Unique request ID used for debug.
-              examples:
-              - d964d976-31b5-43bd-944c-6686ac320190
-          required:
-          - RequestId
-      required:
-      - Data
-      - Information
-    TrackingItemResponseModel:
-      type: object
-      description: Success response of the tracking item model.
-      properties:
-        Data:
-          $ref: '#/components/schemas/TrackingItemModel'
-        Information:
-          type: object
-          properties:
-            RequestId:
-              type: string
-              examples:
-              - d964d976-31b5-43bd-944c-6686ac320190
-          required:
-          - RequestId
-      required:
-      - Data
-      - Information
     TrackingItemModelWithPostData:
       type: object
       properties:
@@ -612,6 +376,245 @@ components:
       required:
       - Data
       - Information
+    TrackingItemModel:
+      type: object
+      properties:
+        TrackingItemId:
+          type: integer
+          description: ID of the tracking item.
+          examples:
+          - 59578
+        CampaignId:
+          type: integer
+          description: ID of the campaign.
+          examples:
+          - 11715
+        PublisherId:
+          type: integer
+          description: ID of the publisher.
+          examples:
+          - 260196
+        ScheduledPostId:
+          type:
+          - integer
+          - 'null'
+          description: ID of the scheduled post.
+          examples:
+          - 260196
+        OriginalUrl:
+          type:
+          - string
+          - 'null'
+          description: Original URL of the link.
+          examples:
+          - https://some-store-url.com/product
+        UtmLink:
+          type:
+          - string
+          - 'null'
+          description: UTM link of the tracking item.
+          examples:
+          - https://utmlink.here?param1=11&param2=22
+        Label:
+          type:
+          - string
+          - 'null'
+          description: Label of the link. Typically title of the destination page.
+          examples:
+          - Fast and Free Short Sleeve Shirt
+        Destination:
+          type: string
+          description: Destination URL of the link. Typically URL of the destination page.
+          examples:
+          - https://example.com
+        ShortlinkUrl:
+          type:
+          - string
+          - 'null'
+          description: Short URL of the destination URL.
+          examples:
+          - https://bit.ly/test
+        Instruction:
+          type:
+          - string
+          - 'null'
+          description: Additional description field.
+          examples:
+          - Instructions here
+        ArchivedAt:
+          type:
+          - string
+          - 'null'
+          description: Date when the link was archived.
+          examples:
+          - '2024-10-18 13:20:31'
+      required:
+      - TrackingItemId
+      - CampaignId
+      - PublisherId
+      - ScheduledPostId
+      - OriginalUrl
+      - UtmLink
+      - Label
+      - Destination
+      - ShortlinkUrl
+      - Instruction
+      - ArchivedAt
+    PostLinkBody:
+      type: object
+      properties:
+        OriginalUrl:
+          type: string
+          description: Original URL of the link.
+          examples:
+          - https://www.creatoriq.com/influencer-marketing-solution/creator-onboarding-and-recruitment
+        CampaignId:
+          type: integer
+          description: ID of the campaign.
+          examples:
+          - 11715
+        PublisherId:
+          type: integer
+          description: ID of the publisher.
+          examples:
+          - 264647
+        ScheduledPostId:
+          type:
+          - integer
+          - 'null'
+          description: ID of the scheduled post.
+          examples:
+          - 264647
+        Label:
+          type:
+          - string
+          - 'null'
+          description: Label of the link. Typically title of the destination page.
+          examples:
+          - Test label
+        Instruction:
+          type:
+          - string
+          - 'null'
+          description: Instructions for the link.
+          examples:
+          - Test instructions for the link.
+      required:
+      - OriginalUrl
+      - CampaignId
+      - PublisherId
+    PostErroredModel:
+      type: object
+      properties:
+        Link:
+          type: object
+          properties:
+            OriginalUrl:
+              type:
+              - string
+              - 'null'
+              description: Original URL of the link.
+              examples:
+              - https://some-store-url.com/product
+            CampaignId:
+              type: integer
+              description: ID of the campaign.
+              examples:
+              - 11715
+            PublisherId:
+              type: integer
+              description: ID of the publisher.
+              examples:
+              - 260196
+            ScheduledPostId:
+              type:
+              - integer
+              - 'null'
+              description: ID of the scheduled post.
+              examples:
+              - 264647
+            CreatedById:
+              type: integer
+              description: ID of the user who created the link.
+              examples:
+              - 122164531
+            Label:
+              type:
+              - string
+              - 'null'
+              description: Label of the link. Typically title of the destination page.
+              examples:
+              - Test label
+            PartnerId:
+              type: integer
+              description: ID of the partner.
+              examples:
+              - 11
+          required:
+          - OriginalUrl
+          - CampaignId
+          - PublisherId
+          - CreatedById
+          - Label
+          - PartnerId
+        Reason:
+          type: object
+          properties:
+            Message:
+              type: string
+              description: Error message.
+              examples:
+              - Something went wrong.
+          required:
+          - Message
+      required:
+      - Link
+      - Reason
+    PostLinkResponseModel:
+      type: object
+      properties:
+        Data:
+          $ref: '#/components/schemas/TrackingItemModel'
+        Information:
+          type: object
+          properties:
+            RequestId:
+              type: string
+              description: Unique request ID used for debug.
+              examples:
+              - d964d976-31b5-43bd-944c-6686ac320190
+          required:
+          - RequestId
+      required:
+      - Data
+      - Information
+    BadRequestResponseModel:
+      type: object
+      properties:
+        message:
+          type: array
+          description: Array of all errors happened during the request.
+          examples:
+          - - Error message text here.
+          items:
+            type: string
+            description: Error message.
+            examples:
+            - Error message text here.
+        error:
+          type: string
+          description: Error message.
+          examples:
+          - Bad Request
+        statusCode:
+          type: integer
+          description: HTTP status code.
+          examples:
+          - 400
+      required:
+      - message
+      - error
+      - statusCode
     PatchLinkBody:
       type: object
       properties:
@@ -641,6 +644,34 @@ components:
           description: Original URL of the link.
           examples:
           - https://some-store-url.com/product
+    PostLinksBody:
+      type: object
+      properties:
+        links:
+          type: array
+          description: Array of links to create.
+          items:
+            $ref: '#/components/schemas/PostLinkBody'
+      required:
+      - links
+    TrackingItemResponseModel:
+      type: object
+      description: Success response of the tracking item model.
+      properties:
+        Data:
+          $ref: '#/components/schemas/TrackingItemModel'
+        Information:
+          type: object
+          properties:
+            RequestId:
+              type: string
+              examples:
+              - d964d976-31b5-43bd-944c-6686ac320190
+          required:
+          - RequestId
+      required:
+      - Data
+      - Information
     TrackingItemsResponseModel:
       type: object
       properties:
@@ -673,34 +704,3 @@ components:
       required:
       - Data
       - Information
-  responses:
-    PostLinksSuccessResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PostLinksResponseModel'
-    PatchLinkSuccessResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TrackingItemResponseModel'
-    BadRequestResponse:
-      description: Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BadRequestResponseModel'
-    GetLinksSuccessResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TrackingItemsResponseModel'
-    PostLinkSuccessResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PostLinkResponseModel'

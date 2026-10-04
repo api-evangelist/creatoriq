@@ -279,6 +279,290 @@ paths:
         description: Live
 components:
   schemas:
+    creatorsReport:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/commonResponse'
+      - type: object
+        properties:
+          results:
+            type: array
+            description: 'Depending on the partner, the report may contain different set of properties.
+
+              '
+            minItems: 1
+            items:
+              type: object
+              properties:
+                average_facebook_post_engagement_rate:
+                  type:
+                  - number
+                  - 'null'
+                  example: 0.2345
+                average_facebook_post_engagements_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 567.89
+                average_facebook_post_impressions_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 2345.67
+                average_facebook_post_reach_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 890.12
+                average_instagram_post_engagement_rate:
+                  type:
+                  - number
+                  - 'null'
+                  example: 0.1234
+                average_instagram_post_engagements_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 456.78
+                average_instagram_post_impressions_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 1234.56
+                average_instagram_post_reach_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 789.01
+                average_tiktok_post_engagement_rate:
+                  type:
+                  - number
+                  - 'null'
+                  example: 0.4567
+                average_tiktok_post_engagements_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 789.01
+                average_tiktok_post_impressions_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 4567.89
+                average_tiktok_post_reach_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 123.45
+                average_twitch_post_engagement_rate:
+                  type:
+                  - number
+                  - 'null'
+                  example: 0.5678
+                average_twitch_post_engagements_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 890.12
+                average_twitch_post_impressions_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 5678.9
+                average_twitch_post_reach_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 234.56
+                average_twitter_post_engagement_rate:
+                  type:
+                  - number
+                  - 'null'
+                  example: 0.6789
+                average_twitter_post_engagements_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 901.23
+                average_twitter_post_impressions_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 6789.01
+                average_twitter_post_reach_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 345.67
+                average_youtube_post_engagement_rate:
+                  type:
+                  - number
+                  - 'null'
+                  example: 0.3456
+                average_youtube_post_engagements_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 678.9
+                average_youtube_post_impressions_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 3456.78
+                average_youtube_post_reach_per_post:
+                  type:
+                  - number
+                  - 'null'
+                  example: 901.23
+                count_of_facebook_posts_within_date_range:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 3
+                count_of_instagram_posts_within_date_range:
+                  type: integer
+                  example: 5
+                count_of_tiktok_posts_within_date_range:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 4
+                count_of_twitch_posts_within_date_range:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 6
+                count_of_twitter_posts_within_date_range:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 7
+                count_of_youtube_posts_within_date_range:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 2
+                creator_city:
+                  type:
+                  - string
+                  - 'null'
+                  example: Los Angeles
+                creator_country:
+                  type: string
+                  example: United States
+                creator_primary_social_platform:
+                  type: string
+                  example: instagram
+                creator_primary_social_title:
+                  type:
+                  - string
+                  - 'null'
+                  example: '@johndoe22222'
+                creator_state:
+                  type:
+                  - string
+                  - 'null'
+                  example: California
+                crm_email:
+                  type:
+                  - string
+                  - 'null'
+                  description: 'This property may be missing for some partners.
+
+                    '
+                  format: email
+                  example: john.doe@mail.com
+                json_of_associated_social_handles:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties:
+                      type: string
+                      example: azevedoja
+                  example:
+                  - instagram: azevedoja
+                  - twitter: azevedoja
+                disco_emails:
+                  type:
+                  - string
+                  - 'null'
+                  description: 'This property may be missing for some partners.
+
+                    '
+                  example: john.doe@mail.com,jane.doe@mail.com
+                primary_audience_interest_category:
+                  type:
+                  - string
+                  - 'null'
+                  example: Beauty
+                primary_creator_category:
+                  type:
+                  - string
+                  - 'null'
+                  example: Fashion
+                primary_creator_travel_affinity_city:
+                  type:
+                  - string
+                  - 'null'
+                  example: New York
+                publisherid:
+                  type: integer
+                  example: 72537585
+                publishername:
+                  type: string
+                  example: John Doe
+                secondary_audience_interest_category:
+                  type:
+                  - string
+                  - 'null'
+                  example: Travel
+                secondary_creator_category:
+                  type:
+                  - string
+                  - 'null'
+                  example: Lifestyle
+                secondary_creator_travel_affinity_city:
+                  type:
+                  - string
+                  - 'null'
+                  example: Los Angeles
+                tags:
+                  type:
+                  - string
+                  - 'null'
+                  example: '"Science & Technology","News"'
+                total_facebook_fans:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 2345678
+                total_instagram_followers:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 1234567
+                total_tiktok_followers:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 4567890
+                total_twitch_subscribers:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 5678901
+                total_twitter_followers:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 4567890
+                total_youtube_subscribers:
+                  type:
+                  - integer
+                  - 'null'
+                  example: 3456789
+        required:
+        - results
     creatorConnect:
       type: object
       allOf:
@@ -566,314 +850,6 @@ components:
                   example: '01000'
         required:
         - results
-    creatorsReport:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/commonResponse'
-      - type: object
-        properties:
-          results:
-            type: array
-            description: 'Depending on the partner, the report may contain different set of properties.
-
-              '
-            minItems: 1
-            items:
-              type: object
-              properties:
-                average_facebook_post_engagement_rate:
-                  type:
-                  - number
-                  - 'null'
-                  example: 0.2345
-                average_facebook_post_engagements_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 567.89
-                average_facebook_post_impressions_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 2345.67
-                average_facebook_post_reach_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 890.12
-                average_instagram_post_engagement_rate:
-                  type:
-                  - number
-                  - 'null'
-                  example: 0.1234
-                average_instagram_post_engagements_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 456.78
-                average_instagram_post_impressions_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 1234.56
-                average_instagram_post_reach_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 789.01
-                average_tiktok_post_engagement_rate:
-                  type:
-                  - number
-                  - 'null'
-                  example: 0.4567
-                average_tiktok_post_engagements_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 789.01
-                average_tiktok_post_impressions_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 4567.89
-                average_tiktok_post_reach_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 123.45
-                average_twitch_post_engagement_rate:
-                  type:
-                  - number
-                  - 'null'
-                  example: 0.5678
-                average_twitch_post_engagements_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 890.12
-                average_twitch_post_impressions_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 5678.9
-                average_twitch_post_reach_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 234.56
-                average_twitter_post_engagement_rate:
-                  type:
-                  - number
-                  - 'null'
-                  example: 0.6789
-                average_twitter_post_engagements_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 901.23
-                average_twitter_post_impressions_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 6789.01
-                average_twitter_post_reach_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 345.67
-                average_youtube_post_engagement_rate:
-                  type:
-                  - number
-                  - 'null'
-                  example: 0.3456
-                average_youtube_post_engagements_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 678.9
-                average_youtube_post_impressions_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 3456.78
-                average_youtube_post_reach_per_post:
-                  type:
-                  - number
-                  - 'null'
-                  example: 901.23
-                count_of_facebook_posts_within_date_range:
-                  type:
-                  - integer
-                  - 'null'
-                  example: 3
-                count_of_instagram_posts_within_date_range:
-                  type: integer
-                  example: 5
-                count_of_tiktok_posts_within_date_range:
-                  type:
-                  - integer
-                  - 'null'
-                  example: 4
-                count_of_twitch_posts_within_date_range:
-                  type:
-                  - integer
-                  - 'null'
-                  example: 6
-                count_of_twitter_posts_within_date_range:
-                  type:
-                  - integer
-                  - 'null'
-                  example: 7
-                count_of_youtube_posts_within_date_range:
-                  type:
-                  - integer
-                  - 'null'
-                  example: 2
-                creator_city:
-                  type:
-                  - string
-                  - 'null'
-                  example: Los Angeles
-                creator_country:
-                  type: string
-                  example: United States
-                creator_primary_social_platform:
-                  type: string
-                  example: instagram
-                creator_primary_social_title:
-                  type:
-                  - string
-                  - 'null'
-                  example: '@johndoe22222'
-                creator_state:
-                  type:
-                  - string
-                  - 'null'
-                  example: California
-                crm_email:
-                  type:
-                  - string
-                  - 'null'
-                  description: 'This property may be missing for some partners.
-
-                    '
-                  format: email
-                  example: john.doe@mail.com
-                json_of_associated_social_handles:
-                  type: array
-                  items:
-                    type: object
-                    additionalProperties:
-                      type: string
-                      example: azevedoja
-                  example:
-                  - instagram: azevedoja
-                  - twitter: azevedoja
-                disco_emails:
-                  type:
-                  - string
-                  - 'null'
-                  description: 'This property may be missing for some partners.
-
-                    '
-                  example: john.doe@mail.com,jane.doe@mail.com
-                primary_audience_interest_category:
-                  type:
-                  - string
-                  - 'null'
-                  example: Beauty
-                primary_creator_category:
-                  type:
-                  - string
-                  - 'null'
-                  example: Fashion
-                primary_creator_travel_affinity_city:
-                  type:
-                  - string
-                  - 'null'
-                  example: New York
-                publisherid:
-                  type: integer
-                  example: 72537585
-                publishername:
-                  type: string
-                  example: John Doe
-                secondary_audience_interest_category:
-                  type:
-                  - string
-                  - 'null'
-                  example: Travel
-                secondary_creator_category:
-                  type:
-                  - string
-                  - 'null'
-                  example: Lifestyle
-                secondary_creator_travel_affinity_city:
-                  type:
-                  - string
-                  - 'null'
-                  example: Los Angeles
-                tags:
-                  type:
-                  - string
-                  - 'null'
-                  example: '"Science & Technology","News"'
-                total_facebook_fans:
-                  type:
-                  - integer
-                  - 'null'
-                  example: 2345678
-                total_instagram_followers:
-                  type:
-                  - integer
-                  - 'null'
-                  example: 1234567
-                total_tiktok_followers:
-                  type:
-                  - integer
-                  - 'null'
-                  example: 4567890
-                total_twitch_subscribers:
-                  type:
-                  - integer
-                  - 'null'
-                  example: 5678901
-                total_twitter_followers:
-                  type:
-                  - integer
-                  - 'null'
-                  example: 4567890
-                total_youtube_subscribers:
-                  type:
-                  - integer
-                  - 'null'
-                  example: 3456789
-        required:
-        - results
-    commonResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: Count of all reports
-          example: 300
-        dataGenerationTime:
-          type: string
-          description: Date when report generated
-          example: '2023-01-20T13:43:47+00:00'
-        cached:
-          type: boolean
-          description: Is view cached or not
-        time:
-          type: number
-          description: Time taken to generate report
-          format: float32
-          example: 0.571
-      required:
-      - count
-      - dataGenerationTime
-      - cached
-      - time
     channelReport:
       type: object
       allOf:
@@ -930,99 +906,6 @@ components:
                 ContentOwner:
                   type: string
                   example: Movieclips
-              required:
-              - PublisherId
-        required:
-        - results
-    publishersList:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/commonResponse'
-      - type: object
-        properties:
-          results:
-            type: array
-            minItems: 1
-            items:
-              type: object
-              properties:
-                PublisherId:
-                  type: integer
-                  example: 572571
-                LogoURL:
-                  type: string
-                  description: Publisher Logo URL
-                  format: URI
-                  example: https://social-pictures-storage.s3.amazonaws.com/medium_f60bb277b588e9dc652f2abe8197864457257.jpeg
-                ThumbLogoURL:
-                  type: string
-                  description: Publisher Logo URL with reduced size
-                  format: URI
-                  example: https://social-pictures-storage.s3.amazonaws.com/thumb_f60bb277b588e9dc652f2abe8197864457257.jpeg
-                PublisherName:
-                  type: string
-                  example: John Doe
-                Email:
-                  type:
-                  - string
-                  - 'null'
-                  format: email
-                  example: john.doe@example.com
-                FlagshipProperty:
-                  type:
-                  - string
-                  - 'null'
-                  description: Main social account handle of publisher
-                  example: '@johndoe22222'
-                FlagshipPropertyTitle:
-                  type:
-                  - string
-                  - 'null'
-                  description: Title of main social account in publisher
-                  example: '@johndoe22222'
-                FlagshipSocialNetwork:
-                  type:
-                  - string
-                  - 'null'
-                  enum:
-                  - youtube
-                  - twitter
-                  - facebook
-                  - instagram
-                  - google
-                  - vine
-                  - weibo
-                  - line
-                  - tiktok
-                  - twitch
-                  - tumblr
-                  - pinterest
-                  - snapchat
-                  - linkedin
-                  - reddit
-                  - web
-                  - blog
-                  - null
-                  description: Main social network for publisher
-                  example: youtube
-                SocialAccountsList:
-                  type:
-                  - string
-                  - 'null'
-                  description: XML representation of publisher's Social Accounts
-                  example: <row xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Network>instagram</Network><SocialNetworkId>103892434426157</SocialNetworkId><NetworkUser>john.doe.ig</NetworkUser><AccountWeight>10</AccountWeight><WebReach>0</WebReach><Title>john.doe.ig</Title><Followers>14</Followers><LinkedBy>John Doe</LinkedBy><LinkedAt>2022-07-18T13:28:34</LinkedAt><isVerifiedBySocialNetwork>0</isVerifiedBySocialNetwork><Linked>0</Linked><Unlinked>0</Unlinked><LinkBroken>1</LinkBroken><Business>0</Business><TokenInvalidDate>2022-10-20T08:44:24.147</TokenInvalidDate><DateSocialStatsUpdated>2023-03-01T16:35:33</DateSocialStatsUpdated><WhitelistingExpirationDate xsi:nil="true"/></row>
-                YT_Subscribers:
-                  type: integer
-                  example: 7572
-                YT_AverageMonthlyViews:
-                  type: number
-                  example: 4365757257.72725
-                Status:
-                  type: string
-                  example: Open
-                StatusCategory:
-                  type: string
-                  example: In process
               required:
               - PublisherId
         required:
@@ -1232,6 +1115,99 @@ components:
               - postid
         required:
         - results
+    publishersList:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/commonResponse'
+      - type: object
+        properties:
+          results:
+            type: array
+            minItems: 1
+            items:
+              type: object
+              properties:
+                PublisherId:
+                  type: integer
+                  example: 572571
+                LogoURL:
+                  type: string
+                  description: Publisher Logo URL
+                  format: URI
+                  example: https://social-pictures-storage.s3.amazonaws.com/medium_f60bb277b588e9dc652f2abe8197864457257.jpeg
+                ThumbLogoURL:
+                  type: string
+                  description: Publisher Logo URL with reduced size
+                  format: URI
+                  example: https://social-pictures-storage.s3.amazonaws.com/thumb_f60bb277b588e9dc652f2abe8197864457257.jpeg
+                PublisherName:
+                  type: string
+                  example: John Doe
+                Email:
+                  type:
+                  - string
+                  - 'null'
+                  format: email
+                  example: john.doe@example.com
+                FlagshipProperty:
+                  type:
+                  - string
+                  - 'null'
+                  description: Main social account handle of publisher
+                  example: '@johndoe22222'
+                FlagshipPropertyTitle:
+                  type:
+                  - string
+                  - 'null'
+                  description: Title of main social account in publisher
+                  example: '@johndoe22222'
+                FlagshipSocialNetwork:
+                  type:
+                  - string
+                  - 'null'
+                  enum:
+                  - youtube
+                  - twitter
+                  - facebook
+                  - instagram
+                  - google
+                  - vine
+                  - weibo
+                  - line
+                  - tiktok
+                  - twitch
+                  - tumblr
+                  - pinterest
+                  - snapchat
+                  - linkedin
+                  - reddit
+                  - web
+                  - blog
+                  - null
+                  description: Main social network for publisher
+                  example: youtube
+                SocialAccountsList:
+                  type:
+                  - string
+                  - 'null'
+                  description: XML representation of publisher's Social Accounts
+                  example: <row xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Network>instagram</Network><SocialNetworkId>103892434426157</SocialNetworkId><NetworkUser>john.doe.ig</NetworkUser><AccountWeight>10</AccountWeight><WebReach>0</WebReach><Title>john.doe.ig</Title><Followers>14</Followers><LinkedBy>John Doe</LinkedBy><LinkedAt>2022-07-18T13:28:34</LinkedAt><isVerifiedBySocialNetwork>0</isVerifiedBySocialNetwork><Linked>0</Linked><Unlinked>0</Unlinked><LinkBroken>1</LinkBroken><Business>0</Business><TokenInvalidDate>2022-10-20T08:44:24.147</TokenInvalidDate><DateSocialStatsUpdated>2023-03-01T16:35:33</DateSocialStatsUpdated><WhitelistingExpirationDate xsi:nil="true"/></row>
+                YT_Subscribers:
+                  type: integer
+                  example: 7572
+                YT_AverageMonthlyViews:
+                  type: number
+                  example: 4365757257.72725
+                Status:
+                  type: string
+                  example: Open
+                StatusCategory:
+                  type: string
+                  example: In process
+              required:
+              - PublisherId
+        required:
+        - results
     importTemplateReport:
       type: object
       allOf:
@@ -1413,138 +1389,6 @@ components:
                   - string
                   - 'null'
                   example: Some Company
-              required:
-              - PublisherId
-        required:
-        - results
-    creatorContactInfoReport:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/commonResponse'
-      - type: object
-        properties:
-          results:
-            type: array
-            minItems: 1
-            items:
-              type: object
-              properties:
-                PublisherId:
-                  type: integer
-                  example: 4234940
-                NetworkPublisherId:
-                  type: integer
-                  example: 4234940
-                LogoURL:
-                  type: string
-                  description: Publisher Logo URL
-                  format: URI
-                  example: https://url.to/logoUrl.png
-                ThumbLogoURL:
-                  type: string
-                  description: Publisher Logo URL with reduced size
-                  format: URI
-                  example: https://url.to/thumbLogoUrl.png
-                PublisherName:
-                  type: string
-                  example: therock
-                FlagshipProperty:
-                  type:
-                  - string
-                  - 'null'
-                  description: Main social account handle of publisher
-                  example: therocker
-                FlagshipPropertyTitle:
-                  type:
-                  - string
-                  - 'null'
-                  description: Title of main social account in publisher
-                  example: therocker
-                FlagshipSocialNetwork:
-                  type:
-                  - string
-                  - 'null'
-                  enum:
-                  - youtube
-                  - twitter
-                  - facebook
-                  - instagram
-                  - google
-                  - vine
-                  - weibo
-                  - line
-                  - tiktok
-                  - twitch
-                  - tumblr
-                  - pinterest
-                  - snapchat
-                  - linkedin
-                  - reddit
-                  - web
-                  - blog
-                  - null
-                  description: Main social network for publisher
-                  example: youtube
-                SocialAccountsList:
-                  type:
-                  - string
-                  - 'null'
-                  description: XML representation of publisher's Social Accounts
-                  example: <row xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Network>youtube</Network><SocialNetworkId>UC4PooiX37Pld1T8J5Sj7tpC</SocialNetworkId><NetworkUser>@therocker</NetworkUser><AccountWeight>12</AccountWeight><WebReach>0</WebReach><Title>Good Mythical Morning</Title><Followers>18100000</Followers><LinkedBy xsi:nil="true"/><LinkedAt xsi:nil="true"/><isVerifiedBySocialNetwork>1</isVerifiedBySocialNetwork><Linked>0</Linked><Unlinked>1</Unlinked><LinkBroken>0</LinkBroken><Business>0</Business><TokenInvalidDate xsi:nil="true"/><DateSocialStatsUpdated>2023-03-02T20:08:00</DateSocialStatsUpdated><WhitelistingExpirationDate xsi:nil="true"/></row>
-                Full Name:
-                  type: string
-                  example: The Rockie Rocker
-                Email:
-                  type:
-                  - string
-                  - 'null'
-                  format: email
-                  example: channel@gmail.com
-                PhoneNumber1:
-                  type:
-                  - string
-                  - 'null'
-                  example: '04444444444'
-                StreetAddress1:
-                  type:
-                  - string
-                  - 'null'
-                  example: afdhsdfhfdhfda
-                StreetAddress2:
-                  type:
-                  - string
-                  - 'null'
-                  example: jfgsd setah
-                City:
-                  type:
-                  - string
-                  - 'null'
-                  example: City Name
-                State:
-                  type:
-                  - string
-                  - 'null'
-                  example: AL
-                ZipCode:
-                  type:
-                  - string
-                  - 'null'
-                  example: '11111'
-                Country:
-                  type:
-                  - string
-                  - 'null'
-                  example: Albania
-                Birthday:
-                  type:
-                  - string
-                  - 'null'
-                  example: '1984-02-27'
-                IsEmailExists:
-                  type:
-                  - string
-                  - 'null'
-                  example: 'Yes'
               required:
               - PublisherId
         required:
@@ -1746,6 +1590,162 @@ components:
               - PublisherId
         required:
         - results
+    creatorContactInfoReport:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/commonResponse'
+      - type: object
+        properties:
+          results:
+            type: array
+            minItems: 1
+            items:
+              type: object
+              properties:
+                PublisherId:
+                  type: integer
+                  example: 4234940
+                NetworkPublisherId:
+                  type: integer
+                  example: 4234940
+                LogoURL:
+                  type: string
+                  description: Publisher Logo URL
+                  format: URI
+                  example: https://url.to/logoUrl.png
+                ThumbLogoURL:
+                  type: string
+                  description: Publisher Logo URL with reduced size
+                  format: URI
+                  example: https://url.to/thumbLogoUrl.png
+                PublisherName:
+                  type: string
+                  example: therock
+                FlagshipProperty:
+                  type:
+                  - string
+                  - 'null'
+                  description: Main social account handle of publisher
+                  example: therocker
+                FlagshipPropertyTitle:
+                  type:
+                  - string
+                  - 'null'
+                  description: Title of main social account in publisher
+                  example: therocker
+                FlagshipSocialNetwork:
+                  type:
+                  - string
+                  - 'null'
+                  enum:
+                  - youtube
+                  - twitter
+                  - facebook
+                  - instagram
+                  - google
+                  - vine
+                  - weibo
+                  - line
+                  - tiktok
+                  - twitch
+                  - tumblr
+                  - pinterest
+                  - snapchat
+                  - linkedin
+                  - reddit
+                  - web
+                  - blog
+                  - null
+                  description: Main social network for publisher
+                  example: youtube
+                SocialAccountsList:
+                  type:
+                  - string
+                  - 'null'
+                  description: XML representation of publisher's Social Accounts
+                  example: <row xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Network>youtube</Network><SocialNetworkId>UC4PooiX37Pld1T8J5Sj7tpC</SocialNetworkId><NetworkUser>@therocker</NetworkUser><AccountWeight>12</AccountWeight><WebReach>0</WebReach><Title>Good Mythical Morning</Title><Followers>18100000</Followers><LinkedBy xsi:nil="true"/><LinkedAt xsi:nil="true"/><isVerifiedBySocialNetwork>1</isVerifiedBySocialNetwork><Linked>0</Linked><Unlinked>1</Unlinked><LinkBroken>0</LinkBroken><Business>0</Business><TokenInvalidDate xsi:nil="true"/><DateSocialStatsUpdated>2023-03-02T20:08:00</DateSocialStatsUpdated><WhitelistingExpirationDate xsi:nil="true"/></row>
+                Full Name:
+                  type: string
+                  example: The Rockie Rocker
+                Email:
+                  type:
+                  - string
+                  - 'null'
+                  format: email
+                  example: channel@gmail.com
+                PhoneNumber1:
+                  type:
+                  - string
+                  - 'null'
+                  example: '04444444444'
+                StreetAddress1:
+                  type:
+                  - string
+                  - 'null'
+                  example: afdhsdfhfdhfda
+                StreetAddress2:
+                  type:
+                  - string
+                  - 'null'
+                  example: jfgsd setah
+                City:
+                  type:
+                  - string
+                  - 'null'
+                  example: City Name
+                State:
+                  type:
+                  - string
+                  - 'null'
+                  example: AL
+                ZipCode:
+                  type:
+                  - string
+                  - 'null'
+                  example: '11111'
+                Country:
+                  type:
+                  - string
+                  - 'null'
+                  example: Albania
+                Birthday:
+                  type:
+                  - string
+                  - 'null'
+                  example: '1984-02-27'
+                IsEmailExists:
+                  type:
+                  - string
+                  - 'null'
+                  example: 'Yes'
+              required:
+              - PublisherId
+        required:
+        - results
+    commonResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Count of all reports
+          example: 300
+        dataGenerationTime:
+          type: string
+          description: Date when report generated
+          example: '2023-01-20T13:43:47+00:00'
+        cached:
+          type: boolean
+          description: Is view cached or not
+        time:
+          type: number
+          description: Time taken to generate report
+          format: float32
+          example: 0.571
+      required:
+      - count
+      - dataGenerationTime
+      - cached
+      - time
   responses:
     creatorContactInfoReport:
       description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
@@ -1753,30 +1753,30 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/creatorContactInfoReport'
-    publishersList:
-      description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/publishersList'
-    asyncResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/generalSchema'
-    creatorsReport:
-      description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/creatorsReport'
     dailyCampaignPosts:
       description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/dailyCampaignPosts'
+    creatorPromote:
+      description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/creatorPromote'
+    channelReport:
+      description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/channelReport'
+    asyncResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/generalSchema'
     importTemplateReport:
       description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
       content:
@@ -1789,19 +1789,30 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/creatorConnect'
-    channelReport:
+    creatorsReport:
       description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/channelReport'
-    creatorPromote:
+            $ref: '#/components/schemas/creatorsReport'
+    publishersList:
       description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/creatorPromote'
+            $ref: '#/components/schemas/publishersList'
   parameters:
+    take:
+      name: requestData[take]
+      in: query
+      description: Number of rows to fetch
+      required: true
+      schema:
+        type: integer
+        example: 20
+      examples:
+        default:
+          value: 20
     dir:
       name: requestData[sort][0][dir]
       in: query
@@ -1815,17 +1826,6 @@ components:
       examples:
         default:
           value: asc
-    take:
-      name: requestData[take]
-      in: query
-      description: Number of rows to fetch
-      required: true
-      schema:
-        type: integer
-        example: 20
-      examples:
-        default:
-          value: 20
     section:
       name: section
       in: query

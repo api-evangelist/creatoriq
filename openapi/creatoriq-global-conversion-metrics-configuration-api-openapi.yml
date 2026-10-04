@@ -104,19 +104,21 @@ paths:
         description: Live
 components:
   schemas:
-    ConversionMetricConfigurationResponse:
+    ConversionMetricUpdateRequest:
       type: object
       properties:
-        type:
+        DisplayName:
           type: string
           examples:
-          - ConversionMetric
-        href:
-          type: string
+          - New Conversion Metric
+        DisplayOrder:
+          type: integer
           examples:
-          - https://public-api.creatoriq.com/api/api/conversion/36937
-        ConversionMetric:
-          $ref: '#/components/schemas/ConversionMetricConfiguration'
+          - 1
+        IsVisible:
+          type: integer
+          examples:
+          - 1
     ConversionMetricConfiguration:
       type: object
       properties:
@@ -172,48 +174,19 @@ components:
           type: string
           examples:
           - app-ui
-    ConversionMetricConfigurationCollectionResponse:
+    ConversionMetricResponse:
       type: object
       properties:
         type:
           type: string
           examples:
-          - ConversionCollection
+          - ConversionMetric
         href:
           type: string
           examples:
-          - https://apis.creatoriq.com/crm/v1/api/conversions
-        count:
-          type: integer
-          examples:
-          - 20
-        total:
-          type: integer
-          examples:
-          - 725
-        page:
-          type: integer
-          examples:
-          - 1
-        ConversionCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConversionMetricConfigurationResponse'
-    ConversionMetricUpdateRequest:
-      type: object
-      properties:
-        DisplayName:
-          type: string
-          examples:
-          - New Conversion Metric
-        DisplayOrder:
-          type: integer
-          examples:
-          - 1
-        IsVisible:
-          type: integer
-          examples:
-          - 1
+          - https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders
+        ConversionMetric:
+          $ref: '#/components/schemas/ConversionMetric'
     ConversionMetric:
       type: object
       properties:
@@ -274,7 +247,7 @@ components:
           type: string
           examples:
           - app-ui
-    ConversionMetricResponse:
+    ConversionMetricConfigurationResponse:
       type: object
       properties:
         type:
@@ -284,62 +257,50 @@ components:
         href:
           type: string
           examples:
-          - https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders
+          - https://public-api.creatoriq.com/api/api/conversion/36937
         ConversionMetric:
-          $ref: '#/components/schemas/ConversionMetric'
+          $ref: '#/components/schemas/ConversionMetricConfiguration'
+    ConversionMetricConfigurationCollectionResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+          - ConversionCollection
+        href:
+          type: string
+          examples:
+          - https://apis.creatoriq.com/crm/v1/api/conversions
+        count:
+          type: integer
+          examples:
+          - 20
+        total:
+          type: integer
+          examples:
+          - 725
+        page:
+          type: integer
+          examples:
+          - 1
+        ConversionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionMetricConfigurationResponse'
+  parameters:
+    conversionMetricId:
+      name: conversionMetricId
+      in: path
+      description: The unique identifier for the conversion metric.
+      required: true
+      schema:
+        type: integer
+        examples:
+        - 36942
+      examples:
+        default:
+          value: 36942
   responses:
-    NotFoundError:
-      description: Not Found - Resource not found.
-      content:
-        application/json:
-          schema:
-            type: object
-            description: Exception
-            properties:
-              type:
-                type: string
-                description: Exception type
-                examples:
-                - CoreException
-              CoreException:
-                type: object
-                description: Exception information
-                properties:
-                  code:
-                    type: integer
-                    description: Exception status code
-                    format: int32
-                    examples:
-                    - 404
-                  message:
-                    type: string
-                    description: Exception message
-                    examples:
-                    - Supplied ID was not found
-            required:
-            - type
-    UnauthorizedError:
-      description: Unauthorized - API key missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                examples:
-                - Unauthorized
-    ForbiddenError:
-      description: Forbidden - User does not have access.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                examples:
-                - Forbidden
     BadRequestError:
       description: Bad Request - Invalid request format or missing fields.
       content:
@@ -370,19 +331,58 @@ components:
                     - Some parameters are missing or invalid
             required:
             - type
-  parameters:
-    conversionMetricId:
-      name: conversionMetricId
-      in: path
-      description: The unique identifier for the conversion metric.
-      required: true
-      schema:
-        type: integer
-        examples:
-        - 36942
-      examples:
-        default:
-          value: 36942
+    NotFoundError:
+      description: Not Found - Resource not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            description: Exception
+            properties:
+              type:
+                type: string
+                description: Exception type
+                examples:
+                - CoreException
+              CoreException:
+                type: object
+                description: Exception information
+                properties:
+                  code:
+                    type: integer
+                    description: Exception status code
+                    format: int32
+                    examples:
+                    - 404
+                  message:
+                    type: string
+                    description: Exception message
+                    examples:
+                    - Supplied ID was not found
+            required:
+            - type
+    ForbiddenError:
+      description: Forbidden - User does not have access.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                examples:
+                - Forbidden
+    UnauthorizedError:
+      description: Unauthorized - API key missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                examples:
+                - Unauthorized
   securitySchemes:
     apiKey:
       type: apiKey

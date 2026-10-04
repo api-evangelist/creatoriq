@@ -390,89 +390,6 @@ paths:
       - url: https://apis.creatoriq.com
         description: Live
 components:
-  responses:
-    UnauthorizedError:
-      description: Unauthorized - API key missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                examples:
-                - Unauthorized
-    NotFoundError:
-      description: Not Found - Resource not found.
-      content:
-        application/json:
-          schema:
-            type: object
-            description: Exception
-            properties:
-              type:
-                type: string
-                description: Exception type
-                examples:
-                - CoreException
-              CoreException:
-                type: object
-                description: Exception information
-                properties:
-                  code:
-                    type: integer
-                    description: Exception status code
-                    format: int32
-                    examples:
-                    - 404
-                  message:
-                    type: string
-                    description: Exception message
-                    examples:
-                    - Supplied ID was not found
-            required:
-            - type
-    ForbiddenError:
-      description: Forbidden - User does not have access.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                examples:
-                - Forbidden
-    BadRequestError:
-      description: Bad Request - Invalid request format or missing fields.
-      content:
-        application/json:
-          schema:
-            type: object
-            description: Exception
-            properties:
-              type:
-                type: string
-                description: Exception type
-                examples:
-                - CoreException
-              CoreException:
-                type: object
-                description: Exception information
-                properties:
-                  code:
-                    type: integer
-                    description: Exception status code
-                    format: int32
-                    examples:
-                    - 400
-                  message:
-                    type: string
-                    description: Exception message
-                    examples:
-                    - Some parameters are missing or invalid
-            required:
-            - type
   schemas:
     ConversionMetricForSpecificPostResponse:
       type: object
@@ -487,51 +404,6 @@ components:
           - https://public-api.creatoriq.com/api/v1/campaign/2316554/tracking-link/1144249/conversionMetric/Gross AOV
         ConversionMetric:
           $ref: '#/components/schemas/ConversionMetricForSpecificPost'
-    ConversionMetricForSpecificPostCollectionResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          examples:
-          - ConversionCollection
-        href:
-          type: string
-          examples:
-          - https://public-api.creatoriq.com/api/v1/campaign/123/post/321/conversionMetrics
-        count:
-          type: integer
-          examples:
-          - 20
-        total:
-          type: integer
-          examples:
-          - 725
-        page:
-          type: integer
-          examples:
-          - 1
-        ConversionCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConversionMetricForSpecificPostResponse'
-    CampaignConversionMetricUpsert:
-      type: object
-      properties:
-        TrackingLinkId:
-          type: integer
-          description: The ID of the tracking link associated with the conversion metric.
-          examples:
-          - 1006453
-        ConversionMetricId:
-          type: integer
-          description: The unique identifier of the conversion metric.
-          examples:
-          - 36942
-        ConversionMetricValue:
-          type: integer
-          description: The numerical value for the conversion metric.
-          examples:
-          - 22
     ConversionMetricForSpecificPost:
       type: object
       properties:
@@ -581,6 +453,64 @@ components:
           type: string
           examples:
           - Product
+    CampaignConversionMetricUpsert:
+      type: object
+      properties:
+        TrackingLinkId:
+          type: integer
+          description: The ID of the tracking link associated with the conversion metric.
+          examples:
+          - 1006453
+        ConversionMetricId:
+          type: integer
+          description: The unique identifier of the conversion metric.
+          examples:
+          - 36942
+        ConversionMetricValue:
+          type: integer
+          description: The numerical value for the conversion metric.
+          examples:
+          - 22
+    ConversionMetricResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+          - ConversionMetric
+        href:
+          type: string
+          examples:
+          - https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders
+        ConversionMetric:
+          $ref: '#/components/schemas/ConversionMetric'
+    ConversionMetricForSpecificPostCollectionResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+          - ConversionCollection
+        href:
+          type: string
+          examples:
+          - https://public-api.creatoriq.com/api/v1/campaign/123/post/321/conversionMetrics
+        count:
+          type: integer
+          examples:
+          - 20
+        total:
+          type: integer
+          examples:
+          - 725
+        page:
+          type: integer
+          examples:
+          - 1
+        ConversionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionMetricForSpecificPostResponse'
     ConversionMetric:
       type: object
       properties:
@@ -668,19 +598,89 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ConversionMetricResponse'
-    ConversionMetricResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          examples:
-          - ConversionMetric
-        href:
-          type: string
-          examples:
-          - https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders
-        ConversionMetric:
-          $ref: '#/components/schemas/ConversionMetric'
+  responses:
+    BadRequestError:
+      description: Bad Request - Invalid request format or missing fields.
+      content:
+        application/json:
+          schema:
+            type: object
+            description: Exception
+            properties:
+              type:
+                type: string
+                description: Exception type
+                examples:
+                - CoreException
+              CoreException:
+                type: object
+                description: Exception information
+                properties:
+                  code:
+                    type: integer
+                    description: Exception status code
+                    format: int32
+                    examples:
+                    - 400
+                  message:
+                    type: string
+                    description: Exception message
+                    examples:
+                    - Some parameters are missing or invalid
+            required:
+            - type
+    NotFoundError:
+      description: Not Found - Resource not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            description: Exception
+            properties:
+              type:
+                type: string
+                description: Exception type
+                examples:
+                - CoreException
+              CoreException:
+                type: object
+                description: Exception information
+                properties:
+                  code:
+                    type: integer
+                    description: Exception status code
+                    format: int32
+                    examples:
+                    - 404
+                  message:
+                    type: string
+                    description: Exception message
+                    examples:
+                    - Supplied ID was not found
+            required:
+            - type
+    ForbiddenError:
+      description: Forbidden - User does not have access.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                examples:
+                - Forbidden
+    UnauthorizedError:
+      description: Unauthorized - API key missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                examples:
+                - Unauthorized
   securitySchemes:
     apiKey:
       type: apiKey

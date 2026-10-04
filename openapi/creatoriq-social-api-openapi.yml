@@ -551,24 +551,24 @@ paths:
         description: Live
 components:
   responses:
-    ErrorResponse404:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponseModel'
-    LookupSuccessResponse:
-      description: Return lookup account data
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/LookupSuccessResponseModel'
     socialHistory:
       description: Social history response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/socialHistoryResponseModel'
+    LookupSuccessResponse:
+      description: Return lookup account data
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LookupSuccessResponseModel'
+    ErrorResponse404:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponseModel'
     InstagramAccountStoriesSuccessResponse:
       description: Return Instagram account post collection
       content:
@@ -582,2396 +582,6 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponseModel'
   schemas:
-    FacebookPostModel:
-      type: object
-      title: FacebookPostModel
-      properties:
-        type:
-          type: string
-          description: Type of Search
-          example: FacebookVideoPost
-        href:
-          type: string
-          description: CreatorIQ API URL to get creator's tiktok post
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/social/facebook/account/therock/video/719426299552865
-        FacebookVideoPost:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Unique post identifier
-              example: '719426299552865'
-            url:
-              type: string
-              description: Post url
-              format: URI
-              example: https://www.facebook.com/therock/posts/719426299552865
-            type:
-              type: string
-              enum:
-              - video
-              - image
-              description: Post type
-              example: video
-            thumbnail:
-              type: string
-              description: Url to post thumbnail
-              format: URI
-              example: https://scontent-den4-1.xx.fbcdn.net/v/t15.5256-10/319841925_190224836997405_5408255873570028787_n.jpg?stp=dst-jpg_s720x720&_nc_cat=106&ccb=1-7&_nc_sid=ad6a45&_nc_ohc=xZal2q5JejgAX-c_lUd&_nc_ht=scontent-den4-1.xx&edm=AJfPMC4EAAAA&oh=00_AfBwlBX8HLZRxgOa22z27WQQmIZSIjOUeOGWB70WsSBZrg&oe=63C029C4
-            savedThumbnail:
-              type: string
-              description: Url to saved post thumbnail
-              format: URI
-              example: https://static-resources.creatoriq.com/social-pictures/facebook/thumbnail/114696805612_719426299552865.jpg
-            userName:
-              type: string
-              description: User username on social network
-              example: therock
-            accountId:
-              type: integer
-              description: Unique account id
-              example: 114696805612
-            createdAt:
-              type: string
-              description: Post created date
-              format: date-time
-              readOnly: true
-              example: '2023-01-03T20:04:29-08:00'
-            modifiedAt:
-              type: string
-              description: Post updated date
-              format: date-time
-              example: '2023-01-03T20:04:29-08:00'
-            description:
-              type:
-              - string
-              - 'null'
-              description: Post description
-              example: Some post description
-            likes:
-              type:
-              - integer
-              - 'null'
-              description: Post likes count
-              example: 1480
-            comments:
-              type:
-              - integer
-              - 'null'
-              description: Post comments count
-              example: 300
-            reactions:
-              type:
-              - integer
-              - 'null'
-              description: Post reactions count
-              example: 1480
-            shares:
-              type:
-              - integer
-              - 'null'
-              description: Post shares count
-              example: 46
-            analytics:
-              type:
-              - integer
-              - 'null'
-              example: null
-            reach:
-              type:
-              - integer
-              - 'null'
-              description: Number of users who have seen the post
-              example: 35084462
-            engagement:
-              type: integer
-              description: Engagement count
-              example: 1826
-            impressions:
-              type:
-              - integer
-              - 'null'
-              description: Impressions count
-              example: 10525339
-            earnings:
-              type:
-              - number
-              - 'null'
-              description: Earnings count
-              example: 71329.744
-            mentions:
-              type:
-              - integer
-              - 'null'
-              description: Mentions count
-              example: null
-            processingInfo:
-              type: array
-              items:
-                type: object
-                description: Processing info
-                example: {}
-            network:
-              type: string
-              description: Network name
-              example: facebook
-            linkedInfo:
-              $ref: '#/components/schemas/linkedInfo'
-            pnkHash:
-              type: string
-              description: post natural key identifier
-              example: d93eab6d9ac3a37c12a242f347934e816285230d
-      required:
-      - type
-      - href
-      - FacebookVideoPost
-    PinterestPostModel:
-      type: object
-      title: PinterestPostModel
-      properties:
-        type:
-          type: string
-          description: Type of Model
-          example: LinkedinPost
-        href:
-          type: string
-          description: CreatorIQ API URL to get creator's pinterest post
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/social/pinterest/post/942519028235991787
-        PinterestPost:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Unique post identifier
-              example: '942519028235991787'
-            url:
-              type: string
-              description: Post url
-              format: URI
-              example: https://www.pinterest.com/pin/942519028235991787/
-            type:
-              type: string
-              enum:
-              - image
-              - video
-              description: Post type
-              example: image
-            dateSubmitted:
-              type: string
-              description: Post submit date
-              format: datetime
-              example: '2021-08-14T11:55:43+00:00'
-            userName:
-              type: string
-              description: Account username on social network
-              example: alex
-            name:
-              type: string
-              description: Account title
-              example: Toggle
-            post:
-              type: string
-              description: Post text
-              example: Amber Enjoying Her Doggles
-            thumbnail:
-              type: string
-              description: Url to post thumbnail
-              format: URI
-              example: https://i.pinimg.com/600x/95/aa/77/95aa77e792c332e5347bfc1c736bae22.jpg
-            likes:
-              type:
-              - integer
-              - 'null'
-              description: Post likes count
-              example: 4626
-            shares:
-              type:
-              - integer
-              - 'null'
-              description: Post shares count
-              example: 9134
-            comments:
-              type:
-              - integer
-              - 'null'
-              description: Post comments count
-              example: 300
-            reach:
-              type:
-              - integer
-              - 'null'
-              description: Number of users who have seen the post
-              example: 35084462
-            engagement:
-              type: integer
-              description: Engagement count
-              example: 1826
-            impressions:
-              type:
-              - integer
-              - 'null'
-              description: Impressions count
-              example: 10525339
-            earnings:
-              type:
-              - number
-              - 'null'
-              description: Earnings count
-              example: 71329.744
-            clicks:
-              type:
-              - integer
-              - 'null'
-              description: Clicks count
-              example: 105
-            closeups:
-              type:
-              - integer
-              - 'null'
-              description: Closeups count
-              example: 8
-            accountId:
-              type: string
-              description: Unique account id
-              example: '942519165674086701'
-            saves:
-              type:
-              - integer
-              - 'null'
-              description: Saves count
-              example: 2
-            views:
-              type:
-              - integer
-              - 'null'
-              description: Views count
-              example: 96
-            averageViewDuration:
-              type:
-              - number
-              - 'null'
-              description: Average duration of viewing post
-              example: 23.7203
-            linkOnClick:
-              type: string
-              description: Link where user redirected to by click on post (an empty string when no link in pin)
-              format: URI
-              example: https://google.com/maps
-            network:
-              type: string
-              description: Network name
-              example: pinterest
-            subType:
-              type: string
-              description: Pin's subtype
-              example: idea_pin
-            linkedInfo:
-              type:
-              - object
-              - 'null'
-              description: Linked info
-              default: null
-              example: null
-            pnkHash:
-              type: string
-              description: post natural key identifier
-              example: d93eab6d9ac3a37c12a242f347934e816285230d
-      required:
-      - type
-      - href
-      - PinterestPost
-    SocialEngagement:
-      type: object
-      properties:
-        EngagementRate30Days:
-          type:
-          - string
-          - 'null'
-          example: ''
-        EngagementRate60Days:
-          type:
-          - string
-          - 'null'
-          example: ''
-        EngagementRate90Days:
-          type:
-          - number
-          - 'null'
-          example: 0.0061
-        EngagementRate20Posts:
-          type:
-          - number
-          - 'null'
-          example: 0.0202
-        EngagementRateLifetime:
-          type:
-          - number
-          - 'null'
-          example: 0.007
-        EngagementCalculated:
-          type: string
-          description: Timestamp of the most recent run of the engagement-metrics aggregation job for this account (calculates per-post and rolling-window engagement rates). Driven by its own background job on a different schedule from `LastUpdated` and `DateSocialStatsUpdated`, so the three timestamps can legitimately differ for the same account — some divergence between these timestamps is expected and does not indicate stale data.
-          format: date-time
-          example: '2015-06-26 22:46:50'
-        PostsCount30Days:
-          type:
-          - number
-          - 'null'
-          example: 86705
-        PostsCount60Days:
-          type:
-          - number
-          - 'null'
-          example: 86705
-        PostsCount90Days:
-          type:
-          - number
-          - 'null'
-          example: 86705
-        PostsCountLifetime:
-          type:
-          - number
-          - 'null'
-          example: 86705
-        LastPostDate:
-          type: string
-          description: Unique youtube account id
-          format: date-time
-          example: '2015-06-26 22:46:50'
-        AVV30:
-          type:
-          - integer
-          - 'null'
-          example: 86705
-        AVV60:
-          type:
-          - integer
-          - 'null'
-          example: 86705
-        AVV90:
-          type:
-          - integer
-          - 'null'
-          example: 86705
-        ID:
-          type: number
-          example: 509137
-        AccountSource:
-          type: string
-          example: ''
-        Engagement30Days:
-          type: number
-          example: 86705
-        Engagement60Days:
-          type: number
-          example: 86705
-        Engagement90Days:
-          type: number
-          example: 86705
-        Engagement20Posts:
-          type: number
-          example: 86705
-        EngagementLifetime:
-          type: number
-          example: 86705
-        SharesPerPost30Days:
-          type:
-          - number
-          - 'null'
-          example: 86705
-        SharesPerPost60Days:
-          type:
-          - number
-          - 'null'
-          example: 86705
-        SharesPerPost90Days:
-          type:
-          - number
-          - 'null'
-          example: 86705
-        SharesPerPost20Posts:
-          type:
-          - number
-          - 'null'
-          example: 86705
-        SharesPerPostLifetime:
-          type:
-          - number
-          - 'null'
-          example: 86705
-        LikesPerPost30Days:
-          type:
-          - number
-          - 'null'
-          example: 86705
-        LikesPerPost60Days:
-          type:
-          - number
-          - 'null'
-          example: 86705
-        LikesPerPost90Days:
-          type:
-          - number
-          - 'null'
-          example: 86705
-        LikesPerPost20Posts:
-          type:
-          - number
-          - 'null'
-          example: 14233.65
-        LikesPerPostLifetime:
-          type:
-          - number
-          - 'null'
-          example: 3407.2684
-        CommentsPerPost30Days:
-          type:
-          - number
-          - 'null'
-          example: 86705
-        CommentsPerPost60Days:
-          type:
-          - number
-          - 'null'
-          example: 86705
-        CommentsPerPost90Days:
-          type:
-          - number
-          - 'null'
-          example: 527
-        CommentsPerPost20Posts:
-          type:
-          - number
-          - 'null'
-          example: 832.55
-        CommentsPerPostLifetime:
-          type:
-          - number
-          - 'null'
-          example: 90.8368
-        ViewsPerPost30Days:
-          type:
-          - number
-          - 'null'
-          example: 527
-        ViewsPerPost60Days:
-          type:
-          - number
-          - 'null'
-          example: 527
-        ViewsPerPost90Days:
-          type:
-          - number
-          - 'null'
-          example: 86705
-        ViewsPerPost20Posts:
-          type:
-          - number
-          - 'null'
-          example: 747087.15
-        ViewsPerPostLifetime:
-          type:
-          - number
-          - 'null'
-          example: 497148.1421
-        DisLikesPerPost30Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        DisLikesPerPost60Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        DisLikesPerPost90Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        DisLikesPerPost20Posts:
-          type:
-          - number
-          - 'null'
-          example: 547
-        DisLikesPerPostLifetime:
-          type:
-          - number
-          - 'null'
-          example: 547
-        CloseUpsPerPost30Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        CloseUpsPerPost60Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        CloseUpsPerPost90Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        CloseUpsPerPost20Posts:
-          type:
-          - number
-          - 'null'
-          example: 547
-        CloseUpsPerPostLifetime:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ImpressionsPerPost30Days:
-          type:
-          - string
-          - 'null'
-          example: ''
-        ImpressionsPerPost60Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ImpressionsPerPost90Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ImpressionsPerPost20Posts:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ImpressionsPerPostLifetime:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ClicksPerPost30Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ClicksPerPost60Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ClicksPerPost90Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ClicksPerPost20Posts:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ClicksPerPostLifetime:
-          type:
-          - number
-          - 'null'
-          example: 547
-        SavesPerPost30Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        SavesPerPost60Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        SavesPerPost90Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        SavesPerPost20Posts:
-          type:
-          - number
-          - 'null'
-          example: 547
-        SavesPerPostLifetime:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ReachRate30days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ReachRate60days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ReachRate90days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ReachRate20posts:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ReachRateLifetime:
-          type:
-          - number
-          - 'null'
-          example: 547
-        SavesPerVideo30Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        SavesPerVideo60Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        SavesPerVideo90Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        SavesPerVideo20Posts:
-          type:
-          - number
-          - 'null'
-          example: 547
-        SavesPerVideoLifetime:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ClicksPerVideo30Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ClicksPerVideo60Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ClicksPerVideo90Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ClicksPerVideo20Posts:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ClicksPerVideoLifetime:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ImpressionsRate30days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ImpressionsRate60days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ImpressionsRate90days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ImpressionsRate20posts:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ImpressionsRatelifetime:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ReachPerPost30days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ReachPerPost60days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ReachPerPost90days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ReachPerPost20posts:
-          type:
-          - number
-          - 'null'
-          example: 547
-        ReachPerPostlifetime:
-          type:
-          - number
-          - 'null'
-          example: 547
-        AvgStreamPeakViews30Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        AvgStreamPeakViews60Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        AvgStreamPeakViews90Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        AvgStreamPeakViews20Posts:
-          type:
-          - number
-          - 'null'
-          example: 547
-        AvgStreamAverageViews30Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        AvgStreamAverageViews60Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        AvgStreamAverageViews90Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        AvgStreamAverageViews20Posts:
-          type:
-          - number
-          - 'null'
-          example: 547
-        IsHiddenLike30Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        IsHiddenLike60Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        IsHiddenLike90Days:
-          type:
-          - number
-          - 'null'
-          example: 547
-        IsHiddenLike20Posts:
-          type:
-          - number
-          - 'null'
-          example: 547
-        MedianViews20Posts:
-          type:
-          - number
-          - 'null'
-          example: 547
-    TwitchPostModel:
-      type: object
-      title: TwitchPostModel
-      oneOf:
-      - allOf:
-        - $ref: '#/components/schemas/TwitchPostModelCommon'
-        - $ref: '#/components/schemas/TwitchPostModelPost'
-      - allOf:
-        - $ref: '#/components/schemas/TwitchPostModelCommon'
-        - $ref: '#/components/schemas/TwitchPostModelClip'
-      - allOf:
-        - $ref: '#/components/schemas/TwitchPostModelCommon'
-        - $ref: '#/components/schemas/TwitchPostModelStream'
-    TwitchPostModelClip:
-      type: object
-      title: TwitchPostModelClip
-      properties:
-        TwitchClip:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Unique clip id
-              example: '401369777'
-            url:
-              type: string
-              description: Url to post on social network
-              format: URI
-              example: https://clips.twitch.tv/401369777
-            description:
-              type:
-              - string
-              - 'null'
-              description: Post description
-              example: Some clip description
-            type:
-              type: string
-              enum:
-              - clip
-              description: Post type
-              example: clip
-            tags:
-              type:
-              - array
-              - 'null'
-              description: Tags array
-              minItems: 1
-              items:
-                type: string
-                example: mytag
-              example:
-              - mytag
-            thumbnail:
-              type: string
-              description: Url to post thumbnail
-              format: URI
-              example: https://static-cdn.jtvnw.net/cf_vods/d2nvs31859zcd8/testkratchek/401369777/9c88e0fb-2cd2-4351-836c-5e63178d4dd1/thumb/index-0000000000-640x360.jpg
-            userName:
-              type: string
-              description: Username on social network
-              example: testkratchek
-            accountId:
-              type: string
-              description: Unique account id
-              example: '42307422'
-            createdAt:
-              type: string
-              description: Clip created date
-              format: date-time
-              readOnly: true
-              example: '2023-01-03T20:04:29-08:00'
-            publishedAt:
-              type: string
-              description: Clip published date
-              format: date-time
-              example: '2023-01-03T20:04:29-08:00'
-            recordedAt:
-              type: string
-              description: Clip recording date
-              format: date-time
-              example: '2023-01-03T20:04:29-08:00'
-            language:
-              type: string
-              description: Clip language
-              example: en
-            viewable:
-              type: string
-              description: Is clip can be viewed
-              example: public
-            title:
-              type: string
-              description: Clip title
-              example: My clip
-            reach:
-              type:
-              - integer
-              - 'null'
-              description: Clip's reach
-              example: 2326
-            views:
-              type:
-              - integer
-              - 'null'
-              description: Clip's views amount
-              example: 23723
-              x-deprecated: true
-            engagedViews_next:
-              type:
-              - integer
-              - 'null'
-              description: 'Video''s views amount
-
-                > **Warning**: The **views** field will be deprecated soon. Use this field instead of it.
-
-                '
-              example: 23723
-            status:
-              type:
-              - string
-              - 'null'
-              description: Clip's status
-              example: null
-            videoDuration:
-              type: integer
-              description: Clip's duration in seconds
-              example: 262
-            engagement:
-              type:
-              - integer
-              - 'null'
-              description: Clip's engagement
-              example: 436
-            processingInfo:
-              type: array
-              items:
-                type: string
-              example: []
-            gameId:
-              type:
-              - integer
-              - 'null'
-              description: Clip's GameId
-              example: 75438
-            Game:
-              type:
-              - string
-              - 'null'
-              description: Clip's Game title
-              example: NFS III
-            network:
-              type: string
-              description: Network name
-              example: twitch
-            linkedInfo:
-              $ref: '#/components/schemas/linkedInfo'
-            pnkHash:
-              type: string
-              description: post natural key identifier
-              example: d93eab6d9ac3a37c12a242f347934e816285230d
-          required:
-          - id
-          - url
-          - description
-          - type
-          - tags
-          - thumbnail
-          - userName
-          - accountId
-          - createdAt
-          - publishedAt
-          - recordedAt
-          - language
-          - viewable
-          - title
-          - reach
-          - views
-          - engagedViews_next
-          - status
-          - videoDuration
-          - engagement
-          - processingInfo
-          - gameId
-          - Game
-          - network
-          - linkedInfo
-      required:
-      - TwitchClip
-    Instagram_post_image_insights:
-      type: object
-      title: Instagram post image insights
-      properties:
-        impressions:
-          type:
-          - integer
-          - 'null'
-          description: 'Impressions count
-
-            > **Warning**: This field is deprecated and value always be null.
-
-            '
-          example: null
-          x-deprecated: true
-        reach:
-          type:
-          - integer
-          - 'null'
-          description: Reach count
-          example: 2000
-        engagements:
-          type:
-          - integer
-          - 'null'
-          description: Engagements count
-          example: 3000
-        saved:
-          type:
-          - integer
-          - 'null'
-          description: Saved count
-          example: 4000
-        type:
-          type: string
-          enum:
-          - image
-      required:
-      - impressions
-      - reach
-      - engagements
-      - saved
-      - type
-    YoutubeAccountModel:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique Youtube account id
-          example: UCeNhHgTE36tTQkJsjPaPwnA
-        url:
-          type: string
-          description: Youtube account url
-          format: URI
-          example: https:\\youtube.com\channel\UCeNhHgTE36tTQkJsjPaPwnA
-        channelName:
-          type: string
-          description: Youtube channel name
-          example: UCeNhHgTE36tTQkJsjPaPwnA
-        logoUrl:
-          type: string
-          description: Url to Youtube account logo
-          format: URI
-          example: https:\\yt3.ggpht.com\1xvTKqdLSn-vZSRQQCq2UYys6UZNMjPwG0SnEmPDa4L6HjeId1TH4RHO-Yvi8lWCDcmrp0bPCw=s800-c-k-c0x00ffffff-no-rj
-        logoHighResUrl:
-          type: string
-          description: Url to Youtube account high res logo
-          format: URI
-          example: https:\\yt3.ggpht.com\1xvTKqdLSn-vZSRQQCq2UYys6UZNMjPwG0SnEmPDa4L6HjeId1TH4RHO-Yvi8lWCDcmrp0bPCw=s88-c-k-c0x00ffffff-no-rj
-        title:
-          type: string
-          description: Youtube account title
-          example: Kim Kardashian
-        summary:
-          type: string
-          example: Exclusive videos from Kim Kardashian. Behind-the-scenes content beauty tutorials and more.
-        location:
-          type:
-          - string
-          - 'null'
-          example: ''
-        datePublished:
-          type: string
-          description: Unique youtube account id
-          format: date-time
-          example: '2015-06-26 22:46:50'
-        dateUpdated:
-          type:
-          - string
-          - 'null'
-          description: Unique youtube account id
-          format: date-time
-          example: '2015-06-26 22:46:50'
-        dateLastVideoUploaded:
-          type:
-          - string
-          - 'null'
-          description: Unique youtube account id
-          format: date-time
-          example: '2015-06-26 22:46:50'
-        uploadsPlaylistId:
-          type: string
-          description: Unique youtube account id
-          example: UUeNhHgTE36tTQkJsjPaPwnA
-        timeline:
-          type: object
-          properties:
-            type:
-              type: string
-              description: Type of Search
-              example: SocialPostsCollection
-            href:
-              type: string
-              description: CreatorIQ API URL to get creator's instagram stories
-              format: URI
-              example: https:\\apis.creatoriq.com\crm\v1\api\social\youtube\account\UCeNhHgTE36tTQkJsjPaPwnA\timeline
-        verified:
-          type:
-          - string
-          - 'null'
-          example: ''
-        socialEngagement:
-          $ref: '#/components/schemas/SocialEngagement'
-        totalViews:
-          type:
-          - number
-          - 'null'
-          example: 89390026
-        totalLikes:
-          type:
-          - number
-          - 'null'
-          example: 89390026
-        totalDislikes:
-          type:
-          - number
-          - 'null'
-          example: 89390026
-        totalFavoritesAdded:
-          type:
-          - number
-          - 'null'
-          example: 89390026
-        totalComments:
-          type:
-          - number
-          - 'null'
-          example: 89390026
-        contentOwner:
-          type:
-          - string
-          - 'null'
-          example: ''
-        totalVideos:
-          type:
-          - number
-          - 'null'
-          example: 157
-        totalFavoritesRemoved:
-          type:
-          - number
-          - 'null'
-          example: 89390026
-        totalShares:
-          type:
-          - number
-          - 'null'
-          example: 89390026
-        totalSubscribers:
-          type:
-          - number
-          - 'null'
-          example: 1970000
-        estimatedMinutesWatched:
-          type:
-          - number
-          - 'null'
-          example: 89390026
-        averageViewDuration:
-          type:
-          - number
-          - 'null'
-          example: 89390026
-        averageMonthlyViews:
-          type:
-          - number
-          - 'null'
-          example: 993222.51111111
-      required:
-      - id
-      - url
-    LinkedinPostModel:
-      type: object
-      title: LinkedinPostModel
-      properties:
-        type:
-          type: string
-          description: Type of Search
-          example: LinkedinPost
-        href:
-          type: string
-          description: CreatorIQ API URL to get creator's tiktok post
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/social/linkedin/post/esther-irish-28177427_moody-gardens-hotel-at-christmas-activity-6475469027413233664-qAxm
-        LinkedinPost:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Unique post identifier
-              example: esther-irish-28177427_moody-gardens-hotel-at-christmas-activity-6475469027413233664-qAxm
-            url:
-              type: string
-              description: Post url
-              format: URI
-              example: https://www.linkedin.com/posts/esther-irish-28177427_moody-gardens-hotel-at-christmas-activity-6475469027413233664-qAxm
-            type:
-              type: string
-              enum:
-              - text
-              description: Post type
-              example: text
-            title:
-              type: string
-              description: Url to post thumbnail
-              format: URI
-              example: 'Esther Irish on LinkedIn: #holidaytravel #familytravel #texas #roadtrip'
-            thumbnail:
-              type: string
-              description: Url to post thumbnail
-              format: URI
-              example: https://media.licdn.com/dms/image/C4D34AQGuc0IZco1Djg/ugc-proxy-shrink_1280_800/0/1594170999916?e=1684497600&v=beta&t=xyHYpz4goG8WOJl8n3-nVNiaoSIYIz3vNzVR7kxfjNw
-            userName:
-              type: string
-              description: User username on social network
-              example: esther-irish-28177427
-            accountId:
-              type: string
-              description: Unique account id
-              example: esther-irish-28177427
-            network:
-              type: string
-              description: Network name
-              example: linkedin
-            linkedInfo:
-              $ref: '#/components/schemas/linkedInfo'
-      required:
-      - type
-      - href
-      - LinkedinPost
-    YoutubeAccountInfoModel:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Type of Search
-          example: YoutubeAccount
-        href:
-          type: string
-          description: CreatorIQ API URL to get creator's Youtube account
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/account/youtube/account/UCeNhHgTE36tTQkJsjPaPwnA
-        YoutubeAccount:
-          $ref: '#/components/schemas/YoutubeAccountModel'
-      required:
-      - type
-      - href
-      - YoutubeAccount
-    Instagram_post_carousel_insights:
-      type: object
-      title: Instagram post carousel insights
-      properties:
-        impressions:
-          type:
-          - integer
-          - 'null'
-          description: 'Impressions count
-
-            > **Warning**: This field is deprecated and value always be null.
-
-            '
-          example: null
-          x-deprecated: true
-        reach:
-          type:
-          - integer
-          - 'null'
-          description: Reach count
-          example: 2000
-        engagements:
-          type:
-          - integer
-          - 'null'
-          description: Engagements count
-          example: 3000
-        saved:
-          type:
-          - integer
-          - 'null'
-          description: Saved count
-          example: 4000
-        views:
-          type:
-          - integer
-          - 'null'
-          description: 'Views count
-
-            > **Warning**: This field is deprecated and value always be null.
-
-            '
-          example: null
-          x-deprecated: true
-        profileVisits:
-          type:
-          - integer
-          - 'null'
-          description: profile visits count
-          example: 350
-        shares:
-          type:
-          - integer
-          - 'null'
-          description: shares count
-          example: 320
-        type:
-          type: string
-          enum:
-          - carousel
-      required:
-      - impressions
-      - reach
-      - engagements
-      - saved
-      - views
-      - type
-    TwitchPostModelCommon:
-      type: object
-      title: TwitchPostModelCommon
-      properties:
-        type:
-          type: string
-          enum:
-          - TwitchPost
-          - TwitchClip
-          - TwitchStream
-          description: Type of post
-          example: TwitchPost
-        href:
-          type: string
-          description: CreatorIQ API URL to get creator's tiktok post
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/social/twitch/video/401369777
-      required:
-      - type
-      - href
-    TiktokPostModel:
-      type: object
-      title: TiktokPostModel
-      properties:
-        type:
-          type: string
-          description: Type of Model
-          example: video
-        href:
-          type: string
-          description: CreatorIQ API URL to get creator's tiktok post
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/social/tiktok/post/7172734804759186734
-        video:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Unique post id
-              example: '7172734804759186734'
-            url:
-              type: string
-              description: Url to post on social network
-              format: URI
-              example: https://www.tiktok.com/@kimkardashian/video/7172734804759186734
-            type:
-              type: string
-              description: post type
-              example: video
-            title:
-              type: string
-              description: post title
-              example: Can’t believe some of besties had never tried In N Out 😱🤯
-            thumbnail:
-              type: string
-              description: Url to post thumbnail
-              format: URI
-              example: https://p16-sign.tiktokcdn-us.com/obj/tos-useast5-p-0068-tx/92c0fb9efab84700aadcf6c260610f9a?x-expires=1673290800&x-signature=6yYIinGHzHnNGCNz%2FaftPxuHcZg%3D
-            savedThumbnail:
-              type: string
-              description: Url to saved post thumbnail
-              format: URI
-              example: https://static-resources.creatoriq.com/social-pictures/Tiktok/post/image/7172734804759186734.jpg
-            info:
-              type: string
-              example: Can’t believe some of besties had never tried In N Out 😱🤯,
-            userName:
-              type: string
-              description: User username on social network
-              example: therock
-            accountId:
-              type: string
-              description: Unique account id
-              example: therock
-            comments:
-              type:
-              - integer
-              - 'null'
-              description: Post comments count
-              example: 1113
-            likes:
-              type:
-              - integer
-              - 'null'
-              description: Post likes count
-              example: 9134
-            impressions:
-              type:
-              - integer
-              - 'null'
-              description: Impressions count
-              example: 20
-              x-deprecated: true
-            views_next:
-              type:
-              - integer
-              - 'null'
-              description: 'Views count
-
-                > **Warning**: The **impressions** field will be deprecated soon. Use this field instead of it.
-
-                '
-              example: 20
-            views:
-              type:
-              - integer
-              - 'null'
-              description: 'Post views count. Corresponds to ```view_count``` from TikTok Api and is equal to the sum of paid and organic views.
-
-                > **Warning**: This field is deprecated and value always be null. The value of views now displays in **impressions** field.
-
-                '
-              example: null
-              x-deprecated: true
-            shares:
-              type:
-              - integer
-              - 'null'
-              description: Post shares count
-              example: 9134
-            createdAt:
-              type: string
-              description: Post created date
-              format: date-time
-              readOnly: true
-              example: '2023-01-03T20:04:29-08:00'
-            network:
-              type: string
-              description: Network name
-              example: tiktok
-            linkedInfo:
-              $ref: '#/components/schemas/linkedInfo'
-            pnkHash:
-              type: string
-              description: post natural key identifier
-              example: d93eab6d9ac3a37c12a242f347934e816285230d
-      required:
-      - type
-      - href
-      - video
-    YoutubePostModel:
-      type: object
-      title: YoutubePostModel
-      properties:
-        type:
-          type: string
-          enum:
-          - YoutubeVideo
-          description: Type of Model
-          example: YoutubeVideo
-        href:
-          type: string
-          description: CreatorIQ API URL to get creator's youtube post
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/social/youtube/video/NCE6YchEqIE
-        YoutubeVideo:
-          type: object
-          properties:
-            videoId:
-              type: string
-              description: Unique post id
-              example: NCE6YchEqIE
-            type:
-              type: string
-              description: post type
-              example: video
-            accountId:
-              type: string
-              description: Unique account id
-              example: UCeNhHgTE36tTQkJsjPaPwnA
-            userName:
-              type: string
-              description: User username on social network
-              example: The Rock
-            videoUrl:
-              type: string
-              description: Url to video
-              format: URI
-              example: https://www.youtube.com/watch?v=NCE6YchEqIE
-            videoTitle:
-              type: string
-              description: post title
-              example: Some video title
-            description:
-              type: string
-              description: post title
-              example: Some video description
-            categoryId:
-              type: integer
-              example: 22
-            thumbnail:
-              type: string
-              description: Url to video thumbnail
-              format: URI
-              example: https://i.ytimg.com/vi/NCE6YchEqIE/maxresdefault.jpg
-            savedThumbnail:
-              type: string
-              description: Url to video thumbnail saved in CreatorIQ
-              format: URI
-              example: https://static-resources.creatoriq.com/social-pictures/youtube/video/mrzFanSELzQ.jpg
-            duration:
-              type: integer
-              description: Video duration on seconds
-              example: 279
-            dateUploaded:
-              type: string
-              description: Post updated date
-              format: date-time
-              example: '2021-04-15T11:00:04-08:00'
-            tags:
-              type: array
-              description: Tags array
-              items:
-                type: string
-                description: Tag
-                example: beauty tutorial
-              example:
-              - beauty tutorial
-            statistics:
-              type: object
-              properties:
-                views:
-                  type: integer
-                  description: Views count
-                  example: 666147
-                  x-deprecated: true
-                engagedViews_next:
-                  type:
-                  - integer
-                  - 'null'
-                  description: 'Engaged views count (4sec)<br>
-
-                    **Starting Jan 1, 2026, engaged views are only available for Shorts posted by authenticated accounts.**
-
-                    > **Warning**: The **views** field will be deprecated soon. Use this field instead of it.
-
-                    '
-                  example: 666147
-                likes:
-                  type: integer
-                  description: likes count
-                  example: 15292
-                dislikes:
-                  type: integer
-                  description: dislikes count
-                  example: 0
-                favorites:
-                  type: integer
-                  example: 0
-                comments:
-                  type: integer
-                  description: comments count
-                  example: 2443
-            reach:
-              type:
-              - integer
-              - 'null'
-              description: 'Number of users who have seen the post<br>
-
-                **You will see estimated reach for posts made on or after Jan 1, 2026.**
-
-                '
-              example: 1970000
-            engagement:
-              type: integer
-              description: Engagement count
-              example: 17735
-            impressions:
-              type:
-              - integer
-              - 'null'
-              description: Impressions count
-              example: 0
-              x-deprecated: true
-            views_next:
-              type:
-              - integer
-              - 'null'
-              description: 'Views count<br>
-
-                **You will see view counts for posts made on or after Jan 1, 2026.**
-
-                > **Warning**: The **impressions** field will be deprecated soon. Use this field instead of it.
-
-                '
-              example: 20
-            earnings:
-              type:
-              - number
-              - 'null'
-              description: Earnings count
-              example: 260704.06
-            processingInfo:
-              type: array
-              items:
-                type: object
-                description: Processing info
-                example: {}
-            network:
-              type: string
-              description: Network name
-              example: youtube
-            linkedInfo:
-              $ref: '#/components/schemas/linkedInfo'
-            pnkHash:
-              type: string
-              description: post natural key identifier
-              example: d93eab6d9ac3a37c12a242f347934e816285230d
-    SnapchatPostModel:
-      type: object
-      title: SnapchatPostModel
-      properties:
-        type:
-          type: string
-          description: Type of Model
-          example: SnapchatPost
-        href:
-          type: string
-          description: CreatorIQ API URL to get creator's snapchat post
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/social/snpacht/post/W7_EDlXWTBiXAEEniNoMPwAAYdW14aW12a21kAY3NQpyiAY3NQph
-        SnapchatPost:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Post unique identifier
-              example: W7_EDlXWTBiXAEEniNoMPwAAYdW14aW12a21kAY3NQpyiAY3NQph
-            userName:
-              type: string
-              description: Post owner username
-              example: norah.aljuaid
-            accountId:
-              type: string
-              description: Post owner public id
-              example: d1fe7041-7ebe-4015-9a50-d628edd6848c
-            savedThumbnail:
-              type: string
-              description: Post thumbnail url
-              example: https://static-resources.creatoriq.com/social-pictures/Snapchat/post/image/7172734804759186734.jpg
-            status:
-              type: string
-              description: Post status
-              example: LIVE
-            duration:
-              type: integer
-              description: Post duration
-              example: 454523
-            title:
-              type: string
-              description: Post text
-              example: Some post title
-            comments:
-              type: integer
-              description: Post comments count
-              example: 20
-            likes:
-              type: integer
-              description: Post likes count
-              example: 20
-            impressions:
-              type:
-              - integer
-              - 'null'
-              description: Impressions count
-              example: 20
-              x-deprecated: true
-            views_next:
-              type:
-              - integer
-              - 'null'
-              description: 'Views count
-
-                > **Warning**: The **impressions** field will be deprecated soon. Use this field instead of it.
-
-                '
-              example: 20
-            views:
-              type:
-              - integer
-              - 'null'
-              description: 'Post view count
-
-                > **Warning**: This field is deprecated and value always be null. The value of views now displays in **impressions** field.
-
-                '
-              example: null
-              x-deprecated: true
-            viewsUnique:
-              type: integer
-              description: Post viewers count
-              example: 10
-            swipeUps:
-              type: integer
-              description: Post swipe ups count
-              example: 30
-            swipeAways:
-              type: integer
-              description: Post swipe away count
-              example: 30
-            averageViewDuration:
-              type: integer
-              description: Post average view duration
-              example: 783234
-            totalViewTime:
-              type: integer
-              description: Post total view time
-              example: 78323412
-            shares:
-              type: integer
-              description: Post shares count
-              example: 30
-            subscribersGained:
-              type: integer
-              description: Post subscribers gained count
-              example: 30
-            saves:
-              type: integer
-              description: Post screenshots count
-              example: 30
-            createdAt:
-              type: string
-              description: Post created date
-              readOnly: true
-              example: '2023-01-03T20:04:29-08:00'
-            lastUpdated:
-              type: string
-              description: Last date when record was updated
-              example: '2023-01-03T20:04:29-08:00'
-            linkedInfo:
-              $ref: '#/components/schemas/linkedInfo'
-            url:
-              type: string
-              description: Post url
-              example: https://www.snapchat.com/spotlight/W7_EDlXWTBiXAEEniNoMPwAAYdW14aW12a21kAY3NQpyiAY3NQph
-            type:
-              type: string
-              description: Post type
-              example: spotlight
-            info:
-              type: string
-              description: Post info
-              example: Some info
-            network:
-              type: string
-              description: Network name
-              example: Snapchat
-            pnkHash:
-              type: string
-              description: post natural key identifier
-              example: d93eab6d9ac3a37c12a242f347934e816285230d
-      required:
-      - type
-      - href
-      - SnapchatPost
-    TwitchPostModelStream:
-      type: object
-      title: TwitchPostModelStream
-      properties:
-        TwitchStream:
-          type: object
-          properties:
-            id:
-              type: integer
-              description: Unique stream id (account Id)
-              example: 401369777
-            url:
-              type: string
-              description: The URL of the social network account where the broadcast is taking place
-              format: URI
-              example: https://twitch.tv/401369777
-            description:
-              type:
-              - string
-              - 'null'
-              description: Stream description
-              example: ''
-            type:
-              type: string
-              enum:
-              - stream
-              description: Post type
-              example: stream
-            tags:
-              type:
-              - array
-              - 'null'
-              description: Tags array
-              minItems: 1
-              items:
-                type: string
-                example: mytag
-              example: null
-            thumbnail:
-              type: string
-              description: Url to stream thumbnail
-              format: URI
-              example: https://static-cdn.jtvnw.net/cf_vods/d2nvs31859zcd8/testkratchek/401369777/9c88e0fb-2cd2-4351-836c-5e63178d4dd1/thumb/index-0000000000-640x360.jpg
-            userName:
-              type: string
-              description: Username on social network
-              example: testkratchek
-            accountId:
-              type: string
-              description: Username on social network
-              example: testkratchek
-            createdAt:
-              type: string
-              description: Account created date or current date
-              format: date-time
-              readOnly: true
-              example: '2023-01-03T20:04:29-08:00'
-            publishedAt:
-              type: string
-              description: Published date (inapplicable for stream)
-              example: ''
-            recordedAt:
-              type:
-              - string
-              - 'null'
-              description: Account created date
-              format: date-time
-              example: '2023-01-03T20:04:29-08:00'
-            language:
-              type: string
-              description: Stream language (inapplicable for stream)
-              example: en
-            viewable:
-              type: string
-              description: Is stream can be viewed (inapplicable for stream)
-              example: public
-            title:
-              type: string
-              description: Name on social network
-              example: Kratchek - test
-            reach:
-              type:
-              - integer
-              - 'null'
-              description: Reach (inapplicable for stream)
-              example: null
-            views:
-              type:
-              - integer
-              - 'null'
-              description: Views (inapplicable for stream)
-              example: null
-              x-deprecated: true
-            engagedViews_next:
-              type:
-              - integer
-              - 'null'
-              description: 'Views (inapplicable for stream)
-
-                > **Warning**: The **views** field will be deprecated soon. Use this field instead of it.
-
-                '
-              example: null
-            status:
-              type:
-              - string
-              - 'null'
-              description: Status (inapplicable for stream)
-              example: null
-            videoDuration:
-              type:
-              - integer
-              - 'null'
-              description: Video duration in seconds (inapplicable for stream)
-              example: null
-            engagement:
-              type:
-              - integer
-              - 'null'
-              description: Engagement (inapplicable for stream)
-              example: null
-            processingInfo:
-              type: array
-              description: Processing info (inapplicable for stream)
-              items:
-                type: string
-              example: []
-            gameId:
-              type:
-              - integer
-              - 'null'
-              description: GameId (inapplicable for stream)
-              example: null
-            Game:
-              type:
-              - string
-              - 'null'
-              description: Game title (inapplicable for stream)
-              example: null
-            network:
-              type: string
-              description: Network name
-              example: twitch
-            linkedInfo:
-              $ref: '#/components/schemas/linkedInfo'
-          required:
-          - id
-          - url
-          - description
-          - type
-          - tags
-          - thumbnail
-          - userName
-          - accountId
-          - createdAt
-          - publishedAt
-          - recordedAt
-          - language
-          - viewable
-          - title
-          - reach
-          - views
-          - engagedViews_next
-          - status
-          - videoDuration
-          - engagement
-          - processingInfo
-          - gameId
-          - Game
-          - network
-          - linkedInfo
-      required:
-      - TwitchStream
-    FacebookAccountModel:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Unique Facebook account id
-          example: 114696805612
-        url:
-          type: string
-          description: Url to Facebook account
-          format: URI
-          example: http://facebook.com/therock
-        username:
-          type: string
-          description: Facebook user username
-          example: therock
-        fullName:
-          type: string
-          description: Facebook user full name
-          example: The Rock
-        profileImageUrl:
-          type: string
-          description: Url to Facebook profile image
-          format: URI
-          example: https://scontent-sjc3-1.xx.fbcdn.net/v/t39.30808-1/312527422_677281187100710_7227122224101522512_n.jpg?stp=cp1_dst-jpg_p720x720&_nc_cat=1&ccb=1-7&_nc_sid=0c64ff&_nc_ohc=EuWO46Uu2bUAX_OuQcy&_nc_ht=scontent-sjc3-1.xx&edm=ABzdmSoEAAAA&oh=00_AfCgguwMS_1rzjCyN86-sqMXu3bkfAM9WWmIjfbiM5eduA&oe=63BDBFAD
-        location:
-          type: string
-          example: United States
-        gender:
-          type: string
-          example: male
-        likes:
-          type: integer
-          example: 35076897
-        followers:
-          type: integer
-          example: 35076897
-        talkingAbout:
-          type: integer
-          example: 137136
-        description:
-          type: string
-          example: Some description here
-        averages:
-          type:
-          - number
-          - 'null'
-          example: 1
-        videoAnalytics:
-          type:
-          - string
-          - 'null'
-          example: ''
-        timeline:
-          type: object
-          properties:
-            type:
-              type: string
-              description: Type of Search
-              example: SocialPostsCollection
-            href:
-              type: string
-              description: CreatorIQ API URL to get creator's instagram stories
-              format: URI
-              example: ''
-          x-deprecated: true
-        verified:
-          type:
-          - string
-          - 'null'
-          example: ''
-      required:
-      - id
-      - url
-    ErrorResponseModel:
-      type: object
-      description: Not found exception
-      properties:
-        type:
-          type: string
-          description: Exception type
-          example: CoreException
-        Exception:
-          type: object
-          description: Exception information
-          properties:
-            code:
-              type: number
-              description: Exception status code
-              example: 404
-            message:
-              type: string
-              description: Exception message
-              example: Not found
-          required:
-          - code
-          - message
-      required:
-      - type
-      - Exception
-    FacebookAccountInfoModel:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Type of Search
-          example: FacebookAccount
-        href:
-          type: string
-          description: CreatorIQ API URL to get creator's Facebook account
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/social/facebook/account/114696805611
-        FacebookAccount:
-          $ref: '#/components/schemas/FacebookAccountModel'
-      required:
-      - type
-      - href
-      - FacebookAccount
-    TwitchPostModelPost:
-      type: object
-      title: TwitchPostModelPost
-      properties:
-        TwitchPost:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Unique video id
-              example: '40136977'
-            url:
-              type: string
-              description: Url to post on social network
-              format: URI
-              example: https://twitch.tv/videos/40136977
-            description:
-              type:
-              - string
-              - 'null'
-              description: Post description
-              example: Some description
-            type:
-              type: string
-              enum:
-              - video
-              description: Post type
-              example: video
-            tags:
-              type:
-              - array
-              - 'null'
-              description: Tags array
-              minItems: 1
-              items:
-                type: string
-                example: mytag
-              example:
-              - mytag
-            thumbnail:
-              type: string
-              description: Url to post thumbnail
-              format: URI
-              example: https://static-cdn.jtvnw.net/cf_vods/d2nvs31859zcd8/testkratchek/401369777/9c88e0fb-2cd2-4351-836c-5e63178d4dd1/thumb/index-0000000000-640x360.jpg
-            userName:
-              type: string
-              description: Username on social network
-              example: testkratchek
-            accountId:
-              type: string
-              description: Unique account id
-              example: '42307422'
-            createdAt:
-              type: string
-              description: Video created date
-              format: date-time
-              readOnly: true
-              example: '2023-01-03T20:04:29-08:00'
-            publishedAt:
-              type: string
-              description: Video published date
-              format: date-time
-              example: '2023-01-03T20:04:29-08:00'
-            recordedAt:
-              type: string
-              description: Video recording date
-              format: date-time
-              example: '2023-01-03T20:04:29-08:00'
-            language:
-              type: string
-              description: Video language
-              example: en
-            viewable:
-              type: string
-              description: Is video can be viewed
-              example: public
-            title:
-              type: string
-              description: Video title
-              example: My video
-            reach:
-              type:
-              - integer
-              - 'null'
-              description: Video's reach
-              example: 2326
-            views:
-              type:
-              - integer
-              - 'null'
-              description: Video's views amount
-              example: 23723
-              x-deprecated: true
-            engagedViews_next:
-              type:
-              - integer
-              - 'null'
-              description: 'Video''s views amount
-
-                > **Warning**: The **views** field will be deprecated soon. Use this field instead of it.
-
-                '
-              example: 23723
-            status:
-              type:
-              - string
-              - 'null'
-              description: Video's status
-              example: null
-            videoDuration:
-              type: integer
-              description: Video's duration in seconds
-              example: 262
-            engagement:
-              type:
-              - integer
-              - 'null'
-              description: Video's engagement
-              example: 436
-            processingInfo:
-              type: array
-              items:
-                type: string
-              example: []
-            gameId:
-              type:
-              - integer
-              - 'null'
-              description: Video's GameId (might not be presented in response)
-              example: 75438
-            Game:
-              type:
-              - string
-              - 'null'
-              description: Video's Game title (might not be presented in response)
-              example: NFS III
-            network:
-              type: string
-              description: Network name
-              example: twitch
-            linkedInfo:
-              $ref: '#/components/schemas/linkedInfo'
-            pnkHash:
-              type: string
-              description: post natural key identifier
-              example: d93eab6d9ac3a37c12a242f347934e816285230d
-          required:
-          - id
-          - url
-          - description
-          - type
-          - tags
-          - thumbnail
-          - userName
-          - accountId
-          - createdAt
-          - publishedAt
-          - recordedAt
-          - language
-          - viewable
-          - title
-          - reach
-          - views
-          - engagedViews_next
-          - status
-          - videoDuration
-          - engagement
-          - processingInfo
-          - network
-          - linkedInfo
-      required:
-      - TwitchPost
-    Instagram_post_story_insights:
-      type: object
-      title: Instagram post story insights
-      properties:
-        impressions:
-          type:
-          - integer
-          - 'null'
-          description: 'Impressions count
-
-            > **Warning**: This field is deprecated and value always be null.
-
-            '
-          example: null
-          x-deprecated: true
-        reach:
-          type:
-          - integer
-          - 'null'
-          description: Reach count
-          example: 2000
-        exits:
-          type:
-          - integer
-          - 'null'
-          description: Exists count
-          example: 3000
-        replies:
-          type:
-          - integer
-          - 'null'
-          description: Replies count
-          example: 4000
-        tapsForward:
-          type:
-          - integer
-          - 'null'
-          description: TapsForward count
-          example: 5000
-        tapsBack:
-          type:
-          - integer
-          - 'null'
-          description: TapsBack count
-          example: 6000
-        type:
-          type: string
-          enum:
-          - story
-      required:
-      - impressions
-      - reach
-      - exits
-      - replies
-      - tapsForward
-      - tapsBack
-      - type
-    WebPostModel:
-      type: object
-      title: WebPostModel
-      properties:
-        type:
-          type: string
-          description: Type of Search
-          example: video
-        href:
-          type: string
-          description: CreatorIQ API URL to get creator's web post
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/social/web/post/https%3A%2F%2Fwww.sheknows.com%2Fentertainment%2Fslideshow%2F2768293%2Fking-charles-coronation-important-details%2F
-        WebPost:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Unique post id
-              format: URI
-              example: https://www.sheknows.com/entertainment/slideshow/2768293/king-charles-coronation-important-details/
-            url:
-              type: string
-              description: Url to post on social network
-              format: URI
-              example: https://www.sheknows.com/entertainment/slideshow/2768293/king-charles-coronation-important-details/
-            DateSubmitted:
-              type: string
-              description: Post created date
-              format: date-time
-              example: '2023-01-03T20:04:29-08:00'
-            type:
-              type: string
-              description: Post type
-              example: blog
-            PostTitle:
-              type:
-              - string
-              - 'null'
-              description: Post title
-              example: Important Details From King Charles III’s Coronation – SheKnows
-            Post:
-              type:
-              - string
-              - 'null'
-              description: Post text
-              example: Even eagle-eyed viewers might have missed these hidden details.
-            Thumbnail:
-              type:
-              - string
-              - 'null'
-              description: Url to post thumbnail
-              format: URI
-              example: https://www.sheknows.com/wp-content/uploads/2023/05/kiing.jpg?w=1024
-            Domain:
-              type: string
-              description: Domain
-              example: https://www.sheknows.com
-            accountId:
-              type: string
-              description: Account id
-              example: https://www.sheknows.com
-            network:
-              type: string
-              description: Network name
-              example: web
-            processingInfo:
-              type: array
-              items:
-                type: string
-              example: []
-            isMetricsAvailable:
-              type: boolean
-              example: true
-            linkedInfo:
-              $ref: '#/components/schemas/linkedInfo'
-            pnkHash:
-              type: string
-              description: post natural key identifier
-              example: d93eab6d9ac3a37c12a242f347934e816285230d
-      required:
-      - type
-      - href
-      - WebPost
     LookupSuccessResponseModel:
       type: object
       properties:
@@ -4972,431 +2582,32 @@ components:
       - type
       - href
       - LookupResult
-    InstagramAccountStoriesSuccessResponseModel:
+    ErrorResponseModel:
       type: object
-      description: Success
+      description: Not found exception
       properties:
         type:
           type: string
-          description: Type of Search
-          example: SocialPostsCollection
-        href:
-          type: string
-          description: CreatorIQ API URL to get creator's instagram stories
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/account/instagram/account/stories
-        count:
-          type: integer
-          description: Number of records in current response
-          example: 200
-        total:
-          type: integer
-          description: Total number of found rows
-          example: 20
-        page:
-          type: integer
-          description: Current page
-          example: 1
-        SocialPostsCollection:
-          type: array
-          description: Instagram posts collection
-          items:
-            $ref: '#/components/schemas/InstagramPostModel'
-      required:
-      - type
-      - href
-      - SocialPostsCollection
-    TwitterPostModel:
-      type: object
-      title: TwitterPostModel
-      properties:
-        type:
-          type: string
-          description: Type of Model
-          example: video
-        href:
-          type: string
-          description: CreatorIQ API URL to get creator's twitter post
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/social/twitter/status/1143182027010781184
-        TwitterStatus:
+          description: Exception type
+          example: CoreException
+        Exception:
           type: object
+          description: Exception information
           properties:
-            id:
+            code:
+              type: number
+              description: Exception status code
+              example: 404
+            message:
               type: string
-              description: Unique post id
-              example: '1143182027010781184'
-            url:
-              type: string
-              description: Url to post on social network
-              format: URI
-              example: https://twitter.com/sonyaciqtw2/status/1143182027010781184
-            userName:
-              type: string
-              description: Username on social network
-              example: therock
-            accountId:
-              type: string
-              description: Account id
-              example: '1097507841433354246'
-            thumbnail:
-              type:
-              - string
-              - 'null'
-              description: Url to post thumbnail
-              format: URI
-              example: https://pbs.twimg.com/media/ErokNmxVcAEzj1W?format=jpg&name=small
-            type:
-              type: string
-              description: Post type
-              example: text
-            authorScreenName:
-              type: string
-              description: Username on social network
-              example: therock
-            createdAt:
-              type: string
-              description: Post created date
-              format: date-time
-              readOnly: true
-              example: '2023-01-03T20:04:29-08:00'
-            text:
-              type: string
-              description: Post text
-              example: Can’t believe some of besties had never tried In N Out 😱🤯
-            retweets:
-              type:
-              - integer
-              - 'null'
-              description: Post retweets count
-              example: 0
-            favorites:
-              type:
-              - integer
-              - 'null'
-              description: Post favorites count
-              example: 9134
-            reach:
-              type:
-              - integer
-              - 'null'
-              description: Post reach count
-              example: 9134
-            engagement:
-              type:
-              - integer
-              - 'null'
-              description: Post engagement
-              example: 9134
-            impressions:
-              type:
-              - integer
-              - 'null'
-              description: Post engagement
-              example: 9134
-            earnings:
-              type:
-              - number
-              - 'null'
-              description: Post engagement
-              example: 268.8575
-            processingInfo:
-              type: array
-              items:
-                type: string
-              example: []
-            network:
-              type: string
-              description: Network name
-              example: tiktok
-            linkedInfo:
-              $ref: '#/components/schemas/linkedInfo'
-            pnkHash:
-              type: string
-              description: post natural key identifier
-              example: d93eab6d9ac3a37c12a242f347934e816285230d
+              description: Exception message
+              example: Not found
           required:
-          - id
-          - url
-          - userName
-          - accountId
+          - code
+          - message
       required:
       - type
-      - href
-      - TwitterStatus
-    InstagramAccountInfoModel:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Type of Search
-          example: InstagramAccount
-        href:
-          type: string
-          description: CreatorIQ API URL to get creator's instagram account
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/account/instagram/account/therock
-        InstagramAccount:
-          $ref: '#/components/schemas/InstagramAccountModel'
-      required:
-      - type
-      - href
-      - InstagramAccount
-    TiktokAccountModel:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique Tiktok account id
-          example: therock
-        url:
-          type: string
-          description: Url to Tiktok account
-          format: URI
-          example: https://www.tiktok.com/@therock
-        originId:
-          type: integer
-          example: 7031328604186035000
-        nickname:
-          type: string
-          description: Tiktok user nickname
-          example: The Rock
-        avatarThumb:
-          type: string
-          description: Url to Tiktok account avatar
-          format: URI
-          example: https://p19-sign.tiktokcdn-us.com/tos-useast5-avt-0068-tx/220801f1b6c4555e3c7be9091ac1a348~c5_1080x1080.jpeg?x-expires=1673172000&x-signature=0O%2Fkal%2BfvYTtNgDamEHKCW%2Bb5X8%3D
-        signature:
-          type: string
-          example: ''
-        createTime:
-          type: integer
-          description: Account create date on timestamp
-          example: 1673001949
-        verified:
-          type: boolean
-          example: true
-        deleted:
-          type: boolean
-          example: false
-        source:
-          type: string
-          example: tiktok_scraping_lambda
-        followerCount:
-          type: integer
-          description: Followers count
-          example: 5500000
-        followingCount:
-          type: integer
-          description: Following count
-          example: 13
-        heartCount:
-          type: integer
-          description: Heart count
-          example: 22600000
-        videoCount:
-          type: integer
-          description: Videos count
-          example: 64
-        account_id:
-          type: string
-          description: Unique account id
-          example: '7031328604186035205'
-      required:
-      - id
-      - url
-    Instagram_post_reel_insights:
-      type: object
-      title: Instagram post reel insights
-      properties:
-        impressions:
-          type:
-          - integer
-          - 'null'
-          description: 'Impressions count
-
-            > **Warning**: This field is deprecated and value always be null.
-
-            '
-          example: null
-          x-deprecated: true
-        reach:
-          type:
-          - integer
-          - 'null'
-          description: Reach count
-          example: 2000
-        type:
-          type: string
-          enum:
-          - reel
-      required:
-      - impressions
-      - reach
-      - type
-    InstagramAccountModel:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Unique instagram account id
-          example: 18428653
-        url:
-          type: string
-          description: Instagram account url
-          format: URI
-          example: https://instagram.com/therock
-        name:
-          type: string
-          description: Instagam account username
-          example: therock
-        profileImageUrl:
-          type: string
-          description: Url to profile image
-          format: URI
-          example: https:\\scontent-sea1-1.xx.fbcdn.net\v\t51.2885-15\314397231_636674618202803_1672434101401302981_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=86c713&_nc_ohc=iiq9WDog-BkAX-0fEDs&_nc_ht=scontent-sea1-1.xx&edm=AL-3X8kEAAAA&oh=00_AfAKZgC1wAOCZXrs0ocIY-MHoehwyqpA7IBbtpzDn6sgeA&oe=63BDBD13
-        posts:
-          type: integer
-          description: Count of post on account
-          example: 5767
-        followers:
-          type: integer
-          description: Count of followers on account
-          example: 5767339728669
-        likes:
-          type: integer
-          description: Count of likes
-          example: 0
-        bio:
-          type: string
-          description: Account bio information
-          example: The best instagram account
-        avgLikes:
-          type: integer
-          example: 0
-        avgLikes10:
-          type: integer
-          example: 0
-        comments:
-          type: integer
-          example: 0
-        avgComments:
-          type: integer
-          example: 0
-        avgComments10:
-          type: integer
-          example: 0
-        timeline:
-          type: object
-          properties:
-            type:
-              type: string
-              description: Type of Search
-              example: SocialPostsCollection
-            href:
-              type: string
-              description: CreatorIQ API URL to get creator's instagram stories
-              format: URI
-              example: ''
-          x-deprecated: true
-        insights:
-          type:
-          - object
-          - 'null'
-          properties:
-            impressions:
-              type: integer
-              description: Impressions count
-              example: 1
-            reach:
-              type: integer
-              description: Number of users who have seen the post
-              example: 1
-            type:
-              type: string
-              description: Impression type
-              example: ''
-            exits:
-              type: string
-              description: Impressions Exits
-              example: ''
-            replies:
-              type: integer
-              description: Impressions Replies
-              example: 1
-            tapsForward:
-              type: integer
-              description: Taps Forward
-              example: 1
-            tapsBack:
-              type: integer
-              description: Taps Back
-              example: 1
-          required:
-          - impressions
-          - reach
-          default: null
-        videoStatistics:
-          type:
-          - string
-          - 'null'
-          example: ''
-        verified:
-          type:
-          - string
-          - 'null'
-          example: ''
-      required:
-      - id
-      - url
-    TiktokAccountInfoModel:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Type of Search
-          example: TiktokAccount
-        href:
-          type: string
-          description: CreatorIQ API URL to get creator's Tiktok account
-          format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/social/tiktok/account/kimkardashian
-        TiktokAccount:
-          $ref: '#/components/schemas/TiktokAccountModel'
-      required:
-      - type
-      - href
-      - TiktokAccount
-    linkedInfo:
-      type: object
-      properties:
-        linked:
-          type: boolean
-          description: Flag if account is linked
-          example: false
-        linkedAt:
-          type:
-          - string
-          - 'null'
-          description: Date and time when account has been linked
-          format: date-time
-          example: '2023-03-15 17:23:37'
-        linkBroken:
-          type:
-          - string
-          - 'null'
-          description: Date and time when linked account has been marked as broken, NULL otherwise
-          format: date-time
-          example: '2023-03-15 17:23:37'
-        isPrivateAccount:
-          type: boolean
-          description: Flag if account is private (no ability to check it for now, always FALSE)
-          example: false
-      required:
-      - linked
-      - linkedAt
-      - linkBroken
-      - isPrivateAccount
+      - Exception
     socialHistoryResponseModel:
       type: object
       properties:
@@ -5437,6 +2648,385 @@ components:
       - type
       - href
       - SocialHistory
+    LinkedinPostModel:
+      type: object
+      title: LinkedinPostModel
+      properties:
+        type:
+          type: string
+          description: Type of Search
+          example: LinkedinPost
+        href:
+          type: string
+          description: CreatorIQ API URL to get creator's tiktok post
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/social/linkedin/post/esther-irish-28177427_moody-gardens-hotel-at-christmas-activity-6475469027413233664-qAxm
+        LinkedinPost:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique post identifier
+              example: esther-irish-28177427_moody-gardens-hotel-at-christmas-activity-6475469027413233664-qAxm
+            url:
+              type: string
+              description: Post url
+              format: URI
+              example: https://www.linkedin.com/posts/esther-irish-28177427_moody-gardens-hotel-at-christmas-activity-6475469027413233664-qAxm
+            type:
+              type: string
+              enum:
+              - text
+              description: Post type
+              example: text
+            title:
+              type: string
+              description: Url to post thumbnail
+              format: URI
+              example: 'Esther Irish on LinkedIn: #holidaytravel #familytravel #texas #roadtrip'
+            thumbnail:
+              type: string
+              description: Url to post thumbnail
+              format: URI
+              example: https://media.licdn.com/dms/image/C4D34AQGuc0IZco1Djg/ugc-proxy-shrink_1280_800/0/1594170999916?e=1684497600&v=beta&t=xyHYpz4goG8WOJl8n3-nVNiaoSIYIz3vNzVR7kxfjNw
+            userName:
+              type: string
+              description: User username on social network
+              example: esther-irish-28177427
+            accountId:
+              type: string
+              description: Unique account id
+              example: esther-irish-28177427
+            network:
+              type: string
+              description: Network name
+              example: linkedin
+            linkedInfo:
+              $ref: '#/components/schemas/linkedInfo'
+      required:
+      - type
+      - href
+      - LinkedinPost
+    TwitchPostModelPost:
+      type: object
+      title: TwitchPostModelPost
+      properties:
+        TwitchPost:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique video id
+              example: '40136977'
+            url:
+              type: string
+              description: Url to post on social network
+              format: URI
+              example: https://twitch.tv/videos/40136977
+            description:
+              type:
+              - string
+              - 'null'
+              description: Post description
+              example: Some description
+            type:
+              type: string
+              enum:
+              - video
+              description: Post type
+              example: video
+            tags:
+              type:
+              - array
+              - 'null'
+              description: Tags array
+              minItems: 1
+              items:
+                type: string
+                example: mytag
+              example:
+              - mytag
+            thumbnail:
+              type: string
+              description: Url to post thumbnail
+              format: URI
+              example: https://static-cdn.jtvnw.net/cf_vods/d2nvs31859zcd8/testkratchek/401369777/9c88e0fb-2cd2-4351-836c-5e63178d4dd1/thumb/index-0000000000-640x360.jpg
+            userName:
+              type: string
+              description: Username on social network
+              example: testkratchek
+            accountId:
+              type: string
+              description: Unique account id
+              example: '42307422'
+            createdAt:
+              type: string
+              description: Video created date
+              format: date-time
+              readOnly: true
+              example: '2023-01-03T20:04:29-08:00'
+            publishedAt:
+              type: string
+              description: Video published date
+              format: date-time
+              example: '2023-01-03T20:04:29-08:00'
+            recordedAt:
+              type: string
+              description: Video recording date
+              format: date-time
+              example: '2023-01-03T20:04:29-08:00'
+            language:
+              type: string
+              description: Video language
+              example: en
+            viewable:
+              type: string
+              description: Is video can be viewed
+              example: public
+            title:
+              type: string
+              description: Video title
+              example: My video
+            reach:
+              type:
+              - integer
+              - 'null'
+              description: Video's reach
+              example: 2326
+            views:
+              type:
+              - integer
+              - 'null'
+              description: Video's views amount
+              example: 23723
+              x-deprecated: true
+            engagedViews_next:
+              type:
+              - integer
+              - 'null'
+              description: 'Video''s views amount
+
+                > **Warning**: The **views** field will be deprecated soon. Use this field instead of it.
+
+                '
+              example: 23723
+            status:
+              type:
+              - string
+              - 'null'
+              description: Video's status
+              example: null
+            videoDuration:
+              type: integer
+              description: Video's duration in seconds
+              example: 262
+            engagement:
+              type:
+              - integer
+              - 'null'
+              description: Video's engagement
+              example: 436
+            processingInfo:
+              type: array
+              items:
+                type: string
+              example: []
+            gameId:
+              type:
+              - integer
+              - 'null'
+              description: Video's GameId (might not be presented in response)
+              example: 75438
+            Game:
+              type:
+              - string
+              - 'null'
+              description: Video's Game title (might not be presented in response)
+              example: NFS III
+            network:
+              type: string
+              description: Network name
+              example: twitch
+            linkedInfo:
+              $ref: '#/components/schemas/linkedInfo'
+            pnkHash:
+              type: string
+              description: post natural key identifier
+              example: d93eab6d9ac3a37c12a242f347934e816285230d
+          required:
+          - id
+          - url
+          - description
+          - type
+          - tags
+          - thumbnail
+          - userName
+          - accountId
+          - createdAt
+          - publishedAt
+          - recordedAt
+          - language
+          - viewable
+          - title
+          - reach
+          - views
+          - engagedViews_next
+          - status
+          - videoDuration
+          - engagement
+          - processingInfo
+          - network
+          - linkedInfo
+      required:
+      - TwitchPost
+    YoutubeAccountModel:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique Youtube account id
+          example: UCeNhHgTE36tTQkJsjPaPwnA
+        url:
+          type: string
+          description: Youtube account url
+          format: URI
+          example: https:\\youtube.com\channel\UCeNhHgTE36tTQkJsjPaPwnA
+        channelName:
+          type: string
+          description: Youtube channel name
+          example: UCeNhHgTE36tTQkJsjPaPwnA
+        logoUrl:
+          type: string
+          description: Url to Youtube account logo
+          format: URI
+          example: https:\\yt3.ggpht.com\1xvTKqdLSn-vZSRQQCq2UYys6UZNMjPwG0SnEmPDa4L6HjeId1TH4RHO-Yvi8lWCDcmrp0bPCw=s800-c-k-c0x00ffffff-no-rj
+        logoHighResUrl:
+          type: string
+          description: Url to Youtube account high res logo
+          format: URI
+          example: https:\\yt3.ggpht.com\1xvTKqdLSn-vZSRQQCq2UYys6UZNMjPwG0SnEmPDa4L6HjeId1TH4RHO-Yvi8lWCDcmrp0bPCw=s88-c-k-c0x00ffffff-no-rj
+        title:
+          type: string
+          description: Youtube account title
+          example: Kim Kardashian
+        summary:
+          type: string
+          example: Exclusive videos from Kim Kardashian. Behind-the-scenes content beauty tutorials and more.
+        location:
+          type:
+          - string
+          - 'null'
+          example: ''
+        datePublished:
+          type: string
+          description: Unique youtube account id
+          format: date-time
+          example: '2015-06-26 22:46:50'
+        dateUpdated:
+          type:
+          - string
+          - 'null'
+          description: Unique youtube account id
+          format: date-time
+          example: '2015-06-26 22:46:50'
+        dateLastVideoUploaded:
+          type:
+          - string
+          - 'null'
+          description: Unique youtube account id
+          format: date-time
+          example: '2015-06-26 22:46:50'
+        uploadsPlaylistId:
+          type: string
+          description: Unique youtube account id
+          example: UUeNhHgTE36tTQkJsjPaPwnA
+        timeline:
+          type: object
+          properties:
+            type:
+              type: string
+              description: Type of Search
+              example: SocialPostsCollection
+            href:
+              type: string
+              description: CreatorIQ API URL to get creator's instagram stories
+              format: URI
+              example: https:\\apis.creatoriq.com\crm\v1\api\social\youtube\account\UCeNhHgTE36tTQkJsjPaPwnA\timeline
+        verified:
+          type:
+          - string
+          - 'null'
+          example: ''
+        socialEngagement:
+          $ref: '#/components/schemas/SocialEngagement'
+        totalViews:
+          type:
+          - number
+          - 'null'
+          example: 89390026
+        totalLikes:
+          type:
+          - number
+          - 'null'
+          example: 89390026
+        totalDislikes:
+          type:
+          - number
+          - 'null'
+          example: 89390026
+        totalFavoritesAdded:
+          type:
+          - number
+          - 'null'
+          example: 89390026
+        totalComments:
+          type:
+          - number
+          - 'null'
+          example: 89390026
+        contentOwner:
+          type:
+          - string
+          - 'null'
+          example: ''
+        totalVideos:
+          type:
+          - number
+          - 'null'
+          example: 157
+        totalFavoritesRemoved:
+          type:
+          - number
+          - 'null'
+          example: 89390026
+        totalShares:
+          type:
+          - number
+          - 'null'
+          example: 89390026
+        totalSubscribers:
+          type:
+          - number
+          - 'null'
+          example: 1970000
+        estimatedMinutesWatched:
+          type:
+          - number
+          - 'null'
+          example: 89390026
+        averageViewDuration:
+          type:
+          - number
+          - 'null'
+          example: 89390026
+        averageMonthlyViews:
+          type:
+          - number
+          - 'null'
+          example: 993222.51111111
+      required:
+      - id
+      - url
     InstagramPostModel:
       type: object
       title: InstagramPostModel
@@ -5721,6 +3311,2416 @@ components:
       - type
       - href
       - InstagramPost
+    TiktokAccountModel:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique Tiktok account id
+          example: therock
+        url:
+          type: string
+          description: Url to Tiktok account
+          format: URI
+          example: https://www.tiktok.com/@therock
+        originId:
+          type: integer
+          example: 7031328604186035000
+        nickname:
+          type: string
+          description: Tiktok user nickname
+          example: The Rock
+        avatarThumb:
+          type: string
+          description: Url to Tiktok account avatar
+          format: URI
+          example: https://p19-sign.tiktokcdn-us.com/tos-useast5-avt-0068-tx/220801f1b6c4555e3c7be9091ac1a348~c5_1080x1080.jpeg?x-expires=1673172000&x-signature=0O%2Fkal%2BfvYTtNgDamEHKCW%2Bb5X8%3D
+        signature:
+          type: string
+          example: ''
+        createTime:
+          type: integer
+          description: Account create date on timestamp
+          example: 1673001949
+        verified:
+          type: boolean
+          example: true
+        deleted:
+          type: boolean
+          example: false
+        source:
+          type: string
+          example: tiktok_scraping_lambda
+        followerCount:
+          type: integer
+          description: Followers count
+          example: 5500000
+        followingCount:
+          type: integer
+          description: Following count
+          example: 13
+        heartCount:
+          type: integer
+          description: Heart count
+          example: 22600000
+        videoCount:
+          type: integer
+          description: Videos count
+          example: 64
+        account_id:
+          type: string
+          description: Unique account id
+          example: '7031328604186035205'
+      required:
+      - id
+      - url
+    SocialEngagement:
+      type: object
+      properties:
+        EngagementRate30Days:
+          type:
+          - string
+          - 'null'
+          example: ''
+        EngagementRate60Days:
+          type:
+          - string
+          - 'null'
+          example: ''
+        EngagementRate90Days:
+          type:
+          - number
+          - 'null'
+          example: 0.0061
+        EngagementRate20Posts:
+          type:
+          - number
+          - 'null'
+          example: 0.0202
+        EngagementRateLifetime:
+          type:
+          - number
+          - 'null'
+          example: 0.007
+        EngagementCalculated:
+          type: string
+          description: Timestamp of the most recent run of the engagement-metrics aggregation job for this account (calculates per-post and rolling-window engagement rates). Driven by its own background job on a different schedule from `LastUpdated` and `DateSocialStatsUpdated`, so the three timestamps can legitimately differ for the same account — some divergence between these timestamps is expected and does not indicate stale data.
+          format: date-time
+          example: '2015-06-26 22:46:50'
+        PostsCount30Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        PostsCount60Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        PostsCount90Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        PostsCountLifetime:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        LastPostDate:
+          type: string
+          description: Unique youtube account id
+          format: date-time
+          example: '2015-06-26 22:46:50'
+        AVV30:
+          type:
+          - integer
+          - 'null'
+          example: 86705
+        AVV60:
+          type:
+          - integer
+          - 'null'
+          example: 86705
+        AVV90:
+          type:
+          - integer
+          - 'null'
+          example: 86705
+        ID:
+          type: number
+          example: 509137
+        AccountSource:
+          type: string
+          example: ''
+        Engagement30Days:
+          type: number
+          example: 86705
+        Engagement60Days:
+          type: number
+          example: 86705
+        Engagement90Days:
+          type: number
+          example: 86705
+        Engagement20Posts:
+          type: number
+          example: 86705
+        EngagementLifetime:
+          type: number
+          example: 86705
+        SharesPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        SharesPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        SharesPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        SharesPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        SharesPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        LikesPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        LikesPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        LikesPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        LikesPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 14233.65
+        LikesPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 3407.2684
+        CommentsPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        CommentsPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        CommentsPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 527
+        CommentsPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 832.55
+        CommentsPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 90.8368
+        ViewsPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 527
+        ViewsPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 527
+        ViewsPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 86705
+        ViewsPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 747087.15
+        ViewsPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 497148.1421
+        DisLikesPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        DisLikesPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        DisLikesPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        DisLikesPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        DisLikesPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        CloseUpsPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        CloseUpsPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        CloseUpsPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        CloseUpsPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        CloseUpsPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsPerPost30Days:
+          type:
+          - string
+          - 'null'
+          example: ''
+        ImpressionsPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerPost30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerPost60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerPost90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerPost20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerPostLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachRate30days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachRate60days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachRate90days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachRate20posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachRateLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerVideo30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerVideo60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerVideo90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerVideo20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        SavesPerVideoLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerVideo30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerVideo60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerVideo90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerVideo20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ClicksPerVideoLifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsRate30days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsRate60days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsRate90days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsRate20posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ImpressionsRatelifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachPerPost30days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachPerPost60days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachPerPost90days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachPerPost20posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        ReachPerPostlifetime:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamPeakViews30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamPeakViews60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamPeakViews90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamPeakViews20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamAverageViews30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamAverageViews60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamAverageViews90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        AvgStreamAverageViews20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        IsHiddenLike30Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        IsHiddenLike60Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        IsHiddenLike90Days:
+          type:
+          - number
+          - 'null'
+          example: 547
+        IsHiddenLike20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+        MedianViews20Posts:
+          type:
+          - number
+          - 'null'
+          example: 547
+    WebPostModel:
+      type: object
+      title: WebPostModel
+      properties:
+        type:
+          type: string
+          description: Type of Search
+          example: video
+        href:
+          type: string
+          description: CreatorIQ API URL to get creator's web post
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/social/web/post/https%3A%2F%2Fwww.sheknows.com%2Fentertainment%2Fslideshow%2F2768293%2Fking-charles-coronation-important-details%2F
+        WebPost:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique post id
+              format: URI
+              example: https://www.sheknows.com/entertainment/slideshow/2768293/king-charles-coronation-important-details/
+            url:
+              type: string
+              description: Url to post on social network
+              format: URI
+              example: https://www.sheknows.com/entertainment/slideshow/2768293/king-charles-coronation-important-details/
+            DateSubmitted:
+              type: string
+              description: Post created date
+              format: date-time
+              example: '2023-01-03T20:04:29-08:00'
+            type:
+              type: string
+              description: Post type
+              example: blog
+            PostTitle:
+              type:
+              - string
+              - 'null'
+              description: Post title
+              example: Important Details From King Charles III’s Coronation – SheKnows
+            Post:
+              type:
+              - string
+              - 'null'
+              description: Post text
+              example: Even eagle-eyed viewers might have missed these hidden details.
+            Thumbnail:
+              type:
+              - string
+              - 'null'
+              description: Url to post thumbnail
+              format: URI
+              example: https://www.sheknows.com/wp-content/uploads/2023/05/kiing.jpg?w=1024
+            Domain:
+              type: string
+              description: Domain
+              example: https://www.sheknows.com
+            accountId:
+              type: string
+              description: Account id
+              example: https://www.sheknows.com
+            network:
+              type: string
+              description: Network name
+              example: web
+            processingInfo:
+              type: array
+              items:
+                type: string
+              example: []
+            isMetricsAvailable:
+              type: boolean
+              example: true
+            linkedInfo:
+              $ref: '#/components/schemas/linkedInfo'
+            pnkHash:
+              type: string
+              description: post natural key identifier
+              example: d93eab6d9ac3a37c12a242f347934e816285230d
+      required:
+      - type
+      - href
+      - WebPost
+    YoutubePostModel:
+      type: object
+      title: YoutubePostModel
+      properties:
+        type:
+          type: string
+          enum:
+          - YoutubeVideo
+          description: Type of Model
+          example: YoutubeVideo
+        href:
+          type: string
+          description: CreatorIQ API URL to get creator's youtube post
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/social/youtube/video/NCE6YchEqIE
+        YoutubeVideo:
+          type: object
+          properties:
+            videoId:
+              type: string
+              description: Unique post id
+              example: NCE6YchEqIE
+            type:
+              type: string
+              description: post type
+              example: video
+            accountId:
+              type: string
+              description: Unique account id
+              example: UCeNhHgTE36tTQkJsjPaPwnA
+            userName:
+              type: string
+              description: User username on social network
+              example: The Rock
+            videoUrl:
+              type: string
+              description: Url to video
+              format: URI
+              example: https://www.youtube.com/watch?v=NCE6YchEqIE
+            videoTitle:
+              type: string
+              description: post title
+              example: Some video title
+            description:
+              type: string
+              description: post title
+              example: Some video description
+            categoryId:
+              type: integer
+              example: 22
+            thumbnail:
+              type: string
+              description: Url to video thumbnail
+              format: URI
+              example: https://i.ytimg.com/vi/NCE6YchEqIE/maxresdefault.jpg
+            savedThumbnail:
+              type: string
+              description: Url to video thumbnail saved in CreatorIQ
+              format: URI
+              example: https://static-resources.creatoriq.com/social-pictures/youtube/video/mrzFanSELzQ.jpg
+            duration:
+              type: integer
+              description: Video duration on seconds
+              example: 279
+            dateUploaded:
+              type: string
+              description: Post updated date
+              format: date-time
+              example: '2021-04-15T11:00:04-08:00'
+            tags:
+              type: array
+              description: Tags array
+              items:
+                type: string
+                description: Tag
+                example: beauty tutorial
+              example:
+              - beauty tutorial
+            statistics:
+              type: object
+              properties:
+                views:
+                  type: integer
+                  description: Views count
+                  example: 666147
+                  x-deprecated: true
+                engagedViews_next:
+                  type:
+                  - integer
+                  - 'null'
+                  description: 'Engaged views count (4sec)<br>
+
+                    **Starting Jan 1, 2026, engaged views are only available for Shorts posted by authenticated accounts.**
+
+                    > **Warning**: The **views** field will be deprecated soon. Use this field instead of it.
+
+                    '
+                  example: 666147
+                likes:
+                  type: integer
+                  description: likes count
+                  example: 15292
+                dislikes:
+                  type: integer
+                  description: dislikes count
+                  example: 0
+                favorites:
+                  type: integer
+                  example: 0
+                comments:
+                  type: integer
+                  description: comments count
+                  example: 2443
+            reach:
+              type:
+              - integer
+              - 'null'
+              description: 'Number of users who have seen the post<br>
+
+                **You will see estimated reach for posts made on or after Jan 1, 2026.**
+
+                '
+              example: 1970000
+            engagement:
+              type: integer
+              description: Engagement count
+              example: 17735
+            impressions:
+              type:
+              - integer
+              - 'null'
+              description: Impressions count
+              example: 0
+              x-deprecated: true
+            views_next:
+              type:
+              - integer
+              - 'null'
+              description: 'Views count<br>
+
+                **You will see view counts for posts made on or after Jan 1, 2026.**
+
+                > **Warning**: The **impressions** field will be deprecated soon. Use this field instead of it.
+
+                '
+              example: 20
+            earnings:
+              type:
+              - number
+              - 'null'
+              description: Earnings count
+              example: 260704.06
+            processingInfo:
+              type: array
+              items:
+                type: object
+                description: Processing info
+                example: {}
+            network:
+              type: string
+              description: Network name
+              example: youtube
+            linkedInfo:
+              $ref: '#/components/schemas/linkedInfo'
+            pnkHash:
+              type: string
+              description: post natural key identifier
+              example: d93eab6d9ac3a37c12a242f347934e816285230d
+    YoutubeAccountInfoModel:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of Search
+          example: YoutubeAccount
+        href:
+          type: string
+          description: CreatorIQ API URL to get creator's Youtube account
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/account/youtube/account/UCeNhHgTE36tTQkJsjPaPwnA
+        YoutubeAccount:
+          $ref: '#/components/schemas/YoutubeAccountModel'
+      required:
+      - type
+      - href
+      - YoutubeAccount
+    InstagramAccountStoriesSuccessResponseModel:
+      type: object
+      description: Success
+      properties:
+        type:
+          type: string
+          description: Type of Search
+          example: SocialPostsCollection
+        href:
+          type: string
+          description: CreatorIQ API URL to get creator's instagram stories
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/account/instagram/account/stories
+        count:
+          type: integer
+          description: Number of records in current response
+          example: 200
+        total:
+          type: integer
+          description: Total number of found rows
+          example: 20
+        page:
+          type: integer
+          description: Current page
+          example: 1
+        SocialPostsCollection:
+          type: array
+          description: Instagram posts collection
+          items:
+            $ref: '#/components/schemas/InstagramPostModel'
+      required:
+      - type
+      - href
+      - SocialPostsCollection
+    TwitchPostModelCommon:
+      type: object
+      title: TwitchPostModelCommon
+      properties:
+        type:
+          type: string
+          enum:
+          - TwitchPost
+          - TwitchClip
+          - TwitchStream
+          description: Type of post
+          example: TwitchPost
+        href:
+          type: string
+          description: CreatorIQ API URL to get creator's tiktok post
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/social/twitch/video/401369777
+      required:
+      - type
+      - href
+    linkedInfo:
+      type: object
+      properties:
+        linked:
+          type: boolean
+          description: Flag if account is linked
+          example: false
+        linkedAt:
+          type:
+          - string
+          - 'null'
+          description: Date and time when account has been linked
+          format: date-time
+          example: '2023-03-15 17:23:37'
+        linkBroken:
+          type:
+          - string
+          - 'null'
+          description: Date and time when linked account has been marked as broken, NULL otherwise
+          format: date-time
+          example: '2023-03-15 17:23:37'
+        isPrivateAccount:
+          type: boolean
+          description: Flag if account is private (no ability to check it for now, always FALSE)
+          example: false
+      required:
+      - linked
+      - linkedAt
+      - linkBroken
+      - isPrivateAccount
+    SnapchatPostModel:
+      type: object
+      title: SnapchatPostModel
+      properties:
+        type:
+          type: string
+          description: Type of Model
+          example: SnapchatPost
+        href:
+          type: string
+          description: CreatorIQ API URL to get creator's snapchat post
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/social/snpacht/post/W7_EDlXWTBiXAEEniNoMPwAAYdW14aW12a21kAY3NQpyiAY3NQph
+        SnapchatPost:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Post unique identifier
+              example: W7_EDlXWTBiXAEEniNoMPwAAYdW14aW12a21kAY3NQpyiAY3NQph
+            userName:
+              type: string
+              description: Post owner username
+              example: norah.aljuaid
+            accountId:
+              type: string
+              description: Post owner public id
+              example: d1fe7041-7ebe-4015-9a50-d628edd6848c
+            savedThumbnail:
+              type: string
+              description: Post thumbnail url
+              example: https://static-resources.creatoriq.com/social-pictures/Snapchat/post/image/7172734804759186734.jpg
+            status:
+              type: string
+              description: Post status
+              example: LIVE
+            duration:
+              type: integer
+              description: Post duration
+              example: 454523
+            title:
+              type: string
+              description: Post text
+              example: Some post title
+            comments:
+              type: integer
+              description: Post comments count
+              example: 20
+            likes:
+              type: integer
+              description: Post likes count
+              example: 20
+            impressions:
+              type:
+              - integer
+              - 'null'
+              description: Impressions count
+              example: 20
+              x-deprecated: true
+            views_next:
+              type:
+              - integer
+              - 'null'
+              description: 'Views count
+
+                > **Warning**: The **impressions** field will be deprecated soon. Use this field instead of it.
+
+                '
+              example: 20
+            views:
+              type:
+              - integer
+              - 'null'
+              description: 'Post view count
+
+                > **Warning**: This field is deprecated and value always be null. The value of views now displays in **impressions** field.
+
+                '
+              example: null
+              x-deprecated: true
+            viewsUnique:
+              type: integer
+              description: Post viewers count
+              example: 10
+            swipeUps:
+              type: integer
+              description: Post swipe ups count
+              example: 30
+            swipeAways:
+              type: integer
+              description: Post swipe away count
+              example: 30
+            averageViewDuration:
+              type: integer
+              description: Post average view duration
+              example: 783234
+            totalViewTime:
+              type: integer
+              description: Post total view time
+              example: 78323412
+            shares:
+              type: integer
+              description: Post shares count
+              example: 30
+            subscribersGained:
+              type: integer
+              description: Post subscribers gained count
+              example: 30
+            saves:
+              type: integer
+              description: Post screenshots count
+              example: 30
+            createdAt:
+              type: string
+              description: Post created date
+              readOnly: true
+              example: '2023-01-03T20:04:29-08:00'
+            lastUpdated:
+              type: string
+              description: Last date when record was updated
+              example: '2023-01-03T20:04:29-08:00'
+            linkedInfo:
+              $ref: '#/components/schemas/linkedInfo'
+            url:
+              type: string
+              description: Post url
+              example: https://www.snapchat.com/spotlight/W7_EDlXWTBiXAEEniNoMPwAAYdW14aW12a21kAY3NQpyiAY3NQph
+            type:
+              type: string
+              description: Post type
+              example: spotlight
+            info:
+              type: string
+              description: Post info
+              example: Some info
+            network:
+              type: string
+              description: Network name
+              example: Snapchat
+            pnkHash:
+              type: string
+              description: post natural key identifier
+              example: d93eab6d9ac3a37c12a242f347934e816285230d
+      required:
+      - type
+      - href
+      - SnapchatPost
+    TiktokPostModel:
+      type: object
+      title: TiktokPostModel
+      properties:
+        type:
+          type: string
+          description: Type of Model
+          example: video
+        href:
+          type: string
+          description: CreatorIQ API URL to get creator's tiktok post
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/social/tiktok/post/7172734804759186734
+        video:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique post id
+              example: '7172734804759186734'
+            url:
+              type: string
+              description: Url to post on social network
+              format: URI
+              example: https://www.tiktok.com/@kimkardashian/video/7172734804759186734
+            type:
+              type: string
+              description: post type
+              example: video
+            title:
+              type: string
+              description: post title
+              example: Can’t believe some of besties had never tried In N Out 😱🤯
+            thumbnail:
+              type: string
+              description: Url to post thumbnail
+              format: URI
+              example: https://p16-sign.tiktokcdn-us.com/obj/tos-useast5-p-0068-tx/92c0fb9efab84700aadcf6c260610f9a?x-expires=1673290800&x-signature=6yYIinGHzHnNGCNz%2FaftPxuHcZg%3D
+            savedThumbnail:
+              type: string
+              description: Url to saved post thumbnail
+              format: URI
+              example: https://static-resources.creatoriq.com/social-pictures/Tiktok/post/image/7172734804759186734.jpg
+            info:
+              type: string
+              example: Can’t believe some of besties had never tried In N Out 😱🤯,
+            userName:
+              type: string
+              description: User username on social network
+              example: therock
+            accountId:
+              type: string
+              description: Unique account id
+              example: therock
+            comments:
+              type:
+              - integer
+              - 'null'
+              description: Post comments count
+              example: 1113
+            likes:
+              type:
+              - integer
+              - 'null'
+              description: Post likes count
+              example: 9134
+            impressions:
+              type:
+              - integer
+              - 'null'
+              description: Impressions count
+              example: 20
+              x-deprecated: true
+            views_next:
+              type:
+              - integer
+              - 'null'
+              description: 'Views count
+
+                > **Warning**: The **impressions** field will be deprecated soon. Use this field instead of it.
+
+                '
+              example: 20
+            views:
+              type:
+              - integer
+              - 'null'
+              description: 'Post views count. Corresponds to ```view_count``` from TikTok Api and is equal to the sum of paid and organic views.
+
+                > **Warning**: This field is deprecated and value always be null. The value of views now displays in **impressions** field.
+
+                '
+              example: null
+              x-deprecated: true
+            shares:
+              type:
+              - integer
+              - 'null'
+              description: Post shares count
+              example: 9134
+            createdAt:
+              type: string
+              description: Post created date
+              format: date-time
+              readOnly: true
+              example: '2023-01-03T20:04:29-08:00'
+            network:
+              type: string
+              description: Network name
+              example: tiktok
+            linkedInfo:
+              $ref: '#/components/schemas/linkedInfo'
+            pnkHash:
+              type: string
+              description: post natural key identifier
+              example: d93eab6d9ac3a37c12a242f347934e816285230d
+      required:
+      - type
+      - href
+      - video
+    FacebookAccountInfoModel:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of Search
+          example: FacebookAccount
+        href:
+          type: string
+          description: CreatorIQ API URL to get creator's Facebook account
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/social/facebook/account/114696805611
+        FacebookAccount:
+          $ref: '#/components/schemas/FacebookAccountModel'
+      required:
+      - type
+      - href
+      - FacebookAccount
+    TwitchPostModelStream:
+      type: object
+      title: TwitchPostModelStream
+      properties:
+        TwitchStream:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: Unique stream id (account Id)
+              example: 401369777
+            url:
+              type: string
+              description: The URL of the social network account where the broadcast is taking place
+              format: URI
+              example: https://twitch.tv/401369777
+            description:
+              type:
+              - string
+              - 'null'
+              description: Stream description
+              example: ''
+            type:
+              type: string
+              enum:
+              - stream
+              description: Post type
+              example: stream
+            tags:
+              type:
+              - array
+              - 'null'
+              description: Tags array
+              minItems: 1
+              items:
+                type: string
+                example: mytag
+              example: null
+            thumbnail:
+              type: string
+              description: Url to stream thumbnail
+              format: URI
+              example: https://static-cdn.jtvnw.net/cf_vods/d2nvs31859zcd8/testkratchek/401369777/9c88e0fb-2cd2-4351-836c-5e63178d4dd1/thumb/index-0000000000-640x360.jpg
+            userName:
+              type: string
+              description: Username on social network
+              example: testkratchek
+            accountId:
+              type: string
+              description: Username on social network
+              example: testkratchek
+            createdAt:
+              type: string
+              description: Account created date or current date
+              format: date-time
+              readOnly: true
+              example: '2023-01-03T20:04:29-08:00'
+            publishedAt:
+              type: string
+              description: Published date (inapplicable for stream)
+              example: ''
+            recordedAt:
+              type:
+              - string
+              - 'null'
+              description: Account created date
+              format: date-time
+              example: '2023-01-03T20:04:29-08:00'
+            language:
+              type: string
+              description: Stream language (inapplicable for stream)
+              example: en
+            viewable:
+              type: string
+              description: Is stream can be viewed (inapplicable for stream)
+              example: public
+            title:
+              type: string
+              description: Name on social network
+              example: Kratchek - test
+            reach:
+              type:
+              - integer
+              - 'null'
+              description: Reach (inapplicable for stream)
+              example: null
+            views:
+              type:
+              - integer
+              - 'null'
+              description: Views (inapplicable for stream)
+              example: null
+              x-deprecated: true
+            engagedViews_next:
+              type:
+              - integer
+              - 'null'
+              description: 'Views (inapplicable for stream)
+
+                > **Warning**: The **views** field will be deprecated soon. Use this field instead of it.
+
+                '
+              example: null
+            status:
+              type:
+              - string
+              - 'null'
+              description: Status (inapplicable for stream)
+              example: null
+            videoDuration:
+              type:
+              - integer
+              - 'null'
+              description: Video duration in seconds (inapplicable for stream)
+              example: null
+            engagement:
+              type:
+              - integer
+              - 'null'
+              description: Engagement (inapplicable for stream)
+              example: null
+            processingInfo:
+              type: array
+              description: Processing info (inapplicable for stream)
+              items:
+                type: string
+              example: []
+            gameId:
+              type:
+              - integer
+              - 'null'
+              description: GameId (inapplicable for stream)
+              example: null
+            Game:
+              type:
+              - string
+              - 'null'
+              description: Game title (inapplicable for stream)
+              example: null
+            network:
+              type: string
+              description: Network name
+              example: twitch
+            linkedInfo:
+              $ref: '#/components/schemas/linkedInfo'
+          required:
+          - id
+          - url
+          - description
+          - type
+          - tags
+          - thumbnail
+          - userName
+          - accountId
+          - createdAt
+          - publishedAt
+          - recordedAt
+          - language
+          - viewable
+          - title
+          - reach
+          - views
+          - engagedViews_next
+          - status
+          - videoDuration
+          - engagement
+          - processingInfo
+          - gameId
+          - Game
+          - network
+          - linkedInfo
+      required:
+      - TwitchStream
+    FacebookPostModel:
+      type: object
+      title: FacebookPostModel
+      properties:
+        type:
+          type: string
+          description: Type of Search
+          example: FacebookVideoPost
+        href:
+          type: string
+          description: CreatorIQ API URL to get creator's tiktok post
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/social/facebook/account/therock/video/719426299552865
+        FacebookVideoPost:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique post identifier
+              example: '719426299552865'
+            url:
+              type: string
+              description: Post url
+              format: URI
+              example: https://www.facebook.com/therock/posts/719426299552865
+            type:
+              type: string
+              enum:
+              - video
+              - image
+              description: Post type
+              example: video
+            thumbnail:
+              type: string
+              description: Url to post thumbnail
+              format: URI
+              example: https://scontent-den4-1.xx.fbcdn.net/v/t15.5256-10/319841925_190224836997405_5408255873570028787_n.jpg?stp=dst-jpg_s720x720&_nc_cat=106&ccb=1-7&_nc_sid=ad6a45&_nc_ohc=xZal2q5JejgAX-c_lUd&_nc_ht=scontent-den4-1.xx&edm=AJfPMC4EAAAA&oh=00_AfBwlBX8HLZRxgOa22z27WQQmIZSIjOUeOGWB70WsSBZrg&oe=63C029C4
+            savedThumbnail:
+              type: string
+              description: Url to saved post thumbnail
+              format: URI
+              example: https://static-resources.creatoriq.com/social-pictures/facebook/thumbnail/114696805612_719426299552865.jpg
+            userName:
+              type: string
+              description: User username on social network
+              example: therock
+            accountId:
+              type: integer
+              description: Unique account id
+              example: 114696805612
+            createdAt:
+              type: string
+              description: Post created date
+              format: date-time
+              readOnly: true
+              example: '2023-01-03T20:04:29-08:00'
+            modifiedAt:
+              type: string
+              description: Post updated date
+              format: date-time
+              example: '2023-01-03T20:04:29-08:00'
+            description:
+              type:
+              - string
+              - 'null'
+              description: Post description
+              example: Some post description
+            likes:
+              type:
+              - integer
+              - 'null'
+              description: Post likes count
+              example: 1480
+            comments:
+              type:
+              - integer
+              - 'null'
+              description: Post comments count
+              example: 300
+            reactions:
+              type:
+              - integer
+              - 'null'
+              description: Post reactions count
+              example: 1480
+            shares:
+              type:
+              - integer
+              - 'null'
+              description: Post shares count
+              example: 46
+            analytics:
+              type:
+              - integer
+              - 'null'
+              example: null
+            reach:
+              type:
+              - integer
+              - 'null'
+              description: Number of users who have seen the post
+              example: 35084462
+            engagement:
+              type: integer
+              description: Engagement count
+              example: 1826
+            impressions:
+              type:
+              - integer
+              - 'null'
+              description: Impressions count
+              example: 10525339
+            earnings:
+              type:
+              - number
+              - 'null'
+              description: Earnings count
+              example: 71329.744
+            mentions:
+              type:
+              - integer
+              - 'null'
+              description: Mentions count
+              example: null
+            processingInfo:
+              type: array
+              items:
+                type: object
+                description: Processing info
+                example: {}
+            network:
+              type: string
+              description: Network name
+              example: facebook
+            linkedInfo:
+              $ref: '#/components/schemas/linkedInfo'
+            pnkHash:
+              type: string
+              description: post natural key identifier
+              example: d93eab6d9ac3a37c12a242f347934e816285230d
+      required:
+      - type
+      - href
+      - FacebookVideoPost
+    InstagramAccountModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique instagram account id
+          example: 18428653
+        url:
+          type: string
+          description: Instagram account url
+          format: URI
+          example: https://instagram.com/therock
+        name:
+          type: string
+          description: Instagam account username
+          example: therock
+        profileImageUrl:
+          type: string
+          description: Url to profile image
+          format: URI
+          example: https:\\scontent-sea1-1.xx.fbcdn.net\v\t51.2885-15\314397231_636674618202803_1672434101401302981_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=86c713&_nc_ohc=iiq9WDog-BkAX-0fEDs&_nc_ht=scontent-sea1-1.xx&edm=AL-3X8kEAAAA&oh=00_AfAKZgC1wAOCZXrs0ocIY-MHoehwyqpA7IBbtpzDn6sgeA&oe=63BDBD13
+        posts:
+          type: integer
+          description: Count of post on account
+          example: 5767
+        followers:
+          type: integer
+          description: Count of followers on account
+          example: 5767339728669
+        likes:
+          type: integer
+          description: Count of likes
+          example: 0
+        bio:
+          type: string
+          description: Account bio information
+          example: The best instagram account
+        avgLikes:
+          type: integer
+          example: 0
+        avgLikes10:
+          type: integer
+          example: 0
+        comments:
+          type: integer
+          example: 0
+        avgComments:
+          type: integer
+          example: 0
+        avgComments10:
+          type: integer
+          example: 0
+        timeline:
+          type: object
+          properties:
+            type:
+              type: string
+              description: Type of Search
+              example: SocialPostsCollection
+            href:
+              type: string
+              description: CreatorIQ API URL to get creator's instagram stories
+              format: URI
+              example: ''
+          x-deprecated: true
+        insights:
+          type:
+          - object
+          - 'null'
+          properties:
+            impressions:
+              type: integer
+              description: Impressions count
+              example: 1
+            reach:
+              type: integer
+              description: Number of users who have seen the post
+              example: 1
+            type:
+              type: string
+              description: Impression type
+              example: ''
+            exits:
+              type: string
+              description: Impressions Exits
+              example: ''
+            replies:
+              type: integer
+              description: Impressions Replies
+              example: 1
+            tapsForward:
+              type: integer
+              description: Taps Forward
+              example: 1
+            tapsBack:
+              type: integer
+              description: Taps Back
+              example: 1
+          required:
+          - impressions
+          - reach
+          default: null
+        videoStatistics:
+          type:
+          - string
+          - 'null'
+          example: ''
+        verified:
+          type:
+          - string
+          - 'null'
+          example: ''
+      required:
+      - id
+      - url
+    PinterestPostModel:
+      type: object
+      title: PinterestPostModel
+      properties:
+        type:
+          type: string
+          description: Type of Model
+          example: LinkedinPost
+        href:
+          type: string
+          description: CreatorIQ API URL to get creator's pinterest post
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/social/pinterest/post/942519028235991787
+        PinterestPost:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique post identifier
+              example: '942519028235991787'
+            url:
+              type: string
+              description: Post url
+              format: URI
+              example: https://www.pinterest.com/pin/942519028235991787/
+            type:
+              type: string
+              enum:
+              - image
+              - video
+              description: Post type
+              example: image
+            dateSubmitted:
+              type: string
+              description: Post submit date
+              format: datetime
+              example: '2021-08-14T11:55:43+00:00'
+            userName:
+              type: string
+              description: Account username on social network
+              example: alex
+            name:
+              type: string
+              description: Account title
+              example: Toggle
+            post:
+              type: string
+              description: Post text
+              example: Amber Enjoying Her Doggles
+            thumbnail:
+              type: string
+              description: Url to post thumbnail
+              format: URI
+              example: https://i.pinimg.com/600x/95/aa/77/95aa77e792c332e5347bfc1c736bae22.jpg
+            likes:
+              type:
+              - integer
+              - 'null'
+              description: Post likes count
+              example: 4626
+            shares:
+              type:
+              - integer
+              - 'null'
+              description: Post shares count
+              example: 9134
+            comments:
+              type:
+              - integer
+              - 'null'
+              description: Post comments count
+              example: 300
+            reach:
+              type:
+              - integer
+              - 'null'
+              description: Number of users who have seen the post
+              example: 35084462
+            engagement:
+              type: integer
+              description: Engagement count
+              example: 1826
+            impressions:
+              type:
+              - integer
+              - 'null'
+              description: Impressions count
+              example: 10525339
+            earnings:
+              type:
+              - number
+              - 'null'
+              description: Earnings count
+              example: 71329.744
+            clicks:
+              type:
+              - integer
+              - 'null'
+              description: Clicks count
+              example: 105
+            closeups:
+              type:
+              - integer
+              - 'null'
+              description: Closeups count
+              example: 8
+            accountId:
+              type: string
+              description: Unique account id
+              example: '942519165674086701'
+            saves:
+              type:
+              - integer
+              - 'null'
+              description: Saves count
+              example: 2
+            views:
+              type:
+              - integer
+              - 'null'
+              description: Views count
+              example: 96
+            averageViewDuration:
+              type:
+              - number
+              - 'null'
+              description: Average duration of viewing post
+              example: 23.7203
+            linkOnClick:
+              type: string
+              description: Link where user redirected to by click on post (an empty string when no link in pin)
+              format: URI
+              example: https://google.com/maps
+            network:
+              type: string
+              description: Network name
+              example: pinterest
+            subType:
+              type: string
+              description: Pin's subtype
+              example: idea_pin
+            linkedInfo:
+              type:
+              - object
+              - 'null'
+              description: Linked info
+              default: null
+              example: null
+            pnkHash:
+              type: string
+              description: post natural key identifier
+              example: d93eab6d9ac3a37c12a242f347934e816285230d
+      required:
+      - type
+      - href
+      - PinterestPost
+    Instagram_post_image_insights:
+      type: object
+      title: Instagram post image insights
+      properties:
+        impressions:
+          type:
+          - integer
+          - 'null'
+          description: 'Impressions count
+
+            > **Warning**: This field is deprecated and value always be null.
+
+            '
+          example: null
+          x-deprecated: true
+        reach:
+          type:
+          - integer
+          - 'null'
+          description: Reach count
+          example: 2000
+        engagements:
+          type:
+          - integer
+          - 'null'
+          description: Engagements count
+          example: 3000
+        saved:
+          type:
+          - integer
+          - 'null'
+          description: Saved count
+          example: 4000
+        type:
+          type: string
+          enum:
+          - image
+      required:
+      - impressions
+      - reach
+      - engagements
+      - saved
+      - type
+    Instagram_post_carousel_insights:
+      type: object
+      title: Instagram post carousel insights
+      properties:
+        impressions:
+          type:
+          - integer
+          - 'null'
+          description: 'Impressions count
+
+            > **Warning**: This field is deprecated and value always be null.
+
+            '
+          example: null
+          x-deprecated: true
+        reach:
+          type:
+          - integer
+          - 'null'
+          description: Reach count
+          example: 2000
+        engagements:
+          type:
+          - integer
+          - 'null'
+          description: Engagements count
+          example: 3000
+        saved:
+          type:
+          - integer
+          - 'null'
+          description: Saved count
+          example: 4000
+        views:
+          type:
+          - integer
+          - 'null'
+          description: 'Views count
+
+            > **Warning**: This field is deprecated and value always be null.
+
+            '
+          example: null
+          x-deprecated: true
+        profileVisits:
+          type:
+          - integer
+          - 'null'
+          description: profile visits count
+          example: 350
+        shares:
+          type:
+          - integer
+          - 'null'
+          description: shares count
+          example: 320
+        type:
+          type: string
+          enum:
+          - carousel
+      required:
+      - impressions
+      - reach
+      - engagements
+      - saved
+      - views
+      - type
+    TwitchPostModel:
+      type: object
+      title: TwitchPostModel
+      oneOf:
+      - allOf:
+        - $ref: '#/components/schemas/TwitchPostModelCommon'
+        - $ref: '#/components/schemas/TwitchPostModelPost'
+      - allOf:
+        - $ref: '#/components/schemas/TwitchPostModelCommon'
+        - $ref: '#/components/schemas/TwitchPostModelClip'
+      - allOf:
+        - $ref: '#/components/schemas/TwitchPostModelCommon'
+        - $ref: '#/components/schemas/TwitchPostModelStream'
+    Instagram_post_story_insights:
+      type: object
+      title: Instagram post story insights
+      properties:
+        impressions:
+          type:
+          - integer
+          - 'null'
+          description: 'Impressions count
+
+            > **Warning**: This field is deprecated and value always be null.
+
+            '
+          example: null
+          x-deprecated: true
+        reach:
+          type:
+          - integer
+          - 'null'
+          description: Reach count
+          example: 2000
+        exits:
+          type:
+          - integer
+          - 'null'
+          description: Exists count
+          example: 3000
+        replies:
+          type:
+          - integer
+          - 'null'
+          description: Replies count
+          example: 4000
+        tapsForward:
+          type:
+          - integer
+          - 'null'
+          description: TapsForward count
+          example: 5000
+        tapsBack:
+          type:
+          - integer
+          - 'null'
+          description: TapsBack count
+          example: 6000
+        type:
+          type: string
+          enum:
+          - story
+      required:
+      - impressions
+      - reach
+      - exits
+      - replies
+      - tapsForward
+      - tapsBack
+      - type
+    TiktokAccountInfoModel:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of Search
+          example: TiktokAccount
+        href:
+          type: string
+          description: CreatorIQ API URL to get creator's Tiktok account
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/social/tiktok/account/kimkardashian
+        TiktokAccount:
+          $ref: '#/components/schemas/TiktokAccountModel'
+      required:
+      - type
+      - href
+      - TiktokAccount
+    Instagram_post_reel_insights:
+      type: object
+      title: Instagram post reel insights
+      properties:
+        impressions:
+          type:
+          - integer
+          - 'null'
+          description: 'Impressions count
+
+            > **Warning**: This field is deprecated and value always be null.
+
+            '
+          example: null
+          x-deprecated: true
+        reach:
+          type:
+          - integer
+          - 'null'
+          description: Reach count
+          example: 2000
+        type:
+          type: string
+          enum:
+          - reel
+      required:
+      - impressions
+      - reach
+      - type
+    TwitchPostModelClip:
+      type: object
+      title: TwitchPostModelClip
+      properties:
+        TwitchClip:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique clip id
+              example: '401369777'
+            url:
+              type: string
+              description: Url to post on social network
+              format: URI
+              example: https://clips.twitch.tv/401369777
+            description:
+              type:
+              - string
+              - 'null'
+              description: Post description
+              example: Some clip description
+            type:
+              type: string
+              enum:
+              - clip
+              description: Post type
+              example: clip
+            tags:
+              type:
+              - array
+              - 'null'
+              description: Tags array
+              minItems: 1
+              items:
+                type: string
+                example: mytag
+              example:
+              - mytag
+            thumbnail:
+              type: string
+              description: Url to post thumbnail
+              format: URI
+              example: https://static-cdn.jtvnw.net/cf_vods/d2nvs31859zcd8/testkratchek/401369777/9c88e0fb-2cd2-4351-836c-5e63178d4dd1/thumb/index-0000000000-640x360.jpg
+            userName:
+              type: string
+              description: Username on social network
+              example: testkratchek
+            accountId:
+              type: string
+              description: Unique account id
+              example: '42307422'
+            createdAt:
+              type: string
+              description: Clip created date
+              format: date-time
+              readOnly: true
+              example: '2023-01-03T20:04:29-08:00'
+            publishedAt:
+              type: string
+              description: Clip published date
+              format: date-time
+              example: '2023-01-03T20:04:29-08:00'
+            recordedAt:
+              type: string
+              description: Clip recording date
+              format: date-time
+              example: '2023-01-03T20:04:29-08:00'
+            language:
+              type: string
+              description: Clip language
+              example: en
+            viewable:
+              type: string
+              description: Is clip can be viewed
+              example: public
+            title:
+              type: string
+              description: Clip title
+              example: My clip
+            reach:
+              type:
+              - integer
+              - 'null'
+              description: Clip's reach
+              example: 2326
+            views:
+              type:
+              - integer
+              - 'null'
+              description: Clip's views amount
+              example: 23723
+              x-deprecated: true
+            engagedViews_next:
+              type:
+              - integer
+              - 'null'
+              description: 'Video''s views amount
+
+                > **Warning**: The **views** field will be deprecated soon. Use this field instead of it.
+
+                '
+              example: 23723
+            status:
+              type:
+              - string
+              - 'null'
+              description: Clip's status
+              example: null
+            videoDuration:
+              type: integer
+              description: Clip's duration in seconds
+              example: 262
+            engagement:
+              type:
+              - integer
+              - 'null'
+              description: Clip's engagement
+              example: 436
+            processingInfo:
+              type: array
+              items:
+                type: string
+              example: []
+            gameId:
+              type:
+              - integer
+              - 'null'
+              description: Clip's GameId
+              example: 75438
+            Game:
+              type:
+              - string
+              - 'null'
+              description: Clip's Game title
+              example: NFS III
+            network:
+              type: string
+              description: Network name
+              example: twitch
+            linkedInfo:
+              $ref: '#/components/schemas/linkedInfo'
+            pnkHash:
+              type: string
+              description: post natural key identifier
+              example: d93eab6d9ac3a37c12a242f347934e816285230d
+          required:
+          - id
+          - url
+          - description
+          - type
+          - tags
+          - thumbnail
+          - userName
+          - accountId
+          - createdAt
+          - publishedAt
+          - recordedAt
+          - language
+          - viewable
+          - title
+          - reach
+          - views
+          - engagedViews_next
+          - status
+          - videoDuration
+          - engagement
+          - processingInfo
+          - gameId
+          - Game
+          - network
+          - linkedInfo
+      required:
+      - TwitchClip
+    TwitterPostModel:
+      type: object
+      title: TwitterPostModel
+      properties:
+        type:
+          type: string
+          description: Type of Model
+          example: video
+        href:
+          type: string
+          description: CreatorIQ API URL to get creator's twitter post
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/social/twitter/status/1143182027010781184
+        TwitterStatus:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique post id
+              example: '1143182027010781184'
+            url:
+              type: string
+              description: Url to post on social network
+              format: URI
+              example: https://twitter.com/sonyaciqtw2/status/1143182027010781184
+            userName:
+              type: string
+              description: Username on social network
+              example: therock
+            accountId:
+              type: string
+              description: Account id
+              example: '1097507841433354246'
+            thumbnail:
+              type:
+              - string
+              - 'null'
+              description: Url to post thumbnail
+              format: URI
+              example: https://pbs.twimg.com/media/ErokNmxVcAEzj1W?format=jpg&name=small
+            type:
+              type: string
+              description: Post type
+              example: text
+            authorScreenName:
+              type: string
+              description: Username on social network
+              example: therock
+            createdAt:
+              type: string
+              description: Post created date
+              format: date-time
+              readOnly: true
+              example: '2023-01-03T20:04:29-08:00'
+            text:
+              type: string
+              description: Post text
+              example: Can’t believe some of besties had never tried In N Out 😱🤯
+            retweets:
+              type:
+              - integer
+              - 'null'
+              description: Post retweets count
+              example: 0
+            favorites:
+              type:
+              - integer
+              - 'null'
+              description: Post favorites count
+              example: 9134
+            reach:
+              type:
+              - integer
+              - 'null'
+              description: Post reach count
+              example: 9134
+            engagement:
+              type:
+              - integer
+              - 'null'
+              description: Post engagement
+              example: 9134
+            impressions:
+              type:
+              - integer
+              - 'null'
+              description: Post engagement
+              example: 9134
+            earnings:
+              type:
+              - number
+              - 'null'
+              description: Post engagement
+              example: 268.8575
+            processingInfo:
+              type: array
+              items:
+                type: string
+              example: []
+            network:
+              type: string
+              description: Network name
+              example: tiktok
+            linkedInfo:
+              $ref: '#/components/schemas/linkedInfo'
+            pnkHash:
+              type: string
+              description: post natural key identifier
+              example: d93eab6d9ac3a37c12a242f347934e816285230d
+          required:
+          - id
+          - url
+          - userName
+          - accountId
+      required:
+      - type
+      - href
+      - TwitterStatus
+    InstagramAccountInfoModel:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of Search
+          example: InstagramAccount
+        href:
+          type: string
+          description: CreatorIQ API URL to get creator's instagram account
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/account/instagram/account/therock
+        InstagramAccount:
+          $ref: '#/components/schemas/InstagramAccountModel'
+      required:
+      - type
+      - href
+      - InstagramAccount
+    FacebookAccountModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique Facebook account id
+          example: 114696805612
+        url:
+          type: string
+          description: Url to Facebook account
+          format: URI
+          example: http://facebook.com/therock
+        username:
+          type: string
+          description: Facebook user username
+          example: therock
+        fullName:
+          type: string
+          description: Facebook user full name
+          example: The Rock
+        profileImageUrl:
+          type: string
+          description: Url to Facebook profile image
+          format: URI
+          example: https://scontent-sjc3-1.xx.fbcdn.net/v/t39.30808-1/312527422_677281187100710_7227122224101522512_n.jpg?stp=cp1_dst-jpg_p720x720&_nc_cat=1&ccb=1-7&_nc_sid=0c64ff&_nc_ohc=EuWO46Uu2bUAX_OuQcy&_nc_ht=scontent-sjc3-1.xx&edm=ABzdmSoEAAAA&oh=00_AfCgguwMS_1rzjCyN86-sqMXu3bkfAM9WWmIjfbiM5eduA&oe=63BDBFAD
+        location:
+          type: string
+          example: United States
+        gender:
+          type: string
+          example: male
+        likes:
+          type: integer
+          example: 35076897
+        followers:
+          type: integer
+          example: 35076897
+        talkingAbout:
+          type: integer
+          example: 137136
+        description:
+          type: string
+          example: Some description here
+        averages:
+          type:
+          - number
+          - 'null'
+          example: 1
+        videoAnalytics:
+          type:
+          - string
+          - 'null'
+          example: ''
+        timeline:
+          type: object
+          properties:
+            type:
+              type: string
+              description: Type of Search
+              example: SocialPostsCollection
+            href:
+              type: string
+              description: CreatorIQ API URL to get creator's instagram stories
+              format: URI
+              example: ''
+          x-deprecated: true
+        verified:
+          type:
+          - string
+          - 'null'
+          example: ''
+      required:
+      - id
+      - url
   securitySchemes:
     apiKey:
       type: apiKey

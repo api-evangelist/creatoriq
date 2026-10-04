@@ -950,75 +950,6 @@ paths:
       x-internal: false
 components:
   schemas:
-    BrandSafetyPostDetail:
-      description: Full details for a single brand safety post.
-      allOf:
-      - $ref: '#/components/schemas/BrandSafetyPost'
-      - type: object
-        properties:
-          last_issue_detected_at:
-            type: string
-            description: Timestamp of the most recently detected brand safety issue for the post.
-            format: date-time
-            readOnly: true
-            examples:
-            - '2026-05-19T07:12:35Z'
-          highest_severity:
-            type: string
-            enum:
-            - high
-            - medium
-            - low
-            description: Highest issue severity detected for the post.
-            examples:
-            - high
-          highest_severity_category:
-            type: string
-            description: Category associated with the highest-severity issue.
-            examples:
-            - profanity
-          issue_count:
-            type: integer
-            description: Total number of issues detected for the post.
-            examples:
-            - 2
-        required:
-        - highest_severity
-        - issue_count
-    BrandSafetyPostsCollection:
-      type: object
-      properties:
-        object:
-          const: collection
-          description: Object type.
-          examples:
-          - collection
-        url:
-          type: string
-          description: Relative URL of the request that produced the collection.
-          examples:
-          - /brand-safety/v1/posts?creator_id=20985049
-        data:
-          type: array
-          description: Posts in this page of the collection. Always present, never null.
-          items:
-            $ref: '#/components/schemas/BrandSafetyPost'
-        has_more:
-          type: boolean
-          description: Whether more posts are available beyond this page.
-          examples:
-          - true
-        next_cursor:
-          type:
-          - string
-          - 'null'
-          description: Cursor to pass as the cursor query parameter to fetch the next page.
-          examples:
-          - eyJuYW1lIjoiSm9yZGFuIExlZSIsImlkIjoiMTAwNSJ9
-      required:
-      - object
-      - data
-      - has_more
     BrandSafetyPost:
       type: object
       properties:
@@ -1077,6 +1008,25 @@ components:
       - creator_id
       - platform
       - issues
+    BrandSafetyLinks:
+      type: object
+      description: URLs associated with the post.
+      properties:
+        post_url:
+          type: string
+          description: Public post URL.
+          examples:
+          - https://youtube.com/watch?v=abc123
+        thumbnail_url:
+          type: string
+          description: Thumbnail URL, if available.
+          examples:
+          - https://static-resources.creatoriq.com/instagram-stories/thumbs/3920090489626404416.jpg
+        api_details_link:
+          type: string
+          description: API URL for retrieving full post details.
+          examples:
+          - https://apis.creatoriq.com/brand-safety/v1/posts/post_12345
     BrandSafetyIssue:
       type: object
       properties:
@@ -1130,50 +1080,100 @@ components:
       - id
       - category
       - severity
-    BrandSafetyLinks:
+    BrandSafetyPostsCollection:
       type: object
-      description: URLs associated with the post.
       properties:
-        post_url:
-          type: string
-          description: Public post URL.
+        object:
+          const: collection
+          description: Object type.
           examples:
-          - https://youtube.com/watch?v=abc123
-        thumbnail_url:
+          - collection
+        url:
           type: string
-          description: Thumbnail URL, if available.
+          description: Relative URL of the request that produced the collection.
           examples:
-          - https://static-resources.creatoriq.com/instagram-stories/thumbs/3920090489626404416.jpg
-        api_details_link:
-          type: string
-          description: API URL for retrieving full post details.
+          - /brand-safety/v1/posts?creator_id=20985049
+        data:
+          type: array
+          description: Posts in this page of the collection. Always present, never null.
+          items:
+            $ref: '#/components/schemas/BrandSafetyPost'
+        has_more:
+          type: boolean
+          description: Whether more posts are available beyond this page.
           examples:
-          - https://apis.creatoriq.com/brand-safety/v1/posts/post_12345
+          - true
+        next_cursor:
+          type:
+          - string
+          - 'null'
+          description: Cursor to pass as the cursor query parameter to fetch the next page.
+          examples:
+          - eyJuYW1lIjoiSm9yZGFuIExlZSIsImlkIjoiMTAwNSJ9
+      required:
+      - object
+      - data
+      - has_more
+    BrandSafetyPostDetail:
+      description: Full details for a single brand safety post.
+      allOf:
+      - $ref: '#/components/schemas/BrandSafetyPost'
+      - type: object
+        properties:
+          last_issue_detected_at:
+            type: string
+            description: Timestamp of the most recently detected brand safety issue for the post.
+            format: date-time
+            readOnly: true
+            examples:
+            - '2026-05-19T07:12:35Z'
+          highest_severity:
+            type: string
+            enum:
+            - high
+            - medium
+            - low
+            description: Highest issue severity detected for the post.
+            examples:
+            - high
+          highest_severity_category:
+            type: string
+            description: Category associated with the highest-severity issue.
+            examples:
+            - profanity
+          issue_count:
+            type: integer
+            description: Total number of issues detected for the post.
+            examples:
+            - 2
+        required:
+        - highest_severity
+        - issue_count
   responses:
     '401':
       description: The request could not be completed due to invalid API credentials.
-    '400':
-      description: Bad Request
     '500':
       description: Internal server error
-    BrandSafetyPostDetail:
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BrandSafetyPostDetail'
     BrandSafetyPostsCollection:
       description: OK
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/BrandSafetyPostsCollection'
-    Creator404:
-      description: No creator was found matching the supplied creator_id.
+    BrandSafetyPostDetail:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BrandSafetyPostDetail'
     '404':
       description: The requested post was not found.
+    '400':
+      description: Bad Request
     '403':
       description: Access was denied due to insufficient access permissions.
+    Creator404:
+      description: No creator was found matching the supplied creator_id.
     UnauthorizedErrorResponse:
       description: API key is missing or invalid
       content:

@@ -656,18 +656,56 @@ paths:
       description: Live
 components:
   responses:
+    PublishOneSheet:
+      description: Publish one-sheet response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublishOneSheetResponse'
+    OneSheetSingle:
+      description: OneSheet
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneSheetModel'
+    OneSheetCreated:
+      description: OneSheet
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneSheetCreatedModel'
+    '400':
+      description: Bad request, invalid OneSheetId format or something goes wrong
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     OneSheetCreators:
       description: Array of Creators of Onesheet
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/OneSheetCreatorsModel'
+    OneSheetUpdated:
+      description: OneSheet updated
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneSheetUpdatedModel'
     '404':
       description: OneSheet with supplied ID not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    OneSheetsCollection:
+      description: One-sheets collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OneSheetsCollectionModel'
+    '403':
+      description: Access was denied due to the API has insufficient access permissions
     OneSheetCreator:
       description: Creator of Onesheet
       content:
@@ -676,118 +714,19 @@ components:
             $ref: '#/components/schemas/OneSheetCreatorModel'
     '401':
       description: Incorrect x-api-key
-    '400':
-      description: Bad request, invalid OneSheetId format or something goes wrong
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    OneSheetSingle:
-      description: OneSheet
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OneSheetModel'
-    '403':
-      description: Access was denied due to the API has insufficient access permissions
-    OneSheetCreated:
-      description: OneSheet
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OneSheetCreatedModel'
-    OneSheetUpdated:
-      description: OneSheet updated
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OneSheetUpdatedModel'
-    OneSheetsCollection:
-      description: One-sheets collection
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OneSheetsCollectionModel'
-    PublishOneSheet:
-      description: Publish one-sheet response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PublishOneSheetResponse'
-    asyncResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/generalSchema'
     oneSheetBuilder:
       description: Final result stored by **Result -> Headers -> Location** field. Available when status is **DONE**
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/oneSheetBuilder'
+    asyncResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/generalSchema'
   schemas:
-    AddPublisherCommentToOneSheetBody:
-      type: object
-      properties:
-        Email:
-          type: string
-          description: Publisher comment email
-          format: email
-          example: test@gmail.com
-        CreatedBy:
-          type: string
-          description: Publisher comment creator
-          example: Test Name
-        Comment:
-          type:
-          - string
-          - 'null'
-          description: Publisher comment
-          example: Test comment
-        SocialEdgeId:
-          type:
-          - string
-          - 'null'
-          description: Publisher comment SocialEdgeId
-          example: Test Comment SocialEdgeId
-      required:
-      - Email
-      - CreatedBy
-    ErrorResponse:
-      type: object
-      description: Exception
-      properties:
-        type:
-          type: string
-          description: Exception type
-          example: CoreException
-        CoreException:
-          type: object
-          description: Exception information
-          properties:
-            code:
-              type: integer
-              description: Exception status code
-              format: int32
-              example: 404
-            message:
-              type: string
-              description: Exception message
-              example: Supplied ID was not found
-      required:
-      - type
-    PublishOneSheetResponse:
-      type: object
-      description: Publish one-sheet response
-      properties:
-        url:
-          type: string
-          description: Publish one-sheet response URL
-          format: URI
-          example: http://onesheets.creatoriq.com/One_Sheet_15_02_63ecf14d1d3a7
-      required:
-      - url
     OneSheetCreatedModel:
       type: object
       properties:
@@ -869,143 +808,94 @@ components:
       - type
       - href
       - OneSheet
-    UpdateOneSheetCreatorBody:
+    AddPublisherToOneSheetBody:
       type: object
-      description: Update one-sheet creator request body
       properties:
-        Description:
-          type:
-          - string
-          - 'null'
-          description: Description
-          example: Long description text
-        SalesSheetImageURL:
-          type:
-          - string
-          - 'null'
-          description: Sales one-sheet image URL
-          format: URI
-          maxLength: 1024
-          example: https://socialedge-sales-sheet-publishers.s3.amazonaws.com/485110.jpg
-        SalesSheetLogoURL:
-          type:
-          - string
-          - 'null'
-          description: Sales one-sheet logo URL
-          format: URI
-          maxLength: 1024
-          example: https://social-pictures-storage.s3.amazonaws.com/talent_mayawashington_headshot1.jpg_1506633937.jpg
-        ShortDescription:
-          type:
-          - string
-          - 'null'
-          description: Short description
-          example: Short Description Text Example
-        InternalNotes:
-          type:
-          - string
-          - 'null'
-          description: Internal notes
-          example: Internal notes text example
-        Sections:
-          type:
-          - string
-          - 'null'
-          description: Sections
-          format: json
-          maxLength: 2048
-          example: '{"Musical.ly":1,"SalesSheetImageURL":1,"StatusInCampaign":1,"SocialMetrics":0,"SampleVideosPostBlog":1}'
-        SortOrder:
-          type:
-          - number
-          - 'null'
-          description: Sort order
-          format: float
-          example: 1.1
-        UpdatedBy:
-          type:
-          - string
-          - 'null'
-          description: Updated by
-          maxLength: 128
-          example: Name Surname
+        PublisherIds:
+          type: array
+          items:
+            type: integer
+            example: 13201168
+      required:
+      - PublisherIds
+    AddPublisherCommentToOneSheetBody:
+      type: object
+      properties:
+        Email:
+          type: string
+          description: Publisher comment email
+          format: email
+          example: test@gmail.com
         CreatedBy:
+          type: string
+          description: Publisher comment creator
+          example: Test Name
+        Comment:
           type:
           - string
           - 'null'
-          description: Created by
-          maxLength: 128
-          example: Name Surname
-        Approved:
-          type:
-          - boolean
-          - 'null'
-          description: Approved
-          example: true
-        Category:
+          description: Publisher comment
+          example: Test comment
+        SocialEdgeId:
           type:
           - string
           - 'null'
-          description: Category
-          maxLength: 1024
-          example: '"Entertainment","Fitness","Lifestyle"'
-        Tags:
-          type:
-          - string
-          - 'null'
-          description: Tags
-          example: '"vlogger","beauty","goddard","F|challenge","F|parody","F|rachel","F|Fullscreen Affiliate"'
-        AudienceSocialNetwork:
-          type:
-          - string
-          - 'null'
-          description: Audience social network
-          maxLength: 50
-          example: instagram
-        AudienceSocialNetworkId:
-          type:
-          - string
-          - 'null'
-          description: Audience social network id
-          maxLength: 128
-          example: '2279929'
-        AudienceType:
-          type:
-          - string
-          - 'null'
-          description: Audience type
-          maxLength: 7
-          example: Blended
-        TopMetrics:
-          type:
-          - string
-          - 'null'
-          description: Top metrics
-          maxLength: 1024
-          example: '[{"network":"Youtube","field":"Followers","label":"subscribers"},{"network":"Facebook","field":"Followers","label":"likes"},{"network":"Twitter","field":"Followers","label":"followers"},{"network":"Instagram","field":"Followers","label":"followers"},{"network":"Google","field":"Followers","label":"followers"},{"network":"Tumblr","field":"Followers","label":"followers"},{"network":"Pinterest","field":"Followers","label":"followers"},{"network":"Snapchat","field":"AvgViewsPerPost","label":"views per snap"},{"network":"Web","field":"Followers","label":"uniques"}]'
-        IsFeatured:
-          type:
-          - boolean
-          - 'null'
-          description: Is featured flag
-          default: false
-          example: true
-        DescriptionVisibleSymbolsNumber:
+          description: Publisher comment SocialEdgeId
+          example: Test Comment SocialEdgeId
+      required:
+      - Email
+      - CreatedBy
+    OneSheetUpdatedModel:
+      type: object
+      properties:
+        Id:
+          type: integer
+          example: 64826
+        templateId:
           type:
           - integer
           - 'null'
-          description: Description visible symbols number
-          example: 123
-        isPostMigrationProcess:
-          type:
-          - boolean
-          - 'null'
-          description: Is post migration process flag
-          default: false
-          example: true
+          example: 2351
       required:
-      - Sections
-      minProperties: 1
+      - Id
+      - templateId
+    OneSheetsCollectionModel:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - OneSheetsCollection
+          description: Type of Search
+          example: OneSheetsCollection
+        href:
+          type: string
+          description: CreatorIQ API URL to get a collection of onesheets
+          format: URI
+          example: https://apis.creatoriq.com/crm/v1/api/onesheets
+        count:
+          type: integer
+          description: Number of records in current response
+          example: 20
+        total:
+          type: integer
+          description: Total number of found rows
+          example: 1704
+        page:
+          type: integer
+          description: Current page
+          example: 2
+        OneSheetsCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/OneSheetInCollection'
+      required:
+      - type
+      - href
+      - count
+      - total
+      - page
+      - OneSheetsCollection
     OneSheetCreatorsModel:
       type: array
       items:
@@ -1512,83 +1402,17 @@ components:
       - type
       - href
       - OneSheet
-    ApprovePublisherToOneSheetBody:
+    PublishOneSheetResponse:
       type: object
+      description: Publish one-sheet response
       properties:
-        Approved:
-          type: boolean
-          example: true
-        ApprovedBy:
-          type: object
-          properties:
-            Email:
-              type: string
-              example: test1@example.com
-            Name:
-              type: string
-              example: First Last
-          required:
-          - Email
-          - Name
-      required:
-      - Approved
-      - ApprovedBy
-    CreateOneSheetBody:
-      type: object
-      properties:
-        Name:
+        url:
           type: string
-          description: Name of OneSheet
-          example: Test OneSheet
-        TotalReachCalculation:
-          type: string
-          enum:
-          - Selected
-          - Full
-        templateId:
-          type:
-          - integer
-          - 'null'
-          example: 2351
-      required:
-      - Name
-    OneSheetsCollectionModel:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - OneSheetsCollection
-          description: Type of Search
-          example: OneSheetsCollection
-        href:
-          type: string
-          description: CreatorIQ API URL to get a collection of onesheets
+          description: Publish one-sheet response URL
           format: URI
-          example: https://apis.creatoriq.com/crm/v1/api/onesheets
-        count:
-          type: integer
-          description: Number of records in current response
-          example: 20
-        total:
-          type: integer
-          description: Total number of found rows
-          example: 1704
-        page:
-          type: integer
-          description: Current page
-          example: 2
-        OneSheetsCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/OneSheetInCollection'
+          example: http://onesheets.creatoriq.com/One_Sheet_15_02_63ecf14d1d3a7
       required:
-      - type
-      - href
-      - count
-      - total
-      - page
-      - OneSheetsCollection
+      - url
     OneSheetModel:
       type: object
       properties:
@@ -2087,20 +1911,27 @@ components:
       - type
       - href
       - OneSheet
-    OneSheetUpdatedModel:
+    ApprovePublisherToOneSheetBody:
       type: object
       properties:
-        Id:
-          type: integer
-          example: 64826
-        templateId:
-          type:
-          - integer
-          - 'null'
-          example: 2351
+        Approved:
+          type: boolean
+          example: true
+        ApprovedBy:
+          type: object
+          properties:
+            Email:
+              type: string
+              example: test1@example.com
+            Name:
+              type: string
+              example: First Last
+          required:
+          - Email
+          - Name
       required:
-      - Id
-      - templateId
+      - Approved
+      - ApprovedBy
     OneSheetCreatorModel:
       type: object
       properties:
@@ -2780,16 +2611,162 @@ components:
       required:
       - type
       - href
-    AddPublisherToOneSheetBody:
+    CreateOneSheetBody:
       type: object
       properties:
-        PublisherIds:
-          type: array
-          items:
-            type: integer
-            example: 13201168
+        Name:
+          type: string
+          description: Name of OneSheet
+          example: Test OneSheet
+        TotalReachCalculation:
+          type: string
+          enum:
+          - Selected
+          - Full
+        templateId:
+          type:
+          - integer
+          - 'null'
+          example: 2351
       required:
-      - PublisherIds
+      - Name
+    UpdateOneSheetCreatorBody:
+      type: object
+      description: Update one-sheet creator request body
+      properties:
+        Description:
+          type:
+          - string
+          - 'null'
+          description: Description
+          example: Long description text
+        SalesSheetImageURL:
+          type:
+          - string
+          - 'null'
+          description: Sales one-sheet image URL
+          format: URI
+          maxLength: 1024
+          example: https://socialedge-sales-sheet-publishers.s3.amazonaws.com/485110.jpg
+        SalesSheetLogoURL:
+          type:
+          - string
+          - 'null'
+          description: Sales one-sheet logo URL
+          format: URI
+          maxLength: 1024
+          example: https://social-pictures-storage.s3.amazonaws.com/talent_mayawashington_headshot1.jpg_1506633937.jpg
+        ShortDescription:
+          type:
+          - string
+          - 'null'
+          description: Short description
+          example: Short Description Text Example
+        InternalNotes:
+          type:
+          - string
+          - 'null'
+          description: Internal notes
+          example: Internal notes text example
+        Sections:
+          type:
+          - string
+          - 'null'
+          description: Sections
+          format: json
+          maxLength: 2048
+          example: '{"Musical.ly":1,"SalesSheetImageURL":1,"StatusInCampaign":1,"SocialMetrics":0,"SampleVideosPostBlog":1}'
+        SortOrder:
+          type:
+          - number
+          - 'null'
+          description: Sort order
+          format: float
+          example: 1.1
+        UpdatedBy:
+          type:
+          - string
+          - 'null'
+          description: Updated by
+          maxLength: 128
+          example: Name Surname
+        CreatedBy:
+          type:
+          - string
+          - 'null'
+          description: Created by
+          maxLength: 128
+          example: Name Surname
+        Approved:
+          type:
+          - boolean
+          - 'null'
+          description: Approved
+          example: true
+        Category:
+          type:
+          - string
+          - 'null'
+          description: Category
+          maxLength: 1024
+          example: '"Entertainment","Fitness","Lifestyle"'
+        Tags:
+          type:
+          - string
+          - 'null'
+          description: Tags
+          example: '"vlogger","beauty","goddard","F|challenge","F|parody","F|rachel","F|Fullscreen Affiliate"'
+        AudienceSocialNetwork:
+          type:
+          - string
+          - 'null'
+          description: Audience social network
+          maxLength: 50
+          example: instagram
+        AudienceSocialNetworkId:
+          type:
+          - string
+          - 'null'
+          description: Audience social network id
+          maxLength: 128
+          example: '2279929'
+        AudienceType:
+          type:
+          - string
+          - 'null'
+          description: Audience type
+          maxLength: 7
+          example: Blended
+        TopMetrics:
+          type:
+          - string
+          - 'null'
+          description: Top metrics
+          maxLength: 1024
+          example: '[{"network":"Youtube","field":"Followers","label":"subscribers"},{"network":"Facebook","field":"Followers","label":"likes"},{"network":"Twitter","field":"Followers","label":"followers"},{"network":"Instagram","field":"Followers","label":"followers"},{"network":"Google","field":"Followers","label":"followers"},{"network":"Tumblr","field":"Followers","label":"followers"},{"network":"Pinterest","field":"Followers","label":"followers"},{"network":"Snapchat","field":"AvgViewsPerPost","label":"views per snap"},{"network":"Web","field":"Followers","label":"uniques"}]'
+        IsFeatured:
+          type:
+          - boolean
+          - 'null'
+          description: Is featured flag
+          default: false
+          example: true
+        DescriptionVisibleSymbolsNumber:
+          type:
+          - integer
+          - 'null'
+          description: Description visible symbols number
+          example: 123
+        isPostMigrationProcess:
+          type:
+          - boolean
+          - 'null'
+          description: Is post migration process flag
+          default: false
+          example: true
+      required:
+      - Sections
+      minProperties: 1
     UpdateOneSheetBody:
       type: object
       properties:
@@ -2981,6 +2958,29 @@ components:
               example: 0
           minProperties: 1
       minProperties: 1
+    ErrorResponse:
+      type: object
+      description: Exception
+      properties:
+        type:
+          type: string
+          description: Exception type
+          example: CoreException
+        CoreException:
+          type: object
+          description: Exception information
+          properties:
+            code:
+              type: integer
+              description: Exception status code
+              format: int32
+              example: 404
+            message:
+              type: string
+              description: Exception message
+              example: Supplied ID was not found
+      required:
+      - type
     generalSchema:
       type: object
       properties:
@@ -3079,30 +3079,6 @@ components:
       - UpdatedAt
       - ExpiredAt
       - Result
-    commonResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: Count of all reports
-          example: 300
-        dataGenerationTime:
-          type: string
-          description: Date when report generated
-          example: '2023-01-20T13:43:47+00:00'
-        cached:
-          type: boolean
-          description: Is view cached or not
-        time:
-          type: number
-          description: Time taken to generate report
-          format: float32
-          example: 0.571
-      required:
-      - count
-      - dataGenerationTime
-      - cached
-      - time
     oneSheetBuilder:
       type: object
       allOf:
@@ -3273,31 +3249,31 @@ components:
               - PublisherName
         required:
         - results
+    commonResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Count of all reports
+          example: 300
+        dataGenerationTime:
+          type: string
+          description: Date when report generated
+          example: '2023-01-20T13:43:47+00:00'
+        cached:
+          type: boolean
+          description: Is view cached or not
+        time:
+          type: number
+          description: Time taken to generate report
+          format: float32
+          example: 0.571
+      required:
+      - count
+      - dataGenerationTime
+      - cached
+      - time
   parameters:
-    take:
-      name: requestData[take]
-      in: query
-      description: Number of rows to fetch
-      required: true
-      schema:
-        type: integer
-        example: 20
-      examples:
-        default:
-          value: 20
-    dir:
-      name: requestData[sort][0][dir]
-      in: query
-      description: Sorting
-      schema:
-        type: string
-        enum:
-        - asc
-        - desc
-        example: asc
-      examples:
-        default:
-          value: asc
     section:
       name: section
       in: query
@@ -3320,6 +3296,30 @@ components:
       examples:
         default:
           value: 0
+    dir:
+      name: requestData[sort][0][dir]
+      in: query
+      description: Sorting
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        example: asc
+      examples:
+        default:
+          value: asc
+    take:
+      name: requestData[take]
+      in: query
+      description: Number of rows to fetch
+      required: true
+      schema:
+        type: integer
+        example: 20
+      examples:
+        default:
+          value: 20
   securitySchemes:
     apiKey:
       type: apiKey

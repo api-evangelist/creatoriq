@@ -105,6 +105,62 @@ components:
                 - https://apis.creatoriq.com/crm/v1/api/division/1
               Division:
                 $ref: '#/components/schemas/DivisionModel'
+    '404':
+      description: Division not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                description: type of error
+                examples:
+                - NotFoundHttpException
+              NotFoundHttpException:
+                type: object
+                description: exception object
+                properties:
+                  code:
+                    type: integer
+                    description: HTTP status code
+                    examples:
+                    - 404
+                  message:
+                    type: string
+                    description: Error message
+                    examples:
+                    - Division with supplied ID was not found
+    '401':
+      description: The request could not be completed due to invalid API credentials
+    '400':
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                description: type of error
+                examples:
+                - BadRequestHttpException
+              BadRequestHttpException:
+                type: object
+                description: exception object
+                properties:
+                  code:
+                    type: integer
+                    description: HTTP status code
+                    examples:
+                    - 400
+                  message:
+                    type: string
+                    description: Error message
+                    examples:
+                    - 'Invalid field(s) provided: UnknownField'
+    '403':
+      description: Access was denied due to the API due to insufficient access permissions.
     DivisionCollectionResponse:
       description: Response with collection of divisions
       content:
@@ -145,63 +201,29 @@ components:
                   examples:
                   - 1
             - $ref: '#/components/schemas/DivisionCollection'
-    '404':
-      description: Division not found
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              type:
-                type: string
-                description: type of error
-                examples:
-                - NotFoundHttpException
-              NotFoundHttpException:
-                type: object
-                description: exception object
-                properties:
-                  code:
-                    type: integer
-                    description: HTTP status code
-                    examples:
-                    - 404
-                  message:
-                    type: string
-                    description: Error message
-                    examples:
-                    - Division with supplied ID was not found
-    '400':
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              type:
-                type: string
-                description: type of error
-                examples:
-                - BadRequestHttpException
-              BadRequestHttpException:
-                type: object
-                description: exception object
-                properties:
-                  code:
-                    type: integer
-                    description: HTTP status code
-                    examples:
-                    - 400
-                  message:
-                    type: string
-                    description: Error message
-                    examples:
-                    - 'Invalid field(s) provided: UnknownField'
-    '403':
-      description: Access was denied due to the API due to insufficient access permissions.
-    '401':
-      description: The request could not be completed due to invalid API credentials
   schemas:
+    DivisionCollection:
+      type: array
+      title: Division Entity Collection
+      items:
+        type: object
+        description: 'Item in the collection.
+
+          '
+        properties:
+          type:
+            type: string
+            description: Type of Model
+            examples:
+            - Division
+          href:
+            type: string
+            description: CreatorIQ API URL to get divisions
+            format: URI
+            examples:
+            - https://apis.creatoriq.com/crm/v1/api/division/1
+          Division:
+            $ref: '#/components/schemas/DivisionModel'
     DivisionModel:
       type: object
       title: Division Entity
@@ -238,28 +260,6 @@ components:
           description: ID of the parent division, if any.
           examples:
           - 789
-    DivisionCollection:
-      type: array
-      title: Division Entity Collection
-      items:
-        type: object
-        description: 'Item in the collection.
-
-          '
-        properties:
-          type:
-            type: string
-            description: Type of Model
-            examples:
-            - Division
-          href:
-            type: string
-            description: CreatorIQ API URL to get divisions
-            format: URI
-            examples:
-            - https://apis.creatoriq.com/crm/v1/api/division/1
-          Division:
-            $ref: '#/components/schemas/DivisionModel'
   parameters:
     fields:
       name: fields

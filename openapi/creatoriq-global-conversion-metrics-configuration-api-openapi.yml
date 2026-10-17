@@ -119,62 +119,7 @@ components:
           type: integer
           examples:
           - 1
-    ConversionMetricConfiguration:
-      type: object
-      properties:
-        ConversionMetricId:
-          type: integer
-          examples:
-          - 36942
-        PartnerId:
-          type: integer
-          examples:
-          - 11
-        ConversionMetricName:
-          type: string
-          examples:
-          - ConversionMetric6
-        DisplayName:
-          type: string
-          examples:
-          - Transactions
-        DisplayOrder:
-          type: integer
-          examples:
-          - 6
-        IsVisible:
-          type: integer
-          examples:
-          - 1
-        Type:
-          type: string
-          examples:
-          - Default
-        AdditionalInfo:
-          type:
-          - string
-          - 'null'
-          examples:
-          - null
-        UpdatedAt:
-          type: string
-          format: date-time
-          examples:
-          - '2022-01-11 13:47:34'
-        UpdatedBy:
-          type: string
-          examples:
-          - app-ui
-        CreatedAt:
-          type: string
-          format: date-time
-          examples:
-          - '2022-01-11 13:47:34'
-        CreatedBy:
-          type: string
-          examples:
-          - app-ui
-    ConversionMetricResponse:
+    ConversionMetricConfigurationResponse:
       type: object
       properties:
         type:
@@ -184,9 +129,9 @@ components:
         href:
           type: string
           examples:
-          - https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders
+          - https://public-api.creatoriq.com/api/api/conversion/36937
         ConversionMetric:
-          $ref: '#/components/schemas/ConversionMetric'
+          $ref: '#/components/schemas/ConversionMetricConfiguration'
     ConversionMetric:
       type: object
       properties:
@@ -247,19 +192,6 @@ components:
           type: string
           examples:
           - app-ui
-    ConversionMetricConfigurationResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          examples:
-          - ConversionMetric
-        href:
-          type: string
-          examples:
-          - https://public-api.creatoriq.com/api/api/conversion/36937
-        ConversionMetric:
-          $ref: '#/components/schemas/ConversionMetricConfiguration'
     ConversionMetricConfigurationCollectionResponse:
       type: object
       properties:
@@ -287,20 +219,86 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ConversionMetricConfigurationResponse'
-  parameters:
-    conversionMetricId:
-      name: conversionMetricId
-      in: path
-      description: The unique identifier for the conversion metric.
-      required: true
-      schema:
-        type: integer
-        examples:
-        - 36942
-      examples:
-        default:
-          value: 36942
+    ConversionMetricResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+          - ConversionMetric
+        href:
+          type: string
+          examples:
+          - https://public-api.creatoriq.com/api/v1/campaign/123/tracking-link/321/conversionMetric/Gross%20Orders
+        ConversionMetric:
+          $ref: '#/components/schemas/ConversionMetric'
+    ConversionMetricConfiguration:
+      type: object
+      properties:
+        ConversionMetricId:
+          type: integer
+          examples:
+          - 36942
+        PartnerId:
+          type: integer
+          examples:
+          - 11
+        ConversionMetricName:
+          type: string
+          examples:
+          - ConversionMetric6
+        DisplayName:
+          type: string
+          examples:
+          - Transactions
+        DisplayOrder:
+          type: integer
+          examples:
+          - 6
+        IsVisible:
+          type: integer
+          examples:
+          - 1
+        Type:
+          type: string
+          examples:
+          - Default
+        AdditionalInfo:
+          type:
+          - string
+          - 'null'
+          examples:
+          - null
+        UpdatedAt:
+          type: string
+          format: date-time
+          examples:
+          - '2022-01-11 13:47:34'
+        UpdatedBy:
+          type: string
+          examples:
+          - app-ui
+        CreatedAt:
+          type: string
+          format: date-time
+          examples:
+          - '2022-01-11 13:47:34'
+        CreatedBy:
+          type: string
+          examples:
+          - app-ui
   responses:
+    ForbiddenError:
+      description: Forbidden - User does not have access.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                examples:
+                - Forbidden
     BadRequestError:
       description: Bad Request - Invalid request format or missing fields.
       content:
@@ -361,17 +359,6 @@ components:
                     - Supplied ID was not found
             required:
             - type
-    ForbiddenError:
-      description: Forbidden - User does not have access.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                examples:
-                - Forbidden
     UnauthorizedError:
       description: Unauthorized - API key missing or invalid.
       content:
@@ -383,6 +370,19 @@ components:
                 type: string
                 examples:
                 - Unauthorized
+  parameters:
+    conversionMetricId:
+      name: conversionMetricId
+      in: path
+      description: The unique identifier for the conversion metric.
+      required: true
+      schema:
+        type: integer
+        examples:
+        - 36942
+      examples:
+        default:
+          value: 36942
   securitySchemes:
     apiKey:
       type: apiKey

@@ -180,6 +180,25 @@ paths:
       - url: https://apis.creatoriq.com
         description: Live
 components:
+  responses:
+    InternalServerError:
+      description: Internal Server Error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ForbiddenError:
+      description: Forbidden - the API key is missing, invalid or lacks access.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequestError:
+      description: Bad Request - invalid or missing query parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
     Cursor:
       name: Cursor
@@ -207,21 +226,6 @@ components:
       examples:
         default:
           value: 50
-    Direction:
-      name: Direction
-      in: query
-      description: Pagination direction relative to the supplied cursor.
-      required: true
-      schema:
-        type: string
-        enum:
-        - forward
-        - backward
-        examples:
-        - forward
-      examples:
-        default:
-          value: forward
     SortOrder:
       name: SortOrder
       in: query
@@ -237,39 +241,36 @@ components:
       examples:
         default:
           value: desc
+    Direction:
+      name: Direction
+      in: query
+      description: Pagination direction relative to the supplied cursor.
+      required: true
+      schema:
+        type: string
+        enum:
+        - forward
+        - backward
+        examples:
+        - forward
+      examples:
+        default:
+          value: forward
   schemas:
-    ErrorResponse:
+    PayoutsCollectionResponse:
       type: object
-      description: Standard error response body.
+      description: A page of payouts with pagination metadata.
       properties:
-        ErrorMessage:
-          type: string
-          description: Human-readable error message.
-          examples:
-          - 'Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt'
-        Type:
-          type: string
-          description: Error type identifier.
-          examples:
-          - InvalidPayoutFiltersError
-        Details:
+        Data:
           type: array
-          description: Additional error details.
+          description: Payouts in this page.
           items:
-            $ref: '#/components/schemas/ErrorDetail'
-        Context:
-          type: object
-          description: Additional error context.
+            $ref: '#/components/schemas/Payout'
+        Metadata:
+          $ref: '#/components/schemas/CollectionMetadata'
       required:
-      - ErrorMessage
-    CollectionMetadata:
-      type: object
-      description: Metadata wrapper carrying pagination details.
-      properties:
-        Pagination:
-          $ref: '#/components/schemas/PaginationResponse'
-      required:
-      - Pagination
+      - Data
+      - Metadata
     PaginationResponse:
       type: object
       description: Keyset pagination metadata.
@@ -309,23 +310,6 @@ components:
       - HasNextPage
       - HasPreviousPage
       - PageSize
-    Amount:
-      type: object
-      description: A monetary amount with its currency.
-      properties:
-        Value:
-          type: string
-          description: Decimal amount, serialized as a string to preserve precision.
-          examples:
-          - '1250.00'
-        Currency:
-          type: string
-          description: ISO 4217 currency code.
-          examples:
-          - USD
-      required:
-      - Value
-      - Currency
     ErrorDetail:
       type: object
       description: A single error detail entry.
@@ -345,6 +329,55 @@ components:
           description: Detail context.
       required:
       - Type
+    ErrorResponse:
+      type: object
+      description: Standard error response body.
+      properties:
+        ErrorMessage:
+          type: string
+          description: Human-readable error message.
+          examples:
+          - 'Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt'
+        Type:
+          type: string
+          description: Error type identifier.
+          examples:
+          - InvalidPayoutFiltersError
+        Details:
+          type: array
+          description: Additional error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+        Context:
+          type: object
+          description: Additional error context.
+      required:
+      - ErrorMessage
+    Amount:
+      type: object
+      description: A monetary amount with its currency.
+      properties:
+        Value:
+          type: string
+          description: Decimal amount, serialized as a string to preserve precision.
+          examples:
+          - '1250.00'
+        Currency:
+          type: string
+          description: ISO 4217 currency code.
+          examples:
+          - USD
+      required:
+      - Value
+      - Currency
+    CollectionMetadata:
+      type: object
+      description: Metadata wrapper carrying pagination details.
+      properties:
+        Pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      required:
+      - Pagination
     Payout:
       type: object
       description: A payout in the creator view.
@@ -484,39 +517,6 @@ components:
       - PublisherIsPayable
       - PayoutStatus
       - PayoutAmount
-    PayoutsCollectionResponse:
-      type: object
-      description: A page of payouts with pagination metadata.
-      properties:
-        Data:
-          type: array
-          description: Payouts in this page.
-          items:
-            $ref: '#/components/schemas/Payout'
-        Metadata:
-          $ref: '#/components/schemas/CollectionMetadata'
-      required:
-      - Data
-      - Metadata
-  responses:
-    BadRequestError:
-      description: Bad Request - invalid or missing query parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalServerError:
-      description: Internal Server Error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ForbiddenError:
-      description: Forbidden - the API key is missing, invalid or lacks access.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     apiKey:
       type: apiKey

@@ -110,6 +110,25 @@ paths:
       - url: https://apis.creatoriq.com
         description: Live
 components:
+  responses:
+    InternalServerError:
+      description: Internal Server Error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ForbiddenError:
+      description: Forbidden - the API key is missing, invalid or lacks access.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequestError:
+      description: Bad Request - invalid or missing query parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
     Cursor:
       name: Cursor
@@ -168,38 +187,6 @@ components:
         default:
           value: desc
   schemas:
-    ErrorResponse:
-      type: object
-      description: Standard error response body.
-      properties:
-        ErrorMessage:
-          type: string
-          description: Human-readable error message.
-          examples:
-          - 'Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt'
-        Type:
-          type: string
-          description: Error type identifier.
-          examples:
-          - InvalidPayoutFiltersError
-        Details:
-          type: array
-          description: Additional error details.
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-        Context:
-          type: object
-          description: Additional error context.
-      required:
-      - ErrorMessage
-    CollectionMetadata:
-      type: object
-      description: Metadata wrapper carrying pagination details.
-      properties:
-        Pagination:
-          $ref: '#/components/schemas/PaginationResponse'
-      required:
-      - Pagination
     PaginationResponse:
       type: object
       description: Keyset pagination metadata.
@@ -239,20 +226,6 @@ components:
       - HasNextPage
       - HasPreviousPage
       - PageSize
-    CreatorPaymentInfoStatusCollectionResponse:
-      type: object
-      description: A page of creator payment-info statuses with pagination metadata.
-      properties:
-        Data:
-          type: array
-          description: Creator payment-info statuses in this page.
-          items:
-            $ref: '#/components/schemas/CreatorPaymentInfoStatus'
-        Metadata:
-          $ref: '#/components/schemas/CollectionMetadata'
-      required:
-      - Data
-      - Metadata
     ErrorDetail:
       type: object
       description: A single error detail entry.
@@ -317,25 +290,52 @@ components:
       required:
       - PublisherId
       - PayableStatus
-  responses:
-    BadRequestError:
-      description: Bad Request - invalid or missing query parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalServerError:
-      description: Internal Server Error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ForbiddenError:
-      description: Forbidden - the API key is missing, invalid or lacks access.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    ErrorResponse:
+      type: object
+      description: Standard error response body.
+      properties:
+        ErrorMessage:
+          type: string
+          description: Human-readable error message.
+          examples:
+          - 'Invalid SortField, need one of: PayoutDate, PublisherID, CreatedAt'
+        Type:
+          type: string
+          description: Error type identifier.
+          examples:
+          - InvalidPayoutFiltersError
+        Details:
+          type: array
+          description: Additional error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+        Context:
+          type: object
+          description: Additional error context.
+      required:
+      - ErrorMessage
+    CreatorPaymentInfoStatusCollectionResponse:
+      type: object
+      description: A page of creator payment-info statuses with pagination metadata.
+      properties:
+        Data:
+          type: array
+          description: Creator payment-info statuses in this page.
+          items:
+            $ref: '#/components/schemas/CreatorPaymentInfoStatus'
+        Metadata:
+          $ref: '#/components/schemas/CollectionMetadata'
+      required:
+      - Data
+      - Metadata
+    CollectionMetadata:
+      type: object
+      description: Metadata wrapper carrying pagination details.
+      properties:
+        Pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      required:
+      - Pagination
   securitySchemes:
     apiKey:
       type: apiKey

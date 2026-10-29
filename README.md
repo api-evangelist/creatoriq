@@ -64,37 +64,182 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-CreatorIQ is an enterprise creator- and influencer-marketing platform. Brands and agencies use it to
-discover creators, run a private creator network, manage and measure campaigns, pay creators, and
-report across Instagram, TikTok, YouTube and other networks.
+CreatorIQ is an enterprise creator- and influencer-marketing platform used by brands and agencies to discover creators, build and manage a private creator network, run and measure campaigns, handle creator payouts, and report on performance across Instagram, TikTok, YouTube and other social networks. Its public REST API — documented on a Stoplight portal at apidocs.creatoriq.com and served from https://apis.creatoriq.com — exposes the customer's own CRM: publishers (creators), campaigns, lists, one-sheets, notes, divisions, social accounts and post/account metrics, an asynchronous reporting surface of forty report views, ecommerce promo codes and transactions, affiliate link tracking, conversion metrics, SafeIQ brand-safety scoring, and a Payments API for payouts and payables. A pub/sub webhook API lets integrators subscribe to campaign, creator, one-sheet and list events with MD5 and SHA-256 signed callbacks. Authentication is a single `x-api-key` header issued per partner or per division by a CreatorIQ account manager; there is no self-serve signup.
 
-- Website: https://www.creatoriq.com/
-- Developer portal: https://apidocs.creatoriq.com/
-- API host: https://apis.creatoriq.com
-- Status: https://status.creatoriq.com/
+**Areas:** Influencer Marketing · Creator Economy · Social Media · Marketing · Campaign Management · creator-crm · Social Analytics · Brand Safety · Affiliate Marketing · creator-payments · E-Commerce · Reporting
 
-## What is in this profile
+## CreatorIQ on APIs.io
 
-Seventeen OpenAPI documents (8 x 3.0.1, 9 x 3.1.0) covering **159 operations**, harvested verbatim
-from the Stoplight project behind `apidocs.creatoriq.com`. Every operation carries an `operationId`.
-Alongside them: the authentication model, conventions, error catalogue, rate limits, lifecycle and
-deprecation policy, changelog, webhook event catalogue, data model, sandbox and mock servers,
-conformance, security and trust posture, five agent skills, and a generated `llms.txt`.
+Everything profiled for CreatorIQ is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/creatoriq/](https://apis.io/providers/creatoriq/)** — or go straight to one of the APIs or properties below.
 
-## Notable findings
+### APIs (19)
 
-- The developer portal is a client-rendered Stoplight site that looks spec-less. The specs are public
-  and exportable through the Stoplight project API; `openapi/_original/` holds them verbatim.
-- Rate limits are published — 100,000 requests/day and 5 requests/second per key — but **no
-  rate-limit response headers and no `Retry-After` are documented**, so a client cannot see its
-  remaining budget at runtime.
-- **No idempotency contract anywhere.** Zero occurrences of "idempoten" across all eighteen specs,
-  against a write surface that creates campaigns, publishers, lists, one-sheets and promo codes.
-- A published one-year deprecation policy with `Deprecation` and `Sunset` headers (RFC 8594) — strong
-  for this cohort — that appears in prose only and is declared in no spec.
-- Webhook signatures are a plain MD5 or SHA-256 hash, not an HMAC, and CreatorIQ says so in its own
-  docs. The signing secret is the API key itself.
-- ISO/IEC 27001:2022 certified, GDPR and CCPA compliant. No SOC 2, and no PCI DSS claim on the
-  Payments API.
-- No SDKs, no public repositories, no CLI, no MCP server, no A2A agent card, no AsyncAPI, and no
-  `/.well-known` document of any kind — including `security.txt`.
+- [CreatorIQ Brand Safety API](https://apis.io/apis/creatoriq/creatoriq-brand-safety-api/) — SafeIQ brand safety timeline API
+- [CreatorIQ Campaign API](https://apis.io/apis/creatoriq/creatoriq-campaign-api/) — Campaign information
+- [CreatorIQ Campaign Conversion Metrics API](https://apis.io/apis/creatoriq/creatoriq-campaign-conversion-metrics-api/) — Campaign Conversion Metrics
+- [CreatorIQ CJ API](https://apis.io/apis/creatoriq/creatoriq-cj-api/) — CJ reports
+- [CreatorIQ Creator Payment Info API](https://apis.io/apis/creatoriq/creatoriq-creator-payment-info-api/) — Creator payment-info collection status
+- [CreatorIQ Divisions API](https://apis.io/apis/creatoriq/creatoriq-divisions-api/) — Divisions public API
+- [CreatorIQ Ecommerce API](https://apis.io/apis/creatoriq/creatoriq-ecommerce-api/) — Ecommerce public API
+- [CreatorIQ General API](https://apis.io/apis/creatoriq/creatoriq-general-api/) — General section of reporting
+- [CreatorIQ Global Conversion Metrics Configuration API](https://apis.io/apis/creatoriq/creatoriq-global-conversion-metrics-configuration-api/) — Global Conversion Metrics Configuration
+- [CreatorIQ Link Tracking API](https://apis.io/apis/creatoriq/creatoriq-linktracking-api/) — LinkTracking public API
+- [CreatorIQ Lists API](https://apis.io/apis/creatoriq/creatoriq-lists-api/) — Lists public API
+- [CreatorIQ Notes API](https://apis.io/apis/creatoriq/creatoriq-notes-api/) — Notes public API
+- [CreatorIQ Onesheet API](https://apis.io/apis/creatoriq/creatoriq-onesheet-api/) — Onesheets public API
+- [CreatorIQ Payables API](https://apis.io/apis/creatoriq/creatoriq-payables-api/) — Creator payables
+- [CreatorIQ Payouts API](https://apis.io/apis/creatoriq/creatoriq-payouts-api/) — Creator payouts
+- [CreatorIQ Publisher API](https://apis.io/apis/creatoriq/creatoriq-publisher-api/) — Publisher public API
+- [CreatorIQ Reporting API](https://apis.io/apis/creatoriq/creatoriq-reporting-api/) — Reporting
+- [CreatorIQ Social API](https://apis.io/apis/creatoriq/creatoriq-social-api/) — Public social API
+- [CreatorIQ Subscription API](https://apis.io/apis/creatoriq/creatoriq-subscription-api/) — Subscription API part
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Creatoriq Webhooks](https://apis.io/asyncapis/creatoriq/creatoriq-webhooks/)
+
+#### Collections (17)
+
+Postman and Open Collection request collections.
+
+- [CreatorIQ SafeIQ Brand Safety API](https://apis.io/collections/creatoriq/open-creatoriq-brand-safety/)
+- [CreatorIQ Brand Safety (draft)](https://apis.io/collections/creatoriq/open-creatoriq-brand-safety-draft/)
+- [CreatorIQ Campaign APIs](https://apis.io/collections/creatoriq/open-creatoriq-campaigns/)
+- [Conversion Metrics API](https://apis.io/collections/creatoriq/open-creatoriq-conversion-metrics/)
+- [CreatorIQ Ecommerce APIs](https://apis.io/collections/creatoriq/open-creatoriq-ecommerce/)
+- [CreatorIQ CRM LinkTracking API](https://apis.io/collections/creatoriq/open-creatoriq-link-tracking/)
+- [CreatorIQ CRM Lists API](https://apis.io/collections/creatoriq/open-creatoriq-lists/)
+- [CreatorIQ CRM Publishers API](https://apis.io/collections/creatoriq/open-creatoriq-notes/)
+- [CreatorIQ CRM Onesheets API](https://apis.io/collections/creatoriq/open-creatoriq-onesheets/)
+- [CreatorIQ Payments API](https://apis.io/collections/creatoriq/open-creatoriq-payments/)
+- [CreatorIQ CRM Publishers API](https://apis.io/collections/creatoriq/open-creatoriq-publishers/)
+- [CreatorIQ Reporting APIs](https://apis.io/collections/creatoriq/open-creatoriq-reports/)
+- [CreatorIQ Social Account APIs](https://apis.io/collections/creatoriq/open-creatoriq-socials/)
+- [CreatorIQ Divisions APIs](https://apis.io/collections/creatoriq/open-creatoriq-v1-divisions/)
+- [CreatorIQ CRM Campaigns API V2](https://apis.io/collections/creatoriq/open-creatoriq-v2-campaigns/)
+- [CreatorIQ CRM Publishers API V2](https://apis.io/collections/creatoriq/open-creatoriq-v2-publishers/)
+- [CreatorIQ Public APIs](https://apis.io/collections/creatoriq/open-creatoriq-webhooks/)
+
+#### Overlays (18)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [_Index](https://apis.io/overlays/creatoriq/_index/)
+- [Creatoriq Brand Safety Draft Overlay](https://apis.io/overlays/creatoriq/creatoriq-brand-safety-draft-overlay/)
+- [Creatoriq Brand Safety Overlay](https://apis.io/overlays/creatoriq/creatoriq-brand-safety-overlay/)
+- [Creatoriq Campaigns Overlay](https://apis.io/overlays/creatoriq/creatoriq-campaigns-overlay/)
+- [Creatoriq Conversion Metrics Overlay](https://apis.io/overlays/creatoriq/creatoriq-conversion-metrics-overlay/)
+- [Creatoriq Ecommerce Overlay](https://apis.io/overlays/creatoriq/creatoriq-ecommerce-overlay/)
+- [Creatoriq Link Tracking Overlay](https://apis.io/overlays/creatoriq/creatoriq-link-tracking-overlay/)
+- [Creatoriq Lists Overlay](https://apis.io/overlays/creatoriq/creatoriq-lists-overlay/)
+- [Creatoriq Notes Overlay](https://apis.io/overlays/creatoriq/creatoriq-notes-overlay/)
+- [Creatoriq Onesheets Overlay](https://apis.io/overlays/creatoriq/creatoriq-onesheets-overlay/)
+- [Creatoriq Payments Overlay](https://apis.io/overlays/creatoriq/creatoriq-payments-overlay/)
+- [Creatoriq Publishers Overlay](https://apis.io/overlays/creatoriq/creatoriq-publishers-overlay/)
+- [Creatoriq Reports Overlay](https://apis.io/overlays/creatoriq/creatoriq-reports-overlay/)
+- [Creatoriq Socials Overlay](https://apis.io/overlays/creatoriq/creatoriq-socials-overlay/)
+- [Creatoriq V1 Divisions Overlay](https://apis.io/overlays/creatoriq/creatoriq-v1-divisions-overlay/)
+- [Creatoriq V2 Campaigns Overlay](https://apis.io/overlays/creatoriq/creatoriq-v2-campaigns-overlay/)
+- [Creatoriq V2 Publishers Overlay](https://apis.io/overlays/creatoriq/creatoriq-v2-publishers-overlay/)
+- [Creatoriq Webhooks Overlay](https://apis.io/overlays/creatoriq/creatoriq-webhooks-overlay/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Creatoriq Authentication](https://apis.io/security/creatoriq/creatoriq-authentication/)
+- [Creatoriq Domain Security](https://apis.io/security/creatoriq/creatoriq-domain-security/)
+- [Creatoriq Trust Center](https://apis.io/security/creatoriq/creatoriq-trust-center/)
+- [Creatoriq Vulnerability Disclosure](https://apis.io/security/creatoriq/creatoriq-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Creatoriq Plans Pricing](https://apis.io/plans/creatoriq/creatoriq-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Creatoriq Rate Limits](https://apis.io/rate-limits/creatoriq/creatoriq-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.creatoriq.com/)
+- [Documentation](https://apidocs.creatoriq.com/docs/ciq-api-documentation/o5yqwvpp1lbnb-overview)
+- [Getting started](https://apidocs.creatoriq.com/docs/ciq-api-documentation/05lf89tv60rvy-introduction-to-api-keys)
+- [API reference](https://apidocs.creatoriq.com/docs/ciq-api-documentation/6e239b2598043-creator-iq-crm-publishers-api)
+- [Pricing](https://www.creatoriq.com/pricing)
+- [Sign up](https://app.creatoriq.com/)
+- [Support](https://www.creatoriq.com/contact)
+- [Changelog](https://apidocs.creatoriq.com/docs/ciq-api-documentation/6b7999d265a29-changelog)
+- [Blog](https://www.creatoriq.com/blog)
+- [Security](https://www.creatoriq.com/legal/security)
+- [Compliance](https://www.creatoriq.com/trust)
+- [Terms of service](https://www.creatoriq.com/legal/terms-of-use)
+- [Privacy policy](https://www.creatoriq.com/legal/privacy-policy)
+- [Status](https://status.creatoriq.com/)
+
+## API Evangelist rating
+
+**Kin Score 62.4** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 63.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 78.9 |
+| Developer ergonomics | 66.1 |
+| Access clarity | 60.5 |
+
+**Agent readiness 35.9** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 32.1** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/creatoriq/](https://apis.io/providers/creatoriq/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for CreatorIQ: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/creatoriq/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
